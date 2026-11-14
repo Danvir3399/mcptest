@@ -4255,5 +4255,16 @@
     "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.eorscope.com/mcp; detected transport streamable-http; authentication none",
     "validatedUrl": "https://mcp.eorscope.com/mcp",
     "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "leadli",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "bearer-token",
+    "requiresOAuth": false,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-14T19:54:55.630Z",
+    "message": "Authentication challenge at https://api.leadli.me/api/v1/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication bearer-token",
+    "validatedUrl": "https://api.leadli.me/api/v1/mcp"
   }
 ]

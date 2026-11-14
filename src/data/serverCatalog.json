@@ -13255,7 +13255,7 @@
     "name": "Datacircle",
     "url": "https://api.datacircle.dev/mcp",
     "browserAccess": "direct",
-    "description": "Find the best GTM APIs. Our MCP server is open to anyone, with no key: add api.datacircle.dev/mcp to Claude, ChatGPT or Cursor.",
+    "description": "Lists go-to-market data APIs (enrichment, SERP, reviews, phone validation and more) and searches Datacircle's benchmarked plans by price, score, rate limits and returned fields. Two read-only tools; no authentication required.",
     "category": "Search",
     "tags": [
       "search",
@@ -13263,8 +13263,8 @@
       "no-auth"
     ],
     "listingSource": {
-      "kind": "community-submission",
-      "url": "https://datacircle.dev"
+      "kind": "publisher",
+      "url": "https://datacircle.dev/docs/mcp"
     },
     "transport": "streamable-http",
     "requiresOAuth": false,
@@ -13273,6 +13273,6 @@
     "logoSourceKind": "generated-fallback",
     "logoRetrievedAt": "2026-11-14",
     "logoLicenseNote": "Locally generated DA monogram for a community submission; it is not an official Datacircle mark.",
-    "homepageUrl": "https://datacircle.dev"
+    "homepageUrl": "https://datacircle.dev/docs/mcp"
   }
 ]

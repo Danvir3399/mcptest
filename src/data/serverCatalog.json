@@ -13298,5 +13298,30 @@
     "logoRetrievedAt": "2026-11-14",
     "logoLicenseNote": "Locally generated LM monogram for a community submission; it is not an official leadli.me mark.",
     "homepageUrl": "https://leadli.me/en/guides/mcp-server"
+  },
+  {
+    "id": "datacircle",
+    "name": "Datacircle",
+    "url": "https://api.datacircle.dev/mcp",
+    "browserAccess": "direct",
+    "description": "Lists go-to-market data APIs (enrichment, SERP, reviews, phone validation and more) and searches Datacircle's benchmarked plans by price, score, rate limits and returned fields. Two read-only tools; no authentication required.",
+    "category": "Search",
+    "tags": [
+      "search",
+      "community-submission",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://datacircle.dev/docs/mcp"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/datacircle.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-14",
+    "logoLicenseNote": "Locally generated DA monogram for a community submission; it is not an official Datacircle mark.",
+    "homepageUrl": "https://datacircle.dev/docs/mcp"
   }
 ]

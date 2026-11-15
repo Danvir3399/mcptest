@@ -4278,5 +4278,17 @@
     "checkedAt": "2026-11-14T19:54:55.630Z",
     "message": "Authentication challenge at https://api.leadli.me/api/v1/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication bearer-token",
     "validatedUrl": "https://api.leadli.me/api/v1/mcp"
+  },
+  {
+    "serverId": "datacircle",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-14T10:14:20.227Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://api.datacircle.dev/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://api.datacircle.dev/mcp",
+    "protocolVersion": "2025-11-25"
   }
 ]

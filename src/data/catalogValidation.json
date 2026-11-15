@@ -4267,5 +4267,16 @@
     "message": "Negotiated stateless MCP 2026-07-28 at https://govisit.ai/mcp; detected transport streamable-http; authentication none",
     "validatedUrl": "https://govisit.ai/mcp",
     "protocolVersion": "2026-07-28"
+  },
+  {
+    "serverId": "leadli",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "bearer-token",
+    "requiresOAuth": false,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-14T19:54:55.630Z",
+    "message": "Authentication challenge at https://api.leadli.me/api/v1/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication bearer-token",
+    "validatedUrl": "https://api.leadli.me/api/v1/mcp"
   }
 ]

@@ -13276,6 +13276,30 @@
     "homepageUrl": "https://govisit.ai/en/docs/developers/mcp/overview"
   },
   {
+    "id": "leadli",
+    "name": "leadli.me",
+    "url": "https://api.leadli.me/api/v1/mcp",
+    "browserAccess": "proxy-required",
+    "description": "leadli.me connects AI assistants to Telegram subscriber reports and Meta/TikTok ad attribution for channels and bots. Connect over Streamable HTTP with an organization access key in Authorization: Bearer; available tools depend on the key's permissions and plan.",
+    "category": "Analytics",
+    "tags": [
+      "analytics",
+      "community-submission"
+    ],
+    "listingSource": {
+      "kind": "community-submission",
+      "url": "https://leadli.me/en/guides/mcp-server"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "bearer-token",
+    "logoUrl": "/server-logos/leadli.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-14",
+    "logoLicenseNote": "Locally generated LM monogram for a community submission; it is not an official leadli.me mark.",
+    "homepageUrl": "https://leadli.me/en/guides/mcp-server"
+  },
+  {
     "id": "datacircle",
     "name": "Datacircle",
     "url": "https://api.datacircle.dev/mcp",

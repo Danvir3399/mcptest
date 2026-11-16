@@ -51,8 +51,8 @@
 
 .playground-tab-strip--fade-start .playground-tabs,
 .playground-tab-strip--fade-end .playground-tabs {
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--tab-fade-start, 0), #000 calc(100% - var(--tab-fade-end, 0px)), transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0, #000 var(--tab-fade-start, 0), #000 calc(100% - var(--tab-fade-end, 0px)), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--tab-fade-start, 0px), #000 calc(100% - var(--tab-fade-end, 0px)), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 var(--tab-fade-start, 0px), #000 calc(100% - var(--tab-fade-end, 0px)), transparent 100%);
 }
 
 .playground-tab-strip--fade-start {
@@ -112,7 +112,8 @@
   gap: 0;
   width: auto;
   margin: 0 0 -1px !important;
-  padding: 0;
+  padding: 0 .5rem;
+  scroll-padding-inline: .5rem;
   border: 0 !important;
   background: transparent;
 }

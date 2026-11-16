@@ -162,15 +162,18 @@ const ToolResultView: React.FC<ToolResultViewProps> = ({ logEntry, controlsTarge
     return (
       <div className="tool-result-view tool-result-view--plain">
         {controlsTarget && createPortal(
-          <div className="tool-result-view-switch segmented-control" role="group" aria-label="Result format">
-            {(['content', 'raw'] as const).map(format => (
-              <button key={format} type="button" aria-pressed={view === format}
-                className={`segmented-control-item ${view === format ? 'active' : ''}`}
-                onClick={() => setView(format)}>{format === 'raw' ? 'Raw JSON' : 'Formatted'}</button>
-            ))}
-          </div>, controlsTarget)}
-        <ResultExplanation contentSummary={contentSummary} hideToggle={!!controlsTarget}
-          kind="content" plain rawShown={view === 'raw'} onViewRaw={() => setView(view === 'raw' ? 'content' : 'raw')} />
+          <>
+            <div className="tool-result-view-switch segmented-control" role="group" aria-label="Result format">
+              {(['content', 'raw'] as const).map(format => (
+                <button key={format} type="button" aria-pressed={view === format}
+                  className={`segmented-control-item ${view === format ? 'active' : ''}`}
+                  onClick={() => setView(format)}>{format === 'raw' ? 'Raw JSON' : 'Formatted'}</button>
+              ))}
+            </div>
+            <span className="result-content-summary" title={EXPLANATIONS.content}>{contentSummary}</span>
+          </>, controlsTarget)}
+        {!controlsTarget && <ResultExplanation contentSummary={contentSummary}
+          kind="content" plain rawShown={view === 'raw'} onViewRaw={() => setView(view === 'raw' ? 'content' : 'raw')} />}
         {view === 'raw' ? <JsonBlock value={toolCall.result} /> : contentDisplay}
       </div>
     );

@@ -35,9 +35,12 @@
   white-space: nowrap;
 }
 
-.playground-tab-status {
+.playground-tab-status,
+.playground-tab-index {
   flex: 0 0 auto;
 }
+
+.playground-tab-index { margin-left: 0.35rem; }
 
 .playground-tab-label {
   min-width: 0;

@@ -92,6 +92,8 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTabId, onSelectTab, onCloseTab,
     fade.end ? 'playground-tab-strip--fade-end' : '',
   ].filter(Boolean).join(' ');
 
+  const labels = tabs.map(tab => getTabDisplayLabel(tab.title));
+
   return (
     <div className={stripClassName}>
       <span className="playground-tab-count">
@@ -103,8 +105,10 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTabId, onSelectTab, onCloseTab,
         role="tablist"
         onScroll={updateFade}
       >
-        {tabs.map(tab => {
-          const label = getTabDisplayLabel(tab.title);
+        {tabs.map((tab, index) => {
+          const label = labels[index];
+          const duplicate = labels.filter(value => value === label).length > 1;
+          const suffix = duplicate ? ` #${labels.slice(0, index + 1).filter(value => value === label).length}` : '';
           return (
             <div key={tab.id} className="nav-item position-relative" role="presentation">
               <button
@@ -113,13 +117,14 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTabId, onSelectTab, onCloseTab,
                 onClick={() => onSelectTab(tab.id)}
                 role="tab"
                 aria-selected={activeTabId === tab.id}
-                title={tab.title}
+                title={`${tab.title}${suffix}`}
               >
                 <span
                   className="me-2 playground-tab-status"
                   style={{ backgroundColor: getConnectionStatusColor(tab.connectionStatus, tab.transportType) }}
                 ></span>
                 <span className="playground-tab-label">{label}</span>
+                {suffix && <span className="playground-tab-index">{suffix}</span>}
               </button>
               {tabs.length > 1 && (
                 <button
@@ -127,7 +132,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTabId, onSelectTab, onCloseTab,
                   className="btn-close btn-close-sm position-absolute top-50 end-0 translate-middle-y me-2"
                   style={{ zIndex: 2 }}
                   onClick={() => onCloseTab(tab.id)}
-                  aria-label={`Close ${tab.title} tab`}
+                  aria-label={`Close ${tab.title}${suffix} tab`}
                 ></button>
               )}
             </div>

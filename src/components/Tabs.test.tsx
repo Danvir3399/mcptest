@@ -61,6 +61,18 @@ describe('playground tab labels', () => {
     expect(css).toMatch(/\.playground-tab-label\s*\{[^}]*text-overflow:\s*ellipsis;/);
   });
 
+  it('distinguishes duplicate hosts in visible indexes and accessible close labels', () => {
+    const container = document.createElement('div');
+    container.innerHTML = renderToStaticMarkup(
+      <Tabs tabs={['a', 'b', 'c'].map(id => tab({ id, title: 'mcp.grep.app' }))}
+        activeTabId="a" onSelectTab={vi.fn()} onCloseTab={vi.fn()} onNewTab={vi.fn()} />
+    );
+    expect([...container.querySelectorAll('[role="tab"]')].map(el => el.textContent)).toEqual([
+      'mcp.grep.app #1', 'mcp.grep.app #2', 'mcp.grep.app #3',
+    ]);
+    expect(container.querySelector('[aria-label="Close mcp.grep.app #2 tab"]')).not.toBeNull();
+  });
+
   it('names the new-tab control and explains it opens another server side by side', () => {
     const onNewTab = vi.fn();
     const container = document.createElement('div');

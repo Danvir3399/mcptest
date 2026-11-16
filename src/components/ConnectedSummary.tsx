@@ -174,7 +174,7 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
           </>
         )}
         {nextAction === 'share-report' && (
-          <>
+          <div className="d-inline-flex align-items-center gap-1">
             <a className="btn btn-outline-secondary" href={reportHref}>
               <ActionIcon name="share" /> Share report
             </a>
@@ -184,7 +184,7 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
               </button>
               <span role="tooltip" id={`${headingId}-share-help`}>{SHARE_REPORT_EXPLANATION}</span>
             </span>
-          </>
+          </div>
         )}
         {nextAction === 'run-report' && (
           <>

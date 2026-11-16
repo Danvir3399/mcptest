@@ -1,5 +1,7 @@
 .tool-result-view {
   display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.6rem;
 }
 
@@ -103,3 +105,21 @@
 [data-theme='dark'] .result-json .hljs-string { color: #7dd3a8; }
 [data-theme='dark'] .result-json .hljs-number,
 [data-theme='dark'] .result-json .hljs-literal { color: #eab676; }
+
+/* Keep long payloads inside the result column, with every line readable in place. */
+.tool-result-view > *,
+.tool-result-explanation > span {
+  min-width: 0;
+}
+
+.tool-result-view .tool-result-explanation {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.tool-result-view pre,
+.tool-result-view pre code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}

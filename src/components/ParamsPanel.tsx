@@ -72,11 +72,6 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
   handleExecutePrompt,
   handleAccessResource,
   parseUriTemplateArgs,
-  // History props
-  toolHistory,
-  resourceHistory,
-  setToolParams,
-  setResourceArgs,
   isExecuting,
   executionStartTime,
   renderCallHistory,
@@ -177,6 +172,8 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
               : inputType === 'integer' || inputType === 'number' ? typeof example === 'number'
                 : typeof example === 'string' || typeof example === 'number'
         );
+        const jsonValue = params[name] == null ? '' : typeof params[name] === 'string'
+          ? params[name] : JSON.stringify(params[name], null, 2);
         const exampleHintId = `${idPrefix}-${name}-example`;
 
         return (
@@ -242,12 +239,8 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
                 <textarea
                 className="form-control font-monospace"
                 id={`${idPrefix}-${name}`}
-                rows={5}
-                value={params[name] == null
-                  ? ''
-                  : typeof params[name] === 'string'
-                    ? params[name]
-                    : JSON.stringify(params[name], null, 2)}
+                rows={inputType === 'array' ? Math.min(10, jsonValue.split('\n').length) : 5}
+                value={jsonValue}
                 onChange={(e) => handleParamChange(name, e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder={inputType === 'array' ? '[ ]' : '{ }'}
@@ -339,40 +332,6 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
     );
   }; // End of renderResourceTemplateArgs
 
-  // --- History Click Handlers ---
-  const handleToolHistoryClick = (historyItem: any) => {
-    setToolParams(historyItem);
-  };
-
-  const handleResourceHistoryClick = (historyItem: any) => {
-    setResourceArgs(historyItem);
-  };
-
-  // --- Render Helper for History List ---
-  const renderHistoryList = (history: any[], onClick: (item: any) => void) => {
-    if (!history || history.length === 0) {
-      return <p className="text-muted small mt-2">No recent history.</p>;
-    }
-    return (
-      <div className="recent-calls mt-3 border-top pt-3">
-        <h6>Recent Calls {selectedTool ? `(${selectedTool.name})` : selectedResourceTemplate ? `(${selectedResourceTemplate.name || selectedResourceTemplate.uriTemplate})` : ''}:</h6>
-        <ul className="list-group list-group-flush" style={{ maxHeight: '150px', overflowY: 'auto' }}>
-          {history.map((item, index) => (
-            <li key={index} className="list-group-item list-group-item-action p-3" onClick={() => onClick(item)} style={{ cursor: 'pointer', lineHeight: '1.3' }}>
-              {Object.entries(item).map(([key, value]) => (
-                <div key={key} style={{ marginBottom: '2px' }}>
-                  <span style={{ fontSize: '0.75em', color: 'var(--text-muted)', display: 'block' }}>{key}:</span>
-                  <span style={{ wordBreak: 'break-all', fontSize: '0.85em' }}>{JSON.stringify(value)}</span> {/* Stringify value in case it's not a string */}
-                </div>
-              ))}
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  };
-
-
   // --- Main Component Return ---
   return (
     // Add conditional class for deactivated state
@@ -430,18 +389,6 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
             {selectedPrompt && renderInputParams(selectedPrompt, promptParams, 'prompt')}
             {selectedResourceTemplate && renderResourceTemplateArgs()}
 
-          {/* Render History */}
-          {selectedTool && (
-            <div>
-              {renderHistoryList(toolHistory, handleToolHistoryClick)}
-            </div>
-          )}
-          {selectedResourceTemplate && (
-            <div>
-              <div className="small text-muted">Resource: {selectedResourceTemplate.uriTemplate}</div>
-              {renderHistoryList(resourceHistory, handleResourceHistoryClick)}
-            </div>
-          )}
           </div>
         )}
 

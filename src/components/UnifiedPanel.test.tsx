@@ -79,7 +79,7 @@ const optionNames = () => [...container!.querySelectorAll('[role="option"] .item
 describe('UnifiedPanel search', () => {
   it('filters tools, resources and prompts together and shows counts per kind', () => {
     renderPanel();
-    expect(container!.querySelector('.capability-search-summary')?.textContent).toBe('3 tools · 1 resource · 1 prompt');
+    expect(container!.querySelector('.capability-search-summary')).toBeNull();
 
     type('issue');
     expect(optionNames()).toEqual(['search_issues', 'create_issue', 'triage_issue']);

@@ -397,7 +397,7 @@ export const UnifiedPanel: React.FC<UnifiedPanelProps> = ({
         />
         {!filterText && <kbd className="capability-search-shortcut" aria-hidden="true">/</kbd>}
       </div>
-      {isConnected && supportedCapabilities.length > 0 && (
+      {isConnected && isSearching && supportedCapabilities.length > 0 && (
         <p className="capability-search-summary" role="status" aria-live="polite">
           {isSearching ? `${matchSummary} match` : matchSummary}
         </p>

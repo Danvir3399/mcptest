@@ -476,11 +476,6 @@
 .result-empty-state .next-steps-strip {
   margin: var(--space-3) var(--space-4);
 }
-.request-panel .recent-calls .list-group-item {
-  background: var(--card-bg-secondary) !important;
-  border: 0;
-  font-family: var(--font-family-mono);
-}
 .request-panel #executeBtn {
   margin-top: var(--space-6);
 }

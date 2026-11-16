@@ -5123,8 +5123,6 @@ pre.bg-light code {
 }
 
 /* Shared inspector geometry: 48px headings, white controls, slate canvases. */
-:root { --workspace-canvas: #f8fafc; }
-[data-theme="dark"] { --workspace-canvas: var(--card-bg-secondary); }
 .main-content:has(.tab-content-panel:not(.d-none) .playground-workbench) { padding-bottom: 0 !important; }
 .playground-workbench .workbench-pane,
 .playground-workbench .workbench-pane > .card { background: var(--workspace-canvas); }

@@ -152,7 +152,7 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
       <div className="connected-summary-metadata">
         <div className="connected-summary-endpoint">
           {originalServerUrl && !sameEndpoint(originalServerUrl, serverUrl) && <span>Entered: <code>{originalServerUrl}</code> · </span>}
-          <span>{originalServerUrl && !sameEndpoint(originalServerUrl, serverUrl) ? 'Discovered:' : 'Endpoint:'} <code>{serverUrl}</code></span>
+          <span>{originalServerUrl && !sameEndpoint(originalServerUrl, serverUrl) ? 'Discovered:' : 'Endpoint:'} <code className="connected-endpoint-url">{serverUrl}</code></span>
           <button type="button" className="btn btn-sm connected-endpoint-copy" onClick={() => void copyEndpoint()} aria-label="Copy endpoint URL" title={copyState || 'Copy endpoint URL'}>
             <i className={`bi ${copyState === 'Endpoint copied' ? 'bi-check-lg' : 'bi-copy'}`} aria-hidden="true" />
           </button>
@@ -168,7 +168,7 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
             </li>
           )}
           <li><span className="session-detail">{AUTH_LABEL[authMode]}</span></li>
-          {isProxied && <li><span className="session-detail">Via proxy</span></li>}
+          {isProxied && <li><span className="session-detail session-detail--proxy">Via proxy</span></li>}
         </ul>
 
         <ul className="connected-summary-facts connected-summary-counts" aria-label="Capabilities">

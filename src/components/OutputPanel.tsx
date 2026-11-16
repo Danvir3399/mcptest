@@ -130,7 +130,7 @@ const OutputPanel: React.FC<OutputPanelProps> = (props) => {
   return (
     <div className="card output-panel">
       <div className="card-header d-flex justify-content-between align-items-center" style={{ paddingBottom: 0 }}>
-        <ul className="nav nav-tabs panel-view-tabs flex-grow-0" id="outputTabs" role="tablist" style={{ marginBottom: '-1px' }}>
+        <ul className="nav nav-tabs panel-view-tabs flex-grow-0" id="outputTabs" role="tablist">
           <li className="nav-item" role="presentation">
             <button 
               className={`nav-link ${activeTab === 'result' ? 'active' : ''}`} 
@@ -181,7 +181,7 @@ const OutputPanel: React.FC<OutputPanelProps> = (props) => {
                   disabled={shareStatus !== 'idle'}
                   aria-label="Share result link"
                 >
-                  {shareStatus === 'success' ? <i className="bi bi-check-lg"></i> : <ActionIcon name="share" />} Share result
+                  {shareStatus === 'success' ? <i className="bi bi-check-lg"></i> : <ActionIcon name="share" />}<span className="result-action-label">Share result</span>
                 </button>
                 {shareStatus !== 'idle' && (
                   <div className="notification-tooltip" style={{right: 0}} aria-live="polite">
@@ -200,7 +200,7 @@ const OutputPanel: React.FC<OutputPanelProps> = (props) => {
                   title={`Add to dashboard: ${props.spaces[0].name}`}
                   onClick={() => handleAddToSpace(props.spaces[0].id)}
                 >
-                  <i className="bi bi-plus-square" aria-hidden="true"></i>Add to dashboard
+                  <i className="bi bi-plus-square" aria-hidden="true"></i><span className="result-action-label">Add to dashboard</span>
                 </button>
               ) : (
                 <div className="dropdown">
@@ -213,7 +213,7 @@ const OutputPanel: React.FC<OutputPanelProps> = (props) => {
                     aria-expanded="false"
                     title="Add to Dashboard..."
                   >
-                    <i className="bi bi-plus-square" aria-hidden="true"></i>Add to dashboard
+                    <i className="bi bi-plus-square" aria-hidden="true"></i><span className="result-action-label">Add to dashboard</span>
                   </button>
                   <ul className="dropdown-menu dropdown-menu-sm" aria-labelledby={`dropdownAddToSpace-result`}>
                     {props.spaces.map(space => (

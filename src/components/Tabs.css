@@ -85,7 +85,7 @@
   align-items: stretch;
   min-height: var(--workspace-strip-height);
   border-bottom: 1px solid var(--border-color);
-  background: var(--strip-bg);
+  background: var(--workspace-canvas);
 }
 
 .playground-tab-count {
@@ -220,3 +220,11 @@
 .session-picker-popover button[aria-current="true"] { background: var(--card-bg-secondary); }
 .session-picker-popover small { display: block; color: var(--text-muted); overflow-wrap: anywhere; }
 .session-picker-popover .session-picker-close { margin-top: .5rem; border-top: 1px solid var(--border-color); color: var(--text-accent); }
+
+/* Keep a clipped inactive tab from leaving a detached close icon behind.
+   Keyboard focus and touch users retain access to the close control. */
+@media (hover: hover) {
+  .playground-tabs .nav-item:has(.nav-link:not(.active)) > .btn-close { opacity: 0; }
+  .playground-tabs .nav-item:hover > .btn-close,
+  .playground-tabs .nav-item:focus-within > .btn-close { opacity: 1; }
+}

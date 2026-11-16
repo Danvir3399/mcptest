@@ -649,3 +649,58 @@
   .connected-summary-name { flex: 1; }
 }
 .connection-console--connected .connection-heading:has(.connected-summary) { width: 100%; }
+
+/* Operational facts are distinct from inventory totals and session actions. */
+.connected-summary-metadata > * + *::before,
+.connected-summary-facts:not(.connected-summary-counts) > li + li::before { content: none; }
+.connected-summary-facts:not(.connected-summary-counts) .session-detail {
+  display: inline-flex;
+  padding: .125rem .5rem;
+  border-radius: .25rem;
+  background: var(--workspace-canvas);
+  border: 1px solid var(--border-color);
+}
+.connected-summary-facts:not(.connected-summary-counts) .session-detail--proxy {
+  color: #92400e;
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+[data-theme="dark"] .connected-summary-facts:not(.connected-summary-counts) .session-detail--proxy {
+  color: #fcd34d;
+  background: #422d13;
+  border-color: #785521;
+}
+.connected-summary-metadata .connected-summary-counts { margin-left: auto; }
+.connected-summary-endpoint code { background: transparent; padding: 0; }
+.connected-summary-endpoint .connected-endpoint-copy {
+  min-height: 0;
+  height: 22px;
+  padding: 0 .25rem;
+  border: 0;
+  box-shadow: none;
+}
+.connected-summary-next .connected-disconnect { position: relative; margin-left: .75rem; }
+.connected-summary-next .connected-disconnect::before {
+  content: '';
+  position: absolute;
+  left: -.75rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--border-color);
+}
+.connected-summary-next .btn-outline-secondary:not(.connected-disconnect) {
+  background: var(--workspace-canvas);
+  border-color: transparent;
+  box-shadow: none;
+}
+.connected-summary-next .btn-outline-secondary:not(.connected-disconnect):hover { background: var(--card-bg-secondary); }
+.connected-summary-next .connected-disconnect:hover {
+  color: #dc2626;
+  border-color: #fecaca;
+  background: #fef2f2;
+}
+.connected-summary-title-row > .catalog-server-logo--fallback {
+  background: var(--workspace-canvas);
+  color: var(--text-color);
+}

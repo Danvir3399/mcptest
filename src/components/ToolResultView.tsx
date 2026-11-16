@@ -158,10 +158,10 @@ const ToolResultView: React.FC<ToolResultViewProps> = ({ logEntry, controlsTarge
     return (
       <div className="tool-result-view tool-result-view--plain">
         {controlsTarget && createPortal(
-          <div className="tool-result-view-switch" role="group" aria-label="Result format">
+          <div className="tool-result-view-switch segmented-control" role="group" aria-label="Result format">
             {(['content', 'raw'] as const).map(format => (
               <button key={format} type="button" aria-pressed={view === format}
-                className={`btn btn-sm ${view === format ? 'btn-secondary' : 'btn-outline-secondary'}`}
+                className={`segmented-control-item ${view === format ? 'active' : ''}`}
                 onClick={() => setView(format)}>{format === 'raw' ? 'Raw JSON' : 'Formatted'}</button>
             ))}
           </div>, controlsTarget)}
@@ -179,14 +179,14 @@ const ToolResultView: React.FC<ToolResultViewProps> = ({ logEntry, controlsTarge
   const activeView = views.some(item => item.id === view) ? view : 'content';
 
   const viewControls = (
-    <div className="tool-result-view-switch" role="tablist" aria-label="Result view">
+    <div className="tool-result-view-switch segmented-control" role="tablist" aria-label="Result view">
         {views.map(item => (
           <button
             key={item.id}
             type="button"
             role="tab"
             aria-selected={activeView === item.id}
-            className={`btn btn-sm ${activeView === item.id ? 'btn-secondary' : 'btn-outline-secondary'}`}
+            className={`segmented-control-item ${activeView === item.id ? 'active' : ''}`}
             onClick={() => setView(item.id)}
           >
             {item.label}

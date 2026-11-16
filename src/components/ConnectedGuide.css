@@ -521,13 +521,6 @@
   max-height: 20rem;
   overflow-y: auto;
 }
-.share-report-actions .share-report-help .btn {
-  padding: 0.25rem;
-  min-width: 0;
-  border: 0;
-  background: transparent;
-  color: var(--text-muted);
-}
 
 .connected-summary-metadata {
   display: flex;
@@ -551,5 +544,3 @@
   padding: 0 .25rem;
 }
 .tool-result-explanation > span { flex: 1 1 15rem; }
-.request-panel .form-control:not(:disabled):not([readonly]),
-.request-panel .form-select:not(:disabled) { background-color: var(--card-bg) !important; }

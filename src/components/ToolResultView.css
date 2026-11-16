@@ -77,22 +77,18 @@
 }
 
 .tool-result-view-switch {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.tool-result-view-switch .btn {
-  padding: 0.18rem 0.6rem;
+  flex-wrap: nowrap;
   font-size: 0.78rem;
+  white-space: nowrap;
 }
 
-/* The selected view is an accent chip, not a solid grey button. */
-.tool-result-view-switch .btn-secondary,
-.tool-result-view-switch .btn-secondary:hover {
-  background-color: var(--accent-wash);
-  border-color: var(--primary-color);
-  color: var(--accent-text);
+.tool-result-view-switch .segmented-control-item.active {
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%);
+}
+
+.tool-result-view-switch .segmented-control-item:focus-visible {
+  outline: 2px solid var(--input-focus-border);
+  outline-offset: 2px;
 }
 
 .result-json { color: var(--text-muted); }

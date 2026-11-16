@@ -189,13 +189,10 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
         )}
         {nextAction === 'share-report' && (
           <div className="share-report-actions">
-            <a className="btn btn-outline-secondary" href={reportHref}>
-              <ActionIcon name="share" /> Share report
-            </a>
             <span className="share-report-help">
-              <button type="button" className="btn btn-sm btn-ghost" aria-label="About sharing reports" aria-describedby={`${headingId}-share-help`}>
-                <ActionIcon name="info" />
-              </button>
+              <a className="btn btn-outline-secondary" href={reportHref} aria-describedby={`${headingId}-share-help`}>
+                <ActionIcon name="share" /> Share report <ActionIcon name="info" />
+              </a>
               <span role="tooltip" id={`${headingId}-share-help`}>{SHARE_REPORT_EXPLANATION}</span>
             </span>
           </div>

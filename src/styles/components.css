@@ -5045,9 +5045,18 @@ pre.bg-light code {
 
 /* Keep editing and result actions outside their independently scrolling bodies. */
 .request-panel .form-control:not(:disabled):not([readonly]),
-.request-panel .form-select:not(:disabled) { background-color: #fff; }
+.request-panel .form-select:not(:disabled) { background-color: #fff !important; }
+[data-theme="dark"] .request-panel .form-control:not(:disabled):not([readonly]),
+[data-theme="dark"] .request-panel .form-select:not(:disabled) { background-color: var(--input-bg) !important; }
 .output-panel > .card-header { flex-wrap: wrap; gap: .25rem; }
-.result-format-controls { display: flex; align-items: center; }
+.output-panel > .card-header > .panel-actions {
+  flex: 1 0 100%;
+  min-width: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding: .375rem 0 .5rem !important;
+}
+.result-format-controls { display: flex; align-items: center; margin-right: auto; }
 .result-format-controls .tool-result-view-switch { margin: 0; }
 .result-scroll-frame { min-height: 0; padding-top: .75rem; }
 .result-region { min-height: 0; }
@@ -5060,4 +5069,5 @@ pre.bg-light code {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.capability-empty-state--compact .capability-empty-title { margin: 0; color: var(--text-muted); }
+.capability-empty-state--compact .capability-empty-title { margin: 0; color: var(--text-muted); font-weight: 500; }
+.capability-empty-state--compact .capability-empty-title::before { content: "▸"; margin-right: .5rem; }

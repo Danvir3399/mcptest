@@ -54,6 +54,7 @@ export const describeCompletedCall = (entry: LogEntry, sequence: number): string
 
 const OutputPanel: React.FC<OutputPanelProps> = (props) => {
   const [activeTab, setActiveTab] = useState<'result' | 'logs'>('result');
+  const [formatControls, setFormatControls] = useState<HTMLDivElement | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const { share, shareStatus, shareMessage } = useShare();
   const resultRef = useRef<HTMLDivElement>(null);
@@ -159,6 +160,7 @@ const OutputPanel: React.FC<OutputPanelProps> = (props) => {
         </ul>
         {activeTab === 'result' && props.lastResult && (
           <div className="d-flex align-items-center pe-3 panel-actions">
+            <div className="result-format-controls" ref={setFormatControls} />
             {/* Individual icon buttons, spaced — never welded into a strip */}
             <button
               className="btn btn-sm btn-ghost"
@@ -244,7 +246,7 @@ const OutputPanel: React.FC<OutputPanelProps> = (props) => {
       <div className="card-body output-panel-body p-0 d-flex flex-column">
         <div className="tab-content flex-grow-1 overflow-hidden" id="outputTabsContent">
           <div className={`tab-pane fade ${activeTab === 'result' ? 'show active' : ''} h-100`} id="result-panel" role="tabpanel" aria-labelledby="result-tab">
-            <ResultPanel {...props} resultRef={resultRef} />
+            <ResultPanel {...props} resultRef={resultRef} controlsTarget={formatControls} />
           </div>
           <div className={`tab-pane fade ${activeTab === 'logs' ? 'show active' : ''} h-100`} id="logs-panel" role="tabpanel" aria-labelledby="logs-tab">
             <ResponsePanel {...props} />

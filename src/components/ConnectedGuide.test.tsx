@@ -214,9 +214,9 @@ describe('UnifiedPanel guidance', () => {
   it('explains each capability the server does not offer once its list has loaded', () => {
     const view = mount(panel());
     const empty = [...view.querySelectorAll('.capability-empty-state')].map((item) => item.querySelector('.capability-empty-title')?.textContent);
-    expect(empty).toEqual(['No resources', 'No prompts']);
+    expect(empty).toEqual(['Resources (0)', 'Prompts (0)']);
     act(() => root!.render(panel({ discovery: { ...COMPLETE, prompts: 'loading' } })));
-    expect([...view.querySelectorAll('.capability-empty-title')].map((item) => item.textContent)).toEqual(['No resources']);
+    expect([...view.querySelectorAll('.capability-empty-title')].map((item) => item.textContent)).toEqual(['Resources (0)']);
   });
 
   it.each([
@@ -240,7 +240,7 @@ describe('UnifiedPanel guidance', () => {
   it('treats a failed list for an unadvertised capability as absence', () => {
     const view = mount(panel({ discovery: { ...COMPLETE, prompts: 'failed' }, offered: { prompts: false } }));
     const titles = [...view.querySelectorAll('.capability-empty-title')].map((item) => item.textContent);
-    expect(titles).toEqual(['No resources', 'No prompts']);
+    expect(titles).toEqual(['Resources (0)', 'Prompts (0)']);
   });
 
   it('links an empty tool list to the no-tools article', () => {

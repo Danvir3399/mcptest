@@ -22,6 +22,7 @@ interface ResultPanelProps {
   shareReportHref?: string;
   onDismissShareHint?: () => void;
   /** The scrolling result region; focus moves here after a call. */
+  controlsTarget?: HTMLElement | null;
   resultRef?: React.Ref<HTMLDivElement>;
 }
 
@@ -60,15 +61,16 @@ const ResultPanel: React.FC<ResultPanelProps> = ({
   shareReportHref,
   onDismissShareHint,
   resultRef,
+  controlsTarget,
   serverUrl,
   onCallTool,
 }) => {
   return (
-    <div className={`h-100 d-flex flex-column ${!isConnected ? 'panel-deactivated' : ''}`}>
+    <div className={`h-100 d-flex flex-column result-scroll-frame ${!isConnected ? 'panel-deactivated' : ''}`}>
       <div className="p-3 flex-grow-1 overflow-auto result-region" ref={resultRef} tabIndex={-1} role="region" aria-label="Last result">
         {lastResult ? (
           <>
-            {lastResult.type === 'error' ? <CallFailure entry={lastResult} /> : <ToolResultView logEntry={lastResult} />}
+            {lastResult.type === 'error' ? <CallFailure entry={lastResult} /> : <ToolResultView logEntry={lastResult} controlsTarget={controlsTarget} />}
             {shareReportHref && <ShareReportHint href={shareReportHref} onDismiss={onDismissShareHint} />}
           </>
         ) : (

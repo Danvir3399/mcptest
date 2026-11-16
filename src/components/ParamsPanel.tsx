@@ -423,6 +423,8 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
           </div>
         )}
 
+      </div>
+
         {/* Buttons */}
         {!showingHistory && (selectedTool || selectedPrompt || selectedResourceTemplate) && (
           <div className="request-actions">
@@ -448,7 +450,6 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
             </button>
           </div>
         )}
-      </div>
     </div>
   );
 };

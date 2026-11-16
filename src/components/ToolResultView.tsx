@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom';
 import JsonCode from './JsonCode';
 import React, { useState } from 'react';
 import type { LogEntry } from '../types';
@@ -11,6 +12,7 @@ type ResultView = 'structured' | 'content' | 'raw';
 
 interface ToolResultViewProps {
   logEntry: LogEntry;
+  controlsTarget?: HTMLElement | null;
 }
 
 const JsonBlock: React.FC<{ value: unknown }> = ({ value }) => (
@@ -87,15 +89,16 @@ const EXPLANATIONS: Record<'structured' | 'content' | 'raw' | 'plainRaw' | 'erro
 const ResultExplanation: React.FC<{
   kind: Exclude<keyof typeof EXPLANATIONS, 'plainRaw'>;
   plain?: boolean;
+  hideToggle?: boolean;
   rawShown: boolean;
   onViewRaw: () => void;
-}> = ({ kind, plain = false, rawShown, onViewRaw }) => (
+}> = ({ kind, plain = false, hideToggle = false, rawShown, onViewRaw }) => (
   <p className="tool-result-explanation">
     <span>
       {plain && rawShown ? EXPLANATIONS.plainRaw : EXPLANATIONS[kind]}
       {plain && !rawShown && ' This tool returned no structured content.'}
     </span>
-    {(plain || !rawShown) && (
+    {!hideToggle && (plain || !rawShown) && (
       <button
         type="button"
         className="btn btn-outline-secondary btn-sm tool-result-raw-link"
@@ -113,7 +116,7 @@ const ResultExplanation: React.FC<{
  * views for the unstructured content blocks and a reconstructed JSON-RPC response,
  * plus the output-contract verdict.
  */
-const ToolResultView: React.FC<ToolResultViewProps> = ({ logEntry }) => {
+const ToolResultView: React.FC<ToolResultViewProps> = ({ logEntry, controlsTarget }) => {
   const toolCall = logEntry.toolCall;
   const hasStructuredContent = toolCall?.result.structuredContent !== undefined;
   const defaultView: ResultView = hasStructuredContent ? 'structured' : 'content';
@@ -154,7 +157,15 @@ const ToolResultView: React.FC<ToolResultViewProps> = ({ logEntry }) => {
     // Plain content: the blocks as before, plus the explanation and the result JSON.
     return (
       <div className="tool-result-view tool-result-view--plain">
-        <ResultExplanation kind="content" plain rawShown={view === 'raw'} onViewRaw={() => setView(view === 'raw' ? 'content' : 'raw')} />
+        {controlsTarget && createPortal(
+          <div className="tool-result-view-switch" role="group" aria-label="Result format">
+            {(['content', 'raw'] as const).map(format => (
+              <button key={format} type="button" aria-pressed={view === format}
+                className={`btn btn-sm ${view === format ? 'btn-secondary' : 'btn-outline-secondary'}`}
+                onClick={() => setView(format)}>{format === 'raw' ? 'Raw JSON' : 'Formatted'}</button>
+            ))}
+          </div>, controlsTarget)}
+        <ResultExplanation hideToggle={!!controlsTarget} kind="content" plain rawShown={view === 'raw'} onViewRaw={() => setView(view === 'raw' ? 'content' : 'raw')} />
         {view === 'raw' ? <JsonBlock value={toolCall.result} /> : contentDisplay}
       </div>
     );
@@ -167,21 +178,8 @@ const ToolResultView: React.FC<ToolResultViewProps> = ({ logEntry }) => {
   ];
   const activeView = views.some(item => item.id === view) ? view : 'content';
 
-  return (
-    <div className="tool-result-view">
-      {isError && (
-        <div className="tool-result-error" role="alert">
-          <i className="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
-          <span>The tool reported an error (isError: true).</span>
-        </div>
-      )}
-      <OutputContractVerdict contract={toolCall.contract} hasSchema={hasSchema} />
-      <ResultExplanation
-        kind={isError ? 'error' : activeView === 'structured' ? 'structured' : activeView === 'raw' ? 'raw' : 'content'}
-        rawShown={activeView === 'raw'}
-        onViewRaw={() => setView('raw')}
-      />
-      <div className="tool-result-view-switch" role="tablist" aria-label="Result view">
+  const viewControls = (
+    <div className="tool-result-view-switch" role="tablist" aria-label="Result view">
         {views.map(item => (
           <button
             key={item.id}
@@ -195,6 +193,23 @@ const ToolResultView: React.FC<ToolResultViewProps> = ({ logEntry }) => {
           </button>
         ))}
       </div>
+  );
+
+  return (
+    <div className="tool-result-view">
+      {isError && (
+        <div className="tool-result-error" role="alert">
+          <i className="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+          <span>The tool reported an error (isError: true).</span>
+        </div>
+      )}
+      <OutputContractVerdict contract={toolCall.contract} hasSchema={hasSchema} />
+      <ResultExplanation hideToggle={!!controlsTarget}
+        kind={isError ? 'error' : activeView === 'structured' ? 'structured' : activeView === 'raw' ? 'raw' : 'content'}
+        rawShown={activeView === 'raw'}
+        onViewRaw={() => setView('raw')}
+      />
+      {controlsTarget ? createPortal(viewControls, controlsTarget) : viewControls}
       <div className="tool-result-view-panel" role="tabpanel">
         {activeView === 'structured' && <JsonBlock value={toolCall.result.structuredContent} />}
         {activeView === 'content' && contentDisplay}

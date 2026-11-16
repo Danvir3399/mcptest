@@ -1143,6 +1143,32 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
     />
   );
 
+  const workbenchRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const workbench = workbenchRef.current;
+    if (!workbench || !isConnected || !isActive) return;
+    const updateHeight = () => {
+      const top = workbench.getBoundingClientRect().top + window.scrollY;
+      workbench.style.setProperty('--workbench-top', `${top}px`);
+    };
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    // Header content can wrap or expand independently of the viewport.
+    let ancestor = workbench.parentElement;
+    while (ancestor) {
+      observer.observe(ancestor);
+      for (const sibling of ancestor.children) {
+        if (!sibling.contains(workbench)) observer.observe(sibling);
+      }
+      ancestor = ancestor.parentElement;
+    }
+    window.addEventListener('resize', updateHeight);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', updateHeight);
+    };
+  }, [isConnected, isActive]);
+
   return (
     <div 
       className={`tab-content-panel ${isActive ? '' : 'd-none'}`}
@@ -1232,7 +1258,7 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
         />
       )}
       {!showLanding && (
-      <div className={`playground-layout flex-grow-1 ${isConnected ? 'playground-workbench' : 'playground-idle'}`}>
+      <div ref={workbenchRef} className={`playground-layout flex-grow-1 ${isConnected ? 'playground-workbench' : 'playground-idle'}`}>
         {!isConnected && (
           <div className="w-100 idle-onboarding-layout">
             <AwaitingConnectionPanel showSteps={recentServers.length === 0 && !onboarding.completed.includes('tool')} />

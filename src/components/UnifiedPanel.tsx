@@ -509,9 +509,9 @@ export const UnifiedPanel: React.FC<UnifiedPanelProps> = ({
         {emptySections.length > 0 && (
           <ul className="capability-empty-states" aria-label="Capabilities this server does not offer">
             {emptySections.map((section) => (
-              <li key={section} className="capability-empty-state">
-                <p className="capability-empty-title">{EMPTY_STATES[section].title}</p>
-                <p>{EMPTY_STATES[section].body}</p>
+              <li key={section} className={`capability-empty-state ${section !== 'tools' ? 'capability-empty-state--compact' : ''}`}>
+                <p className="capability-empty-title">{section === 'tools' ? EMPTY_STATES.tools.title : `${SECTION_NOUNS[section][0]} (0)`}</p>
+                {section === 'tools' && <p>{EMPTY_STATES.tools.body}</p>}
                 {section === 'tools' && noToolsArticle && (
                   <a href={noToolsArticle.path} target="_blank" rel="noopener">
                     Expected tools? {noToolsArticle.title}

@@ -480,7 +480,7 @@
   margin: var(--space-3) var(--space-4);
 }
 .request-panel #executeBtn {
-  margin-top: var(--space-6);
+  margin-top: 0;
 }
 .workbench-capabilities {
   display: flex;

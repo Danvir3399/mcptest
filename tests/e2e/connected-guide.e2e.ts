@@ -85,9 +85,24 @@ for (const width of [1280, 390]) {
     await expect(resultView(page).locator('.tool-result-explanation')).toContainText('Structured content is the typed JSON');
     await expect(page.getByRole('region', { name: 'Last result' })).toBeFocused();
     await expect(page.locator('.output-panel > [role="status"]')).toHaveText('Call 1: get_forecast returned a result.');
-    await resultView(page).getByRole('button', { name: 'View raw JSON' }).click();
-    await expect(resultView(page).getByRole('tab', { name: 'JSON-RPC' })).toHaveAttribute('aria-selected', 'true');
+    await page.locator('.result-format-controls').getByRole('tab', { name: 'JSON-RPC' }).click();
+    await expect(page.locator('.result-format-controls').getByRole('tab', { name: 'JSON-RPC' })).toHaveAttribute('aria-selected', 'true');
     await expect(resultView(page).locator('.tool-result-explanation')).toContainText('envelope is reconstructed');
+
+    if (width === 1280) {
+      // The form footer and format controls remain in view on short desktops.
+      await page.setViewportSize({ width, height: 650 });
+      await expect.poll(async () => {
+        const button = await page.locator('#executeBtn').boundingBox();
+        return button ? button.y + button.height : Infinity;
+      }).toBeLessThanOrEqual(650);
+      await page.locator('.request-panel-body').evaluate(element => { element.scrollTop = element.scrollHeight; });
+      await page.locator('.result-region').evaluate(element => { element.scrollTop = element.scrollHeight; });
+      const footer = await page.locator('#executeBtn').boundingBox();
+      expect(footer!.y + footer!.height).toBeLessThanOrEqual(650);
+      await expect(page.locator('.result-format-controls')).toBeInViewport();
+      await page.setViewportSize({ width, height: 900 });
+    }
 
     // The share prompt follows the first successful run.
     const share = page.getByRole('complementary', { name: 'Next step: share a report' });

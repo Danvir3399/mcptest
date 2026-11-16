@@ -2536,8 +2536,10 @@ pre.bg-light code {
   grid-template-columns: minmax(230px, 0.72fr) minmax(300px, 0.92fr) minmax(390px, 1.36fr);
   gap: 0;
   width: 100%;
-  min-height: 560px;
-  height: calc(100vh - 11.5rem);
+  min-height: 0;
+  height: calc(100dvh - var(--workbench-top, 11.5rem) - 1rem);
+  flex: 0 0 auto !important;
+  grid-template-rows: minmax(0, 1fr);
   margin: 0;
   padding: 0;
 }
@@ -2696,10 +2698,8 @@ pre.bg-light code {
 }
 
 .request-actions {
-  position: sticky;
-  bottom: calc(-1 * var(--space-3));
-  z-index: 2;
-  margin: auto calc(-1 * var(--space-3)) calc(-1 * var(--space-3));
+  flex: 0 0 auto;
+  margin: 0;
   padding: var(--space-2) var(--space-3) var(--space-3);
   border-top: 1px solid var(--border-color);
   background: var(--card-bg);
@@ -5049,3 +5049,19 @@ body:has(.connection-console--connected) {
   color: var(--text-muted);
   font-size: var(--text-xs);
 }
+
+/* Keep editing and result actions outside their independently scrolling bodies. */
+.request-panel .form-control:not(:disabled):not([readonly]),
+.request-panel .form-select:not(:disabled) { background-color: #fff; }
+.output-panel > .card-header { flex-wrap: wrap; gap: .25rem; }
+.result-format-controls { display: flex; align-items: center; }
+.result-format-controls .tool-result-view-switch { margin: 0; }
+.result-scroll-frame { min-height: 0; padding-top: .75rem; }
+.result-region { min-height: 0; }
+.capability-empty-state.capability-empty-state--compact {
+  background: transparent;
+  border: 0;
+  padding: .5rem;
+  text-transform: uppercase;
+}
+.capability-empty-state--compact .capability-empty-title { margin: 0; color: var(--text-muted); }

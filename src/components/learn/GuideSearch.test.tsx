@@ -294,8 +294,8 @@ describe('guide search placement', () => {
     path
   );
 
-  it('puts the field at the top of the sidebar Learn group, in both the drawer and the desktop sidebar', () => {
-    mountSideNavs('playground', '/');
+  it('puts the field at the top of the article Learn group, in both the drawer and the desktop sidebar', () => {
+    mountSideNavs('learn', '/guides/connect-remote-mcp-server');
     for (const scope of ['.mobile-sidebar', '.desktop-sidebar']) {
       const group = container!.querySelector(`${scope} .content-track-nav`)!;
       // The Learn heading folds the group; the search field opens its body.
@@ -307,13 +307,23 @@ describe('guide search placement', () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
-  it('lets `/` reach the desktop sidebar field on content pages only', () => {
+  it.each([['playground', '/'], ['learn', '/guides']] as const)('keeps %s navigation to a Guides link without article search', (view, path) => {
+    mountSideNavs(view, path);
+    for (const scope of ['.mobile-sidebar', '.desktop-sidebar']) {
+      const sidebar = container!.querySelector(scope)!;
+      expect(field(sidebar)).toBeNull();
+      expect(sidebar.querySelector('a[href="/guides"]')?.textContent).toBe('Guides');
+    }
+    expect(press(document.body, '/').defaultPrevented).toBe(false);
+  });
+
+  it('lets `/` reach the desktop sidebar field on article pages only', () => {
     mountSideNavs('playground', '/');
     expect(press(document.body, '/').defaultPrevented).toBe(false);
     act(() => root!.unmount());
     container!.remove();
 
-    mountSideNavs('learn', '/learn/what-is-mcp');
+    mountSideNavs('learn', '/guides/connect-remote-mcp-server');
     press(document.body, '/');
     expect(document.activeElement).toBe(field(container!.querySelector('.desktop-sidebar')!));
   });
@@ -326,7 +336,7 @@ describe('guide search placement', () => {
     });
     // Collapsed, the Learn body (and the search rail button inside it) is hidden.
     localStorage.setItem(SIDEBAR_COLLAPSED_KEY, 'true');
-    mountSideNavs('learn', '/learn/what-is-mcp');
+    mountSideNavs('learn', '/guides/connect-remote-mcp-server');
     const desktop = container!.querySelector('.desktop-sidebar')!;
     expect(desktop.querySelector('.sidenav-learn-body')?.hasAttribute('hidden')).toBe(true);
 

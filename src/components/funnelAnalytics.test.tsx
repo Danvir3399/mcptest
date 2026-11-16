@@ -11,6 +11,8 @@ vi.mock('../firebase', () => ({
   onFirebaseLoaded: vi.fn(),
 }));
 
+import { LANDING_FIXTURE } from '../data/publicFixtures';
+import { LANDING_FIXTURE_SELECTION } from '../utils/landingFixture';
 import { LEARN_ARTICLES } from '../content/learnRegistry';
 import BadgeEmbed from './BadgeEmbed';
 import { LandingHero } from './LandingHero';
@@ -97,7 +99,7 @@ describe('landing funnel events', () => {
     const container = render(
       <LandingHero serverUrl="" onServerUrlChange={vi.fn()} onConnect={vi.fn()} isConnecting={false} />
     );
-    const pick = container.querySelector<HTMLButtonElement>('.landing-quick-pick');
+    const pick = container.querySelector<HTMLButtonElement>(`.landing-quick-pick:not([data-server-id="${LANDING_FIXTURE.id}"])`);
     click(pick);
     expectSent('landing_connect', {
       source: 'quick_pick',
@@ -105,13 +107,16 @@ describe('landing funnel events', () => {
     });
   });
 
-  it('sends sample_test for the one-click sample with the sample endpoint host', () => {
+  it('sends quick_pick for the one-click echo fixture and connects to its endpoint', () => {
+    const onConnect = vi.fn();
     const container = render(
-      <LandingHero serverUrl="" onServerUrlChange={vi.fn()} onConnect={vi.fn()} isConnecting={false} />
+      <LandingHero serverUrl="" onServerUrlChange={vi.fn()} onConnect={onConnect} isConnecting={false} />
     );
-    const sample = container.querySelector<HTMLButtonElement>('#landingSampleBtn');
+    const sample = container.querySelector<HTMLButtonElement>(`[data-server-id="${LANDING_FIXTURE.id}"]`);
+    expect(sample).not.toBeNull();
     click(sample);
-    expectSent('landing_connect', { source: 'sample_test', host: new URL(sample!.title).host });
+    expect(onConnect).toHaveBeenCalledExactlyOnceWith(LANDING_FIXTURE_SELECTION);
+    expectSent('landing_connect', { source: 'quick_pick', host: new URL(LANDING_FIXTURE.url).host });
   });
 
   it('sends nothing for a malformed URL the landing rejects', () => {

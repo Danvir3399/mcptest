@@ -1,3 +1,6 @@
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import Footer from '../components/Footer';
 import { describe, expect, it } from 'vitest';
 import {
   KEYWORD_LANDING_PAGES,
@@ -157,11 +160,15 @@ describe('keyword landing pages', () => {
     expect(internalLinks(getKeywordLandingPage('/mcp-playground')!)).toContain('/catalog');
   });
 
-  it('are linked from the sidebar footer and the home page copy', () => {
+  it('are linked from the rendered page footer, with contextual links in home page copy', () => {
+    const footer = document.createElement('div');
+    footer.innerHTML = renderToStaticMarkup(createElement(Footer));
+    const footerLinks = Array.from(footer.querySelectorAll('footer a'), link => link.getAttribute('href'));
+    for (const path of KEYWORD_LANDING_PATHS) expect(footerLinks, path).toContain(path);
     expect(LANDING_PAGE_NAVIGATION.map(link => link.href)).toEqual(KEYWORD_LANDING_PATHS);
     const homeLinks = [...LANDING_STEPS.map(step => step.description), ...LANDING_FAQ.map(item => item.answer)]
       .flatMap(value => parseLandingText(value).map(part => part.href?.split('#')[0]));
-    for (const path of KEYWORD_LANDING_PATHS) expect(homeLinks, path).toContain(path);
+    expect(homeLinks).toEqual(expect.arrayContaining(['/mcp-test-server', '/mcp-inspector-online']));
   });
 
   it('emit FAQPage JSON-LD with exactly the visible questions and plain-text answers', () => {

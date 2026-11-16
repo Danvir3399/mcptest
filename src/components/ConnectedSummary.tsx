@@ -127,12 +127,6 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
           {serverName || hostOf(serverUrl)}
           {serverVersion && <span className="connected-summary-version">v{serverVersion}</span>}
         </h2>
-        {serverDescription && <p className="connected-summary-description" title={serverDescription}>{serverDescription}</p>}
-        <p className="connected-summary-endpoint">
-          {originalServerUrl && !sameEndpoint(originalServerUrl, serverUrl) ? (
-            <><span>Entered: <code>{originalServerUrl}</code></span><span>Discovered: <code>{serverUrl}</code></span></>
-          ) : <span>Endpoint: <code>{serverUrl}</code></span>}
-        </p>
         <ul className="connected-summary-facts" aria-label="Session">
           <li><span className="badge bg-success connected-status">Connected</span></li>
           {protocolVersion && <li><span className="session-detail">MCP {protocolVersion}</span></li>}
@@ -146,18 +140,26 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
           <li><span className="session-detail">{AUTH_LABEL[authMode]}</span></li>
           {isProxied && <li><span className="session-detail">Via proxy</span></li>}
         </ul>
-        <ul className="connected-summary-facts connected-summary-counts" aria-label="Capabilities">
-          <li>{plural(counts.tools.count, 'tool')}</li>
-          <li>{plural(counts.resources.count, 'resource')}</li>
-          <li>{plural(counts.prompts.count, 'prompt')}</li>
-          {listing && <li><span className="session-detail">Listing capabilities</span></li>}
-          {!listing && failedLists.length > 0 && (
-            <li><span className="session-detail">{failedLists.join(', ')} list failed</span></li>
-          )}
-          {!listing && partialLists.length > 0 && (
-            <li><span className="session-detail">{partialLists.join(', ')} list incomplete</span></li>
-          )}
-        </ul>
+        {serverDescription && <p className="connected-summary-description" title={serverDescription}>{serverDescription}</p>}
+        <div className="connected-summary-metadata">
+          <ul className="connected-summary-facts connected-summary-counts" aria-label="Capabilities">
+            <li>{plural(counts.tools.count, 'tool')}</li>
+            <li>{plural(counts.resources.count, 'resource')}</li>
+            <li>{plural(counts.prompts.count, 'prompt')}</li>
+            {listing && <li><span className="session-detail">Listing capabilities</span></li>}
+            {!listing && failedLists.length > 0 && (
+              <li><span className="session-detail">{failedLists.join(', ')} list failed</span></li>
+            )}
+            {!listing && partialLists.length > 0 && (
+              <li><span className="session-detail">{partialLists.join(', ')} list incomplete</span></li>
+            )}
+          </ul>
+          <p className="connected-summary-endpoint">
+            {originalServerUrl && !sameEndpoint(originalServerUrl, serverUrl) ? (
+              <><span>Entered: <code>{originalServerUrl}</code></span><span>Discovered: <code>{serverUrl}</code></span></>
+            ) : <span>Endpoint: <code>{serverUrl}</code></span>}
+          </p>
+        </div>
         {/* The fourth connection stage: the panel's stage list is gone once the
             session exists, so the list requests advance and complete here. */}
         <ol hidden={!listing} className="connection-stages connected-summary-list-stage" aria-label="Capability listing">

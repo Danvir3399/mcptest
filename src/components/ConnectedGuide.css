@@ -511,9 +511,7 @@
 .connected-summary-next .share-report-actions {
   display: inline-flex;
   align-items: center;
-  gap: 0;
-  border: 1px solid var(--border-color);
-  border-radius: var(--button-radius-sm);
+  gap: .25rem;
   margin-right: 16px;
 }
 
@@ -525,6 +523,17 @@
 }
 .share-report-actions .share-report-help .btn {
   padding: 0.25rem;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.connected-summary-metadata {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .25rem 1rem;
   min-width: 0;
 }
 
@@ -538,9 +547,7 @@
   overflow-wrap: anywhere;
 }
 .connected-summary-endpoint code { color: inherit; }
-.share-report-actions > .btn { border: 0; }
 .share-report-actions .share-report-help {
-  border-left: 1px solid var(--border-color);
   padding: 0 .25rem;
 }
 .tool-result-explanation > span { flex: 1 1 15rem; }

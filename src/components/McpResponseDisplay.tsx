@@ -130,7 +130,10 @@ const McpResponseDisplay: React.FC<McpResponseDisplayProps> = ({
 
     if (!isJson) {
         if (isResultType) {
-            markdownContent = dataString;
+            // Preserve raw server text (including code indentation) unless it
+            // explicitly uses Markdown formatting.
+            const hasMarkdown = /(^|\n) {0,3}(?:#{1,6}\s|```|~~~|[-*+]\s|\d+\.\s|>\s)|\*\*[^*]+\*\*|__[^_]+__|`[^`\n]+`|\[[^\]]+\]\([^)]+\)/.test(dataString);
+            markdownContent = hasMarkdown ? dataString : null;
         } else if (itemType === 'error') {
             // Ensure errors are displayed plainly, not converted
             markdownContent = null;
@@ -189,7 +192,7 @@ const McpResponseDisplay: React.FC<McpResponseDisplayProps> = ({
             ) : renderedMarkdown !== null ? (
               renderedMarkdown
             ) : (
-              <span className="event-data" style={{ whiteSpace: 'pre-wrap' }}>{textContent}</span>
+              <span className="event-data" style={{ whiteSpace: 'pre-wrap', fontFamily: 'var(--font-family-mono)', fontSize: '12.5px', lineHeight: 1.625 }}>{textContent}</span>
             )}
           </div>
         </div>
@@ -285,7 +288,7 @@ const McpResponseDisplay: React.FC<McpResponseDisplayProps> = ({
             ) : renderedMarkdown !== null ? (
               renderedMarkdown
             ) : (
-              <span className="event-data" style={{ whiteSpace: 'pre-wrap' }}>{textContent}</span>
+              <span className="event-data" style={{ whiteSpace: 'pre-wrap', fontFamily: 'var(--font-family-mono)', fontSize: '12.5px', lineHeight: 1.625 }}>{textContent}</span>
             )}
           </div>
         </div>
@@ -297,7 +300,7 @@ const McpResponseDisplay: React.FC<McpResponseDisplayProps> = ({
           ) : renderedMarkdown !== null ? (
             renderedMarkdown
           ) : (
-            <span className="event-data" style={{ whiteSpace: 'pre-wrap' }}>{textContent}</span>
+            <span className="event-data" style={{ whiteSpace: 'pre-wrap', fontFamily: 'var(--font-family-mono)', fontSize: '12.5px', lineHeight: 1.625 }}>{textContent}</span>
           )}
         </div>
       )}
@@ -321,7 +324,7 @@ const McpResponseDisplay: React.FC<McpResponseDisplayProps> = ({
                 ) : renderedMarkdown !== null ? (
                   renderedMarkdown
                 ) : (
-                  <pre style={{ whiteSpace: 'pre-wrap' }}>{textContent}</pre>
+                  <pre style={{ whiteSpace: 'pre-wrap', fontFamily: 'var(--font-family-mono)', fontSize: '12.5px', lineHeight: 1.625 }}>{textContent}</pre>
                 )}
               </div>
             </div>

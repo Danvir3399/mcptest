@@ -103,14 +103,16 @@ const itemTitle = (item: any): string => {
   return title && title !== item?.name ? title : '';
 };
 
-const itemSecondaryText = (item: any): string => text(item?.description) || text(item?.uriTemplate) || text(item?.uri);
+const previewDescription = (item: any): string => text(item?.description).replace(/[*`#]/g, '');
+
+const itemSecondaryText = (item: any): string => previewDescription(item) || text(item?.uriTemplate) || text(item?.uri);
 
 /** Search fields per item: identifiers rank above prose. */
 const searchFields = (item: any): PreparedField[] => prepareFields([
   { key: 'name', text: text(item?.name), kind: 'identifier', weight: 3 },
   { key: 'title', text: itemTitle(item), kind: 'identifier', weight: 2 },
   { key: 'uri', text: text(item?.uriTemplate) || text(item?.uri), kind: 'prose', weight: 1.5 },
-  { key: 'description', text: text(item?.description), kind: 'prose', weight: 1 },
+  { key: 'description', text: previewDescription(item), kind: 'prose', weight: 1 },
 ]);
 
 const isEditableTarget = (target: EventTarget | null): boolean => {

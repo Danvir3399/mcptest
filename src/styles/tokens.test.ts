@@ -52,8 +52,9 @@ describe('theme token parity', () => {
     const consumed = new Set(
       [...readStylesheet('base', 'layout', 'components').matchAll(/var\((--[a-z0-9-]+)/g)]
         .map((match) => match[1])
-        // Bootstrap's own variables are defined by bootstrap.min.css; --lang is a local hook.
-        .filter((name) => !name.startsWith('--bs-') && name !== '--lang')
+        // Bootstrap owns --bs-*; --lang is a local hook and TabContent measures
+        // --workbench-top at runtime (the stylesheet supplies its fallback).
+        .filter((name) => !name.startsWith('--bs-') && !['--lang', '--workbench-top'].includes(name))
     );
     const missing = [...consumed].filter((name) => !defined.has(name)).sort();
 

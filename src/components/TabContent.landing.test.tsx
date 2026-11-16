@@ -151,7 +151,9 @@ describe('playground landing', () => {
 
     act(() => toggle.dispatchEvent(new MouseEvent('click', { bubbles: true })));
 
-    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    const collapseToggle = container.querySelector<HTMLButtonElement>('.landing-advanced-toggle')!;
+    expect(collapseToggle.getAttribute('aria-expanded')).toBe('true');
+    expect(container.querySelector('.landing-advanced')?.id).toBe(collapseToggle.getAttribute('aria-controls'));
     expect(container.querySelector('.landing .landing-advanced .connection-console')).not.toBeNull();
     expect(container.querySelector('.landing .connection-advanced')).not.toBeNull();
     expect(container.querySelector('.landing-connect')).toBeNull();
@@ -159,9 +161,9 @@ describe('playground landing', () => {
     expect(container.querySelector('.landing-paths')).not.toBeNull();
 
     act(() => setInputValue(container.querySelector<HTMLInputElement>('#serverUrl')!, 'https://typed.example/mcp'));
-    act(() => toggle.dispatchEvent(new MouseEvent('click', { bubbles: true })));
+    act(() => collapseToggle.dispatchEvent(new MouseEvent('click', { bubbles: true })));
 
-    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    expect(container.querySelector('.landing-advanced-toggle')?.getAttribute('aria-expanded')).toBe('false');
     expect(container.querySelector('.connection-console')).toBeNull();
     expect(container.querySelector<HTMLInputElement>('.landing-connect #serverUrl')?.value).toBe('https://typed.example/mcp');
   });

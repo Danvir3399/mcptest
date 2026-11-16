@@ -235,9 +235,12 @@ describe('Learn index', () => {
     expect(container.querySelectorAll('.learn-track-description')).toHaveLength(4);
     expect(container.querySelectorAll('.learn-track-item')).toHaveLength(LEARN_ARTICLES.length);
     for (const article of LEARN_ARTICLES) {
-      const link = container.querySelector(`a[href="${article.path}"]`);
+      const link = container.querySelector<HTMLAnchorElement>(`.learn-track-item-title[href="/guides/${article.slug}"]`);
       expect(link?.textContent).toBe(article.title);
-      expect(container.textContent).toContain(article.summary);
+      expect(getLearnArticleFromPath(link!.getAttribute('href')!)).toBe(article);
+      const item = link!.closest('.learn-track-item')!;
+      expect(item.querySelector('.learn-track-item-summary')?.textContent).toBe(article.summary);
+      expect(item.querySelector('.learn-track-item-meta')?.textContent).toContain(`${article.readingTimeMinutes} min read`);
     }
     expect(container.textContent).toContain(`${LEARN_ARTICLES[0].readingTimeMinutes} min read`);
     expect(container.textContent).toContain('Practitioner');

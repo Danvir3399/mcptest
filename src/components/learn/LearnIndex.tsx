@@ -14,10 +14,8 @@ const LearnIndex: React.FC = () => (
       <header className="reading-header">
         <h1 id="learn-index-title">{LEARN_INDEX_METADATA.title}</h1>
         <p className="reading-summary">{LEARN_INDEX_METADATA.summary}</p>
+        <GuideSearch idPrefix="learn-index" variant="page" shortcutEnabled shortcutPriority={1} />
       </header>
-
-      {/* Takes `/` ahead of the sidebar field while the index is open. */}
-      <GuideSearch idPrefix="learn-index" variant="page" shortcutEnabled shortcutPriority={1} />
 
       <div className="learn-track-grid">
       {TRACK_NAVIGATION.map(track => (

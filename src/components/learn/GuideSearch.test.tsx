@@ -349,7 +349,7 @@ describe('guide search placement', () => {
 
   it('puts a page-sized field at the top of the /learn index', () => {
     mount(<LearnIndex />, '/learn');
-    const search = container!.querySelector('.reading-header + .guide-search');
+    const search = container!.querySelector('.reading-header .guide-search');
     expect(search?.classList).toContain('guide-search--page');
     press(document.body, '/');
     expect(document.activeElement).toBe(field(search!));

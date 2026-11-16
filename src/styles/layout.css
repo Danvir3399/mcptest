@@ -1020,3 +1020,23 @@ html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .
 .app-shell--home .main-content > .view-panel {
   min-height: 0 !important;
 }
+
+/* Guide navigation shares the hub's teal selection fill. */
+.app-sidenav .content-track-nav .nav-link.active,
+.app-sidenav .sidenav-link[href='/guides'][aria-current='page'] {
+  background-color: var(--accent-wash);
+  color: var(--accent-text);
+  box-shadow: inset 3px 0 0 var(--rail-color);
+  font-weight: var(--weight-semibold);
+}
+
+/* Keep the collapse action accessible when a guide track is expanded. */
+.desktop-sidebar > .app-sidenav { min-height: 0; }
+.desktop-sidebar > .app-sidenav > * { flex-shrink: 0; }
+.desktop-sidebar > .app-sidenav > .mt-auto {
+  position: sticky;
+  bottom: 0;
+  flex-shrink: 0;
+  background: var(--card-bg);
+  padding: .5rem 0 1rem;
+}

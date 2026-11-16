@@ -46,8 +46,10 @@ test('a new visitor runs a sample test with one click from a cold load', async (
   await sample.click();
 
   await expect(page.getByRole('heading', { name: 'MCP connection ready' })).toBeVisible();
-  await expect(page.locator('.connection-endpoint')).toHaveText(SAMPLE_ENDPOINT);
-  await expect(page.getByText('2 tools · 1 resource · 1 prompt', { exact: true })).toBeVisible();
+  await expect(page).toHaveURL(new URL('/server/mcp.context7.com/mcp', page.url()).href);
+  const capabilities = page.getByRole('list', { name: 'Capabilities', exact: true });
+  await expect(capabilities).toBeVisible();
+  await expect(capabilities.getByRole('listitem')).toHaveText(['2 tools', '1 resource', '1 prompt']);
   expect(requests.length).toBeGreaterThan(0);
   expect(requests.every(url => url === SAMPLE_ENDPOINT)).toBe(true);
 

@@ -18,7 +18,8 @@ for (const submit of ['click', 'Enter'] as const) {
     else await field.press('Enter');
     release();
     await expect(page.getByRole('heading', { name: 'MCP connection ready' })).toBeVisible();
-    await expect(page.locator('.connection-endpoint')).toHaveText(mockUrl('2026'));
+    const endpoint = new URL(mockUrl('2026'));
+    await expect(page).toHaveURL(new URL(`/server/http:${endpoint.host}${endpoint.pathname}`, page.url()).href);
   });
 }
 
@@ -174,7 +175,7 @@ test('context7 deep link connects to and stores the literal /mcp endpoint', asyn
   });
   await page.goto('/server/mcp.context7.com/mcp');
   await expect(page.getByRole('heading', { name: 'MCP connection ready' })).toBeVisible();
-  await expect(page.locator('.connection-endpoint')).toHaveText(endpoint);
+  await expect(page).toHaveURL(new URL('/server/mcp.context7.com/mcp', page.url()).href);
   await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem('mcpRecentServers') || '[]')))
     .toEqual([{ url: endpoint }]);
   expect(requests.length).toBeGreaterThan(0);

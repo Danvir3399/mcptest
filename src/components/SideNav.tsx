@@ -16,6 +16,8 @@ import {
   SIGN_IN_HINT_ID,
   type NavigationLink,
 } from '../content/navigation';
+import { useSidebarCollapsed } from '../hooks/useSidebarCollapsed';
+import { LEGAL_NAVIGATION } from '../content/navigationLinks';
 import { closeMobileDrawer, useMobileDrawer } from '../hooks/useMobileDrawer';
 import ContentTrackNav from './learn/ContentTrackNav';
 import { getLearnArticleFromPath } from '../content/learnRegistry';
@@ -70,6 +72,7 @@ const SideNav: React.FC<SideNavProps> = ({
   const { currentUser, loginWithGoogle, logout } = useAuth();
   const authEnabled = import.meta.env.VITE_FIREBASE_AUTH_ENABLED === 'true';
   useMobileDrawer(isMobile, navRef);
+  const [collapsed, toggleCollapsed] = useSidebarCollapsed(!isMobile);
   const idSuffix = isMobile ? 'mobile' : 'desktop';
   const dashboardsListId = `sidenav-dashboards-${idSuffix}`;
   const dashboardsExpanded = dashboardsOpen;
@@ -294,7 +297,7 @@ const SideNav: React.FC<SideNavProps> = ({
         aria-current={isActive ? 'page' : undefined}
         aria-describedby={item.description ? navigationDescriptionId(item, idSuffix) : undefined}
         onClick={closeMobileDrawer}
-        title={navigationTooltip(item, false)}
+        title={navigationTooltip(item, collapsed)}
       >
         <i className={`bi ${item.icon} sidenav-icon`} aria-hidden="true"></i>
         <span className="sidenav-label">{item.label}</span>
@@ -319,7 +322,7 @@ const SideNav: React.FC<SideNavProps> = ({
             aria-controls={dashboardsListId}
             aria-describedby={navigationDescriptionId(DASHBOARDS_NAVIGATION, idSuffix)}
             onClick={handleDashboardsToggle}
-            title={navigationTooltip(DASHBOARDS_NAVIGATION, false)}
+            title={navigationTooltip(DASHBOARDS_NAVIGATION, collapsed)}
           >
             <i className={`bi ${DASHBOARDS_NAVIGATION.icon} sidenav-icon`} aria-hidden="true"></i>
             <span className="sidenav-label">{DASHBOARDS_NAVIGATION.label}</span>
@@ -514,6 +517,12 @@ const SideNav: React.FC<SideNavProps> = ({
         </div>
       )}
 
+      <div className="sidenav-footer">
+        {!isMobile && <button type="button" className="btn btn-ghost sidenav-collapse-toggle" onClick={toggleCollapsed} aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'} aria-expanded={!collapsed}>
+          <span aria-hidden="true">{collapsed ? '»' : '«'}</span><span className="sidenav-label"> Collapse</span>
+        </button>}
+        <div className="sidenav-legal">{LEGAL_NAVIGATION.map(link => <Link key={link.href} to={link.href} className="sidenav-footer-link" onClick={closeMobileDrawer}>{link.label}</Link>)}</div>
+      </div>
     </nav>
   );
 };

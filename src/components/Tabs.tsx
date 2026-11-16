@@ -40,6 +40,11 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTabId, onSelectTab, onCloseTab,
   const updateFade = useCallback(() => {
     const strip = stripRef.current;
     if (!strip) return;
+    const bounds = strip.getBoundingClientRect();
+    strip.querySelectorAll<HTMLElement>('.nav-item').forEach(item => {
+      const rect = item.getBoundingClientRect();
+      item.toggleAttribute('data-clipped', rect.left < bounds.left - 1 || rect.right > bounds.right + 1);
+    });
     const overflow = strip.scrollWidth - strip.clientWidth;
     const next: FadeState = overflow > 1
       ? { start: strip.scrollLeft > 1, end: strip.scrollLeft < overflow - 1 }

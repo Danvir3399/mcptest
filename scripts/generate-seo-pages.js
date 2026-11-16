@@ -2,7 +2,7 @@
 const { renderServerActions, renderServerNextSteps } = require('../src/utils/serverNextSteps.ts');
 
 const { redactCapabilityAuthValues } = require('../src/utils/capabilityInventory.ts');
-const { FOOTER_COLUMNS, HOME_GUIDE_COLUMNS } = require('../src/content/siteLinks.ts');
+const { FOOTER_COLUMNS } = require('../src/content/siteLinks.ts');
 const fs = require('fs');
 const path = require('path');
 const { getPreferredCatalogEndpoint } = require('../src/utils/clientSetup.ts');
@@ -1113,7 +1113,7 @@ function renderHeaderFallback({ authEnabled }) {
       + '<i class="theme-toggle-icon bi bi-moon-stars-fill" aria-hidden="true"></i><i class="theme-toggle-icon bi bi-sun-fill" aria-hidden="true"></i></button>',
     // Header.tsx holds the sign-in control's space while auth resolves.
     ...(authEnabled
-      ? [`    <div class="app-auth app-auth-placeholder" style="visibility: hidden;" aria-hidden="true"><button type="button" class="btn btn-sm app-signin-btn" tabindex="-1" disabled><i class="bi bi-google" aria-hidden="true"></i>${escapeHtml(HEADER_COPY.signIn)}</button></div>`]
+      ? [`    <div class="app-auth app-auth-placeholder" aria-busy="true"><button type="button" class="btn btn-sm app-signin-btn" tabindex="-1" disabled><i class="bi bi-google" aria-hidden="true"></i>${escapeHtml(HEADER_COPY.signIn)}</button></div>`]
       : []),
     '  </div>',
     '</header>',
@@ -1203,6 +1203,7 @@ function renderSideNavFallback({ learnTracks, versionInfo, year, view = 'playgro
     '    </div>',
     '  </section>',
     ] : ['<section class="sidenav-group" aria-labelledby="sidenav-learn-heading-desktop"><h2 id="sidenav-learn-heading-desktop" class="sidenav-section-label">Learn</h2><a href="/guides" class="nav-link sidenav-link" title="Guides"><i class="bi bi-book sidenav-icon" aria-hidden="true"></i><span class="sidenav-label">Guides</span></a></section>']),
+    `<div class="sidenav-footer"><button type="button" class="btn btn-ghost sidenav-collapse-toggle" aria-label="Collapse sidebar" aria-expanded="true"><span aria-hidden="true">«</span><span class="sidenav-label"> Collapse</span></button><div class="sidenav-legal">${LEGAL_NAVIGATION.map(link => `<a class="sidenav-footer-link" href="${link.href}">${link.label}</a>`).join('')}</div></div>`,
     '</nav>',
   ].join('\n');
 }
@@ -1213,16 +1214,14 @@ function renderSideNavFallback({ learnTracks, versionInfo, year, view = 'playgro
  * view's panel content). The mobile drawer is omitted; it is off-screen until
  * opened. `attributes` go on the shell element (src/staticPage reads them).
  */
-function renderLinkColumns(columns, heading) {
-  return `<div class="site-link-columns">${columns.map(column => `<section><${heading}>${escapeHtml(column.title)}</${heading}><ul>${column.links.map(([title, slug, summary]) => `<li><a href="/guides/${escapeHtml(slug)}">${escapeHtml(title)}</a>${summary ? `<p>${escapeHtml(summary)}</p>` : ''}</li>`).join('')}</ul></section>`).join('')}</div>`;
-}
-
 function renderSiteFooter() {
-  return `<footer class="site-footer" aria-label="Site resources">${renderLinkColumns(FOOTER_COLUMNS, 'h2')}<div class="site-footer-meta"><nav aria-label="Project and legal links">${[...FOOTER_NAVIGATION, ...LEGAL_NAVIGATION].map(link => `<a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a>`).join('')}</nav><small>© ${new Date().getFullYear()} Unchained Development OÜ</small></div></footer>`;
-}
-
-function renderHomeGuides() {
-  return `<section class="home-guides" aria-labelledby="home-guides-title"><header><h2 id="home-guides-title">Guides &amp; Documentation</h2><a href="/guides">Browse all guides →</a></header>${renderLinkColumns(HOME_GUIDE_COLUMNS, 'h3')}</section>`;
+  const columns = [
+    ...FOOTER_COLUMNS.map(column => ({ title: column.title, links: column.links.map(([label, slug]) => ({ label, href: `/guides/${slug}` })) })),
+    { title: 'Tools', links: FOOTER_NAVIGATION.slice(0, 6) },
+    { title: 'Project', links: FOOTER_NAVIGATION.slice(6) },
+  ];
+  const linkColumns = columns.map(column => `<section><h2>${escapeHtml(column.title)}</h2><ul>${column.links.map(link => `<li><a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a></li>`).join('')}</ul></section>`).join('');
+  return `<footer class="site-footer" aria-label="Site resources"><div class="site-link-columns">${linkColumns}</div><div class="site-footer-meta"><nav aria-label="Project and legal links">${LEGAL_NAVIGATION.map(link => `<a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a>`).join('')}</nav><small>© ${new Date().getFullYear()} Unchained Development OÜ</small></div></footer>`;
 }
 
 function renderAppShell({
@@ -1255,7 +1254,6 @@ function renderAppShell({
     panelStyle ? `<div class="view-panel" style="${escapeHtml(panelStyle)}">` : '<div class="view-panel">',
     content,
     '</div>',
-    pathname === '/' ? renderHomeGuides() : '',
     renderSiteFooter(),
     '</div>',
     '</main>',

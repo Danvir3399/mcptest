@@ -1023,7 +1023,7 @@ html[data-returning-visitor] .seo-returning-workspace { display: contents; }
   background: transparent !important;
 }
 
-.landing { max-width: 64rem; }
+.landing { max-width: none; padding-inline: 0; }
 .landing-hero { grid-template-columns: minmax(0, 1fr); }
 .landing-connect { border: 1px solid #d1d5db; background: var(--card-bg); box-shadow: none; }
 .landing-paths > h2 { padding: 1rem; margin: 0; }

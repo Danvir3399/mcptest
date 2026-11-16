@@ -187,7 +187,8 @@ describe('static first frame (header, sidebar, playground landing)', () => {
     expect(outline(shell)).toEqual(outline(app));
     expect(shell.querySelector('.sidenav-resources')).toBeNull();
     expect(shell.querySelector('.main-content > .site-footer')).not.toBeNull();
-    expect(shell.querySelectorAll('.home-guides li a')).toHaveLength(9);
+    expect(shell.querySelector('.home-guides')).toBeNull();
+    expect(shell.querySelectorAll('.site-footer .site-link-columns section')).toHaveLength(5);
     expect(Boolean(shell.querySelector('.app-auth-placeholder'))).toBe(authEnabled);
   });
 

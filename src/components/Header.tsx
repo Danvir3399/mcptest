@@ -62,9 +62,8 @@ const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
         {authEnabled && (
           <>
             {loading ? (
-              // Holds the sign-in control's space until auth resolves; the static
-              // shell in dist/index.html renders the same placeholder.
-              <div className="app-auth app-auth-placeholder" style={{ visibility: 'hidden' }} aria-hidden="true">
+              // Keep the action visible while authentication initializes.
+              <div className="app-auth app-auth-placeholder" aria-busy="true">
                 <button type="button" className="btn btn-sm app-signin-btn" tabIndex={-1} disabled>
                   <i className="bi bi-google" aria-hidden="true"></i>
                   {HEADER_COPY.signIn}

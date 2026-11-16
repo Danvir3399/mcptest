@@ -879,9 +879,10 @@
   height: calc(100vh - 4rem);
   flex-shrink: 0;
 }
-.app-shell--home .main-content > .view-panel { max-width: 1280px; }
-.app-header { width: 100%; max-width: 100%; }
+.app-shell--home .main-content > .view-panel { max-width: 100%; }
+.app-header { width: 100%; max-width: 1680px; margin-inline: auto; }
 .app-shell--home .main-content { --main-pad: 24px; }
+@media (max-width: 768px) { .main-content, .app-shell--home .main-content { --main-pad: var(--space-4); } }
 .app-shell--home .main-content > .view-panel {
   min-height: 0 !important;
 }
@@ -897,3 +898,24 @@
 
 .desktop-sidebar > .app-sidenav { min-height: 0; }
 .desktop-sidebar > .app-sidenav > * { flex-shrink: 0; }
+
+.sidenav-collapse-toggle { width: 100%; text-align: left; margin-bottom: .5rem; }
+@media (min-width: 768px) {
+  .sidenav-collapsed .desktop-sidebar { width: 4rem; }
+  .sidenav-collapsed .desktop-sidebar .sidenav-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .sidenav-collapsed .desktop-sidebar .sidenav-section-toggle .sidenav-icon { display: inline-flex; }
+  .sidenav-collapsed .desktop-sidebar .sidenav-section-label,
+  .sidenav-collapsed .desktop-sidebar .sidenav-chevron,
+  .sidenav-collapsed .desktop-sidebar .sidenav-sublist,
+  .sidenav-collapsed .desktop-sidebar .sidenav-learn-body,
+  .sidenav-collapsed .desktop-sidebar .dashboard-list { display: none; }
+  .sidenav-collapsed .desktop-sidebar .sidenav-footer { padding-inline: .25rem; }
+  .sidenav-collapsed .desktop-sidebar .sidenav-legal { justify-content: center; font-size: .625rem; }
+}

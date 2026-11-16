@@ -229,3 +229,8 @@
   .playground-tabs .nav-item:hover > .btn-close,
   .playground-tabs .nav-item:focus-within > .btn-close { opacity: 1; }
 }
+
+/* A partially visible tab keeps its hit target, but never displays a cut label
+   or detached close icon. Focus scrolls the full tab into view. */
+.playground-tabs .nav-item[data-clipped] .nav-link > *,
+.playground-tabs .nav-item[data-clipped] > .btn-close { opacity: 0; }

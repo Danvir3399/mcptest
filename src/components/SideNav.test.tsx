@@ -270,11 +270,11 @@ describe('SideNav information architecture', () => {
     expect(container.querySelectorAll('[aria-current="page"]')).toHaveLength(1);
   });
 
-  it('keeps project and legal links out of the app sidebar', () => {
+  it('keeps legal links and collapse available in the app sidebar', () => {
     const container = renderStatic('playground', '/');
-    expect(container.querySelector('.sidenav-footer')).toBeNull();
-    expect(container.querySelector('a[href="/docs/privacy-policy"]')).toBeNull();
-    expect(container.querySelector('.sidenav-collapse-toggle')).toBeNull();
+    expect(container.querySelector('.sidenav-footer')).not.toBeNull();
+    expect(container.querySelector('a[href="/docs/privacy-policy"]')).not.toBeNull();
+    expect(container.querySelector('.sidenav-collapse-toggle')).not.toBeNull();
   });
 });
 
@@ -312,10 +312,12 @@ describe('SideNav collapsed desktop mode', () => {
     element?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
   });
 
-  it('keeps the sidebar expanded even with a previously saved collapse preference', () => {
+  it('restores the collapse preference and lets the user expand the sidebar', () => {
     localStorage.setItem(SIDEBAR_COLLAPSED_KEY, 'true');
     mount();
-    expect(host.querySelector('.sidenav-collapse-toggle')).toBeNull();
+    expect(document.body.classList).toContain(SIDEBAR_COLLAPSED_CLASS);
+    click(host.querySelector('.sidenav-collapse-toggle'));
+    expect(localStorage.getItem(SIDEBAR_COLLAPSED_KEY)).toBe('false');
     expect(host.querySelector('.app-sidenav')?.classList).not.toContain('app-sidenav--collapsed');
     expect(document.body.classList).not.toContain(SIDEBAR_COLLAPSED_CLASS);
     expect(expandedTracks(host)).toEqual(['use']);

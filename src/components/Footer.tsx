@@ -12,10 +12,16 @@ const Footer: React.FC = () => (
           <ul>{column.links.map(([title, slug]) => <li key={slug}><a href={`/guides/${slug}`}>{title}</a></li>)}</ul>
         </section>
       ))}
+      {[{ title: 'Tools', links: FOOTER_NAVIGATION.slice(0, 6) }, { title: 'Project', links: FOOTER_NAVIGATION.slice(6) }].map(column => (
+        <section key={column.title}>
+          <h2>{column.title}</h2>
+          <ul>{column.links.map(link => <li key={link.href}><a href={link.href}>{link.label}</a></li>)}</ul>
+        </section>
+      ))}
     </div>
     <div className="site-footer-meta">
       <nav aria-label="Project and legal links">
-        {[...FOOTER_NAVIGATION, ...LEGAL_NAVIGATION].map(link => <a key={link.href} href={link.href}>{link.label}</a>)}
+        {LEGAL_NAVIGATION.map(link => <a key={link.href} href={link.href}>{link.label}</a>)}
       </nav>
       <small>© {new Date().getFullYear()} Unchained Development OÜ</small>
     </div>

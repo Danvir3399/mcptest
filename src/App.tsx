@@ -1,5 +1,4 @@
 import Footer from './components/Footer';
-import HomeGuides from './components/HomeGuides';
 import React, { Suspense, useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import type { CatalogTransport } from './types/catalog';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -2125,7 +2124,6 @@ function App() {
             </div>
           )}
 
-          {activeView === 'playground' && !connectedTab && <HomeGuides />}
           {!(activeView === 'playground' && connectedTab) && <Footer />}
         </div>
       </main>

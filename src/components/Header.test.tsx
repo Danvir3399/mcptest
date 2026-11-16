@@ -75,6 +75,16 @@ describe('Header', () => {
     expect(auth.loginWithGoogle).toHaveBeenCalledTimes(1);
   });
 
+  it('keeps sign-in visible while authentication initializes', () => {
+    auth.state.loading = true;
+    mount();
+    const placeholder = host.querySelector<HTMLElement>('.app-auth-placeholder')!;
+    expect(placeholder.textContent).toContain(HEADER_COPY.signIn);
+    expect(placeholder.style.visibility).not.toBe('hidden');
+    expect(placeholder.hasAttribute('aria-hidden')).toBe(false);
+    expect(placeholder.querySelector('button')?.disabled).toBe(true);
+  });
+
   it('drops the sign-in note once signed in', () => {
     auth.state = { currentUser: { displayName: 'Ada', photoURL: null }, loading: false };
     mount();

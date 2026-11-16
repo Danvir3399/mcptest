@@ -166,7 +166,7 @@ const OutputPanel: React.FC<OutputPanelProps> = (props) => {
               style={{ fontSize: '0.8rem', padding: '0.2rem 0.4rem' }}
               onClick={() => setIsFullscreen(true)}
               title="Fullscreen"
-              aria-label="View result in fullscreen"
+              aria-label="Expand result in fullscreen"
             >
               <i className="bi bi-arrows-fullscreen" aria-hidden="true"></i> Expand
             </button>

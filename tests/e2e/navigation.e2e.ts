@@ -46,6 +46,9 @@ test.describe('sidebar navigation', () => {
 
   test('`/` on a guide expands the collapsed sidebar and focuses the guide search', async ({ page }) => {
     await page.goto('/learn/mcp-clients-compared');
+    // Exercise the mounted shortcut; the next test covers the static shell.
+    await page.keyboard.press('Shift');
+    await expect(page.locator('.seo-shell-fallback')).toHaveCount(0);
     const nav = page.locator(sidebar);
     await nav.locator('.sidenav-collapse-toggle').click();
     await expect(nav).toHaveClass(/app-sidenav--collapsed/);

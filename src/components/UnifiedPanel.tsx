@@ -404,20 +404,21 @@ export const UnifiedPanel: React.FC<UnifiedPanelProps> = ({
           {isSearching ? `${matchSummary} match` : matchSummary}
         </p>
       )}
-      {guideToolPick && (
-        <div className="onboarding-hint onboarding-hint--tools" id={hintId}>
-          <div className="onboarding-hint-text">
-            <p className="onboarding-hint-title"><i className="bi bi-hand-index onboarding-hint-icon" aria-hidden="true"></i> Pick a tool to call</p>
-            <p>Its description and a form built from its input schema open in the request panel.</p>
-          </div>
-          {onDismissToolPickGuide && (
-            <button type="button" className="btn btn-sm btn-ghost" onClick={onDismissToolPickGuide} aria-label="Dismiss the pick a tool hint">
-              Dismiss
-            </button>
-          )}
-        </div>
-      )}
       <nav className="tree-view" aria-label="Playground tool lists" id={treeId}>
+        {/* The hint scrolls with the lists so short panes keep tools reachable. */}
+        {guideToolPick && (
+          <div className="onboarding-hint onboarding-hint--tools" id={hintId}>
+            <div className="onboarding-hint-text">
+              <p className="onboarding-hint-title"><i className="bi bi-hand-index onboarding-hint-icon" aria-hidden="true"></i> Pick a tool to call</p>
+              <p>Its description and a form built from its input schema open in the request panel.</p>
+            </div>
+            {onDismissToolPickGuide && (
+              <button type="button" className="btn btn-sm btn-ghost" onClick={onDismissToolPickGuide} aria-label="Dismiss the pick a tool hint">
+                Dismiss
+              </button>
+            )}
+          </div>
+        )}
         {/* Supported Capabilities - Only show sections with items */}
         {supportedCapabilities.map((capability) => {
           const { key, items, originalItems, label } = capability;

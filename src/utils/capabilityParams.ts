@@ -65,6 +65,23 @@ export const getMissingRequiredParams = (
   return required.filter((name) => !hasParameterValue(params[name]));
 };
 
+/** Accept flat single-quoted string arrays copied from schema examples, without evaluating code. */
+export const normalizeArrayQuotes = (value: string): string => {
+  const single = "'(?:[^'\\\\]|\\\\.)*'";
+  const double = '"(?:[^"\\\\]|\\\\.)*"';
+  const item = `(?:${single}|${double})`;
+  if (!new RegExp(`^\\s*\\[\\s*${item}(?:\\s*,\\s*${item})*\\s*\\]\\s*$`).test(value)) return value;
+  return value.replace(new RegExp(`${double}|${single}`, 'g'), (token) => {
+    if (token.startsWith('"')) return token;
+    // JSON handles standard escapes; only apostrophe escapes need conversion.
+    const content = token.slice(1, -1).replace(/\\(.)|"/g, (match, escaped) => {
+      if (escaped === "'") return "'";
+      return escaped === undefined ? '\\"' : match;
+    });
+    try { return JSON.stringify(JSON.parse(`"${content}"`)); } catch { return token; }
+  });
+};
+
 export const normalizeCapabilityParams = (
   item: any,
   params: Record<string, unknown>
@@ -85,7 +102,7 @@ export const normalizeCapabilityParams = (
 
     let parsed: unknown;
     try {
-      parsed = JSON.parse(value);
+      parsed = JSON.parse(definition.type === 'array' ? normalizeArrayQuotes(value) : value);
     } catch {
       throw new Error(`“${definition.name}” must contain valid JSON.`);
     }

@@ -98,7 +98,7 @@ const ResultExplanation: React.FC<{
     {(plain || !rawShown) && (
       <button
         type="button"
-        className="btn btn-link btn-sm tool-result-raw-link"
+        className="btn btn-outline-secondary btn-sm tool-result-raw-link"
         onClick={onViewRaw}
         {...(plain ? { 'aria-pressed': rawShown } : {})}
       >

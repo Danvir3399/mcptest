@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import {
   formatExampleValue,
+  normalizeArrayQuotes,
   getCapabilityInputSpec,
   getExampleValue,
   getMissingRequiredParams,
@@ -229,7 +230,7 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
               </p>
             )}
 
-            {inputType === 'array' && <p className="param-description" id={`${idPrefix}-${name}-json-help`}>Enter a JSON array, for example <code>["TypeScript", "TSX"]</code> for strings. Use double quotes around each string.</p>}
+            {inputType === 'array' && <p className="param-description" id={`${idPrefix}-${name}-json-help`}>JSON array; single-quoted strings are accepted.</p>}
             {/* Input rendering logic based on type */}
             {inputType === 'boolean' ? null : inputType === 'integer' || inputType === 'number' ? (
                 <input
@@ -264,6 +265,12 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
                 id={`${idPrefix}-${name}`}
                 rows={inputType === 'array' ? Math.min(10, jsonValue.split('\n').length) : 5}
                 value={jsonValue}
+                onBlur={(e) => {
+                  if (inputType === 'array') {
+                    const normalized = normalizeArrayQuotes(e.target.value);
+                    if (normalized !== e.target.value) handleParamChange(name, normalized);
+                  }
+                }}
                 onChange={(e) => handleParamChange(name, e.target.value)}
                 onKeyDown={handleKeyDown}
                 aria-describedby={inputType === 'array' ? `${idPrefix}-${name}-json-help` : undefined}

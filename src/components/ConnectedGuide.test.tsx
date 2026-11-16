@@ -68,6 +68,18 @@ describe('ConnectedSummary', () => {
     connectionKey: 'a',
   };
 
+  it.each([
+    ['https://mcp.grep.app', 'https://mcp.grep.app/', false],
+    ['https://example.com/', 'https://example.com/mcp', true],
+    ['https://example.com/mcp', 'https://example.com/mcp/', true],
+    ['https://example.com/mcp?a=1', 'https://example.com/mcp?a=2', true],
+  ])('shows discovery only for meaningful endpoint changes: %s to %s', (original, resolved, differs) => {
+    const view = mount(<ConnectedSummary {...props} originalServerUrl={original} serverUrl={resolved} />);
+    const endpoint = view.querySelector('.connected-summary-endpoint')!;
+    expect(endpoint.textContent).toContain(differs ? 'Discovered:' : 'Endpoint:');
+    expect(endpoint.textContent?.includes('Entered:')).toBe(differs);
+  });
+
   it('names the server, its session and capabilities, with one primary action', () => {
     const view = mount(<ConnectedSummary {...props} />);
     expect(view.querySelector('h2')?.textContent).toBe('mcptest-e2e-mockv1.0.0');

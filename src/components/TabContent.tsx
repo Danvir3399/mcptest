@@ -1110,6 +1110,7 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
       connectionStages={stages}
       connectedSummary={isConnected ? (
         <ConnectedSummary
+          originalServerUrl={tab.serverUrl === serverUrl ? tab.originalServerUrl : undefined}
           serverName={serverIdentity?.title || serverIdentity?.name}
           serverVersion={serverIdentity?.version}
           serverDescription={serverIdentity?.description || client?.getInstructions?.()}
@@ -1172,14 +1173,6 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
       ) : connectionPanel}
 
       {shareLinkNotice && <p role="status" className="small text-muted px-3">{shareLinkNotice}</p>}
-
-      {tab.originalServerUrl && tab.originalServerUrl !== serverUrl && tab.serverUrl === serverUrl && (
-        <p className="connection-url-metadata">
-          <span>Entered: <code>{tab.originalServerUrl}</code></span>
-          <span className="connection-url-metadata-separator" aria-hidden="true">|</span>
-          <span>Discovered: <code>{serverUrl}</code></span>
-        </p>
-      )}
 
       {/* OAuth authorization prerequisite */}
       {needsOAuthConfig && oauthConfigServerUrl && (

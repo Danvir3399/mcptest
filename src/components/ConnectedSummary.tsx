@@ -19,6 +19,7 @@ interface ConnectedSummaryProps {
   serverVersion?: string;
   serverDescription?: string;
   serverUrl: string;
+  originalServerUrl?: string;
   protocolVersion: string | null;
   transportType: string | null;
   authMode: ConnectedAuthMode;
@@ -45,6 +46,11 @@ const AUTH_LABEL: Record<ConnectedAuthMode, string> = {
 const plural = (count: number, singular: string, pluralWord = `${singular}s`) => (
   `${count} ${count === 1 ? singular : pluralWord}`
 );
+
+const sameEndpoint = (left: string, right: string): boolean => {
+  try { return new URL(left).href === new URL(right).href; }
+  catch { return left === right; }
+};
 
 const hostOf = (url: string): string => {
   try { return new URL(url).host; } catch { return url; }
@@ -77,6 +83,7 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
   serverVersion,
   serverDescription,
   serverUrl,
+  originalServerUrl,
   protocolVersion,
   transportType,
   authMode,
@@ -121,6 +128,11 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
           {serverVersion && <span className="connected-summary-version">v{serverVersion}</span>}
         </h2>
         {serverDescription && <p className="connected-summary-description" title={serverDescription}>{serverDescription}</p>}
+        <p className="connected-summary-endpoint">
+          {originalServerUrl && !sameEndpoint(originalServerUrl, serverUrl) ? (
+            <><span>Entered: <code>{originalServerUrl}</code></span><span>Discovered: <code>{serverUrl}</code></span></>
+          ) : <span>Endpoint: <code>{serverUrl}</code></span>}
+        </p>
         <ul className="connected-summary-facts" aria-label="Session">
           <li><span className="badge bg-success connected-status">Connected</span></li>
           {protocolVersion && <li><span className="session-detail">MCP {protocolVersion}</span></li>}

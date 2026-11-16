@@ -1220,12 +1220,14 @@ function renderSideNavFallback({ learnTracks, versionInfo, year, view = 'playgro
     '    </div>',
     '  </section>',
     '  <div class="sidenav-footer">',
+    '    <details class="sidenav-resources"><summary>Resources</summary>',
     '    <ul class="sidenav-footer-links" aria-label="Project links">',
     ...FOOTER_NAVIGATION.map(link => (link.external
       ? `      <li><a href="${escapeHtml(link.href)}" target="_blank" rel="noopener noreferrer" class="sidenav-footer-link">${escapeHtml(link.label)}<span class="visually-hidden"> (opens in a new tab)</span></a></li>`
       : `      <li><a href="${escapeHtml(link.href)}" class="sidenav-footer-link">${escapeHtml(link.label)}</a></li>`
     )),
     '    </ul>',
+    '    </details>',
     '    <div class="sidenav-legal">',
     ...LEGAL_NAVIGATION.map(link => (
       `      <a href="${escapeHtml(link.href)}" class="sidenav-footer-link">${escapeHtml(link.label)}</a>`

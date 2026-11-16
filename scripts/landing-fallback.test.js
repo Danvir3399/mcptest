@@ -185,6 +185,11 @@ describe('static first frame (header, sidebar, playground landing)', () => {
     // This variant is hidden by CSS for new visitors.
     shell.querySelector('.seo-returning-workspace')?.remove();
     expect(outline(shell)).toEqual(outline(app));
+    const resources = shell.querySelector('.sidenav-footer > details.sidenav-resources');
+    expect(resources).not.toBeNull();
+    expect(resources.hasAttribute('open')).toBe(false);
+    expect(text(resources.querySelector('summary'))).toBe('Resources');
+    expect(resources.querySelector('.sidenav-footer-links')).not.toBeNull();
     expect(Boolean(shell.querySelector('.app-auth-placeholder'))).toBe(authEnabled);
   });
 

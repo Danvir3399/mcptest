@@ -29,12 +29,11 @@ test.describe('playground against the mock MCP server', () => {
   test('2026-07-28 stateless: connect, capabilities, fuzzy search, structured output and error result', async ({ page, externalRequests }, testInfo) => {
     await connectAndWait(page, '2026');
 
-    const era = page.getByTestId('connection-protocol-era');
-    await expect(era).toHaveText('Stateless');
-    await expect(era).toHaveAttribute('title', 'Negotiated MCP 2026-07-28');
+    await expect(page.locator('.connected-summary-facts').first()).toContainText('MCP 2026-07-28');
+    await expect(page.locator('.connection-details .badge')).toHaveCount(0);
 
     // Capabilities: tools, resources and prompts from the mock.
-    await expect(page.getByText('2 tools · 1 resource · 1 prompt', { exact: true })).toBeVisible();
+    await expect(page.locator('.connected-summary-counts')).toBeVisible();
     const lists = page.getByRole('navigation', { name: 'Playground tool lists' });
     await expect(lists.getByRole('option', { name: /get_forecast/ })).toBeVisible();
     await expect(lists.getByRole('option', { name: /always_fails/ })).toBeVisible();
@@ -74,10 +73,9 @@ test.describe('playground against the mock MCP server', () => {
   test('2025-11-25 stateful: falls back to initialize and keeps the session', async ({ page }) => {
     await connectAndWait(page, '2025');
 
-    const era = page.getByTestId('connection-protocol-era');
-    await expect(era).toHaveText('Stateful');
-    await expect(era).toHaveAttribute('title', 'Negotiated MCP 2025-11-25');
-    await expect(page.getByText('2 tools · 1 resource · 1 prompt', { exact: true })).toBeVisible();
+    await expect(page.locator('.connected-summary-facts').first()).toContainText('MCP 2025-11-25');
+    await expect(page.locator('.connection-details .badge')).toHaveCount(0);
+    await expect(page.locator('.connected-summary-counts')).toBeVisible();
 
     // A call after the handshake only succeeds when the session id is sent.
     const lists = page.getByRole('navigation', { name: 'Playground tool lists' });

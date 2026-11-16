@@ -72,8 +72,8 @@ describe('ConnectedSummary', () => {
     expect(view.querySelector('h2')?.textContent).toBe('mcptest-e2e-mockv1.0.0');
     expect([...view.querySelectorAll('[aria-label="Session"] .badge')].map((badge) => badge.textContent))
       .toEqual(['Connected', 'MCP 2026-07-28', 'Streamable HTTP', 'No auth']);
-    expect([...view.querySelectorAll('[aria-label="Capabilities"] .badge')].map((badge) => badge.textContent))
-      .toEqual(['2 tools', '1 resource', 'No prompts offered']);
+    expect([...view.querySelectorAll('[aria-label="Capabilities"] > li')].map((badge) => badge.textContent))
+      .toEqual(['2 tools', '1 resource', '0 prompts']);
     const actions = view.querySelectorAll('.connected-summary-next .btn');
     expect(actions).toHaveLength(1);
     act(() => (actions[0] as HTMLButtonElement).click());
@@ -95,7 +95,7 @@ describe('ConnectedSummary', () => {
     const link = view.querySelector<HTMLAnchorElement>('.connected-summary-next a')!;
     expect(link.textContent).toContain('Share report');
     expect(link.getAttribute('href')).toBe('/report/x');
-    expect(view.querySelector('.connected-summary-next p')?.textContent).toMatch(/redacted/);
+    expect(view.querySelector('.connected-summary-next [role="tooltip"]')?.textContent).toMatch(/redacted/);
   });
 
   it('shows the list progress while capabilities load and a failed list afterwards', () => {
@@ -108,7 +108,7 @@ describe('ConnectedSummary', () => {
     expect(view.textContent).toContain('prompts list incomplete');
     // A capability the server never advertised is absent, not a failed list.
     act(() => root!.render(<ConnectedSummary {...props} discovery={{ ...COMPLETE, prompts: 'failed' }} />));
-    expect(view.textContent).toContain('No prompts offered');
+    expect(view.textContent).toContain('0 prompts');
     expect(view.textContent).not.toContain('list failed');
   });
 
@@ -262,6 +262,24 @@ describe('ParamsPanel guided form', () => {
 
   it('explains what to do before a tool is selected', () => {
     expect(render(null).textContent).toContain('Pick a tool from Capabilities to call it.');
+  });
+
+  it('renders Markdown safely and gives a boolean one inline label', () => {
+    const change = vi.fn();
+    const view = render({
+      name: 'search',
+      description: '**Important:** search code.\n\n- Use `query`\n- <script>alert(1)</script>',
+      inputSchema: { type: 'object', properties: { matchCase: { type: 'boolean', description: 'Match letter case.' } } },
+    }, change);
+    expect(view.querySelector('.capability-description-text strong')?.textContent).toBe('Important:');
+    expect(view.querySelector('.capability-description-text li')).not.toBeNull();
+    expect(view.querySelector('script')).toBeNull();
+    const toggle = view.querySelector<HTMLInputElement>('#param-matchCase')!;
+    expect(toggle.labels).toHaveLength(1);
+    expect(toggle.parentElement?.textContent).toContain('matchCase');
+    expect(view.querySelector(`#${toggle.getAttribute('aria-describedby')}`)?.textContent).toBe('Match letter case.');
+    act(() => toggle.click());
+    expect(change).toHaveBeenCalledWith('matchCase', true);
   });
 
   it('shows the description, marks required fields and offers schema examples', () => {

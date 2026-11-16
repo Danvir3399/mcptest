@@ -175,40 +175,8 @@ const ConnectionPanel: React.FC<ConnectionPanelProps> = ({
         </div>
         {isConnected && (
           <div className="connection-details d-flex align-items-center gap-2" aria-label="Negotiated connection details">
-            {transportType && <span className={`badge ${transportType === 'streamable-http' ? 'bg-success' : 'bg-primary'}`}>{transportType === 'streamable-http' ? 'HTTP' : 'SSE'}</span>}
-            {protocolEra && (
-              <span
-                className={`badge ${protocolEra === 'modern' ? 'bg-dark' : 'bg-secondary'}`}
-                data-testid="connection-protocol-era"
-                title={protocolVersion ? `Negotiated MCP ${protocolVersion}` : `Negotiated MCP ${protocolEra} protocol`}
-              >
-                {protocolEra === 'modern' ? 'Stateless' : 'Stateful'}
-              </span>
-            )}
-            {isProxied && <span className="badge bg-warning text-dark">Proxy</span>}
             {isOAuthConnection && (
               <div className="d-flex align-items-center gap-1">
-                <span className="badge bg-secondary text-white d-flex align-items-center gap-1">
-                  <i className="bi bi-shield-lock"></i>
-                  OAuth
-                  {oauthUserInfo ? (
-                    <>
-                      {oauthUserInfo.picture && (
-                        <img
-                          src={oauthUserInfo.picture}
-                          alt="User avatar"
-                          className="rounded-circle"
-                          style={{ width: '16px', height: '16px' }}
-                        />
-                      )}
-                      <span className="small">
-                        {oauthUserInfo.name || oauthUserInfo.email || 'User'}
-                      </span>
-                    </>
-                  ) : (
-                    <span className="small">Authenticated</span>
-                  )}
-                </span>
                 <button
                   type="button"
                   className="btn btn-sm btn-link text-decoration-none p-0"

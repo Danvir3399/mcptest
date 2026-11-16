@@ -387,3 +387,54 @@
   overflow-wrap: anywhere;
   font-size: var(--text-xs);
 }
+
+/* Keep the workbench summary quiet and show each fact once. */
+.connected-summary-counts {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+.connected-summary-counts > li + li::before { content: '·'; margin-right: var(--space-2); }
+.connected-summary-list-stage[hidden] { display: none; }
+.connected-summary-next {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex: 0 1 auto;
+  max-width: 20rem;
+}
+.connected-summary-next > p { flex-basis: 100%; }
+.share-report-help { position: relative; }
+.share-report-help [role='tooltip'] {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  top: 100%;
+  right: 0;
+  width: min(18rem, 80vw);
+  padding: var(--space-3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: var(--card-bg);
+  color: var(--text-color);
+  font-size: var(--text-sm);
+  box-shadow: var(--shadow-sm);
+}
+.share-report-help:hover [role='tooltip'],
+.share-report-help:focus-within [role='tooltip'] { display: block; }
+.capability-description-text { overflow-wrap: anywhere; }
+.capability-description-text pre { overflow-x: auto; }
+.capability-description-text ul, .capability-description-text ol { padding-left: 1.25rem; }
+.param-form .param-boolean-label { display: flex; align-items: center; gap: .5rem; }
+.param-boolean-label .form-check-input[type='checkbox'] {
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 1.2rem;
+  margin: 0;
+}
+.param-boolean-label .form-check-input[type='checkbox']::before {
+  width: .8rem;
+  height: .8rem;
+  top: .15rem;
+  left: .15rem;
+}
+.param-boolean-label .form-check-input[type='checkbox']:checked::before { transform: translateX(.8rem); }

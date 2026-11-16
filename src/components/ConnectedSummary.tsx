@@ -109,11 +109,6 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
   const failedLists = outcomes.filter(([, outcome]) => outcome === 'failed').map(([section]) => section);
   const partialLists = outcomes.filter(([, outcome]) => outcome === 'partial').map(([section]) => section);
   const toolsOutcome = outcomes[0][1];
-  const countPill = (item: CapabilityCount, singular: string) => (
-    item.offered || item.count > 0
-      ? <span className="badge bg-light">{plural(item.count, singular)}</span>
-      : <span className="badge bg-light connected-summary-absent">No {singular}s offered</span>
-  );
 
   return (
     <section className="connected-summary" aria-labelledby={headingId}>
@@ -135,10 +130,10 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
           <li><span className={`badge ${authMode === 'none' ? 'bg-secondary' : 'bg-info'}`}>{AUTH_LABEL[authMode]}</span></li>
           {isProxied && <li><span className="badge bg-warning">Via proxy</span></li>}
         </ul>
-        <ul className="connected-summary-facts" aria-label="Capabilities">
-          <li>{countPill(counts.tools, 'tool')}</li>
-          <li>{countPill(counts.resources, 'resource')}</li>
-          <li>{countPill(counts.prompts, 'prompt')}</li>
+        <ul className="connected-summary-facts connected-summary-counts" aria-label="Capabilities">
+          <li>{plural(counts.tools.count, 'tool')}</li>
+          <li>{plural(counts.resources.count, 'resource')}</li>
+          <li>{plural(counts.prompts.count, 'prompt')}</li>
           {listing && <li><span className="badge bg-info">Listing capabilities</span></li>}
           {!listing && failedLists.length > 0 && (
             <li><span className="badge bg-warning">{failedLists.join(', ')} list failed</span></li>
@@ -149,7 +144,7 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
         </ul>
         {/* The fourth connection stage: the panel's stage list is gone once the
             session exists, so the list requests advance and complete here. */}
-        <ol className="connection-stages connected-summary-list-stage" aria-label="Capability listing">
+        <ol hidden={!listing} className="connection-stages connected-summary-list-stage" aria-label="Capability listing">
           <li className={`connection-stage connection-stage--${listStage.status}`} data-stage="list" data-status={listStage.status}>
             <i className={`bi ${STAGE_ICONS[listStage.status]} connection-stage-icon`} aria-hidden="true"></i>
             <span className="connection-stage-text">
@@ -179,7 +174,12 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
             <a className="btn btn-primary" href={reportHref}>
               <i className="bi bi-share" aria-hidden="true"></i> Share report
             </a>
-            <p>{SHARE_REPORT_EXPLANATION}</p>
+            <span className="share-report-help">
+              <button type="button" className="btn btn-sm btn-ghost" aria-label="About sharing reports" aria-describedby={`${headingId}-share-help`}>
+                <i className="bi bi-info-circle" aria-hidden="true" />
+              </button>
+              <span role="tooltip" id={`${headingId}-share-help`}>{SHARE_REPORT_EXPLANATION}</span>
+            </span>
           </>
         )}
         {nextAction === 'run-report' && (

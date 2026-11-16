@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import {
   formatExampleValue,
   getCapabilityInputSpec,
@@ -43,22 +45,17 @@ interface ParamsPanelProps {
   callHistoryCount?: number;
 }
 
-/** Short descriptions are shown in full; long ones show their opening and expand. */
-const DESCRIPTION_PREVIEW_LENGTH = 220;
-const CapabilityDescription: React.FC<{ text: string; kind: string }> = ({ text, kind }) => {
-  if (text.length <= DESCRIPTION_PREVIEW_LENGTH) {
-    return <p className="capability-description-text">{text}</p>;
-  }
-  return (
-    <details className="capability-description">
-      <summary>
-        <span className="capability-description-preview">{text.slice(0, DESCRIPTION_PREVIEW_LENGTH).trimEnd()}…</span>
-        <span className="capability-description-more">Full description of this {kind}</span>
-      </summary>
-      <p>{text}</p>
-    </details>
-  );
-};
+/** Render server Markdown safely; long manuals expand on demand. */
+const CapabilityDescription: React.FC<{ text: string; kind: string }> = ({ text, kind }) => (
+  <div className="capability-description-text">
+    {text.length <= 220 ? <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown> : (
+      <details className="capability-description">
+        <summary>About this {kind}</summary>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
+      </details>
+    )}
+  </div>
+);
 
 const ParamsPanel: React.FC<ParamsPanelProps> = ({
   selectedTool,
@@ -161,7 +158,7 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
     const { definitions: parameterDefinitions, required: requiredParams } = getCapabilityInputSpec(item);
 
     if (parameterDefinitions.length === 0) {
-      return <p className="text-muted">This {paramType} has no parameters.</p>;
+      return <>{item.description && <CapabilityDescription text={item.description} kind={paramType} />}<p className="text-muted">This {paramType} has no parameters.</p></>;
     }
 
     // Helper function to render a single input based on schema/arg definition
@@ -183,10 +180,16 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
 
         return (
             <div key={`${idPrefix}-${name}`} className="param-form mb-3">
-            <label htmlFor={`${idPrefix}-${name}`} className="form-label">
+            <label htmlFor={`${idPrefix}-${name}`} className={`form-label ${inputType === 'boolean' ? 'param-boolean-label' : ''}`}>
+                {inputType === 'boolean' && (
+                  <input type="checkbox" className="form-check-input" id={`${idPrefix}-${name}`}
+                    checked={!!params[name]} onChange={(e) => handleParamChange(name, e.target.checked)}
+                    onKeyDown={handleKeyDown} aria-required={isRequired}
+                    aria-describedby={definition.description ? `${idPrefix}-${name}-description` : undefined} />
+                )}
                 {name} {isRequired && <span className="required-mark" aria-label="required">*</span>} {definition.type && <span className="param-type">{definition.type}</span>}
             </label>
-            {definition.description && <p className="param-description">{definition.description}</p>}
+            {definition.description && <p className="param-description" id={`${idPrefix}-${name}-description`}>{definition.description}</p>}
             {exampleText !== undefined && (
               <p className="param-example" id={exampleHintId}>
                 Example: <code>{exampleText}</code>
@@ -207,23 +210,7 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
             )}
 
             {/* Input rendering logic based on type */}
-            {inputType === 'boolean' ? (
-                <div className="form-check">
-                <input
-                    type="checkbox"
-                    className="form-check-input"
-                    id={`${idPrefix}-${name}`}
-                    checked={!!params[name]}
-                    onChange={(e) => handleParamChange(name, e.target.checked)}
-                    onKeyDown={handleKeyDown}
-                    required={isRequired}
-                    aria-required={isRequired}
-                />
-                <label className="form-check-label" htmlFor={`${idPrefix}-${name}`}>
-                    {definition.title || name}
-                </label>
-                </div>
-            ) : inputType === 'integer' || inputType === 'number' ? (
+            {inputType === 'boolean' ? null : inputType === 'integer' || inputType === 'number' ? (
                 <input
                 type="number"
                 className="form-control"

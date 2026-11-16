@@ -533,6 +533,7 @@ const SideNav: React.FC<SideNavProps> = ({
 
       {/* Footer: project links, legal links and the build, in quieter type */}
       <div className="sidenav-footer">
+        <details className="sidenav-resources"><summary>Resources</summary>
         <ul className="sidenav-footer-links" aria-label="Project links">
           {FOOTER_NAVIGATION.map(link => (
             <li key={link.href}>
@@ -549,6 +550,7 @@ const SideNav: React.FC<SideNavProps> = ({
             </li>
           ))}
         </ul>
+        </details>
         <div className="sidenav-legal">
           {LEGAL_NAVIGATION.map(link => (
             <Link key={link.href} to={link.href} className="sidenav-footer-link" onClick={closeMobileDrawer}>

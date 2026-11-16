@@ -149,8 +149,8 @@ describe('SideNav information architecture', () => {
     expect(container.querySelector('a[href="/catalog"]')?.classList).toContain('active');
     expect(container.querySelector('a[href="/catalog"]')?.getAttribute('aria-current')).toBe('page');
 
-    // The old "Resources" trio is gone; its entries live under the tracks.
-    expect(container.textContent).not.toContain('Resources');
+    // Project links are grouped in a collapsed Resources disclosure.
+    expect(container.querySelector('.sidenav-resources')?.hasAttribute('open')).toBe(false);
     expect(container.textContent).not.toContain('Guides & Tutorials');
     expect(container.querySelector('a[href="/learn"]')?.textContent?.trim()).toBe('Guides');
     expect(

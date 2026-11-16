@@ -4979,3 +4979,26 @@ pre.bg-light code {
   width: calc(100% + 2 * var(--main-pad));
   max-width: none;
 }
+
+/* Connected workspace: neutral surfaces and compact capability navigation. */
+.connection-console.connection-console--connected {
+  background: var(--card-bg);
+  border-bottom-color: var(--border-color);
+}
+.unified-panel .item-uri {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  white-space: normal;
+}
+.sidenav-resources > summary {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  cursor: pointer;
+  margin-bottom: var(--space-2);
+}
+body:has(.connection-console--connected) {
+  background-image: none;
+  background-color: var(--card-bg-secondary);
+}

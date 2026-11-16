@@ -32,7 +32,7 @@ interface ContentTrackNavProps {
 export const LEARN_GROUP_ICON = 'bi-mortarboard';
 
 /**
- * The sidebar's Learn group: the guide search, the guide hub and the four
+ * The sidebar's Learn group: the guide search, the guide hub and the
  * tracks, under a heading that can fold the whole group. The track that
  * owns the current page is expanded to its articles; the others stay
  * collapsed until toggled. Track toggles reset on navigation.
@@ -114,7 +114,7 @@ const ContentTrackNav: React.FC<ContentTrackNavProps> = ({
                 {track.items.map(item => (
                   <li className="nav-item" key={item.slug}>
                     <NavLink to={item.path} end aria-current={articlePath === item.path ? 'page' : undefined} className={`nav-link sidenav-link sidenav-sublink${articlePath === item.path ? ' active' : ''}`} onClick={onNavigate}>
-                      {item.navTitle}
+                      {item.title}
                     </NavLink>
                   </li>
                 ))}

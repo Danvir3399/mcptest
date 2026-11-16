@@ -157,6 +157,7 @@ const TRACK_ICONS: Record<ContentTrackId, string> = {
   use: 'bi-plug',
   build: 'bi-tools',
   reference: 'bi-book',
+  compare: 'bi-layout-split',
 };
 
 export const buildLearnTrackNavigation = (

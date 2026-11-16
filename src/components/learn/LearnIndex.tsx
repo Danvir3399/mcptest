@@ -15,6 +15,11 @@ const LearnIndex: React.FC = () => (
         <h1 id="learn-index-title">{LEARN_INDEX_METADATA.title}</h1>
         <p className="reading-summary">{LEARN_INDEX_METADATA.summary}</p>
         <GuideSearch idPrefix="learn-index" variant="page" shortcutEnabled shortcutPriority={1} />
+        <nav className="learn-track-jumps" aria-label="Guide categories">
+          {TRACK_NAVIGATION.map(track => (
+            <a key={track.id} href={`#track-${track.id}`}>{track.label}</a>
+          ))}
+        </nav>
       </header>
 
       <div className="learn-track-grid">
@@ -30,13 +35,15 @@ const LearnIndex: React.FC = () => (
           <ol className="learn-track-list">
             {track.items.map(item => (
               <li className="learn-track-item" key={item.slug}>
-                <Link className="learn-track-item-title" to={`/guides/${item.slug}`}>{item.title}</Link>
+                <Link className="learn-track-item-link" to={`/guides/${item.slug}`}>
+                <span className="learn-track-item-title">{item.title}<span aria-hidden="true"> →</span></span>
                 <p className="learn-track-item-summary">{item.summary}</p>
                 <p className="learn-track-item-meta">
                   <span>{item.readingTimeMinutes} min read</span>
                   <span aria-hidden="true">·</span>
                   <span>{CONTENT_LEVEL_LABELS[item.level]}</span>
                 </p>
+                </Link>
               </li>
             ))}
           </ol>

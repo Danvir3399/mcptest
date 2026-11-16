@@ -160,7 +160,6 @@ const OutputPanel: React.FC<OutputPanelProps> = (props) => {
         </ul>
         {activeTab === 'result' && props.lastResult && (
           <div className="d-flex align-items-center pe-3 panel-actions">
-            <div className="result-format-controls" ref={setFormatControls} />
             {/* Individual icon buttons, spaced — never welded into a strip */}
             <button
               className="btn btn-sm btn-ghost"
@@ -169,7 +168,7 @@ const OutputPanel: React.FC<OutputPanelProps> = (props) => {
               title="Fullscreen"
               aria-label="View result in fullscreen"
             >
-              <i className="bi bi-arrows-fullscreen"></i>
+              <i className="bi bi-arrows-fullscreen" aria-hidden="true"></i> Expand
             </button>
             {props.lastResult.callContext && props.serverUrl && (
               <div className="position-relative">
@@ -243,6 +242,9 @@ const OutputPanel: React.FC<OutputPanelProps> = (props) => {
           </div>
         )}
       </div>
+      {activeTab === 'result' && props.lastResult && (
+        <div className="result-format-controls" ref={setFormatControls} />
+      )}
       <div className="card-body output-panel-body p-0 d-flex flex-column">
         <div className="tab-content flex-grow-1 overflow-hidden" id="outputTabsContent">
           <div className={`tab-pane fade ${activeTab === 'result' ? 'show active' : ''} h-100`} id="result-panel" role="tabpanel" aria-labelledby="result-tab">

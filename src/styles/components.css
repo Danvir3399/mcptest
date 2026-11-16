@@ -2631,7 +2631,9 @@ pre.bg-light code {
 
 .request-panel .capability-description {
   margin-bottom: var(--space-3);
-  border-left: 2px solid var(--border-color);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .request-panel .capability-description summary {
@@ -5050,13 +5052,15 @@ pre.bg-light code {
 [data-theme="dark"] .request-panel .form-select:not(:disabled) { background-color: var(--input-bg) !important; }
 .output-panel > .card-header { flex-wrap: wrap; gap: .25rem; }
 .output-panel > .card-header > .panel-actions {
-  flex: 1 0 100%;
+  flex: 0 1 auto;
   min-width: 0;
   flex-wrap: wrap;
   justify-content: flex-end;
-  padding: .375rem 0 .5rem !important;
+  margin-left: auto;
+  padding: .375rem 0 !important;
 }
-.result-format-controls { display: flex; align-items: center; margin-right: auto; }
+.result-format-controls { display: flex; align-items: center; flex-shrink: 0; padding: .5rem 1rem; background: var(--card-bg); border-bottom: 1px solid var(--border-color); }
+.result-format-controls:empty { display: none; }
 .result-format-controls .tool-result-view-switch { margin: 0; }
 .result-scroll-frame { min-height: 0; padding-top: .75rem; }
 .result-region { min-height: 0; }

@@ -5,9 +5,10 @@
 }
 
 .tool-schema-details {
-  border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
-  background: var(--card-bg-secondary);
+  border: 0;
+  border-top: 1px solid var(--border-color);
+  border-radius: 0;
+  background: transparent;
 }
 
 .tool-schema-details summary {

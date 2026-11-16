@@ -56,11 +56,11 @@
 }
 
 .playground-tab-strip--fade-start {
-  --tab-fade-start: 2rem;
+  --tab-fade-start: 3rem;
 }
 
 .playground-tab-strip--fade-end {
-  --tab-fade-end: 2rem;
+  --tab-fade-end: 3rem;
 }
 
 @media (max-width: 767.98px) {
@@ -190,5 +190,9 @@
   color: var(--text-color);
   font-size: 1.25rem;
 }
-.playground-tab-scroll:disabled { opacity: 0.3; }
 .playground-tab-scroll:not(:disabled):hover { background: var(--hover-wash); }
+
+/* Keep the control boundaries visible even when an arrow is disabled. */
+.playground-tab-scroll[aria-label="Scroll sessions left"] { border-right: 1px solid var(--border-color); }
+.playground-tab-scroll[aria-label="Scroll sessions right"] { border-left: 1px solid var(--border-color); }
+.playground-tab-scroll:disabled { opacity: 1; color: var(--text-muted); }

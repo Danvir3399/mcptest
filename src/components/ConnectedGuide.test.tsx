@@ -335,7 +335,7 @@ const plainResult: LogEntry = {
 describe('result explanations', () => {
   it('says what a plain result is and toggles the result JSON without inventing an envelope', () => {
     const view = mount(<ToolResultView logEntry={plainResult} />);
-    expect(view.querySelector('.tool-result-explanation')?.textContent).toContain('no structured content');
+    expect(view.querySelector('.tool-result-explanation')?.textContent).toContain('1 text block · unstructured');
     const toggle = view.querySelector<HTMLButtonElement>('.tool-result-raw-link')!;
     expect(toggle.textContent).toBe('View raw JSON');
     expect(toggle.getAttribute('aria-pressed')).toBe('false');

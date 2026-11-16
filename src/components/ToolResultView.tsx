@@ -90,13 +90,13 @@ const ResultExplanation: React.FC<{
   kind: Exclude<keyof typeof EXPLANATIONS, 'plainRaw'>;
   plain?: boolean;
   hideToggle?: boolean;
+  contentSummary?: string;
   rawShown: boolean;
   onViewRaw: () => void;
-}> = ({ kind, plain = false, hideToggle = false, rawShown, onViewRaw }) => (
+}> = ({ kind, plain = false, hideToggle = false, contentSummary, rawShown, onViewRaw }) => (
   <p className="tool-result-explanation">
-    <span>
-      {plain && rawShown ? EXPLANATIONS.plainRaw : EXPLANATIONS[kind]}
-      {plain && !rawShown && ' This tool returned no structured content.'}
+    <span title={plain && !rawShown ? EXPLANATIONS.content : undefined}>
+      {plain && !rawShown ? contentSummary : plain && rawShown ? EXPLANATIONS.plainRaw : EXPLANATIONS[kind]}
     </span>
     {!hideToggle && (plain || !rawShown) && (
       <button
@@ -154,7 +154,11 @@ const ToolResultView: React.FC<ToolResultViewProps> = ({ logEntry, controlsTarge
   // Reconstructed: only the parsed result is stored, not the server's envelope.
   const rawResponse = { jsonrpc: '2.0', result: toolCall.result };
   if (!hasStructuredContent && !hasSchema && !isError) {
-    // Plain content: the blocks as before, plus the explanation and the result JSON.
+    const contentBlocks = Array.isArray(blocks) ? blocks : [];
+    const count = contentBlocks.length;
+    const blockType = count > 0 && contentBlocks.every(block => block.type === 'text') ? 'text' : 'content';
+    const contentSummary = `${count} ${blockType} ${count === 1 ? 'block' : 'blocks'} · unstructured`;
+    // Keep protocol background in the tooltip so the output starts immediately.
     return (
       <div className="tool-result-view tool-result-view--plain">
         {controlsTarget && createPortal(
@@ -165,7 +169,8 @@ const ToolResultView: React.FC<ToolResultViewProps> = ({ logEntry, controlsTarge
                 onClick={() => setView(format)}>{format === 'raw' ? 'Raw JSON' : 'Formatted'}</button>
             ))}
           </div>, controlsTarget)}
-        <ResultExplanation hideToggle={!!controlsTarget} kind="content" plain rawShown={view === 'raw'} onViewRaw={() => setView(view === 'raw' ? 'content' : 'raw')} />
+        <ResultExplanation contentSummary={contentSummary} hideToggle={!!controlsTarget}
+          kind="content" plain rawShown={view === 'raw'} onViewRaw={() => setView(view === 'raw' ? 'content' : 'raw')} />
         {view === 'raw' ? <JsonBlock value={toolCall.result} /> : contentDisplay}
       </div>
     );

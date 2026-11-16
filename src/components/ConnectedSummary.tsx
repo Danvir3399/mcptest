@@ -1,3 +1,4 @@
+import ActionIcon from './ActionIcon';
 import React, { useEffect, useId, useRef } from 'react';
 import { STAGE_ICONS } from './ConnectionProgress';
 import { listOutcome, STAGE_LABELS, stageStatusWord, type CapabilitySection, type ConnectionStage, type ListOutcome } from '../utils/connectionStages';
@@ -175,11 +176,11 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
         {nextAction === 'share-report' && (
           <>
             <a className="btn btn-outline-secondary" href={reportHref}>
-              <i className="bi bi-share" aria-hidden="true"></i> Share
+              <ActionIcon name="share" /> Share report
             </a>
             <span className="share-report-help">
               <button type="button" className="btn btn-sm btn-ghost" aria-label="About sharing reports" aria-describedby={`${headingId}-share-help`}>
-                <i className="bi bi-info-circle" aria-hidden="true" />
+                <ActionIcon name="info" />
               </button>
               <span role="tooltip" id={`${headingId}-share-help`}>{SHARE_REPORT_EXPLANATION}</span>
             </span>

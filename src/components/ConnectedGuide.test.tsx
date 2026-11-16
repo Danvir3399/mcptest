@@ -97,7 +97,7 @@ describe('ConnectedSummary', () => {
   it('offers the report with what is shared and redacted after a successful run', () => {
     const view = mount(<ConnectedSummary {...props} nextAction="share-report" />);
     const link = view.querySelector<HTMLAnchorElement>('.connected-summary-next a')!;
-    expect(link.textContent?.trim()).toBe('Share');
+    expect(link.textContent?.trim()).toBe('Share report');
     expect(link.classList.contains('btn-outline-secondary')).toBe(true);
     expect(link.getAttribute('href')).toBe('/report/x');
     expect(view.querySelector('.connected-summary-next [role="tooltip"]')?.textContent).toMatch(/redacted/);

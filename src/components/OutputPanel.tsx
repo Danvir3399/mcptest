@@ -1,3 +1,4 @@
+import ActionIcon from './ActionIcon';
 import React, { useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { LogEntry, Space, SpaceCard, SelectedTool, ResourceTemplate } from '../types';
@@ -177,9 +178,9 @@ const OutputPanel: React.FC<OutputPanelProps> = (props) => {
                   onClick={handleShareResult}
                   title="Share result link"
                   disabled={shareStatus !== 'idle'}
-                  aria-label="Copy share link to clipboard"
+                  aria-label="Share result link"
                 >
-                  {shareStatus === 'success' ? <i className="bi bi-check-lg"></i> : <i className="bi bi-share"></i>}
+                  {shareStatus === 'success' ? <i className="bi bi-check-lg"></i> : <ActionIcon name="share" />} Share result
                 </button>
                 {shareStatus !== 'idle' && (
                   <div className="notification-tooltip" style={{right: 0}} aria-live="polite">

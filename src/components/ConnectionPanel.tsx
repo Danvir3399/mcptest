@@ -1,3 +1,4 @@
+import ActionIcon from './ActionIcon';
 import React, { useState, useEffect } from 'react';
 import type { ProtocolEra } from '@modelcontextprotocol/client';
 import ConnectionErrorCard from './ConnectionErrorCard';
@@ -190,7 +191,7 @@ const ConnectionPanel: React.FC<ConnectionPanelProps> = ({
                   title={oauthUserInfo ? "View detailed OAuth user info" : "View OAuth session info"}
                   aria-label={oauthUserInfo ? "View detailed OAuth user info" : "View OAuth session info"}
                 >
-                  <i className="bi bi-info-circle" aria-hidden="true"></i>
+                  <ActionIcon name="info" />
                 </button>
               </div>
             )}
@@ -199,11 +200,11 @@ const ConnectionPanel: React.FC<ConnectionPanelProps> = ({
                 type="button"
                 className="btn btn-sm btn-outline-secondary"
                 onClick={handleShareConnection}
-                title="Share connection link"
-                aria-label="Share connection link"
+                title="Share server link"
+                aria-label="Share server link"
                 disabled={shareStatus !== 'idle'}
               >
-                {shareStatus === 'success' ? <i className="bi bi-check-lg" aria-hidden="true"></i> : <i className="bi bi-share" aria-hidden="true"></i>} Share
+                {shareStatus === 'success' ? <i className="bi bi-check-lg" aria-hidden="true"></i> : <ActionIcon name="share" />} Share server
               </button>
               {shareStatus !== 'idle' && (
                 <div className="notification-tooltip" aria-live="polite">

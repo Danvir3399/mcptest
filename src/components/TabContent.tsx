@@ -1174,8 +1174,10 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
       {shareLinkNotice && <p role="status" className="small text-muted px-3">{shareLinkNotice}</p>}
 
       {tab.originalServerUrl && tab.originalServerUrl !== serverUrl && tab.serverUrl === serverUrl && (
-        <p className="small text-muted px-3">
-          Entered URL: <code>{tab.originalServerUrl}</code>. Discovered endpoint: <code>{serverUrl}</code>.
+        <p className="connection-url-metadata">
+          <span>Entered: <code>{tab.originalServerUrl}</code></span>
+          <span className="connection-url-metadata-separator" aria-hidden="true">|</span>
+          <span>Discovered: <code>{serverUrl}</code></span>
         </p>
       )}
 

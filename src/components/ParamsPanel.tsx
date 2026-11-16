@@ -358,10 +358,10 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
         <h6>Recent Calls {selectedTool ? `(${selectedTool.name})` : selectedResourceTemplate ? `(${selectedResourceTemplate.name || selectedResourceTemplate.uriTemplate})` : ''}:</h6>
         <ul className="list-group list-group-flush" style={{ maxHeight: '150px', overflowY: 'auto' }}>
           {history.map((item, index) => (
-            <li key={index} className="list-group-item list-group-item-action p-2" onClick={() => onClick(item)} style={{ cursor: 'pointer', lineHeight: '1.3' }}>
+            <li key={index} className="list-group-item list-group-item-action p-3" onClick={() => onClick(item)} style={{ cursor: 'pointer', lineHeight: '1.3' }}>
               {Object.entries(item).map(([key, value]) => (
                 <div key={key} style={{ marginBottom: '2px' }}>
-                  <span style={{ fontSize: '0.75em', color: '#6c757d', display: 'block' }}>{key}:</span>
+                  <span style={{ fontSize: '0.75em', color: 'var(--text-muted)', display: 'block' }}>{key}:</span>
                   <span style={{ wordBreak: 'break-all', fontSize: '0.85em' }}>{JSON.stringify(value)}</span> {/* Stringify value in case it's not a string */}
                 </div>
               ))}
@@ -433,7 +433,6 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
           {/* Render History */}
           {selectedTool && (
             <div>
-              <div className="small text-muted">Tool: {selectedTool.name}</div>
               {renderHistoryList(toolHistory, handleToolHistoryClick)}
             </div>
           )}

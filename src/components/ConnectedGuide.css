@@ -621,7 +621,9 @@
   border-color: var(--danger-solid);
   background: color-mix(in srgb, var(--danger-solid) 8%, var(--card-bg));
 }
-.connected-summary-next .session-resilience { position: relative; margin: 0; }
+/* Anchor the wide diagnostics popover to the action area so it cannot extend behind the sidebar. */
+.connected-summary-next { position: relative; }
+.connected-summary-next .session-resilience { margin: 0; }
 .connected-summary-next .session-resilience > summary { list-style: none; width: auto; }
 .connected-summary-next .session-resilience > summary::-webkit-details-marker { display: none; }
 .connected-summary-next .session-resilience > div {

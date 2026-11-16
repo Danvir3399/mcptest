@@ -4,8 +4,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import SideNav from './SideNav';
-import { DASHBOARDS_NAVIGATION, LEARN_TRACKS, NAVIGATION_GROUPS, PRIMARY_NAVIGATION } from '../content/navigation';
-import { TRACK_NAVIGATION } from '../content/learnRegistry';
+import { DASHBOARDS_NAVIGATION, NAVIGATION_GROUPS, PRIMARY_NAVIGATION } from '../content/navigation';
 import { SIDEBAR_COLLAPSED_CLASS, SIDEBAR_COLLAPSED_KEY } from '../hooks/useSidebarCollapsed';
 import { readStylesheet } from '../styles/readStylesheet';
 
@@ -42,11 +41,6 @@ const renderStatic = (activeView: ActiveView, path: string, spaces?: Array<{ id:
   container.innerHTML = markup;
   return container;
 };
-
-const expandedTracks = (container: ParentNode) =>
-  Array.from(container.querySelectorAll<HTMLElement>('.content-track'))
-    .filter(track => track.querySelector('.sidenav-group-toggle')?.getAttribute('aria-expanded') === 'true')
-    .map(track => track.dataset.track);
 
 describe('SideNav dashboard rows', () => {
   it('keeps the card count beside a flexible, truncatable dashboard name', () => {
@@ -210,48 +204,15 @@ describe('SideNav information architecture', () => {
     expect(container.querySelector('.content-track-nav')).toBeNull();
   });
 
-  it('opens the Learn group with the current track on Learn and Docs pages', () => {
-    const container = renderStatic('learn', '/learn/mcp-clients-compared');
-    const toggle = container.querySelector<HTMLElement>('.content-track-nav .sidenav-section-toggle')!;
-    expect(toggle.getAttribute('aria-expanded')).toBe('true');
-    expect(container.querySelector<HTMLElement>(`#${toggle.getAttribute('aria-controls')}`)?.hidden).toBe(false);
-
-    expect(expandedTracks(container)).toEqual(['use']);
-    const useTrack = container.querySelector('.content-track[data-track="use"]')!;
-    const hrefs = Array.from(useTrack.querySelectorAll('.sidenav-sublist a'), link => link.getAttribute('href'));
-    expect(hrefs).toEqual(TRACK_NAVIGATION.find(track => track.id === 'use')!.items.map(item => item.path));
-    expect(useTrack.querySelector('a[href="/learn/mcp-clients-compared"]')?.classList).toContain('active');
-    expect(container.querySelector('a[href="/learn"]')?.classList).not.toContain('active');
-    // No app destination is active on a guide.
-    expect(container.querySelectorAll('.sidenav-group:not(.content-track-nav) a.active')).toHaveLength(0);
-
-    // Every article of every track is still in the DOM in reading order, just hidden when collapsed.
-    const allHrefs = Array.from(container.querySelectorAll('.sidenav-sublist a'), link => link.getAttribute('href'));
-    expect(allHrefs).toEqual(LEARN_TRACKS.flatMap(track => track.items.map(item => item.path)));
-    const preExisting = [
-      '/docs/what-is-mcp',
-      '/docs/remote-vs-local',
-      '/learn/should-you-build-mcp-server',
-      '/learn/connect-remote-mcp-server',
-      '/learn/mcp-clients-compared',
-      '/learn/oauth-for-mcp-explained',
-      '/docs/testing-guide',
-      '/learn/designing-production-mcp-server',
-      '/learn/mcp-server-trust-checklist',
-      '/docs/troubleshooting',
-    ];
-    expect(allHrefs.filter(href => preExisting.includes(href as string))).toEqual(preExisting);
-
-    // Dashboards stay available on content pages too; the workspace links lead back to the app.
-    expect(container.querySelector('.sidenav-dashboards')).not.toBeNull();
-    expect(container.querySelector('a[href="/"]')).not.toBeNull();
-    expect(container.querySelector('a[href="/report"]')).not.toBeNull();
-
-    const docs = renderStatic('docs', '/docs/troubleshooting');
-    expect(docs.querySelector('.sidenav-section-toggle')?.getAttribute('aria-expanded')).toBe('true');
-    expect(expandedTracks(docs)).toEqual(['reference']);
-    expect(docs.querySelector('a[href="/docs/troubleshooting"]')?.classList).toContain('active');
-    expect(expandedTracks(renderStatic('docs', '/docs/troubleshooting/'))).toEqual(['reference']);
+  it('keeps article navigation in the Guides hub on reading pages', () => {
+    for (const path of ['/guides/mcp-clients-compared', '/docs/troubleshooting']) {
+      const container = renderStatic('learn', path, []);
+      expect(container.querySelector('a[href="/guides"]')).not.toBeNull();
+      expect(container.querySelector('.content-track-nav, .guide-search')).toBeNull();
+      for (const label of container.querySelectorAll('.sidenav-label')) {
+        expect(label.textContent!.trim().split(/\s+/).length).toBeLessThanOrEqual(3);
+      }
+    }
   });
 
   it.each([
@@ -270,15 +231,15 @@ describe('SideNav information architecture', () => {
     expect(container.querySelectorAll('[aria-current="page"]')).toHaveLength(1);
   });
 
-  it('keeps legal links and collapse available in the app sidebar', () => {
+  it('leaves the sidebar bottom free of duplicate legal links and collapse controls', () => {
     const container = renderStatic('playground', '/');
-    expect(container.querySelector('.sidenav-footer')).not.toBeNull();
-    expect(container.querySelector('a[href="/docs/privacy-policy"]')).not.toBeNull();
-    expect(container.querySelector('.sidenav-collapse-toggle')).not.toBeNull();
+    expect(container.querySelector('.sidenav-footer')).toBeNull();
+    expect(container.querySelector('a[href="/docs/privacy-policy"]')).toBeNull();
+    expect(container.querySelector('.sidenav-collapse-toggle')).toBeNull();
   });
 });
 
-describe('SideNav collapsed desktop mode', () => {
+describe('SideNav permanent desktop navigation', () => {
   beforeAll(() => {
     (globalThis as typeof globalThis & { IS_REACT_ACT_ENVIRONMENT: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
   });
@@ -312,18 +273,15 @@ describe('SideNav collapsed desktop mode', () => {
     element?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
   });
 
-  it('restores the collapse preference and lets the user expand the sidebar', () => {
+  it('ignores the legacy collapse preference', () => {
     localStorage.setItem(SIDEBAR_COLLAPSED_KEY, 'true');
     mount();
-    expect(document.body.classList).toContain(SIDEBAR_COLLAPSED_CLASS);
-    click(host.querySelector('.sidenav-collapse-toggle'));
-    expect(localStorage.getItem(SIDEBAR_COLLAPSED_KEY)).toBe('false');
-    expect(host.querySelector('.app-sidenav')?.classList).not.toContain('app-sidenav--collapsed');
     expect(document.body.classList).not.toContain(SIDEBAR_COLLAPSED_CLASS);
-    expect(expandedTracks(host)).toEqual(['use']);
+    expect(host.querySelector('.sidenav-collapse-toggle')).toBeNull();
+    expect(host.querySelector('a[href="/guides"]')).not.toBeNull();
   });
 
-  it('toggles the dashboards group and the learn tracks with aria-expanded', () => {
+  it('toggles the saved dashboards group with aria-expanded', () => {
     mount({ activeView: 'learn' }, '/learn/mcp-clients-compared');
     const dashboardsToggle = host.querySelector<HTMLButtonElement>('.sidenav-dashboards .sidenav-group-toggle')!;
     const body = host.querySelector<HTMLElement>(`#${dashboardsToggle.getAttribute('aria-controls')}`)!;
@@ -335,15 +293,6 @@ describe('SideNav collapsed desktop mode', () => {
     click(dashboardsToggle);
     expect(body.hidden).toBe(false);
 
-    const understand = host.querySelector<HTMLButtonElement>('.content-track[data-track="understand"] .sidenav-group-toggle')!;
-    const list = host.querySelector<HTMLElement>(`#${understand.getAttribute('aria-controls')}`)!;
-    expect(list.hidden).toBe(true);
-    click(understand);
-    expect(understand.getAttribute('aria-expanded')).toBe('true');
-    expect(list.hidden).toBe(false);
-    expect(expandedTracks(host)).toEqual(['understand', 'use']);
-    click(understand);
-    expect(expandedTracks(host)).toEqual(['use']);
   });
 });
 

@@ -8,7 +8,6 @@ import {
   DASHBOARDS_NAVIGATION,
   NAVIGATION_GROUPS,
   PLAYGROUND_NAVIGATION,
-  isLearnOpenByDefault,
   isNavigationItemActive,
   navigationDescriptionId,
   navigationTooltip,
@@ -16,13 +15,7 @@ import {
   SIGN_IN_HINT_ID,
   type NavigationLink,
 } from '../content/navigation';
-import { useSidebarCollapsed } from '../hooks/useSidebarCollapsed';
-import { LEGAL_NAVIGATION } from '../content/navigationLinks';
 import { closeMobileDrawer, useMobileDrawer } from '../hooks/useMobileDrawer';
-import ContentTrackNav from './learn/ContentTrackNav';
-import { getLearnArticleFromPath } from '../content/learnRegistry';
-import GuideSearch from './learn/GuideSearch';
-import { isGuideSearchShortcutView } from './learn/guideSearchShortcut';
 
 type ActiveView = 'playground' | 'dashboards' | 'docs' | 'learn' | 'report' | 'catalog' | 'server-profile' | 'breaking-changes' | 'discovery' | 'oauth-check' | 'mcp-test-servers' | 'mcp-test-client' | 'keyword-landing';
 
@@ -68,26 +61,12 @@ const SideNav: React.FC<SideNavProps> = ({
   const navRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const isGuideArticle = Boolean(getLearnArticleFromPath(pathname));
   const { currentUser, loginWithGoogle, logout } = useAuth();
   const authEnabled = import.meta.env.VITE_FIREBASE_AUTH_ENABLED === 'true';
   useMobileDrawer(isMobile, navRef);
-  const [collapsed, toggleCollapsed] = useSidebarCollapsed(!isMobile);
   const idSuffix = isMobile ? 'mobile' : 'desktop';
   const dashboardsListId = `sidenav-dashboards-${idSuffix}`;
   const dashboardsExpanded = dashboardsOpen;
-  // Learn follows the page (open on Learn and Docs) until the visitor toggles
-  // it; the choice holds until the page kind changes.
-  const learnDefaultOpen = isLearnOpenByDefault(activeView);
-  const [learnOverride, setLearnOverride] = useState<{ base: boolean; open: boolean } | null>(null);
-  const learnOpen = learnOverride && learnOverride.base === learnDefaultOpen ? learnOverride.open : learnDefaultOpen;
-  const learnExpanded = learnOpen;
-  const learnToggleRef = useRef<HTMLButtonElement>(null);
-
-  const handleLearnToggle = () => {
-    setLearnOverride({ base: learnDefaultOpen, open: !learnOpen });
-  };
-
   useEffect(() => {
     if (focusedDashboardIndex !== null && dashboardListRef.current[focusedDashboardIndex]) {
       dashboardListRef.current[focusedDashboardIndex]?.focus();
@@ -297,7 +276,7 @@ const SideNav: React.FC<SideNavProps> = ({
         aria-current={isActive ? 'page' : undefined}
         aria-describedby={item.description ? navigationDescriptionId(item, idSuffix) : undefined}
         onClick={closeMobileDrawer}
-        title={navigationTooltip(item, collapsed)}
+        title={navigationTooltip(item, false)}
       >
         <i className={`bi ${item.icon} sidenav-icon`} aria-hidden="true"></i>
         <span className="sidenav-label">{item.label}</span>
@@ -322,7 +301,7 @@ const SideNav: React.FC<SideNavProps> = ({
             aria-controls={dashboardsListId}
             aria-describedby={navigationDescriptionId(DASHBOARDS_NAVIGATION, idSuffix)}
             onClick={handleDashboardsToggle}
-            title={navigationTooltip(DASHBOARDS_NAVIGATION, collapsed)}
+            title={navigationTooltip(DASHBOARDS_NAVIGATION, false)}
           >
             <i className={`bi ${DASHBOARDS_NAVIGATION.icon} sidenav-icon`} aria-hidden="true"></i>
             <span className="sidenav-label">{DASHBOARDS_NAVIGATION.label}</span>
@@ -450,28 +429,13 @@ const SideNav: React.FC<SideNavProps> = ({
         </section>
       ))}
 
-      {isGuideArticle ? <ContentTrackNav
-        onNavigate={closeMobileDrawer}
-        idPrefix={`sidenav-${idSuffix}`}
-        open={learnExpanded}
-        onToggleOpen={handleLearnToggle}
-        toggleRef={learnToggleRef}
-        search={(
-          <GuideSearch
-            idPrefix={`sidenav-${idSuffix}`}
-            shortcutEnabled={!isMobile && isGuideSearchShortcutView(activeView) && learnOpen}
-            railFallbackRef={learnToggleRef}
-            onNavigate={closeMobileDrawer}
-          />
-        )}
-      /> : (
+      {/* Keep article trees and search in the Guides hub. */}
         <section className="sidenav-group" aria-labelledby={`sidenav-learn-heading-${idSuffix}`}>
           <h2 id={`sidenav-learn-heading-${idSuffix}`} className="sidenav-section-label">Learn</h2>
           <Link to="/guides" className="nav-link sidenav-link" title="Guides" onClick={closeMobileDrawer} aria-current={pathname === '/guides' ? 'page' : undefined}>
             <i className="bi bi-book sidenav-icon" aria-hidden="true" /><span className="sidenav-label">Guides</span>
           </Link>
         </section>
-      )}
 
       {/* Theme and Auth Controls - Only show on mobile */}
       {isMobile && (
@@ -517,12 +481,6 @@ const SideNav: React.FC<SideNavProps> = ({
         </div>
       )}
 
-      <div className="sidenav-footer">
-        {!isMobile && <button type="button" className="btn btn-ghost sidenav-collapse-toggle" onClick={toggleCollapsed} aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'} aria-expanded={!collapsed}>
-          <span aria-hidden="true">{collapsed ? '»' : '«'}</span><span className="sidenav-label"> Collapse</span>
-        </button>}
-        <div className="sidenav-legal">{LEGAL_NAVIGATION.map(link => <Link key={link.href} to={link.href} className="sidenav-footer-link" onClick={closeMobileDrawer}>{link.label}</Link>)}</div>
-      </div>
     </nav>
   );
 };

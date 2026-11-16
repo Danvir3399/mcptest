@@ -5,7 +5,6 @@ import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import { prepareGuideSearch } from '../../content/guideSearch';
 import type { SearchIndex } from '../../content/searchIndex';
 import { MENU_OPEN_CLASS } from '../../hooks/useMobileDrawer';
-import { SIDEBAR_COLLAPSED_KEY } from '../../hooks/useSidebarCollapsed';
 import SideNav from '../SideNav';
 import GuideSearch from './GuideSearch';
 import LearnIndex from './LearnIndex';
@@ -294,20 +293,7 @@ describe('guide search placement', () => {
     path
   );
 
-  it('puts the field at the top of the article Learn group, in both the drawer and the desktop sidebar', () => {
-    mountSideNavs('learn', '/guides/connect-remote-mcp-server');
-    for (const scope of ['.mobile-sidebar', '.desktop-sidebar']) {
-      const group = container!.querySelector(`${scope} .content-track-nav`)!;
-      // The Learn heading folds the group; the search field opens its body.
-      const body = group.querySelector('h2')?.nextElementSibling;
-      expect(body?.classList).toContain('sidenav-learn-body');
-      expect(body?.firstElementChild?.classList).toContain('guide-search');
-    }
-    const ids = Array.from(container!.querySelectorAll('[id]'), element => element.id);
-    expect(new Set(ids).size).toBe(ids.length);
-  });
-
-  it.each([['playground', '/'], ['learn', '/guides']] as const)('keeps %s navigation to a Guides link without article search', (view, path) => {
+  it.each([['playground', '/'], ['learn', '/guides'], ['learn', '/guides/connect-remote-mcp-server']] as const)('keeps %s navigation to a Guides link without article search', (view, path) => {
     mountSideNavs(view, path);
     for (const scope of ['.mobile-sidebar', '.desktop-sidebar']) {
       const sidebar = container!.querySelector(scope)!;
@@ -315,36 +301,6 @@ describe('guide search placement', () => {
       expect(sidebar.querySelector('a[href="/guides"]')?.textContent).toBe('Guides');
     }
     expect(press(document.body, '/').defaultPrevented).toBe(false);
-  });
-
-  it('lets `/` reach the desktop sidebar field on article pages only', () => {
-    mountSideNavs('playground', '/');
-    expect(press(document.body, '/').defaultPrevented).toBe(false);
-    act(() => root!.unmount());
-    container!.remove();
-
-    mountSideNavs('learn', '/guides/connect-remote-mcp-server');
-    press(document.body, '/');
-    expect(document.activeElement).toBe(field(container!.querySelector('.desktop-sidebar')!));
-  });
-
-  it('focuses guide search despite a previously saved sidebar collapse preference', () => {
-    // Browsers refuse focus inside a `hidden` subtree; jsdom does not.
-    const focus = HTMLElement.prototype.focus;
-    vi.spyOn(HTMLElement.prototype, 'focus').mockImplementation(function (this: HTMLElement, options?: FocusOptions) {
-      if (!this.closest('[hidden]')) focus.call(this, options);
-    });
-    // Legacy preferences no longer hide the guide search.
-    localStorage.setItem(SIDEBAR_COLLAPSED_KEY, 'true');
-    mountSideNavs('learn', '/guides/connect-remote-mcp-server');
-    const desktop = container!.querySelector('.desktop-sidebar')!;
-    expect(desktop.querySelector('.sidenav-learn-body')?.hasAttribute('hidden')).toBe(false);
-
-    expect(press(document.body, '/').defaultPrevented).toBe(true);
-
-    expect(desktop.querySelector('.app-sidenav')?.classList).not.toContain('app-sidenav--collapsed');
-    expect(desktop.querySelector('.sidenav-learn-body')?.hasAttribute('hidden')).toBe(false);
-    expect(document.activeElement).toBe(field(desktop));
   });
 
   it('puts a page-sized field at the top of the /learn index', () => {

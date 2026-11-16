@@ -63,12 +63,10 @@ const {
   DASHBOARDS_NAVIGATION,
   FOOTER_NAVIGATION,
   HEADER_COPY,
-  LEARN_HUB_NAVIGATION,
   LEGAL_NAVIGATION,
   NAVIGATION_GROUPS,
   PLAYGROUND_NAVIGATION,
   buildLearnTrackNavigation,
-  isLearnOpenByDefault,
   isNavigationItemActive,
   navigationDescriptionId,
   navigationTooltip,
@@ -1120,35 +1118,9 @@ function renderHeaderFallback({ authEnabled }) {
   ].join('\n');
 }
 
-/** Views on which the guide search takes the `/` shortcut (components/learn/guideSearchShortcut.ts). */
-const GUIDE_SEARCH_SHORTCUT_VIEWS = ['learn', 'docs'];
-
-/** ContentTrackNav's LEARN_GROUP_ICON. */
-const LEARN_GROUP_ICON = 'bi-mortarboard';
-
-/**
- * Desktop sidebar as src/components/SideNav.tsx renders it for a visitor with
- * nothing saved and the sidebar expanded, on `view` at `pathname`: the
- * groups from src/content/navigationLinks.ts (a new visitor has no
- * dashboards, so Dashboards is a single link to the dashboards page), the
- * learn group (open on Learn and Docs views, with the track owning the page
- * expanded, as ContentTrackNav does; folded but present elsewhere, so every
- * guide link stays in the HTML). App pages show only the Guides hub link.
- */
-function renderSideNavFallback({ learnTracks, versionInfo, year, view = 'playground', pathname = '/' }) {
+/** Desktop app/hub navigation, matching SideNav before hydration. */
+function renderSideNavFallback({ view = 'playground' }) {
   const idSuffix = 'desktop';
-  const requestedPath = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
-  const currentPath = requestedPath.startsWith('/guides/')
-    ? learnTracks.flatMap(track => track.items).find(item => item.slug === requestedPath.slice('/guides/'.length))?.path || requestedPath
-    : requestedPath;
-  const currentTrack = learnTracks.find(track => track.items.some(item => item.path === currentPath));
-  const learnOpen = isLearnOpenByDefault(view);
-  const shortcut = GUIDE_SEARCH_SHORTCUT_VIEWS.includes(view) && learnOpen;
-  // NavLink: `active` and aria-current on an exact match.
-  const navLinkState = (path, className) => (path === currentPath
-    ? { className: `${className} active`, extra: ' aria-current="page"' }
-    : { className, extra: '' });
-  const learnPrefix = `sidenav-${idSuffix}`;
   const sidenavLink = (item, className, extra = '') => (
     `<a href="${escapeHtml(item.path)}" class="${className}"${extra}><i class="bi ${escapeHtml(item.icon)} sidenav-icon" aria-hidden="true"></i><span class="sidenav-label">${escapeHtml(item.label)}</span></a>`
   );
@@ -1175,35 +1147,7 @@ function renderSideNavFallback({ learnTracks, versionInfo, year, view = 'playgro
       '    </ul>',
       '  </section>',
     ]),
-    ...(Boolean(currentTrack) ? [
-    `  <section class="sidenav-group content-track-nav" aria-labelledby="${learnPrefix}-learn-heading">`,
-    `    <h2 class="sidenav-section-heading"><button type="button" id="${learnPrefix}-learn-heading" class="nav-link sidenav-link sidenav-group-toggle sidenav-section-toggle" aria-expanded="${learnOpen}" aria-controls="${learnPrefix}-learn-body"><i class="bi ${LEARN_GROUP_ICON} sidenav-icon" aria-hidden="true"></i><span class="sidenav-label">Learn</span><i class="bi bi-chevron-right sidenav-chevron" aria-hidden="true"></i></button></h2>`,
-    `    <div id="${learnPrefix}-learn-body" class="sidenav-learn-body"${learnOpen ? '' : ' hidden'}>`,
-    // The guide search field, inert until React mounts, so the tracks below it do not shift.
-    `    <div class="guide-search guide-search--sidebar" role="search" aria-label="Guides"><div class="guide-search-field"><i class="bi bi-search guide-search-icon" aria-hidden="true"></i><input type="search" class="guide-search-input" placeholder="Search guides" aria-label="Search guides"${shortcut ? ' aria-keyshortcuts="/"' : ''} role="combobox" aria-expanded="false" aria-controls="${learnPrefix}-guide-search-results" aria-autocomplete="list" autocomplete="off" spellcheck="false">${shortcut ? '<kbd class="guide-search-shortcut" aria-hidden="true">/</kbd>' : ''}</div><p class="guide-search-status visually-hidden" role="status" aria-live="polite"></p><div id="${learnPrefix}-guide-search-results" class="guide-search-results" role="listbox" aria-label="Guide search results" hidden></div></div>`,
-    '    <ul class="sidenav-list">',
-    (() => {
-      const hub = navLinkState(LEARN_HUB_NAVIGATION.path, 'nav-link sidenav-link');
-      return `      <li class="nav-item">${sidenavLink(LEARN_HUB_NAVIGATION, hub.className, hub.extra)}</li>`;
-    })(),
-    ...learnTracks.map(track => {
-      const current = track === currentTrack;
-      return [
-        `      <li class="nav-item content-track" data-track="${escapeHtml(track.id)}">`,
-        `<button type="button" class="nav-link sidenav-link sidenav-group-toggle content-track-label${current ? ' is-current' : ''}" aria-expanded="${current}" aria-controls="${learnPrefix}-track-${escapeHtml(track.id)}"><i class="bi ${escapeHtml(track.icon)} sidenav-icon" aria-hidden="true"></i><span class="sidenav-label">${escapeHtml(track.label)}</span><i class="bi bi-chevron-right sidenav-chevron" aria-hidden="true"></i></button>`,
-        `<ul id="${learnPrefix}-track-${escapeHtml(track.id)}" class="sidenav-list sidenav-sublist" aria-label="${escapeHtml(track.label)} guides"${current ? '' : ' hidden'}>`,
-        ...track.items.map(item => {
-          const link = navLinkState(item.path, 'nav-link sidenav-link sidenav-sublink');
-          return `<li class="nav-item"><a href="${escapeHtml(item.path)}" class="${link.className}"${link.extra}>${escapeHtml(item.navTitle)}</a></li>`;
-        }),
-        '</ul></li>',
-      ].join('');
-    }),
-    '    </ul>',
-    '    </div>',
-    '  </section>',
-    ] : ['<section class="sidenav-group" aria-labelledby="sidenav-learn-heading-desktop"><h2 id="sidenav-learn-heading-desktop" class="sidenav-section-label">Learn</h2><a href="/guides" class="nav-link sidenav-link" title="Guides"><i class="bi bi-book sidenav-icon" aria-hidden="true"></i><span class="sidenav-label">Guides</span></a></section>']),
-    `<div class="sidenav-footer"><button type="button" class="btn btn-ghost sidenav-collapse-toggle" aria-label="Collapse sidebar" aria-expanded="true"><span aria-hidden="true">«</span><span class="sidenav-label"> Collapse</span></button><div class="sidenav-legal">${LEGAL_NAVIGATION.map(link => `<a class="sidenav-footer-link" href="${link.href}">${link.label}</a>`).join('')}</div></div>`,
+    '<section class="sidenav-group" aria-labelledby="sidenav-learn-heading-desktop"><h2 id="sidenav-learn-heading-desktop" class="sidenav-section-label">Learn</h2><a href="/guides" class="nav-link sidenav-link" title="Guides"><i class="bi bi-book sidenav-icon" aria-hidden="true"></i><span class="sidenav-label">Guides</span></a></section>',
     '</nav>',
   ].join('\n');
 }

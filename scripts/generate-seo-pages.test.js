@@ -1034,7 +1034,7 @@ describe('content pages in the app shell (issue #405)', () => {
     }
   });
 
-  it('puts a guide in the header and sidebar, mounted on first input, with its track open', () => {
+  it('renders a guide with hub-only sidebar navigation before hydration', () => {
     const article = articles.find(item => item.slug === 'mcp-clients-compared');
     const root = rootOf(renderLearnArticleHtml(indexHtml, article, articles, learnIndex, { shell, pageHtml: '<div class="reading-shell">guide</div>' }));
     const app = root.querySelector(':scope > .app-shell.seo-shell-fallback');
@@ -1049,20 +1049,9 @@ describe('content pages in the app shell (issue #405)', () => {
     expect(app.querySelector('.main-content > .view-panel').getAttribute('style')).toBe('min-height: 100%;');
     expect(app.querySelector('.main-content > .view-panel').innerHTML.trim()).toBe('<div class="reading-shell">guide</div>');
 
-    // ContentTrackNav: the owning track is expanded and the guide is the current link.
-    const track = learnTracks.find(item => item.items.some(entry => entry.path === article.path));
-    const toggle = app.querySelector(`.content-track[data-track="${track.id}"] > button`);
-    expect(toggle.classList.contains('is-current')).toBe(true);
-    expect(toggle.getAttribute('aria-expanded')).toBe('true');
-    expect(app.querySelector(`#${toggle.getAttribute('aria-controls')}`).hasAttribute('hidden')).toBe(false);
-    const current = app.querySelector('.sidenav-sublink[aria-current="page"]');
-    expect(current.getAttribute('href')).toBe(article.path);
-    expect(current.classList.contains('active')).toBe(true);
-    expect(app.querySelectorAll('.content-track > button[aria-expanded="true"]')).toHaveLength(1);
-    // No primary destination is active on a guide; the guide search takes `/`.
-    expect(app.querySelectorAll('.sidenav-group:first-child a.nav-link.active')).toHaveLength(0);
-    expect(app.querySelector('.guide-search-input').getAttribute('aria-keyshortcuts')).toBe('/');
-    expect(app.querySelector('.guide-search-field kbd.guide-search-shortcut').textContent).toBe('/');
+    expect(app.querySelector('.desktop-sidebar a[href="/guides"]')).not.toBeNull();
+    expect(app.querySelector('.content-track-nav, .sidenav-footer, .sidenav-collapse-toggle')).toBeNull();
+
   });
 
   it('logs documentation articles under the docs page view title', () => {

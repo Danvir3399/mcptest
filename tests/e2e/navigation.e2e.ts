@@ -3,7 +3,7 @@ import { expect, test } from './fixtures';
 const sidebar = '#app-sidenav-desktop';
 
 test.describe('sidebar navigation', () => {
-  test('groups the destinations, folds Learn on app pages and reaches every entry by keyboard', async ({ page }) => {
+  test('groups hub destinations and reaches every entry by keyboard', async ({ page }) => {
     // Wait for the app to replace the static shell, so the mount does not
     // interrupt the keyboard walk below.
     await page.goto('/tools/discovery');
@@ -11,78 +11,49 @@ test.describe('sidebar navigation', () => {
     const nav = page.locator(sidebar);
     await expect(nav.getByRole('link', { name: 'Discovery checker' })).toHaveAttribute('aria-current', 'page');
 
-    await expect(nav.locator('.sidenav-section-label')).toHaveText(['Workspace', 'Checks', 'Saved work']);
+    await expect(nav.locator('.sidenav-section-label')).toHaveText(['Workspace', 'Checks', 'Saved work', 'Learn']);
     await expect(nav.getByRole('region', { name: 'Checks' }).getByRole('link'))
       .toHaveText(['Breaking changes', 'OAuth checker', 'Discovery checker']);
     await expect(nav.getByRole('region', { name: 'Saved work' }).getByRole('link')).toHaveText(['Reports', 'Dashboards']);
     await expect(nav.getByRole('link', { name: 'OAuth checker' })).toHaveAccessibleDescription(/OAuth authorization step by step/);
 
-    const learn = nav.getByRole('button', { name: 'Learn' });
-    await expect(learn).toHaveAttribute('aria-expanded', 'false');
-    await expect(nav.getByRole('link', { name: 'Guides' })).toBeHidden();
-    // Folded links stay in the document for crawlers.
-    await expect(nav.locator('.sidenav-learn-body a[href="/learn"]')).toHaveCount(1);
+    await expect(nav.getByRole('link', { name: 'Guides' })).toBeVisible();
 
-    // Keyboard: Tab walks the entries in order, then Enter opens Learn.
     await nav.getByRole('link', { name: 'Playground', exact: true }).focus();
-    const order = ['Catalog', 'Breaking changes', 'OAuth checker', 'Discovery checker', 'Reports', 'Dashboards', 'Learn'];
+    const order = ['Catalog', 'Breaking changes', 'OAuth checker', 'Discovery checker', 'Reports', 'Dashboards', 'Guides'];
     for (const name of order) {
       await page.keyboard.press('Tab');
       await expect(page.locator(':focus .sidenav-label')).toHaveText(name);
     }
     await page.keyboard.press('Enter');
-    await expect(learn).toHaveAttribute('aria-expanded', 'true');
-    await page.keyboard.press('Tab');
-    await expect(page.locator(':focus')).toHaveAttribute('aria-label', 'Search guides');
+    await expect(page).toHaveURL(/\/guides$/);
   });
 
-  test('opens Learn with the current track on a guide', async ({ page }) => {
-    await page.goto('/learn/mcp-clients-compared');
+  test('keeps article trees and search out of the static and mounted sidebar', async ({ page }) => {
+    await page.goto('/guides/mcp-clients-compared');
     const nav = page.locator(sidebar);
-    await expect(nav.getByRole('button', { name: 'Learn' })).toHaveAttribute('aria-expanded', 'true');
-    await expect(nav.locator('.content-track[data-track="use"] > button')).toHaveAttribute('aria-expanded', 'true');
-    await expect(nav.locator('a[href="/learn/mcp-clients-compared"]')).toHaveAttribute('aria-current', 'page');
-  });
-
-  test('`/` on a guide focuses the guide search', async ({ page }) => {
-    await page.goto('/learn/mcp-clients-compared');
-    // Exercise the mounted shortcut; the next test covers the static shell.
+    await expect(nav.getByRole('link', { name: 'Guides' })).toBeVisible();
+    await expect(nav.locator('.content-track-nav, .guide-search, .sidenav-footer')).toHaveCount(0);
     await page.keyboard.press('Shift');
     await expect(page.locator('.seo-shell-fallback')).toHaveCount(0);
-    const nav = page.locator(sidebar);
-    await expect(nav.locator('.sidenav-collapse-toggle')).toHaveCount(0);
-
-    await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
-    await page.keyboard.press('/');
-
-    await expect(nav).not.toHaveClass(/app-sidenav--collapsed/);
-    await expect(nav.getByRole('button', { name: 'Learn' })).toHaveAttribute('aria-expanded', 'true');
-    await expect(nav.getByRole('combobox', { name: 'Search guides' })).toBeFocused();
+    await expect(nav.getByRole('link', { name: 'Guides' })).toBeVisible();
+    await expect(nav.locator('.content-track-nav, .guide-search, .sidenav-footer')).toHaveCount(0);
   });
 
-  test('`/` focuses search on the static guide page before the app mounts', async ({ page }) => {
-    // Hold the app so the click and the key reach the static page's handlers.
-    let release!: () => void;
-    const gate = new Promise<void>(resolve => { release = resolve; });
-    await page.route('**/assets/bootstrapApp-*.js', async route => {
-      await gate;
-      await route.continue();
-    });
-    await page.goto('/learn/mcp-clients-compared');
-    const nav = page.locator(sidebar);
-    await expect(nav.locator('.sidenav-collapse-toggle')).toHaveCount(0);
-    await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
-    await page.keyboard.press('/');
-
-    await expect(nav).not.toHaveClass(/app-sidenav--collapsed/);
-    await expect(nav.getByRole('button', { name: 'Learn' })).toHaveAttribute('aria-expanded', 'true');
-    await expect(nav.getByRole('combobox', { name: 'Search guides' })).toBeFocused();
-
-    // The app mounts over it with the same state.
-    release();
-    await expect(page.locator('.seo-shell-fallback')).toHaveCount(0);
-    await expect(nav).not.toHaveClass(/app-sidenav--collapsed/);
-    await expect(nav.getByRole('combobox', { name: 'Search guides' })).toBeFocused();
+  test('docks a slim sidebar and switches to the drawer below 1180px', async ({ page }) => {
+    await page.goto('/tools/discovery');
+    for (const width of [1920, 1440, 1280, 1180]) {
+      await page.setViewportSize({ width, height: 900 });
+      const bounds = await page.locator('.desktop-sidebar').boundingBox();
+      expect(bounds?.x).toBe(0);
+      expect(bounds?.width).toBe(208);
+    }
+    await page.setViewportSize({ width: 1100, height: 900 });
+    await expect(page.locator('.desktop-sidebar')).toBeHidden();
+    await page.getByRole('button', { name: 'Toggle navigation menu' }).click();
+    await expect(page.getByRole('dialog', { name: 'Navigation' })).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(page.locator('.mobile-sidebar')).toBeHidden();
   });
 
   test('ignores saved sidebar collapse preferences across reloads', async ({ page }) => {

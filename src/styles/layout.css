@@ -335,8 +335,8 @@
   overflow: hidden;
 }
 
-/* Responsive breakpoints */
-@media (max-width: 768px) {
+/* Switch to a drawer before the inspector becomes cramped. */
+@media (max-width: 1179.98px) {
   .mobile-menu-toggle {
     display: inline-flex !important;
     align-items: center;
@@ -411,7 +411,7 @@
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1180px) {
   .mobile-menu-toggle,
   .mobile-sidebar-overlay,
   .mobile-sidebar {
@@ -436,9 +436,9 @@
 
 /* --- Technical interface refresh --- */
 .app-shell {
-  /* Center the complete instrument, including its header, on wide displays. */
+  /* App chrome spans the viewport; only page content is centered. */
   width: 100%;
-  max-width: 1680px;
+  max-width: none;
   margin-inline: auto;
   isolation: isolate;
 }
@@ -497,8 +497,10 @@
 }
 
 .desktop-sidebar {
-  width: 240px;
-  height: 100%;
+  width: 208px;
+  flex-shrink: 0;
+  height: calc(100dvh - 4rem);
+  overflow-y: auto;
   padding: var(--space-3) 0 !important;
   border-right: 1px solid var(--border-color);
   background: var(--sidebar-bg);
@@ -569,7 +571,7 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 1179.98px) {
   .mobile-sidebar {
     left: 0;
     width: min(88vw, 310px);
@@ -864,7 +866,7 @@
   opacity: 0.75;
 }
 
-/* Home shares the boxed shell width and scrolls with the viewport. */
+/* Home scrolls with the viewport while navigation scrolls independently. */
 .app-shell--home {
   height: auto !important;
   min-height: 100vh;
@@ -876,11 +878,11 @@
 .app-shell--home .desktop-sidebar {
   position: sticky;
   top: 4rem;
-  height: calc(100vh - 4rem);
+  height: calc(100dvh - 4rem);
   flex-shrink: 0;
 }
-.app-shell--home .main-content > .view-panel { max-width: 100%; }
-.app-header { width: 100%; max-width: 1680px; margin-inline: auto; }
+.app-shell--home .main-content > .view-panel { max-width: 1280px; }
+.app-header { width: 100%; max-width: none; }
 .app-shell--home .main-content { --main-pad: 24px; }
 @media (max-width: 768px) { .main-content, .app-shell--home .main-content { --main-pad: var(--space-4); } }
 .app-shell--home .main-content > .view-panel {
@@ -899,23 +901,4 @@
 .desktop-sidebar > .app-sidenav { min-height: 0; }
 .desktop-sidebar > .app-sidenav > * { flex-shrink: 0; }
 
-.sidenav-collapse-toggle { width: 100%; text-align: left; margin-bottom: .5rem; }
-@media (min-width: 768px) {
-  .sidenav-collapsed .desktop-sidebar { width: 4rem; }
-  .sidenav-collapsed .desktop-sidebar .sidenav-label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
-  .sidenav-collapsed .desktop-sidebar .sidenav-section-toggle .sidenav-icon { display: inline-flex; }
-  .sidenav-collapsed .desktop-sidebar .sidenav-section-label,
-  .sidenav-collapsed .desktop-sidebar .sidenav-chevron,
-  .sidenav-collapsed .desktop-sidebar .sidenav-sublist,
-  .sidenav-collapsed .desktop-sidebar .sidenav-learn-body,
-  .sidenav-collapsed .desktop-sidebar .dashboard-list { display: none; }
-  .sidenav-collapsed .desktop-sidebar .sidenav-footer { padding-inline: .25rem; }
-  .sidenav-collapsed .desktop-sidebar .sidenav-legal { justify-content: center; font-size: var(--text-2xs); }
-}
+.app-sidenav .sidenav-label { white-space: nowrap; }

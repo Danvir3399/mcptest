@@ -5004,11 +5004,6 @@ pre.bg-light code {
   cursor: pointer;
   margin-bottom: var(--space-2);
 }
-body:has(.connection-console--connected) {
-  background-image: none;
-  background-color: var(--card-bg-secondary);
-}
-
 /* One underline navigation treatment for both workspace panels. */
 .request-panel .panel-view-tabs,
 .output-panel .panel-view-tabs {

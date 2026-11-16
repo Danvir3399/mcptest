@@ -217,15 +217,16 @@ describe('static first frame (header, sidebar, playground landing)', () => {
     // Enabled before a URL is typed; the app validates the replayed click.
     expect(shell.querySelector('.landing-connect button#connectBtn').disabled).toBe(false);
     expect(shell.querySelector('label[for="serverUrl"]').textContent).toBe('MCP endpoint URL');
-    expect(input.getAttribute('aria-describedby')).toBe('serverUrl-help');
-    expect(shell.querySelector('#serverUrl-help')).not.toBeNull();
+    // Like LandingHero, the initial form has no helper; validation adds error help after mount.
+    expect(input.getAttribute('aria-describedby')).toBeNull();
+    expect(shell.querySelector('#serverUrl-help')).toBeNull();
     expect(shell.querySelectorAll('[onclick], script')).toHaveLength(0);
     expect(Array.from(shell.querySelectorAll('.landing-quick-pick'), button => button.dataset.serverId))
       .toEqual(['mcptest-echo', ...selectLandingQuickPicks(getCatalogServers()).map(server => server.id)]);
-    // The one-click sample is the first preset, replayed on the app's button by id.
-    expect(shell.querySelector('#landingSampleBtn').dataset.serverId)
-      .toBe(selectLandingQuickPicks(getCatalogServers())[0].id);
-    expect(shell.querySelector('#landingSampleBtn').disabled).toBe(false);
+    // The echo quick pick is the one-click sample, replayed by server id after mount.
+    const sample = shell.querySelector('.landing-quick-pick[data-server-id="mcptest-echo"]');
+    expect(sample).not.toBeNull();
+    expect(sample.disabled).toBe(false);
   });
 
   it('shows the theme icon matching data-theme and nothing else', () => {

@@ -997,3 +997,26 @@ html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .
 
 
 .sidenav-collapse-toggle .sidenav-label { flex: 0 1 auto; }
+
+/* Home scrolls with the viewport; only the active instrument is boxed. */
+.app-shell--home {
+  max-width: none;
+  height: auto !important;
+  min-height: 100vh;
+}
+.app-shell--home .app-workspace,
+.app-shell--home .main-content {
+  overflow: visible !important;
+}
+.app-shell--home .desktop-sidebar {
+  position: sticky;
+  top: 4rem;
+  height: calc(100vh - 4rem);
+  flex-shrink: 0;
+}
+.app-shell--home .main-content > .view-panel { max-width: 1280px; }
+.app-header { width: 100%; max-width: 100%; }
+.app-shell--home .main-content { --main-pad: 24px; }
+.app-shell--home .main-content > .view-panel {
+  min-height: 0 !important;
+}

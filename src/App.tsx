@@ -1916,7 +1916,7 @@ function App() {
   }
 
   return (
-    <div className="app-shell container-fluid vh-100 d-flex flex-column p-0">
+    <div className={`app-shell container-fluid vh-100 d-flex flex-column p-0${activeView === 'playground' && !connectedTab ? ' app-shell--home' : ''}`}>
 
       {/* Mobile Sidebar Overlay */}
       <div 

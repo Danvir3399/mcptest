@@ -1344,8 +1344,8 @@ span.health-indicator.health-indicator-gray {
 }
 
 .connection-console .input-group::before {
-  content: 'Endpoint';
-  content: 'Endpoint' / '';
+  content: 'https://';
+  content: 'https://' / '';
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
@@ -5156,4 +5156,30 @@ pre.bg-light code {
   .idle-onboarding-layout .suggested-server-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+}
+
+/* Idle Home cards share the canvas gutter and a crisp input treatment. */
+.tab-content-panel > .connection-console:not(.connection-console--connected),
+.seo-returning-workspace > .connection-console:not(.connection-console--connected) {
+  margin: 0 0 var(--space-4) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+}
+.connection-console .input-group {
+  border: 1px solid #d1d5db;
+  background: var(--card-bg);
+  box-shadow: none;
+}
+.connection-console .input-group::before { border: 0; background: transparent; }
+.awaiting-connection-panel {
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background: var(--card-bg);
+  overflow: hidden;
+}
+.awaiting-connection-tabs { padding: var(--space-4) var(--space-4) 0; }
+.awaiting-connection-empty { margin-top: 0; border: 0; box-shadow: none; }
+.suggested-server-copy small { white-space: normal; overflow-wrap: anywhere; }
+@media (min-width: 768px) {
+  .idle-onboarding-layout .suggested-server-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

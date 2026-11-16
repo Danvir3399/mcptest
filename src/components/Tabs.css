@@ -50,18 +50,17 @@
   white-space: nowrap;
 }
 
-.playground-tab-strip--fade-start .playground-tabs,
+.playground-tab-strip--fade-start .playground-tabs {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 48px);
+  mask-image: linear-gradient(to right, transparent, #000 48px);
+}
 .playground-tab-strip--fade-end .playground-tabs {
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--tab-fade-start, 0px), #000 calc(100% - var(--tab-fade-end, 0px)), transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0, #000 var(--tab-fade-start, 0px), #000 calc(100% - var(--tab-fade-end, 0px)), transparent 100%);
+  -webkit-mask-image: linear-gradient(to left, transparent, #000 48px);
+  mask-image: linear-gradient(to left, transparent, #000 48px);
 }
-
-.playground-tab-strip--fade-start {
-  --tab-fade-start: 3rem;
-}
-
-.playground-tab-strip--fade-end {
-  --tab-fade-end: 3rem;
+.playground-tab-strip--fade-start.playground-tab-strip--fade-end .playground-tabs {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 48px, #000 calc(100% - 48px), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 48px, #000 calc(100% - 48px), transparent);
 }
 
 @media (max-width: 767.98px) {

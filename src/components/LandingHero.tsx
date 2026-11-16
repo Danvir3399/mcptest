@@ -24,16 +24,11 @@ import {
   LANDING_TRUST_POINTS,
 } from '../content/landingCopy';
 import {
-  LANDING_ADVANCED_HINT,
   LANDING_ADVANCED_LABEL,
   LANDING_ALTERNATIVES_LABEL,
   LANDING_CONNECT_LABEL,
-  LANDING_FIELD_HELP,
   LANDING_FIELD_LABEL,
   LANDING_FIELD_PLACEHOLDER,
-  LANDING_SAMPLE_LABEL,
-  LANDING_SAMPLE_NOTE_PREFIX,
-  LANDING_SAMPLE_NOTE_SUFFIX,
   getEndpointInputError,
 } from '../content/landingFirstRun';
 import type { KeywordLandingPage } from '../content/keywordLandingPages';
@@ -114,6 +109,7 @@ const HomeLandingContent: React.FC<{ catalogCount: number }> = ({ catalogCount }
     </section>
 
     <nav className="landing-paths" aria-label={LANDING_PATHS_LABEL}>
+      <h2 className="landing-section-title">{LANDING_PATHS_LABEL}</h2>
       <ul>
         {AUDIENCE_PATHS.map((path) => (
           <li key={path.to}>
@@ -187,11 +183,6 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
   const idPrefix = page ? `${page.key}-landing` : 'landing';
   const inputId = page ? `${page.key}-server-url` : 'serverUrl';
   const pageProps = page ? { page: page.key } : {};
-  // The first preset is the one-click sample: it connects through the same
-  // path as clicking that preset.
-  const sample = quickPicks[0];
-  const sampleEndpoint = sample ? getPreferredCatalogEndpoint(sample) : undefined;
-
   // Once per landing shown; a returning user is one with recent endpoints.
   useEffect(() => trackEvent('landing_view', {
     variant: showRecent ? 'returning' : 'new',
@@ -234,6 +225,7 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
           {advancedOpen ? (
             <div className="landing-advanced" id={`${idPrefix}-advanced-panel`}>
               {advancedOptions}
+              <button type="button" className="landing-advanced-toggle" aria-expanded={true} aria-controls={`${idPrefix}-advanced-panel`} onClick={() => setShowAdvanced(false)}>Simple connect ⌃</button>
             </div>
           ) : (
             <>
@@ -250,7 +242,7 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
                     spellCheck={false}
                     className="form-control landing-connect-input"
                     placeholder={LANDING_FIELD_PLACEHOLDER}
-                    aria-describedby={inputError ? `${inputId}-error ${inputId}-help` : `${inputId}-help`}
+                    aria-describedby={inputError ? `${inputId}-error` : undefined}
                     aria-invalid={inputError ? true : undefined}
                     value={serverUrl}
                     onChange={(event) => {
@@ -281,8 +273,44 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
                     {inputError}
                   </p>
                 )}
-                <p id={`${inputId}-help`} className="landing-field-help">{LANDING_FIELD_HELP}</p>
+
               </div>
+
+          {!advancedOptions && onOpenAdvancedOptions && (
+            <button
+              type="button"
+              className="landing-advanced-toggle"
+              aria-expanded={false}
+              onClick={() => {
+                trackEvent('advanced_options_open');
+                onOpenAdvancedOptions();
+              }}
+            >
+              <i className="bi bi-gear" aria-hidden="true"></i>
+              {LANDING_ADVANCED_LABEL}
+              <i className="bi bi-chevron-down" aria-hidden="true" />
+            </button>
+          )}
+
+          {advancedOptions && (
+            <button
+              type="button"
+              className="landing-advanced-toggle"
+              aria-expanded={advancedOpen}
+              aria-controls={advancedOpen ? `${idPrefix}-advanced-panel` : undefined}
+              onClick={() => {
+                if (!advancedOpen) trackEvent('advanced_options_open');
+                setShowAdvanced((open) => !open);
+              }}
+            >
+              <i className="bi bi-gear" aria-hidden="true"></i>
+              {advancedOpen ? 'Simple connect' : LANDING_ADVANCED_LABEL}
+              <span className="landing-advanced-hint">
+                {advancedOpen ? '⌃' : '⌄'}
+              </span>
+            </button>
+          )}
+
 
               {showRecent ? (
                 <div className="landing-quick-picks landing-recent">
@@ -323,26 +351,6 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
               ) : (
                 <div className="landing-quick-picks">
                   <span className="landing-quick-picks-label" id={`${idPrefix}-quick-picks-label`}>{LANDING_ALTERNATIVES_LABEL}</span>
-                  {sample && sampleEndpoint && (
-                    <div className="landing-sample">
-                      <button
-                        id={page ? undefined : 'landingSampleBtn'}
-                        type="button"
-                        className="btn landing-sample-button"
-                        data-server-id={sample.id}
-                        title={sampleEndpoint.url}
-                        aria-describedby={`${idPrefix}-sample-note`}
-                        disabled={isConnecting}
-                        onClick={() => connectPreset(sample, 'sample_test')}
-                      >
-                        <i className="bi bi-play-fill" aria-hidden="true"></i>
-                        {LANDING_SAMPLE_LABEL}
-                      </button>
-                      <span id={`${idPrefix}-sample-note`} className="landing-sample-note">
-                        {LANDING_SAMPLE_NOTE_PREFIX} {sample.name}{LANDING_SAMPLE_NOTE_SUFFIX}
-                      </span>
-                    </div>
-                  )}
                   <ul aria-labelledby={`${idPrefix}-quick-picks-label`}>
                     {/* mcptest's own public echo server first: no sign-in, always answers. */}
                     <li>
@@ -389,41 +397,6 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
                 </div>
               )}
             </>
-          )}
-
-          {!advancedOptions && onOpenAdvancedOptions && (
-            <button
-              type="button"
-              className="landing-advanced-toggle"
-              aria-expanded={false}
-              onClick={() => {
-                trackEvent('advanced_options_open');
-                onOpenAdvancedOptions();
-              }}
-            >
-              <i className="bi bi-gear" aria-hidden="true"></i>
-              {LANDING_ADVANCED_LABEL}
-              <span className="landing-advanced-hint">{LANDING_ADVANCED_HINT}</span>
-            </button>
-          )}
-
-          {advancedOptions && (
-            <button
-              type="button"
-              className="landing-advanced-toggle"
-              aria-expanded={advancedOpen}
-              aria-controls={advancedOpen ? `${idPrefix}-advanced-panel` : undefined}
-              onClick={() => {
-                if (!advancedOpen) trackEvent('advanced_options_open');
-                setShowAdvanced((open) => !open);
-              }}
-            >
-              <i className="bi bi-gear" aria-hidden="true"></i>
-              {advancedOpen ? 'Simple connect' : LANDING_ADVANCED_LABEL}
-              <span className="landing-advanced-hint">
-                {advancedOpen ? '' : LANDING_ADVANCED_HINT}
-              </span>
-            </button>
           )}
 
           <ul className="landing-trust" aria-label={LANDING_TRUST_LABEL}>

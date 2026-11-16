@@ -48,19 +48,6 @@
   text-wrap: balance;
 }
 
-/* The signature caret: a block cursor in the accent closes the headline, the
-   way a prompt waits for input. Decorative and static. */
-.landing-title::after {
-  content: '';
-  display: inline-block;
-  width: 0.42em;
-  height: 0.82em;
-  margin-left: 0.14em;
-  vertical-align: -0.06em;
-  border-radius: 2px;
-  background-color: var(--primary-color);
-}
-
 .landing-lede {
   margin: 0 0 2rem;
   overflow-wrap: break-word;
@@ -133,25 +120,7 @@
   box-shadow: var(--focus-ring);
 }
 
-.landing-connect::before {
-  content: 'MCP // HTTPS';
-  content: 'MCP // HTTPS' / '';
-  display: inline-flex;
-  flex: 0 0 auto;
-  align-items: center;
-  height: 2.5rem;
-  padding: 0 0.75rem;
-  border: 1px solid var(--hairline);
-  border-radius: 0;
-  background: color-mix(in srgb, var(--text-color) 4%, transparent);
-  color: var(--text-muted);
-  font-family: var(--font-family-mono);
-  font-size: var(--text-2xs);
-  font-weight: var(--weight-semibold);
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-  pointer-events: none;
-}
+.landing-connect::before { display: none; }
 
 .landing-connect-input.form-control {
   flex: 1 1 auto;
@@ -1052,4 +1021,18 @@ html[data-returning-visitor] .seo-returning-workspace { display: contents; }
 /* The endpoint field is transparent inside the glass bar. */
 .landing .landing-connect .landing-connect-input.form-control {
   background: transparent !important;
+}
+
+.landing { max-width: 64rem; }
+.landing-hero { grid-template-columns: minmax(0, 1fr); }
+.landing-connect { border: 1px solid #d1d5db; background: var(--card-bg); box-shadow: none; }
+.landing-paths > h2 { padding: 1rem; margin: 0; }
+.landing-coverage ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.landing-preview { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.landing-preview-caption, .landing-preview-server { grid-column: 1 / -1; }
+.landing-preview-section + .landing-preview-section { border-left: 1px solid var(--border-color); }
+.landing-preview-json { white-space: pre; overflow: auto; overflow-wrap: normal; word-break: normal; display: block; max-width: 100%; }
+@media (max-width: 767px) {
+  .landing-preview { grid-template-columns: minmax(0, 1fr); }
+  .landing-coverage ul { grid-template-columns: minmax(0, 1fr); }
 }

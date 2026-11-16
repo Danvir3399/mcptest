@@ -149,15 +149,15 @@ describe('landing hero', () => {
     const input = container.querySelector<HTMLInputElement>('#serverUrl')!;
 
     expect(container.querySelector<HTMLButtonElement>('#connectBtn')?.disabled).toBe(false);
-    expect(input.getAttribute('aria-describedby')).toBe('serverUrl-help');
+    expect(input.getAttribute('aria-describedby')).toBeNull();
     expect(container.querySelector('label[for="serverUrl"]')?.textContent).toBe('MCP endpoint URL');
-    expect(container.querySelector('#serverUrl-help')?.textContent).toContain('Nothing is installed');
+    expect(container.querySelector('#serverUrl-help')).toBeNull();
 
     act(() => input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true })));
     expect(onConnect).not.toHaveBeenCalled();
     expect(container.querySelector('#serverUrl-error')?.textContent).toContain('Enter the URL of an MCP server');
     expect(input.getAttribute('aria-invalid')).toBe('true');
-    expect(input.getAttribute('aria-describedby')).toBe('serverUrl-error serverUrl-help');
+    expect(input.getAttribute('aria-describedby')).toBe('serverUrl-error');
   });
 
   it.each([
@@ -204,22 +204,11 @@ describe('landing hero', () => {
     expect(input.hasAttribute('aria-invalid')).toBe(false);
   });
 
-  it('runs the sample test with one click through the first preset\'s connect path', () => {
-    const { container, onConnect } = renderLanding();
-    const [firstPick] = selectLandingQuickPicks(getCatalogServers());
-    const sample = container.querySelector<HTMLButtonElement>('#landingSampleBtn')!;
-
-    expect(sample.textContent).toBe('Run a sample test');
-    expect(container.querySelector('#landing-sample-note')?.textContent).toBe(`Connects to ${firstPick.name}, a public server with no sign-in`);
-    expect(container.querySelector('#landing-quick-picks-label')?.textContent).toBe('No server yet? Try one of these');
-
-    act(() => sample.dispatchEvent(new MouseEvent('click', { bubbles: true })));
-    const preset = container.querySelector<HTMLButtonElement>(`.landing-quick-pick[data-server-id="${firstPick.id}"]`);
-    act(() => preset?.dispatchEvent(new MouseEvent('click', { bubbles: true })));
-
-    expect(onConnect).toHaveBeenCalledTimes(2);
-    expect(onConnect.mock.calls[0]).toEqual(onConnect.mock.calls[1]);
-    expect(onConnect.mock.calls[0][0]).toMatchObject({ endpoint: { url: firstPick.browserUrl }, protocolEra: firstPick.protocolEra });
+  it('offers one starter per server without a duplicate sample action', () => {
+    const { container } = renderLanding();
+    expect(container.querySelector('#landingSampleBtn')).toBeNull();
+    const ids = Array.from(container.querySelectorAll('.landing-quick-pick'), node => node.getAttribute('data-server-id'));
+    expect(new Set(ids).size).toBe(ids.length);
   });
 
   it('shows a static example result marked as an example', () => {
@@ -231,7 +220,7 @@ describe('landing hero', () => {
       'MCP 2026-07-28 · stateless', 'Auth: none required', 'CORS: browser allowed',
     ]);
     expect(preview?.querySelectorAll('.landing-preview-tool')).toHaveLength(3);
-    expect(preview?.querySelectorAll('.landing-preview-message')).toHaveLength(2);
+    expect(preview?.querySelectorAll('.landing-preview-json')).toHaveLength(2);
     expect(preview?.querySelector('img')).toBeNull();
   });
 
@@ -335,8 +324,8 @@ describe('landing hero for returning users', () => {
 
     act(() => toggle.dispatchEvent(new MouseEvent('click', { bubbles: true })));
 
-    expect(toggle.getAttribute('aria-expanded')).toBe('true');
-    expect(toggle.getAttribute('aria-controls')).toBe('landing-advanced-panel');
+    expect(container.querySelector('.landing-advanced-toggle')?.getAttribute('aria-expanded')).toBe('true');
+    expect(container.querySelector('.landing-advanced-toggle')?.getAttribute('aria-controls')).toBe('landing-advanced-panel');
     expect(container.querySelector('#landing-advanced-panel [data-testid="advanced"]')).not.toBeNull();
     expect(container.querySelector('.landing-connect')).toBeNull();
     expect(container.querySelector('#landing-title')).not.toBeNull();

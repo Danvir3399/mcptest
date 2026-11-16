@@ -28,7 +28,7 @@ export const LandingPreview: React.FC<{ idPrefix?: string }> = ({ idPrefix = 'la
       </ul>
     </div>
     <div className="landing-preview-section">
-      <p className="landing-preview-heading">{SAMPLE.counts}</p>
+      <p className="landing-preview-heading">Capabilities · {SAMPLE.counts}</p>
       <ul className="landing-preview-tools">
         {SAMPLE.tools.map((tool) => (
           <li key={tool.name}>
@@ -38,19 +38,13 @@ export const LandingPreview: React.FC<{ idPrefix?: string }> = ({ idPrefix = 'la
         ))}
       </ul>
     </div>
-    <div className="landing-preview-section">
-      <p className="landing-preview-heading">{SAMPLE.exchangeTitle}</p>
-      <ol className="landing-preview-wire">
-        {SAMPLE.exchange.map((message) => (
-          <li key={message.direction} className={`landing-preview-message landing-preview-message--${message.direction}`}>
-            <span className="landing-preview-direction">
-              <span aria-hidden="true">{message.direction === 'request' ? '→' : '←'}</span> {message.label}
-            </span>
-            <code className="landing-preview-json">{message.body}</code>
-          </li>
-        ))}
-      </ol>
-    </div>
+    {SAMPLE.exchange.map((message) => (
+      <div key={message.direction} className="landing-preview-section">
+        <p className="landing-preview-heading">{message.direction === 'request' ? 'Request' : 'Result'}</p>
+        <p className="landing-preview-direction">{message.label}</p>
+        <code className="landing-preview-json">{JSON.stringify(JSON.parse(message.body), null, 2)}</code>
+      </div>
+    ))}
   </figure>
 );
 

@@ -49,17 +49,12 @@ const {
   parseLandingText,
 } = require('../src/content/landingCopy.ts');
 const {
-  LANDING_ADVANCED_HINT,
   LANDING_ADVANCED_LABEL,
   LANDING_ALTERNATIVES_LABEL,
   LANDING_CONNECT_LABEL,
-  LANDING_FIELD_HELP,
   LANDING_FIELD_LABEL,
   LANDING_FIELD_PLACEHOLDER,
   LANDING_PREVIEW_SAMPLE,
-  LANDING_SAMPLE_LABEL,
-  LANDING_SAMPLE_NOTE_PREFIX,
-  LANDING_SAMPLE_NOTE_SUFFIX,
   NEW_TAB_LABEL,
   NEW_TAB_TOOLTIP,
 } = require('../src/content/landingFirstRun.ts');
@@ -965,18 +960,10 @@ const STRUCTURED_DATA_PATTERN = /[ \t]*<script id="server-structured-data" type=
 const LANDING_FALLBACK_PATTERN = /<div id="root">\s*<section class="landing seo-landing-fallback"[\s\S]*?<\/section>\s*<\/div>/;
 
 function renderQuickPicks(quickPicks) {
-  // The one-click sample is the first catalog pick; the list still offers
-  // mcptest's echo fixture when the catalog has none.
-  const [sample] = quickPicks;
+  // Each preset is a single one-click starter, including the echo fixture.
   return [
     '    <div class="landing-quick-picks">',
     `      <span class="landing-quick-picks-label" id="landing-quick-picks-label">${escapeHtml(LANDING_ALTERNATIVES_LABEL)}</span>`,
-    ...(sample ? [
-      '      <div class="landing-sample">',
-      `        <button id="landingSampleBtn" type="button" class="btn landing-sample-button" data-server-id="${escapeHtml(sample.id)}" title="${escapeHtml(getPreferredCatalogEndpoint(sample).url)}" aria-describedby="landing-sample-note"><i class="bi bi-play-fill" aria-hidden="true"></i>${escapeHtml(LANDING_SAMPLE_LABEL)}</button>`,
-      `        <span id="landing-sample-note" class="landing-sample-note">${escapeHtml(LANDING_SAMPLE_NOTE_PREFIX)} ${escapeHtml(sample.name)}${escapeHtml(LANDING_SAMPLE_NOTE_SUFFIX)}</span>`,
-      '      </div>',
-    ] : []),
     '      <ul aria-labelledby="landing-quick-picks-label">',
     // LandingHero offers mcptest's own echo fixture first, then the catalog picks.
     [
@@ -1007,19 +994,12 @@ function renderLandingPreview(sample = LANDING_PREVIEW_SAMPLE) {
     '      </ul>',
     '    </div>',
     '    <div class="landing-preview-section">',
-    `      <p class="landing-preview-heading">${escapeHtml(sample.counts)}</p>`,
+    `      <p class="landing-preview-heading">Capabilities · ${escapeHtml(sample.counts)}</p>`,
     '      <ul class="landing-preview-tools">',
     ...sample.tools.map(tool => `        <li><span class="landing-preview-tool">${escapeHtml(tool.name)}</span><span class="landing-preview-tool-description">${escapeHtml(tool.description)}</span></li>`),
     '      </ul>',
     '    </div>',
-    '    <div class="landing-preview-section">',
-    `      <p class="landing-preview-heading">${escapeHtml(sample.exchangeTitle)}</p>`,
-    '      <ol class="landing-preview-wire">',
-    ...sample.exchange.map(message => (
-      `        <li class="landing-preview-message landing-preview-message--${escapeHtml(message.direction)}"><span class="landing-preview-direction"><span aria-hidden="true">${message.direction === 'request' ? '&rarr;' : '&larr;'}</span> ${escapeHtml(message.label)}</span><code class="landing-preview-json">${escapeHtml(message.body)}</code></li>`
-    )),
-    '      </ol>',
-    '    </div>',
+    ...sample.exchange.map(message => `<div class="landing-preview-section"><p class="landing-preview-heading">${message.direction === 'request' ? 'Request' : 'Result'}</p><p class="landing-preview-direction">${escapeHtml(message.label)}</p><code class="landing-preview-json">${escapeHtml(JSON.stringify(JSON.parse(message.body), null, 2))}</code></div>`),
     '  </figure>',
   ].join('\n');
 }
@@ -1050,20 +1030,19 @@ function renderLandingFallback(catalogCount, quickPicks = [], { advancedToggle =
     '    <div class="landing-form">',
     `      <label for="serverUrl" class="landing-field-label">${escapeHtml(LANDING_FIELD_LABEL)}</label>`,
     '      <div class="landing-connect">',
-    `        <input id="serverUrl" type="text" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" class="form-control landing-connect-input" placeholder="${escapeHtml(LANDING_FIELD_PLACEHOLDER)}" aria-describedby="serverUrl-help" value="">`,
+    `        <input id="serverUrl" type="text" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" class="form-control landing-connect-input" placeholder="${escapeHtml(LANDING_FIELD_PLACEHOLDER)}" value="">`,
     `        <button id="connectBtn" type="button" class="btn btn-primary landing-connect-button">${escapeHtml(LANDING_CONNECT_LABEL)}</button>`,
     '      </div>',
-    `      <p id="serverUrl-help" class="landing-field-help">${escapeHtml(LANDING_FIELD_HELP)}</p>`,
     '    </div>',
+    // TabContent passes the connection panel as LandingHero's advancedOptions.
+    ...(advancedToggle
+      ? [`    <button type="button" class="landing-advanced-toggle" aria-expanded="false"><i class="bi bi-gear" aria-hidden="true"></i>${escapeHtml(LANDING_ADVANCED_LABEL)}<span class="landing-advanced-hint">⌄</span></button>`]
+      : []),
     ...renderQuickPicks(quickPicks),
     '    <div class="landing-quick-picks landing-recent" data-prerendered-recent>',
     '      <span class="landing-quick-picks-label" id="landing-recent-label">Recent</span><ul aria-labelledby="landing-recent-label"></ul>',
     '    </div>',
     '    <template data-recent-chip><li class="landing-recent-item"><button type="button" class="landing-quick-pick landing-recent-connect"><i class="bi bi-clock-history landing-recent-icon" aria-hidden="true"></i><span class="landing-recent-host"></span></button><button type="button" class="landing-recent-remove"><i class="bi bi-x-lg" aria-hidden="true"></i></button></li></template>', 
-    // TabContent passes the connection panel as LandingHero's advancedOptions.
-    ...(advancedToggle
-      ? [`    <button type="button" class="landing-advanced-toggle" aria-expanded="false"><i class="bi bi-gear" aria-hidden="true"></i>${escapeHtml(LANDING_ADVANCED_LABEL)}<span class="landing-advanced-hint">${escapeHtml(LANDING_ADVANCED_HINT)}</span></button>`]
-      : []),
     `    <ul class="landing-trust" aria-label="${escapeHtml(LANDING_TRUST_LABEL)}">`,
     ...LANDING_TRUST_POINTS.map(point => `      <li>${escapeHtml(point)}</li>`),
     '    </ul>',
@@ -1079,6 +1058,7 @@ function renderLandingFallback(catalogCount, quickPicks = [], { advancedToggle =
     '    </ol>',
     '  </section>',
     `  <nav class="landing-paths" aria-label="${escapeHtml(LANDING_PATHS_LABEL)}">`,
+    `    <h2 class="landing-section-title">${escapeHtml(LANDING_PATHS_LABEL)}</h2>`,
     '    <ul>',
     ...LANDING_AUDIENCE_PATHS.map(item => [
       `      <li><a href="${escapeHtml(item.to)}" class="landing-path">`,
@@ -1264,7 +1244,7 @@ function renderAppShell({
     .map(([name, value]) => (value === true ? ` ${name}` : ` ${name}="${escapeHtml(value)}"`))
     .join('');
   return [
-    `<div class="app-shell container-fluid vh-100 d-flex flex-column p-0 seo-shell-fallback"${attributeHtml}>`,
+    `<div class="app-shell container-fluid vh-100 d-flex flex-column p-0 seo-shell-fallback${pathname === '/' ? ' app-shell--home' : ''}"${attributeHtml}>`,
     '<style>',
     ":root[data-theme='dark'] .seo-shell-fallback .theme-toggle-icon.bi-moon-stars-fill,",
     ":root:not([data-theme='dark']) .seo-shell-fallback .theme-toggle-icon.bi-sun-fill { display: none; }",

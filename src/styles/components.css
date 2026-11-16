@@ -2533,7 +2533,8 @@ pre.bg-light code {
 
 .playground-workbench {
   display: grid;
-  grid-template-columns: minmax(230px, 0.72fr) minmax(300px, 0.92fr) minmax(390px, 1.36fr);
+  /* Only output receives surplus width; lists and forms stop growing. */
+  grid-template-columns: minmax(230px, min(300px, 22%)) minmax(300px, min(440px, 32%)) minmax(0, 1fr);
   gap: 0;
   width: 100%;
   min-height: 0;
@@ -2821,7 +2822,8 @@ pre.bg-light code {
 @media (max-width: 1199.98px) {
 
   .playground-workbench {
-    grid-template-columns: minmax(230px, 0.75fr) minmax(340px, 1.25fr);
+    grid-template-columns: minmax(230px, 300px) minmax(0, 480px);
+    justify-content: center;
     height: auto;
     min-height: 0;
   }
@@ -5062,7 +5064,7 @@ pre.bg-light code {
   margin-left: auto;
   padding: .375rem 0 !important;
 }
-.result-format-controls { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; flex-shrink: 0; padding: .5rem 1rem; background: var(--card-bg); border-bottom: 1px solid var(--border-color); }
+.result-format-controls { display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: .5rem; flex-shrink: 0; padding: .5rem 1rem; background: var(--card-bg); border-bottom: 1px solid var(--border-color); }
 .output-panel .result-action { display: inline-flex; align-items: center; gap: .375rem; }
 .result-content-summary { color: var(--text-muted); font-size: .75rem; }
 .result-format-controls:empty { display: none; }

@@ -436,6 +436,9 @@
 
 /* --- Technical interface refresh --- */
 .app-shell {
+  /* Center the complete instrument, including its header, on wide displays. */
+  max-width: 1680px;
+  margin-inline: auto;
   isolation: isolate;
 }
 
@@ -543,6 +546,18 @@
 .tab-content-panel,
 .playground-layout {
   min-width: 0;
+  max-width: 100%;
+}
+
+/* Reading and browsing views retain an ergonomic content width. */
+.main-content > .view-panel {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+/* Keep the inspector bands flush with the sidebar, including before hydration. */
+.main-content > .view-panel:has(.connection-console, .playground-tabs-wrapper) {
   max-width: 100%;
 }
 

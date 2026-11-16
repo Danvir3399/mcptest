@@ -2,6 +2,7 @@
 const { renderServerActions, renderServerNextSteps } = require('../src/utils/serverNextSteps.ts');
 
 const { redactCapabilityAuthValues } = require('../src/utils/capabilityInventory.ts');
+const { FOOTER_COLUMNS, HOME_GUIDE_COLUMNS } = require('../src/content/siteLinks.ts');
 const fs = require('fs');
 const path = require('path');
 const { getPreferredCatalogEndpoint } = require('../src/utils/clientSetup.ts');
@@ -456,14 +457,14 @@ function renderServerFallback(server) {
     ...(server.browserUrl && server.browserUrl !== server.validatedUrl
       ? [`      <div><dt>Browser-verified endpoint</dt><dd><code class="technical-string technical-string-url">${escapeHtml(server.browserUrl)}</code></dd></div>`]
       : []),
-    `      <div><dt>Browser access</dt><dd>${escapeHtml(server.browserAccess === 'direct' ? 'Direct browser connection verified' : server.browserAccess === 'proxy-required' ? 'Authenticated proxy required' : 'Not yet measured')}</dd></div>`,
+    `      <div><dt><a href="/guides/mcp-cors-headers-for-browser-clients">Browser access</a></dt><dd>${escapeHtml(server.browserAccess === 'direct' ? 'Direct browser connection verified' : server.browserAccess === 'proxy-required' ? 'Authenticated proxy required' : 'Not yet measured')}</dd></div>`,
     `      <div><dt>Declared MCP transport</dt><dd>${escapeHtml(transportLabel(server.declaredTransport))}</dd></div>`,
     `      <div><dt>Live-validated MCP transport</dt><dd>${escapeHtml(transportLabel(server.transport))} — ${escapeHtml(validationTransportNote(server))}</dd></div>`,
     `      <div><dt>Declared authentication</dt><dd>${escapeHtml(authenticationLabel(server.declaredAuthType))}</dd></div>`,
-    `      <div><dt>Detected authentication</dt><dd>${escapeHtml(detectedAuthenticationLabel(server))}</dd></div>`,
+    `      <div><dt>Detected authentication</dt><dd>${server.authType === 'oauth' ? `<a href="/guides/oauth-for-mcp-explained">${escapeHtml(detectedAuthenticationLabel(server))}</a>` : escapeHtml(detectedAuthenticationLabel(server))}</dd></div>`,
     ...alternativeAuthTypes,
     ...alternativeEndpoints,
-    `      <div><dt>Protocol lifecycle</dt><dd>${escapeHtml(protocolLabel(server.protocolEra, server.protocolVersion))}</dd></div>`,
+    `      <div><dt>Protocol lifecycle</dt><dd><a href="/guides/remote-vs-local">${escapeHtml(protocolLabel(server.protocolEra, server.protocolVersion))}</a></dd></div>`,
     ...requiredHeaders,
     ...authorizationServers,
     `      <div><dt>Category</dt><dd><a href="${escapeHtml(getCatalogCategoryPath(server.category))}">${escapeHtml(server.category)}</a></dd></div>`,
@@ -947,13 +948,13 @@ function renderLearnArticleHtml(indexHtml, article, articles, learnIndex = DEFAU
 /** As renderLearnArticleHtml: `options.pageHtml` is LearnIndex's markup, `options.shell` the app shell. */
 function renderLearnIndexHtml(indexHtml, learnIndex, articles, options = {}) {
   const page = options.pageHtml || renderLearnIndexFallback(learnIndex, articles);
-  return renderStaticPageHtml(indexHtml, '/learn', {
+  return renderStaticPageHtml(indexHtml, options.pathname || '/learn', {
     title: `${learnIndex.title} | mcptest.io`,
     description: learnIndex.description,
   }, {
     feed: true,
     fallbackHtml: options.shell
-      ? renderContentShell(page, { view: 'learn', pathname: '/learn', pageViewTitle: 'Learn MCP', shell: options.shell })
+      ? renderContentShell(page, { view: 'learn', pathname: options.pathname || '/learn', pageViewTitle: 'Learn MCP', shell: options.shell })
       : page,
   });
 }
@@ -1152,11 +1153,14 @@ const LEARN_GROUP_ICON = 'bi-mortarboard';
  * dashboards, so Dashboards is a single link to the dashboards page), the
  * learn group (open on Learn and Docs views, with the track owning the page
  * expanded, as ContentTrackNav does; folded but present elsewhere, so every
- * guide link stays in the HTML) and the footer.
+ * guide link stays in the HTML). App pages show only the Guides hub link.
  */
 function renderSideNavFallback({ learnTracks, versionInfo, year, view = 'playground', pathname = '/' }) {
   const idSuffix = 'desktop';
-  const currentPath = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
+  const requestedPath = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
+  const currentPath = requestedPath.startsWith('/guides/')
+    ? learnTracks.flatMap(track => track.items).find(item => item.slug === requestedPath.slice('/guides/'.length))?.path || requestedPath
+    : requestedPath;
   const currentTrack = learnTracks.find(track => track.items.some(item => item.path === currentPath));
   const learnOpen = isLearnOpenByDefault(view);
   const shortcut = GUIDE_SEARCH_SHORTCUT_VIEWS.includes(view) && learnOpen;
@@ -1165,8 +1169,6 @@ function renderSideNavFallback({ learnTracks, versionInfo, year, view = 'playgro
     ? { className: `${className} active`, extra: ' aria-current="page"' }
     : { className, extra: '' });
   const learnPrefix = `sidenav-${idSuffix}`;
-  const commitDate = new Date(versionInfo.commitDate);
-  const updated = `${commitDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} ${commitDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
   const sidenavLink = (item, className, extra = '') => (
     `<a href="${escapeHtml(item.path)}" class="${className}"${extra}><i class="bi ${escapeHtml(item.icon)} sidenav-icon" aria-hidden="true"></i><span class="sidenav-label">${escapeHtml(item.label)}</span></a>`
   );
@@ -1193,6 +1195,7 @@ function renderSideNavFallback({ learnTracks, versionInfo, year, view = 'playgro
       '    </ul>',
       '  </section>',
     ]),
+    ...(Boolean(currentTrack) ? [
     `  <section class="sidenav-group content-track-nav" aria-labelledby="${learnPrefix}-learn-heading">`,
     `    <h2 class="sidenav-section-heading"><button type="button" id="${learnPrefix}-learn-heading" class="nav-link sidenav-link sidenav-group-toggle sidenav-section-toggle" aria-expanded="${learnOpen}" aria-controls="${learnPrefix}-learn-body"><i class="bi ${LEARN_GROUP_ICON} sidenav-icon" aria-hidden="true"></i><span class="sidenav-label">Learn</span><i class="bi bi-chevron-right sidenav-chevron" aria-hidden="true"></i></button></h2>`,
     `    <div id="${learnPrefix}-learn-body" class="sidenav-learn-body"${learnOpen ? '' : ' hidden'}>`,
@@ -1219,21 +1222,8 @@ function renderSideNavFallback({ learnTracks, versionInfo, year, view = 'playgro
     '    </ul>',
     '    </div>',
     '  </section>',
-    '  <div class="sidenav-footer">',
-    '    <details class="sidenav-resources"><summary>Resources</summary>',
-    '    <ul class="sidenav-footer-links" aria-label="Project links">',
-    ...FOOTER_NAVIGATION.map(link => (link.external
-      ? `      <li><a href="${escapeHtml(link.href)}" target="_blank" rel="noopener noreferrer" class="sidenav-footer-link">${escapeHtml(link.label)}<span class="visually-hidden"> (opens in a new tab)</span></a></li>`
-      : `      <li><a href="${escapeHtml(link.href)}" class="sidenav-footer-link">${escapeHtml(link.label)}</a></li>`
-    )),
-    '    </ul>',
-    '    </details>',
-    '    <div class="sidenav-legal">',
-    ...LEGAL_NAVIGATION.map(link => (
-      `      <a href="${escapeHtml(link.href)}" class="sidenav-footer-link">${escapeHtml(link.label)}</a>`
-    )),
-    '    </div>',
-    `    <p class="sidenav-build"><span>&copy; ${year} Unchained Development OÜ</span><span>Updated <a href="${escapeHtml(getGithubCommitUrl(versionInfo.commitHash))}" target="_blank" rel="noopener noreferrer" class="sidenav-footer-link"><time datetime="${escapeHtml(versionInfo.commitDate)}">${escapeHtml(updated)}</time></a></span></p>`,
+    ] : ['<section class="sidenav-group" aria-labelledby="sidenav-learn-heading-desktop"><h2 id="sidenav-learn-heading-desktop" class="sidenav-section-label">Learn</h2><a href="/guides" class="nav-link sidenav-link" title="Guides"><i class="bi bi-book sidenav-icon" aria-hidden="true"></i><span class="sidenav-label">Guides</span></a></section>']),
+    '  <div class="mt-auto">',
     `    <button type="button" class="sidenav-collapse-toggle" aria-expanded="true" aria-controls="app-sidenav-${idSuffix}" aria-label="Collapse sidebar" title="Collapse sidebar"><i class="bi bi-chevron-double-left" aria-hidden="true"></i><span class="sidenav-label">Collapse</span></button>`,
     '  </div>',
     '</nav>',
@@ -1246,11 +1236,23 @@ function renderSideNavFallback({ learnTracks, versionInfo, year, view = 'playgro
  * view's panel content). The mobile drawer is omitted; it is off-screen until
  * opened. `attributes` go on the shell element (src/staticPage reads them).
  */
+function renderLinkColumns(columns, heading) {
+  return `<div class="site-link-columns">${columns.map(column => `<section><${heading}>${escapeHtml(column.title)}</${heading}><ul>${column.links.map(([title, slug, summary]) => `<li><a href="/guides/${escapeHtml(slug)}">${escapeHtml(title)}</a>${summary ? `<p>${escapeHtml(summary)}</p>` : ''}</li>`).join('')}</ul></section>`).join('')}</div>`;
+}
+
+function renderSiteFooter() {
+  return `<footer class="site-footer" aria-label="Site resources">${renderLinkColumns(FOOTER_COLUMNS, 'h2')}<div class="site-footer-meta"><nav aria-label="Project and legal links">${[...FOOTER_NAVIGATION, ...LEGAL_NAVIGATION].map(link => `<a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a>`).join('')}</nav><small>© ${new Date().getFullYear()} Unchained Development OÜ</small></div></footer>`;
+}
+
+function renderHomeGuides() {
+  return `<section class="home-guides" aria-labelledby="home-guides-title"><header><h2 id="home-guides-title">Guides &amp; Documentation</h2><a href="/guides">Browse all guides →</a></header>${renderLinkColumns(HOME_GUIDE_COLUMNS, 'h3')}</section>`;
+}
+
 function renderAppShell({
   content,
   view = 'playground',
   pathname = '/',
-  panelStyle = 'height: 100%;',
+  panelStyle = 'min-height: 100%;',
   attributes = {},
   learnTracks = [],
   authEnabled = false,
@@ -1276,6 +1278,8 @@ function renderAppShell({
     panelStyle ? `<div class="view-panel" style="${escapeHtml(panelStyle)}">` : '<div class="view-panel">',
     content,
     '</div>',
+    pathname === '/' ? renderHomeGuides() : '',
+    renderSiteFooter(),
     '</div>',
     '</main>',
     '</div>',
@@ -1327,7 +1331,7 @@ function renderShellFallback({
     'data-deferred-mount': true,
     'data-page-view-title': 'Playground',
   }, content: [
-    '<div class="h-100 d-flex flex-column">',
+    '<div class="d-flex flex-column">',
     // Shown only for a returning workspace (LandingHero.css); a first visit has no tab strip.
     '<div class="playground-tabs-wrapper" data-returning-tabs>',
     '<div class="playground-tab-strip">',
@@ -1363,7 +1367,7 @@ function renderContentShell(content, { view, pathname, pageViewTitle, guide, she
     view,
     pathname,
     // App.tsx: content views fill at least the panel; the server profile panel is the panel.
-    panelStyle: view === 'server-profile' ? 'height: 100%;' : 'min-height: 100%;',
+    panelStyle: 'min-height: 100%;',
     attributes: {
       'data-deferred-mount': true,
       'data-page-view-title': pageViewTitle,
@@ -1599,6 +1603,7 @@ function renderDiscoveryFallback({ proxyConfigured = false } = {}) {
     '<div class="discovery-checker">',
     '<header class="discovery-header">',
     `<h1>${escapeHtml(DISCOVERY_COPY.heading)}</h1>`,
+    `<p><a href="${DISCOVERY_GUIDE_PATH}">How this check works →</a></p>`,
     `<p>${escapeHtml(DISCOVERY_COPY.lede)}</p>`,
     '</header>',
     '<form class="discovery-form" novalidate="">',
@@ -1824,6 +1829,7 @@ function writeArticlePages(indexHtml, learnIndex, articles, { shell, prerender }
     'utf8'
   );
 
+  fs.writeFileSync(distPathFor('/guides') + '.html', renderLearnIndexHtml(indexHtml, learnIndex, articles, { shell, pageHtml: prerender.renderLearnIndexPage(), pathname: '/guides' }), 'utf8');
   for (const article of articles) {
     const pageHtml = prerender.renderArticlePage(article.path);
     if (!pageHtml) throw new Error(`The app has no article at ${article.path}; the guide registries disagree.`);
@@ -1834,6 +1840,9 @@ function writeArticlePages(indexHtml, learnIndex, articles, { shell, prerender }
       renderLearnArticleHtml(indexHtml, article, articles, learnIndex, { shell, pageHtml }),
       'utf8'
     );
+    const guideDirectory = distPathFor(`/guides/${article.slug}`);
+    fs.mkdirSync(guideDirectory, { recursive: true });
+    fs.writeFileSync(path.join(guideDirectory, 'index.html'), renderLearnArticleHtml(indexHtml, article, articles, learnIndex, { shell, pageHtml }), 'utf8');
     fs.writeFileSync(distPathFor(articleMarkdownPath(article)), renderArticleMarkdown(article), 'utf8');
   }
 }
@@ -2066,6 +2075,7 @@ function getSitemapEntries(servers, articles, docsSlugs = []) {
     { pathname: DISCOVERY_CHECKER_PATH },
     { pathname: CI_PATH },
     { pathname: '/learn', lastModified: guidesReviewed },
+    { pathname: '/guides', lastModified: guidesReviewed },
     { pathname: '/tools/breaking-changes' },
     { pathname: '/tools/oauth-check' },
     { pathname: MCP_TEST_SERVERS_PATH },

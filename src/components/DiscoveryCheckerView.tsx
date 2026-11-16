@@ -297,7 +297,7 @@ const DiscoveryCheckerView: React.FC<DiscoveryCheckerViewProps> = ({
       <header className="discovery-header">
         <h1>{DISCOVERY_COPY.heading}</h1>
         <p>{DISCOVERY_COPY.lede}</p>
-      </header>
+      <p><a href="/guides/make-mcp-server-discoverable">How this check works →</a></p></header>
 
       <form className="discovery-form" onSubmit={submit} noValidate>
         <label htmlFor={`${fieldId}-domain`} className="form-label">{DISCOVERY_COPY.inputLabel}</label>

@@ -6,6 +6,7 @@ import {
   getLearnTrackForPath,
 } from '../../content/navigation';
 import './ContentTrackNav.css';
+import { getLearnArticleFromPath } from '../../content/learnRegistry';
 
 interface ContentTrackNavProps {
   onNavigate?: () => void;
@@ -47,7 +48,8 @@ const ContentTrackNav: React.FC<ContentTrackNavProps> = ({
   toggleRef,
 }) => {
   const { pathname } = useLocation();
-  const activeTrackId = getLearnTrackForPath(pathname)?.id;
+  const articlePath = getLearnArticleFromPath(pathname)?.path ?? pathname;
+  const activeTrackId = getLearnTrackForPath(articlePath)?.id;
   const [overrides, setOverrides] = useState<Partial<Record<string, boolean>>>({});
 
   useEffect(() => {
@@ -111,7 +113,7 @@ const ContentTrackNav: React.FC<ContentTrackNavProps> = ({
               >
                 {track.items.map(item => (
                   <li className="nav-item" key={item.slug}>
-                    <NavLink to={item.path} end className="nav-link sidenav-link sidenav-sublink" onClick={onNavigate}>
+                    <NavLink to={item.path} end aria-current={articlePath === item.path ? 'page' : undefined} className={`nav-link sidenav-link sidenav-sublink${articlePath === item.path ? ' active' : ''}`} onClick={onNavigate}>
                       {item.navTitle}
                     </NavLink>
                   </li>

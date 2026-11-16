@@ -43,6 +43,7 @@ export const EXACT_APP_ROUTES: readonly string[] = [
   '/',
   '/catalog',
   '/learn',
+  '/guides',
   '/report',
   '/submit',
   '/tools/breaking-changes',
@@ -67,11 +68,11 @@ export const APP_ROUTE_PREFIXES: readonly string[] = [
 /** Whether the app has a view for `pathname`; false means the NotFound page. */
 export const isKnownAppPath = (pathname: string): boolean => {
   if (EXACT_APP_ROUTES.includes(pathname)) return true;
-  if (pathname === '/learn/') return true;
+  if (pathname === '/learn/' || pathname === '/guides/') return true;
   // Content slugs: unknown ones get the app's own guide, server or category not-found view.
   if (/^\/servers\/[^/]+\/?$/.test(pathname)) return true;
   if (/^\/catalog\/[^/]+$/.test(pathname)) return true;
-  return [...APP_ROUTE_PREFIXES, '/learn/', '/docs/'].some(
+  return [...APP_ROUTE_PREFIXES, '/learn/', '/guides/', '/docs/'].some(
     prefix => pathname.startsWith(prefix) && pathname.length > prefix.length
   );
 };

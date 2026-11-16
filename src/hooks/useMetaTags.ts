@@ -205,7 +205,7 @@ export const useMetaTags = () => {
       applyMetadata({
         title: `${LEARN_INDEX_METADATA.title} | mcptest.io`,
         description: LEARN_INDEX_METADATA.description,
-        canonicalUrl: `${SITE_URL}/learn`,
+        canonicalUrl: `${SITE_URL}${location.pathname.startsWith('/guides') ? '/guides' : '/learn'}`,
         imageUrl: ogImage('/learn'),
       });
     } else if (location.pathname.startsWith('/learn/')) {

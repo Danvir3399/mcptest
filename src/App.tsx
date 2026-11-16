@@ -1,3 +1,5 @@
+import Footer from './components/Footer';
+import HomeGuides from './components/HomeGuides';
 import React, { Suspense, useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import type { CatalogTransport } from './types/catalog';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -124,7 +126,7 @@ const getInitialView = (): 'playground' | 'dashboards' | 'docs' | 'learn' | 'rep
   if (path.startsWith('/docs/')) {
     return 'docs';
   }
-  if (path === '/learn' || path.startsWith('/learn/')) {
+  if (path === '/guides' || path.startsWith('/guides/') || path === '/learn' || path.startsWith('/learn/')) {
     return 'learn';
   }
   if (path === DASHBOARDS_PATH || path.startsWith('/space/')) {
@@ -258,7 +260,7 @@ function App() {
       return { activeView: 'docs' as const };
     }
 
-    if (path === '/learn' || path.startsWith('/learn/')) {
+    if (path === '/guides' || path.startsWith('/guides/') || path === '/learn' || path.startsWith('/learn/')) {
       return { activeView: 'learn' as const };
     }
 
@@ -403,7 +405,7 @@ function App() {
       return;
     }
 
-    if (path === '/learn' || path.startsWith('/learn/')) {
+    if (path === '/guides' || path.startsWith('/guides/') || path === '/learn' || path.startsWith('/learn/')) {
       pageTitle = getLearnPageViewTitle(path);
       logPageView(path, pageTitle);
       return;
@@ -1995,7 +1997,7 @@ function App() {
 
           {/* Catalog View */}
           {hasVisited('catalog') && (
-            <div className={`view-panel ${activeView === 'catalog' ? '' : 'd-none'}`} style={{ height: '100%' }}>
+            <div className={`view-panel ${activeView === 'catalog' ? '' : 'd-none'}`}>
               <CatalogView onTestServer={handleCatalogTestServer} />
             </div>
           )}
@@ -2054,7 +2056,7 @@ function App() {
 
           {/* Server Profile View */}
           {hasVisited('server-profile') && (
-            <div className={`view-panel ${activeView === 'server-profile' ? '' : 'd-none'}`} style={{ height: '100%' }}>
+            <div className={`view-panel ${activeView === 'server-profile' ? '' : 'd-none'}`}>
               <ServerProfileView server={selectedCatalogServer} onTestServer={handleCatalogTestServer} />
             </div>
           )}
@@ -2062,8 +2064,8 @@ function App() {
           {/* Playground View: TabContent instances stay mounted (hidden) once
               opened so their connections survive navigation to other views. */}
           {hasVisited('playground') && (
-            <div className={`view-panel ${activeView === 'playground' ? '' : 'd-none'}`} style={{ height: '100%' }}>
-              <div className="h-100 d-flex flex-column">
+            <div className={`view-panel ${activeView === 'playground' ? '' : 'd-none'}`} style={connectedTab ? { height: '100%' } : { minHeight: '100%' }}>
+              <div className={`${connectedTab ? 'h-100 ' : ''}d-flex flex-column`}>
                 {showTabStrip && (
                   <div className="playground-tabs-wrapper">
                     <Tabs
@@ -2123,6 +2125,8 @@ function App() {
             </div>
           )}
 
+          {activeView === 'playground' && !connectedTab && <HomeGuides />}
+          {!(activeView === 'playground' && connectedTab) && <Footer />}
         </div>
       </main>
       <NotificationPopup message={notification.message} show={notification.show} />

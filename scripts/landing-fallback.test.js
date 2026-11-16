@@ -185,11 +185,9 @@ describe('static first frame (header, sidebar, playground landing)', () => {
     // This variant is hidden by CSS for new visitors.
     shell.querySelector('.seo-returning-workspace')?.remove();
     expect(outline(shell)).toEqual(outline(app));
-    const resources = shell.querySelector('.sidenav-footer > details.sidenav-resources');
-    expect(resources).not.toBeNull();
-    expect(resources.hasAttribute('open')).toBe(false);
-    expect(text(resources.querySelector('summary'))).toBe('Resources');
-    expect(resources.querySelector('.sidenav-footer-links')).not.toBeNull();
+    expect(shell.querySelector('.sidenav-resources')).toBeNull();
+    expect(shell.querySelector('.main-content > .site-footer')).not.toBeNull();
+    expect(shell.querySelectorAll('.home-guides li a')).toHaveLength(9);
     expect(Boolean(shell.querySelector('.app-auth-placeholder'))).toBe(authEnabled);
   });
 
@@ -208,10 +206,8 @@ describe('static first frame (header, sidebar, playground landing)', () => {
       label: item.label,
       active: item.path === '/',
     })));
-    expect(shell.querySelector('.content-track-nav .sidenav-list > .nav-item > a').getAttribute('href'))
-      .toBe(LEARN_HUB_NAVIGATION.path);
-    expect(Array.from(shell.querySelectorAll('.content-track-nav .sidenav-sublink'), link => link.getAttribute('href')))
-      .toEqual(LEARN_TRACKS.flatMap(track => track.items.map(item => item.path)));
+    expect(shell.querySelector('.desktop-sidebar a[href="/guides"]')).not.toBeNull();
+    expect(shell.querySelector('.content-track-nav')).toBeNull();
   });
 
   it('renders an editable connect form and quick picks for the deferred mount', () => {
@@ -264,6 +260,7 @@ describe('static frame of a prerendered Learn page', () => {
 
   it.each([
     '/learn/mcp-http-headers-reference',
+    '/guides/mcp-http-headers-reference',
     '/learn/connect-remote-mcp-server',
   ])('matches the app React mounts over %s', async (pathname) => {
     // As in the browser without a prerendered body: the article and Markdown chunks and highlight.js.

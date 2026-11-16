@@ -1,14 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Space } from '../types'; // Import Space type
 import { getSpaceUrl } from '../utils/urlUtils';
 import { trackEvent } from '../utils/analytics';
-import { VERSION_INFO, getGithubCommitUrl } from '../utils/versionInfo';
 import { useAuth } from '../context/AuthContext';
 import {
   DASHBOARDS_NAVIGATION,
-  FOOTER_NAVIGATION,
-  LEGAL_NAVIGATION,
   NAVIGATION_GROUPS,
   PLAYGROUND_NAVIGATION,
   isLearnOpenByDefault,
@@ -22,6 +19,7 @@ import {
 import { useSidebarCollapsed } from '../hooks/useSidebarCollapsed';
 import { closeMobileDrawer, useMobileDrawer } from '../hooks/useMobileDrawer';
 import ContentTrackNav from './learn/ContentTrackNav';
+import { getLearnArticleFromPath } from '../content/learnRegistry';
 import GuideSearch from './learn/GuideSearch';
 import { isGuideSearchShortcutView } from './learn/guideSearchShortcut';
 
@@ -68,6 +66,8 @@ const SideNav: React.FC<SideNavProps> = ({
   const dashboardListRef = useRef<(HTMLAnchorElement | null)[]>([]);
   const navRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const isGuideArticle = Boolean(getLearnArticleFromPath(pathname));
   const { currentUser, loginWithGoogle, logout } = useAuth();
   const authEnabled = import.meta.env.VITE_FIREBASE_AUTH_ENABLED === 'true';
   const [collapsed, toggleCollapsed, expandSidebar] = useSidebarCollapsed(!isMobile);
@@ -297,7 +297,7 @@ const SideNav: React.FC<SideNavProps> = ({
     );
   };
 
-  const buildDate = new Date(VERSION_INFO.commitDate);
+
 
   const renderDescription = (item: NavigationLink) => (
     item.description
@@ -466,8 +466,7 @@ const SideNav: React.FC<SideNavProps> = ({
         </section>
       ))}
 
-      {/* Learn: collapsed on app pages, open with the current track on Learn and Docs pages */}
-      <ContentTrackNav
+      {isGuideArticle ? <ContentTrackNav
         onNavigate={closeMobileDrawer}
         collapsed={collapsed}
         onExpandSidebar={expandSidebar}
@@ -485,7 +484,14 @@ const SideNav: React.FC<SideNavProps> = ({
             onNavigate={closeMobileDrawer}
           />
         )}
-      />
+      /> : (
+        <section className="sidenav-group" aria-labelledby={`sidenav-learn-heading-${idSuffix}`}>
+          <h2 id={`sidenav-learn-heading-${idSuffix}`} className="sidenav-section-label">Learn</h2>
+          <Link to="/guides" className="nav-link sidenav-link" title="Guides" onClick={closeMobileDrawer} aria-current={pathname === '/guides' ? 'page' : undefined}>
+            <i className="bi bi-book sidenav-icon" aria-hidden="true" /><span className="sidenav-label">Guides</span>
+          </Link>
+        </section>
+      )}
 
       {/* Theme and Auth Controls - Only show on mobile */}
       {isMobile && (
@@ -531,50 +537,7 @@ const SideNav: React.FC<SideNavProps> = ({
         </div>
       )}
 
-      {/* Footer: project links, legal links and the build, in quieter type */}
-      <div className="sidenav-footer">
-        <details className="sidenav-resources"><summary>Resources</summary>
-        <ul className="sidenav-footer-links" aria-label="Project links">
-          {FOOTER_NAVIGATION.map(link => (
-            <li key={link.href}>
-              {link.external ? (
-                <a href={link.href} target="_blank" rel="noopener noreferrer" className="sidenav-footer-link">
-                  {link.label}
-                  <span className="visually-hidden"> (opens in a new tab)</span>
-                </a>
-              ) : (
-                <Link to={link.href} reloadDocument={link.reloadDocument} className="sidenav-footer-link" onClick={closeMobileDrawer}>
-                  {link.label}
-                </Link>
-              )}
-            </li>
-          ))}
-        </ul>
-        </details>
-        <div className="sidenav-legal">
-          {LEGAL_NAVIGATION.map(link => (
-            <Link key={link.href} to={link.href} className="sidenav-footer-link" onClick={closeMobileDrawer}>
-              {link.label}
-            </Link>
-          ))}
-        </div>
-        <p className="sidenav-build">
-          <span>&copy; {new Date().getFullYear()} Unchained Development OÜ</span>
-          <span>
-            Updated{' '}
-            <a
-              href={getGithubCommitUrl(VERSION_INFO.commitHash)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sidenav-footer-link"
-            >
-              <time dateTime={VERSION_INFO.commitDate}>
-                {buildDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}{' '}
-                {buildDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-              </time>
-            </a>
-          </span>
-        </p>
+      <div className="mt-auto">
         {!isMobile && (
           <button
             type="button"

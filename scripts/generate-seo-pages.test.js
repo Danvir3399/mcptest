@@ -711,7 +711,7 @@ describe('generated page metadata', () => {
     // The connect form the app mounts over, in the app shell.
     expect(body.querySelector(`#${page.key}-server-url`)).not.toBeNull();
     expect(body.querySelector('.seo-shell-fallback .desktop-sidebar')).not.toBeNull();
-    expect(body.querySelector(`.sidenav-footer a[href="${path}"]`)).not.toBeNull();
+    expect(body.querySelector(`.site-footer a[href="${path}"]`)).not.toBeNull();
     // An app route: React mounts at load.
     expect(html).not.toContain('data-deferred-mount');
 
@@ -1020,6 +1020,20 @@ describe('content pages in the app shell (issue #405)', () => {
   const shell = { learnTracks, authEnabled: false };
   const rootOf = html => new DOMParser().parseFromString(html, 'text/html').getElementById('root');
 
+  it('renders visible guide footer links in the initial HTML of every scrollable shell', () => {
+    for (const pathname of ['/', '/guides', '/catalog', '/servers/notion/']) {
+      const root = new DOMParser().parseFromString(seoGenerator.renderAppShell({ ...shell, pathname, content: '<h1>Page</h1>' }), 'text/html');
+      const footer = root.querySelector('.main-content > .site-footer');
+      const links = [...footer.querySelectorAll('a[href^="/guides/"]')];
+      expect(links).toHaveLength(9);
+      for (const link of links) {
+        expect(link.closest('[hidden], details')).toBeNull();
+        expect(articles.some(article => `/guides/${article.slug}` === link.getAttribute('href'))).toBe(true);
+      }
+      expect(root.querySelector('.desktop-sidebar .content-track-nav')).toBeNull();
+    }
+  });
+
   it('puts a guide in the header and sidebar, mounted on first input, with its track open', () => {
     const article = articles.find(item => item.slug === 'mcp-clients-compared');
     const root = rootOf(renderLearnArticleHtml(indexHtml, article, articles, learnIndex, { shell, pageHtml: '<div class="reading-shell">guide</div>' }));
@@ -1060,7 +1074,7 @@ describe('content pages in the app shell (issue #405)', () => {
   it('marks the guide hub on the Learn index', () => {
     const app = rootOf(renderLearnIndexHtml(indexHtml, learnIndex, articles, { shell })).firstElementChild;
     expect(app.dataset.pageViewTitle).toBe('Learn MCP');
-    expect(app.querySelector('.content-track-nav a.active[aria-current="page"]').getAttribute('href')).toBe('/learn');
+    expect(app.querySelector('.desktop-sidebar a[href="/guides"]')).not.toBeNull();
     expect(app.querySelectorAll('.content-track > button[aria-expanded="true"]')).toHaveLength(0);
   });
 
@@ -1070,7 +1084,7 @@ describe('content pages in the app shell (issue #405)', () => {
 
     expect(app.hasAttribute('data-deferred-mount')).toBe(true);
     expect(app.dataset.pageViewTitle).toBe('Example Server MCP Server Report');
-    expect(app.querySelector('.main-content > .view-panel').getAttribute('style')).toBe('height: 100%;');
+    expect(app.querySelector('.main-content > .view-panel').getAttribute('style')).toBe('min-height: 100%;');
     expect(app.querySelector('.sidenav-group:first-child a.nav-link.active').getAttribute('href')).toBe('/catalog');
     expect(app.querySelector('.server-profile-logo img').getAttribute('width')).toBe('40');
     expect(app.querySelector('.server-profile-logo img').getAttribute('height')).toBe('40');

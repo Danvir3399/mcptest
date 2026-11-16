@@ -19,6 +19,7 @@ const LearnIndex: React.FC = () => (
       {/* Takes `/` ahead of the sidebar field while the index is open. */}
       <GuideSearch idPrefix="learn-index" variant="page" shortcutEnabled shortcutPriority={1} />
 
+      <div className="learn-track-grid">
       {TRACK_NAVIGATION.map(track => (
         <section
           className="learn-track"
@@ -31,7 +32,7 @@ const LearnIndex: React.FC = () => (
           <ol className="learn-track-list">
             {track.items.map(item => (
               <li className="learn-track-item" key={item.slug}>
-                <Link className="learn-track-item-title" to={item.path}>{item.title}</Link>
+                <Link className="learn-track-item-title" to={`/guides/${item.slug}`}>{item.title}</Link>
                 <p className="learn-track-item-summary">{item.summary}</p>
                 <p className="learn-track-item-meta">
                   <span>{item.readingTimeMinutes} min read</span>
@@ -43,6 +44,7 @@ const LearnIndex: React.FC = () => (
           </ol>
         </section>
       ))}
+      </div>
     </div>
   </div>
 );

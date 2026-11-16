@@ -33,7 +33,7 @@ export default function OAuthCheckerView() {
     } finally { if (runId === active.current) setBusy(false); }
   };
   return <div className="discovery-checker">
-    <header className="discovery-header"><h1>{copy.heading}</h1><p>{copy.lede}</p></header>
+    <header className="discovery-header"><h1>{copy.heading}</h1><p>{copy.lede}</p><p><a href="/guides/mcp-oauth-2-1-reference">How this check works →</a></p></header>
     <form className="discovery-form" onSubmit={run} noValidate>
       <label className="form-label" htmlFor={id}>MCP endpoint URL</label>
       <div className="discovery-form-row">

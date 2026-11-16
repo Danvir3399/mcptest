@@ -1,0 +1,25 @@
+.site-footer, .home-guides {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-color);
+  background: var(--card-bg);
+}
+.site-link-columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+.site-link-columns h2, .site-link-columns h3 { font-size: .95rem; font-weight: 650; margin: 0 0 1rem; }
+.site-link-columns ul { list-style: none; padding: 0; margin: 0; }
+.site-link-columns li { margin-bottom: .75rem; }
+.site-link-columns a { color: var(--text-color); text-decoration: none; }
+.site-link-columns a:hover { color: var(--accent-text); text-decoration: underline; }
+.site-link-columns p { color: var(--text-muted); font-size: .875rem; margin: .25rem 0 0; }
+.home-guides > header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+.home-guides > header h2 { font-size: 1.4rem; margin: 0; }
+.site-footer-meta { border-top: 1px solid var(--border-color); margin-top: 1.5rem; padding-top: 1rem; color: var(--text-muted); }
+.site-footer-meta nav { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; margin-bottom: .75rem; font-size: .875rem; }
+@media (max-width: 767px) {
+  .site-link-columns { grid-template-columns: 1fr; gap: 1.5rem; }
+  .site-footer, .home-guides { padding: 1.25rem; }
+}

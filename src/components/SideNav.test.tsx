@@ -93,7 +93,7 @@ describe('SideNav dashboard rows', () => {
 
     expect(
       Array.from(container.querySelectorAll('.sidenav-section-label'), (label) => label.textContent)
-    ).toEqual(['Workspace', 'Checks', 'Saved work']);
+    ).toEqual(['Workspace', 'Checks', 'Saved work', 'Learn']);
 
     const ruleBody = (selector: string) => {
       const start = sidebarCss.indexOf(`${selector} {`);
@@ -149,13 +149,9 @@ describe('SideNav information architecture', () => {
     expect(container.querySelector('a[href="/catalog"]')?.classList).toContain('active');
     expect(container.querySelector('a[href="/catalog"]')?.getAttribute('aria-current')).toBe('page');
 
-    // Project links are grouped in a collapsed Resources disclosure.
-    expect(container.querySelector('.sidenav-resources')?.hasAttribute('open')).toBe(false);
-    expect(container.textContent).not.toContain('Guides & Tutorials');
-    expect(container.querySelector('a[href="/learn"]')?.textContent?.trim()).toBe('Guides');
-    expect(
-      Array.from(container.querySelectorAll('.content-track-label .sidenav-label'), label => label.textContent)
-    ).toEqual(['Understand', 'Use', 'Build', 'Reference']);
+    expect(container.querySelector('.sidenav-resources')).toBeNull();
+    expect(container.querySelector('a[href="/guides"]')?.textContent?.trim()).toBe('Guides');
+    expect(container.querySelector('.content-track-nav')).toBeNull();
   });
 
   it('gives every tool entry a one-line description as its tooltip and accessible description', () => {
@@ -208,17 +204,10 @@ describe('SideNav information architecture', () => {
     ['report', '/report'],
     ['breaking-changes', '/tools/breaking-changes'],
     ['dashboards', '/space'],
-  ] as const)('folds the Learn group on the app page %s, with every guide link still in the HTML', (view, path) => {
+  ] as const)('keeps only the Guides hub link on the app page %s', (view, path) => {
     const container = renderStatic(view, path);
-    const toggle = container.querySelector<HTMLElement>('.content-track-nav .sidenav-section-toggle')!;
-    const body = container.querySelector<HTMLElement>(`#${toggle.getAttribute('aria-controls')}`)!;
-
-    expect(toggle.getAttribute('aria-expanded')).toBe('false');
-    expect(body.hidden).toBe(true);
-    expect(body.querySelector('.guide-search')).not.toBeNull();
-    expect(Array.from(body.querySelectorAll('.sidenav-sublist a'), link => link.getAttribute('href')))
-      .toEqual(LEARN_TRACKS.flatMap(track => track.items.map(item => item.path)));
-    expect(expandedTracks(container)).toEqual([]);
+    expect(container.querySelector('a[href="/guides"]')).not.toBeNull();
+    expect(container.querySelector('.content-track-nav')).toBeNull();
   });
 
   it('opens the Learn group with the current track on Learn and Docs pages', () => {
@@ -281,42 +270,11 @@ describe('SideNav information architecture', () => {
     expect(container.querySelectorAll('[aria-current="page"]')).toHaveLength(1);
   });
 
-  it('renders the footer links in order, with external links opening in a new tab', () => {
+  it('keeps project and legal links out of the app sidebar', () => {
     const container = renderStatic('playground', '/');
-    const footer = container.querySelector('.sidenav-footer')!;
-
-    const projectLinks = Array.from(footer.querySelectorAll('.sidenav-footer-links a'), link => [
-      link.textContent?.replace(/\s*\(opens in a new tab\)/, '').trim(),
-      link.getAttribute('href'),
-      link.getAttribute('target'),
-      link.getAttribute('rel'),
-    ]);
-    expect(projectLinks).toEqual([
-      ['Test an MCP server', '/mcp-test-server', null, null],
-      ['MCP Inspector online', '/mcp-inspector-online', null, null],
-      ['MCP playground', '/mcp-playground', null, null],
-      ['CI release gate', '/ci', null, null],
-      ['MCP test servers', '/mcp-test-servers', null, null],
-      ['Test your MCP client', '/mcp-test-client', null, null],
-      ['Submit a server', '/submit', null, null],
-      ['Badges', 'https://github.com/integry/mcptest#embedding-a-badge', '_blank', 'noopener noreferrer'],
-      ['GitHub repository', 'https://github.com/integry/mcptest', '_blank', 'noopener noreferrer'],
-    ]);
-    expect(
-      Array.from(footer.querySelectorAll('.sidenav-legal a'), link => [link.textContent, link.getAttribute('href')])
-    ).toEqual([
-      ['Contact', '/docs/contact'],
-      ['Privacy', '/docs/privacy-policy'],
-      ['Terms', '/docs/terms-of-service'],
-    ]);
-    expect(footer.querySelector('.sidenav-build time')).not.toBeNull();
-    expect(footer.querySelector('.sidenav-build a')?.getAttribute('href')).toMatch(/github\.com\/integry\/mcptest\/commit\//);
-
-    // Quieter type than the navigation links.
-    const css = readStylesheet('layout');
-    const footerRule = css.match(/\.sidenav-footer\s*\{([^}]*)\}/)?.[1] ?? '';
-    expect(parseFloat(footerRule.match(/font-size:\s*([\d.]+)rem/)?.[1] ?? '1')).toBeLessThan(0.875);
-    expect(footerRule).toMatch(/border-top:\s*1px solid var\(--border-color\)/);
+    expect(container.querySelector('.sidenav-footer')).toBeNull();
+    expect(container.querySelector('a[href="/docs/privacy-policy"]')).toBeNull();
+    expect(container.querySelector('.sidenav-collapse-toggle')).not.toBeNull();
   });
 });
 
@@ -423,7 +381,7 @@ describe('SideNav collapsed desktop mode', () => {
   });
 
   it('toggles the dashboards group and the learn tracks with aria-expanded', () => {
-    mount({}, '/catalog');
+    mount({ activeView: 'learn' }, '/learn/mcp-clients-compared');
     const dashboardsToggle = host.querySelector<HTMLButtonElement>('.sidenav-dashboards .sidenav-group-toggle')!;
     const body = host.querySelector<HTMLElement>(`#${dashboardsToggle.getAttribute('aria-controls')}`)!;
 
@@ -440,9 +398,9 @@ describe('SideNav collapsed desktop mode', () => {
     click(understand);
     expect(understand.getAttribute('aria-expanded')).toBe('true');
     expect(list.hidden).toBe(false);
-    expect(expandedTracks(host)).toEqual(['understand']);
+    expect(expandedTracks(host)).toEqual(['understand', 'use']);
     click(understand);
-    expect(expandedTracks(host)).toEqual([]);
+    expect(expandedTracks(host)).toEqual(['use']);
   });
 });
 

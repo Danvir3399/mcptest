@@ -672,3 +672,9 @@
 .reading-inline-test label { display: block; font-weight: 600; margin-bottom: .5rem; }
 .reading-inline-test input { flex: 1 1 14rem; min-width: 0; width: auto; }
 .reading-pager-next { border-inline-start: var(--rail-width) solid var(--primary-color); padding-inline-start: 1rem; }
+
+.reading-shell-index { display: block; }
+.reading-shell-index .reading-article { max-width: none; }
+.learn-track-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.learn-track-grid .learn-track { margin: 0; padding: 1.5rem; border: 1px solid var(--reading-rule); border-radius: .75rem; min-width: 0; }
+@media (max-width: 767px) { .learn-track-grid { grid-template-columns: 1fr; } }

@@ -120,11 +120,13 @@
 }
 
 .playground-tab-strip .playground-tabs .nav-item {
+  flex: 0 0 auto;
   display: flex;
   border-right: 1px solid var(--border-color);
 }
 
 .playground-tab-strip .playground-tabs .nav-link {
+  flex-shrink: 0;
   min-height: var(--workspace-strip-height);
   margin: 0;
   padding: 0 var(--space-4);

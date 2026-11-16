@@ -592,8 +592,7 @@
   color: var(--text-muted);
   font-size: var(--text-xs);
 }
-.connected-summary-metadata > * + *::before,
-.connected-summary-facts > li + li::before {
+.connected-summary-counts > li + li::before {
   content: '·';
   margin-right: .625rem;
   color: var(--text-muted);
@@ -616,7 +615,7 @@
 .connected-summary-description,
 .connected-summary-list-stage { grid-column: 1 / -1; }
 .connected-summary-progress { display: contents; }
-.connected-summary-next .connected-disconnect:hover {
+.connected-summary-next .btn.connected-disconnect:hover:not(:disabled) {
   color: var(--danger-solid);
   border-color: var(--danger-solid);
   background: color-mix(in srgb, var(--danger-solid) 8%, var(--card-bg));
@@ -681,15 +680,10 @@
   border: 0;
   box-shadow: none;
 }
-.connected-summary-next .connected-disconnect { position: relative; margin-left: .75rem; }
-.connected-summary-next .connected-disconnect::before {
-  content: '';
-  position: absolute;
-  left: -.75rem;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--border-color);
+.connected-summary-next .connection-details {
+  margin-left: .25rem;
+  padding-left: .75rem;
+  border-left: 1px solid var(--border-color);
 }
 .connected-summary-next .btn-outline-secondary:not(.connected-disconnect) {
   background: var(--workspace-canvas);
@@ -697,7 +691,7 @@
   box-shadow: none;
 }
 .connected-summary-next .btn-outline-secondary:not(.connected-disconnect):hover { background: var(--card-bg-secondary); }
-.connected-summary-next .connected-disconnect:hover {
+.connected-summary-next .btn.connected-disconnect:hover:not(:disabled) {
   color: #dc2626;
   border-color: #fecaca;
   background: #fef2f2;

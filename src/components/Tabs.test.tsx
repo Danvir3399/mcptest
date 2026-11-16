@@ -170,7 +170,7 @@ describe('playground tab strip overflow', () => {
     expect(container.querySelector('.playground-tab-strip--fade-start')).toBeNull();
     expect(scrollIntoView).toHaveBeenCalledWith({ block: 'nearest', inline: 'nearest' });
     expect(scrollIntoView.mock.instances[0]).toBe(
-      container.querySelector('[role="tab"][aria-selected="true"]')
+      container.querySelector('[role="tab"][aria-selected="true"]')?.closest('.nav-item')
     );
     container.remove();
   });

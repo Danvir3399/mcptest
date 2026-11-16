@@ -66,7 +66,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTabId, onSelectTab, onCloseTab,
   // Keep the active tab in view when it changes, a tab is added, or a label
   // change pushes it past the edge of the strip.
   useEffect(() => {
-    const active = stripRef.current?.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]');
+    const active = stripRef.current?.querySelector<HTMLElement>('.nav-item:has([role="tab"][aria-selected="true"])');
     if (active && typeof active.scrollIntoView === 'function') {
       active.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     }

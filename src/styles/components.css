@@ -2534,7 +2534,7 @@ pre.bg-light code {
 .playground-workbench {
   display: grid;
   /* Only output receives surplus width; lists and forms stop growing. */
-  grid-template-columns: minmax(230px, min(300px, 22%)) minmax(300px, min(440px, 32%)) minmax(0, 1fr);
+  grid-template-columns: 250px 360px minmax(0, 1fr);
   gap: 0;
   width: 100%;
   min-height: 0;
@@ -5064,9 +5064,9 @@ pre.bg-light code {
   margin-left: auto;
   padding: .375rem 0 !important;
 }
-.result-format-controls { display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: .5rem; flex-shrink: 0; padding: .5rem 1rem; background: var(--card-bg); border-bottom: 1px solid var(--border-color); }
+.result-format-controls { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; flex-shrink: 0; padding: .5rem 1rem; background: var(--card-bg); border-bottom: 1px solid var(--border-color); }
 .output-panel .result-action { display: inline-flex; align-items: center; gap: .375rem; }
-.result-content-summary { color: var(--text-muted); font-size: .75rem; }
+.result-content-summary { margin-left: auto; text-align: right; color: var(--text-muted); font-size: .75rem; }
 .result-format-controls:empty { display: none; }
 .result-format-controls .tool-result-view-switch { margin: 0; }
 .result-scroll-frame { min-height: 0; padding-top: .75rem; }
@@ -5140,14 +5140,16 @@ pre.bg-light code {
 .playground-workbench .capability-search {
   margin: 0;
   padding: 6px 8px;
-  min-height: 44px;
+  height: 45px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
   background: var(--card-bg);
 }
 .playground-workbench .capability-search-icon { left: 1rem; }
 .playground-workbench .capability-search-shortcut { right: 1rem; }
-.result-format-controls { min-height: 44px; padding-block: 6px; }
+.result-format-controls { min-height: 45px; padding-block: 6px; }
 .request-panel .capability-description { background: var(--card-bg); }
-.request-panel .capability-description summary { min-height: 44px; align-content: center; }
+.request-panel .capability-description summary { height: 45px; align-content: center; border-bottom: 1px solid var(--border-color); }
 .request-panel-body:has(.capability-description) { padding-top: 0; }
 .request-panel .capability-description-text:has(.capability-description) { margin-inline: calc(-1 * var(--space-3)); }
 .output-panel .result-action > .icon-outline { margin: 0; flex: 0 0 16px; }

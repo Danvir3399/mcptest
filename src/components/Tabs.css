@@ -67,7 +67,7 @@
 @media (max-width: 767.98px) {
   .playground-tabs .nav-link {
     max-width: 11rem;
-    min-height: 2.75rem;
+    min-height: var(--workspace-strip-height);
   }
 }
 
@@ -83,7 +83,7 @@
    white surface that opens onto the page below. */
 .playground-tab-strip {
   align-items: stretch;
-  min-height: 2.75rem;
+  min-height: var(--workspace-strip-height);
   border-bottom: 1px solid var(--border-color);
   background: var(--strip-bg);
 }
@@ -93,7 +93,7 @@
   flex: 0 0 auto;
   align-items: center;
   gap: var(--space-3);
-  padding: 0 var(--space-5) 0 var(--space-4);
+  padding: 0 var(--workspace-inset);
   border-right: 1px solid var(--border-color);
   color: var(--text-muted);
   font-family: var(--font-family-mono);
@@ -125,7 +125,7 @@
 }
 
 .playground-tab-strip .playground-tabs .nav-link {
-  min-height: 2.75rem;
+  min-height: var(--workspace-strip-height);
   margin: 0;
   padding: 0 var(--space-4);
   color: var(--text-muted);
@@ -177,7 +177,7 @@
 
 @media (max-width: 767.98px) {
   .playground-tab-count {
-    padding: 0 var(--space-3);
+    padding: 0 var(--workspace-inset);
   }
 }
 

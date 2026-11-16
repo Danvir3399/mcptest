@@ -2567,7 +2567,7 @@ pre.bg-light code {
 .workbench-pane .card-header {
   flex: 0 0 auto;
   min-height: 2.75rem;
-  padding: var(--space-2) var(--space-3);
+  padding: var(--space-2) var(--workspace-inset);
 }
 
 .workbench-pane .card-header h5 {
@@ -2693,7 +2693,7 @@ pre.bg-light code {
 .request-panel .form-control,
 .request-panel .form-select {
   min-height: 2.125rem;
-  border: 1px solid var(--border-color) !important;
+  border: 1px solid var(--input-border) !important;
   padding: 0.3125rem var(--space-2);
   border-radius: var(--button-radius-sm);
   font-size: 0.8125rem;
@@ -4247,16 +4247,16 @@ pre.bg-light code {
 
 /* --- Session strip --- */
 .playground-tab-strip {
-  min-height: 3rem;
-  border-bottom: 1px solid var(--glass-border);
+  min-height: var(--workspace-strip-height);
+  border-bottom: 1px solid var(--border-color);
   background: var(--strip-bg);
   -webkit-backdrop-filter: var(--glass-filter);
   backdrop-filter: var(--glass-filter);
-  box-shadow: inset 0 -1px 0 var(--hairline);
+  box-shadow: none;
 }
 
 .playground-tab-count {
-  padding: 0 var(--space-5) 0 var(--main-pad);
+  padding: 0 var(--workspace-inset);
   border-right: 1px solid var(--hairline);
 }
 
@@ -4266,7 +4266,7 @@ pre.bg-light code {
 
 .playground-tab-strip .playground-tabs .nav-link {
   position: relative;
-  min-height: 3rem;
+  min-height: var(--workspace-strip-height);
   gap: var(--space-1);
   font-size: 0.78125rem;
 }
@@ -4830,7 +4830,7 @@ pre.bg-light code {
 
 /* The connected header is a band across the workspace, like the connect band. */
 .connection-console.connection-console--connected {
-  margin: calc(-1 * var(--space-4)) calc(-1 * var(--main-pad)) var(--space-4) !important;
+  margin: 0 calc(-1 * var(--main-pad)) !important;
   border: 0;
   border-bottom: 1px solid var(--glass-border);
   border-radius: 0;
@@ -4839,7 +4839,7 @@ pre.bg-light code {
 
 .connection-console--connected > .card-header {
   min-height: 3.25rem;
-  padding: var(--space-3) var(--main-pad);
+  padding: var(--space-4) var(--workspace-inset);
   border-bottom-color: var(--hairline);
   background: transparent;
 }
@@ -4899,11 +4899,14 @@ pre.bg-light code {
   }
 }
 
-/* The inspector is a single divided glass surface, not three boxed cards. */
+/* The connected inspector continues the full-bleed session surface. */
 .playground-workbench {
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
-  box-shadow: var(--glass-highlight);
+  width: calc(100% + 2 * var(--main-pad));
+  max-width: none;
+  margin-inline: calc(-1 * var(--main-pad));
+  border: 0;
+  background: var(--card-bg);
+  box-shadow: none;
 }
 
 .playground-workbench .workbench-pane > .card {
@@ -4915,13 +4918,13 @@ pre.bg-light code {
 }
 
 .workbench-pane + .workbench-pane {
-  border-left: 1px solid var(--hairline);
+  border-left: 1px solid var(--border-color);
 }
 
 @media (max-width: 1199.98px) {
   .workbench-response {
     border-left: 0;
-    border-top: 1px solid var(--hairline);
+    border-top: 1px solid var(--border-color);
   }
 }
 
@@ -4929,7 +4932,7 @@ pre.bg-light code {
   .playground-workbench { gap: 0; }
   .workbench-request {
     border-left: 0;
-    border-top: 1px solid var(--hairline);
+    border-top: 1px solid var(--border-color);
   }
 }
 
@@ -5099,4 +5102,21 @@ pre.bg-light code {
 .connected-summary .btn > :is(.bi, .icon-outline) {
   flex-shrink: 0;
   margin-inline: 0;
+}
+
+/* Join the selected session directly to its connected content. */
+.playground-tabs-wrapper:has(+ div .tab-content-panel:not(.d-none) .connection-console--connected) {
+  margin-bottom: 0;
+}
+
+.desktop-sidebar:has(.app-sidenav:not(.app-sidenav--collapsed)) {
+  padding-top: 0 !important;
+}
+.desktop-sidebar .app-sidenav:not(.app-sidenav--collapsed) > .sidenav-group:first-child > .sidenav-section-label {
+  display: flex;
+  align-items: center;
+  height: var(--workspace-strip-height);
+  padding: 0 var(--workspace-inset);
+  margin: 0;
+  border-bottom: 1px solid var(--border-color);
 }

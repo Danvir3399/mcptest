@@ -789,6 +789,7 @@
 
 .sidenav-collapse-toggle {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: var(--space-2);
   width: 100%;
@@ -978,3 +979,5 @@ html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .
   padding-right: 0;
 }
 
+
+.sidenav-collapse-toggle .sidenav-label { flex: 0 1 auto; }

@@ -274,7 +274,7 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
                 onChange={(e) => handleParamChange(name, e.target.value)}
                 onKeyDown={handleKeyDown}
                 aria-describedby={inputType === 'array' ? `${idPrefix}-${name}-json-help` : undefined}
-                placeholder={inputType === 'array' ? '["TypeScript", "TSX"]' : '{ }'}
+                placeholder={inputType === 'array' ? 'e.g., ["TypeScript", "TSX"]' : 'e.g., { }'}
                 required={isRequired}
                 aria-required={isRequired}
                 aria-invalid={isMissing}

@@ -5,6 +5,7 @@
   display: flex;
   align-items: stretch;
   position: relative;
+  z-index: 10;
   min-width: 0;
   max-width: 100%;
 }
@@ -197,3 +198,25 @@
 .playground-tab-scroll[aria-label="Scroll sessions left"] { border-right: 1px solid var(--border-color); }
 .playground-tab-scroll[aria-label="Scroll sessions right"] { border-left: 1px solid var(--border-color); }
 .playground-tab-scroll:disabled { opacity: 1; color: var(--text-muted); }
+
+.session-picker { position: relative; flex: 0 0 auto; }
+.session-picker > summary { height: 100%; cursor: pointer; list-style: none; }
+.session-picker > summary::-webkit-details-marker { display: none; }
+.session-picker-popover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1050;
+  width: min(26rem, calc(100vw - 4rem));
+  padding: .5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 24px #0002;
+}
+.session-picker-popover ul { list-style: none; margin: 0; padding: 0; max-height: min(24rem, 60vh); overflow-y: auto; }
+.session-picker-popover button { display: block; width: 100%; text-align: left; padding: .5rem .75rem; border: 0; border-radius: .25rem; background: var(--card-bg); color: var(--text-color); }
+.session-picker-popover button:hover,
+.session-picker-popover button[aria-current="true"] { background: var(--card-bg-secondary); }
+.session-picker-popover small { display: block; color: var(--text-muted); overflow-wrap: anywhere; }
+.session-picker-popover .session-picker-close { margin-top: .5rem; border-top: 1px solid var(--border-color); color: var(--text-accent); }

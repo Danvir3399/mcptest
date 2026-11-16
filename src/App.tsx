@@ -2071,6 +2071,7 @@ function App() {
                       activeTabId={activeTabId}
                       onSelectTab={handleSelectTab}
                       onCloseTab={handleCloseTab}
+                      onCloseOtherTabs={() => setTabs(current => current.filter(tab => tab.id === activeTabId))}
                       onNewTab={handleNewTab}
                     />
                   </div>

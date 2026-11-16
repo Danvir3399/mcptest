@@ -5077,3 +5077,26 @@ pre.bg-light code {
 }
 .capability-empty-state--compact .capability-empty-title { margin: 0; color: #9ca3af; font-weight: 500; }
 .capability-empty-state--compact .capability-empty-title::before { content: "▸"; margin-right: .5rem; }
+
+/* Opaque neutral chrome keeps the page gradient out of session state cues. */
+.playground-tabs-wrapper .playground-tab-strip,
+.playground-tab-strip .playground-tabs .nav-link:not(.active) {
+  background: var(--card-bg-secondary) !important;
+}
+.playground-workbench .card > .card-header,
+.connection-console--connected > .card-header {
+  background: var(--card-bg);
+}
+/* One icon/label spacing token across workspace toolbars. */
+.card-header .btn:has(> .bi, > .icon-outline),
+.connected-summary .btn:has(> .bi, > .icon-outline) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .375rem;
+}
+.card-header .btn > :is(.bi, .icon-outline),
+.connected-summary .btn > :is(.bi, .icon-outline) {
+  flex-shrink: 0;
+  margin-inline: 0;
+}

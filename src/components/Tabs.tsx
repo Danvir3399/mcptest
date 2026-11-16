@@ -9,6 +9,7 @@ interface TabsProps {
   onSelectTab: (id: string) => void;
   onCloseTab: (id: string) => void;
   onNewTab: () => void;
+  onCloseOtherTabs?: () => void;
 }
 
 /**
@@ -31,7 +32,8 @@ export const getTabDisplayLabel = (title: string): string => {
 
 type FadeState = { start: boolean; end: boolean };
 
-const Tabs: React.FC<TabsProps> = ({ tabs, activeTabId, onSelectTab, onCloseTab, onNewTab }) => {
+const Tabs: React.FC<TabsProps> = ({ tabs, activeTabId, onSelectTab, onCloseTab, onNewTab, onCloseOtherTabs }) => {
+  const pickerRef = useRef<HTMLDetailsElement>(null);
   const stripRef = useRef<HTMLDivElement>(null);
   const [fade, setFade] = useState<FadeState>({ start: false, end: false });
 
@@ -96,9 +98,45 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTabId, onSelectTab, onCloseTab,
 
   return (
     <div className={stripClassName}>
-      <span className="playground-tab-count">
-        Sessions <span className="playground-tab-count-value">{tabs.length}</span>
-      </span>
+      <details className="session-picker" ref={pickerRef}
+        onBlur={event => {
+          if (!event.currentTarget.contains(event.relatedTarget as Node)) event.currentTarget.open = false;
+        }}
+        onKeyDown={event => {
+          if (event.key === 'Escape') {
+            event.currentTarget.open = false;
+            event.currentTarget.querySelector('summary')?.focus();
+          }
+        }}>
+        <summary className="playground-tab-count">
+          Sessions <span className="playground-tab-count-value">{tabs.length}</span><span aria-hidden="true">▾</span>
+        </summary>
+        <div className="session-picker-popover">
+          <ul aria-label="Open sessions">
+            {tabs.map((tab, index) => {
+              const params = tab.selectedPrompt ? tab.promptParams
+                : tab.selectedResourceTemplate ? tab.resourceArgs : tab.toolParams;
+              const context = [tab.selectedTool?.name || tab.selectedPrompt?.name || tab.selectedResourceTemplate?.name,
+                params && Object.entries(params).filter(([, value]) => value !== '' && value != null)
+                  .map(([key, value]) => `${key}: ${typeof value === 'string' ? value : JSON.stringify(value)}`).join(', ')]
+                .filter(Boolean).join(' — ');
+              return <li key={tab.id}>
+                <button type="button" aria-current={tab.id === activeTabId ? 'true' : undefined}
+                  onClick={() => { onSelectTab(tab.id); if (pickerRef.current) pickerRef.current.open = false; }}>
+                  <span>{labels[index]}{labels.filter(label => label === labels[index]).length > 1
+                    ? ` #${labels.slice(0, index + 1).filter(label => label === labels[index]).length}` : ''}</span>
+                  <small>{context || tab.connectionStatus}</small>
+                </button>
+              </li>;
+            })}
+          </ul>
+          {onCloseOtherTabs && <button type="button" className="session-picker-close"
+            disabled={tabs.length < 2} onClick={() => {
+              onCloseOtherTabs();
+              if (pickerRef.current) pickerRef.current.open = false;
+            }}>Close other tabs</button>}
+        </div>
+      </details>
       {(fade.start || fade.end) && <button type="button" className="playground-tab-scroll" aria-label="Scroll sessions left" disabled={!fade.start}
         onClick={() => stripRef.current?.scrollBy({ left: -stripRef.current.clientWidth * 0.7, behavior: 'smooth' })}>‹</button>}
       <div

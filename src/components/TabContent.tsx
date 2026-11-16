@@ -381,6 +381,13 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
     executeTool: () => handleExecuteToolWrapper(),
   });
 
+  // Keep the session picker tied to the current request in each mounted tab.
+  useEffect(() => {
+    onUpdateTab(tab.id, { selectedTool, selectedPrompt, selectedResourceTemplate,
+      toolParams, promptParams, resourceArgs });
+  }, [tab.id, onUpdateTab, selectedTool, selectedPrompt, selectedResourceTemplate,
+    toolParams, promptParams, resourceArgs]);
+
   // Initialize tab state and handle auto-connection
   const hasAutoConnected = useRef(false);
   useEffect(() => {

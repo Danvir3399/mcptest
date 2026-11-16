@@ -73,6 +73,29 @@ describe('playground tab labels', () => {
     expect(container.querySelector('[aria-label="Close mcp.grep.app #2 tab"]')).not.toBeNull();
   });
 
+  it('lists query context, switches directly, and closes other sessions in one action', () => {
+    const container = document.createElement('div');
+    const view = createRoot(container);
+    const onSelectTab = vi.fn();
+    const onCloseOtherTabs = vi.fn();
+    act(() => view.render(<Tabs tabs={Array.from({ length: 19 }, (_, i) => tab({
+      id: String(i), title: 'mcp.grep.app', toolParams: { query: `query ${i}` },
+    }))} activeTabId="18" onSelectTab={onSelectTab} onCloseTab={vi.fn()}
+      onCloseOtherTabs={onCloseOtherTabs} onNewTab={vi.fn()} />));
+    const picker = container.querySelector('details')!;
+    const buttons = picker.querySelectorAll<HTMLButtonElement>('li button');
+    expect(buttons).toHaveLength(19);
+    expect(buttons[1].textContent).toContain('query: query 1');
+    expect(buttons[18].getAttribute('aria-current')).toBe('true');
+    picker.open = true;
+    act(() => buttons[1].click());
+    expect(onSelectTab).toHaveBeenCalledWith('1');
+    expect(picker.open).toBe(false);
+    act(() => container.querySelector<HTMLButtonElement>('.session-picker-close')!.click());
+    expect(onCloseOtherTabs).toHaveBeenCalledOnce();
+    act(() => view.unmount());
+  });
+
   it('names the new-tab control and explains it opens another server side by side', () => {
     const onNewTab = vi.fn();
     const container = document.createElement('div');

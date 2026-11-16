@@ -54,6 +54,7 @@ describe('ConnectedSummary', () => {
   const props: React.ComponentProps<typeof ConnectedSummary> = {
     serverName: 'mcptest-e2e-mock',
     serverVersion: '1.0.0',
+    serverDescription: 'A server for testing protocol tools.',
     serverUrl: 'http://127.0.0.1:4180/2026/mcp',
     protocolVersion: '2026-07-28',
     transportType: 'streamable-http',
@@ -71,9 +72,12 @@ describe('ConnectedSummary', () => {
     const view = mount(<ConnectedSummary {...props} />);
     expect(view.querySelector('h2')?.textContent).toBe('mcptest-e2e-mockv1.0.0');
     expect([...view.querySelectorAll('[aria-label="Session"] .badge')].map((badge) => badge.textContent))
-      .toEqual(['Connected', 'MCP 2026-07-28', 'Streamable HTTP', 'No auth']);
+      .toEqual(['Connected']);
+    expect(view.querySelector('[aria-label="Session"]')?.textContent).toContain('MCP 2026-07-28');
     expect([...view.querySelectorAll('[aria-label="Capabilities"] > li')].map((badge) => badge.textContent))
       .toEqual(['2 tools', '1 resource', '0 prompts']);
+    expect(view.querySelector('.connected-summary-description')?.textContent).toBe(props.serverDescription);
+    expect(view.querySelectorAll('.badge')).toHaveLength(1);
     const actions = view.querySelectorAll('.connected-summary-next .btn');
     expect(actions).toHaveLength(1);
     act(() => (actions[0] as HTMLButtonElement).click());

@@ -75,8 +75,8 @@ const OutputPanel: React.FC<OutputPanelProps> = (props) => {
     const fromRunButton = !active || active === document.body || active.id === 'executeBtn';
     if (!fromRunButton) return;
     setActiveTab('result');
-    // After the tab switch renders.
-    requestAnimationFrame(() => resultRef.current?.focus({ preventScroll: false }));
+    // Focus the result without scrolling the server context out of the workspace.
+    requestAnimationFrame(() => resultRef.current?.focus({ preventScroll: true }));
   }, [props.lastResult]);
   
   // Handle share button click

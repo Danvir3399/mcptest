@@ -1,3 +1,4 @@
+import JsonCode from './JsonCode';
 import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkBreaks from 'remark-breaks';
@@ -184,7 +185,7 @@ const McpResponseDisplay: React.FC<McpResponseDisplayProps> = ({
             }}
           >
             {isJson ? (
-                <pre><code className="language-json">{textContent}</code></pre>
+                <pre><JsonCode text={textContent || ''} /></pre>
             ) : renderedMarkdown !== null ? (
               renderedMarkdown
             ) : (
@@ -280,7 +281,7 @@ const McpResponseDisplay: React.FC<McpResponseDisplayProps> = ({
             }}
           >
             {isJson ? (
-                <pre><code className="language-json">{textContent}</code></pre>
+                <pre><JsonCode text={textContent || ''} /></pre>
             ) : renderedMarkdown !== null ? (
               renderedMarkdown
             ) : (
@@ -292,7 +293,7 @@ const McpResponseDisplay: React.FC<McpResponseDisplayProps> = ({
         /* Regular content for non-result types */
         <div className="event-data-wrapper">
           {isJson ? (
-              <pre><code className="language-json">{textContent}</code></pre>
+              <pre><JsonCode text={textContent || ''} /></pre>
           ) : renderedMarkdown !== null ? (
             renderedMarkdown
           ) : (
@@ -316,7 +317,7 @@ const McpResponseDisplay: React.FC<McpResponseDisplayProps> = ({
               </div>
               <div className="modal-body p-3" style={{ fontFamily: 'monospace', fontSize: '0.85rem' }}>
                 {isJson ? (
-                    <pre><code className="language-json">{textContent}</code></pre>
+                    <pre><JsonCode text={textContent || ''} /></pre>
                 ) : renderedMarkdown !== null ? (
                   renderedMarkdown
                 ) : (

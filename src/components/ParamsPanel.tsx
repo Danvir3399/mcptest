@@ -353,7 +353,7 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
       return <p className="text-muted small mt-2">No recent history.</p>;
     }
     return (
-      <div className="mt-3 border-top pt-3">
+      <div className="recent-calls mt-3 border-top pt-3">
         <h6>Recent Calls {selectedTool ? `(${selectedTool.name})` : selectedResourceTemplate ? `(${selectedResourceTemplate.name || selectedResourceTemplate.uriTemplate})` : ''}:</h6>
         <ul className="list-group list-group-flush" style={{ maxHeight: '150px', overflowY: 'auto' }}>
           {history.map((item, index) => (

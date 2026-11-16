@@ -273,7 +273,7 @@
 }
 
 .workbench-capabilities .tree-item.selected {
-  background: var(--glass-strong);
+  background: var(--accent-wash);
   box-shadow: inset var(--rail-width) 0 0 var(--rail-color);
 }
 

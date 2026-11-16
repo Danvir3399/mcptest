@@ -163,7 +163,8 @@ const ConnectionPanel: React.FC<ConnectionPanelProps> = ({
       <div className={`card connection-console ${isConnected ? 'connection-console--connected' : ''}`}>
       <div className="card-header d-flex justify-content-between align-items-center">
         <div className="connection-heading">
-          <div className="connection-title-row">
+          {isConnected && connectedSummary}
+          <div className={`connection-title-row ${isConnected && connectedSummary ? 'visually-hidden' : ''}`}>
             <h5 className="mb-0">{isConnected ? 'MCP connection ready' : 'Connect a remote endpoint'}</h5>
             {!isConnected && (
               <span id="connectionStatus" className={`badge bg-${connectionStatusClass}`} aria-live="polite">
@@ -171,7 +172,7 @@ const ConnectionPanel: React.FC<ConnectionPanelProps> = ({
               </span>
             )}
           </div>
-          {isConnected && <code className="connection-endpoint" title={serverUrl}>{serverUrl}</code>}
+          {isConnected && !connectedSummary && <code className="connection-endpoint" title={serverUrl}>{serverUrl}</code>}
         </div>
         {isConnected && (
           <div className="connection-details d-flex align-items-center gap-2" aria-label="Negotiated connection details">
@@ -197,7 +198,7 @@ const ConnectionPanel: React.FC<ConnectionPanelProps> = ({
                 aria-label="Share connection link"
                 disabled={shareStatus !== 'idle'}
               >
-                {shareStatus === 'success' ? <i className="bi bi-check-lg" aria-hidden="true"></i> : <i className="bi bi-share" aria-hidden="true"></i>}
+                {shareStatus === 'success' ? <i className="bi bi-check-lg" aria-hidden="true"></i> : <i className="bi bi-share" aria-hidden="true"></i>} Share
               </button>
               {shareStatus !== 'idle' && (
                 <div className="notification-tooltip" aria-live="polite">
@@ -216,7 +217,6 @@ const ConnectionPanel: React.FC<ConnectionPanelProps> = ({
           </div>
         )}
       </div>
-      {isConnected && connectedSummary && <div className="card-body connected-summary-body">{connectedSummary}</div>}
       {!isConnected && (
       <div className="card-body">
         <div className="mb-3">

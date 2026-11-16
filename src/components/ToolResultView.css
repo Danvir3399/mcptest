@@ -92,3 +92,14 @@
   border-color: var(--primary-color);
   color: var(--accent-text);
 }
+
+.result-json { color: var(--text-muted); }
+.result-json .hljs-attr { color: #2563a6; }
+.result-json .hljs-string { color: #18794e; }
+.result-json .hljs-number,
+.result-json .hljs-literal { color: #9a4d12; }
+.result-json .hljs-punctuation { color: var(--text-muted); }
+[data-theme='dark'] .result-json .hljs-attr { color: #83b8f1; }
+[data-theme='dark'] .result-json .hljs-string { color: #7dd3a8; }
+[data-theme='dark'] .result-json .hljs-number,
+[data-theme='dark'] .result-json .hljs-literal { color: #eab676; }

@@ -16,6 +16,7 @@ export interface CapabilityCount {
 interface ConnectedSummaryProps {
   serverName?: string;
   serverVersion?: string;
+  serverDescription?: string;
   serverUrl: string;
   protocolVersion: string | null;
   transportType: string | null;
@@ -73,6 +74,7 @@ export const SHARE_REPORT_EXPLANATION = 'Runs the protocol, auth, CORS and tool 
 const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
   serverName,
   serverVersion,
+  serverDescription,
   serverUrl,
   protocolVersion,
   transportType,
@@ -117,29 +119,30 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
           {serverName || hostOf(serverUrl)}
           {serverVersion && <span className="connected-summary-version">v{serverVersion}</span>}
         </h2>
+        {serverDescription && <p className="connected-summary-description" title={serverDescription}>{serverDescription}</p>}
         <ul className="connected-summary-facts" aria-label="Session">
-          <li><span className="badge bg-success">Connected</span></li>
-          {protocolVersion && <li><span className="badge bg-secondary">MCP {protocolVersion}</span></li>}
+          <li><span className="badge bg-success connected-status">Connected</span></li>
+          {protocolVersion && <li><span className="session-detail">MCP {protocolVersion}</span></li>}
           {transportType && (
             <li>
-              <span className="badge bg-secondary">
+              <span className="session-detail">
                 {transportType === 'streamable-http' ? 'Streamable HTTP' : 'Legacy SSE'}
               </span>
             </li>
           )}
-          <li><span className={`badge ${authMode === 'none' ? 'bg-secondary' : 'bg-info'}`}>{AUTH_LABEL[authMode]}</span></li>
-          {isProxied && <li><span className="badge bg-warning">Via proxy</span></li>}
+          <li><span className="session-detail">{AUTH_LABEL[authMode]}</span></li>
+          {isProxied && <li><span className="session-detail">Via proxy</span></li>}
         </ul>
         <ul className="connected-summary-facts connected-summary-counts" aria-label="Capabilities">
           <li>{plural(counts.tools.count, 'tool')}</li>
           <li>{plural(counts.resources.count, 'resource')}</li>
           <li>{plural(counts.prompts.count, 'prompt')}</li>
-          {listing && <li><span className="badge bg-info">Listing capabilities</span></li>}
+          {listing && <li><span className="session-detail">Listing capabilities</span></li>}
           {!listing && failedLists.length > 0 && (
-            <li><span className="badge bg-warning">{failedLists.join(', ')} list failed</span></li>
+            <li><span className="session-detail">{failedLists.join(', ')} list failed</span></li>
           )}
           {!listing && partialLists.length > 0 && (
-            <li><span className="badge bg-warning">{partialLists.join(', ')} list incomplete</span></li>
+            <li><span className="session-detail">{partialLists.join(', ')} list incomplete</span></li>
           )}
         </ul>
         {/* The fourth connection stage: the panel's stage list is gone once the

@@ -1,3 +1,4 @@
+import JsonCode from './JsonCode';
 import React, { useState } from 'react';
 import type { LogEntry } from '../types';
 import { OUTPUT_CONTRACT_FINDING_ID, type OutputContractResult } from '../utils/outputContract';
@@ -14,7 +15,7 @@ interface ToolResultViewProps {
 
 const JsonBlock: React.FC<{ value: unknown }> = ({ value }) => (
   <div className="event-data">
-    <pre><code className="language-json">{JSON.stringify(value, null, 2)}</code></pre>
+    <pre><JsonCode text={JSON.stringify(value, null, 2) ?? ''} /></pre>
   </div>
 );
 

@@ -174,3 +174,7 @@
     padding: 0 var(--space-3);
   }
 }
+
+.playground-tabs-wrapper {
+  flex-shrink: 0;
+}

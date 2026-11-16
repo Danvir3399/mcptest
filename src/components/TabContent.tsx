@@ -1114,6 +1114,7 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
         <ConnectedSummary
           serverName={serverIdentity?.title || serverIdentity?.name}
           serverVersion={serverIdentity?.version}
+          serverDescription={serverIdentity?.description || client?.getInstructions?.()}
           serverUrl={serverUrl}
           protocolVersion={protocolVersion}
           transportType={transportType}
@@ -1231,7 +1232,6 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
         />
       )}
 
-      {isConnected && <NextStepsStrip endpoint={tab.serverUrl} onCallTool={focusFirstTool} />}
       {!showLanding && isConnected && playgroundHistory.interfaceDiff && (
         <InterfaceChangeStrip
           diff={playgroundHistory.interfaceDiff}
@@ -1303,6 +1303,7 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
               onDismissToolPickGuide={() => dismissHint('pick-tool')}
               revealToolsRequest={revealToolsRequest}
             />
+            <NextStepsStrip endpoint={tab.serverUrl} onCallTool={focusFirstTool} />
             </section>
             <section className="workbench-pane workbench-request" aria-label="Request builder">
               <ParamsPanel

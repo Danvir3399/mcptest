@@ -1,4 +1,3 @@
-import NextStepsStrip from './NextStepsStrip';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 // Bootstrap's dropdown behaviour; loaded with this chunk rather than on every page.
@@ -1077,7 +1076,6 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
   // Rendered on its own for tabs with a server, and inside the landing's
   // "Advanced options" disclosure for empty tabs.
   const connectionPanel = (
-    <>
     <ConnectionPanel
       serverUrl={serverUrl}
       setServerUrl={handleServerUrlChange}
@@ -1130,18 +1128,18 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
           connectionKey={`${serverUrl}|${protocolVersion}|${transportType}`}
         />
       ) : undefined}
+      showConnectionShare={nextAction !== 'share-report'}
+      connectionActions={isConnected && transportType === 'streamable-http' && (
+        <React.Suspense fallback={null}>
+          <SessionResiliencePanel key={`${serverUrl}-${isProxied}-${protocolVersion}`}
+            endpoint={normalizeConnectionTarget(serverUrl)} stateless={protocolEra === 'modern'}
+            protocolVersion={protocolVersion} headers={requestHeaders} oauthToken={isOAuthConnection ? accessToken : undefined}
+            proxyUrl={isProxied ? import.meta.env.VITE_PROXY_URL : undefined}
+            getFirebaseToken={async () => currentUser ? currentUser.getIdToken() : undefined} />
+        </React.Suspense>
+      )}
       defaultAdvancedOpen={openAdvancedOnArrival}
     />
-    {isConnected && transportType === 'streamable-http' && (
-      <React.Suspense fallback={null}>
-        <SessionResiliencePanel key={`${serverUrl}-${isProxied}-${protocolVersion}`}
-          endpoint={normalizeConnectionTarget(serverUrl)} stateless={protocolEra === 'modern'}
-          protocolVersion={protocolVersion} headers={requestHeaders} oauthToken={isOAuthConnection ? accessToken : undefined}
-          proxyUrl={isProxied ? import.meta.env.VITE_PROXY_URL : undefined}
-          getFirebaseToken={async () => currentUser ? currentUser.getIdToken() : undefined} />
-      </React.Suspense>
-    )}
-    </>
   );
 
   return (
@@ -1303,7 +1301,6 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
               onDismissToolPickGuide={() => dismissHint('pick-tool')}
               revealToolsRequest={revealToolsRequest}
             />
-            <NextStepsStrip endpoint={tab.serverUrl} onCallTool={focusFirstTool} />
             </section>
             <section className="workbench-pane workbench-request" aria-label="Request builder">
               <ParamsPanel
@@ -1360,6 +1357,7 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
             </section>
             <section className="workbench-pane workbench-response" aria-label="Server response">
               <OutputPanel
+                onCallTool={focusFirstTool}
                 lastResult={lastResult}
                 responses={responses}
                 autoScroll={autoScroll}

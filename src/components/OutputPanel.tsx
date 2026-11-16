@@ -8,6 +8,7 @@ import { getResultShareUrl } from '../utils/urlUtils';
 import { useShare } from '../hooks/useShare';
 
 interface OutputPanelProps {
+  onCallTool?: () => void;
   lastResult: LogEntry | null;
   responses: LogEntry[];
   autoScroll: boolean;
@@ -127,7 +128,7 @@ const OutputPanel: React.FC<OutputPanelProps> = (props) => {
   return (
     <div className="card output-panel">
       <div className="card-header d-flex justify-content-between align-items-center" style={{ paddingBottom: 0 }}>
-        <ul className="nav nav-tabs flex-grow-0" id="outputTabs" role="tablist" style={{ marginBottom: '-1px' }}>
+        <ul className="nav nav-tabs panel-view-tabs flex-grow-0" id="outputTabs" role="tablist" style={{ marginBottom: '-1px' }}>
           <li className="nav-item" role="presentation">
             <button 
               className={`nav-link ${activeTab === 'result' ? 'active' : ''}`} 

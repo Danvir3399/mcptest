@@ -2683,6 +2683,7 @@ pre.bg-light code {
 .request-panel .form-control,
 .request-panel .form-select {
   min-height: 2.125rem;
+  border: 1px solid var(--border-color) !important;
   padding: 0.3125rem var(--space-2);
   border-radius: var(--button-radius-sm);
   font-size: 0.8125rem;
@@ -4265,10 +4266,11 @@ pre.bg-light code {
 }
 
 .playground-tab-strip .playground-tabs .nav-link.active {
-  margin: 0;
-  background-color: var(--active-wash) !important;
+  margin: 0 0 -1px;
+  z-index: 1;
+  background-color: var(--card-bg) !important;
   font-weight: var(--weight-semibold);
-  box-shadow: inset 0 -2px 0 var(--text-color), var(--glass-highlight);
+  box-shadow: none;
 }
 
 .playground-tab-strip .playground-tab-new {
@@ -5001,4 +5003,43 @@ pre.bg-light code {
 body:has(.connection-console--connected) {
   background-image: none;
   background-color: var(--card-bg-secondary);
+}
+
+/* One underline navigation treatment for both workspace panels. */
+.request-panel .panel-view-tabs,
+.output-panel .panel-view-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.request-panel .panel-view-tabs .nav-link,
+.output-panel .panel-view-tabs .nav-link {
+  min-height: 2.125rem;
+  padding: .375rem var(--space-2);
+  border-radius: 0;
+  background: transparent !important;
+  color: var(--text-muted) !important;
+  font-size: .8125rem;
+  box-shadow: none;
+}
+.request-panel .panel-view-tabs .nav-link.active,
+.output-panel .panel-view-tabs .nav-link.active {
+  color: var(--text-color) !important;
+  box-shadow: inset 0 -2px 0 var(--text-color);
+}
+.request-panel .form-control:focus,
+.request-panel .form-select:focus {
+  border-color: var(--input-focus-border) !important;
+  box-shadow: var(--focus-ring) !important;
+}
+.session-resilience { margin-top: var(--space-2); }
+.session-resilience > summary {
+  width: fit-content;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: var(--text-xs);
 }

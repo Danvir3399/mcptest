@@ -473,7 +473,7 @@
   border-radius: 50%;
   background: var(--success-color);
 }
-.workbench-capabilities .next-steps-strip {
+.result-empty-state .next-steps-strip {
   margin: var(--space-3) var(--space-4);
 }
 .request-panel .recent-calls .list-group-item {
@@ -491,7 +491,4 @@
 .workbench-capabilities > .unified-panel {
   height: auto;
   flex: 0 1 auto;
-}
-.workbench-capabilities > .next-steps-strip {
-  flex: 0 0 auto;
 }

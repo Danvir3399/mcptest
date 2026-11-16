@@ -82,6 +82,7 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
   renderCallHistory,
   callHistoryCount = 0,
 }) => {
+  const panelId = React.useId();
   const [view, setView] = React.useState<'request' | 'history'>('request');
   const showingHistory = view === 'history' && Boolean(renderCallHistory) && isConnected;
 
@@ -388,18 +389,27 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
              || 'Select a capability'}
           </h5>
           {renderCallHistory && isConnected && (
-            <div className="request-view-switch" role="group" aria-label="Request panel view">
-              <button type="button" className="btn" aria-pressed={!showingHistory} onClick={() => setView('request')}>
+            <div className="nav nav-tabs panel-view-tabs" role="tablist" aria-label="Request panel view"
+              onKeyDown={(event) => {
+                if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+                event.preventDefault();
+                const history = event.key === 'End' || (event.key !== 'Home' && !showingHistory);
+                setView(history ? 'history' : 'request');
+                event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="tab"]')[history ? 1 : 0]?.focus();
+              }}>
+              <button type="button" className={`nav-link ${!showingHistory ? 'active' : ''}`} role="tab" id={`${panelId}-request`} aria-controls={`${panelId}-body`} tabIndex={!showingHistory ? 0 : -1} aria-selected={!showingHistory} onClick={() => setView('request')}>
                 Request
               </button>
-              <button type="button" className="btn" aria-pressed={showingHistory} onClick={() => setView('history')}>
+              <button type="button" className={`nav-link ${showingHistory ? 'active' : ''}`} role="tab" id={`${panelId}-history`} aria-controls={`${panelId}-body`} tabIndex={showingHistory ? 0 : -1} aria-selected={showingHistory} onClick={() => setView('history')}>
                 History{callHistoryCount > 0 ? ` (${callHistoryCount})` : ''}
               </button>
             </div>
           )}
         </div>
       </div>
-      <div className="card-body request-panel-body">
+      <div className="card-body request-panel-body" id={`${panelId}-body`}
+        role={renderCallHistory && isConnected ? 'tabpanel' : undefined}
+        aria-labelledby={renderCallHistory && isConnected ? `${panelId}-${showingHistory ? 'history' : 'request'}` : undefined}>
         {showingHistory ? (
           renderCallHistory!(() => setView('request'))
         ) : !isConnected ? (

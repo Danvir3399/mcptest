@@ -1,4 +1,5 @@
 import React from 'react';
+import NextStepsStrip from './NextStepsStrip';
 import { LogEntry, Space, SpaceCard, SelectedTool, ResourceTemplate } from '../types';
 import ToolResultView from './ToolResultView';
 import FailureGuidanceSummary, { FailureLearnLink } from './FailureGuidance';
@@ -7,6 +8,7 @@ import { SHARE_REPORT_EXPLANATION } from './ConnectedSummary';
 import './ConnectedGuide.css';
 
 interface ResultPanelProps {
+  onCallTool?: () => void;
   lastResult: LogEntry | null;
   isConnected: boolean;
   serverUrl?: string;
@@ -42,7 +44,7 @@ export const ShareReportHint: React.FC<{ href: string; onDismiss?: () => void }>
     <div className="onboarding-hint-text">
       <p className="onboarding-hint-title"><i className="bi bi-share onboarding-hint-icon" aria-hidden="true"></i> Next: share a report</p>
       <p>{SHARE_REPORT_EXPLANATION}</p>
-      <a className="btn btn-sm btn-primary" href={href}>Share report</a>
+      <a className="btn btn-sm btn-outline-secondary" href={href}>Share report</a>
     </div>
     {onDismiss && (
       <button type="button" className="btn btn-sm btn-ghost" onClick={onDismiss} aria-label="Dismiss the share report hint">
@@ -58,6 +60,8 @@ const ResultPanel: React.FC<ResultPanelProps> = ({
   shareReportHref,
   onDismissShareHint,
   resultRef,
+  serverUrl,
+  onCallTool,
 }) => {
   return (
     <div className={`h-100 d-flex flex-column ${!isConnected ? 'panel-deactivated' : ''}`}>
@@ -74,6 +78,7 @@ const ResultPanel: React.FC<ResultPanelProps> = ({
               Run a tool and its result appears here: structured content when the tool returns it,
               the content blocks a model reads, and the raw JSON-RPC response.
             </p>
+            {isConnected && serverUrl && onCallTool && <NextStepsStrip endpoint={serverUrl} onCallTool={onCallTool} />}
           </div>
         )}
       </div>

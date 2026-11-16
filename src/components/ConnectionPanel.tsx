@@ -55,6 +55,8 @@ interface ConnectionPanelProps {
   connectionStages?: readonly ConnectionStage[];
   /** Rendered as the body of the connected card. */
   connectedSummary?: React.ReactNode;
+  connectionActions?: React.ReactNode;
+  showConnectionShare?: boolean;
   /** Starts with the "Advanced options" disclosure open (a landing page's Advanced options control). */
   defaultAdvancedOpen?: boolean;
 }
@@ -92,6 +94,8 @@ const ConnectionPanel: React.FC<ConnectionPanelProps> = ({
   autoFocusUrl = false,
   connectionStages,
   connectedSummary,
+  connectionActions,
+  showConnectionShare = true,
   defaultAdvancedOpen = false,
 }) => {
   const [connectionTimer, setConnectionTimer] = useState(0);
@@ -164,6 +168,7 @@ const ConnectionPanel: React.FC<ConnectionPanelProps> = ({
       <div className="card-header d-flex justify-content-between align-items-center">
         <div className="connection-heading">
           {isConnected && connectedSummary}
+          {isConnected && connectionActions}
           <div className={`connection-title-row ${isConnected && connectedSummary ? 'visually-hidden' : ''}`}>
             <h5 className="mb-0">{isConnected ? 'MCP connection ready' : 'Connect a remote endpoint'}</h5>
             {!isConnected && (
@@ -189,10 +194,10 @@ const ConnectionPanel: React.FC<ConnectionPanelProps> = ({
                 </button>
               </div>
             )}
-            <div className="position-relative">
+            {showConnectionShare && <div className="position-relative">
               <button
                 type="button"
-                className="btn btn-sm btn-ghost py-0"
+                className="btn btn-sm btn-outline-secondary"
                 onClick={handleShareConnection}
                 title="Share connection link"
                 aria-label="Share connection link"
@@ -205,7 +210,7 @@ const ConnectionPanel: React.FC<ConnectionPanelProps> = ({
                   {shareMessage}
                 </div>
               )}
-            </div>
+            </div>}
             <button
               id="disconnectBtn"
               className="btn btn-sm btn-outline-secondary"

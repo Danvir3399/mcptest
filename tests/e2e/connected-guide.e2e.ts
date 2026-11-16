@@ -93,7 +93,7 @@ for (const width of [1280, 390]) {
     const share = page.getByRole('complementary', { name: 'Next step: share a report' });
     await expect(share).toContainText('redacted');
     await expect(share.getByRole('link', { name: 'Share report' })).toHaveAttribute('href', `/report/${encodeURIComponent(mockUrl('2026'))}`);
-    await expect(summary(page).getByRole('link', { name: 'Share report' })).toBeVisible();
+    await expect(summary(page).getByRole('link', { name: 'Share', exact: true })).toBeVisible();
     expect(await hasHorizontalScroll(page)).toBe(false);
     if (width === 1280) {
       await share.scrollIntoViewIfNeeded();
@@ -123,7 +123,7 @@ test('a returning visitor who has completed the steps sees no hints', async ({ p
   await expect(resultView(page)).toContainText('"city": "Tartu"');
   await expect(page.locator('.onboarding-hint')).toHaveCount(0);
   // The primary action still moves on; it is not a hint.
-  await expect(summary(page).getByRole('link', { name: 'Share report' })).toBeVisible();
+  await expect(summary(page).getByRole('link', { name: 'Share', exact: true })).toBeVisible();
 });
 
 test('repeated runs started with Enter in a form field are each announced', async ({ page }) => {

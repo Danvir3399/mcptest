@@ -83,7 +83,7 @@ describe('ConnectedSummary', () => {
   it('names the server, its session and capabilities, with one primary action', () => {
     const view = mount(<ConnectedSummary {...props} />);
     expect(view.querySelector('h2')?.textContent).toBe('mcptest-e2e-mockv1.0.0');
-    expect([...view.querySelectorAll('[aria-label="Session"] .badge')].map((badge) => badge.textContent))
+    expect([...view.querySelectorAll('.connected-summary-title-row .badge')].map((badge) => badge.textContent))
       .toEqual(['Connected']);
     expect(view.querySelector('[aria-label="Session"]')?.textContent).toContain('MCP 2026-07-28');
     expect([...view.querySelectorAll('[aria-label="Capabilities"] > li')].map((badge) => badge.textContent))
@@ -94,6 +94,19 @@ describe('ConnectedSummary', () => {
     expect(actions).toHaveLength(1);
     act(() => (actions[0] as HTMLButtonElement).click());
     expect(props.onCallTool).toHaveBeenCalledOnce();
+  });
+
+  it('copies the resolved endpoint and announces success or failure', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText } });
+    const view = mount(<ConnectedSummary {...props} originalServerUrl="https://example.com" />);
+    const copy = view.querySelector<HTMLButtonElement>('[aria-label="Copy endpoint URL"]')!;
+    await act(async () => copy.click());
+    expect(writeText).toHaveBeenCalledWith(props.serverUrl);
+    expect(copy.title).toBe('Endpoint copied');
+    writeText.mockRejectedValueOnce(new Error('Permission denied'));
+    await act(async () => copy.click());
+    expect(copy.title).toBe('Could not copy endpoint');
   });
 
   it('moves focus to the summary after connect when focus was lost, once per connection', () => {

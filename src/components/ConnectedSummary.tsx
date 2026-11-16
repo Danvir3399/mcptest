@@ -1,9 +1,11 @@
 import ActionIcon from './ActionIcon';
-import React, { useEffect, useId, useRef } from 'react';
+import React, { useEffect, useId, useRef, useMemo, useState } from 'react';
 import { STAGE_ICONS } from './ConnectionProgress';
 import { listOutcome, STAGE_LABELS, stageStatusWord, type CapabilitySection, type ConnectionStage, type ListOutcome } from '../utils/connectionStages';
 import type { DiscoveryStatus } from '../hooks/useToolsAndResources';
 import './ConnectedGuide.css';
+import { CatalogServerLogo } from './CatalogServerLogo';
+import { getCatalogServerByEndpoint } from '../utils/catalogUtils';
 
 export type ConnectedAuthMode = 'oauth' | 'api-key' | 'bearer-token' | 'none';
 export type ConnectedNextAction = 'call-tool' | 'share-report' | 'run-report' | 'retry-lists';
@@ -15,6 +17,8 @@ export interface CapabilityCount {
 }
 
 interface ConnectedSummaryProps {
+  actions?: React.ReactNode;
+  resilienceAction?: React.ReactNode;
   serverName?: string;
   serverVersion?: string;
   serverDescription?: string;
@@ -79,6 +83,8 @@ export const SHARE_REPORT_EXPLANATION = 'Runs the protocol, auth, CORS and tool 
  * what it offers, and one obvious next action.
  */
 const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
+  actions,
+  resilienceAction,
   serverName,
   serverVersion,
   serverDescription,
@@ -98,6 +104,15 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
   connectionKey,
 }) => {
   const headingId = useId();
+  const [copyState, setCopyState] = useState('');
+  const catalogServer = useMemo(() => getCatalogServerByEndpoint(serverUrl), [serverUrl]);
+  useEffect(() => { setCopyState(''); }, [serverUrl]);
+  const copyEndpoint = async () => {
+    try {
+      await navigator.clipboard.writeText(serverUrl);
+      setCopyState('Endpoint copied');
+    } catch { setCopyState('Could not copy endpoint'); }
+  };
   const headingRef = useRef<HTMLHeadingElement>(null);
   const focusedKey = useRef<string | null>(null);
 
@@ -123,12 +138,27 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
   return (
     <section className="connected-summary" aria-labelledby={headingId}>
       <div className="connected-summary-identity">
-        <h2 id={headingId} className="connected-summary-name" tabIndex={-1} ref={headingRef}>
-          {serverName || hostOf(serverUrl)}
-          {serverVersion && <span className="connected-summary-version">v{serverVersion}</span>}
-        </h2>
+        <div className="connected-summary-title-row">
+          {catalogServer ? <CatalogServerLogo name={catalogServer.name} logoUrl={catalogServer.logoUrl} /> : (
+            <span className="connected-summary-server-icon" aria-hidden="true"><i className="bi bi-hdd-network" /></span>
+          )}
+          <h2 id={headingId} className="connected-summary-name" tabIndex={-1} ref={headingRef}>
+            {serverName || hostOf(serverUrl)}
+            {serverVersion && <span className="connected-summary-version">v{serverVersion}</span>}
+          </h2>
+          <span className="badge bg-success connected-status">Connected</span>
+        </div>
+      </div>
+      <div className="connected-summary-metadata">
+        <div className="connected-summary-endpoint">
+          {originalServerUrl && !sameEndpoint(originalServerUrl, serverUrl) && <span>Entered: <code>{originalServerUrl}</code> · </span>}
+          <span>{originalServerUrl && !sameEndpoint(originalServerUrl, serverUrl) ? 'Discovered:' : 'Endpoint:'} <code>{serverUrl}</code></span>
+          <button type="button" className="btn btn-sm connected-endpoint-copy" onClick={() => void copyEndpoint()} aria-label="Copy endpoint URL" title={copyState || 'Copy endpoint URL'}>
+            <i className={`bi ${copyState === 'Endpoint copied' ? 'bi-check-lg' : 'bi-copy'}`} aria-hidden="true" />
+          </button>
+          <span className="visually-hidden" aria-live="polite">{copyState}</span>
+        </div>
         <ul className="connected-summary-facts" aria-label="Session">
-          <li><span className="badge bg-success connected-status">Connected</span></li>
           {protocolVersion && <li><span className="session-detail">MCP {protocolVersion}</span></li>}
           {transportType && (
             <li>
@@ -140,26 +170,22 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
           <li><span className="session-detail">{AUTH_LABEL[authMode]}</span></li>
           {isProxied && <li><span className="session-detail">Via proxy</span></li>}
         </ul>
-        {serverDescription && <p className="connected-summary-description" title={serverDescription}>{serverDescription}</p>}
-        <div className="connected-summary-metadata">
-          <ul className="connected-summary-facts connected-summary-counts" aria-label="Capabilities">
-            <li>{plural(counts.tools.count, 'tool')}</li>
-            <li>{plural(counts.resources.count, 'resource')}</li>
-            <li>{plural(counts.prompts.count, 'prompt')}</li>
-            {listing && <li><span className="session-detail">Listing capabilities</span></li>}
-            {!listing && failedLists.length > 0 && (
-              <li><span className="session-detail">{failedLists.join(', ')} list failed</span></li>
-            )}
-            {!listing && partialLists.length > 0 && (
-              <li><span className="session-detail">{partialLists.join(', ')} list incomplete</span></li>
-            )}
-          </ul>
-          <p className="connected-summary-endpoint">
-            {originalServerUrl && !sameEndpoint(originalServerUrl, serverUrl) ? (
-              <><span>Entered: <code>{originalServerUrl}</code></span><span>Discovered: <code>{serverUrl}</code></span></>
-            ) : <span>Endpoint: <code>{serverUrl}</code></span>}
-          </p>
-        </div>
+
+        <ul className="connected-summary-facts connected-summary-counts" aria-label="Capabilities">
+          <li>{plural(counts.tools.count, 'tool')}</li>
+          <li>{plural(counts.resources.count, 'resource')}</li>
+          <li>{plural(counts.prompts.count, 'prompt')}</li>
+          {listing && <li><span className="session-detail">Listing capabilities</span></li>}
+          {!listing && failedLists.length > 0 && (
+            <li><span className="session-detail">{failedLists.join(', ')} list failed</span></li>
+          )}
+          {!listing && partialLists.length > 0 && (
+            <li><span className="session-detail">{partialLists.join(', ')} list incomplete</span></li>
+          )}
+        </ul>
+      </div>
+      {serverDescription && <p className="connected-summary-description" title={serverDescription}>{serverDescription}</p>}
+      <div className="connected-summary-progress">
         {/* The fourth connection stage: the panel's stage list is gone once the
             session exists, so the list requests advance and complete here. */}
         <ol hidden={!listing} className="connection-stages connected-summary-list-stage" aria-label="Capability listing">
@@ -179,6 +205,7 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
         </p>
       </div>
       <div className="connected-summary-next">
+        {resilienceAction}
         {nextAction === 'call-tool' && (
           <>
             <button type="button" className="btn btn-primary" onClick={onCallTool}>
@@ -191,7 +218,7 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
           <div className="share-report-actions">
             <span className="share-report-help">
               <a className="btn btn-outline-secondary" href={reportHref} aria-describedby={`${headingId}-share-help`}>
-                <ActionIcon name="share" /> Share report <ActionIcon name="info" />
+                <ActionIcon name="share" /> Share report
               </a>
               <span role="tooltip" id={`${headingId}-share-help`}>{SHARE_REPORT_EXPLANATION}</span>
             </span>
@@ -219,6 +246,7 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
             <p>The tools list request failed, so mcptest cannot tell which tools this server offers. Logs &amp; Events has the error.</p>
           </>
         )}
+        {actions}
       </div>
     </section>
   );

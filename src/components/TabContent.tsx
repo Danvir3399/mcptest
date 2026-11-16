@@ -1115,8 +1115,18 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
       credentialInputId={`${tab.id}-catalog-credential`}
       autoFocusUrl={isFirstConnection && hasStartedFirstConnection}
       connectionStages={stages}
-      connectedSummary={isConnected ? (
+      connectedSummary={isConnected ? (actions => (
         <ConnectedSummary
+          actions={actions}
+          resilienceAction={transportType === 'streamable-http' && (
+            <React.Suspense fallback={null}>
+              <SessionResiliencePanel key={`${serverUrl}-${isProxied}-${protocolVersion}`}
+                endpoint={normalizeConnectionTarget(serverUrl)} stateless={protocolEra === 'modern'}
+                protocolVersion={protocolVersion} headers={requestHeaders} oauthToken={isOAuthConnection ? accessToken : undefined}
+                proxyUrl={isProxied ? import.meta.env.VITE_PROXY_URL : undefined}
+                getFirebaseToken={async () => currentUser ? currentUser.getIdToken() : undefined} />
+            </React.Suspense>
+          )}
           originalServerUrl={tab.serverUrl === serverUrl ? tab.originalServerUrl : undefined}
           serverName={serverIdentity?.title || serverIdentity?.name}
           serverVersion={serverIdentity?.version}
@@ -1135,17 +1145,8 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
           onRetryLists={handleRefreshAllLists}
           connectionKey={`${serverUrl}|${protocolVersion}|${transportType}`}
         />
-      ) : undefined}
+      )) : undefined}
       showConnectionShare={nextAction !== 'share-report'}
-      connectionActions={isConnected && transportType === 'streamable-http' && (
-        <React.Suspense fallback={null}>
-          <SessionResiliencePanel key={`${serverUrl}-${isProxied}-${protocolVersion}`}
-            endpoint={normalizeConnectionTarget(serverUrl)} stateless={protocolEra === 'modern'}
-            protocolVersion={protocolVersion} headers={requestHeaders} oauthToken={isOAuthConnection ? accessToken : undefined}
-            proxyUrl={isProxied ? import.meta.env.VITE_PROXY_URL : undefined}
-            getFirebaseToken={async () => currentUser ? currentUser.getIdToken() : undefined} />
-        </React.Suspense>
-      )}
       defaultAdvancedOpen={openAdvancedOnArrival}
     />
   );

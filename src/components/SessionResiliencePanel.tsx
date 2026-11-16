@@ -38,7 +38,7 @@ export default function SessionResiliencePanel(props: Props) {
     finally { active.current = null; if (!controller.signal.aborted) setRunning(false); }
   };
   return <details className="session-resilience" aria-label="Session resilience diagnostics">
-    <summary>Check session resilience</summary>
+    <summary className="btn btn-sm btn-outline-secondary"><i className="bi bi-shield-check" aria-hidden="true" /> Check resilience</summary>
     <div className="pt-2">
     <button className="btn btn-outline-secondary btn-sm" disabled={running} onClick={() => void run()}>
       {running ? 'Checking session resilience…' : 'Run session checks'}

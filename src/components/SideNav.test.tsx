@@ -274,7 +274,7 @@ describe('SideNav information architecture', () => {
     const container = renderStatic('playground', '/');
     expect(container.querySelector('.sidenav-footer')).toBeNull();
     expect(container.querySelector('a[href="/docs/privacy-policy"]')).toBeNull();
-    expect(container.querySelector('.sidenav-collapse-toggle')).not.toBeNull();
+    expect(container.querySelector('.sidenav-collapse-toggle')).toBeNull();
   });
 });
 
@@ -312,72 +312,13 @@ describe('SideNav collapsed desktop mode', () => {
     element?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
   });
 
-  it('collapses to an icon rail from the bottom control, remembers it, and restores it', () => {
-    mount();
-    const nav = host.querySelector<HTMLElement>('.app-sidenav')!;
-    const toggle = host.querySelector<HTMLButtonElement>('.sidenav-collapse-toggle')!;
-
-    expect(toggle.getAttribute('aria-expanded')).toBe('true');
-    expect(toggle.getAttribute('aria-controls')).toBe(nav.id);
-    expect(nav.classList).not.toContain('app-sidenav--collapsed');
-    expect(expandedTracks(host)).toEqual(['use']);
-
-    click(toggle);
-
-    expect(nav.classList).toContain('app-sidenav--collapsed');
-    expect(toggle.getAttribute('aria-expanded')).toBe('false');
-    expect(toggle.getAttribute('aria-label')).toBe('Expand sidebar');
-    expect(document.body.classList).toContain(SIDEBAR_COLLAPSED_CLASS);
-    expect(localStorage.getItem(SIDEBAR_COLLAPSED_KEY)).toBe('true');
-    // Icon-only: groups fold, but every link keeps a name for its tooltip.
-    expect(expandedTracks(host)).toEqual([]);
-    expect(host.querySelector('.sidenav-dashboards .sidenav-group-toggle')?.getAttribute('aria-expanded')).toBe('false');
-    expect(host.querySelector('.sidenav-section-toggle')?.getAttribute('aria-expanded')).toBe('false');
-    host.querySelectorAll('.sidenav-group:not(.content-track-nav) .sidenav-list > .nav-item > a').forEach(link => {
-      const label = link.textContent?.trim();
-      const item = PRIMARY_NAVIGATION.find(entry => entry.label === label)!;
-      expect(link.getAttribute('title')).toBe(`${label}: ${item.description}`);
-    });
-    expect(host.querySelector('.sidenav-section-toggle')?.getAttribute('title')).toBe('Learn');
-
-    // Opening Learn from the rail expands the sidebar first, with the page's track open.
-    click(host.querySelector('.sidenav-section-toggle'));
-    expect(nav.classList).not.toContain('app-sidenav--collapsed');
-    expect(host.querySelector('.sidenav-section-toggle')?.getAttribute('aria-expanded')).toBe('true');
-    expect(expandedTracks(host)).toEqual(['use']);
-    expect(localStorage.getItem(SIDEBAR_COLLAPSED_KEY)).toBe('false');
-
-    // A track opened from the rail is the only one open.
-    click(toggle);
-    click(host.querySelector('.content-track[data-track="build"] .sidenav-group-toggle'));
-    expect(nav.classList).not.toContain('app-sidenav--collapsed');
-    expect(expandedTracks(host)).toEqual(['build']);
-
-    act(() => root?.unmount());
-    root = undefined;
-    expect(document.body.classList).not.toContain(SIDEBAR_COLLAPSED_CLASS);
-
-    // A remembered collapse applies on the next mount; the mobile drawer ignores it.
+  it('keeps the sidebar expanded even with a previously saved collapse preference', () => {
     localStorage.setItem(SIDEBAR_COLLAPSED_KEY, 'true');
     mount();
-    expect(host.querySelector('.app-sidenav')?.classList).toContain('app-sidenav--collapsed');
-    expect(document.body.classList).toContain(SIDEBAR_COLLAPSED_CLASS);
-    act(() => root?.unmount());
-    root = undefined;
-
-    mount({ isMobile: true, theme: 'light', onToggleTheme: vi.fn() });
-    expect(host.querySelector('.app-sidenav')?.classList).not.toContain('app-sidenav--collapsed');
     expect(host.querySelector('.sidenav-collapse-toggle')).toBeNull();
+    expect(host.querySelector('.app-sidenav')?.classList).not.toContain('app-sidenav--collapsed');
     expect(document.body.classList).not.toContain(SIDEBAR_COLLAPSED_CLASS);
-  });
-
-  it('narrows the desktop column to 56px and hides labels in the stylesheet', () => {
-    const css = readStylesheet('layout');
-    expect(css).toMatch(/\.sidenav-collapsed \.desktop-sidebar\s*\{[^}]*width:\s*56px;/);
-    const hidden = css.match(/((?:\.app-sidenav--collapsed [^,{]+,?\s*)+)\{\s*display:\s*none;\s*\}/)?.[1] ?? '';
-    ['.sidenav-label', '.sidenav-section-label', '.sidenav-footer-links', '.sidenav-legal'].forEach(selector => {
-      expect(hidden).toContain(`.app-sidenav--collapsed ${selector}`);
-    });
+    expect(expandedTracks(host)).toEqual(['use']);
   });
 
   it('toggles the dashboards group and the learn tracks with aria-expanded', () => {

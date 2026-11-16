@@ -5,7 +5,7 @@ import { enhanceEngagement } from '../utils/pageEngagement';
  * shell around the page body. React does not mount over them at load
  * (issue #405); src/main.tsx defers the mount until the first input. Until
  * then these vanilla handlers make the static controls work: the theme
- * toggle, the sidebar collapse and group toggles, code copy buttons, the `/`
+ * toggle, the sidebar group toggles, code copy buttons, the `/`
  * search shortcut, guide link analytics and the page view. Other buttons (the
  * mobile menu, whose drawer only exists in the app) are replayed on the app
  * once the input that started the mount has mounted it (deferredMount.ts).
@@ -13,12 +13,7 @@ import { enhanceEngagement } from '../utils/pageEngagement';
  * Handlers are attached to the static shell element, which the React mount
  * removes, so they never run alongside the app's own.
  */
-import {
-  MENU_OPEN_CLASS,
-  SIDEBAR_COLLAPSED_CLASS,
-  SIDEBAR_COLLAPSED_KEY,
-  readStoredSidebarCollapsed,
-} from '../utils/layoutState';
+import { MENU_OPEN_CLASS } from '../utils/layoutState';
 import { logPageView, recordStaticPageEvent, trackEvent, trackGuideLinkClick } from '../utils/analytics';
 import { handleCodeCopyClick, handleCopyFromClick } from '../utils/codeCopy';
 import { setFieldValue } from './deferredMount';
@@ -45,47 +40,6 @@ const toggleTheme = (): void => {
     // The toggle still applies for this page view.
   }
   trackEvent('theme_changed', { theme_name: next });
-};
-
-const storeSidebarCollapsed = (collapsed: boolean): void => {
-  try {
-    localStorage.setItem(SIDEBAR_COLLAPSED_KEY, String(collapsed));
-  } catch {
-    // Applies for this page view only.
-  }
-};
-
-/** Mirrors useSidebarCollapsed and SideNav's collapsed rendering on the static sidebar. */
-const applySidebarCollapsed = (shell: HTMLElement, collapsed: boolean): void => {
-  document.body.classList.toggle(SIDEBAR_COLLAPSED_CLASS, collapsed);
-  const nav = shell.querySelector('.desktop-sidebar .app-sidenav');
-  nav?.classList.toggle('app-sidenav--collapsed', collapsed);
-  const toggle = nav?.querySelector('.sidenav-collapse-toggle');
-  if (toggle) {
-    toggle.setAttribute('aria-expanded', String(!collapsed));
-    toggle.setAttribute('aria-label', collapsed ? 'Expand sidebar' : 'Collapse sidebar');
-    toggle.setAttribute('title', collapsed ? 'Expand sidebar' : 'Collapse sidebar');
-    const icon = toggle.querySelector('i');
-    if (icon) icon.className = `bi ${collapsed ? 'bi-chevron-double-right' : 'bi-chevron-double-left'}`;
-  }
-  // The collapsed rail swaps the search field for a button that comes with the app.
-  const search = nav?.querySelector<HTMLElement>('.guide-search--sidebar');
-  if (search) search.hidden = collapsed;
-  // A collapsed sidebar shows no group bodies.
-  nav?.querySelectorAll<HTMLElement>('.sidenav-group-toggle[aria-controls]').forEach(button => {
-    const body = document.getElementById(button.getAttribute('aria-controls') || '');
-    if (!body) return;
-    if (collapsed) {
-      button.dataset.expandedBeforeCollapse = button.getAttribute('aria-expanded') || 'false';
-      body.hidden = true;
-      button.setAttribute('aria-expanded', 'false');
-    } else if (button.dataset.expandedBeforeCollapse) {
-      const expanded = button.dataset.expandedBeforeCollapse === 'true';
-      body.hidden = !expanded;
-      button.setAttribute('aria-expanded', String(expanded));
-      delete button.dataset.expandedBeforeCollapse;
-    }
-  });
 };
 
 /** Marks a sidebar group the visitor opened or closed on the static page. */
@@ -164,13 +118,10 @@ export const snapshotStaticPageState = (root: HTMLElement): (() => void) => {
       appSearch.setSelectionRange(search.selectionStart, search.selectionEnd);
     }
   };
-  const isCollapsed = () => document.body.classList.contains(SIDEBAR_COLLAPSED_CLASS);
-  if (isCollapsed()) return restoreInputs;
   const groups = Array.from(root.querySelectorAll(`.sidenav-group-toggle[aria-controls][${TOGGLED_GROUP_ATTRIBUTE}]`))
     .map(button => ({ controls: button.getAttribute('aria-controls')!, expanded: button.getAttribute('aria-expanded') === 'true' }));
   return () => {
     restoreInputs();
-    if (isCollapsed()) return;
     for (const { controls, expanded } of groups) {
       const button = Array.from(root.querySelectorAll<HTMLElement>('.sidenav-group-toggle[aria-controls]'))
         .find(candidate => candidate.getAttribute('aria-controls') === controls);
@@ -183,26 +134,6 @@ const isEditable = (target: EventTarget | null): boolean => (
   target instanceof HTMLElement && (target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName))
 );
 
-/**
- * On the collapsed rail the sidebar search is hidden: like GuideSearch's rail
- * shortcut, expand the sidebar, open Learn and return the field. A sidebar
- * hidden by CSS (a phone) never expands.
- */
-const expandToSidebarGuideSearch = (shell: HTMLElement): HTMLInputElement | null => {
-  if (!document.body.classList.contains(SIDEBAR_COLLAPSED_CLASS)) return null;
-  const nav = shell.querySelector('.desktop-sidebar .app-sidenav');
-  const field = nav?.querySelector<HTMLInputElement>('.guide-search--sidebar input.guide-search-input[aria-keyshortcuts="/"]');
-  const bodyId = field?.closest('.sidenav-learn-body')?.id;
-  const learn = bodyId
-    ? Array.from(nav!.querySelectorAll<HTMLElement>('.sidenav-group-toggle[aria-controls]')).find(button => button.getAttribute('aria-controls') === bodyId)
-    : undefined;
-  if (!field || !learn || learn.offsetParent === null) return null;
-  storeSidebarCollapsed(false);
-  applySidebarCollapsed(shell, false);
-  if (learn.getAttribute('aria-expanded') !== 'true') toggleGroup(learn);
-  return field;
-};
-
 /** The `/` shortcut of guide search (components/learn/guideSearchShortcut.ts), on content views only. */
 const focusGuideSearch = (shell: HTMLElement, event: KeyboardEvent): void => {
   if (event.key !== '/' || event.ctrlKey || event.metaKey || event.altKey || event.defaultPrevented) return;
@@ -210,8 +141,7 @@ const focusGuideSearch = (shell: HTMLElement, event: KeyboardEvent): void => {
   if (document.body.classList.contains(MENU_OPEN_CLASS)) return;
   const field = Array.from(shell.querySelectorAll<HTMLInputElement>('input.guide-search-input[aria-keyshortcuts="/"]'))
     .sort((left, right) => Number(right.closest('.guide-search--page') !== null) - Number(left.closest('.guide-search--page') !== null))
-    .find(input => input.offsetParent !== null)
-    ?? expandToSidebarGuideSearch(shell);
+    .find(input => input.offsetParent !== null);
   if (!field) return;
   event.preventDefault();
   field.focus();
@@ -235,7 +165,6 @@ const reportPageView = (shell: HTMLElement): void => {
 
 /** Wires the static page's controls. */
 export const enhanceStaticPage = (shell: HTMLElement): void => {
-  if (readStoredSidebarCollapsed()) applySidebarCollapsed(shell, true);
 
   const endpoint = shell.querySelector<HTMLInputElement>('.seo-landing-fallback #serverUrl');
   const connect = shell.querySelector<HTMLButtonElement>('#connectBtn');
@@ -272,12 +201,7 @@ export const enhanceStaticPage = (shell: HTMLElement): void => {
     if (button.closest('[data-inline-test]')) { handledClicks.add(button); return; }
     if (button.matches('.app-theme-toggle')) {
       toggleTheme();
-    } else if (button.matches('.sidenav-collapse-toggle')) {
-      const collapsed = !document.body.classList.contains(SIDEBAR_COLLAPSED_CLASS);
-      trackEvent('sidebar_collapse', { collapsed });
-      storeSidebarCollapsed(collapsed);
-      applySidebarCollapsed(shell, collapsed);
-    } else if (button.matches('.sidenav-group-toggle[aria-controls]') && !document.body.classList.contains(SIDEBAR_COLLAPSED_CLASS)) {
+    } else if (button.matches('.sidenav-group-toggle[aria-controls]')) {
       toggleGroup(button);
     } else {
       return;

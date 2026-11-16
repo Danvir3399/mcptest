@@ -328,17 +328,17 @@ describe('guide search placement', () => {
     expect(document.activeElement).toBe(field(container!.querySelector('.desktop-sidebar')!));
   });
 
-  it('expands the collapsed desktop sidebar from `/` on a guide page and focuses the field', () => {
+  it('focuses guide search despite a previously saved sidebar collapse preference', () => {
     // Browsers refuse focus inside a `hidden` subtree; jsdom does not.
     const focus = HTMLElement.prototype.focus;
     vi.spyOn(HTMLElement.prototype, 'focus').mockImplementation(function (this: HTMLElement, options?: FocusOptions) {
       if (!this.closest('[hidden]')) focus.call(this, options);
     });
-    // Collapsed, the Learn body (and the search rail button inside it) is hidden.
+    // Legacy preferences no longer hide the guide search.
     localStorage.setItem(SIDEBAR_COLLAPSED_KEY, 'true');
     mountSideNavs('learn', '/guides/connect-remote-mcp-server');
     const desktop = container!.querySelector('.desktop-sidebar')!;
-    expect(desktop.querySelector('.sidenav-learn-body')?.hasAttribute('hidden')).toBe(true);
+    expect(desktop.querySelector('.sidenav-learn-body')?.hasAttribute('hidden')).toBe(false);
 
     expect(press(document.body, '/').defaultPrevented).toBe(true);
 

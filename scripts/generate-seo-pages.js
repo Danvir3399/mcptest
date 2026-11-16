@@ -1203,9 +1203,6 @@ function renderSideNavFallback({ learnTracks, versionInfo, year, view = 'playgro
     '    </div>',
     '  </section>',
     ] : ['<section class="sidenav-group" aria-labelledby="sidenav-learn-heading-desktop"><h2 id="sidenav-learn-heading-desktop" class="sidenav-section-label">Learn</h2><a href="/guides" class="nav-link sidenav-link" title="Guides"><i class="bi bi-book sidenav-icon" aria-hidden="true"></i><span class="sidenav-label">Guides</span></a></section>']),
-    '  <div class="mt-auto">',
-    `    <button type="button" class="sidenav-collapse-toggle" aria-expanded="true" aria-controls="app-sidenav-${idSuffix}" aria-label="Collapse sidebar" title="Collapse sidebar"><i class="bi bi-chevron-double-left" aria-hidden="true"></i><span class="sidenav-label">Collapse</span></button>`,
-    '  </div>',
     '</nav>',
   ].join('\n');
 }

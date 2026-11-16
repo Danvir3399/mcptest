@@ -44,16 +44,13 @@ test.describe('sidebar navigation', () => {
     await expect(nav.locator('a[href="/learn/mcp-clients-compared"]')).toHaveAttribute('aria-current', 'page');
   });
 
-  test('`/` on a guide expands the collapsed sidebar and focuses the guide search', async ({ page }) => {
+  test('`/` on a guide focuses the guide search', async ({ page }) => {
     await page.goto('/learn/mcp-clients-compared');
     // Exercise the mounted shortcut; the next test covers the static shell.
     await page.keyboard.press('Shift');
     await expect(page.locator('.seo-shell-fallback')).toHaveCount(0);
     const nav = page.locator(sidebar);
-    await nav.locator('.sidenav-collapse-toggle').click();
-    await expect(nav).toHaveClass(/app-sidenav--collapsed/);
-    // On the rail Learn is one icon; its body, with the search button, is hidden.
-    await expect(nav.locator('.sidenav-learn-body')).toBeHidden();
+    await expect(nav.locator('.sidenav-collapse-toggle')).toHaveCount(0);
 
     await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
     await page.keyboard.press('/');
@@ -63,7 +60,7 @@ test.describe('sidebar navigation', () => {
     await expect(nav.getByRole('combobox', { name: 'Search guides' })).toBeFocused();
   });
 
-  test('`/` expands the collapsed sidebar on the static guide page before the app mounts', async ({ page }) => {
+  test('`/` focuses search on the static guide page before the app mounts', async ({ page }) => {
     // Hold the app so the click and the key reach the static page's handlers.
     let release!: () => void;
     const gate = new Promise<void>(resolve => { release = resolve; });
@@ -73,15 +70,13 @@ test.describe('sidebar navigation', () => {
     });
     await page.goto('/learn/mcp-clients-compared');
     const nav = page.locator(sidebar);
-    await nav.locator('.sidenav-collapse-toggle').click();
-    await expect(nav).toHaveClass(/app-sidenav--collapsed/);
+    await expect(nav.locator('.sidenav-collapse-toggle')).toHaveCount(0);
     await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
     await page.keyboard.press('/');
 
     await expect(nav).not.toHaveClass(/app-sidenav--collapsed/);
     await expect(nav.getByRole('button', { name: 'Learn' })).toHaveAttribute('aria-expanded', 'true');
     await expect(nav.getByRole('combobox', { name: 'Search guides' })).toBeFocused();
-    expect(await page.evaluate(() => localStorage.getItem('mcpSidebarCollapsed'))).toBe('false');
 
     // The app mounts over it with the same state.
     release();
@@ -90,19 +85,15 @@ test.describe('sidebar navigation', () => {
     await expect(nav.getByRole('combobox', { name: 'Search guides' })).toBeFocused();
   });
 
-  test('remembers the collapsed sidebar across reloads', async ({ page }) => {
-    // The discovery checker mounts at load and its static shell is inert, so
-    // a click before the mount would be lost.
+  test('ignores saved sidebar collapse preferences across reloads', async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem('mcpSidebarCollapsed', 'true'));
     await page.goto('/tools/discovery');
     await expect(page.locator('.seo-shell-fallback')).toHaveCount(0);
-    await page.locator(`${sidebar} .sidenav-collapse-toggle`).click();
-    await expect(page.locator(sidebar)).toHaveClass(/app-sidenav--collapsed/);
-    await page.reload();
-    await expect(page.locator(sidebar)).toHaveClass(/app-sidenav--collapsed/);
-    await expect(page.locator(`${sidebar} .sidenav-collapse-toggle`)).toHaveAttribute('aria-expanded', 'false');
-    await page.locator(`${sidebar} .sidenav-collapse-toggle`).click();
+    await expect(page.locator(sidebar)).not.toHaveClass(/app-sidenav--collapsed/);
+    await expect(page.locator(`${sidebar} .sidenav-collapse-toggle`)).toHaveCount(0);
     await page.reload();
     await expect(page.locator(sidebar)).not.toHaveClass(/app-sidenav--collapsed/);
+    await expect(page.locator(`${sidebar} .sidenav-collapse-toggle`)).toHaveCount(0);
   });
 
   test('a new visitor sees one Dashboards entry and creates the first dashboard on its page', async ({ page }) => {

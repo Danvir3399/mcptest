@@ -803,41 +803,6 @@
   font-size: 0.6875rem;
 }
 
-.sidenav-collapse-toggle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-2);
-  width: 100%;
-  min-height: 2rem;
-  margin-top: var(--space-2);
-  padding: 0.3125rem var(--space-2);
-  border: 0;
-  border-radius: var(--border-radius-sm);
-  background: transparent;
-  color: var(--text-muted);
-  font: inherit;
-  font-size: 0.8125rem;
-  cursor: pointer;
-}
-
-.sidenav-collapse-toggle:hover,
-.sidenav-collapse-toggle:focus-visible {
-  color: var(--text-color);
-  background: var(--hover-wash);
-}
-
-.sidenav-collapse-toggle:focus-visible {
-  outline: 0;
-  box-shadow: var(--focus-ring);
-}
-
-.sidenav-collapse-toggle .bi {
-  width: 1.25rem;
-  text-align: center;
-  font-size: 0.8rem;
-}
-
 /* The primary action, testing a server, leads the list in the text colour. */
 .app-sidenav .sidenav-link--primary {
   color: var(--text-color);
@@ -885,56 +850,6 @@
   line-height: 1.45;
 }
 
-/* Collapsed desktop mode: a 56px rail of icons so the inspector takes the width. */
-.sidenav-collapsed .desktop-sidebar {
-  width: 56px;
-  padding: var(--space-3) var(--space-1) !important;
-}
-
-.app-sidenav--collapsed .sidenav-section-label,
-.app-sidenav--collapsed .sidenav-label,
-.app-sidenav--collapsed .sidenav-chevron,
-.app-sidenav--collapsed .sidenav-group-actions,
-.app-sidenav--collapsed .sidenav-footer-links,
-.app-sidenav--collapsed .sidenav-legal,
-.app-sidenav--collapsed .sidenav-build {
-  display: none;
-}
-
-.app-sidenav--collapsed .sidenav-group + .sidenav-group {
-  margin-top: var(--space-2);
-  padding-top: var(--space-2);
-  border-top: 1px solid var(--border-color);
-}
-
-.app-sidenav--collapsed .sidenav-link,
-.app-sidenav--collapsed .sidenav-collapse-toggle {
-  justify-content: center;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.app-sidenav--collapsed .sidenav-link {
-  min-height: 2.25rem;
-}
-
-.app-sidenav--collapsed .sidenav-icon {
-  font-size: 1.05rem;
-}
-
-.app-sidenav--collapsed .sidenav-section-toggle .sidenav-icon {
-  display: inline-block;
-}
-
-.app-sidenav--collapsed .sidenav-section-toggle.nav-link {
-  color: var(--text-accent);
-}
-
-.app-sidenav--collapsed .sidenav-footer {
-  padding-left: 0;
-  padding-right: 0;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .sidenav-chevron {
     transition: none;
@@ -949,58 +864,8 @@
   opacity: 0.75;
 }
 
-/* Apply the stored rail width to the static shell before React mounts. */
-html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar {
-  width: 56px;
-  padding: var(--space-3) var(--space-1) !important;
-}
-
-html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .sidenav-section-label,
-html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .sidenav-label,
-html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .sidenav-chevron,
-html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .sidenav-group-actions,
-html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .sidenav-footer-links,
-html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .sidenav-legal,
-html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .sidenav-build {
-  display: none;
-}
-
-html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .sidenav-group + .sidenav-group {
-  margin-top: var(--space-2);
-  padding-top: var(--space-2);
-  border-top: 1px solid var(--border-color);
-}
-
-html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .sidenav-link,
-html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .sidenav-collapse-toggle {
-  justify-content: center;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .sidenav-link {
-  min-height: 2.25rem;
-}
-
-html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .sidenav-icon {
-  font-size: 1.05rem;
-}
-
-html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .sidenav-section-toggle .sidenav-icon {
-  display: inline-block;
-}
-
-html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .sidenav-footer {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-
-.sidenav-collapse-toggle .sidenav-label { flex: 0 1 auto; }
-
-/* Home scrolls with the viewport; only the active instrument is boxed. */
+/* Home shares the boxed shell width and scrolls with the viewport. */
 .app-shell--home {
-  max-width: none;
   height: auto !important;
   min-height: 100vh;
 }
@@ -1030,13 +895,5 @@ html[data-sidebar-collapsed] .seo-shell-fallback .desktop-sidebar .app-sidenav .
   font-weight: var(--weight-semibold);
 }
 
-/* Keep the collapse action accessible when a guide track is expanded. */
 .desktop-sidebar > .app-sidenav { min-height: 0; }
 .desktop-sidebar > .app-sidenav > * { flex-shrink: 0; }
-.desktop-sidebar > .app-sidenav > .mt-auto {
-  position: sticky;
-  bottom: 0;
-  flex-shrink: 0;
-  background: var(--card-bg);
-  padding: .5rem 0 1rem;
-}

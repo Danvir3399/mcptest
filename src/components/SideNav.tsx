@@ -16,7 +16,6 @@ import {
   SIGN_IN_HINT_ID,
   type NavigationLink,
 } from '../content/navigation';
-import { useSidebarCollapsed } from '../hooks/useSidebarCollapsed';
 import { closeMobileDrawer, useMobileDrawer } from '../hooks/useMobileDrawer';
 import ContentTrackNav from './learn/ContentTrackNav';
 import { getLearnArticleFromPath } from '../content/learnRegistry';
@@ -70,33 +69,20 @@ const SideNav: React.FC<SideNavProps> = ({
   const isGuideArticle = Boolean(getLearnArticleFromPath(pathname));
   const { currentUser, loginWithGoogle, logout } = useAuth();
   const authEnabled = import.meta.env.VITE_FIREBASE_AUTH_ENABLED === 'true';
-  const [collapsed, toggleCollapsed, expandSidebar] = useSidebarCollapsed(!isMobile);
   useMobileDrawer(isMobile, navRef);
   const idSuffix = isMobile ? 'mobile' : 'desktop';
   const dashboardsListId = `sidenav-dashboards-${idSuffix}`;
-  const dashboardsExpanded = dashboardsOpen && !collapsed;
+  const dashboardsExpanded = dashboardsOpen;
   // Learn follows the page (open on Learn and Docs) until the visitor toggles
   // it; the choice holds until the page kind changes.
   const learnDefaultOpen = isLearnOpenByDefault(activeView);
   const [learnOverride, setLearnOverride] = useState<{ base: boolean; open: boolean } | null>(null);
   const learnOpen = learnOverride && learnOverride.base === learnDefaultOpen ? learnOverride.open : learnDefaultOpen;
-  const learnExpanded = learnOpen && !collapsed;
-  // The guide search rail button sits in the folded Learn body, so the
-  // collapsed `/` shortcut checks visibility through the Learn toggle.
+  const learnExpanded = learnOpen;
   const learnToggleRef = useRef<HTMLButtonElement>(null);
 
   const handleLearnToggle = () => {
-    if (collapsed) {
-      expandSidebar();
-      setLearnOverride({ base: learnDefaultOpen, open: true });
-      return;
-    }
     setLearnOverride({ base: learnDefaultOpen, open: !learnOpen });
-  };
-
-  const openLearnFromRail = () => {
-    expandSidebar();
-    setLearnOverride({ base: learnDefaultOpen, open: true });
   };
 
   useEffect(() => {
@@ -106,11 +92,6 @@ const SideNav: React.FC<SideNavProps> = ({
   }, [focusedDashboardIndex]);
 
   const handleDashboardsToggle = () => {
-    if (collapsed) {
-      expandSidebar();
-      setDashboardsOpen(true);
-      return;
-    }
     setDashboardsOpen(open => !open);
   };
 
@@ -313,7 +294,7 @@ const SideNav: React.FC<SideNavProps> = ({
         aria-current={isActive ? 'page' : undefined}
         aria-describedby={item.description ? navigationDescriptionId(item, idSuffix) : undefined}
         onClick={closeMobileDrawer}
-        title={navigationTooltip(item, collapsed)}
+        title={navigationTooltip(item, false)}
       >
         <i className={`bi ${item.icon} sidenav-icon`} aria-hidden="true"></i>
         <span className="sidenav-label">{item.label}</span>
@@ -338,7 +319,7 @@ const SideNav: React.FC<SideNavProps> = ({
             aria-controls={dashboardsListId}
             aria-describedby={navigationDescriptionId(DASHBOARDS_NAVIGATION, idSuffix)}
             onClick={handleDashboardsToggle}
-            title={navigationTooltip(DASHBOARDS_NAVIGATION, collapsed)}
+            title={navigationTooltip(DASHBOARDS_NAVIGATION, false)}
           >
             <i className={`bi ${DASHBOARDS_NAVIGATION.icon} sidenav-icon`} aria-hidden="true"></i>
             <span className="sidenav-label">{DASHBOARDS_NAVIGATION.label}</span>
@@ -440,7 +421,7 @@ const SideNav: React.FC<SideNavProps> = ({
     <nav
       ref={navRef}
       id={`app-sidenav-${idSuffix}`}
-      className={`app-sidenav d-flex flex-column flex-grow-1${collapsed ? ' app-sidenav--collapsed' : ''}`}
+      className="app-sidenav d-flex flex-column flex-grow-1"
       aria-label="Main"
     >
       {/* Ordered by what people come to do: test and browse, the checks, then saved work */}
@@ -468,8 +449,6 @@ const SideNav: React.FC<SideNavProps> = ({
 
       {isGuideArticle ? <ContentTrackNav
         onNavigate={closeMobileDrawer}
-        collapsed={collapsed}
-        onExpandSidebar={expandSidebar}
         idPrefix={`sidenav-${idSuffix}`}
         open={learnExpanded}
         onToggleOpen={handleLearnToggle}
@@ -477,9 +456,7 @@ const SideNav: React.FC<SideNavProps> = ({
         search={(
           <GuideSearch
             idPrefix={`sidenav-${idSuffix}`}
-            shortcutEnabled={!isMobile && isGuideSearchShortcutView(activeView) && (collapsed || learnOpen)}
-            collapsed={collapsed}
-            onExpandSidebar={openLearnFromRail}
+            shortcutEnabled={!isMobile && isGuideSearchShortcutView(activeView) && learnOpen}
             railFallbackRef={learnToggleRef}
             onNavigate={closeMobileDrawer}
           />
@@ -537,25 +514,6 @@ const SideNav: React.FC<SideNavProps> = ({
         </div>
       )}
 
-      <div className="mt-auto">
-        {!isMobile && (
-          <button
-            type="button"
-            className="sidenav-collapse-toggle"
-            onClick={() => {
-              trackEvent('sidebar_collapse', { collapsed: !collapsed });
-              toggleCollapsed();
-            }}
-            aria-expanded={!collapsed}
-            aria-controls={`app-sidenav-${idSuffix}`}
-            aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-            title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-          >
-            <i className={`bi ${collapsed ? 'bi-chevron-double-right' : 'bi-chevron-double-left'}`} aria-hidden="true"></i>
-            <span className="sidenav-label">Collapse</span>
-          </button>
-        )}
-      </div>
     </nav>
   );
 };

@@ -57,7 +57,8 @@ export const RecentServersPanel: React.FC<RecentServersPanelProps> = ({
               onClick={() => handleReconnect(url)}
               disabled={isConnected || isConnecting}
             >
-              {url}
+              <i className="bi bi-clock-history" aria-hidden="true" />
+              <span>{url}</span>
             </button>
             <button
               type="button"

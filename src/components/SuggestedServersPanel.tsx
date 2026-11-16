@@ -114,10 +114,7 @@ export const SuggestedServersPanel: React.FC<SuggestedServersPanelProps> = ({
         <Link to="/catalog" className="btn btn-sm btn-link p-0" style={{ textDecoration: 'none' }}>
           Browse the full server catalog &rarr;
         </Link>
-        <span className="text-muted mx-2" aria-hidden="true">·</span>
-        <Link to="/mcp-test-servers" className="btn btn-sm btn-link p-0" style={{ textDecoration: 'none' }}>
-          Public MCP test servers &rarr;
-        </Link>
+
       </div>
     </div>
   );

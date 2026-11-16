@@ -1269,7 +1269,6 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
       <div ref={workbenchRef} className={`playground-layout flex-grow-1 ${isConnected ? 'playground-workbench' : 'playground-idle'}`}>
         {!isConnected && (
           <div className="w-100 idle-onboarding-layout">
-            <AwaitingConnectionPanel showSteps={recentServers.length === 0 && !onboarding.completed.includes('tool')} />
             {isFirstConnection ? (
               <SuggestedServersPanel
                 onServerSelect={handleSuggestedServerSelect}
@@ -1279,7 +1278,7 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
             ) : (
               <div className="row g-3">
                 {recentServers.length > 0 && (
-                  <div className="col-md-6">
+                  <div className="col-12">
                     <RecentServersPanel
                       recentServers={recentServers}
                       setServerUrl={handleServerUrlChange}
@@ -1290,7 +1289,7 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
                     />
                   </div>
                 )}
-                <div className={recentServers.length > 0 ? 'col-md-6' : 'col-12'}>
+                <div className="col-12">
                   <SuggestedServersPanel
                     onServerSelect={handleSuggestedServerSelect}
                     isConnected={isConnected}
@@ -1299,6 +1298,7 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
                 </div>
               </div>
             )}
+            <AwaitingConnectionPanel showSteps={recentServers.length === 0 && !onboarding.completed.includes('tool')} />
           </div>
         )}
         {isConnected && (

@@ -436,9 +436,10 @@
 
 /* --- Technical interface refresh --- */
 .app-shell {
-  /* Match the full-width navbar and anchor navigation to the viewport edge. */
+  /* Center the complete instrument, including its header, on wide displays. */
   width: 100%;
-  max-width: none;
+  max-width: 1680px;
+  margin-inline: auto;
   isolation: isolate;
 }
 

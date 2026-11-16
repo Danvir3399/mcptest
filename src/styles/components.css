@@ -1344,8 +1344,8 @@ span.health-indicator.health-indicator-gray {
 }
 
 .connection-console .input-group::before {
-  content: 'MCP // HTTPS';
-  content: 'MCP // HTTPS' / '';
+  content: 'Endpoint';
+  content: 'Endpoint' / '';
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
@@ -1641,8 +1641,8 @@ span.health-indicator.health-indicator-gray {
 }
 
 .idle-onboarding-layout {
-  max-width: 1180px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: var(--space-4) 0 0;
 }
 
 .suggested-servers-panel--onboarding .suggested-servers-intro {
@@ -2547,6 +2547,11 @@ pre.bg-light code {
 
 .playground-idle {
   min-width: 0;
+  margin-inline: 0;
+}
+
+.playground-idle > .idle-onboarding-layout {
+  padding-inline: 0;
 }
 
 .workbench-pane {
@@ -4345,11 +4350,10 @@ pre.bg-light code {
 /* --- The connect band --- */
 .connection-console:not(.connection-console--connected) {
   position: relative;
-  margin: calc(-1 * var(--space-4)) calc(-1 * var(--main-pad)) 0 !important;
-  border: 0;
-  border-bottom: 1px solid var(--glass-border);
-  border-radius: 0;
-  background-color: var(--glass-bg);
+  margin: calc(-1 * var(--space-4)) 0 0 !important;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--card-bg);
   box-shadow: var(--glass-highlight);
 }
 
@@ -4370,21 +4374,16 @@ pre.bg-light code {
   padding: 0 var(--main-pad) 1.75rem;
 }
 
-/* The field label sits at the right of the title row, as a quiet caption. */
+/* Keep the field label directly above the endpoint input. */
 .connection-console:not(.connection-console--connected) > .card-body > .mb-3:first-child > .form-label {
-  position: absolute;
-  top: 1.875rem;
-  right: var(--main-pad);
-  margin: 0;
+  display: block;
+  margin-bottom: var(--space-2);
   color: var(--text-muted);
   font-size: var(--text-xs);
   font-weight: var(--weight-medium);
 }
 
-/* Phones: the title, the status pill and the right-hand caption do not fit on
-   one row (and the absolute caption would sit over them). Stack them so the
-   band has the same height whatever the text widths, which also keeps the
-   prerendered returning-workspace skeleton the same height as the live panel. */
+/* Stack the title and status on phones. */
 @media (max-width: 768px) {
   .connection-console:not(.connection-console--connected) .connection-title-row {
     flex-direction: column;
@@ -4709,7 +4708,7 @@ pre.bg-light code {
   background: color-mix(in srgb, var(--text-color) 4%, transparent) !important;
 }
 
-/* --- Awaiting connection: tabs over a glass empty state --- */
+/* --- Awaiting connection: compact, opaque workspace preview --- */
 .awaiting-connection-panel {
   margin-top: var(--space-5);
   border: 0;
@@ -4741,9 +4740,10 @@ pre.bg-light code {
 .awaiting-connection-empty {
   margin-top: var(--space-5);
   justify-content: flex-start;
-  padding: 2.5rem var(--space-6);
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
+  padding: var(--space-4);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: var(--card-bg);
   box-shadow: var(--glass-highlight);
 }
 
@@ -4868,37 +4868,15 @@ pre.bg-light code {
   text-underline-offset: 4px;
 }
 
-/* Keep the command bar and expanded settings in one flow. The summary sits
-   beside Connect on desktop; on phones it returns below the URL field. */
-@media (min-width: 992px) {
-  .connection-console:not(.connection-console--connected) .connection-advanced {
-    position: relative;
-    margin-top: 0 !important;
-  }
-
-  .connection-console:not(.connection-console--connected) .connection-advanced > summary {
-    position: absolute;
-    right: 8.5rem;
-    top: -3.5rem;
-    height: 3.5rem;
-    display: flex;
-    align-items: center;
-    padding: 0 var(--space-3);
-  }
-
-  .connection-console:not(.connection-console--connected) .input-group .form-control {
-    margin-right: 11rem;
-  }
-
-  .connection-console:not(.connection-console--connected) .input-group .btn {
-    width: 7rem;
-    padding-inline: var(--space-2);
-    white-space: normal;
-  }
-
-  .connection-console .connection-advanced[open] .connection-advanced-body {
-    padding-top: var(--space-4);
-  }
+/* Advanced options stay below the URL row at every viewport width. */
+.connection-console .input-group .btn-primary {
+  background-color: #0f766e;
+  border-color: #0f766e;
+  color: #fff;
+}
+.connection-console .input-group .btn-primary:hover:not(:disabled) {
+  background-color: #115e59;
+  border-color: #115e59;
 }
 
 /* The connected inspector continues the full-bleed session surface. */
@@ -4938,51 +4916,43 @@ pre.bg-light code {
   }
 }
 
-/* Supporting server lists use the mockup's open rows and quiet dividers. */
+/* Opaque quick-connect cards share the endpoint form's content bounds. */
 .idle-onboarding-layout .recent-servers-panel,
 .idle-onboarding-layout .suggested-servers-panel {
-  border: 0;
-  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background: var(--card-bg);
   box-shadow: none;
   backdrop-filter: none;
 }
 
-.idle-onboarding-layout .card-header {
-  padding-inline: 0;
-  background: transparent;
-}
-
-.idle-onboarding-layout .suggested-servers-panel .card-body {
-  padding-inline: 0 !important;
+.idle-onboarding-layout .card-header,
+.idle-onboarding-layout .card-footer,
+.idle-onboarding-layout .recent-server-item {
+  background: var(--card-bg);
 }
 
 .idle-onboarding-layout .suggested-server-grid {
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0;
-}
-
-.idle-onboarding-layout .suggested-server-row {
-  border: 0 !important;
-  border-bottom: 1px solid var(--hairline) !important;
-  background: transparent;
-}
-
-.idle-onboarding-layout .suggested-server-action {
-  padding: var(--space-4) 0;
-}
-
-.idle-onboarding-layout .recent-server-item {
-  background: transparent;
-  border-color: var(--hairline);
-  padding: var(--space-3) 0 !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .idle-onboarding-layout .recent-server-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   font-family: var(--font-family-mono);
   font-size: var(--text-xs);
-  text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--accent-text) 30%, transparent);
-  text-underline-offset: 4px;
+}
+.recent-server-link > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.recent-server-link > i { flex-shrink: 0; }
+
+@media (max-width: 1199.98px) {
+  .idle-onboarding-layout .suggested-server-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 /* Full-bleed bands must also cancel the mobile card width constraint.
@@ -5166,5 +5136,24 @@ pre.bg-light code {
     overflow: hidden;
     clip-path: inset(50%);
     white-space: nowrap;
+  }
+}
+
+/* Idle form and quick-connect cards use the same grid; connected bands stay flush. */
+.tab-content-panel > .connection-console:not(.connection-console--connected),
+.seo-returning-workspace > .connection-console:not(.connection-console--connected) {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .idle-onboarding-layout .recent-servers-panel .list-group {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1400px) {
+  .idle-onboarding-layout .suggested-server-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }

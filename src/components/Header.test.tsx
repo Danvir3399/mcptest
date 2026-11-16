@@ -63,7 +63,8 @@ describe('Header', () => {
     const hint = host.querySelector(`#${button.getAttribute('aria-describedby')}`)!;
 
     expect(hint.textContent).toContain(HEADER_COPY.signInDescription);
-    expect(hint.querySelector('[aria-hidden="true"]')?.textContent).toBe(HEADER_COPY.signInHint);
+    expect(hint.classList.contains('visually-hidden')).toBe(true);
+    expect(host.textContent).not.toContain(HEADER_COPY.signInHint);
     expect(button.title).toBe(HEADER_COPY.signInDescription);
     // Only what the code does with a signed-in user: account sync and the proxy allowance.
     expect(HEADER_COPY.signInDescription).toMatch(/^Optional\. Testing works without an account\./);

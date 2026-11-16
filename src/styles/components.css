@@ -4147,10 +4147,10 @@ pre.bg-light code {
 .app-header .app-logo {
   width: 2.25rem;
   height: 2.25rem;
-  border: 1px solid var(--glass-border);
-  border-radius: var(--button-radius-lg);
-  background: var(--glass-strong);
-  box-shadow: 0 0 0 1px var(--hairline);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .app-header .app-brand-title {
@@ -4160,18 +4160,16 @@ pre.bg-light code {
 }
 
 .app-header .app-brand-subtitle {
-  padding-left: 0;
-  border-left: 0;
   color: var(--text-muted);
   font-size: var(--text-sm);
   font-weight: var(--weight-regular);
 }
 
 .app-header .app-theme-toggle {
-  border: 1px solid var(--glass-border);
+  border: 1px solid var(--border-color);
   border-radius: var(--button-radius-lg);
-  background: var(--glass-bg);
-  box-shadow: 0 0 0 1px var(--hairline);
+  background: var(--chrome-bg);
+  box-shadow: none;
 }
 
 .app-header .app-signin-btn.btn {

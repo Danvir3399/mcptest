@@ -65,7 +65,6 @@ const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
               // Holds the sign-in control's space until auth resolves; the static
               // shell in dist/index.html renders the same placeholder.
               <div className="app-auth app-auth-placeholder" style={{ visibility: 'hidden' }} aria-hidden="true">
-                <span className="app-auth-hint">{HEADER_COPY.signInHint}</span>
                 <button type="button" className="btn btn-sm app-signin-btn" tabIndex={-1} disabled>
                   <i className="bi bi-google" aria-hidden="true"></i>
                   {HEADER_COPY.signIn}
@@ -79,9 +78,8 @@ const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
               </div>
             ) : (
               <div className="app-auth">
-                <span id={SIGN_IN_HINT_ID} className="app-auth-hint" title={HEADER_COPY.signInDescription}>
-                  <span aria-hidden="true">{HEADER_COPY.signInHint}</span>
-                  <span className="visually-hidden">{HEADER_COPY.signInDescription}</span>
+                <span id={SIGN_IN_HINT_ID} className="visually-hidden">
+                  {HEADER_COPY.signInDescription}
                 </span>
                 <button
                   type="button"

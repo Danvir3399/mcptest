@@ -325,7 +325,7 @@ describe('result explanations', () => {
     const view = mount(<ToolResultView logEntry={plainResult} />);
     expect(view.querySelector('.tool-result-explanation')?.textContent).toContain('no structured content');
     const toggle = view.querySelector<HTMLButtonElement>('.tool-result-raw-link')!;
-    expect(toggle.textContent).toBe('View result JSON');
+    expect(toggle.textContent).toBe('View raw JSON');
     expect(toggle.getAttribute('aria-pressed')).toBe('false');
     act(() => toggle.click());
     expect(toggle.getAttribute('aria-pressed')).toBe('true');

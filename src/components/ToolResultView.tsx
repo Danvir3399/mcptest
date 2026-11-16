@@ -102,7 +102,7 @@ const ResultExplanation: React.FC<{
         onClick={onViewRaw}
         {...(plain ? { 'aria-pressed': rawShown } : {})}
       >
-        View result JSON
+        {plain && rawShown ? 'View formatted content' : 'View raw JSON'}
       </button>
     )}
   </p>
@@ -125,9 +125,10 @@ const ToolResultView: React.FC<ToolResultViewProps> = ({ logEntry }) => {
     setView(defaultView);
   }
 
-  const contentDisplay = (
+  const renderContent = (data: unknown, key?: number) => (
     <McpResponseDisplay
-      logEntry={logEntry}
+      key={key}
+      logEntry={{ ...logEntry, data }}
       showTimestamp={false}
       spacesMode={true}
       toolName={logEntry.callContext?.name}
@@ -135,6 +136,13 @@ const ToolResultView: React.FC<ToolResultViewProps> = ({ logEntry }) => {
       forceExpanded={true}
     />
   );
+
+  // Render each block independently so multiple text blocks retain Markdown and line breaks.
+  // Non-text blocks remain inspectable through the existing JSON fallback.
+  const blocks = toolCall?.result.content ?? logEntry.data;
+  const contentDisplay = Array.isArray(blocks)
+    ? blocks.map((block, index) => renderContent([block], index))
+    : renderContent(blocks);
 
   if (!toolCall) return contentDisplay;
 

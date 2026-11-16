@@ -57,6 +57,28 @@ const CapabilityDescription: React.FC<{ text: string; kind: string }> = ({ text,
   </div>
 );
 
+/** Resize after edits, restored history, examples, and column width changes. */
+const JsonInput: React.FC<React.TextareaHTMLAttributes<HTMLTextAreaElement>> = (props) => {
+  const ref = React.useRef<HTMLTextAreaElement>(null);
+  React.useLayoutEffect(() => {
+    const input = ref.current;
+    if (!input) return;
+    const resize = () => {
+      input.style.height = 'auto';
+      input.style.height = `${input.scrollHeight + 2}px`;
+    };
+    resize();
+    if (typeof ResizeObserver === 'undefined') return;
+    let width = input.clientWidth;
+    const observer = new ResizeObserver(() => {
+      if (width !== input.clientWidth) { width = input.clientWidth; resize(); }
+    });
+    observer.observe(input);
+    return () => observer.disconnect();
+  }, [props.value]);
+  return <textarea {...props} ref={ref} />;
+};
+
 const ParamsPanel: React.FC<ParamsPanelProps> = ({
   selectedTool,
   selectedResourceTemplate,
@@ -185,7 +207,7 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
                     onKeyDown={handleKeyDown} aria-required={isRequired}
                     aria-describedby={definition.description ? `${idPrefix}-${name}-description` : undefined} />
                 )}
-                {name} {isRequired && <span className="required-mark" aria-label="required">*</span>} {definition.type && <span className="param-type">{definition.type}</span>}
+                {name} {isRequired && <span className="required-mark" aria-label="required">*</span>} {definition.type && <span className="param-type">{definition.type}{inputType === 'array' ? ' (JSON)' : ''}</span>}
             </label>
             {definition.description && <p className="param-description" id={`${idPrefix}-${name}-description`}>{definition.description}</p>}
             {exampleText !== undefined && (
@@ -207,6 +229,7 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
               </p>
             )}
 
+            {inputType === 'array' && <p className="param-description" id={`${idPrefix}-${name}-json-help`}>Enter a JSON array, for example <code>["TypeScript", "TSX"]</code> for strings. Use double quotes around each string.</p>}
             {/* Input rendering logic based on type */}
             {inputType === 'boolean' ? null : inputType === 'integer' || inputType === 'number' ? (
                 <input
@@ -236,14 +259,15 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
                 {definition.enum.map((option: string) => (<option key={option} value={option}>{option}</option>))}
                 </select>
             ) : inputType === 'object' || inputType === 'array' ? (
-                <textarea
-                className="form-control font-monospace"
+                <JsonInput
+                className="form-control font-monospace param-json-input"
                 id={`${idPrefix}-${name}`}
                 rows={inputType === 'array' ? Math.min(10, jsonValue.split('\n').length) : 5}
                 value={jsonValue}
                 onChange={(e) => handleParamChange(name, e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder={inputType === 'array' ? '[ ]' : '{ }'}
+                aria-describedby={inputType === 'array' ? `${idPrefix}-${name}-json-help` : undefined}
+                placeholder={inputType === 'array' ? '["TypeScript", "TSX"]' : '{ }'}
                 required={isRequired}
                 aria-required={isRequired}
                 aria-invalid={isMissing}

@@ -99,6 +99,8 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTabId, onSelectTab, onCloseTab,
       <span className="playground-tab-count">
         Sessions <span className="playground-tab-count-value">{tabs.length}</span>
       </span>
+      {(fade.start || fade.end) && <button type="button" className="playground-tab-scroll" aria-label="Scroll sessions left" disabled={!fade.start}
+        onClick={() => stripRef.current?.scrollBy({ left: -stripRef.current.clientWidth * 0.7, behavior: 'smooth' })}>‹</button>}
       <div
         ref={stripRef}
         className="nav nav-tabs playground-tabs"
@@ -139,6 +141,8 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTabId, onSelectTab, onCloseTab,
           );
         })}
       </div>
+      {(fade.start || fade.end) && <button type="button" className="playground-tab-scroll" aria-label="Scroll sessions right" disabled={!fade.end}
+        onClick={() => stripRef.current?.scrollBy({ left: stripRef.current.clientWidth * 0.7, behavior: 'smooth' })}>›</button>}
       <button
         type="button"
         className="nav-link playground-tab-new"

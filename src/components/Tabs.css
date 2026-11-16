@@ -182,3 +182,13 @@
 .playground-tabs-wrapper {
   flex-shrink: 0;
 }
+
+.playground-tab-scroll {
+  flex: 0 0 2rem;
+  border: 0;
+  background: transparent;
+  color: var(--text-color);
+  font-size: 1.25rem;
+}
+.playground-tab-scroll:disabled { opacity: 0.3; }
+.playground-tab-scroll:not(:disabled):hover { background: var(--hover-wash); }

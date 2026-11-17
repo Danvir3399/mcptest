@@ -1768,10 +1768,11 @@
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
-    "logoUrl": "/server-logos/aws-knowledge.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated AWS monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official AWS mark.",
+    "logoUrl": "/server-logos/aws-knowledge.png",
+    "logoSourceUrl": "https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official AWS site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://aws.amazon.com",
     "sourceUrl": "https://github.com/awslabs/mcp"
   },
@@ -1795,10 +1796,11 @@
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
-    "logoUrl": "/server-logos/microsoft-learn.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated ML monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Microsoft Learn mark.",
+    "logoUrl": "/server-logos/microsoft-learn.png",
+    "logoSourceUrl": "https://avatars.githubusercontent.com/u/6154722?s=256&v=4",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Microsoft GitHub organization avatar from the verified microsoft organization; trademark rights remain with the publisher.",
     "homepageUrl": "https://learn.microsoft.com",
     "sourceUrl": "https://github.com/MicrosoftDocs/mcp"
   },
@@ -1970,10 +1972,11 @@
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
-    "logoUrl": "/server-logos/twilio-docs.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated TW monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Twilio mark.",
+    "logoUrl": "/server-logos/twilio-docs.png",
+    "logoSourceUrl": "https://avatars.githubusercontent.com/u/109142?s=256&v=4",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Twilio GitHub organization avatar from the verified twilio organization; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.twilio.com"
   },
   {
@@ -2053,9 +2056,10 @@
       }
     ],
     "logoUrl": "/server-logos/ref.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated RE monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Ref mark.",
+    "logoSourceUrl": "https://mintcdn.com/ref/yXCejt0fegXNOWGL/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Ref site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://ref.tools"
   },
   {
@@ -3438,10 +3442,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://jam.dev/docs/debug-a-jam/mcp"
     },
-    "logoUrl": "/server-logos/jam.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated JA monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Jam mark.",
+    "logoUrl": "/server-logos/jam.png",
+    "logoSourceUrl": "https://avatars.githubusercontent.com/u/63420153?s=256&v=4",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Jam GitHub organization avatar from the verified jamdotdev organization; trademark rights remain with the publisher.",
     "homepageUrl": "https://jam.dev"
   },
   {
@@ -4161,10 +4166,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://docs.granola.ai/help-center/sharing/integrations/mcp"
     },
-    "logoUrl": "/server-logos/granola.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated GA monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Granola mark.",
+    "logoUrl": "/server-logos/granola.png",
+    "logoSourceUrl": "https://www.granola.ai/favicon/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Granola site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.granola.ai"
   },
   {
@@ -4384,10 +4390,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://docs.mem0.ai/platform/mem0-mcp"
     },
-    "logoUrl": "/server-logos/mem0.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated M0 monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Mem0 mark.",
+    "logoUrl": "/server-logos/mem0.png",
+    "logoSourceUrl": "https://docs.mem0.ai/mintlify-assets/_mintlify/favicons/mem0/d_RkXckv7cNYdok2/_generated/favicon/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Mem0 site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://mem0.ai"
   },
   {
@@ -5226,10 +5233,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://stytch.com/docs/workspace-management/stytch-mcp"
     },
-    "logoUrl": "/server-logos/stytch.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated ST monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Stytch mark.",
+    "logoUrl": "/server-logos/stytch.png",
+    "logoSourceUrl": "https://stytch.com/docs/_mintlify/favicons/stytch-34ca0595/TbxvNOEyaquPeqvD/_generated/favicon/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Stytch site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://stytch.com"
   },
   {
@@ -5282,10 +5290,11 @@
         "description": "Use for the Europe (Frankfurt) Region"
       }
     ],
-    "logoUrl": "/server-logos/aws.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated AWS monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official AWS MCP Server mark.",
+    "logoUrl": "/server-logos/aws.png",
+    "logoSourceUrl": "https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official AWS site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://aws.amazon.com",
     "sourceUrl": "https://github.com/aws/mcp-proxy-for-aws",
     "caveats": [

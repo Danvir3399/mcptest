@@ -2722,11 +2722,11 @@
     "serverId": "vapi",
     "status": "online",
     "transport": "unknown",
-    "authType": "bearer-token",
-    "requiresOAuth": false,
+    "authType": "oauth",
+    "requiresOAuth": true,
     "protocolEra": "unknown",
-    "checkedAt": "2026-11-16T15:52:25.753Z",
-    "message": "Authentication challenge at https://mcp.vapi.ai/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication bearer-token",
+    "checkedAt": "2026-11-17T10:01:11.000Z",
+    "message": "Authentication challenge at https://mcp.vapi.ai/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
     "validatedUrl": "https://mcp.vapi.ai/mcp",
     "authorizationServers": [
       "https://auth.mcp.vapi.ai"

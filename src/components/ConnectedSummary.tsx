@@ -106,6 +106,9 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
   const [copyState, setCopyState] = useState('');
   const catalogServer = useMemo(() => getCatalogServerByEndpoint(serverUrl), [serverUrl]);
   const [descriptionOpen, setDescriptionOpen] = useState(false);
+  // Collapsed, the description shows its lead paragraph so it ends on a whole sentence.
+  const descriptionLead = serverDescription?.split(/\n\s*\n/)[0].trim() ?? '';
+  const descriptionHasMore = Boolean(serverDescription && descriptionLead !== serverDescription.trim());
   useEffect(() => { setCopyState(''); setDescriptionOpen(false); }, [serverUrl]);
   // A catalog match names the server as people know it; the reported
   // serverInfo name stays beside it as a muted identifier when it differs.
@@ -197,7 +200,12 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
           title={descriptionOpen ? 'Collapse the server description' : serverDescription}
           onClick={() => setDescriptionOpen((open) => !open)}
         >
-          {serverDescription}
+          {descriptionOpen || !descriptionHasMore ? serverDescription : descriptionLead}
+          {descriptionHasMore && (
+            <span className="connected-summary-description-more" aria-hidden="true">
+              {descriptionOpen ? ' Show less' : ' More'}
+            </span>
+          )}
         </button>
       )}
       <div className="connected-summary-progress">

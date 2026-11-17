@@ -105,7 +105,17 @@ describe('ConnectedSummary', () => {
     expect(plain.querySelector('.connected-summary-reported-name')).toBeNull();
   });
 
-  it('keeps a long description to one line until it is expanded', () => {
+  it('collapses a multi-paragraph description to its lead paragraph until it is expanded', () => {
+    const full = 'DeepWiki MCP provides AI-powered documentation for GitHub repositories.\n\nWith a user OAuth token, all devin_* tools act in one organization.';
+    const view = mount(<ConnectedSummary {...props} serverDescription={full} />);
+    const description = view.querySelector<HTMLButtonElement>('button.connected-summary-description')!;
+    expect(description.textContent).toBe('DeepWiki MCP provides AI-powered documentation for GitHub repositories. More');
+    expect(description.title).toBe(full);
+    act(() => description.click());
+    expect(description.textContent).toBe(`${full} Show less`);
+  });
+
+  it('keeps a long description to two lines until it is expanded', () => {
     const view = mount(<ConnectedSummary {...props} />);
     const description = view.querySelector<HTMLButtonElement>('button.connected-summary-description')!;
     expect(description.getAttribute('aria-expanded')).toBe('false');
@@ -339,6 +349,41 @@ describe('ParamsPanel guided form', () => {
     act(() => view.querySelector<HTMLButtonElement>('.param-example-use')!.click());
     expect(change).toHaveBeenCalledWith('city', 'Oslo');
     expect(view.querySelector('#executeBtn')?.textContent).toBe('Run tool');
+  });
+
+  const askWiki = {
+    name: 'ask_wiki_question',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        repoName: { anyOf: [{ type: 'string' }, { type: 'array', items: { type: 'string' } }], description: 'Repository or list of repositories.' },
+        question: { type: 'string' },
+      },
+      required: ['repoName', 'question'],
+    },
+  };
+
+  it('badges a string | string[] union and explains how to enter several values', () => {
+    const view = render(askWiki);
+    const label = view.querySelector('label[for="param-repoName"]')!;
+    expect(label.querySelector('.param-type')?.textContent).toBe('string | string[]');
+    const input = view.querySelector<HTMLInputElement>('#param-repoName')!;
+    expect(input.placeholder).toBe('Enter repoName, or ["…", "…"] for several');
+    expect(view.querySelector(`#${input.getAttribute('aria-describedby')}`)?.textContent)
+      .toBe('Plain text for one value, or a JSON array for several.');
+  });
+
+  it('keeps the required-field note neutral until a field is left empty', () => {
+    const view = render(askWiki);
+    const note = () => view.querySelector('.request-validation')!;
+    expect(note().textContent).toBe('Required fields (*) must be filled to run.');
+    expect(note().classList.contains('request-validation--hint')).toBe(true);
+    const repo = view.querySelector<HTMLInputElement>('#param-repoName')!;
+    expect(repo.getAttribute('aria-invalid')).toBe('false');
+    act(() => { repo.focus(); repo.blur(); });
+    expect(note().textContent).toBe('Complete “repoName”, “question” to continue.');
+    expect(note().classList.contains('request-validation--hint')).toBe(false);
+    expect(repo.getAttribute('aria-invalid')).toBe('true');
   });
 });
 

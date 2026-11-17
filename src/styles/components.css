@@ -5170,9 +5170,12 @@ pre.bg-light code {
   box-shadow: inset 0 0 0 2px var(--input-focus-border);
 }
 
-/* Request fields: soft slate outlines that darken on hover and take the focus ring. */
+/* Request fields: the same soft line as the schema dividers; hover darkens it and focus takes the ring. */
 .request-panel .form-control,
-.request-panel .form-select { border-color: var(--border-strong) !important; }
+.request-panel .form-select { border-color: var(--border-color) !important; }
+.request-panel .form-control[aria-invalid="true"] { border-color: var(--danger-color) !important; }
+/* Before any interaction the required-field note is guidance, not an error. */
+.request-validation.request-validation--hint { color: var(--text-muted); }
 .request-panel .form-control:hover:not(:disabled):not(:focus),
 .request-panel .form-select:hover:not(:disabled):not(:focus) { border-color: var(--input-border) !important; }
 .request-panel .param-code-input {

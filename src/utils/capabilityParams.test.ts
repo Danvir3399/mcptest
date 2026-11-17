@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  describeSchemaType,
   getCapabilityInputSpec,
   getMissingRequiredParams,
   isCodeLikeDefinition,
@@ -79,5 +80,43 @@ describe('code-like parameters', () => {
     expect(isCodeLikeDefinition({ name: 'body', type: 'object' })).toBe(false);
     expect(isCodeLikeDefinition({ name: 'code', type: 'integer' })).toBe(false);
     expect(isCodeLikeDefinition({ name: 'sql', type: 'string', enum: ['a', 'b'] })).toBe(false);
+  });
+});
+
+describe('union parameters', () => {
+  const repoName = { anyOf: [{ type: 'string' }, { type: 'array', items: { type: 'string' } }] };
+  const tool = {
+    inputSchema: {
+      type: 'object',
+      properties: {
+        repoName,
+        limit: { anyOf: [{ type: 'integer' }, { type: 'null' }], default: null },
+        mode: { type: ['string', 'null'], enum: ['fast', 'deep'] },
+      },
+      required: ['repoName'],
+    },
+  };
+
+  it('labels union types the way TypeScript would', () => {
+    expect(describeSchemaType(repoName)).toBe('string | string[]');
+    expect(describeSchemaType({ type: 'array', items: { anyOf: [{ type: 'string' }, { type: 'number' }] } }))
+      .toBe('(string | number)[]');
+    expect(describeSchemaType({ type: 'array' })).toBe('array');
+  });
+
+  it('keeps real unions untyped and resolves nullable fields to their single type', () => {
+    const [repo, limit, mode] = getCapabilityInputSpec(tool).definitions;
+    expect(repo).toMatchObject({ type: undefined, unionTypes: ['string', 'array'], typeLabel: 'string | string[]' });
+    expect(limit).toMatchObject({ type: 'integer', typeLabel: 'integer | null' });
+    expect(mode).toMatchObject({ type: 'string', enum: ['fast', 'deep'], typeLabel: 'string | null' });
+    expect(isCodeLikeDefinition({ name: 'body', unionTypes: ['string', 'array'] })).toBe(false);
+  });
+
+  it('sends a string | string[] value as text or as a parsed array', () => {
+    expect(normalizeCapabilityParams(tool, { repoName: 'facebook/react' })).toEqual({ repoName: 'facebook/react' });
+    expect(normalizeCapabilityParams(tool, { repoName: "['facebook/react', 'vercel/next.js']" }))
+      .toEqual({ repoName: ['facebook/react', 'vercel/next.js'] });
+    expect(() => normalizeCapabilityParams(tool, { repoName: '["facebook/react",' }))
+      .toThrow('“repoName” looks like JSON but is not valid JSON.');
   });
 });

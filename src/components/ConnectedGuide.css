@@ -448,9 +448,8 @@
   gap: var(--space-4);
   box-shadow: none;
 }
-/* One readable line (48rem, max-w-3xl); click expands the full text. */
+/* Up to two readable lines (48rem, max-w-3xl); click expands the full text. */
 .connected-summary-description {
-  display: block;
   max-width: 48rem;
   margin: 0;
   padding: 0;
@@ -458,15 +457,27 @@
   background: none;
   overflow: hidden;
   text-align: left;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  /* Two whole-word lines; the lead paragraph usually ends before the clamp. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow-wrap: break-word;
   color: var(--text-muted);
   font: inherit;
   font-size: var(--text-sm);
   cursor: pointer;
 }
 .connected-summary-description--open {
+  display: block;
+  -webkit-line-clamp: none;
+  line-clamp: none;
   white-space: pre-line;
+}
+.connected-summary-description-more {
+  color: var(--text-accent);
+  font-weight: 500;
+  white-space: nowrap;
 }
 .connected-summary-description:focus-visible {
   outline: none;

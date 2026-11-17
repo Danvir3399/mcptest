@@ -7,6 +7,7 @@ import {
   getCapabilityInputSpec,
   getExampleValue,
   getMissingRequiredParams,
+  getUnionInputHelp,
   hasParameterValue,
   isCodeLikeDefinition,
   type CapabilityInputDefinition,
@@ -139,6 +140,17 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
   const selectedInputItem = selectedTool || selectedPrompt;
   const activeInputParams = selectedTool ? toolParams : promptParams;
 
+  // Missing required fields read as errors only after the user leaves one or tries to run.
+  const [touchedParams, setTouchedParams] = React.useState<ReadonlySet<string>>(() => new Set());
+  const [runAttempted, setRunAttempted] = React.useState(false);
+  React.useEffect(() => {
+    setTouchedParams(new Set());
+    setRunAttempted(false);
+  }, [selectedInputItem]);
+  const markTouched = (name: string) => setTouchedParams((current) => (
+    current.has(name) ? current : new Set(current).add(name)
+  ));
+
   React.useEffect(() => {
     if (!selectedInputItem) return;
 
@@ -158,6 +170,7 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
     ? getMissingRequiredParams(selectedInputItem, activeInputParams)
     : [];
   const canRun = isConnected && !isConnecting && !isExecuting && missingRequiredParams.length === 0;
+  const showMissingErrors = runAttempted || missingRequiredParams.some((name) => touchedParams.has(name));
   const actionLabel = selectedTool
     ? 'Run tool'
     : selectedPrompt
@@ -169,7 +182,10 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
     const isTextarea = (e.target as HTMLElement).tagName === 'TEXTAREA';
     if (e.key === 'Enter' && (!isTextarea || e.ctrlKey || e.metaKey)) {
       e.preventDefault();
-      if (!canRun) return;
+      if (!canRun) {
+        setRunAttempted(true);
+        return;
+      }
       if (selectedTool) {
         handleExecuteTool();
       } else if (selectedPrompt) {
@@ -200,7 +216,11 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
         const name = definition.name;
         const isRequired = requiredParams.includes(name);
         const inputType = definition.type || 'text'; // Default to text if type is missing
-        const isMissing = isRequired && !hasParameterValue(params[name]);
+        const isMissing = isRequired && !hasParameterValue(params[name])
+          && (runAttempted || touchedParams.has(name));
+        const unionHelp = getUnionInputHelp(definition);
+        const unionHelpId = `${idPrefix}-${name}-union-help`;
+        const typeBadge = definition.typeLabel ?? definition.type;
         const example = getExampleValue(definition);
         const exampleText = example !== undefined ? formatExampleValue(example) : undefined;
         const exampleFits = example !== undefined && (
@@ -215,7 +235,7 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
         const exampleHintId = `${idPrefix}-${name}-example`;
 
         return (
-            <div key={`${idPrefix}-${name}`} className="param-form mb-3">
+            <div key={`${idPrefix}-${name}`} className="param-form mb-3" onBlur={() => markTouched(name)}>
             <label htmlFor={`${idPrefix}-${name}`} className={`form-label ${inputType === 'boolean' ? 'param-boolean-label' : ''}`}>
                 {inputType === 'boolean' && (
                   <input type="checkbox" className="form-check-input" id={`${idPrefix}-${name}`}
@@ -223,7 +243,7 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
                     onKeyDown={handleKeyDown} aria-required={isRequired}
                     aria-describedby={definition.description ? `${idPrefix}-${name}-description` : undefined} />
                 )}
-                {name} {isRequired && <span className="required-mark" aria-label="required">*</span>} {definition.type && <span className="param-type">{definition.type}{inputType === 'array' ? ' (JSON)' : ''}</span>}
+                {name} {isRequired && <span className="required-mark" aria-label="required">*</span>} {typeBadge && <span className="param-type">{typeBadge}{inputType === 'array' ? ' (JSON)' : ''}</span>}
             </label>
             {definition.description && <p className="param-description" id={`${idPrefix}-${name}-description`}>{definition.description}</p>}
             {exampleText !== undefined && (
@@ -246,6 +266,7 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
             )}
 
             {inputType === 'array' && <p className="param-description" id={`${idPrefix}-${name}-json-help`}>JSON array; single-quoted strings are accepted.</p>}
+            {unionHelp && <p className="param-description param-union-help" id={unionHelpId}>{unionHelp}</p>}
             {/* Input rendering logic based on type */}
             {inputType === 'boolean' ? null : inputType === 'integer' || inputType === 'number' ? (
                 <input
@@ -327,18 +348,25 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
                 aria-required={isRequired}
                 aria-invalid={isMissing}
                 />
-            ) : ( // Default to text input
+            ) : ( // Default to text input; unions take text or JSON
                 <input
                 type="text"
                 className="form-control"
                 id={`${idPrefix}-${name}`}
-                value={params[name] ?? ''}
+                value={typeof params[name] === 'object' && params[name] !== null ? JSON.stringify(params[name]) : params[name] ?? ''}
+                onBlur={definition.unionTypes?.includes('array') ? (e) => {
+                  const normalized = normalizeArrayQuotes(e.target.value);
+                  if (normalized !== e.target.value) handleParamChange(name, normalized);
+                } : undefined}
                 onChange={(e) => handleParamChange(name, e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder={definition.default !== undefined
                   ? `Default: ${definition.default}`
-                  : exampleText !== undefined ? `e.g. ${exampleText}` : `Enter ${name}`}
-                aria-describedby={exampleText !== undefined ? exampleHintId : undefined}
+                  : exampleText !== undefined ? `e.g. ${exampleText}`
+                    : definition.unionTypes?.includes('array') && definition.unionTypes.includes('string')
+                      ? `Enter ${name}, or ["…", "…"] for several`
+                      : `Enter ${name}`}
+                aria-describedby={[exampleText !== undefined && exampleHintId, unionHelp && unionHelpId].filter(Boolean).join(' ') || undefined}
                 required={isRequired}
                 aria-required={isRequired}
                 aria-invalid={isMissing}
@@ -397,21 +425,21 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
     );
   }; // End of renderResourceTemplateArgs
 
+  const panelTitle: string = showingHistory
+    ? 'History'
+    : selectedTool?.name
+      || selectedPrompt?.name
+      || selectedResourceTemplate?.name
+      || selectedResourceTemplate?.uriTemplate
+      || 'Select a capability';
+
   // --- Main Component Return ---
   return (
     // Add conditional class for deactivated state
     <div className={`card request-panel ${!isConnected ? 'panel-deactivated' : ''}`}>
       <div className="card-header">
         <div className="request-panel-heading">
-          <h5 className="mb-0 text-truncate">
-            {showingHistory
-             ? 'History'
-             : selectedTool?.name
-             || selectedPrompt?.name
-             || selectedResourceTemplate?.name
-             || selectedResourceTemplate?.uriTemplate
-             || 'Select a capability'}
-          </h5>
+          <h5 className="mb-0 text-truncate" title={panelTitle}>{panelTitle}</h5>
           {renderCallHistory && isConnected && (
             <div className="nav nav-tabs panel-view-tabs" role="tablist" aria-label="Request panel view"
               onKeyDown={(event) => {
@@ -467,11 +495,15 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
         {/* Buttons */}
         {!showingHistory && (selectedTool || selectedPrompt || selectedResourceTemplate) && (
           <div className="request-actions">
-            {missingRequiredParams.length > 0 && (
+            {missingRequiredParams.length > 0 && (showMissingErrors ? (
               <p className="request-validation" role="status">
                 Complete {missingRequiredParams.map((name) => `“${name}”`).join(', ')} to continue.
               </p>
-            )}
+            ) : (
+              <p className="request-validation request-validation--hint" role="status">
+                Required fields (*) must be filled to run.
+              </p>
+            ))}
             <button
               id="executeBtn"
               className="btn btn-success w-100"

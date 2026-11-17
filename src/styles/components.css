@@ -5111,7 +5111,12 @@ pre.bg-light code {
 .playground-workbench .card > .card-header {
   min-height: 3rem;
   padding-block: 0;
+  /* Every pane header keeps the same hairline, whether its body is empty or populated. */
+  border-bottom: 1px solid var(--border-color);
 }
+/* Fixed surfaces per column, empty or populated: white request form, slate result canvas. */
+.playground-workbench .request-panel-body { background: var(--card-bg); }
+.playground-workbench .output-panel-body { background: var(--workspace-canvas); }
 .request-panel > .card-header { display: flex; align-items: stretch; }
 .request-panel-heading { width: 100%; min-height: 47px; }
 .request-panel .panel-view-tabs,

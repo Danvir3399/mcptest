@@ -95,6 +95,26 @@ describe('ConnectedSummary', () => {
     expect(view.textContent).not.toContain('Pick a tool, fill in its parameters');
   });
 
+  it('names a catalog server by its display name and keeps the reported name muted', () => {
+    const view = mount(<ConnectedSummary {...props} serverUrl="https://mcp.api.coingecko.com/sse" serverName="coingecko_coingecko_typescript_api" />);
+    const heading = view.querySelector('h2')!;
+    expect(heading.firstChild?.textContent).toBe('CoinGecko');
+    expect(heading.querySelector('.connected-summary-reported-name')?.textContent).toBe('coingecko_coingecko_typescript_api');
+    // Without a catalog match the reported name is the title, shown once.
+    const plain = mount(<ConnectedSummary {...props} />);
+    expect(plain.querySelector('.connected-summary-reported-name')).toBeNull();
+  });
+
+  it('keeps a long description to one line until it is expanded', () => {
+    const view = mount(<ConnectedSummary {...props} />);
+    const description = view.querySelector<HTMLButtonElement>('button.connected-summary-description')!;
+    expect(description.getAttribute('aria-expanded')).toBe('false');
+    expect(description.title).toBe(props.serverDescription);
+    act(() => description.click());
+    expect(description.getAttribute('aria-expanded')).toBe('true');
+    expect(description.classList.contains('connected-summary-description--open')).toBe(true);
+  });
+
   it('copies the resolved endpoint and announces success or failure', async () => {
     const writeText = vi.fn().mockResolvedValue(undefined);
     Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText } });
@@ -212,17 +232,6 @@ const panel = (overrides: Partial<React.ComponentProps<typeof UnifiedPanel>> = {
 );
 
 describe('UnifiedPanel guidance', () => {
-  it('highlights the tool list with a dismissible prompt on first run', () => {
-    const onDismiss = vi.fn();
-    const view = mount(panel({ guideToolPick: true, onDismissToolPickGuide: onDismiss }));
-    const hint = view.querySelector('.onboarding-hint')!;
-    expect(hint.textContent).toContain('Pick a tool to call');
-    expect(view.querySelector('[role="listbox"][aria-label="Tools"]')?.getAttribute('aria-describedby')).toBe(hint.id);
-    expect(view.querySelector('.capability-group--guided')).not.toBeNull();
-    act(() => hint.querySelector('button')!.click());
-    expect(onDismiss).toHaveBeenCalledOnce();
-  });
-
   it('explains each capability the server does not offer once its list has loaded', () => {
     const view = mount(panel());
     const empty = [...view.querySelectorAll('.capability-empty-state')].map((item) => item.querySelector('.capability-empty-title')?.textContent);

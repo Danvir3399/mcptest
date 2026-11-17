@@ -118,7 +118,8 @@
   border-radius: var(--border-radius-sm);
 }
 
-.connected-summary-version {
+.connected-summary-version,
+.connected-summary-reported-name {
   color: var(--text-muted);
   font-family: var(--font-family-mono);
   font-size: var(--text-xs);
@@ -206,14 +207,6 @@
 
 .onboarding-hint-title {
   font-weight: var(--weight-semibold);
-}
-
-.capability-group--guided > summary {
-  color: var(--accent-text);
-}
-
-.capability-group--guided [role='listbox'] {
-  box-shadow: inset var(--rail-width) 0 0 var(--primary-color);
 }
 
 /* --- Empty and zero states --- */
@@ -455,13 +448,41 @@
   gap: var(--space-4);
   box-shadow: none;
 }
+/* Up to two readable lines (48rem, max-w-3xl); click expands the full text. */
 .connected-summary-description {
+  max-width: 48rem;
   margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  text-align: left;
+  /* Two whole-word lines; the lead paragraph usually ends before the clamp. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow-wrap: break-word;
   color: var(--text-muted);
+  font: inherit;
   font-size: var(--text-sm);
+  cursor: pointer;
+}
+.connected-summary-description--open {
+  display: block;
+  -webkit-line-clamp: none;
+  line-clamp: none;
+  white-space: pre-line;
+}
+.connected-summary-description-more {
+  color: var(--text-accent);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.connected-summary-description:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--border-radius-sm);
 }
 .connected-summary-facts .session-detail {
   color: var(--text-muted);
@@ -677,7 +698,8 @@
   border: 0;
   box-shadow: none;
 }
-.connected-summary-next .connection-details {
+/* Divide the connection controls only from an action beside them (not from a wrapped note). */
+.connected-summary-next > :not(p) + .connection-details {
   margin-left: .25rem;
   padding-left: .75rem;
   border-left: 1px solid var(--border-color);

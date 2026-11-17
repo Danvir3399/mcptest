@@ -6,11 +6,13 @@ import remarkGfm from 'remark-gfm';
 import { splitAtComponentMarker } from '../../content/contentModel';
 import { extractSegmentHeadingIds, remarkHeadingIds } from '../../content/outline';
 import CodeBlock from './CodeBlock';
+import { getSiteRelativePath } from '../../content/siteUrl';
 
 const markdownComponents: Components = {
   a: ({ href = '', children, node: _node, ...props }) => {
-    if (href.startsWith('/')) {
-      return <Link to={href}>{children}</Link>;
+    const sitePath = getSiteRelativePath(href);
+    if (sitePath) {
+      return <Link to={sitePath}>{children}</Link>;
     }
     if (href.startsWith('#')) {
       return <a href={href} {...props}>{children}</a>;

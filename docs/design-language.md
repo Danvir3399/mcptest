@@ -1,7 +1,7 @@
 # mcptest.io design language
 
 mcptest.io is an instrument for inspecting protocol traffic. The UI reads like
-one: a bright, airy inspector on a cool lavender wash, white surfaces drawn
+one: a bright, airy inspector on a quiet teal-slate wash, white surfaces drawn
 with hairlines, protocol facts set in mono, tight corners and one deep green
 accent. This note lists the tokens in `src/styles/tokens.css` and the rules
 for using them, so later changes stay consistent. `src/styles/tokens.test.ts`
@@ -17,12 +17,29 @@ restyles it. Components consume tokens; they never hard-code a hex value.
   rows (the current nav item, the selected tool) carry a teal rail
   (`--rail-color`). In the dark theme the accent brightens to `#3fc794` with
   a deep green ink (`#04140e`).
-- **Glass on a wash.** Slate text on a page lit by soft sky, violet, rose
-  and teal glows (`--page-wash`). The header, sidebar, session strip, cards
-  and the connect and failure bands are translucent white glass
-  (`--glass-bg`, `--glass-strong`) with white edges (`--glass-border`), a
-  top highlight (`--glass-highlight`) and backdrop blur (`--glass-filter`).
-  Dividers inside glass are slate hairlines (`--hairline`).
+- **Glass, used where it reads as depth.** The page is lit by a quiet,
+  low-saturation teal-slate wash (`--page-wash`); dark mode adds a faint
+  teal glow. Glass comes in three strengths:
+  - *Content is opaque.* Cards, prose, JSON output, forms and the connect
+    and failure bands use `--glass-bg` / `--glass-strong`, which are at
+    least 95% white in light mode, so text never blurs into the wash.
+  - *Framing chrome is translucent.* The sticky "On this page" outline uses
+    `--glass-frame-bg` (white at 75%, slate-900 at 70% in dark) with an
+    inset `--glass-frame-ring`.
+  - *Floating chrome is real glass.* Menus, the Sessions popover, the guide
+    search results and dialogs use `--glass-float-bg` (white at 80%,
+    slate-900 at 70% in dark), `--glass-float-border`, `--glass-float-filter`
+    and `--shadow-float`: blur separates a layer above the workspace.
+  White edges (`--glass-border`), a top highlight (`--glass-highlight`) and
+  slate hairlines (`--hairline`) divide glass surfaces. Never put
+  low-opacity glass behind body text.
+- **Header: sticky only where it earns it.** The playground keeps its fixed
+  100vh shell. Reading pages (guides, `app-shell--reading`)
+  scroll the window and, on desktop, their header scrolls away, because the
+  sidebar already pins the navigation. Where the header stays sticky (the
+  home page, reading pages on phones) it is high-opacity frosted
+  (`--header-bg`, 92% white) and gains `--shadow-glass` only once the page
+  has scrolled (`data-scrolled`).
 - **Bands, not boxed cards.** In the playground the connect form, the
   connected summary and a failed connection are full-width bands across the
   workspace. A failure band carries a rose-to-violet wash (`--danger-wash`)
@@ -60,8 +77,8 @@ restyles it. Components consume tokens; they never hard-code a hex value.
 
 | Token | Light | Dark | Use |
 | --- | --- | --- | --- |
-| `--body-bg` | `#f3f4f9` | `#0c0f16` | Page colour under the wash |
-| `--page-wash` | blue-to-lavender radial wash | navy-to-violet radial wash | `background-image` of the page. The only gradient in the system |
+| `--body-bg` | `#e8eef2` | `#0c0f16` | Page colour under the wash |
+| `--page-wash` | low-saturation teal-slate radial wash | navy wash with a faint teal glow | `background-image` of the page. The only gradient in the system |
 | `--sidebar-bg` / `--strip-bg` | white at 42% / 55% | white at 2% / 2.5% | Translucent sidebar and session strip over the wash |
 | `--card-bg-secondary` | `#f1f2f6` | `#1c212d` | Raised wells: code blocks, neutral chips, protocol chip in the command bar |
 | `--card-bg` | `#ffffff` | `#151923` | Surface: cards, panels, the active sidebar item and session tab |
@@ -81,7 +98,7 @@ restyles it. Components consume tokens; they never hard-code a hex value.
 | `--input-border` | `#858b9b` | `#6a7184` | Field and command bar borders. Holds 3:1 against the surface (WCAG 1.4.11) |
 | `--disabled-bg` / `--disabled-text` / `--disabled-border` | `#eceef3` / `#626877` / `#d8dbe3` | `#222734` / `#8b92a3` / `#2e3342` | Every disabled control except the primary button |
 | `--primary-soft` / `--primary-soft-border` / `--primary-soft-ink` | `#d3e9e0` / `#9ccbb9` / `#1a5e48` | `#183a2e` / `#2c6a53` / `#8fdcbd` | The disabled primary button: the accent at reduced emphasis |
-| `--chrome-bg` / `--chrome-raised` | `#ffffff` / `#f6f7fa` | `#0a0d13` / `#151923` | The header (frosted, 78% over the wash) and the command bars |
+| `--chrome-bg` / `--chrome-raised` | `#ffffff` / `#f6f7fa` | `#0a0d13` / `#151923` | The command bars; the header uses `--header-bg` (92% white / 82% `#0a0d13`) |
 | `--chrome-text` / `--chrome-muted` | `#12151c` / `#5a6070` | `#e8ebf2` / `#9aa1b2` | Text inside the chrome |
 | `--chrome-border` / `--chrome-control-border` | `#e2e4eb` / `#858b9b` | `#222734` / `#6a7184` | Chrome hairlines; field borders inside the chrome (3:1) |
 | `--chrome-accent` / `-hover` / `-ink`, `--chrome-accent-soft*` | the theme accent | the theme accent | The accent inside the chrome |
@@ -138,8 +155,8 @@ restyles it. Components consume tokens; they never hard-code a hex value.
    surface.
 10. **Focus.** Every interactive element shows `--focus-ring` (or a 2px
     accent outline for native controls) on `:focus-visible`.
-11. **Brand lockup and chrome.** The header is frosted `--chrome-bg` over
-    the wash with a hairline below: the logo in a hairline tile, the
+11. **Brand lockup and chrome.** The header is high-opacity frosted
+    `--header-bg` over the wash with a hairline below: the logo in a hairline tile, the
     wordmark in bold sans, a rule, the product name ("Remote MCP Inspector")
     in muted sans, and on the right the theme switch and the ink "Login with
     Google" button. `layout.css` re-declares the theme tokens inside the

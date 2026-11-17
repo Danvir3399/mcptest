@@ -1,0 +1,84 @@
+/*
+ * Connected playground: a slim status bar replaces the site footer, so the
+ * workbench and this bar together fill exactly one viewport and the panes keep
+ * their own scrolling.
+ */
+.tab-content-panel {
+  --workbench-status-height: 30px;
+}
+
+.workbench-status-bar {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: calc(100% + 2 * var(--main-pad));
+  max-width: none;
+  height: var(--workbench-status-height);
+  margin-inline: calc(-1 * var(--main-pad));
+  padding: 0 var(--space-3);
+  border-top: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.workbench-status-session {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin: 0;
+}
+
+.workbench-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success-color);
+}
+
+.workbench-status-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.workbench-status-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.workbench-status-links a:hover,
+.workbench-status-links a:focus-visible {
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+.workbench-status-links small {
+  font-size: inherit;
+}
+
+/* The workbench gives the bar its height, so the page itself never scrolls. */
+@media (min-width: 1200px) {
+  .tab-content-panel:has(> .workbench-status-bar) > .playground-workbench {
+    height: calc(100dvh - var(--workbench-top, 11.5rem) - var(--workbench-status-height));
+  }
+}
+
+@media (max-width: 767.98px) {
+  .workbench-status-bar {
+    flex-wrap: wrap;
+    height: auto;
+    padding-block: var(--space-2);
+  }
+
+  .workbench-status-links {
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+}

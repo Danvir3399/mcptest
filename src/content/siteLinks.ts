@@ -3,7 +3,7 @@ export const FOOTER_COLUMNS = [
   { title: 'Guides', links: [
     ['What is MCP?', '/docs/what-is-mcp'], ['Remote vs Local', '/docs/remote-vs-local'], ['MCP Glossary', '/learn/mcp-glossary'],
   ] },
-  { title: 'Specifications', links: [
+  { title: 'Testing & Specs', links: [
     ['Testing Guide', '/docs/testing-guide'], ['OAuth 2.1', '/learn/mcp-oauth-2-1-reference'], ['Breaking Changes', '/learn/which-mcp-tool-changes-break-clients'],
   ] },
   { title: 'Compare', links: [

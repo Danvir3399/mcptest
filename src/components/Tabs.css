@@ -137,7 +137,7 @@
 }
 
 .playground-tab-strip .playground-tabs .nav-link.pe-5 {
-  padding-right: 2.25rem !important;
+  padding-right: 3rem !important;
 }
 
 .playground-tab-strip .playground-tabs .nav-link:not(.active):hover {
@@ -231,7 +231,11 @@
   .playground-tabs .nav-item:focus-within > .btn-close { opacity: 1; }
 }
 
-/* Fade partial labels at the strip edge; only hide their detached close icon. */
+/* Keep partial inactive labels from peeking beside the scroll controls.
+   Their layout is retained for scrolling; every session is also in the picker. */
+.playground-tabs .nav-item[data-clipped]:has(.nav-link:not(.active)) {
+  visibility: hidden;
+}
 .playground-tabs .nav-item[data-clipped] > .btn-close { opacity: 0; }
 
 /* Inset connection cards do not attach to the active session tab. */

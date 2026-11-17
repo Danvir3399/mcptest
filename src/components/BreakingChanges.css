@@ -232,3 +232,9 @@
 .breaking-changes-header a {
   text-decoration: underline;
 }
+
+/* Bootstrap floats checks with a negative margin; these rows use flex instead. */
+.breaking-changes .form-check .form-check-input {
+  float: none;
+  margin: 0;
+}

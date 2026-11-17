@@ -445,6 +445,7 @@
 }
 
 .app-workspace {
+  background: var(--workspace-canvas);
   min-height: 0;
   min-width: 0;
 }
@@ -895,6 +896,7 @@
 }
 .main-content:has(> .site-footer) > .view-panel {
   flex: 1 0 auto;
+  height: auto !important;
   min-height: 0 !important;
   margin-bottom: 2rem;
 }
@@ -918,3 +920,16 @@
 .desktop-sidebar > .app-sidenav > * { flex-shrink: 0; }
 
 .app-sidenav .sidenav-label { white-space: nowrap; }
+
+/* Reports are a form and reading view, independent of the inspector width. */
+.main-content > .report-view-panel {
+  max-width: 64rem;
+  min-height: 0;
+}
+.report-view .form-control { --input-border: var(--border-strong); }
+.report-history .btn.report-history-delete:hover:not(:disabled),
+.report-history .btn.report-history-delete:focus-visible {
+  color: var(--danger-color);
+  border-color: var(--danger-color);
+  background: color-mix(in srgb, var(--danger-color) 10%, transparent);
+}

@@ -2124,7 +2124,8 @@ function App() {
             </div>
           )}
 
-          {!(activeView === 'playground' && connectedTab) && <Footer />}
+          {((activeView === 'playground' && !connectedTab) ||
+            ['catalog', 'server-profile', 'docs', 'learn', 'keyword-landing', 'mcp-test-servers', 'mcp-test-client'].includes(activeView)) && <Footer />}
         </div>
       </main>
       <NotificationPopup message={notification.message} show={notification.show} />

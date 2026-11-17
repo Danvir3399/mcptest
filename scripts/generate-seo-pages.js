@@ -1161,7 +1161,7 @@ function renderSideNavFallback({ view = 'playground' }) {
 function renderSiteFooter() {
   const columns = [
     ...FOOTER_COLUMNS.map(column => ({ title: column.title, links: column.links.map(([label, slug]) => ({ label, href: `/guides/${slug}` })) })),
-    { title: 'Tools', links: FOOTER_NAVIGATION.slice(0, 3) }, { title: 'Testing tools', links: FOOTER_NAVIGATION.slice(3, 6) },
+    { title: 'Tools', links: FOOTER_NAVIGATION.slice(3, 6) },
     { title: 'Project', links: FOOTER_NAVIGATION.slice(6) },
   ];
   const linkColumns = columns.map(column => `<section><h2>${escapeHtml(column.title)}</h2><ul>${column.links.map(link => `<li><a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a></li>`).join('')}</ul></section>`).join('');
@@ -1198,7 +1198,7 @@ function renderAppShell({
     panelStyle ? `<div class="view-panel" style="${escapeHtml(panelStyle)}">` : '<div class="view-panel">',
     content,
     '</div>',
-    renderSiteFooter(),
+    ['playground', 'catalog', 'server-profile', 'docs', 'learn', 'keyword-landing', 'mcp-test-servers', 'mcp-test-client'].includes(view) ? renderSiteFooter() : '',
     '</div>',
     '</main>',
     '</div>',

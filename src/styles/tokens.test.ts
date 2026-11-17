@@ -78,6 +78,22 @@ describe('design language tokens (docs/design-language.md)', () => {
     });
   });
 
+  it('keeps content opaque and saves translucent glass for framing and floating chrome', () => {
+    const alpha = (value: string) => Number(value.match(/^rgba\([^)]*,\s*([\d.]+)\)$/)?.[1]);
+    // Prose, JSON and forms never sit on see-through glass in light mode.
+    expect(alpha(light['--glass-bg'])).toBeGreaterThanOrEqual(0.95);
+    expect(alpha(light['--glass-strong'])).toBeGreaterThanOrEqual(0.95);
+    // A sticky header over white cards is high-opacity frosted, not half-transparent.
+    expect(alpha(light['--header-bg'])).toBeGreaterThanOrEqual(0.9);
+    [light, dark].forEach((palette) => {
+      expect(alpha(palette['--glass-float-bg'])).toBeGreaterThanOrEqual(0.7);
+      expect(alpha(palette['--glass-frame-bg'])).toBeGreaterThanOrEqual(0.7);
+      expect(palette['--glass-float-filter']).toMatch(/^blur\(/);
+    });
+    // The light wash is teal-slate: no violet or rose glows behind the glass.
+    expect(light['--page-wash']).not.toMatch(/rgba\((168, 85, 247|244, 63, 94)/);
+  });
+
   it('pins the type scale, the pill radius and the signal rail', () => {
     expect(scale['--text-2xs']).toBe('0.6875rem');
     expect(scale['--text-base']).toBe('0.875rem');

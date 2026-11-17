@@ -281,7 +281,6 @@ describe('guide search placement', () => {
     handleReorderDashboards: vi.fn(),
     getSpaceHealthStatus: () => ({ loading: false, successCount: 0, totalCount: 0 }),
     getSpaceHealthColor: () => 'gray' as const,
-    performAllDashboardsHealthCheck: vi.fn().mockResolvedValue(undefined),
     onMoveCard: vi.fn(),
   });
 

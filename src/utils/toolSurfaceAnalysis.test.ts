@@ -777,7 +777,8 @@ describe('analyzeToolSurface', () => {
     expect(finding(forward, 'analysis.incomplete-budget')?.evidence).toContainEqual(
       expect.objectContaining({ detail: expect.stringContaining('100000 nodes') })
     );
-  });
+    // Two full analyses of 100,100-key schemas take ~4.5-6s on CI runners.
+  }, 20_000);
 
   it('globally bounds malformed schema visits and retained evidence across tools', () => {
     const tools = Array.from({ length: 200 }, (_, index) => ({

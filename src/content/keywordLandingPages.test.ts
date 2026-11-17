@@ -166,7 +166,7 @@ describe('keyword landing pages', () => {
     const footerLinks = Array.from(footer.querySelectorAll('footer a'), link => link.getAttribute('href'));
     expect(footer.querySelectorAll('.site-link-columns > section')).toHaveLength(5);
     expect(footerLinks).toEqual(expect.arrayContaining([
-      '/ci', '/mcp-test-servers', '/mcp-test-client', '/submit',
+      '/catalog', '/tools/oauth-check', '/tools/breaking-changes', '/submit',
       '/docs/what-is-mcp', '/learn/mcp-glossary',
     ]));
     expect(footerLinks.some(href => href?.startsWith('/guides/'))).toBe(false);

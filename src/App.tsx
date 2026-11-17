@@ -1,3 +1,4 @@
+import Footer from './components/Footer';
 import React, { Suspense, useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import type { CatalogTransport } from './types/catalog';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -6,7 +7,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { getAnalyticsHost, logPageView, trackEvent } from './utils/analytics';
 
 // Import Components
-import Header from './components/Header';
+import Header, { MOBILE_DRAWER_ID } from './components/Header';
+import DashboardsHome from './components/DashboardsHome';
 import NotificationPopup from './components/NotificationPopup';
 import SideNav from './components/SideNav';
 import CatalogView from './components/CatalogView';
@@ -62,7 +64,7 @@ import { formatErrorForDisplay } from './utils/errorHandling';
 import { getCatalogServerById } from './utils/catalogUtils';
 import { getCatalogServerIdFromPath } from './utils/catalogSeo';
 import { getPreferredCatalogEndpoint } from './utils/clientSetup';
-import { OAUTH_CHECKER_PATH, DISCOVERY_CHECKER_PATH, MCP_TEST_SERVERS_PATH, MCP_TEST_CLIENT_PATH, isKnownAppPath } from './utils/appRoutes';
+import { OAUTH_CHECKER_PATH, DISCOVERY_CHECKER_PATH, DASHBOARDS_PATH, MCP_TEST_SERVERS_PATH, MCP_TEST_CLIENT_PATH, isKnownAppPath } from './utils/appRoutes';
 import { getKeywordLandingPage } from './content/keywordLandingPages';
 import type { LandingPageConnectRequest } from './components/KeywordLandingView';
 // The MCP SDK, OAuth flow and saved-card helpers load on demand; see utils/savedCardRuntime.
@@ -72,8 +74,8 @@ import type {
   SavedCardOAuthChallenge,
 } from './utils/savedCardRuntime';
 import { consumeOAuthReconnectRequest } from './utils/oauthReconnect';
-import { isLandingEligible } from './utils/landingEligibility';
-import { createDefaultSpaces, createDefaultTabs } from './utils/defaultWorkspace';
+import { isLandingEligible, isReturningWorkspace, needsTabStrip } from './utils/landingEligibility';
+import { createDefaultSpaces, createDefaultTabs, createFirstDashboard, withoutUntouchedDefaultDashboard } from './utils/defaultWorkspace';
 
 type SavedCardRuntime = typeof import('./utils/savedCardRuntime');
 const loadSavedCardRuntime = (): Promise<SavedCardRuntime> => import('./utils/savedCardRuntime');
@@ -124,10 +126,10 @@ const getInitialView = (): 'playground' | 'dashboards' | 'docs' | 'learn' | 'rep
   if (path.startsWith('/docs/')) {
     return 'docs';
   }
-  if (path === '/learn' || path.startsWith('/learn/')) {
+  if (path === '/guides' || path.startsWith('/guides/') || path === '/learn' || path.startsWith('/learn/')) {
     return 'learn';
   }
-  if (path.startsWith('/space/')) {
+  if (path === DASHBOARDS_PATH || path.startsWith('/space/')) {
     return 'dashboards';
   }
   if (path.startsWith('/report')) {
@@ -152,7 +154,7 @@ const loadSpaces = (defaultValue: Space[]): Space[] => {
     if (stored) {
       const parsed = JSON.parse(stored);
       if (Array.isArray(parsed)) {
-        return (parsed as Space[]).map(space => ({
+        return withoutUntouchedDefaultDashboard(parsed as Space[]).map(space => ({
           ...space,
           cards: (space.cards || []).map(card => {
             const { loading, error, responseData, responseType, ...persistedCard } = card;
@@ -220,6 +222,13 @@ function App() {
     } catch { /* Unavailable or corrupt storage uses the empty workspace. */ }
     return createDefaultTabs();
   });
+  // Hidden during a first visit until a connection starts or a second tab
+  // opens; once shown it stays (utils/landingEligibility.ts).
+  const [tabStripShown, setTabStripShown] = useState(() => needsTabStrip(tabs) || isReturningWorkspace(tabs));
+  const showTabStrip = tabStripShown || needsTabStrip(tabs);
+  useEffect(() => {
+    if (showTabStrip && !tabStripShown) setTabStripShown(true);
+  }, [showTabStrip, tabStripShown]);
   const [activeTabId, setActiveTabId] = useState<string>(() => {
     // Ensure we always have a valid initial activeTabId
     if (tabs.length > 0) {
@@ -254,7 +263,7 @@ function App() {
       return { activeView: 'docs' as const };
     }
 
-    if (path === '/learn' || path.startsWith('/learn/')) {
+    if (path === '/guides' || path.startsWith('/guides/') || path === '/learn' || path.startsWith('/learn/')) {
       return { activeView: 'learn' as const };
     }
 
@@ -298,6 +307,11 @@ function App() {
       return { activeView: 'catalog' as const };
     }
     
+    // The dashboards page: what dashboards are, the create action and the list.
+    if (path === DASHBOARDS_PATH) {
+      return { activeView: 'dashboards' as const };
+    }
+
     // Check for dashboard routes
     const slug = extractSlugFromPath(path);
     if (slug) {
@@ -398,7 +412,7 @@ function App() {
       return;
     }
 
-    if (path === '/learn' || path.startsWith('/learn/')) {
+    if (path === '/guides' || path.startsWith('/guides/') || path === '/learn' || path.startsWith('/learn/')) {
       pageTitle = getLearnPageViewTitle(path);
       logPageView(path, pageTitle);
       return;
@@ -472,6 +486,11 @@ function App() {
       return;
     }
     
+    if (path === DASHBOARDS_PATH) {
+      logPageView(path, 'Dashboards');
+      return;
+    }
+
     const slug = extractSlugFromPath(path);
     
     if (slug) {
@@ -487,8 +506,9 @@ function App() {
         
         if (!isRecentOAuth) {
           console.log('[Routing] Dashboard not found for slug:', slug, 'Available spaces:', spaces.map(s => ({ name: s.name, slug: generateSpaceSlug(s.name) })));
-          navigate('/', { replace: true });
-          pageTitle = 'Playground'; // Redirected
+          // The dashboards page explains dashboards and lists the ones that exist.
+          navigate(DASHBOARDS_PATH, { replace: true });
+          pageTitle = 'Dashboards'; // Redirected
         } else {
           console.log('[Routing] Dashboard not found but OAuth just completed, waiting for spaces to load...');
           pageTitle = 'Loading...';
@@ -1140,8 +1160,8 @@ function App() {
         setSelectedSpaceId(firstSpace.id);
         navigate(getSpaceUrl(firstSpace.name));
       } else {
-        // No dashboards left, go to playground
-        navigate('/');
+        // No dashboards left: the dashboards page offers to create one.
+        navigate(DASHBOARDS_PATH);
       }
     }
   };
@@ -1312,12 +1332,20 @@ function App() {
           card_type: cardData.type
       });
       const newCard = { ...cardData, id: Date.now().toString() };
-      setSpaces(prev => prev.map(space => {
-          if (space.id === spaceId) {
-              return { ...space, cards: [...space.cards, newCard] };
+      const first = createFirstDashboard();
+      // The first dashboard is created when the first result is added to it.
+      if (spaceId === first.id && !spaces.some(space => space.id === spaceId)) trackEvent('create_dashboard');
+      setSpaces(prev => {
+          if (!prev.some(space => space.id === spaceId)) {
+              return spaceId === first.id ? [...prev, { ...first, cards: [newCard] }] : prev;
           }
-          return space;
-      }));
+          return prev.map(space => {
+              if (space.id === spaceId) {
+                  return { ...space, cards: [...space.cards, newCard] };
+              }
+              return space;
+          });
+      });
       setNotification({ message: 'Added to dashboard', show: true });
       setTimeout(() => setNotification({ message: '', show: false }), 3000);
       console.log(`[DEBUG] Added card to space ${spaceId}:`, newCard);
@@ -1794,6 +1822,10 @@ function App() {
 
  // --- Render Logic ---
   const selectedSpace = spaces.find(s => s.id === selectedSpaceId);
+  // "Add to dashboard" stays available before the first dashboard exists: it
+  // targets the first dashboard, which handleAddCardToDashboard then creates.
+  const addToDashboardTargets = useMemo(() => (spaces.length > 0 ? spaces : [createFirstDashboard()]), [spaces]);
+  const onDashboardsPage = location.pathname === DASHBOARDS_PATH;
   // Views mount the first time they are shown and stay mounted (hidden) after
   // that, so the playground keeps its connections across navigation while a
   // guide or catalog page never renders the inspector, dashboards or report.
@@ -1891,7 +1923,7 @@ function App() {
   }
 
   return (
-    <div className="app-shell container-fluid vh-100 d-flex flex-column p-0">
+    <div className={`app-shell container-fluid vh-100 d-flex flex-column p-0${activeView === 'playground' && !connectedTab ? ' app-shell--home' : ''}`}>
 
       {/* Mobile Sidebar Overlay */}
       <div 
@@ -1900,7 +1932,7 @@ function App() {
       ></div>
 
       {/* Mobile Sidebar */}
-      <div className="mobile-sidebar d-flex flex-column">
+      <div id={MOBILE_DRAWER_ID} className="mobile-sidebar d-flex flex-column">
         <button 
           className="mobile-close-btn"
           onClick={() => document.body.classList.remove('menu-open')}
@@ -1976,7 +2008,7 @@ function App() {
 
           {/* Catalog View */}
           {hasVisited('catalog') && (
-            <div className={`view-panel ${activeView === 'catalog' ? '' : 'd-none'}`} style={{ height: '100%' }}>
+            <div className={`view-panel ${activeView === 'catalog' ? '' : 'd-none'}`}>
               <CatalogView onTestServer={handleCatalogTestServer} />
             </div>
           )}
@@ -2035,7 +2067,7 @@ function App() {
 
           {/* Server Profile View */}
           {hasVisited('server-profile') && (
-            <div className={`view-panel ${activeView === 'server-profile' ? '' : 'd-none'}`} style={{ height: '100%' }}>
+            <div className={`view-panel ${activeView === 'server-profile' ? '' : 'd-none'}`}>
               <ServerProfileView server={selectedCatalogServer} onTestServer={handleCatalogTestServer} />
             </div>
           )}
@@ -2043,17 +2075,20 @@ function App() {
           {/* Playground View: TabContent instances stay mounted (hidden) once
               opened so their connections survive navigation to other views. */}
           {hasVisited('playground') && (
-            <div className={`view-panel ${activeView === 'playground' ? '' : 'd-none'}`} style={{ height: '100%' }}>
-              <div className="h-100 d-flex flex-column">
-                <div className="playground-tabs-wrapper">
-                  <Tabs
-                    tabs={tabs}
-                    activeTabId={activeTabId}
-                    onSelectTab={handleSelectTab}
-                    onCloseTab={handleCloseTab}
-                    onNewTab={handleNewTab}
-                  />
-                </div>
+            <div className={`view-panel ${activeView === 'playground' ? '' : 'd-none'}`} style={connectedTab ? { height: '100%' } : { minHeight: '100%' }}>
+              <div className={`${connectedTab ? 'h-100 ' : ''}d-flex flex-column`}>
+                {showTabStrip && (
+                  <div className="playground-tabs-wrapper">
+                    <Tabs
+                      tabs={tabs}
+                      activeTabId={activeTabId}
+                      onSelectTab={handleSelectTab}
+                      onCloseTab={handleCloseTab}
+                      onCloseOtherTabs={() => setTabs(current => current.filter(tab => tab.id === activeTabId))}
+                      onNewTab={handleNewTab}
+                    />
+                  </div>
+                )}
                 <div className="flex-grow-1 position-relative">
                   <Suspense fallback={<ViewFallback label="Loading the playground" />}>
                     {tabs.map(tab => (
@@ -2062,7 +2097,7 @@ function App() {
                         tab={tab}
                         isActive={activeTabId === tab.id && activeView === 'playground'}
                         onUpdateTab={handleUpdateTab}
-                        spaces={spaces}
+                        spaces={addToDashboardTargets}
                         onAddCardToSpace={handleAddCardToDashboard}
                         landingEligible={isLandingEligible(tabs, tab.id)}
                       />
@@ -2076,7 +2111,12 @@ function App() {
           {/* Dashboards View */}
           {hasVisited('dashboards') && (
             <div className={`view-panel ${activeView === 'dashboards' ? '' : 'd-none'}`} style={{ height: '100%' }}>
-              {selectedSpace ? (
+              {onDashboardsPage || !selectedSpace ? (
+                <DashboardsHome
+                  spaces={spaces}
+                  onCreate={handleCreateSpace}
+                />
+              ) : (
                 <Suspense fallback={<ViewFallback label="Loading the dashboard" />}>
                   <DashboardsView
                     space={selectedSpace}
@@ -2092,12 +2132,12 @@ function App() {
                     onReauthorizeCard={handleReauthorizeCard}
                   />
                 </Suspense>
-              ) : (
-                <div className="alert alert-warning">No dashboard selected or available. Create one from the side menu.</div>
               )}
             </div>
           )}
 
+          {((activeView === 'playground' && !connectedTab) ||
+            ['catalog', 'server-profile', 'docs', 'learn', 'keyword-landing', 'mcp-test-servers', 'mcp-test-client', 'oauth-check', 'discovery', 'breaking-changes'].includes(activeView)) && <Footer />}
         </div>
       </main>
       <NotificationPopup message={notification.message} show={notification.show} />

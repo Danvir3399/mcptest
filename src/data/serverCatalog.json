@@ -13154,5 +13154,174 @@
     "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-12",
     "logoLicenseNote": "Official FairValid product icon supplied for identification in this catalog. Trademark rights remain with FairValid."
+  },
+  {
+    "id": "excessionlabs",
+    "name": "Excession Labs CVE intelligence",
+    "url": "https://excessionlabs.ai/mcp/cve",
+    "browserAccess": "proxy-required",
+    "description": "Six read-only CVE tools search source software/version evidence, show available KEV and dated EPSS, inspect collection health, and page hosted revisions and changes. No account or API key. Literal source versions are matched; installed versions are not evaluated against vulnerability ranges.",
+    "category": "Security",
+    "tags": [
+      "security",
+      "cve",
+      "community-submission",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://excessionlabs.ai/cve-intelligence/"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/excessionlabs.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-12",
+    "logoLicenseNote": "Locally generated EL monogram for a community submission; it is not an official Excession Labs CVE intelligence mark.",
+    "homepageUrl": "https://excessionlabs.ai/cve-intelligence/"
+  },
+  {
+    "id": "omniakey",
+    "name": "OmniaKey",
+    "url": "https://api.omniakey.com/mcp",
+    "browserAccess": "proxy-required",
+    "description": "Remote MCP server for the OmniaKey API gateway that lets agents run text, image, video and music generation models through OmniaKey's OpenAI-compatible API; generation calls are billed per use against the account. OAuth 2.1 with browser authorization and dynamic client registration.",
+    "category": "AI Infrastructure",
+    "tags": [
+      "ai-infrastructure",
+      "ai-gateway",
+      "generative-media",
+      "community-submission",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "community-submission",
+      "url": "https://omniakey.com/mcp"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-13",
+      "evidenceUrl": "https://omniakey.com/mcp"
+    },
+    "logoUrl": "/server-logos/omniakey.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-13",
+    "logoLicenseNote": "Locally generated OA monogram for a community submission; it is not an official OmniaKey mark.",
+    "homepageUrl": "https://omniakey.com/mcp"
+  },
+  {
+    "id": "eorscope",
+    "name": "EOR Scope",
+    "url": "https://mcp.eorscope.com/mcp",
+    "browserAccess": "proxy-required",
+    "description": "Statutory employer cost of an employee in 76 countries: employer social contributions, caps and mandatory payments, each with its official source and check date, before any EOR fee. 14 read-only tools, no authentication.",
+    "category": "Finance",
+    "tags": [
+      "finance",
+      "community-submission",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "community-submission",
+      "url": "https://eorscope.com/"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/eorscope.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-13",
+    "logoLicenseNote": "Locally generated ES monogram for a community submission; it is not an official EOR Scope mark.",
+    "homepageUrl": "https://eorscope.com/"
+  },
+  {
+    "id": "govisit",
+    "name": "GoVisit Tools",
+    "url": "https://govisit.ai/mcp",
+    "browserAccess": "proxy-required",
+    "description": "Search GoVisit destinations and places, then retrieve published place, destination, collection, category, and documentation content through 22 read-only tools. No authentication is required.",
+    "category": "Search",
+    "tags": [
+      "search",
+      "community-submission",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "community-submission",
+      "url": "https://govisit.ai/en/docs/developers/mcp/overview"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/govisit.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-14",
+    "logoLicenseNote": "Locally generated GT monogram for a community submission; it is not an official GoVisit Tools mark.",
+    "homepageUrl": "https://govisit.ai/en/docs/developers/mcp/overview"
+  },
+  {
+    "id": "leadli",
+    "name": "leadli.me",
+    "url": "https://api.leadli.me/api/v1/mcp",
+    "browserAccess": "proxy-required",
+    "description": "leadli.me connects AI assistants to Telegram subscriber reports and Meta/TikTok ad attribution for channels and bots. Connect over Streamable HTTP with an organization access key in Authorization: Bearer; available tools depend on the key's permissions and plan.",
+    "category": "Analytics",
+    "tags": [
+      "analytics",
+      "community-submission"
+    ],
+    "listingSource": {
+      "kind": "community-submission",
+      "url": "https://leadli.me/en/guides/mcp-server"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "bearer-token",
+    "logoUrl": "/server-logos/leadli.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-14",
+    "logoLicenseNote": "Locally generated LM monogram for a community submission; it is not an official leadli.me mark.",
+    "homepageUrl": "https://leadli.me/en/guides/mcp-server"
+  },
+  {
+    "id": "datacircle",
+    "name": "Datacircle",
+    "url": "https://api.datacircle.dev/mcp",
+    "browserAccess": "direct",
+    "description": "Lists go-to-market data APIs (enrichment, SERP, reviews, phone validation and more) and searches Datacircle's benchmarked plans by price, score, rate limits and returned fields. Two read-only tools; no authentication required.",
+    "category": "Search",
+    "tags": [
+      "search",
+      "community-submission",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://datacircle.dev/docs/mcp"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/datacircle.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-14",
+    "logoLicenseNote": "Locally generated DA monogram for a community submission; it is not an official Datacircle mark.",
+    "homepageUrl": "https://datacircle.dev/docs/mcp"
   }
 ]

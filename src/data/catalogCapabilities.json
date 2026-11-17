@@ -3838,6 +3838,90 @@
       "items": []
     }
   },
+  "datacircle": {
+    "version": 1,
+    "observedAt": "2026-11-14T10:14:20.007Z",
+    "provenance": {
+      "testedEndpoint": "https://api.datacircle.dev/mcp",
+      "route": "direct"
+    },
+    "authentication": "unauthenticated",
+    "tools": {
+      "status": "partial",
+      "observedCount": 2,
+      "retainedCount": 2,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": [
+        {
+          "name": "list_apis",
+          "description": "Lists the APIs on Datacircle's sheet and the number of plans and providers for each. Pass an API's name to search_plans. list_apis takes no arguments. The answer holds every API on the sheet, in the sheet's order, with no paging. Each API comes with a link to the API's sheet. Some APIs also link a best page. A best page ranks the API's providers on our benchmark. Call list_apis first when you don't know an API's name. The tool is free and read-only, and needs no key.",
+          "outputSchema": true
+        },
+        {
+          "name": "search_plans",
+          "description": "Searches Datacircle's sheet of API plans and gives the ones that match, best first. Call list_apis first to get the APIs' names. Pass an API's name as api. Leave api out to search every API. Use query to find a provider or a plan by name. Sort by price to get the cheapest first. Each plan shows the price, score, rate limits, speed and returned fields, and links the plan's page on datacircle.dev. Pass api to get links to the API's sheet and to a ranking of the API's providers on our benchmark. Use offset to get the next page of plans. If nothing matches, you get total 0 and an empty list. A wro",
+          "input": [
+            {
+              "name": "api",
+              "type": "string",
+              "description": "The API, its name as list_apis gives it. Every API when left out.",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "How many plans to give, 1 to 50. 10 when left out.",
+              "required": false
+            },
+            {
+              "name": "offset",
+              "type": "integer",
+              "description": "How many found plans to skip first. 0 when left out.",
+              "required": false
+            },
+            {
+              "name": "query",
+              "type": "string",
+              "description": "Words that must all appear in the provider's name and the plan's name read together, ignoring case and accents: \"scrappa free\" finds Scrappa's Free plans.",
+              "required": false
+            },
+            {
+              "name": "sort",
+              "type": "string",
+              "description": "score, the default: best first, as on the sheet at datacircle.dev, each API's plans together, unscored plans last. provider: A to Z. price: $ per 1,000, lowest first.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        }
+      ]
+    },
+    "resources": {
+      "status": "unsupported",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    },
+    "resourceTemplates": {
+      "status": "unsupported",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    },
+    "prompts": {
+      "status": "unsupported",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    }
+  },
   "deepwiki": {
     "version": 1,
     "observedAt": "2026-11-02T15:59:14.557Z",
@@ -3917,6 +4001,600 @@
     },
     "prompts": {
       "status": "complete",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    }
+  },
+  "eorscope": {
+    "version": 1,
+    "observedAt": "2026-11-13T09:28:21.939Z",
+    "provenance": {
+      "testedEndpoint": "https://mcp.eorscope.com/mcp",
+      "route": "direct"
+    },
+    "authentication": "unauthenticated",
+    "tools": {
+      "status": "partial",
+      "observedCount": 14,
+      "retainedCount": 14,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": [
+        {
+          "name": "compare_countries",
+          "description": "Use this when the user wants the statutory employer cost of the same gross salary in 2 to 10 countries (e.g. \"employer cost of 70k in Poland, Portugal and Spain\", \"combien coûte un salaire de 60 000 en Irlande et aux Pays-Bas\"). Before any Employer of Record fee; rows come back in the order requested, not ranked. Do not use when each country has its own salary (use compare_offers). Data snapshot 2026-11-06. Cost comparison, not legal or tax advice.",
+          "input": [
+            {
+              "name": "countries",
+              "type": "array",
+              "required": true
+            },
+            {
+              "name": "payments_per_year",
+              "type": "number",
+              "description": "With salary_period \"month\" only: the total number of monthly salaries the contract pays in a year, statutory ones included (e.g. 14). Omit to use the statutory number of the country.",
+              "required": false
+            },
+            {
+              "name": "salary_period",
+              "type": "string",
+              "description": "Whether the salary is a year (default) or a month. Pass a monthly salary as the user gives it, with \"month\": the statutory number of monthly payments of the country (13th, 14th month) is applied, see salary_basis in the answer.",
+              "required": false
+            },
+            {
+              "name": "salary_usd",
+              "type": "number",
+              "description": "Gross salary in USD, a year unless salary_period is \"month\", applied to every country",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "compare_offers",
+          "description": "Use this when the user has job offers or candidates in 2 to 6 countries, each with its own gross salary (in USD or the local currency), and wants the total employer cost of each (e.g. \"candidate A in Poland at 240,000 PLN, candidate B in Portugal at 45k: what does each cost the company?\"). A monthly offer is passed with salary_period \"month\", which applies each country's statutory 13th or 14th month (e.g. \"un candidat à 3 000 par mois à Madrid et un autre à 60 000 par an à Dublin\"). Returns salary plus statutory employer charges, before any Employer of Record fee, the difference and ratio of e",
+          "input": [
+            {
+              "name": "offers",
+              "type": "array",
+              "description": "One offer per country, 2 to 6 countries, each with its own salary",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "compare_structures",
+          "description": "Use this when the user is deciding between hiring through an Employer of Record, setting up their own entity, or engaging contractors in a country and wants the cost of each over 1 to 5 years (e.g. \"from how many employees should we open an entity in Poland instead of using an EOR?\"). Uses the fees and entity costs the user enters plus the statutory employer charges, and gives the headcount at which entity costs and EOR fees cross. Costs only: it does not say whether a contractor arrangement is lawful. Data snapshot 2026-11-06. Cost comparison, not legal or tax advice.",
+          "input": [
+            {
+              "name": "assumptions",
+              "type": "object",
+              "description": "Override an adjustable assumption the country declares, e.g. {\"basic_share_of_gross\": 0.6}. See `assumptions` in an employer_cost answer.",
+              "required": false
+            },
+            {
+              "name": "contractor_fee_usd_month",
+              "type": "number",
+              "description": "A contractor platform fee, if the user has one, in USD per employee per month, as the user gives it",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            },
+            {
+              "name": "entity_annual_usd",
+              "type": "number",
+              "description": "Yearly entity running cost in USD (payroll, accounting, filings), from the user",
+              "required": false
+            },
+            {
+              "name": "entity_setup_usd",
+              "type": "number",
+              "description": "One-off entity set-up cost in USD, from the user",
+              "required": false
+            },
+            {
+              "name": "eor_fee_usd_month",
+              "type": "number",
+              "description": "The EOR fee the user has been quoted, in USD per employee per month, as the user gives it",
+              "required": true
+            },
+            {
+              "name": "headcount",
+              "type": "integer",
+              "description": "Number of employees",
+              "required": false
+            },
+            {
+              "name": "payments_per_year",
+              "type": "number",
+              "description": "With salary_period \"month\" only: the total number of monthly salaries the contract pays in a year, statutory ones included (e.g. 14). Omit to use the statutory number of the country.",
+              "required": false
+            },
+            {
+              "name": "salary",
+              "type": "number",
+              "description": "Gross salary, a year unless salary_period is \"month\". Omit to use the country's example salary.",
+              "required": false
+            },
+            {
+              "name": "salary_currency",
+              "type": "string",
+              "description": "Currency of `salary`: USD, or the local currency of the country",
+              "required": false
+            },
+            {
+              "name": "salary_period",
+              "type": "string",
+              "description": "Whether the salary is a year (default) or a month. Pass a monthly salary as the user gives it, with \"month\": the statutory number of monthly payments of the country (13th, 14th month) is applied, see salary_basis in the answer.",
+              "required": false
+            },
+            {
+              "name": "years",
+              "type": "integer",
+              "description": "Horizon in years",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "contractor_rate_equivalent",
+          "description": "Use this when the user asks what day or hour rate a contractor would need to cost the same as an employee in a country, or wants to set a contractor rate against the full cost of employment (e.g. \"what daily rate equals an 80k employee in Germany?\"). The employee's annual cost (gross salary plus statutory employer charges, plus an Employer of Record fee if the user gives one) is divided by working days, by default 260 weekdays minus the country's statutory paid leave and public holidays, both adjustable. Costs only: it does not say whether a contractor arrangement is lawful or how to classify",
+          "input": [
+            {
+              "name": "assumptions",
+              "type": "object",
+              "description": "Override an adjustable assumption the country declares, e.g. {\"basic_share_of_gross\": 0.6}. See `assumptions` in an employer_cost answer.",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            },
+            {
+              "name": "eor_fee_usd_month",
+              "type": "number",
+              "description": "An EOR fee to add to the employee cost, in USD per employee per month, as the user gives it",
+              "required": false
+            },
+            {
+              "name": "hours_per_day",
+              "type": "number",
+              "description": "Hours per working day",
+              "required": false
+            },
+            {
+              "name": "paid_leave_days",
+              "type": "number",
+              "description": "Paid leave days a year. Omit to use the country's statutory minimum.",
+              "required": false
+            },
+            {
+              "name": "payments_per_year",
+              "type": "number",
+              "description": "With salary_period \"month\" only: the total number of monthly salaries the contract pays in a year, statutory ones included (e.g. 14). Omit to use the statutory number of the country.",
+              "required": false
+            },
+            {
+              "name": "public_holidays",
+              "type": "number",
+              "description": "Public holidays falling on weekdays. Omit to use the number recorded for the country.",
+              "required": false
+            },
+            {
+              "name": "salary",
+              "type": "number",
+              "description": "Gross salary, a year unless salary_period is \"month\". Omit to use the country's example salary.",
+              "required": false
+            },
+            {
+              "name": "salary_currency",
+              "type": "string",
+              "description": "Currency of `salary`: USD, or the local currency of the country",
+              "required": false
+            },
+            {
+              "name": "salary_period",
+              "type": "string",
+              "description": "Whether the salary is a year (default) or a month. Pass a monthly salary as the user gives it, with \"month\": the statutory number of monthly payments of the country (13th, 14th month) is applied, see salary_basis in the answer.",
+              "required": false
+            },
+            {
+              "name": "working_days",
+              "type": "number",
+              "description": "Working days a year, replacing the default calculation",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "cost_next_year",
+          "description": "Use this when the user budgets an employee for next year or a future date and asks how the statutory employer cost will move (e.g. \"what will this hire in Brazil cost the employer in January 2027?\"). Returns the cost today and at that date (by default 1 January of next year), at the same gross salary and exchange rate, applying only the enacted dated changes recorded for the country; changes announced in a budget come in a separate, flagged variant, and dates deduced from a source are flagged. A country whose changes are not tracked yet gets today's cost and \"not yet tracked\", never a projecti",
+          "input": [
+            {
+              "name": "assumptions",
+              "type": "object",
+              "description": "Override an adjustable assumption the country declares, e.g. {\"basic_share_of_gross\": 0.6}. See `assumptions` in an employer_cost answer.",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            },
+            {
+              "name": "on_date",
+              "type": "string",
+              "description": "Date of the projection, YYYY-MM-DD. Omit for 1 January of the year after the data snapshot.",
+              "required": false
+            },
+            {
+              "name": "payments_per_year",
+              "type": "number",
+              "description": "With salary_period \"month\" only: the total number of monthly salaries the contract pays in a year, statutory ones included (e.g. 14). Omit to use the statutory number of the country.",
+              "required": false
+            },
+            {
+              "name": "salary",
+              "type": "number",
+              "description": "Gross salary, a year unless salary_period is \"month\". Omit to use the country's example salary.",
+              "required": false
+            },
+            {
+              "name": "salary_currency",
+              "type": "string",
+              "description": "Currency of `salary`: USD, or the local currency of the country",
+              "required": false
+            },
+            {
+              "name": "salary_period",
+              "type": "string",
+              "description": "Whether the salary is a year (default) or a month. Pass a monthly salary as the user gives it, with \"month\": the statutory number of monthly payments of the country (13th, 14th month) is applied, see salary_basis in the answer.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "employer_cost",
+          "description": "Use this when the user asks what an employee costs the employer in a country beyond the gross salary: employer social security contributions, payroll taxes, pension, health or accident insurance, mandatory levies, or the total cost of employment (e.g. \"how much does it cost to employ a developer in Germany at 80k\", \"employer charges in Spain\", \"coût employeur d'un salarié en Pologne\"). Returns each statutory employer contribution with its rate, base, ceiling, source (official wherever one exists) and check date, then the monthly and annual total and its percent of gross, before any Employer of",
+          "input": [
+            {
+              "name": "assumptions",
+              "type": "object",
+              "description": "Override an adjustable assumption the country declares, e.g. {\"basic_share_of_gross\": 0.6}. See `assumptions` in an employer_cost answer.",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            },
+            {
+              "name": "include_notes",
+              "type": "boolean",
+              "description": "Include the long legal note behind each line",
+              "required": false
+            },
+            {
+              "name": "payments_per_year",
+              "type": "number",
+              "description": "With salary_period \"month\" only: the total number of monthly salaries the contract pays in a year, statutory ones included (e.g. 14). Omit to use the statutory number of the country.",
+              "required": false
+            },
+            {
+              "name": "salary",
+              "type": "number",
+              "description": "Gross salary, a year unless salary_period is \"month\". Omit to use the country's example salary.",
+              "required": false
+            },
+            {
+              "name": "salary_currency",
+              "type": "string",
+              "description": "Currency of `salary`: USD, or the local currency of the country",
+              "required": false
+            },
+            {
+              "name": "salary_period",
+              "type": "string",
+              "description": "Whether the salary is a year (default) or a month. Pass a monthly salary as the user gives it, with \"month\": the statutory number of monthly payments of the country (13th, 14th month) is applied, see salary_basis in the answer.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "employment_terms",
+          "description": "Use this when the user, hiring in a country, asks about statutory minimums: paid leave days, public holidays, maximum probation, notice period, 13th-month payment or other mandatory payments (e.g. \"how many days of leave in Brazil\", \"is there a 13th month in Mexico\"). Each term comes with its source and check date. Do not use for legal advice on a specific dismissal, contract dispute or visa. Data snapshot 2026-11-06. Cost comparison, not legal or tax advice.",
+          "input": [
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "fx_stress",
+          "description": "Use this when the user pays, or plans to pay, an employee in local currency and asks about exchange-rate risk or a USD budget (e.g. \"what if the real moves 10%\", \"risque de change sur un salaire en pesos\"). Returns the USD cost (gross salary plus statutory employer charges, before any Employer of Record fee) at the official exchange rate of the data snapshot, with its date and source, and if the local currency moves by 5, 10 or 20 percent either way; with a USD budget, the headroom in each case and the move at which the budget is reached. Do not use for currency conversion alone. Data snapshot",
+          "input": [
+            {
+              "name": "assumptions",
+              "type": "object",
+              "description": "Override an adjustable assumption the country declares, e.g. {\"basic_share_of_gross\": 0.6}. See `assumptions` in an employer_cost answer.",
+              "required": false
+            },
+            {
+              "name": "budget_usd",
+              "type": "number",
+              "description": "Annual budget in USD for salary plus employer charges, if the user has one",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            },
+            {
+              "name": "payments_per_year",
+              "type": "number",
+              "description": "With salary_period \"month\" only: the total number of monthly salaries the contract pays in a year, statutory ones included (e.g. 14). Omit to use the statutory number of the country.",
+              "required": false
+            },
+            {
+              "name": "salary_local",
+              "type": "number",
+              "description": "Gross salary in the local currency of the country, a year unless salary_period is \"month\"",
+              "required": true
+            },
+            {
+              "name": "salary_period",
+              "type": "string",
+              "description": "Whether the salary is a year (default) or a month. Pass a monthly salary as the user gives it, with \"month\": the statutory number of monthly payments of the country (13th, 14th month) is applied, see salary_basis in the answer.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "list_countries",
+          "description": "Use this when the user asks which countries EOR Scope covers, or wants the countries of a region (Europe, Asia, Latin America...) with ISO code, currency, an example salary and the statutory employer cost at that salary. Do not use for the detailed cost of one country (use employer_cost). Data snapshot 2026-11-06. Cost comparison, not legal or tax advice.",
+          "input": [
+            {
+              "name": "region",
+              "type": "string",
+              "description": "Filter by region, e.g. \"Europe\", \"Asia\", \"Latin America\"",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "max_salary_for_budget",
+          "description": "Use this when the user has an all-in budget for a hire in a country and asks what gross salary it allows (e.g. \"I have 100k a year for a hire in Germany, what salary can I offer?\", \"quel salaire brut pour un budget de 8 000 par mois en Espagne\"). Returns the largest gross salary whose statutory employer cost (salary plus employer charges, plus an Employer of Record fee if the user gives one) stays within the budget, solved on the same ledger as employer_cost, so ceilings, floors, bands and fixed amounts are taken into account, and the monthly salary it stands for, paid the country's statutory",
+          "input": [
+            {
+              "name": "assumptions",
+              "type": "object",
+              "description": "Override an adjustable assumption the country declares, e.g. {\"basic_share_of_gross\": 0.6}. See `assumptions` in an employer_cost answer.",
+              "required": false
+            },
+            {
+              "name": "budget",
+              "type": "number",
+              "description": "Total employer budget for one employee",
+              "required": true
+            },
+            {
+              "name": "budget_currency",
+              "type": "string",
+              "description": "Currency of `budget`: USD, or the local currency of the country",
+              "required": false
+            },
+            {
+              "name": "budget_period",
+              "type": "string",
+              "description": "Whether `budget` is per year or per month",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            },
+            {
+              "name": "eor_fee_usd_month",
+              "type": "number",
+              "description": "An EOR fee to take out of the budget first, in USD per employee per month, as the user gives it",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "reconcile_quote",
+          "description": "Use this when the user shares a quote, offer, invoice or cost breakdown from an Employer of Record, PEO or payroll provider and asks whether it is fair, correct, overpriced or what it includes (e.g. \"here is my EOR quote for Germany: salary 5,900, employer contributions 1,350, fee 560 a month, is it honest?\", \"voici le devis de mon EOR, est-il correct ?\"). Checks the quote lines against the statutory ledger of the country at the same salary: expected and quoted amount per statutory line, statutory lines missing from a detailed quote, charges with no statutory counterpart, and the gap split int",
+          "input": [
+            {
+              "name": "amounts_currency",
+              "type": "string",
+              "description": "Currency of the quote line amounts",
+              "required": false
+            },
+            {
+              "name": "assumptions",
+              "type": "object",
+              "description": "Override an adjustable assumption the country declares, e.g. {\"basic_share_of_gross\": 0.6}. See `assumptions` in an employer_cost answer.",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            },
+            {
+              "name": "lines",
+              "type": "array",
+              "required": true
+            },
+            {
+              "name": "payments_per_year",
+              "type": "number",
+              "description": "With salary_period \"month\" only: the total number of monthly salaries the contract pays in a year, statutory ones included (e.g. 14). Omit to use the statutory number of the country.",
+              "required": false
+            },
+            {
+              "name": "period",
+              "type": "string",
+              "description": "Whether the quote line amounts are per month or per year (one employee)",
+              "required": false
+            },
+            {
+              "name": "salary",
+              "type": "number",
+              "description": "Gross salary the quote is for, a year unless salary_period is \"month\"",
+              "required": true
+            },
+            {
+              "name": "salary_currency",
+              "type": "string",
+              "description": "Currency of `salary`: USD, or the local currency of the country",
+              "required": false
+            },
+            {
+              "name": "salary_period",
+              "type": "string",
+              "description": "Whether the salary is a year (default) or a month. Pass a monthly salary as the user gives it, with \"month\": the statutory number of monthly payments of the country (13th, 14th month) is applied, see salary_basis in the answer.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "scheduled_changes",
+          "description": "Use this when the user asks what is changing in a country's statutory employer contributions: new rates, ceilings, floors or thresholds, their effective dates, or measures announced in a budget (e.g. \"employer contribution changes in Ireland in 2027\", \"hausse des cotisations patronales en Allemagne l'an prochain\"). Each change comes with its status (enacted, or announced in a budget and not yet enacted), whether the date is stated in the source or deduced from it, and the source with a word-for-word quote and its reading date. A country whose changes are not tracked yet is answered \"not yet tr",
+          "input": [
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "show_compare",
+          "description": "Use this when the user wants the employer cost of job offers or salaries in 2 to 6 countries shown or displayed as a table they can read at a glance: for each country, the gross salary, statutory employer charges, total employer cost, difference and ratio to the smallest total, and contribution ceilings reached. It computes the figures itself: call it directly, with no data tool first, or after compare_offers or compare_countries with the arguments they return in `widget`. Inline up to 3 countries, full screen above. Takes the same offers as compare_offers. Data snapshot 2026-11-06. Cost compa",
+          "input": [
+            {
+              "name": "offers",
+              "type": "array",
+              "description": "One offer per country, 2 to 6 countries, each with its own salary",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "show_ledger",
+          "description": "Use this when the user wants to see, display, keep, copy or export the line-by-line employer cost of one employee in a country as a table or card (e.g. \"show me the breakdown\", \"display it as a table\", \"affiche le détail des cotisations patronales\"). It computes the figures itself: call it directly, with no data tool first, or after employer_cost with the arguments employer_cost returns in `widget`. Displays the salary basis (a monthly salary times the statutory number of payments), one row per statutory line with its rate, base, floor or ceiling, source and check date, a monthly or annual vie",
+          "input": [
+            {
+              "name": "assumptions",
+              "type": "object",
+              "description": "Override an adjustable assumption the country declares, e.g. {\"basic_share_of_gross\": 0.6}. See `assumptions` in an employer_cost answer.",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            },
+            {
+              "name": "payments_per_year",
+              "type": "number",
+              "description": "With salary_period \"month\" only: the total number of monthly salaries the contract pays in a year, statutory ones included (e.g. 14). Omit to use the statutory number of the country.",
+              "required": false
+            },
+            {
+              "name": "salary",
+              "type": "number",
+              "description": "Gross salary, a year unless salary_period is \"month\". Omit to use the country's example salary.",
+              "required": false
+            },
+            {
+              "name": "salary_currency",
+              "type": "string",
+              "description": "Currency of `salary`: USD, or the local currency of the country",
+              "required": false
+            },
+            {
+              "name": "salary_period",
+              "type": "string",
+              "description": "Whether the salary is a year (default) or a month. Pass a monthly salary as the user gives it, with \"month\": the statutory number of monthly payments of the country (13th, 14th month) is applied, see salary_basis in the answer.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        }
+      ]
+    },
+    "resources": {
+      "status": "partial",
+      "observedCount": 2,
+      "retainedCount": 2,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": [
+        {
+          "name": "compare",
+          "description": "A table of the total employer cost of job offers in several countries."
+        },
+        {
+          "name": "ledger",
+          "description": "The statutory employer cost ledger of one employee, line by line, with sources and check dates."
+        }
+      ]
+    },
+    "resourceTemplates": {
+      "status": "partial",
+      "observedCount": 2,
+      "retainedCount": 2,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": [
+        {
+          "name": "compare-earlier",
+          "description": "A table of the total employer cost of job offers in several countries."
+        },
+        {
+          "name": "ledger-earlier",
+          "description": "The statutory employer cost ledger of one employee, line by line, with sources and check dates."
+        }
+      ]
+    },
+    "prompts": {
+      "status": "unsupported",
       "observedCount": 0,
       "retainedCount": 0,
       "omittedCount": 0,
@@ -4103,6 +4781,224 @@
       "observedCount": 1,
       "retainedCount": 0,
       "omittedCount": 1,
+      "paginationComplete": true,
+      "items": []
+    },
+    "resourceTemplates": {
+      "status": "complete",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    },
+    "prompts": {
+      "status": "unsupported",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    }
+  },
+  "excessionlabs": {
+    "version": 1,
+    "observedAt": "2026-11-12T14:25:54.835Z",
+    "provenance": {
+      "testedEndpoint": "https://excessionlabs.ai/mcp/cve",
+      "route": "direct"
+    },
+    "authentication": "unauthenticated",
+    "tools": {
+      "status": "complete",
+      "observedCount": 6,
+      "retainedCount": 6,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": [
+        {
+          "name": "cve_changes",
+          "description": "Read hosted changes after a saved sequence cursor. Process the page before resuming with next_after. This is a read-only feed; it does not create a notification subscription.",
+          "input": [
+            {
+              "name": "after",
+              "type": "integer",
+              "description": "Cursor returned by the preceding page; zero starts at the beginning",
+              "required": false
+            },
+            {
+              "name": "cve_id",
+              "type": "string",
+              "description": "CVE identifier, for example CVE-2024-3094",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum results in this page, from 1 to 50",
+              "required": false
+            },
+            {
+              "name": "source",
+              "type": "string",
+              "description": "Optional source identifier",
+              "required": false
+            }
+          ],
+          "outputSchema": false
+        },
+        {
+          "name": "cve_get",
+          "description": "Read a CVE's descriptions, severity, affected software/version evidence, source references, KEV and EPSS. Large affected-software lists are paginated; inspect the returned cursor and completeness fields.",
+          "input": [
+            {
+              "name": "affected_after",
+              "type": "integer",
+              "description": "Cursor returned by the preceding page; zero starts at the beginning",
+              "required": false
+            },
+            {
+              "name": "affected_limit",
+              "type": "integer",
+              "description": "Maximum results in this page, from 1 to 50",
+              "required": false
+            },
+            {
+              "name": "cve_id",
+              "type": "string",
+              "description": "CVE identifier, for example CVE-2024-3094",
+              "required": true
+            }
+          ],
+          "outputSchema": false
+        },
+        {
+          "name": "cve_history",
+          "description": "Read normalized source revisions retained after hosted monitoring starts. Version claims can refer to shared affected_groups by group_id. Initial hosted observations establish a baseline; the initial snapshot is not a complete historical archive. Inspect returned coverage and pagination.",
+          "input": [
+            {
+              "name": "after",
+              "type": "integer",
+              "description": "Cursor returned by the preceding page; zero starts at the beginning",
+              "required": false
+            },
+            {
+              "name": "cve_id",
+              "type": "string",
+              "description": "CVE identifier, for example CVE-2024-3094",
+              "required": true
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum results in this page, from 1 to 50",
+              "required": false
+            },
+            {
+              "name": "source",
+              "type": "string",
+              "description": "Optional source identifier, such as cve_list_v5 or nvd",
+              "required": false
+            }
+          ],
+          "outputSchema": false
+        },
+        {
+          "name": "cve_search",
+          "description": "Search the hosted Excession Labs CVE database. Choose recent modification, new publication, or known-exploitation priority. Software/version filters match source assertions; they do not evaluate whether an installation is affected.",
+          "input": [
+            {
+              "name": "ecosystem",
+              "type": "string",
+              "description": "Exact source ecosystem name, case-insensitive",
+              "required": false
+            },
+            {
+              "name": "include_unaffected",
+              "type": "boolean",
+              "description": "Include software assertions explicitly marked unaffected or fixed",
+              "required": false
+            },
+            {
+              "name": "kev",
+              "type": "boolean",
+              "description": "True selects CISA KEV members; false selects records known not to be listed",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum results in this page, from 1 to 50",
+              "required": false
+            },
+            {
+              "name": "offset",
+              "type": "integer",
+              "description": "Result offset, up to 10000; use specific filters for broad queries",
+              "required": false
+            },
+            {
+              "name": "package",
+              "type": "string",
+              "description": "Exact source package name, case-insensitive",
+              "required": false
+            },
+            {
+              "name": "product",
+              "type": "string",
+              "description": "Exact source product name, case-insensitive",
+              "required": false
+            },
+            {
+              "name": "published_since",
+              "type": "string",
+              "description": "Inclusive UTC publication date or ISO timestamp, for example 2026-11-01",
+              "required": false
+            },
+            {
+              "name": "query",
+              "type": "string",
+              "description": "Substring to find in the indexed CVE text, at least three characters",
+              "required": false
+            },
+            {
+              "name": "sort",
+              "type": "string",
+              "description": "priority orders known exploitation first; recent orders source modifications; published orders new publication dates",
+              "required": false
+            },
+            {
+              "name": "vendor",
+              "type": "string",
+              "description": "Exact source vendor name, case-insensitive",
+              "required": false
+            },
+            {
+              "name": "version",
+              "type": "string",
+              "description": "Literal source version value; version ranges are returned as evidence, not evaluated",
+              "required": false
+            }
+          ],
+          "outputSchema": false
+        },
+        {
+          "name": "cve_sources",
+          "description": "Read the hosted source catalog, attribution, update methods and coverage limits.",
+          "outputSchema": false
+        },
+        {
+          "name": "cve_status",
+          "description": "Read corpus counts, source coverage, collection errors, freshness and saved update checkpoints. A successful bounded query does not imply complete upstream coverage.",
+          "outputSchema": false
+        }
+      ]
+    },
+    "resources": {
+      "status": "complete",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
       "paginationComplete": true,
       "items": []
     },
@@ -9064,6 +9960,658 @@
             {
               "name": "instance",
               "description": "Required. The instance to update, which must always include the instance name. Otherwise, only fields mentioned in field_mask need be included.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        }
+      ]
+    },
+    "resources": {
+      "status": "unsupported",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    },
+    "resourceTemplates": {
+      "status": "unsupported",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    },
+    "prompts": {
+      "status": "unsupported",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    }
+  },
+  "govisit": {
+    "version": 1,
+    "observedAt": "2026-11-14T07:08:22.425Z",
+    "provenance": {
+      "testedEndpoint": "https://govisit.ai/mcp",
+      "route": "direct"
+    },
+    "authentication": "unauthenticated",
+    "tools": {
+      "status": "partial",
+      "observedCount": 22,
+      "retainedCount": 22,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": [
+        {
+          "name": "get_category_overview",
+          "description": "Identify the place category shown on a destination's category page. Read its label, category code, destination identity, and any published count or parent category.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_category_section",
+          "description": "Read the overview or places section of a destination category page. Choose places to inspect the inventory preview for that category. Lists contain up to 20 items.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            },
+            {
+              "name": "section",
+              "type": "string",
+              "description": "Published section of the selected page to read.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_collection_overview",
+          "description": "Identify a named destination collection and learn what it brings together. Read its title, description, slug, and any published count.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_collection_section",
+          "description": "Inspect part of a named collection. Select overview for the introduction, or places for the entries shown on the collection page. Lists contain up to 20 items.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            },
+            {
+              "name": "section",
+              "type": "string",
+              "description": "Published section of the selected page to read.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_destination_overview",
+          "description": "Return the published overview for this GoVisit destination. The result includes the long destination description, nullable SEO meta description, and any legacy overview fields, limited to the page's public overview fields and includes freshness metadata from the page snapshot.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_destination_section",
+          "description": "Read one part of a destination page, such as its overview, highlights, or updates. The experiences section returns every published experience card in the page language across all audiences. Other lists contain up to 20 items.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            },
+            {
+              "name": "section",
+              "type": "string",
+              "description": "Published section of the selected page to read.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_documentation_page",
+          "description": "Read the current page's published title, headings and structured content, or one section selected by its heading anchor. Returns the canonical URL and explicit truncation information. Reads only the current rendered page; does not fetch other articles.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            },
+            {
+              "name": "section",
+              "type": "string",
+              "description": "Optional heading anchor identifying one published section.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_page_faq",
+          "description": "Return at most 20 FAQs extracted from the current rendered page. An optional query filters the published question and answer text. Returns canonical references, count and truncation information. An empty list means no FAQ matched the requested filter in this bounded page projection; it does not establish that the subject has no answers.",
+          "input": [
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of results to return.",
+              "required": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            },
+            {
+              "name": "query",
+              "type": "string",
+              "description": "Optional text to match against published questions and answers.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_place_overview",
+          "description": "Return the published overview for this GoVisit place, including its published classifications with scheme, recipient, validity and available evidence, and its operating status: operatingStatus.code is operational, temporarily_closed or permanently_closed, and null when the status is unknown. Operating status says whether the place still operates, not whether it is open right now. The result excludes place spatial details, which are available from the Location section, and includes freshness metadata from the page snapshot. Owner, chain and operator are organization names, each null when unknow",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_place_section",
+          "description": "Return one published section for this GoVisit place, including Location spatial details. Arrays are limited to at most 20 items and text values are bounded; the result includes page freshness metadata. The overview section includes owner, chain and operator organization names, each null when unknown; operator identifies the company managing the facility, distinct from profile management.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            },
+            {
+              "name": "section",
+              "type": "string",
+              "description": "Published section of the selected page to read.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_place_visit_facts",
+          "description": "Read compact page-published visit facts for this GoVisit place, including operating status, location, contact details, opening hours, accessibility, experiences and freshness. Read operatingStatus before openingHours. A closed status takes precedence over regular hours. Owner, chain and operator are organization names, each null when unknown. The operator manages the facility.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_statistics",
+          "description": "Return exact governed catalog coverage counts and per-metric observation metadata from this cached public page. Scope is physical World on landing pages, or the parent Destination on Destination, category and collection pages. A measured zero is zero; missing or invalid metrics are unknown. Coverage is recalculated daily and may be slightly inaccurate within the day. Counts are not live availability, bounded search/list totals, or rounded homepage headlines.",
+          "input": [
+            {
+              "name": "category",
+              "type": "string",
+              "description": "Statistic family. Coverage is the only supported family today.",
+              "required": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "list_category_places",
+          "description": "Filter the venue cards shown for one category within a destination, such as Culture. Provide the category page path. Returns up to 20 cards from that inventory preview.",
+          "input": [
+            {
+              "name": "accessibility",
+              "type": "string",
+              "description": "Optional published accessibility label or code.",
+              "required": false
+            },
+            {
+              "name": "activityType",
+              "type": "string",
+              "description": "Optional published activity type.",
+              "required": false
+            },
+            {
+              "name": "administrativeArea",
+              "type": "string",
+              "description": "Optional published administrative area.",
+              "required": false
+            },
+            {
+              "name": "audience",
+              "type": "string",
+              "description": "Optional published audience label or code.",
+              "required": false
+            },
+            {
+              "name": "category",
+              "type": "string",
+              "description": "Optional published category code.",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of results to return.",
+              "required": false
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "description": "Optional published place name or partial name.",
+              "required": false
+            },
+            {
+              "name": "neighborhood",
+              "type": "string",
+              "description": "Optional published neighborhood.",
+              "required": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "list_collection_places",
+          "description": "Find entries in a named destination collection using its collection page path. Optional filters narrow the existing selection by published card details. Returns up to 20 matches.",
+          "input": [
+            {
+              "name": "accessibility",
+              "type": "string",
+              "description": "Optional published accessibility label or code.",
+              "required": false
+            },
+            {
+              "name": "activityType",
+              "type": "string",
+              "description": "Optional published activity type.",
+              "required": false
+            },
+            {
+              "name": "administrativeArea",
+              "type": "string",
+              "description": "Optional published administrative area.",
+              "required": false
+            },
+            {
+              "name": "audience",
+              "type": "string",
+              "description": "Optional published audience label or code.",
+              "required": false
+            },
+            {
+              "name": "category",
+              "type": "string",
+              "description": "Optional published category code.",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of results to return.",
+              "required": false
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "description": "Optional published place name or partial name.",
+              "required": false
+            },
+            {
+              "name": "neighborhood",
+              "type": "string",
+              "description": "Optional published neighborhood.",
+              "required": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "list_destination_activities",
+          "description": "Discover activities featured on the destination page, such as walking tours. Returns up to 20 cards from its activity section.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "list_destination_categories",
+          "description": "See how a destination groups its places. Returns up to 20 category labels and codes with available counts and parent categories from the destination page.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "list_destination_highlights",
+          "description": "Return at most 20 compact published highlight place cards from this destination page. The result is a page-local subset, includes canonical links, and includes freshness metadata.",
+          "input": [
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of results to return.",
+              "required": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "list_destination_places",
+          "description": "Browse the place cards displayed on a destination's main page. Apply optional filters to that preview and get up to 20 matches. Coverage depends on which cards the page shows.",
+          "input": [
+            {
+              "name": "accessibility",
+              "type": "string",
+              "description": "Optional published accessibility label or code.",
+              "required": false
+            },
+            {
+              "name": "activityType",
+              "type": "string",
+              "description": "Optional published activity type.",
+              "required": false
+            },
+            {
+              "name": "administrativeArea",
+              "type": "string",
+              "description": "Optional published administrative area.",
+              "required": false
+            },
+            {
+              "name": "audience",
+              "type": "string",
+              "description": "Optional published audience label or code.",
+              "required": false
+            },
+            {
+              "name": "category",
+              "type": "string",
+              "description": "Optional published category code.",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of results to return.",
+              "required": false
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "description": "Optional published place name or partial name.",
+              "required": false
+            },
+            {
+              "name": "neighborhood",
+              "type": "string",
+              "description": "Optional published neighborhood.",
+              "required": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "list_related_places",
+          "description": "Find nearby suggestions shown on a single place profile. Use the path of the reference place and filter its nearby cards by published details. Returns up to 20 matches.",
+          "input": [
+            {
+              "name": "accessibility",
+              "type": "string",
+              "description": "Optional published accessibility label or code.",
+              "required": false
+            },
+            {
+              "name": "activityType",
+              "type": "string",
+              "description": "Optional published activity type.",
+              "required": false
+            },
+            {
+              "name": "administrativeArea",
+              "type": "string",
+              "description": "Optional published administrative area.",
+              "required": false
+            },
+            {
+              "name": "audience",
+              "type": "string",
+              "description": "Optional published audience label or code.",
+              "required": false
+            },
+            {
+              "name": "category",
+              "type": "string",
+              "description": "Optional published category code.",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of results to return.",
+              "required": false
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "description": "Optional published place name or partial name.",
+              "required": false
+            },
+            {
+              "name": "neighborhood",
+              "type": "string",
+              "description": "Optional published neighborhood.",
+              "required": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "search_destinations",
+          "description": "Search published destinations by name or traveler intent. mode defaults to auto: exact name matches avoid embedding; otherwise name and intent results are combined. Explicit name never embeds; intent always searches by meaning. Returns stable destination codes, public URLs, match method, scope and index release. Optional within and types filter canonical geography before ranking; they require a geography-enabled release. Whole-Division containment takes precedence over a default hierarchy parent for cross-border destinations; unknown scope is never assumed. Types are published classifications,",
+          "input": [
+            {
+              "name": "language",
+              "type": "string",
+              "description": "Requested response language; defaults to the page language.",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of results to return.",
+              "required": false
+            },
+            {
+              "name": "mode",
+              "type": "string",
+              "description": "Name lookup, intent retrieval, or name-first auto discovery.",
+              "required": false
+            },
+            {
+              "name": "query",
+              "type": "string",
+              "description": "Place or destination name, or the traveler's intent.",
+              "required": true
+            },
+            {
+              "name": "types",
+              "type": "array",
+              "description": "Match any of these published classifications; not a size/tier filter.",
+              "required": false
+            },
+            {
+              "name": "within",
+              "type": "string",
+              "description": "Canonical destination code to explore within; all is reserved for an explicit unrestricted place search, never a containing-destination filter.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "search_documentation",
+          "description": "Search the published documentation links currently rendered on this GoVisit page and return bounded canonical links and titles.",
+          "input": [
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of results to return.",
+              "required": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            },
+            {
+              "name": "query",
+              "type": "string",
+              "description": "Optional documentation title or path text to match.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "search_places",
+          "description": "For faster searches, pass a known country or destination code. Unscoped name lookups search all covered countries. Search published places by name or traveler intent. mode defaults to auto: exact names avoid embedding, otherwise combine name and intent candidates without duplicate IDs. Explicit name never embeds. A destination page supplies its scope; country, destination and near intersect and never widen. Scoped names and proximity require a geography-enabled index release; older releases report unavailable constraints. At most 200 candidate records are examined before returning up to 20 ite",
+          "input": [
+            {
+              "name": "country",
+              "type": "string",
+              "description": "Two-letter ISO country code. Supply it when the country is known to narrow the search. Intersects destination and proximity where the public geography projection is available.",
+              "required": false
+            },
+            {
+              "name": "destination",
+              "type": "string",
+              "description": "Stable destination code or all. Defaults to the current destination, otherwise all.",
+              "required": false
+            },
+            {
+              "name": "language",
+              "type": "string",
+              "description": "Requested response language; defaults to the page language.",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of places to return. Defaults to 10. Name mode allows up to 10. Other modes allow up to 20.",
+              "required": false
+            },
+            {
+              "name": "mode",
+              "type": "string",
+              "description": "Name lookup, intent retrieval, or name-first auto discovery.",
+              "required": false
+            },
+            {
+              "name": "near",
+              "type": "object",
+              "description": "Proximity filter with a radius in meters. Supply either a GoVisit place ID or explicit coordinates as the reference.",
+              "required": false
+            },
+            {
+              "name": "query",
+              "type": "string",
+              "description": "Place or destination name, or the traveler's intent.",
               "required": true
             }
           ],

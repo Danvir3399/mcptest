@@ -39,7 +39,7 @@ describe('/mcp-test-client build outputs', () => {
   const built = path.join(distRoot, 'mcp-test-client', 'index.html');
   it.runIf(fs.existsSync(built))('the built page has the checklist, examples and JSON-LD in its static HTML', () => {
     const html = fs.readFileSync(built, 'utf8');
-    expect(html).toContain(`<title>${pageMetadata.mcpTestClient.title}</title>`);
+    expect(new DOMParser().parseFromString(html, 'text/html').title).toBe(pageMetadata.mcpTestClient.title);
     expect(html).toContain('<link rel="canonical" href="https://mcptest.io/mcp-test-client" />');
     expect(html).toMatch(/<meta property="og:url" content="https:\/\/mcptest.io\/mcp-test-client"/);
     expect(html).toMatch(/<h1 id="mcp-test-client-title">Test your MCP client<\/h1>/);

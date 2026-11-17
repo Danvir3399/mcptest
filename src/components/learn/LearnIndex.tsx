@@ -35,7 +35,7 @@ const LearnIndex: React.FC = () => (
           <ol className="learn-track-list">
             {track.items.map(item => (
               <li className="learn-track-item" key={item.slug}>
-                <Link className="learn-track-item-link" to={`/guides/${item.slug}`}>
+                <Link className="learn-track-item-link" to={item.path}>
                 <span className="learn-track-item-title">{item.title}<span aria-hidden="true"> →</span></span>
                 <p className="learn-track-item-summary">{item.summary}</p>
                 <p className="learn-track-item-meta">

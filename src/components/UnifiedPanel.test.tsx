@@ -74,7 +74,7 @@ const press = (target: EventTarget, key: string) => {
   });
 };
 
-const optionNames = () => [...container!.querySelectorAll('[role="option"] .item-name')].map((node) => node.textContent);
+const optionNames = () => [...container!.querySelectorAll('[role="option"] .item-name > span:first-child')].map((node) => node.textContent);
 
 describe('UnifiedPanel search', () => {
   it('filters tools, resources and prompts together and shows counts per kind', () => {
@@ -104,12 +104,12 @@ describe('UnifiedPanel search', () => {
     press(input, 'ArrowDown');
     press(input, 'ArrowDown');
     const active = container!.querySelector('[role="option"].active');
-    expect(active?.querySelector('.item-name')?.textContent).toBe('create_issue');
+    expect(active?.querySelector('.item-name > span:first-child')?.textContent).toBe('create_issue');
     expect(input.getAttribute('aria-activedescendant')).toBe(active?.id);
 
     press(input, 'ArrowDown');
     press(input, 'ArrowDown');
-    expect(container!.querySelector('[role="option"].active .item-name')?.textContent).toBe('triage_issue');
+    expect(container!.querySelector('[role="option"].active .item-name > span:first-child')?.textContent).toBe('triage_issue');
     press(input, 'Enter');
     expect(handlers.handleSelectPrompt).toHaveBeenCalledWith(prompts[0]);
 

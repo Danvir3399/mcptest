@@ -450,14 +450,14 @@ function renderServerFallback(server) {
     ...(server.browserUrl && server.browserUrl !== server.validatedUrl
       ? [`      <div><dt>Browser-verified endpoint</dt><dd><code class="technical-string technical-string-url">${escapeHtml(server.browserUrl)}</code></dd></div>`]
       : []),
-    `      <div><dt><a href="/guides/mcp-cors-headers-for-browser-clients">Browser access</a></dt><dd>${escapeHtml(server.browserAccess === 'direct' ? 'Direct browser connection verified' : server.browserAccess === 'proxy-required' ? 'Authenticated proxy required' : 'Not yet measured')}</dd></div>`,
+    `      <div><dt><a href="/learn/mcp-cors-headers-for-browser-clients">Browser access</a></dt><dd>${escapeHtml(server.browserAccess === 'direct' ? 'Direct browser connection verified' : server.browserAccess === 'proxy-required' ? 'Authenticated proxy required' : 'Not yet measured')}</dd></div>`,
     `      <div><dt>Declared MCP transport</dt><dd>${escapeHtml(transportLabel(server.declaredTransport))}</dd></div>`,
     `      <div><dt>Live-validated MCP transport</dt><dd>${escapeHtml(transportLabel(server.transport))} — ${escapeHtml(validationTransportNote(server))}</dd></div>`,
     `      <div><dt>Declared authentication</dt><dd>${escapeHtml(authenticationLabel(server.declaredAuthType))}</dd></div>`,
-    `      <div><dt>Detected authentication</dt><dd>${server.authType === 'oauth' ? `<a href="/guides/oauth-for-mcp-explained">${escapeHtml(detectedAuthenticationLabel(server))}</a>` : escapeHtml(detectedAuthenticationLabel(server))}</dd></div>`,
+    `      <div><dt>Detected authentication</dt><dd>${server.authType === 'oauth' ? `<a href="/learn/oauth-for-mcp-explained">${escapeHtml(detectedAuthenticationLabel(server))}</a>` : escapeHtml(detectedAuthenticationLabel(server))}</dd></div>`,
     ...alternativeAuthTypes,
     ...alternativeEndpoints,
-    `      <div><dt>Protocol lifecycle</dt><dd><a href="/guides/remote-vs-local">${escapeHtml(protocolLabel(server.protocolEra, server.protocolVersion))}</a></dd></div>`,
+    `      <div><dt>Protocol lifecycle</dt><dd><a href="/docs/remote-vs-local">${escapeHtml(protocolLabel(server.protocolEra, server.protocolVersion))}</a></dd></div>`,
     ...requiredHeaders,
     ...authorizationServers,
     `      <div><dt>Category</dt><dd><a href="${escapeHtml(getCatalogCategoryPath(server.category))}">${escapeHtml(server.category)}</a></dd></div>`,
@@ -1160,7 +1160,7 @@ function renderSideNavFallback({ view = 'playground' }) {
  */
 function renderSiteFooter() {
   const columns = [
-    ...FOOTER_COLUMNS.map(column => ({ title: column.title, links: column.links.map(([label, slug]) => ({ label, href: `/guides/${slug}` })) })),
+    ...FOOTER_COLUMNS.map(column => ({ title: column.title, links: column.links.map(([label, href]) => ({ label, href })) })),
     { title: 'Tools', links: FOOTER_NAVIGATION.slice(3, 6) },
     { title: 'Project', links: FOOTER_NAVIGATION.slice(6) },
   ];
@@ -1650,6 +1650,7 @@ function buildOgCards({ servers, articles, pageMetadata }) {
     { pagePath: MCP_TEST_SERVERS_PATH, eyebrow: 'Free test servers', title: MCP_TEST_SERVERS_COPY.heading, summary: pageMetadata.mcpTestServers.description },
     { pagePath: MCP_TEST_CLIENT_PATH, eyebrow: 'Client checklist', title: MCP_TEST_CLIENT_COPY.heading, summary: pageMetadata.mcpTestClient.description },
     { pagePath: '/learn', eyebrow: 'Guides', title: pageMetadata.learn.title, summary: pageMetadata.learn.description },
+    { pagePath: '/guides', eyebrow: 'Guides', title: pageMetadata.learn.title, summary: pageMetadata.learn.description },
     ...Object.entries(pageMetadata.tools || {}).map(([slug, metadata]) => ({
       pagePath: `/tools/${slug}`,
       eyebrow: 'Free tool',
@@ -1748,6 +1749,7 @@ function writeArticlePages(indexHtml, learnIndex, articles, { shell, prerender }
   );
 
   fs.writeFileSync(distPathFor('/guides') + '.html', renderLearnIndexHtml(indexHtml, learnIndex, articles, { shell, pageHtml: prerender.renderLearnIndexPage(), pathname: '/guides' }), 'utf8');
+  // Prerender only canonical article paths. /guides/:slug remains an app alias.
   for (const article of articles) {
     const pageHtml = prerender.renderArticlePage(article.path);
     if (!pageHtml) throw new Error(`The app has no article at ${article.path}; the guide registries disagree.`);
@@ -1758,9 +1760,6 @@ function writeArticlePages(indexHtml, learnIndex, articles, { shell, prerender }
       renderLearnArticleHtml(indexHtml, article, articles, learnIndex, { shell, pageHtml }),
       'utf8'
     );
-    const guideDirectory = distPathFor(`/guides/${article.slug}`);
-    fs.mkdirSync(guideDirectory, { recursive: true });
-    fs.writeFileSync(path.join(guideDirectory, 'index.html'), renderLearnArticleHtml(indexHtml, article, articles, learnIndex, { shell, pageHtml }), 'utf8');
     fs.writeFileSync(distPathFor(articleMarkdownPath(article)), renderArticleMarkdown(article), 'utf8');
   }
 }

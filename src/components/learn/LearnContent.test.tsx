@@ -241,7 +241,7 @@ describe('Learn index', () => {
     expect(container.querySelectorAll('.learn-track-description')).toHaveLength(5);
     expect(container.querySelectorAll('.learn-track-item')).toHaveLength(LEARN_ARTICLES.length);
     for (const article of LEARN_ARTICLES) {
-      const link = container.querySelector<HTMLAnchorElement>(`.learn-track-item-link[href="/guides/${article.slug}"]`);
+      const link = container.querySelector<HTMLAnchorElement>(`.learn-track-item-link[href="${article.path}"]`);
       expect(link?.querySelector('.learn-track-item-title')?.textContent).toBe(`${article.title} →`);
       expect(getLearnArticleFromPath(link!.getAttribute('href')!)).toBe(article);
       const item = link!.closest('.learn-track-item')!;

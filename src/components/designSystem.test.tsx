@@ -81,14 +81,17 @@ describe('surfaces', () => {
     expect(offenders).toEqual([]);
   });
 
-  it('keeps gradients to the page wash behind the shell', () => {
+  it('keeps gradients to page washes behind the shell and footer', () => {
     const gradients = rules
       .filter((rule) => /gradient\(/.test(rule.body))
       // The --page-wash token itself, defined once per theme.
       .filter((rule) => !/^:root/.test(rule.selector))
       .map((rule) => rule.selector);
 
-    expect(gradients).toEqual([]);
+    // The footer transition is part of the page canvas, not a card surface.
+    expect(gradients).toEqual(['.main-content:has(> .site-footer)']);
+    expect(declaration(ruleFor('.main-content:has(> .site-footer)')!.body, 'background'))
+      .toBe('linear-gradient(to bottom, transparent 35%, var(--workspace-canvas) 85%)');
     const tokenGradients = rules
       .filter((rule) => /^:root/.test(rule.selector))
       .flatMap((rule) => [...rule.body.matchAll(/(--[a-z0-9-]+)\s*:[^;]*gradient\(/g)].map((found) => found[1]));

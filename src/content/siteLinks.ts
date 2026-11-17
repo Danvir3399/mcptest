@@ -1,13 +1,13 @@
 /** Visible content navigation shared by React and the generated HTML shell. */
 export const FOOTER_COLUMNS = [
   { title: 'Guides', links: [
-    ['What is MCP?', 'what-is-mcp'], ['Remote vs Local', 'remote-vs-local'], ['MCP Glossary', 'mcp-glossary'],
+    ['What is MCP?', '/docs/what-is-mcp'], ['Remote vs Local', '/docs/remote-vs-local'], ['MCP Glossary', '/learn/mcp-glossary'],
   ] },
   { title: 'Specifications', links: [
-    ['Testing Guide', 'testing-guide'], ['OAuth 2.1', 'mcp-oauth-2-1-reference'], ['Breaking Changes', 'which-mcp-tool-changes-break-clients'],
+    ['Testing Guide', '/docs/testing-guide'], ['OAuth 2.1', '/learn/mcp-oauth-2-1-reference'], ['Breaking Changes', '/learn/which-mcp-tool-changes-break-clients'],
   ] },
   { title: 'Compare', links: [
-    ['mcptest.io vs Glama', 'mcptest-vs-glama-inspector'], ['MCP Inspector Alternatives', 'mcp-inspector-alternatives'], ['Testing Tools Roundup', 'best-remote-mcp-testing-tools'],
+    ['mcptest.io vs Glama', '/learn/mcptest-vs-glama-inspector'], ['MCP Inspector Alternatives', '/learn/mcp-inspector-alternatives'], ['Testing Tools Roundup', '/learn/best-remote-mcp-testing-tools'],
   ] },
 ];
 export const HOME_GUIDE_COLUMNS = [

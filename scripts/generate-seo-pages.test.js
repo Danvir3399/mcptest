@@ -1025,11 +1025,11 @@ describe('content pages in the app shell (issue #405)', () => {
     for (const pathname of ['/', '/guides', '/catalog', '/servers/notion/']) {
       const root = new DOMParser().parseFromString(seoGenerator.renderAppShell({ ...shell, pathname, content: '<h1>Page</h1>' }), 'text/html');
       const footer = root.querySelector('.main-content > .site-footer');
-      const links = [...footer.querySelectorAll('a[href^="/guides/"]')];
+      const links = [...footer.querySelectorAll('.site-link-columns a[href^="/docs/"], .site-link-columns a[href^="/learn/"]')];
       expect(links).toHaveLength(9);
       for (const link of links) {
         expect(link.closest('[hidden], details')).toBeNull();
-        expect(articles.some(article => `/guides/${article.slug}` === link.getAttribute('href'))).toBe(true);
+        expect(articles.some(article => article.path === link.getAttribute('href'))).toBe(true);
       }
       expect(root.querySelector('.desktop-sidebar .content-track-nav')).toBeNull();
     }

@@ -160,11 +160,18 @@ describe('keyword landing pages', () => {
     expect(internalLinks(getKeywordLandingPage('/mcp-playground')!)).toContain('/catalog');
   });
 
-  it('are linked from the rendered page footer, with contextual links in home page copy', () => {
+  it('keep contextual home links while the compact footer focuses on tools and project links', () => {
     const footer = document.createElement('div');
     footer.innerHTML = renderToStaticMarkup(createElement(Footer));
     const footerLinks = Array.from(footer.querySelectorAll('footer a'), link => link.getAttribute('href'));
-    for (const path of KEYWORD_LANDING_PATHS) expect(footerLinks, path).toContain(path);
+    expect(footer.querySelectorAll('.site-link-columns > section')).toHaveLength(5);
+    expect(footerLinks).toEqual(expect.arrayContaining([
+      '/ci', '/mcp-test-servers', '/mcp-test-client', '/submit',
+      '/docs/what-is-mcp', '/learn/mcp-glossary',
+    ]));
+    expect(footerLinks.some(href => href?.startsWith('/guides/'))).toBe(false);
+    // Keyword landing links remain in contextual copy, not a sixth footer column.
+    for (const path of KEYWORD_LANDING_PATHS) expect(footerLinks, path).not.toContain(path);
     expect(LANDING_PAGE_NAVIGATION.map(link => link.href)).toEqual(KEYWORD_LANDING_PATHS);
     const homeLinks = [...LANDING_STEPS.map(step => step.description), ...LANDING_FAQ.map(item => item.answer)]
       .flatMap(value => parseLandingText(value).map(part => part.href?.split('#')[0]));

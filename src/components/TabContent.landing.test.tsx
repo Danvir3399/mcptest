@@ -114,7 +114,7 @@ describe('playground landing', () => {
     expect(container.querySelector('.connection-console')).not.toBeNull();
     expect(container.querySelector('.awaiting-connection-panel')).not.toBeNull();
     expect(container.querySelector('.suggested-servers-panel')).not.toBeNull();
-    expect(container.querySelector('.recent-server-link')?.textContent).toBe('https://returning.example/mcp');
+    expect(container.querySelector('.recent-server-link > span:not([aria-hidden])')?.textContent).toBe('https://returning.example/mcp');
   });
 
   it('reconnects a recent server from the workspace and removes entries in place', async () => {
@@ -128,7 +128,7 @@ describe('playground landing', () => {
       container.querySelector('[aria-label="Remove https://second.example/mcp from recent connections"]')
         ?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
-    expect(Array.from(container.querySelectorAll('.recent-server-link'), link => link.textContent))
+    expect(Array.from(container.querySelectorAll('.recent-server-link > span:not([aria-hidden])'), link => link.textContent))
       .toEqual(['https://returning.example/mcp']);
     const stored: Array<string | { url: string }> = JSON.parse(localStorage.getItem('mcpRecentServers') ?? '[]');
     expect(stored.map(entry => (typeof entry === 'string' ? entry : entry.url))).toEqual(['https://returning.example/mcp']);

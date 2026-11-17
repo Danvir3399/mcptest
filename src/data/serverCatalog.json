@@ -4628,10 +4628,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://support.pipedrive.com/en/article/mcp-claude"
     },
-    "logoUrl": "/server-logos/pipedrive.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated PD monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Pipedrive mark.",
+    "logoUrl": "/server-logos/pipedrive.png",
+    "logoSourceUrl": "https://cdn.dub-1.pipedriveassets.com/www-main-renderer/_next/static/media/favicon-196x196.98c71512.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Pipedrive site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.pipedrive.com"
   },
   {
@@ -4672,10 +4673,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server"
     },
-    "logoUrl": "/server-logos/klaviyo.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated KL monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Klaviyo mark.",
+    "logoUrl": "/server-logos/klaviyo.png",
+    "logoSourceUrl": "https://www.klaviyo.com/icons/icon-256x256.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Klaviyo site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.klaviyo.com"
   },
   {
@@ -4716,10 +4718,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://developer.monday.com/api-reference/docs/mondaycom-mcp"
     },
-    "logoUrl": "/server-logos/monday.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated MO monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official monday.com mark.",
+    "logoUrl": "/server-logos/monday.png",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/656da6fea306219773d04208/65af6bd6e742d497b5f23f69_645898132bbaac20f1963919_256x256.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official monday.com site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://monday.com"
   },
   {
@@ -4760,10 +4763,11 @@
       "evidenceUrl": "https://developers.wrike.com/wrike-mcp/"
     },
     "exactEndpointOnly": true,
-    "logoUrl": "/server-logos/wrike.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated WR monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Wrike mark.",
+    "logoUrl": "/server-logos/wrike.png",
+    "logoSourceUrl": "https://avatars.githubusercontent.com/u/7115323?s=256&v=4",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Wrike GitHub organization avatar; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.wrike.com"
   },
   {
@@ -4816,10 +4820,11 @@
       }
     ],
     "exactEndpointOnly": true,
-    "logoUrl": "/server-logos/smartsheet.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated SM monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Smartsheet mark.",
+    "logoUrl": "/server-logos/smartsheet.png",
+    "logoSourceUrl": "https://www.smartsheet.com/sites/default/files/favicons/android-chrome-512x512.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Smartsheet site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.smartsheet.com"
   },
   {
@@ -5015,10 +5020,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://agents.ramp.com/docs/mcp/overview"
     },
-    "logoUrl": "/server-logos/ramp.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated RA monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Ramp mark.",
+    "logoUrl": "/server-logos/ramp.png",
+    "logoSourceUrl": "https://ramp.com/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Ramp site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://ramp.com"
   },
   {
@@ -5694,10 +5700,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://devcenter.heroku.com/articles/heroku-remote-mcp-server"
     },
-    "logoUrl": "/server-logos/heroku.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated HK monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Heroku mark.",
+    "logoUrl": "/server-logos/heroku.png",
+    "logoSourceUrl": "https://www.heroku.com/wp-content/uploads/2025/01/apple-touch-icon-180x180-1.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Heroku site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.heroku.com"
   },
   {
@@ -6359,10 +6366,11 @@
         "secret": true
       }
     ],
-    "logoUrl": "/server-logos/raygun.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated RG monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Raygun mark.",
+    "logoUrl": "/server-logos/raygun.png",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/5e2701b416b6d176f5007781/6321348741e051a778e42e8f_256x256.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Raygun site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://raygun.com",
     "sourceUrl": "https://github.com/MindscapeHQ/mcp-server-raygun"
   },
@@ -6417,9 +6425,10 @@
       }
     ],
     "logoUrl": "/server-logos/rootly.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated RO monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Rootly mark.",
+    "logoSourceUrl": "https://rootly.com/brand/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Rootly site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://rootly.com",
     "sourceUrl": "https://github.com/Rootly-AI-Labs/Rootly-MCP-server"
   },
@@ -6473,10 +6482,11 @@
         "secret": true
       }
     ],
-    "logoUrl": "/server-logos/incident-io.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated IN monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official incident.io mark.",
+    "logoUrl": "/server-logos/incident-io.png",
+    "logoSourceUrl": "https://incident.io/icons/icon-256x256.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official incident.io site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://incident.io",
     "caveats": [
       "Available on Team, Pro, and Enterprise plans after an admin enables it under Settings > MCP."

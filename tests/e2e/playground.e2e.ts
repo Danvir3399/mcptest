@@ -141,7 +141,7 @@ for (const width of [1280, 390]) {
     await expect(page.locator('.seo-returning-workspace .connection-console')).toBeVisible();
     await testInfo.attach('returning-static-first-paint', { body: await page.screenshot(), contentType: 'image/png' });
     await expect(page.locator('.seo-shell-fallback')).toHaveCount(0, { timeout: 60_000 });
-    await expect(page.locator('.recent-server-link').first()).toHaveText(endpoint);
+    await expect(page.locator('.recent-server-link').first()).toHaveAccessibleName(endpoint);
     await expect(page.getByRole('heading', { name: 'Suggested servers' })).toBeVisible();
     // Include the delayed auth resolution and restoration effects after mount.
     await page.waitForTimeout(1800);
@@ -181,5 +181,5 @@ test('context7 deep link connects to and stores the literal /mcp endpoint', asyn
   expect(requests.length).toBeGreaterThan(0);
   expect(requests.every(url => url === endpoint)).toBe(true);
   await page.goto('/');
-  await expect(page.locator('.recent-server-link').first()).toHaveText(endpoint);
+  await expect(page.locator('.recent-server-link').first()).toHaveAccessibleName(endpoint);
 });

@@ -210,7 +210,7 @@ describe('catalog logo asset validation', () => {
     );
   });
 
-  it.each(['globalping', 'pendo', 'tavily'])(
+  it.each(['apify', 'attio', 'exa', 'firecrawl', 'globalping', 'pendo', 'tavily'])(
     'gives the replaced %s logo a root viewBox so it scales to its display box',
     id => {
       const contents = fs.readFileSync(path.join('public', 'server-logos', `${id}.svg`), 'utf8');

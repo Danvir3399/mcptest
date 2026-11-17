@@ -1,5 +1,6 @@
 import { getPreferredCatalogEndpoint, resolveCatalogEndpointTransport } from './clientSetup';
 import { getCatalogServerFacts } from './serverConnect';
+import { createAuthorizationGuidance } from './authorizationGuidance';
 import { describe, expect, it } from 'vitest';
 import type { CatalogAuthType, CatalogServer } from '../types/catalog';
 import {
@@ -107,6 +108,31 @@ describe('catalog authentication metadata', () => {
       .toMatchObject({ value: ['oauth'] });
     expect(getCatalogEndpointDiagnosticEvidence('https://mcp.vapi.ai/mcp'))
       .toMatchObject({ authType: 'oauth', serverReachable: true });
+  });
+
+  it.each([
+    ['close', 'https://help.close.com/docs/mcp-server'],
+    ['mercury', 'https://docs.mercury.com/docs/connecting-mercury-mcp'],
+  ])('records the published dynamic client registration for %s as automatic', (id, evidenceUrl) => {
+    const seed = catalogSeeds.find((candidate) => candidate.id === id);
+    const entry = getCatalogServerById(id);
+
+    // Both descriptions promise Dynamic Client Registration; the metadata must agree.
+    expect(seed?.description).toContain('Dynamic Client Registration');
+    expect(entry?.oauthRegistration).toMatchObject({
+      mode: 'automatic',
+      responsibleParty: 'automatic',
+      clientId: { required: false },
+      clientSecret: { required: false },
+      browserPublicClientSupported: true,
+      availability: 'ready',
+      evidenceUrl,
+    });
+    expect(entry).toMatchObject({ authType: 'oauth', requiresOAuth: true });
+    expect(createAuthorizationGuidance(entry!)).toMatchObject({
+      status: 'no-registration-needed',
+      canAttemptHostedAuthorization: true,
+    });
   });
 
   const servers = [

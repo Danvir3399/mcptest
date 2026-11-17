@@ -2079,9 +2079,10 @@
     "requiresOAuth": false,
     "authType": "none",
     "logoUrl": "/server-logos/exa.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated EX monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Exa mark.",
+    "logoSourceUrl": "https://exa.ai/assets/Exa%20Brand%20Assets.zip",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Exa logomark (Exa Logomark Blue.svg) from the Exa brand assets kit; trademark rights remain with the publisher.",
     "homepageUrl": "https://exa.ai",
     "sourceUrl": "https://github.com/exa-labs/exa-mcp-server"
   },
@@ -2237,9 +2238,10 @@
     ],
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/firecrawl.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated FC monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Firecrawl mark.",
+    "logoSourceUrl": "https://www.firecrawl.dev/brand/firecrawl-logo.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Firecrawl logo from the Firecrawl press and brand page; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.firecrawl.dev",
     "sourceUrl": "https://github.com/firecrawl/firecrawl-mcp-server"
   },
@@ -3822,9 +3824,10 @@
       "evidenceUrl": "https://docs.attio.com/mcp/overview"
     },
     "logoUrl": "/server-logos/attio.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated AT monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Attio mark.",
+    "logoSourceUrl": "https://attio.com/brand/v1/attio-logomark.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Attio logomark from the Attio brand page; trademark rights remain with the publisher.",
     "homepageUrl": "https://attio.com"
   },
   {
@@ -3850,26 +3853,30 @@
     "requiresOAuth": true,
     "authType": "oauth",
     "oauthRegistration": {
-      "mode": "unknown",
+      "mode": "automatic",
+      "responsibleParty": "automatic",
       "clientId": {
         "required": false
       },
       "clientSecret": {
         "required": false
       },
+      "browserPublicClientSupported": true,
       "callback": {
         "required": false,
         "redirectUrls": {}
       },
       "setupSteps": [],
       "settings": [],
-      "reviewedAt": "2026-10-20",
+      "availability": "ready",
+      "reviewedAt": "2026-11-17",
       "evidenceUrl": "https://help.close.com/docs/mcp-server"
     },
-    "logoUrl": "/server-logos/close.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated CL monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Close mark.",
+    "logoUrl": "/server-logos/close.png",
+    "logoSourceUrl": "https://www.close.com/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Close site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.close.com"
   },
   {
@@ -3971,9 +3978,10 @@
     ],
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/apify.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated AP monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Apify mark.",
+    "logoSourceUrl": "https://apify.com/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Apify site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://apify.com",
     "sourceUrl": "https://github.com/apify/apify-mcp-server",
     "caveats": [
@@ -4196,10 +4204,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://docs.fireflies.ai/getting-started/mcp-configuration"
     },
-    "logoUrl": "/server-logos/fireflies.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated FF monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Fireflies.ai mark.",
+    "logoUrl": "/server-logos/fireflies.png",
+    "logoSourceUrl": "https://fireflies.ai/icon.png?icon.3227koqampzl_.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Fireflies.ai site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://fireflies.ai"
   },
   {
@@ -4528,10 +4537,11 @@
         "description": "Use for Honeycomb EU teams"
       }
     ],
-    "logoUrl": "/server-logos/honeycomb.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated HC monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Honeycomb mark.",
+    "logoUrl": "/server-logos/honeycomb.png",
+    "logoSourceUrl": "https://avatars.githubusercontent.com/u/15988027?v=4",
+    "logoSourceKind": "publisher-repository",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Honeycomb GitHub organization avatar from the verified honeycombio organization; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.honeycomb.io"
   },
   {
@@ -5033,20 +5043,23 @@
     "requiresOAuth": true,
     "authType": "oauth",
     "oauthRegistration": {
-      "mode": "unknown",
+      "mode": "automatic",
+      "responsibleParty": "automatic",
       "clientId": {
         "required": false
       },
       "clientSecret": {
         "required": false
       },
+      "browserPublicClientSupported": true,
       "callback": {
         "required": false,
         "redirectUrls": {}
       },
       "setupSteps": [],
       "settings": [],
-      "reviewedAt": "2026-10-20",
+      "availability": "ready",
+      "reviewedAt": "2026-11-17",
       "evidenceUrl": "https://docs.mercury.com/docs/connecting-mercury-mcp"
     },
     "logoUrl": "/server-logos/mercury.svg",

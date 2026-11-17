@@ -233,3 +233,9 @@
 
 /* Fade partial labels at the strip edge; only hide their detached close icon. */
 .playground-tabs .nav-item[data-clipped] > .btn-close { opacity: 0; }
+
+/* Inset connection cards do not attach to the active session tab. */
+.app-shell--home .playground-tab-strip .playground-tabs .nav-link.active {
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--border-color) !important;
+}

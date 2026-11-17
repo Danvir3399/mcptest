@@ -891,6 +891,7 @@
 }
 /* Grow the scrollable body to the viewport and leave the footer at its end. */
 .main-content:has(> .site-footer) {
+  background: linear-gradient(to bottom, transparent 35%, var(--workspace-canvas) 85%);
   display: flex;
   flex-direction: column;
 }

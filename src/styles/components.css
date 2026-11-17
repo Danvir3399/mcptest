@@ -1509,8 +1509,8 @@ span.health-indicator.health-indicator-gray {
   height: 2rem;
   padding: 0;
   line-height: 1;
-  opacity: 0;
-  transition: opacity 0.16s ease, background-color 0.2s ease, color 0.2s ease;
+  opacity: 1;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .recent-server-item:hover .recent-server-remove,
@@ -1603,6 +1603,9 @@ span.health-indicator.health-indicator-gray {
 }
 
 .suggested-server-copy {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
   min-width: 0;
   flex: 1;
 }
@@ -1631,6 +1634,7 @@ span.health-indicator.health-indicator-gray {
 }
 
 .suggested-server-copy small {
+  margin-top: auto;
   display: block;
   overflow: hidden;
   color: var(--text-muted);
@@ -5166,11 +5170,39 @@ pre.bg-light code {
   border-radius: 0.5rem;
 }
 .connection-console .input-group {
-  border: 1px solid #d1d5db;
+  display: flex;
+  align-items: stretch;
+  min-height: 2.75rem;
+  gap: 0;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--button-radius);
   background: var(--card-bg);
+  backdrop-filter: none;
   box-shadow: none;
 }
-.connection-console .input-group::before { border: 0; background: transparent; }
+.connection-console .input-group::before {
+  height: auto;
+  border: 0;
+  border-right: 1px solid var(--border-color);
+  background: transparent;
+}
+.connection-console .input-group .form-control {
+  width: 1%;
+  min-width: 0;
+  background: var(--input-bg) !important;
+  border-radius: 0 !important;
+}
+.connection-console .input-group .btn {
+  margin: -1px -1px -1px 0 !important;
+  min-width: auto;
+  border-radius: 0 var(--button-radius) var(--button-radius) 0 !important;
+}
+.recent-server-link > .recent-server-arrow {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
 .awaiting-connection-panel {
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;

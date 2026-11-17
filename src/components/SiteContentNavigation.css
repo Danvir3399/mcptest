@@ -24,7 +24,7 @@
   .site-footer, .home-guides { padding: 1.25rem; }
 }
 
-/* The footer meets the main canvas edges; its content follows the page gutter. */
+/* Quiet footer chrome shares the inset cards’ bounds. */
 .main-content > .site-footer {
   width: calc(100% + 2 * var(--main-pad));
   max-width: none;
@@ -32,10 +32,9 @@
   margin-bottom: calc(-1 * var(--main-pad));
   margin-top: auto;
   flex-shrink: 0;
-  padding: 1rem var(--main-pad);
-  background: var(--workspace-canvas);
+  padding: 0 var(--main-pad) 2rem;
+  background: transparent;
   border: 0;
-  border-top: 1px solid var(--border-color);
   border-radius: 0;
   box-shadow: none;
 }
@@ -50,9 +49,12 @@
   margin-inline: auto;
 }
 
-.site-footer .site-link-columns { gap: 1rem; font-size: .8125rem; }
-.site-footer .site-link-columns h2 { margin-bottom: .5rem; font-size: .8125rem; }
+.site-footer .site-link-columns { gap: 1rem; padding-top: 2rem; border-top: 1px solid var(--border-color); font-size: .75rem; }
+.site-footer .site-link-columns a, .site-footer .site-link-columns h2, .site-footer-meta a { color: var(--text-muted); }
+.site-footer .site-link-columns h2 { margin-bottom: .5rem; font-size: .75rem; }
 .site-footer .site-link-columns li { margin-bottom: .25rem; }
 .site-footer .site-link-columns a { display: inline-block; min-height: 24px; }
 .site-footer-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; margin-top: .75rem; padding-top: .75rem; }
 .site-footer-meta nav { margin-bottom: 0; }
+
+.site-footer-meta nav, .site-footer-meta small { font-size: .75rem; }

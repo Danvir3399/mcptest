@@ -59,6 +59,7 @@ export const RecentServersPanel: React.FC<RecentServersPanelProps> = ({
             >
               <i className="bi bi-clock-history" aria-hidden="true" />
               <span>{url}</span>
+              <span className="recent-server-arrow" aria-hidden="true">→</span>
             </button>
             <button
               type="button"

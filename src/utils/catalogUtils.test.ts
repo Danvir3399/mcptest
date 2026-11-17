@@ -1,10 +1,12 @@
-import { resolveCatalogEndpointTransport } from './clientSetup';
+import { getPreferredCatalogEndpoint, resolveCatalogEndpointTransport } from './clientSetup';
+import { getCatalogServerFacts } from './serverConnect';
 import { describe, expect, it } from 'vitest';
 import type { CatalogAuthType, CatalogServer } from '../types/catalog';
 import {
   filterCatalogServers,
   getCatalogEndpointDiagnosticEvidence,
   getCatalogServerByEndpoint,
+  getCatalogServerById,
   getCatalogCategoryCounts,
   getCatalogServers,
   sortCatalogServers,
@@ -82,6 +84,28 @@ describe('catalog authentication metadata', () => {
     expect(filterCatalogServers([entry!], { oauthFilter: 'oauth' })).toEqual([entry]);
     expect(filterCatalogServers([entry!], { oauthFilter: 'no-auth' })).toEqual([]);
     expect(getCatalogEndpointDiagnosticEvidence('https://www.menloinsurance.com/mcp'))
+      .toMatchObject({ authType: 'oauth', serverReachable: true });
+  });
+
+  it('keeps Vapi OAuth consistent between the seed, validation snapshot and connection facts', () => {
+    const seed = catalogSeeds.find(({ id }) => id === 'vapi');
+    const validation = catalogValidation.find(({ serverId }) => serverId === 'vapi');
+    const entry = getCatalogServerById('vapi');
+
+    expect(seed).toMatchObject({ authType: 'oauth', requiresOAuth: true });
+    expect(seed).not.toHaveProperty('requiredHeaders');
+    expect(seed?.tags).toContain('oauth');
+    expect(seed?.tags).not.toContain('bearer-token');
+    // A stale bearer snapshot would win the merge, because only key/token seeds bypass validation.
+    expect(validation).toMatchObject({ authType: 'oauth', requiresOAuth: true });
+    expect(validation?.message).toContain('authentication oauth');
+    expect(entry).toMatchObject({ declaredAuthType: 'oauth', authType: 'oauth', requiresOAuth: true });
+    expect(entry?.authorizationServers).toEqual(['https://auth.mcp.vapi.ai']);
+    expect(filterCatalogServers([entry!], { oauthFilter: 'oauth' })).toEqual([entry]);
+    expect(filterCatalogServers([entry!], { oauthFilter: 'bearer-token' })).toEqual([]);
+    expect(getCatalogServerFacts(entry!, getPreferredCatalogEndpoint(entry!)).authorization.schemes)
+      .toMatchObject({ value: ['oauth'] });
+    expect(getCatalogEndpointDiagnosticEvidence('https://mcp.vapi.ai/mcp'))
       .toMatchObject({ authType: 'oauth', serverReachable: true });
   });
 

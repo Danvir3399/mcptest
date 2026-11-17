@@ -1,19 +1,19 @@
 /* /tools/discovery: the MCP discovery checker. */
 .discovery-checker {
-  max-width: 52rem;
+  width: 100%;
+  max-width: var(--page-content-width);
   margin: 0 auto;
   padding: var(--space-2) 0 var(--space-8);
 }
 
-/* Page head: the instrument face shared with the server profile and the
-   breaking-changes tool, accent signal line on top. */
+/* Match the rounded content cards used by Catalog and Learn. */
 .discovery-header {
   margin-bottom: var(--space-5);
   padding: var(--space-5) var(--space-6);
   border: 1px solid var(--hero-border);
-  border-radius: var(--border-radius);
+  border-radius: var(--button-radius-lg);
   background: var(--hero-bg);
-  box-shadow: inset 0 2px 0 var(--primary-color);
+  box-shadow: none;
 }
 
 .discovery-header h1 {
@@ -38,15 +38,10 @@
   font-weight: 600;
 }
 
-/* The command bar: the same graphite instrument as the connect forms (chrome
-   scope in src/styles/layout.css). */
+/* Clearly spaced controls, matching the report form. */
 .discovery-form-row {
   display: flex;
-  gap: var(--space-2);
-  padding: 0.375rem;
-  border: 1px solid var(--chrome-border);
-  border-radius: calc(var(--button-radius) + 0.125rem);
-  background: var(--chrome-bg);
+  gap: var(--space-3);
 }
 
 .discovery-form-row:focus-within {
@@ -57,7 +52,8 @@
   flex: 1 1 auto;
   min-width: 0;
   background-color: var(--input-bg);
-  border-color: var(--input-border);
+  border-color: var(--chrome-border);
+  border-radius: 0.375rem;
   color: var(--text-color);
   font-family: var(--font-family-mono);
   font-size: 0.875rem;
@@ -65,6 +61,7 @@
 
 .discovery-form-row .btn {
   flex: 0 0 auto;
+  border-radius: 0.375rem;
 }
 
 .discovery-hint {
@@ -101,7 +98,7 @@
   padding: var(--space-3) var(--space-4);
   border: 1px solid var(--border-color);
   border-left: var(--rail-width) solid var(--wire-request);
-  border-radius: var(--border-radius);
+  border-radius: var(--button-radius-lg);
   background: var(--card-bg);
 }
 
@@ -127,7 +124,7 @@
   padding: var(--space-3) var(--space-4);
   border: 1px solid var(--border-color);
   border-left: var(--rail-width) solid var(--border-strong);
-  border-radius: var(--border-radius);
+  border-radius: var(--button-radius-lg);
   background: var(--card-bg);
 }
 
@@ -245,7 +242,7 @@
 .discovery-fix {
   padding: var(--space-4);
   border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
+  border-radius: var(--button-radius-lg);
   background: var(--card-bg);
 }
 
@@ -297,4 +294,43 @@
     flex-direction: column;
     gap: var(--space-1);
   }
+}
+
+/* Keep the primary action identifiable even before a URL is entered. */
+.discovery-form-row .btn-primary {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--primary-ink);
+}
+.discovery-form-row .btn-primary:hover:not(:disabled) {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+.discovery-form-row .form-control:focus {
+  border-color: var(--input-focus-border);
+}
+.oauth-step-preview {
+  margin-top: var(--space-6);
+  padding: var(--space-6);
+  border: 1px solid var(--border-color);
+  border-radius: var(--button-radius-lg);
+  background: var(--card-bg);
+}
+.oauth-step-preview h2 { font-size: 1.15rem; margin-bottom: var(--space-5); }
+.oauth-step-preview ol {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6);
+  padding-left: var(--space-5);
+  margin-bottom: var(--space-4);
+}
+.oauth-step-preview li::marker { color: var(--accent-text); font-weight: 600; }
+.oauth-step-preview h3 { font-size: .9375rem; }
+.oauth-step-preview li p { color: var(--text-muted); font-size: .875rem; margin: 0; }
+@media (max-width: 1100px) {
+  .oauth-step-preview ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 575px) {
+  .oauth-step-preview { padding: var(--space-4); }
+  .oauth-step-preview ol { grid-template-columns: 1fr; }
 }

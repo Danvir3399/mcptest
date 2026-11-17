@@ -57,6 +57,7 @@
   --space-8: 2rem;
 
   /* Workspace padding; the session strip bleeds back across it. */
+  --page-content-width: 1280px;
   --workspace-inset: var(--space-5);
   --workspace-strip-height: 2.75rem;
   --main-pad: clamp(1rem, 2.6vw, 2.5rem);

@@ -933,3 +933,8 @@
   border-color: var(--danger-color);
   background: color-mix(in srgb, var(--danger-color) 10%, transparent);
 }
+
+/* Check pages and their footer share the same readable content bounds. */
+.main-content:has(.discovery-checker, .breaking-changes) {
+  --page-content-width: 64rem;
+}

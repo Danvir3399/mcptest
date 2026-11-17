@@ -13,6 +13,7 @@ import {
   navigationTooltip,
   HEADER_COPY,
   SIGN_IN_HINT_ID,
+  type NavigationGroup,
   type NavigationLink,
 } from '../content/navigation';
 import { closeMobileDrawer, useMobileDrawer } from '../hooks/useMobileDrawer';
@@ -28,7 +29,6 @@ interface SideNavProps {
   handleReorderDashboards: (reorderedDashboards: Space[]) => void; // Function to handle reordering
   getSpaceHealthStatus: (spaceId: string) => { loading: boolean, successCount: number, totalCount: number };
   getSpaceHealthColor: (spaceId: string) => 'green' | 'orange' | 'red' | 'gray';
-  performAllDashboardsHealthCheck: () => Promise<void>;
   onMoveCard: (sourceSpaceId: string, targetSpaceId: string, cardId: string) => void; // Function to handle card moves
   theme?: string;
   onToggleTheme?: () => void;
@@ -44,7 +44,6 @@ const SideNav: React.FC<SideNavProps> = ({
   handleReorderDashboards,
   getSpaceHealthStatus,
   getSpaceHealthColor,
-  performAllDashboardsHealthCheck,
   onMoveCard,
   theme,
   onToggleTheme,
@@ -285,6 +284,34 @@ const SideNav: React.FC<SideNavProps> = ({
     </li>
   );
 
+  // The create action sits beside the group heading, not in the Dashboards
+  // row, so the narrow sidebar never truncates the section name. Health is
+  // refreshed on load and from the dashboards page, so the row needs no
+  // refresh button either.
+  const renderGroupHeading = (group: NavigationGroup) => {
+    const headingId = `sidenav-${group.id}-heading-${idSuffix}`;
+    const heading = (
+      <h2 id={headingId} className={group.labelHidden ? 'visually-hidden' : 'sidenav-section-label'}>
+        {group.label}
+      </h2>
+    );
+    if (group.labelHidden || spaces.length === 0 || !group.items.includes(DASHBOARDS_NAVIGATION)) return heading;
+    return (
+      <div className="sidenav-section-header">
+        {heading}
+        <button
+          type="button"
+          className="btn btn-sm btn-ghost sidenav-action"
+          onClick={handleCreateClick}
+          title="Create new dashboard"
+          aria-label="Create new dashboard"
+        >
+          <i className="bi bi-plus-lg" aria-hidden="true"></i>
+        </button>
+      </div>
+    );
+  };
+
   const renderDashboards = () => {
     // A visitor who has never created a dashboard sees one entry that leads to
     // the dashboards page, which explains them and offers the create action.
@@ -307,26 +334,6 @@ const SideNav: React.FC<SideNavProps> = ({
             <span className="sidenav-label">{DASHBOARDS_NAVIGATION.label}</span>
             <i className="bi bi-chevron-right sidenav-chevron" aria-hidden="true"></i>
           </button>
-          <div className="sidenav-group-actions">
-            <button
-              type="button"
-              className="btn btn-sm btn-ghost sidenav-action"
-              onClick={performAllDashboardsHealthCheck}
-              title="Refresh health status"
-              aria-label="Refresh health status of all dashboards"
-            >
-              <i className="bi bi-arrow-clockwise" aria-hidden="true"></i>
-            </button>
-            <button
-              type="button"
-              className="btn btn-sm btn-ghost sidenav-action"
-              onClick={handleCreateClick}
-              title="Create new dashboard"
-              aria-label="Create new dashboard"
-            >
-              <i className="bi bi-plus-lg" aria-hidden="true"></i>
-            </button>
-          </div>
         </div>
         {renderDescription(DASHBOARDS_NAVIGATION)}
 
@@ -413,12 +420,7 @@ const SideNav: React.FC<SideNavProps> = ({
           className={`sidenav-group sidenav-group--${group.id}`}
           aria-labelledby={`sidenav-${group.id}-heading-${idSuffix}`}
         >
-          <h2
-            id={`sidenav-${group.id}-heading-${idSuffix}`}
-            className={group.labelHidden ? 'visually-hidden' : 'sidenav-section-label'}
-          >
-            {group.label}
-          </h2>
+          {renderGroupHeading(group)}
           <ul className="sidenav-list">
             {group.items.map(item => (
               item === DASHBOARDS_NAVIGATION

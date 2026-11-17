@@ -4,7 +4,7 @@ export const FOOTER_COLUMNS = [
     ['What is MCP?', '/docs/what-is-mcp'], ['Remote vs Local', '/docs/remote-vs-local'], ['MCP Glossary', '/learn/mcp-glossary'],
   ] },
   { title: 'Testing & Specs', links: [
-    ['Testing Guide', '/docs/testing-guide'], ['OAuth 2.1', '/learn/mcp-oauth-2-1-reference'], ['Breaking Changes', '/learn/which-mcp-tool-changes-break-clients'],
+    ['Testing Guide', '/docs/testing-guide'], ['OAuth 2.1', '/learn/mcp-oauth-2-1-reference'], ['Troubleshooting', '/docs/troubleshooting'],
   ] },
   { title: 'Compare', links: [
     ['mcptest.io vs Glama', '/learn/mcptest-vs-glama-inspector'], ['MCP Inspector Alternatives', '/learn/mcp-inspector-alternatives'], ['Testing Tools Roundup', '/learn/best-remote-mcp-testing-tools'],

@@ -212,7 +212,7 @@ describe('primary action states', () => {
       expect(winning(element, '--primary-color', 1280), selector).toBe('var(--chrome-accent)');
       expect(winning(element, '--primary-soft', 1280), selector).toBe('var(--chrome-accent-soft)');
     });
-    // Glass: the header is translucent white over the page wash.
-    expect(winning(document.querySelector('.app-header')!, 'background-color', 1280)).toBe('var(--glass-bg)');
+    // The header is high-opacity frosted, so content scrolling under it barely ghosts through.
+    expect(winning(document.querySelector('.app-header')!, 'background-color', 1280)).toBe('var(--header-bg)');
   });
 });

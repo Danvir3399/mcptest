@@ -13,7 +13,7 @@ import NotificationPopup from './components/NotificationPopup';
 import SideNav from './components/SideNav';
 import CatalogView from './components/CatalogView';
 import ServerProfileView from './components/ServerProfileView';
-import Tabs from './components/Tabs';
+import Tabs, { toStoredTabs } from './components/Tabs';
 import LearnIndex from './components/learn/LearnIndex';
 import LearnNotFound from './components/learn/LearnNotFound';
 import NotFound from './components/NotFound';
@@ -63,7 +63,7 @@ import { formatErrorForDisplay } from './utils/errorHandling';
 import { getCatalogServerById } from './utils/catalogUtils';
 import { getCatalogServerIdFromPath } from './utils/catalogSeo';
 import { getPreferredCatalogEndpoint } from './utils/clientSetup';
-import { OAUTH_CHECKER_PATH, DISCOVERY_CHECKER_PATH, DASHBOARDS_PATH, MCP_TEST_SERVERS_PATH, MCP_TEST_CLIENT_PATH, isKnownAppPath } from './utils/appRoutes';
+import { OAUTH_CHECKER_PATH, DISCOVERY_CHECKER_PATH, DASHBOARDS_PATH, MCP_TEST_SERVERS_PATH, MCP_TEST_CLIENT_PATH, READING_SHELL_CLASS, isKnownAppPath } from './utils/appRoutes';
 import { getKeywordLandingPage } from './content/keywordLandingPages';
 import type { LandingPageConnectRequest } from './components/KeywordLandingView';
 // The MCP SDK, OAuth flow and saved-card helpers load on demand; see utils/savedCardRuntime.
@@ -114,6 +114,9 @@ const getInitialTheme = (): 'light' | 'dark' => {
 };
 
 // Helper to determine initial view from URL
+/** Views that scroll with the window and let the header scroll away (appRoutes.isReadingShellPath). */
+const READING_SHELL_VIEWS: readonly string[] = ['docs', 'learn'];
+
 const getInitialView = (): 'playground' | 'dashboards' | 'docs' | 'learn' | 'report' | 'catalog' | 'server-profile' | 'submit' | 'discovery' => {
   const path = window.location.pathname;
   if (path === '/submit') {
@@ -237,6 +240,15 @@ function App() {
   // Router hooks
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Reading pages and the home page scroll the window, so a new page starts
+  // at its top. The first render keeps any scroll made on the static page.
+  const scrolledPathnameRef = useRef(location.pathname);
+  useEffect(() => {
+    if (scrolledPathnameRef.current === location.pathname) return;
+    scrolledPathnameRef.current = location.pathname;
+    if (!location.hash) window.scrollTo(0, 0);
+  }, [location.pathname, location.hash]);
   
   // Activate the data sync hook
   useDataSync({ spaces, tabs, setSpaces, setTabs });
@@ -368,7 +380,7 @@ function App() {
 
   // Save tabs whenever they change
   useEffect(() => {
-    localStorage.setItem(TABS_KEY, JSON.stringify(tabs));
+    localStorage.setItem(TABS_KEY, JSON.stringify(toStoredTabs(tabs)));
   }, [tabs]);
 
   // Ensure activeTabId is valid when tabs change
@@ -1915,7 +1927,7 @@ function App() {
   }
 
   return (
-    <div className={`app-shell container-fluid vh-100 d-flex flex-column p-0${activeView === 'playground' && !connectedTab ? ' app-shell--home' : ''}`}>
+    <div className={`app-shell container-fluid vh-100 d-flex flex-column p-0${activeView === 'playground' && !connectedTab ? ' app-shell--home' : ''}${READING_SHELL_VIEWS.includes(activeView) ? ` ${READING_SHELL_CLASS}` : ''}`}>
 
       {/* Mobile Sidebar Overlay */}
       <div 
@@ -1941,7 +1953,6 @@ function App() {
           handleReorderDashboards={handleReorderDashboards}
           getSpaceHealthStatus={getDashboardHealthStatus}
           getSpaceHealthColor={getDashboardHealthColor}
-          performAllDashboardsHealthCheck={performAllDashboardsHealthCheck}
           onMoveCard={handleMoveCard}
           theme={theme}
           onToggleTheme={toggleTheme}
@@ -1963,7 +1974,6 @@ function App() {
             handleReorderDashboards={handleReorderDashboards} // Pass reorder function
             getSpaceHealthStatus={getDashboardHealthStatus}
             getSpaceHealthColor={getDashboardHealthColor}
-            performAllDashboardsHealthCheck={performAllDashboardsHealthCheck}
             onMoveCard={handleMoveCard} // Pass move card function
           />
         </div>

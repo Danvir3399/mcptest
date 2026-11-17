@@ -4,7 +4,6 @@ import { describe, expect, it } from 'vitest';
 import seoGenerator from './generate-seo-pages.js';
 import { CLIENT_CHECKLISTS } from '../src/content/mcpTestClientChecklist';
 import { MCP_TEST_CLIENT_FAQ } from '../src/content/mcpTestClientCopy';
-import { FOOTER_NAVIGATION } from '../src/content/navigationLinks';
 import pageMetadata from '../src/data/pageMetadata.json';
 import { EXACT_APP_ROUTES, MCP_TEST_CLIENT_PATH, canonicalAliasPath } from '../src/utils/appRoutes';
 
@@ -26,13 +25,12 @@ describe('/mcp-test-client build outputs', () => {
     expect(byType.HowTo.step[0].url).toBe(`https://mcptest.io/mcp-test-client#check-${checks[0].id}`);
   });
 
-  it('is an app route, in the sitemap, llms.txt and the footer', () => {
+  it('is an app route and is discoverable in the sitemap and llms.txt', () => {
     expect(EXACT_APP_ROUTES).toContain(MCP_TEST_CLIENT_PATH);
     expect(canonicalAliasPath('/mcp-test-client/')).toBe(MCP_TEST_CLIENT_PATH);
     const articles = loadArticles({ reservedPaths: [] });
     expect(getSitemapEntries([], articles).map(entry => entry.pathname)).toContain(MCP_TEST_CLIENT_PATH);
     expect(renderLlmsTxt(articles)).toContain('- [Test your MCP client](https://mcptest.io/mcp-test-client): ');
-    expect(FOOTER_NAVIGATION.map(link => link.href)).toContain(MCP_TEST_CLIENT_PATH);
   });
 
   const distRoot = path.join(__dirname, '..', 'dist');

@@ -711,7 +711,10 @@ describe('generated page metadata', () => {
     // The connect form the app mounts over, in the app shell.
     expect(body.querySelector(`#${page.key}-server-url`)).not.toBeNull();
     expect(body.querySelector('.seo-shell-fallback .desktop-sidebar')).not.toBeNull();
-    expect(body.querySelector('.site-footer a[href="/ci"]')).not.toBeNull();
+    // The compact footer exposes the current tools and project destinations.
+    for (const href of ['/catalog', '/tools/oauth-check', '/tools/breaking-changes', '/submit']) {
+      expect(body.querySelector(`.site-footer a[href="${href}"]`), href).not.toBeNull();
+    }
     expect(body.querySelector(`.site-footer a[href="${path}"]`)).toBeNull();
     // An app route: React mounts at load.
     expect(html).not.toContain('data-deferred-mount');

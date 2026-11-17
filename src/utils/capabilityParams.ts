@@ -85,6 +85,22 @@ export const getUnionInputHelp = (definition: CapabilityInputDefinition): string
   return shapes.length > 0 ? `Enter ${shapes.join(', ')} or ${last}.` : last ? `Enter ${last}.` : undefined;
 };
 
+/** A sample value named by the description, as in "in owner/repo format". */
+const describedFormat = (description: string | undefined): string | undefined => (
+  description?.match(/\bin\s+[`'"]?([\w./:@{}-]+)[`'"]?\s+format\b/i)?.[1]
+);
+
+/**
+ * Placeholder for a field that takes one string or an array of them: the
+ * concrete syntax of both shapes, using the format the description names.
+ */
+export const getUnionPlaceholder = (definition: CapabilityInputDefinition): string | undefined => {
+  const types = definition.unionTypes;
+  if (!types?.includes('string') || !types.includes('array')) return undefined;
+  const sample = describedFormat(definition.description) ?? 'value';
+  return `${sample} or ["${sample}", …]`;
+};
+
 /** The first example value the schema provides for a field, if any. */
 export const getExampleValue = (definition: CapabilityInputDefinition): unknown => {
   if (Array.isArray(definition.examples) && definition.examples.length > 0) return definition.examples[0];

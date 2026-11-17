@@ -25,6 +25,7 @@ import CallHistoryPanel from './CallHistoryPanel';
 import { createTestPlanFromHistory } from '../utils/historyTestPlan';
 import type { DeterministicTestPlanV1 } from '../types/deterministicTests';
 import InterfaceChangeStrip from './InterfaceChangeStrip';
+import WorkbenchStatusBar from './WorkbenchStatusBar';
 import ConnectedSummary, { chooseNextAction, type ConnectedAuthMode } from './ConnectedSummary';
 import { connectionStages, listOutcome, listStageFromDiscovery } from '../utils/connectionStages';
 import { dismissHint } from '../utils/nextStepsProgress';
@@ -1425,6 +1426,7 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
         )}
       </div>
       )}
+      {!showLanding && isConnected && <WorkbenchStatusBar isProxied={isProxied} />}
       <DeterministicTestPanel
         open={showDeterministicTests}
         onClose={() => {

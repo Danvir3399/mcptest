@@ -356,7 +356,7 @@ describe('ParamsPanel guided form', () => {
     inputSchema: {
       type: 'object',
       properties: {
-        repoName: { anyOf: [{ type: 'string' }, { type: 'array', items: { type: 'string' } }], description: 'Repository or list of repositories.' },
+        repoName: { anyOf: [{ type: 'string' }, { type: 'array', items: { type: 'string' } }], description: 'GitHub repository or list of repositories (max 10) in owner/repo format' },
         question: { type: 'string' },
       },
       required: ['repoName', 'question'],
@@ -368,7 +368,7 @@ describe('ParamsPanel guided form', () => {
     const label = view.querySelector('label[for="param-repoName"]')!;
     expect(label.querySelector('.param-type')?.textContent).toBe('string | string[]');
     const input = view.querySelector<HTMLInputElement>('#param-repoName')!;
-    expect(input.placeholder).toBe('Enter repoName, or ["…", "…"] for several');
+    expect(input.placeholder).toBe('owner/repo or ["owner/repo", …]');
     expect(view.querySelector(`#${input.getAttribute('aria-describedby')}`)?.textContent)
       .toBe('Plain text for one value, or a JSON array for several.');
   });

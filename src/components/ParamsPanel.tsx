@@ -8,6 +8,7 @@ import {
   getExampleValue,
   getMissingRequiredParams,
   getUnionInputHelp,
+  getUnionPlaceholder,
   hasParameterValue,
   isCodeLikeDefinition,
   type CapabilityInputDefinition,
@@ -363,9 +364,7 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
                 placeholder={definition.default !== undefined
                   ? `Default: ${definition.default}`
                   : exampleText !== undefined ? `e.g. ${exampleText}`
-                    : definition.unionTypes?.includes('array') && definition.unionTypes.includes('string')
-                      ? `Enter ${name}, or ["…", "…"] for several`
-                      : `Enter ${name}`}
+                    : getUnionPlaceholder(definition) ?? `Enter ${name}`}
                 aria-describedby={[exampleText !== undefined && exampleHintId, unionHelp && unionHelpId].filter(Boolean).join(' ') || undefined}
                 required={isRequired}
                 aria-required={isRequired}

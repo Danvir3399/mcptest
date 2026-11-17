@@ -3,6 +3,7 @@ import {
   describeSchemaType,
   getCapabilityInputSpec,
   getMissingRequiredParams,
+  getUnionPlaceholder,
   isCodeLikeDefinition,
   normalizeCapabilityParams,
 } from './capabilityParams';
@@ -118,5 +119,17 @@ describe('union parameters', () => {
       .toEqual({ repoName: ['facebook/react', 'vercel/next.js'] });
     expect(() => normalizeCapabilityParams(tool, { repoName: '["facebook/react",' }))
       .toThrow('“repoName” looks like JSON but is not valid JSON.');
+  });
+
+  it('shows both accepted shapes in the placeholder, in the format the description names', () => {
+    expect(getUnionPlaceholder({
+      name: 'repoName',
+      ...repoName,
+      unionTypes: ['string', 'array'],
+      description: 'GitHub repository or list of repositories (max 10) in owner/repo format',
+    })).toBe('owner/repo or ["owner/repo", …]');
+    expect(getUnionPlaceholder({ name: 'tags', unionTypes: ['string', 'array'], description: 'Tags to match.' }))
+      .toBe('value or ["value", …]');
+    expect(getUnionPlaceholder({ name: 'limit', unionTypes: ['string', 'number'] })).toBeUndefined();
   });
 });

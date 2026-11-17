@@ -41,6 +41,17 @@ export const getTabLabel = (tab: Pick<ConnectionTab, 'title' | 'serverUrl'>): st
   return catalogName || getTabDisplayLabel(tab.title);
 };
 
+/**
+ * Tabs as persisted: a catalog session stores its catalog name as the title so
+ * the pre-React shell (public/theme-init.js), which labels tabs from the stored
+ * title alone, paints the same label React renders.
+ */
+export const toStoredTabs = <T extends Pick<ConnectionTab, 'title' | 'serverUrl'>>(tabs: T[]): T[] => tabs.map((tab) => {
+  if (/^Result:/i.test(tab.title) || !tab.serverUrl) return tab;
+  const catalogName = getCatalogServerByEndpoint(tab.serverUrl)?.name;
+  return catalogName && catalogName !== tab.title ? { ...tab, title: catalogName } : tab;
+});
+
 type FadeState = { start: boolean; end: boolean };
 
 const Tabs: React.FC<TabsProps> = ({ tabs, activeTabId, onSelectTab, onCloseTab, onNewTab, onCloseOtherTabs }) => {

@@ -13,7 +13,7 @@ import NotificationPopup from './components/NotificationPopup';
 import SideNav from './components/SideNav';
 import CatalogView from './components/CatalogView';
 import ServerProfileView from './components/ServerProfileView';
-import Tabs from './components/Tabs';
+import Tabs, { toStoredTabs } from './components/Tabs';
 import LearnIndex from './components/learn/LearnIndex';
 import LearnNotFound from './components/learn/LearnNotFound';
 import NotFound from './components/NotFound';
@@ -380,7 +380,7 @@ function App() {
 
   // Save tabs whenever they change
   useEffect(() => {
-    localStorage.setItem(TABS_KEY, JSON.stringify(tabs));
+    localStorage.setItem(TABS_KEY, JSON.stringify(toStoredTabs(tabs)));
   }, [tabs]);
 
   // Ensure activeTabId is valid when tabs change

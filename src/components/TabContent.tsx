@@ -340,6 +340,7 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
    * "Call a tool": the capabilities panel expands Tools (it owns that state)
    * and focuses the first tool once rendered, so the action lands on the choice.
    */
+  const [openHistoryRequest, setOpenHistoryRequest] = useState(0);
   const [revealToolsRequest, setRevealToolsRequest] = useState(0);
   const focusFirstTool = useCallback(() => {
     document.querySelector<HTMLElement>(`.tab-content-panel[data-tab-id="${tab.id}"] .workbench-capabilities`)
@@ -1353,6 +1354,9 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
                 setResourceArgs={setResourceArgs}
                 isExecuting={isExecuting}
                 executionStartTime={executionStartTime}
+                firstToolName={tools[0]?.name}
+                onOpenFirstTool={() => { if (tools[0]) handleSelectTool(tools[0]); }}
+                openHistoryRequest={openHistoryRequest}
                 callHistoryCount={playgroundHistory.calls.length}
                 renderCallHistory={(showRequest) => (
                   <CallHistoryPanel
@@ -1386,6 +1390,8 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
             </section>
             <section className="workbench-pane workbench-response" aria-label="Server response">
               <OutputPanel
+                callHistoryCount={playgroundHistory.calls.length}
+                onOpenHistory={() => setOpenHistoryRequest((count) => count + 1)}
                 onCallTool={focusFirstTool}
                 lastResult={lastResult}
                 responses={responses}

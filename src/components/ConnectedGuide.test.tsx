@@ -91,9 +91,8 @@ describe('ConnectedSummary', () => {
     expect(view.querySelector('.connected-summary-description')?.textContent).toBe(props.serverDescription);
     expect(view.querySelectorAll('.badge')).toHaveLength(1);
     const actions = view.querySelectorAll('.connected-summary-next .btn');
-    expect(actions).toHaveLength(1);
-    act(() => (actions[0] as HTMLButtonElement).click());
-    expect(props.onCallTool).toHaveBeenCalledOnce();
+    expect(actions).toHaveLength(0);
+    expect(view.textContent).not.toContain('Pick a tool, fill in its parameters');
   });
 
   it('copies the resolved endpoint and announces success or failure', async () => {
@@ -397,6 +396,16 @@ describe('ResultPanel', () => {
 
   it('says what the panel is for before the first call', () => {
     expect(mount(<ResultPanel {...base} lastResult={null} />).textContent).toContain('No calls yet');
+  });
+
+  it('opens existing history without claiming no calls exist or showing workflow upsells', () => {
+    const onOpenHistory = vi.fn();
+    const view = mount(<ResultPanel {...base} lastResult={null} callHistoryCount={21} onOpenHistory={onOpenHistory} serverUrl="https://example.com" onCallTool={vi.fn()} />);
+    expect(view.textContent).toContain('No result selected');
+    expect(view.textContent).not.toContain('No calls yet');
+    expect(view.querySelector('.next-steps-strip')).toBeNull();
+    act(() => view.querySelector<HTMLButtonElement>('button')!.click());
+    expect(onOpenHistory).toHaveBeenCalledOnce();
   });
 
   it('puts plain guidance before the raw error of a failed call', () => {

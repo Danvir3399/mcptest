@@ -476,9 +476,6 @@
   border-radius: 50%;
   background: var(--success-color);
 }
-.result-empty-state .next-steps-strip {
-  margin: var(--space-3) var(--space-4);
-}
 .request-panel #executeBtn {
   margin-top: 0;
 }
@@ -700,3 +697,19 @@
   background: var(--workspace-canvas);
   color: var(--text-color);
 }
+
+.next-steps-strip {
+  max-width: 28rem;
+  margin-top: var(--space-4);
+  padding: var(--space-3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+}
+.next-steps-list { display: flex; flex-direction: column; gap: .625rem; margin-top: .5rem; }
+.next-steps-list li { display: flex; align-items: baseline; gap: .5rem; }
+.next-steps-list a, .next-steps-list .btn-link { color: var(--text-color); text-decoration: none; text-align: left; }
+.next-steps-list a:hover, .next-steps-list .btn-link:hover { text-decoration: underline; }
+.next-step-pending { color: var(--text-muted); }
+.next-step-completed { color: var(--success-color); }
+
+.result-empty-state > .btn { margin-bottom: var(--space-3); }

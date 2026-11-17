@@ -470,7 +470,7 @@ export const UnifiedPanel: React.FC<UnifiedPanelProps> = ({
                         aria-selected={isSelected}
                         onFocus={() => setFocusedIndex({ ...focusedIndex, [key]: index })}
                       >
-                        <div className="item-name"><Highlighted value={text(item.name) || secondary} ranges={ranges.name} /></div>
+                        <div className="item-name"><span><Highlighted value={text(item.name) || secondary} ranges={ranges.name} /></span><span className="capability-chevron" aria-hidden="true">›</span></div>
                         {(title || secondary) && (
                           <div className="item-uri">
                             {title && <span className="item-title"><Highlighted value={title} ranges={ranges.title} /></span>}

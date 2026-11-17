@@ -70,10 +70,7 @@ for (const width of [1280, 390]) {
     await expect(page.locator('.onboarding-hint--tools')).toContainText('Pick a tool to call');
     if (width === 1280) await testInfo.attach('connected-guided', { body: await page.screenshot(), contentType: 'image/png' });
     expect(await hasHorizontalScroll(page)).toBe(false);
-    await summary(page).getByRole('button', { name: 'Call a tool' }).click();
-    const firstTool = page.getByRole('listbox', { name: 'Tools' }).getByRole('option').first();
-    await expect(firstTool).toBeFocused();
-    await firstTool.click();
+    await page.locator('.request-empty-state button').click();
     await expect(page.locator('.onboarding-hint--tools')).toHaveCount(0);
     const request = page.getByRole('region', { name: 'Request builder' });
     await expect(request).toContainText('Returns a structured weather forecast for a city.');
@@ -214,11 +211,11 @@ test('the list stage advances in the summary as each list request finishes', asy
   await expect(summary(page).getByRole('status')).toHaveText(/Connected\. 2 tools, 1 resource, 1 prompt/);
 });
 
-test('"Call a tool" expands a collapsed Tools list and focuses its first tool', async ({ page }) => {
+test('the empty request action opens the first tool even when Tools is collapsed', async ({ page }) => {
   await connect(page, '2026');
   await expect(page.getByRole('listbox', { name: 'Tools' })).toBeVisible();
   await page.locator('.workbench-capabilities summary', { hasText: 'Tools' }).click();
   await expect(page.getByRole('listbox', { name: 'Tools' })).toHaveCount(0);
-  await summary(page).getByRole('button', { name: 'Call a tool' }).click();
-  await expect(page.getByRole('listbox', { name: 'Tools' }).getByRole('option').first()).toBeFocused();
+  await page.locator('.request-empty-state button').click();
+  await expect(page.getByLabel(/^city/)).toBeVisible();
 });

@@ -44,6 +44,9 @@ interface ParamsPanelProps {
   /** Renders the server's call history; `showRequest` switches back to the form. */
   renderCallHistory?: (showRequest: () => void) => React.ReactNode;
   callHistoryCount?: number;
+  openHistoryRequest?: number;
+  firstToolName?: string;
+  onOpenFirstTool?: () => void;
 }
 
 /** Render server Markdown safely; long manuals expand on demand. */
@@ -99,9 +102,20 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
   executionStartTime,
   renderCallHistory,
   callHistoryCount = 0,
+  openHistoryRequest = 0,
+  firstToolName,
+  onOpenFirstTool,
 }) => {
   const panelId = React.useId();
   const [view, setView] = React.useState<'request' | 'history'>('request');
+  const historyTabRef = React.useRef<HTMLButtonElement>(null);
+  React.useEffect(() => {
+    if (openHistoryRequest > 0) {
+      setView('history');
+      historyTabRef.current?.focus();
+      historyTabRef.current?.scrollIntoView?.({ block: 'nearest' });
+    }
+  }, [openHistoryRequest]);
   const showingHistory = view === 'history' && Boolean(renderCallHistory) && isConnected;
 
   // Timer state
@@ -390,7 +404,7 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
               <button type="button" className={`nav-link ${!showingHistory ? 'active' : ''}`} role="tab" id={`${panelId}-request`} aria-controls={`${panelId}-body`} tabIndex={!showingHistory ? 0 : -1} aria-selected={!showingHistory} onClick={() => setView('request')}>
                 Request
               </button>
-              <button type="button" className={`nav-link ${showingHistory ? 'active' : ''}`} role="tab" id={`${panelId}-history`} aria-controls={`${panelId}-body`} tabIndex={showingHistory ? 0 : -1} aria-selected={showingHistory} onClick={() => setView('history')}>
+              <button type="button" className={`nav-link ${showingHistory ? 'active' : ''}`} ref={historyTabRef} role="tab" id={`${panelId}-history`} aria-controls={`${panelId}-body`} tabIndex={showingHistory ? 0 : -1} aria-selected={showingHistory} onClick={() => setView('history')}>
                 History{callHistoryCount > 0 ? ` (${callHistoryCount})` : ''}
               </button>
             </div>
@@ -411,6 +425,11 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
               Pick a tool from Capabilities to call it. Its description and a form built from its
               input schema appear here, with required fields marked, and <strong>Run tool</strong> sends the call.
             </p>
+            {firstToolName && onOpenFirstTool && (
+              <button type="button" className="btn btn-primary" onClick={onOpenFirstTool}>
+                Open {firstToolName} <span aria-hidden="true">→</span>
+              </button>
+            )}
           </div>
         ) : (
           <div id="paramsArea">

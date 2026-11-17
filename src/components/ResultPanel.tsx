@@ -9,6 +9,8 @@ import './ConnectedGuide.css';
 
 interface ResultPanelProps {
   onCallTool?: () => void;
+  callHistoryCount?: number;
+  onOpenHistory?: () => void;
   lastResult: LogEntry | null;
   isConnected: boolean;
   serverUrl?: string;
@@ -64,6 +66,8 @@ const ResultPanel: React.FC<ResultPanelProps> = ({
   controlsTarget,
   serverUrl,
   onCallTool,
+  callHistoryCount = 0,
+  onOpenHistory,
 }) => {
   return (
     <div className={`h-100 d-flex flex-column result-scroll-frame ${!isConnected ? 'panel-deactivated' : ''}`}>
@@ -71,16 +75,21 @@ const ResultPanel: React.FC<ResultPanelProps> = ({
         {lastResult ? (
           <>
             {lastResult.type === 'error' ? <CallFailure entry={lastResult} /> : <ToolResultView logEntry={lastResult} controlsTarget={controlsTarget} />}
+            {isConnected && serverUrl && onCallTool && <NextStepsStrip endpoint={serverUrl} onCallTool={onCallTool} />}
             {shareReportHref && <ShareReportHint href={shareReportHref} onDismiss={onDismissShareHint} />}
           </>
         ) : (
           <div className="result-empty-state">
-            <p className="result-empty-title">No calls yet</p>
+            <p className="result-empty-title">{callHistoryCount > 0 ? 'No result selected' : 'No calls yet'}</p>
+            {callHistoryCount > 0 && onOpenHistory && (
+              <button type="button" className="btn btn-sm btn-outline-secondary" onClick={onOpenHistory}>
+                Open History ({callHistoryCount})
+              </button>
+            )}
             <p>
               Run a tool and its result appears here: structured content when the tool returns it,
               the content blocks a model reads, and the raw JSON-RPC response.
             </p>
-            {isConnected && serverUrl && onCallTool && <NextStepsStrip endpoint={serverUrl} onCallTool={onCallTool} />}
           </div>
         )}
       </div>

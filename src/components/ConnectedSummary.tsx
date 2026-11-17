@@ -99,7 +99,6 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
   listStage,
   nextAction,
   reportHref,
-  onCallTool,
   onRetryLists,
   connectionKey,
 }) => {
@@ -206,14 +205,6 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
       </div>
       <div className="connected-summary-next">
         {resilienceAction}
-        {nextAction === 'call-tool' && (
-          <>
-            <button type="button" className="btn btn-primary" onClick={onCallTool}>
-              <i className="bi bi-play-fill" aria-hidden="true"></i> Call a tool
-            </button>
-            <p>Pick a tool, fill in its parameters and run it to see the server’s real response.</p>
-          </>
-        )}
         {nextAction === 'share-report' && (
           <div className="share-report-actions">
             <span className="share-report-help">

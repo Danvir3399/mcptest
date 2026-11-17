@@ -25,13 +25,13 @@ export default function NextStepsStrip({ endpoint, onCallTool }: { endpoint: str
     if (step === 'watch' || step === 'ci') completeNextStep(step);
     if (step === 'tool') onCallTool();
   };
-  return <aside className="next-steps-strip border-bottom p-2" aria-label="Next steps">
+  return <aside className="next-steps-strip" aria-label="Next steps">
     <div className="d-flex justify-content-between align-items-center"><strong>Next steps</strong><button className="btn btn-sm btn-ghost" aria-label="Dismiss next steps" onClick={() => {
       try { localStorage.setItem(dismissalKey, 'true'); } catch { /* Dismiss for this view. */ }
       setHidden(true); trackEvent('next_steps_dismiss');
     }}>Dismiss</button></div>
-    <ul className="d-flex flex-wrap gap-3 list-unstyled mb-0">{steps.map(([step, label, href]) => <li key={step}>
-      {completed.includes(step) && <span aria-label="Completed">✓ </span>}
+    <ul className="next-steps-list list-unstyled mb-0">{steps.map(([step, label, href]) => <li key={step}>
+      {completed.includes(step) ? <span className="next-step-completed" aria-label="Completed">✓</span> : <span className="next-step-pending" aria-hidden="true">→</span>}
       {href ? <a href={href} onClick={() => click(step)}>{label}</a> : <button className="btn btn-link p-0 align-baseline" onClick={() => click(step)}>{label}</button>}
     </li>)}</ul>
   </aside>;

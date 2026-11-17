@@ -10,6 +10,8 @@ import { useShare } from '../hooks/useShare';
 
 interface OutputPanelProps {
   onCallTool?: () => void;
+  callHistoryCount?: number;
+  onOpenHistory?: () => void;
   lastResult: LogEntry | null;
   responses: LogEntry[];
   autoScroll: boolean;

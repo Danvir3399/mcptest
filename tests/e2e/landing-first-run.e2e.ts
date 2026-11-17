@@ -8,7 +8,7 @@ import { expect, hasHorizontalScroll, mockUrl, test } from './fixtures';
  * page never scrolls sideways on phones.
  */
 
-/** The first preset, which "Run a sample test" connects to. */
+/** A suggested public server available from the landing page. */
 const SAMPLE_ENDPOINT = 'https://mcp.context7.com/mcp';
 
 /** Keeps the sample endpoint and every MCP exchange real; forwards only the destination to the local mock. */
@@ -40,8 +40,9 @@ test('a new visitor runs a sample test with one click from a cold load', async (
   // First run: no tab strip above the landing, an explained form and the example result.
   await expect(page.locator('[data-deferred-mount] .landing-preview')).toBeVisible();
   await expect(page.locator('.playground-tab-strip')).toBeHidden();
-  const sample = page.getByRole('button', { name: 'Run a sample test' });
-  await expect(sample).toHaveAccessibleDescription('Connects to Context7, a public server with no sign-in');
+  const sample = page.locator('.landing-quick-pick[data-server-id="context7"]');
+  await expect(sample).toHaveAccessibleName('Context7');
+  await expect(sample).toHaveAttribute('title', SAMPLE_ENDPOINT);
 
   await sample.click();
 
@@ -70,16 +71,16 @@ test('the connect form explains itself, validates inline and submits on Enter', 
   const field = page.getByLabel('MCP endpoint URL');
   await expect(page.locator('label[for="serverUrl"]')).toBeVisible();
   await expect(field).toHaveAttribute('placeholder', 'https://example.com/mcp');
-  await expect(field).toHaveAccessibleDescription(/Nothing is installed\.$/);
+  await expect(field).toHaveAccessibleDescription('');
   const connect = page.getByRole('button', { name: 'Connect', exact: true });
   await expect(connect).toBeEnabled();
 
-  // Focus order: field, Connect, the sample test, then the presets.
+  // Focus order: field, Connect, advanced options, then the suggested servers.
   await field.focus();
   await page.keyboard.press('Tab');
   await expect(connect).toBeFocused();
   await page.keyboard.press('Tab');
-  await expect(page.getByRole('button', { name: 'Run a sample test' })).toBeFocused();
+  await expect(page.locator('.landing-advanced-toggle')).toBeFocused();
   await page.keyboard.press('Tab');
   await expect(page.locator('.landing-quick-pick').first()).toBeFocused();
 
@@ -89,7 +90,7 @@ test('the connect form explains itself, validates inline and submits on Enter', 
   await expect(error).toBeVisible();
   await expect(field).toHaveAttribute('aria-invalid', 'true');
   await expect(field).toBeFocused();
-  await expect(field).toHaveAccessibleDescription(/^mcptest\.io connects to remote servers over HTTP/);
+  await expect(field).toHaveAccessibleDescription(await error.innerText());
   await expect(page.locator('.landing-title')).toBeVisible();
 
   await field.fill('https://user:secret@example.com/mcp');
@@ -102,11 +103,16 @@ test('the connect form explains itself, validates inline and submits on Enter', 
   await expect(page.getByRole('heading', { name: 'MCP connection ready' })).toBeVisible();
 });
 
-test('advanced options say when they are needed', async ({ page }) => {
+test('advanced options open and return to the simple connect form', async ({ page }) => {
   await page.goto('/');
   const toggle = page.locator('.landing-advanced-toggle');
-  await expect(toggle).toHaveAccessibleName(/^Advanced options when a server needs custom headers, an API key or a CORS proxy$/);
+  await expect(toggle).toHaveAccessibleName(/^Advanced options/);
   await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  await toggle.click();
+  await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  await expect(page.locator('#landing-advanced-panel')).toBeVisible();
+  await toggle.click();
+  await expect(page.getByLabel('MCP endpoint URL')).toBeVisible();
 });
 
 test('the example result is prerendered and does not move when the app mounts', async ({ page, request }) => {

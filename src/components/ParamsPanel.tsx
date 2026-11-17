@@ -8,6 +8,7 @@ import {
   getExampleValue,
   getMissingRequiredParams,
   hasParameterValue,
+  isCodeLikeDefinition,
   type CapabilityInputDefinition,
 } from '../utils/capabilityParams';
 import ToolSchemaDetails from './ToolSchemaDetails';
@@ -293,6 +294,25 @@ const ParamsPanel: React.FC<ParamsPanelProps> = ({
                 aria-required={isRequired}
                 aria-invalid={isMissing}
                 spellCheck={false}
+                />
+            ) : isCodeLikeDefinition(definition) ? (
+                <JsonInput
+                className="form-control font-monospace param-code-input"
+                id={`${idPrefix}-${name}`}
+                rows={6}
+                value={params[name] ?? ''}
+                onChange={(e) => handleParamChange(name, e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder={definition.default !== undefined
+                  ? `Default: ${definition.default}`
+                  : exampleText !== undefined ? `e.g. ${exampleText}` : `Enter ${name}`}
+                aria-describedby={exampleText !== undefined ? exampleHintId : undefined}
+                required={isRequired}
+                aria-required={isRequired}
+                aria-invalid={isMissing}
+                spellCheck={false}
+                autoCapitalize="off"
+                autoCorrect="off"
                 />
             ) : inputType === 'string' && (definition.format === 'text' || definition.format === 'textarea') ? (
                 <textarea

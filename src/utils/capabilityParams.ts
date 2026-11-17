@@ -23,6 +23,23 @@ export const formatExampleValue = (value: unknown): string => {
   return text.length > 60 ? `${text.slice(0, 57)}…` : text;
 };
 
+const CODE_FIELD_NAMES = new Set(['code', 'script', 'sql', 'body', 'snippet']);
+const CODE_MEDIA_TYPE = /^(application\/(javascript|typescript|sql|x-sh)|text\/(javascript|typescript|x-python|x-sql|x-shellscript))\b/i;
+
+/**
+ * String fields that carry source text (`code`, `script`, `sql`, `body`, …)
+ * get a multi-line monospace editor instead of a one-line input.
+ */
+export const isCodeLikeDefinition = (
+  definition: CapabilityInputDefinition & { contentMediaType?: unknown }
+): boolean => {
+  if (definition.type !== undefined && definition.type !== 'string') return false;
+  if (definition.enum) return false;
+  if (typeof definition.contentMediaType === 'string' && CODE_MEDIA_TYPE.test(definition.contentMediaType)) return true;
+  if (definition.format === 'code') return true;
+  return CODE_FIELD_NAMES.has(definition.name.toLowerCase());
+};
+
 export interface CapabilityInputSpec {
   definitions: CapabilityInputDefinition[];
   required: string[];

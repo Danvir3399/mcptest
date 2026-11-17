@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   getCapabilityInputSpec,
   getMissingRequiredParams,
+  isCodeLikeDefinition,
   normalizeCapabilityParams,
 } from './capabilityParams';
 
@@ -60,5 +61,23 @@ describe('capability parameters', () => {
       .toThrow('“options” must contain valid JSON.');
     expect(() => normalizeCapabilityParams(tool, { ids: '{"not":"an array"}' }))
       .toThrow('“ids” must be a JSON array.');
+  });
+});
+
+describe('code-like parameters', () => {
+  it('gives source-text string fields a multi-line editor', () => {
+    for (const name of ['code', 'script', 'sql', 'body', 'Code']) {
+      expect(isCodeLikeDefinition({ name, type: 'string' })).toBe(true);
+    }
+    expect(isCodeLikeDefinition({ name: 'snippet' })).toBe(true);
+    expect(isCodeLikeDefinition({ name: 'program_text', type: 'string', format: 'code' })).toBe(true);
+    expect(isCodeLikeDefinition({ name: 'payload', type: 'string', contentMediaType: 'application/javascript' } as never)).toBe(true);
+  });
+
+  it('keeps single-line inputs for other fields and non-string types', () => {
+    expect(isCodeLikeDefinition({ name: 'intent', type: 'string' })).toBe(false);
+    expect(isCodeLikeDefinition({ name: 'body', type: 'object' })).toBe(false);
+    expect(isCodeLikeDefinition({ name: 'code', type: 'integer' })).toBe(false);
+    expect(isCodeLikeDefinition({ name: 'sql', type: 'string', enum: ['a', 'b'] })).toBe(false);
   });
 });

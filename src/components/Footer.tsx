@@ -12,7 +12,7 @@ const Footer: React.FC = () => (
           <ul>{column.links.map(([title, slug]) => <li key={slug}><a href={`/guides/${slug}`}>{title}</a></li>)}</ul>
         </section>
       ))}
-      {[{ title: 'Tools', links: FOOTER_NAVIGATION.slice(0, 6) }, { title: 'Project', links: FOOTER_NAVIGATION.slice(6) }].map(column => (
+      {[{ title: 'Tools', links: FOOTER_NAVIGATION.slice(0, 3) }, { title: 'Testing tools', links: FOOTER_NAVIGATION.slice(3, 6) }, { title: 'Project', links: FOOTER_NAVIGATION.slice(6) }].map(column => (
         <section key={column.title}>
           <h2>{column.title}</h2>
           <ul>{column.links.map(link => <li key={link.href}><a href={link.href}>{link.label}</a></li>)}</ul>

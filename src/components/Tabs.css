@@ -111,6 +111,7 @@
   align-items: stretch;
   gap: 0;
   width: auto;
+  flex: 1 1 0%;
   margin: 0 0 -1px !important;
   padding: 0 .5rem;
   scroll-padding-inline: .5rem;
@@ -230,7 +231,5 @@
   .playground-tabs .nav-item:focus-within > .btn-close { opacity: 1; }
 }
 
-/* A partially visible tab keeps its hit target, but never displays a cut label
-   or detached close icon. Focus scrolls the full tab into view. */
-.playground-tabs .nav-item[data-clipped] .nav-link > *,
+/* Fade partial labels at the strip edge; only hide their detached close icon. */
 .playground-tabs .nav-item[data-clipped] > .btn-close { opacity: 0; }

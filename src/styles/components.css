@@ -1367,7 +1367,7 @@ span.health-indicator.health-indicator-gray {
   padding: 0.5rem 0.75rem;
   border: 0 !important;
   border-radius: var(--button-radius) !important;
-  background: transparent !important;
+  background: var(--input-bg) !important;
   box-shadow: none;
   color: var(--text-color) !important;
   font-family: var(--font-family-mono);
@@ -1484,13 +1484,13 @@ span.health-indicator.health-indicator-gray {
   flex: 1 1 auto;
   min-width: 0;
   padding: 0.25rem;
-  color: var(--primary-color);
+  color: var(--text-muted);
   border: 0;
   background: transparent;
   font-family: var(--font-family-mono);
   font-size: 0.8125rem;
   text-align: left;
-  text-decoration: underline;
+  text-decoration: none;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -5178,7 +5178,7 @@ pre.bg-light code {
   overflow: hidden;
 }
 .awaiting-connection-tabs { padding: var(--space-4) var(--space-4) 0; }
-.awaiting-connection-empty { margin-top: 0; border: 0; box-shadow: none; }
+.awaiting-connection-panel > .awaiting-connection-empty { margin-top: 0; border: 0; border-radius: 0; box-shadow: none; }
 .suggested-server-copy small { white-space: normal; overflow-wrap: anywhere; }
 @media (min-width: 768px) {
   .idle-onboarding-layout .suggested-server-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

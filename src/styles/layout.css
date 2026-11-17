@@ -441,6 +441,7 @@
   max-width: none;
   margin-inline: auto;
   isolation: isolate;
+  --page-content-width: 1280px;
 }
 
 .app-workspace {
@@ -555,7 +556,7 @@
 /* Reading and browsing views retain an ergonomic content width. */
 .main-content > .view-panel {
   width: 100%;
-  max-width: 1280px;
+  max-width: var(--page-content-width);
   margin-inline: auto;
 }
 
@@ -881,7 +882,22 @@
   height: calc(100dvh - 4rem);
   flex-shrink: 0;
 }
-.app-shell--home .main-content > .view-panel { max-width: 1280px; }
+.app-shell--home .main-content > .view-panel:has(.playground-tabs-wrapper) { max-width: 100%; }
+.app-shell--home .tab-content-panel {
+  width: 100%;
+  max-width: var(--page-content-width);
+  margin-inline: auto;
+}
+/* Grow the scrollable body to the viewport and leave the footer at its end. */
+.main-content:has(> .site-footer) {
+  display: flex;
+  flex-direction: column;
+}
+.main-content:has(> .site-footer) > .view-panel {
+  flex: 1 0 auto;
+  min-height: 0 !important;
+  margin-bottom: 2rem;
+}
 .app-header { width: 100%; max-width: none; }
 .app-shell--home .main-content { --main-pad: 24px; }
 @media (max-width: 768px) { .main-content, .app-shell--home .main-content { --main-pad: var(--space-4); } }

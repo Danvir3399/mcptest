@@ -8777,9 +8777,10 @@
       }
     ],
     "logoUrl": "/server-logos/etherscan.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated ES monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Etherscan mark.",
+    "logoSourceUrl": "https://mintcdn.com/etherscan/O446YQrF1qMjlNwS/logo/etherscan-logo-circle.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Etherscan site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://etherscan.io"
   },
   {
@@ -9032,9 +9033,10 @@
     },
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/ahrefs.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated AH monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Ahrefs mark.",
+    "logoSourceUrl": "https://static.ahrefs.com/favicon.svg?v=2",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Ahrefs site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://ahrefs.com",
     "caveats": [
       "Available on paid Ahrefs plans; calls consume API units."
@@ -9184,10 +9186,11 @@
         "secret": true
       }
     ],
-    "logoUrl": "/server-logos/apollo.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated AP monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Apollo.io mark.",
+    "logoUrl": "/server-logos/apollo.png",
+    "logoSourceUrl": "https://www.apollo.io/apple-icon.png?apple-icon.0-gy.9xjm.kcw.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Apollo.io site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.apollo.io"
   },
   {
@@ -9325,9 +9328,10 @@
       }
     ],
     "logoUrl": "/server-logos/braze.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated BR monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Braze mark.",
+    "logoSourceUrl": "https://www.braze.com/docs/assets/img/logos/braze-logo-monogram-purple.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Braze site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.braze.com",
     "caveats": [
       "An admin must enable MCP OAuth access and approve the client redirect URI; not available with IP allowlisting."
@@ -9378,9 +9382,10 @@
       }
     ],
     "logoUrl": "/server-logos/customer-io.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated CIO monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Customer.io mark.",
+    "logoSourceUrl": "https://customer.io/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Customer.io site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://customer.io",
     "caveats": [
       "An account admin must enable MCP under Settings > AI."
@@ -9424,9 +9429,10 @@
       "evidenceUrl": "https://www.commonroom.io/docs/using-common-room/mcp-server/"
     },
     "logoUrl": "/server-logos/common-room.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated CR monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Common Room mark.",
+    "logoSourceUrl": "https://www.commonroom.io/static/meta/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Common Room site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.commonroom.io"
   },
   {
@@ -9507,9 +9513,10 @@
     ],
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/courier.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated CO monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Courier mark.",
+    "logoSourceUrl": "https://www.courier.com/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Courier site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.courier.com",
     "sourceUrl": "https://github.com/trycourier/courier-mcp",
     "caveats": [
@@ -9565,10 +9572,11 @@
         "secret": true
       }
     ],
-    "logoUrl": "/server-logos/agentmail.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated AM monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official AgentMail mark.",
+    "logoUrl": "/server-logos/agentmail.png",
+    "logoSourceUrl": "https://www.agentmail.to/apple-icon.png?apple-icon.339ywur483nab.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official AgentMail site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://agentmail.to"
   },
   {
@@ -9665,10 +9673,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://dev.frontapp.com/docs/mcp-server"
     },
-    "logoUrl": "/server-logos/front.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated FR monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Front mark.",
+    "logoUrl": "/server-logos/front.png",
+    "logoSourceUrl": "https://front.com/apple-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Front site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://front.com",
     "caveats": [
       "Front does not support Dynamic Client Registration; create a developer app in Front and give the client its credentials."
@@ -10382,10 +10391,11 @@
         "secret": true
       }
     ],
-    "logoUrl": "/server-logos/browser-use.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated BU monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Browser Use mark.",
+    "logoUrl": "/server-logos/browser-use.png",
+    "logoSourceUrl": "https://browser-use.com/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Browser Use site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://browser-use.com",
     "sourceUrl": "https://github.com/browser-use/browser-use",
     "caveats": [

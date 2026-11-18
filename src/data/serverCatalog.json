@@ -6776,10 +6776,11 @@
       "evidenceUrl": "https://fal.ai/docs/documentation/setting-up/mcp"
     },
     "exactEndpointOnly": true,
-    "logoUrl": "/server-logos/fal.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated fal monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official fal mark.",
+    "logoUrl": "/server-logos/fal.png",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/6a72ef21c470312422dea9b3/6adae13a030770b54ecc8783_fal-icon-favicon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official fal site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://fal.ai"
   },
   {
@@ -6823,9 +6824,10 @@
       }
     ],
     "logoUrl": "/server-logos/parallel-search.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated PA monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Parallel Search mark.",
+    "logoSourceUrl": "https://parallel.ai/icon.svg?icon.1d0de8d5.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Parallel site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://parallel.ai",
     "sourceUrl": "https://github.com/parallel-web/search-mcp"
   },
@@ -7538,9 +7540,10 @@
     ],
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/port.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated PO monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Port mark.",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/622996415264e2107087774c/65f7539b76116e14d602f334_Favicon%20256.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Port site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.port.io"
   },
   {
@@ -8007,10 +8010,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://hygraph.com/docs/hygraph-ai/mcp-server-setup"
     },
-    "logoUrl": "/server-logos/hygraph.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated HY monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Hygraph mark.",
+    "logoUrl": "/server-logos/hygraph.png",
+    "logoSourceUrl": "https://hygraph.com/icons/icon-256x256.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Hygraph site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://hygraph.com"
   },
   {
@@ -8052,9 +8056,10 @@
     },
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/builder-cms.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated BU monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Builder.io CMS mark.",
+    "logoSourceUrl": "https://cdn.builder.io/api/v1/image/assets%2FYJIGb4i01jvw0SRdL5Bt%2F51a002f4a17f4fc4a829b8891a1c25ee",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Builder.io site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.builder.io"
   },
   {
@@ -8095,10 +8100,11 @@
       "evidenceUrl": "https://docs.lovable.dev/integrations/lovable-mcp-server"
     },
     "exactEndpointOnly": true,
-    "logoUrl": "/server-logos/lovable.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated LO monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Lovable mark.",
+    "logoUrl": "/server-logos/lovable.png",
+    "logoSourceUrl": "https://docs.lovable.dev/mintlify-assets/_mintlify/favicons/lovable-f9060f1e/AU_uVgnksniw8mje/_generated/favicon/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Lovable site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://lovable.dev",
     "caveats": [
       "Creating projects and sending agent messages consume Lovable credits."
@@ -8154,10 +8160,11 @@
         "description": "Use for Vanta AU region accounts"
       }
     ],
-    "logoUrl": "/server-logos/vanta.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated VA monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Vanta mark.",
+    "logoUrl": "/server-logos/vanta.png",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/64009032676f24f376f002fc/6a8611e0bb23845c59b54179_ilma-favicon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Vanta site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.vanta.com",
     "sourceUrl": "https://github.com/VantaInc/vanta-mcp-plugin"
   },
@@ -8257,10 +8264,11 @@
         "description": "Use for GitGuardian EU SaaS workspaces"
       }
     ],
-    "logoUrl": "/server-logos/gitguardian.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated GG monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official GitGuardian mark.",
+    "logoUrl": "/server-logos/gitguardian.png",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/5ee25cbe47310017adf964da/68cd6f3a3117b131408d431a_GG%20-%20256px.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official GitGuardian site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.gitguardian.com",
     "sourceUrl": "https://github.com/GitGuardian/ggmcp"
   },
@@ -8581,10 +8589,11 @@
       }
     ],
     "exactEndpointOnly": true,
-    "logoUrl": "/server-logos/polar.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated PO monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Polar mark.",
+    "logoUrl": "/server-logos/polar.png",
+    "logoSourceUrl": "https://polar.sh/favicon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Polar site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://polar.sh"
   },
   {
@@ -8725,9 +8734,10 @@
     ],
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/financial-datasets.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated FD monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Financial Datasets mark.",
+    "logoSourceUrl": "https://www.financialdatasets.ai/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Financial Datasets site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://financialdatasets.ai"
   },
   {
@@ -8871,9 +8881,10 @@
     ],
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/fullstory.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated FS monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Fullstory mark.",
+    "logoSourceUrl": "https://www.fullstory.com/favicon.svg?v=7cac1bc6d731746740d72903d25cd5bf",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Fullstory site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.fullstory.com",
     "caveats": [
       "Private beta with a waitlist; StoryAI and the MCP setting must be enabled or the server exposes no tools."

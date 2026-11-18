@@ -13400,5 +13400,30 @@
     "logoRetrievedAt": "2026-11-14",
     "logoLicenseNote": "Locally generated DA monogram for a community submission; it is not an official Datacircle mark.",
     "homepageUrl": "https://datacircle.dev/docs/mcp"
+  },
+  {
+    "id": "stalkchain-data",
+    "name": "StalkChain Data",
+    "url": "https://data.stalkchain.com/mcp",
+    "browserAccess": "direct",
+    "description": "Research public on-chain data, including tracked trader wallets and PnL, token holders, and Hyperliquid positions and funding. The hosted MCP uses StalkChain OAuth and tool calls use account credits.",
+    "category": "Finance",
+    "tags": [
+      "finance",
+      "community-submission",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "community-submission",
+      "url": "https://stalkchain.com/mcp"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "logoUrl": "/server-logos/stalkchain-data.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated SD monogram for a community submission; it is not an official StalkChain Data mark.",
+    "homepageUrl": "https://stalkchain.com/mcp"
   }
 ]

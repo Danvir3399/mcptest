@@ -13411,7 +13411,8 @@
     "tags": [
       "finance",
       "community-submission",
-      "oauth"
+      "oauth",
+      "bearer-token"
     ],
     "listingSource": {
       "kind": "community-submission",
@@ -13420,10 +13421,34 @@
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
-    "logoUrl": "/server-logos/stalkchain-data.svg",
-    "logoSourceKind": "generated-fallback",
+    "alternativeAuthTypes": [
+      "bearer-token"
+    ],
+    "oauthRegistration": {
+      "mode": "automatic",
+      "responsibleParty": "automatic",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "browserPublicClientSupported": true,
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "availability": "ready",
+      "reviewedAt": "2026-11-18",
+      "evidenceUrl": "https://data.stalkchain.com/.well-known/oauth-authorization-server"
+    },
+    "logoUrl": "/server-logos/stalkchain-data.png",
+    "logoSourceUrl": "https://stalkchain.com/apple-icon.png",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-18",
-    "logoLicenseNote": "Locally generated SD monogram for a community submission; it is not an official StalkChain Data mark.",
+    "logoLicenseNote": "StalkChain site mark; trademark rights remain with the publisher.",
     "homepageUrl": "https://stalkchain.com/mcp"
   }
 ]

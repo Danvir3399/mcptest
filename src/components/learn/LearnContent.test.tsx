@@ -36,6 +36,7 @@ import { markdownLearnArticle } from './deferredMarkdownArticle';
 import MarkdownLearnArticle from './MarkdownLearnArticle';
 import LearnIndex from './LearnIndex';
 import LearnNotFound from './LearnNotFound';
+import { getSiteRelativePath } from '../../content/siteUrl';
 
 // A guide without a prerendered body renders through the Markdown chunk; load it as the app does before mounting.
 beforeAll(() => markdownLearnArticle.preload());
@@ -272,13 +273,25 @@ describe('Learn article page', () => {
     }
 
     const sourceLinks = container.querySelectorAll('.reading-sources a[target="_blank"]');
-    expect(sourceLinks).toHaveLength(article.sourceLinks.length);
+    expect(sourceLinks).toHaveLength(article.sourceLinks.filter(source => !getSiteRelativePath(source.url)).length);
     sourceLinks.forEach(link => {
       expect(link.getAttribute('rel')).toBe('noopener noreferrer');
       expect(link.textContent).toContain('opens in a new tab');
     });
     expect(container.querySelectorAll('.reading-related a')).toHaveLength(article.relatedSlugs.length);
     expect(container.querySelector('.learn-kicker')).toBeNull();
+  });
+
+  it('keeps on-site sources as same-tab links without the external marker', () => {
+    const article = getLearnArticle('mcptest-vs-glama-inspector')!;
+    const container = render(<LearnArticlePage article={article} />);
+    const links = Array.from(container.querySelectorAll<HTMLAnchorElement>('.reading-sources a'));
+    const onSite = links.filter(link => link.textContent?.startsWith('mcptest.io transport diagnostics reference'));
+    expect(onSite).toHaveLength(1);
+    expect(onSite[0].getAttribute('href')).toBe('/learn/mcp-transport-diagnostics-reference');
+    expect(onSite[0].hasAttribute('target')).toBe(false);
+    const glama = links.find(link => link.textContent?.startsWith('Glama: MCP Inspector'))!;
+    expect(glama.getAttribute('target')).toBe('_blank');
   });
 
   it('keeps the fragment ids published by the former React docs page', () => {

@@ -38,9 +38,6 @@ interface UnifiedPanelProps {
   discovery?: DiscoveryStatus;
   /** False for a capability the server did not advertise; absent means unknown. */
   offered?: Partial<Record<CapabilitySection, boolean>>;
-  /** First run: highlight the tool list and say what to do. */
-  guideToolPick?: boolean;
-  onDismissToolPickGuide?: () => void;
   /**
    * Bumped by "Call a tool": expands Tools (and clears a search that hides
    * every tool), then focuses the first tool once it has rendered.
@@ -149,8 +146,6 @@ export const UnifiedPanel: React.FC<UnifiedPanelProps> = ({
   shortcutEnabled = false,
   discovery,
   offered,
-  guideToolPick = false,
-  onDismissToolPickGuide,
   revealToolsRequest = 0,
 }) => {
   const [filterText, setFilterText] = useState('');
@@ -320,7 +315,6 @@ export const UnifiedPanel: React.FC<UnifiedPanelProps> = ({
     .map(({ key, items }) => `${items.length} ${CATEGORY_NOUNS[key][items.length === 1 ? 0 : 1]}`)
     .join(' · ');
   const treeId = `${idPrefix}-capability-tree`;
-  const hintId = `${idPrefix}-tool-hint`;
   const sectionCount: Record<CapabilitySection, number> = {
     tools: tools.length,
     resources: resources.length + resourceTemplates.length,
@@ -405,20 +399,6 @@ export const UnifiedPanel: React.FC<UnifiedPanelProps> = ({
         </p>
       )}
       <nav className="tree-view" aria-label="Playground tool lists" id={treeId}>
-        {/* The hint scrolls with the lists so short panes keep tools reachable. */}
-        {guideToolPick && (
-          <div className="onboarding-hint onboarding-hint--tools" id={hintId}>
-            <div className="onboarding-hint-text">
-              <p className="onboarding-hint-title"><i className="bi bi-hand-index onboarding-hint-icon" aria-hidden="true"></i> Pick a tool to call</p>
-              <p>Its description and a form built from its input schema open in the request panel.</p>
-            </div>
-            {onDismissToolPickGuide && (
-              <button type="button" className="btn btn-sm btn-ghost" onClick={onDismissToolPickGuide} aria-label="Dismiss the pick a tool hint">
-                Dismiss
-              </button>
-            )}
-          </div>
-        )}
         {/* Supported Capabilities - Only show sections with items */}
         {supportedCapabilities.map((capability) => {
           const { key, items, originalItems, label } = capability;
@@ -429,7 +409,6 @@ export const UnifiedPanel: React.FC<UnifiedPanelProps> = ({
           return (
             <details
               key={key}
-              className={guideToolPick && key === 'tools' ? 'capability-group--guided' : undefined}
               open={isExpanded}
               onToggle={(e) => setExpandedCategories(prev => ({...prev, [key]: (e.target as HTMLDetailsElement).open}))}>
               <summary onClick={(e) => { e.preventDefault(); toggleCategory(key as keyof typeof expandedCategories); }}>
@@ -441,7 +420,6 @@ export const UnifiedPanel: React.FC<UnifiedPanelProps> = ({
                   onKeyDown={(e) => handleKeyDown(e, key, plainItems)}
                   role="listbox"
                   aria-label={label}
-                  aria-describedby={guideToolPick && key === 'tools' ? hintId : undefined}
                 >
                   {items.length === 0 && isSearching && (
                     <li className="tree-item-empty" role="presentation">No matching {CATEGORY_NOUNS[key][1]}</li>

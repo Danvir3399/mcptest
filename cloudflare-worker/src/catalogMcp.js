@@ -303,7 +303,7 @@ const checkRateLimit = async (request, env) => {
   if (!env?.SUBMISSION_RATE_LIMITER) return undefined;
   try {
     const ip = request.headers.get("CF-Connecting-IP") || "unknown";
-    const decision = await consumeRateLimit(env, `catalog-mcp:ip:${await sha256Hex(ip)}`, CATALOG_MCP_RATE_LIMIT);
+    const decision = await consumeRateLimit(env, `catalog-mcp:ip:${await sha256Hex(ip)}`, { ...CATALOG_MCP_RATE_LIMIT, expire: true });
     return decision.allowed ? undefined : rateLimitedResponse(decision.retryAfterSeconds);
   } catch (error) {
     console.error(`[catalog-mcp] rate limiter unavailable: ${error}`);

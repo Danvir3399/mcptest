@@ -24,11 +24,13 @@ const envelope = {
   'io.modelcontextprotocol/clientCapabilities': {},
 };
 
-// In-memory stand-in for the Durable Object namespace that runs the real limiter class.
+// In-memory stand-in for the Durable Object namespace that runs the real limiter class,
+// including its alarm. `runDueAlarms()` fires every alarm whose time has come, as the runtime would.
 const rateLimiterNamespace = () => {
   const instances = new Map();
   const namespace = {
     keys: [],
+    writes: 0,
     idFromName: (name) => {
       namespace.keys.push(name);
       return name;
@@ -36,11 +38,28 @@ const rateLimiterNamespace = () => {
     get: (id) => {
       if (!instances.has(id)) {
         const data = new Map();
-        instances.set(id, new SubmissionRateLimiter({
-          storage: { get: async (key) => data.get(key), put: async (key, value) => { data.set(key, value); } },
-        }));
+        const instance = { data, alarmAt: null };
+        instance.object = new SubmissionRateLimiter({
+          storage: {
+            get: async (key) => data.get(key),
+            put: async (key, value) => { namespace.writes += 1; data.set(key, value); },
+            getAlarm: async () => instance.alarmAt,
+            setAlarm: async (time) => { instance.alarmAt = time; },
+            deleteAll: async () => { data.clear(); instance.alarmAt = null; },
+          },
+        });
+        instances.set(id, instance);
       }
-      return { fetch: (url, init) => instances.get(id).fetch(new Request(url, init)) };
+      return { fetch: (url, init) => instances.get(id).object.fetch(new Request(url, init)) };
+    },
+    stored: (id) => instances.get(id),
+    runDueAlarms: async () => {
+      for (const instance of instances.values()) {
+        if (instance.alarmAt !== null && instance.alarmAt <= Date.now()) {
+          instance.alarmAt = null;
+          await instance.object.alarm();
+        }
+      }
     },
   };
   return namespace;
@@ -330,6 +349,67 @@ describe('catalog MCP rate limit', () => {
     expect((await rpc('ping', {}, { ip: '198.51.100.2' })).status).toBe(200);
     Date.now.mockReturnValue(now + CATALOG_MCP_RATE_LIMIT.windowMs + 1);
     expect((await rpc('ping', {}, { ip: '198.51.100.1' })).status).toBe(200);
+  });
+
+  it('writes nothing for a refused request and deletes its state once the window has passed', async () => {
+    const now = Date.now();
+    vi.spyOn(Date, 'now').mockReturnValue(now);
+    const limiter = env.SUBMISSION_RATE_LIMITER;
+    for (let index = 0; index < CATALOG_MCP_RATE_LIMIT.limit; index += 1) {
+      expect((await rpc('ping', {}, { ip: '198.51.100.4' })).status).toBe(200);
+    }
+    const key = limiter.keys.at(-1);
+    const writesBefore = limiter.writes;
+    expect((await rpc('ping', {}, { ip: '198.51.100.4' })).status).toBe(429);
+    expect((await rpc('ping', {}, { ip: '198.51.100.4' })).status).toBe(429);
+    expect(limiter.writes).toBe(writesBefore);
+
+    // A hit late in the window keeps the state alive past the first alarm.
+    Date.now.mockReturnValue(now + 30_000);
+    expect((await rpc('ping', {}, { ip: '198.51.100.5' })).status).toBe(200);
+    Date.now.mockReturnValue(now + CATALOG_MCP_RATE_LIMIT.windowMs - 1);
+    await limiter.runDueAlarms();
+    expect(limiter.stored(key).data.size).toBe(1);
+    expect(limiter.stored(key).alarmAt).toBe(now + CATALOG_MCP_RATE_LIMIT.windowMs);
+
+    Date.now.mockReturnValue(now + CATALOG_MCP_RATE_LIMIT.windowMs);
+    await limiter.runDueAlarms();
+    expect(limiter.stored(key).data.size).toBe(0);
+    expect(limiter.stored(key).alarmAt).toBeNull();
+    const lateKey = limiter.keys.at(-1);
+    expect(lateKey).not.toBe(key);
+    expect(limiter.stored(lateKey).data.size).toBe(1);
+
+    Date.now.mockReturnValue(now + 30_000 + CATALOG_MCP_RATE_LIMIT.windowMs);
+    await limiter.runDueAlarms();
+    expect(limiter.stored(lateKey).data.size).toBe(0);
+    expect(limiter.stored(lateKey).alarmAt).toBeNull();
+
+    // After cleanup the address starts a fresh window and the limit still triggers.
+    for (let index = 0; index < CATALOG_MCP_RATE_LIMIT.limit; index += 1) {
+      expect((await rpc('ping', {}, { ip: '198.51.100.4' })).status).toBe(200);
+    }
+    const limited = await rpc('ping', {}, { ip: '198.51.100.4' });
+    expect(limited.status).toBe(429);
+    expect(limited.headers.get('Retry-After')).toBe('60');
+    expect(limited.headers.get('Access-Control-Allow-Origin')).toBe('*');
+  });
+
+  it('reschedules the alarm while an address keeps calling', async () => {
+    const now = Date.now();
+    vi.spyOn(Date, 'now').mockReturnValue(now);
+    const limiter = env.SUBMISSION_RATE_LIMITER;
+    await rpc('ping', {}, { ip: '198.51.100.6' });
+    const key = limiter.keys.at(-1);
+    Date.now.mockReturnValue(now + 45_000);
+    await rpc('ping', {}, { ip: '198.51.100.6' });
+    Date.now.mockReturnValue(now + CATALOG_MCP_RATE_LIMIT.windowMs);
+    await limiter.runDueAlarms();
+    expect(limiter.stored(key).alarmAt).toBe(now + 45_000 + CATALOG_MCP_RATE_LIMIT.windowMs);
+    expect(limiter.stored(key).data.get('window').hits).toHaveLength(2);
+    Date.now.mockReturnValue(now + 45_000 + CATALOG_MCP_RATE_LIMIT.windowMs);
+    await limiter.runDueAlarms();
+    expect(limiter.stored(key).data.size).toBe(0);
   });
 
   it('keys the limiter by a hash of the address under its own prefix', async () => {

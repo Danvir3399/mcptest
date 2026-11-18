@@ -22,6 +22,8 @@ const OPENED_KEY = 'mcptest.siteAssistant.opened';
 const LABEL = 'Ask the mcptest assistant';
 const LOADING_LABEL = 'Loading the mcptest assistant';
 const FAILED_LABEL = 'The mcptest assistant could not load. Try again';
+const TEXT = 'Ask';
+const FAILED_TEXT = 'Retry';
 
 export type WidgetLoadTrigger = 'launcher' | 'restore';
 
@@ -67,7 +69,7 @@ export const mountSiteAssistantLauncher = (config: SiteAssistantConfig): SiteAss
   button.title = LABEL;
   const text = document.createElement('span');
   text.className = 'site-assistant-launcher-text';
-  text.textContent = 'Ask';
+  text.textContent = TEXT;
   button.append(chatIcon(), text);
   button.hidden = true;
   document.body.append(button);
@@ -99,6 +101,7 @@ export const mountSiteAssistantLauncher = (config: SiteAssistantConfig): SiteAss
       button.removeAttribute('aria-busy');
       button.setAttribute('aria-label', LABEL);
       button.title = LABEL;
+      text.textContent = TEXT;
       delete button.dataset.state;
       attachWidget();
       render();
@@ -110,6 +113,7 @@ export const mountSiteAssistantLauncher = (config: SiteAssistantConfig): SiteAss
       button.removeAttribute('aria-busy');
       button.setAttribute('aria-label', FAILED_LABEL);
       button.title = FAILED_LABEL;
+      text.textContent = FAILED_TEXT;
       button.dataset.state = 'failed';
       return false;
     });

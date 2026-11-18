@@ -49,6 +49,7 @@ describe('site assistant launcher', () => {
     expect(button.hidden).toBe(true);
     expect(button.type).toBe('button');
     expect(button.getAttribute('aria-label')).toBe('Ask the mcptest assistant');
+    expect(button.textContent).toBe('Ask');
     launcher.setActive(true);
     expect(button.hidden).toBe(false);
     launcher.setActive(false);
@@ -135,6 +136,7 @@ describe('site assistant launcher', () => {
     const button = launcherButton()!;
     expect(button.hidden).toBe(false);
     expect(button.dataset.state).toBe('failed');
+    expect(button.textContent).toBe('Retry');
     expect(button.getAttribute('aria-label')).toBe('The mcptest assistant could not load. Try again');
     expect(widgetScript()).toBeNull();
     expect(trackEvent).toHaveBeenCalledWith('assistant_widget_load', expect.objectContaining({ outcome: 'failed', trigger: 'launcher' }));

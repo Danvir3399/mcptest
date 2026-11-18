@@ -26,10 +26,13 @@ restyles it. Components consume tokens; they never hard-code a hex value.
   - *Framing chrome is translucent.* The sticky "On this page" outline uses
     `--glass-frame-bg` (white at 75%, slate-900 at 70% in dark) with an
     inset `--glass-frame-ring`.
-  - *Floating chrome is real glass.* Menus, the Sessions popover, the guide
-    search results and dialogs use `--glass-float-bg` (white at 80%,
+  - *Floating chrome is real glass.* Menus, the guide search results and
+    dialogs use `--glass-float-bg` (white at 80%,
     slate-900 at 70% in dark), `--glass-float-border`, `--glass-float-filter`
     and `--shadow-float`: blur separates a layer above the workspace.
+    The Sessions popover is the exception: it opens directly over the
+    connection summary's text, so it is opaque (`--card-bg`,
+    `--border-color`) with `--shadow-float`.
   White edges (`--glass-border`), a top highlight (`--glass-highlight`) and
   slate hairlines (`--hairline`) divide glass surfaces. Never put
   low-opacity glass behind body text.

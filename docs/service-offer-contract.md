@@ -5,6 +5,17 @@ its prices from the private admin service at runtime. This is the contract that
 service implements. The page's parser is `parseServiceOffer` in
 `src/servicePage/offer.ts`.
 
+## Prices and quotes are estimates
+
+The "from" prices in the offer and every quote from the quote assistant are
+initial estimates, not final prices. The flow is: the visitor describes their
+API to the assistant, gets an estimate of scope, price, delivery and
+maintenance, and confirms their email address. An operator then reviews the
+scope and confirms the quote or adjusts it, and only a confirmed quote can be
+paid. The page says so next to the prices and the quote action, both with the
+offer and with the neutral fallback copy. This does not change the JSON shape
+below; the page's prices still come only from this endpoint.
+
 ## Build variables
 
 | Variable | Effect |
@@ -45,7 +56,7 @@ every visit.
 | `offers` | array, required | Rendered in order. Offers may be added or removed; the page renders whatever is listed. |
 | `offers[].id` | string, required | Stable id (also used for quote pages). |
 | `offers[].name` | string, required | Shown as is. |
-| `offers[].fromPrice` | integer ≥ 0, required | The starting price in minor units, shown as "from $499". |
+| `offers[].fromPrice` | integer ≥ 0, required | The starting price in minor units, shown as "from $499". An estimate; the operator confirms the final price. |
 | `offers[].deliveryDays` | integer > 0, optional | Shown as "delivery in about N days"; omitted when missing. |
 | `maintenance` | object or `null`, required | `null` when hosting and maintenance is not offered. |
 | `maintenance.monthlyPrice` | integer ≥ 0 | Monthly price in minor units. |
@@ -68,7 +79,9 @@ when:
 
 The quote assistant has one page action, `open_quote({ url })`, registered
 with `confirm: true`, so the solv.chat widget asks the visitor before it runs.
-It navigates the tab only to an `https` URL on the `VITE_SERVICE_API` origin
+A quote page shows the estimate until an operator has confirmed or adjusted
+it; payment is offered only for a confirmed quote. The action navigates the
+tab only to an `https` URL on the `VITE_SERVICE_API` origin
 whose path is under `<base path>/q/`; any other URL is refused with
 `{ "opened": false, "error": "That destination is not allowed. …" }` and
 nothing happens. The action is removed when the visitor leaves the page, so

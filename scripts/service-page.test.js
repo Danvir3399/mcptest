@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import seoGenerator from './generate-seo-pages.js';
 import pageMetadata from '../src/data/pageMetadata.json';
 import { SERVICE_PAGE_PATH, isKnownAppPath } from '../src/utils/appRoutes';
+import { ESTIMATE_NOTE } from '../src/content/servicePageCopy';
 
 const {
   buildOgCards,
@@ -67,6 +68,8 @@ describe('/mcp-server-development build outputs', () => {
     expect(html).toContain('<h1 id="service-page-title">MCP server development</h1>');
     expect(html).toContain('"@type":"Service"');
     expect(html).not.toContain('data-deferred-mount');
+    // The neutral prices carry the estimate note in the static HTML too.
+    expect(html).toContain(`<p class="service-offer-note" data-note="estimate">${ESTIMATE_NOTE}</p>`);
     expect(fs.readFileSync(path.join(distRoot, 'sitemap.xml'), 'utf8')).toContain('<loc>https://mcptest.io/mcp-server-development</loc>');
     expect(fs.readFileSync(path.join(distRoot, 'catalog.html'), 'utf8')).toContain(`href="${SERVICE_PAGE_PATH}"`);
   });

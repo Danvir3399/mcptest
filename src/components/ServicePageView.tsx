@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   BASIC_SCOPE,
+  ESTIMATE_NOTE,
   HOW_IT_WORKS,
   INDEPENDENCE_STATEMENT,
   ORDERS_CLOSED,
   PRICE_FALLBACK,
-  PRICE_NOTE,
   QUOTED_TIER,
   QUOTE_ACTION_LABEL,
   QUOTE_CONTACT_PATH,
@@ -95,7 +95,6 @@ const OfferSummary: React.FC<{ offer: ServiceOffer }> = ({ offer }) => (
         Hosting and maintenance: {formatPrice(offer.maintenanceMonthlyPrice, offer.currency)} per month.
       </p>
     )}
-    {offer.offers.length > 0 && <p className="service-offer-note">{PRICE_NOTE}</p>}
   </>
 );
 
@@ -169,6 +168,7 @@ export default function ServicePageView({
                 {offer && <OfferSummary offer={offer} />}
               </>
             )}
+            <p className="service-offer-note" data-note="estimate">{ESTIMATE_NOTE}</p>
             {ordersClosed
               ? <p className="service-orders-closed" role="status">{ORDERS_CLOSED}</p>
               : <QuoteAction config={config} createAssistant={createAssistant} />}

@@ -2,7 +2,8 @@
  * Copy for /mcp-server-development (src/components/ServicePageView.tsx), a
  * page only in builds with VITE_SERVICE_PAGE_ENABLED=true. Prices are not
  * here: the page reads them at runtime from the service's public offer
- * (docs/service-offer-contract.md) and falls back to PRICE_FALLBACK.
+ * (docs/service-offer-contract.md) and falls back to PRICE_FALLBACK. Both
+ * states carry ESTIMATE_NOTE: a quote is an estimate until we confirm it.
  */
 
 export const SERVICE_PAGE_COPY = {
@@ -41,14 +42,17 @@ export const SERVICE_OPTIONS: readonly { id: string; title: string; detail: stri
 
 export const HOW_IT_WORKS: readonly string[] = [
   'Describe your API to the quote assistant: where its documentation is, how it authenticates and what the server should let an AI client do.',
-  'Get a scope, a price, a delivery estimate and, if you want hosting, a maintenance estimate.',
-  'Confirm the quote and pay. Work starts once the payment is through.',
+  'Get an estimate of the scope, price and delivery time and, if you want hosting, of the maintenance.',
+  'Confirm your email address.',
+  'We review the scope and confirm the quote or adjust it.',
+  'You pay once you have the confirmed quote. Work starts after the payment.',
 ];
 
 export const INDEPENDENCE_STATEMENT = 'Validation results, catalog status and badges are produced the same way for every server and are not affected by buying this service. A server we build is tested by the same checks, listed under the same rules and gets the same badge as any other server.';
 
-export const PRICE_FALLBACK = 'Prices depend on your API and the options you choose. Describe your API to get a quote with a fixed price and delivery estimate.';
-export const PRICE_NOTE = 'Prices are starting points; your quote has the final price.';
+export const PRICE_FALLBACK = 'Prices depend on your API and the options you choose. Describe your API to the assistant to get an estimate of the price and delivery time.';
+/** Shown next to the prices and the quote action, with or without the public offer. */
+export const ESTIMATE_NOTE = 'Prices shown and quotes from the assistant are initial estimates. The final price and delivery time may change once the requirements are clarified, and we confirm both with you before any work starts.';
 export const ORDERS_CLOSED = 'We are not taking orders right now. The prices above show the usual offer.';
 export const QUOTE_ACTION_LABEL = 'Get a quote';
 export const QUOTE_LOADING_LABEL = 'Loading the quote assistant';

@@ -60,10 +60,20 @@ describe('the quote assistant', () => {
       connectedCallback() {
         if (this.shadowRoot) return;
         const root = this.attachShadow({ mode: 'open' });
+        // Like the real widget: the launcher toggles the panel and reports
+        // the state in aria-expanded.
         const launcher = document.createElement('button');
         launcher.className = 'solv-launcher';
-        launcher.addEventListener('click', () => this.setAttribute('data-open', ''));
-        root.append(launcher);
+        launcher.setAttribute('aria-expanded', 'false');
+        const input = document.createElement('textarea');
+        input.className = 'solv-input';
+        launcher.addEventListener('click', () => {
+          const open = !this.hasAttribute('data-open');
+          this.toggleAttribute('data-open', open);
+          launcher.setAttribute('aria-expanded', String(open));
+          if (open) input.focus();
+        });
+        root.append(input, launcher);
       }
     });
   };
@@ -98,6 +108,31 @@ describe('the quote assistant', () => {
     expect([...registry.keys()]).toEqual([OPEN_QUOTE_ACTION]);
     registry.get(OPEN_QUOTE_ACTION)!.run({ url: 'https://evil.example/q/1' });
     expect(navigate).not.toHaveBeenCalled();
+  });
+
+  it('keeps the panel open when "Get a quote" is pressed again', async () => {
+    const assistant = createQuoteAssistant(CONFIG, SERVICE_API);
+    await expect(assistant.open()).resolves.toBe(true);
+    const widget = document.querySelector<HTMLElement>('solv-chat[data-quote-assistant]')!;
+    expect(widget.hasAttribute('data-open')).toBe(true);
+    (document.activeElement as HTMLElement | null)?.blur();
+
+    await expect(assistant.open()).resolves.toBe(true);
+    expect(widget.hasAttribute('data-open')).toBe(true);
+    expect(widget.shadowRoot!.querySelector('.solv-launcher')!.getAttribute('aria-expanded')).toBe('true');
+    expect(widget.shadowRoot!.activeElement).toBe(widget.shadowRoot!.querySelector('.solv-input'));
+    expect(document.querySelectorAll('solv-chat')).toHaveLength(1);
+  });
+
+  it('opens a panel the visitor closed with the widget launcher', async () => {
+    const assistant = createQuoteAssistant(CONFIG, SERVICE_API);
+    await assistant.open();
+    const widget = document.querySelector<HTMLElement>('solv-chat[data-quote-assistant]')!;
+    widget.shadowRoot!.querySelector<HTMLButtonElement>('.solv-launcher')!.click();
+    expect(widget.hasAttribute('data-open')).toBe(false);
+
+    await assistant.open();
+    expect(widget.hasAttribute('data-open')).toBe(true);
   });
 
   it('removes the widget and the action when the page goes away', async () => {

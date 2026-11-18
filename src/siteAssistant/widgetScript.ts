@@ -51,11 +51,23 @@ export const createWidgetElement = (config: SiteAssistantConfig): HTMLElement =>
 };
 
 /**
- * Opens an attached widget's panel. The widget has no public open method; its
- * own launcher toggles the panel and moves focus into it.
+ * Opens an attached widget's panel, and leaves an open one open. The widget
+ * has no public open method; its own launcher toggles the panel (closing it
+ * when open) and reports the state in `aria-expanded` (solv.chat
+ * packages/widget/src/element.ts). The panel can already be open from an
+ * earlier call or from the conversation solv.chat restores from
+ * sessionStorage, so the launcher is clicked only while it reports closed;
+ * otherwise focus moves to the message input, as opening would.
  */
 export const openWidgetPanel = (widget: HTMLElement): void => {
-  widget.shadowRoot?.querySelector<HTMLButtonElement>('.solv-launcher')?.click();
+  const root = widget.shadowRoot;
+  const launcher = root?.querySelector<HTMLButtonElement>('.solv-launcher');
+  if (!launcher) return;
+  if (launcher.getAttribute('aria-expanded') !== 'true') {
+    launcher.click();
+    return;
+  }
+  root?.querySelector<HTMLElement>('.solv-input')?.focus();
 };
 
 /** The page action API widget.js installs (solv.chat packages/widget/src/actions.ts). */

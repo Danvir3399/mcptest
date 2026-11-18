@@ -6,6 +6,7 @@ import { createRequire } from 'node:module'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { applySiteAssistantToHtml, readSiteAssistantEnv } from './src/siteAssistant/config.mts'
+import { applyServicePageToHtml, normalizeServiceApi, resolveServicePageConfig } from './src/servicePage/config.mts'
 
 // The Node content loader, shared with scripts/generate-seo-pages.js.
 const require = createRequire(import.meta.url)
@@ -46,6 +47,33 @@ const siteAssistant = () => {
     },
     transformIndexHtml(html) {
       return applySiteAssistantToHtml(html, config)
+    },
+  }
+}
+
+/**
+ * The MCP server development page (src/servicePage/config.mts): with
+ * VITE_SERVICE_PAGE_ENABLED=true, index.html's connect-src allows the
+ * VITE_SERVICE_API origin (the public offer request) and, with
+ * VITE_SOLV_QUOTE_ASSISTANT_KEY, the quote assistant's solv.chat origin.
+ * Through the same CSP helper as the site assistant; unset, nothing changes.
+ */
+const servicePage = () => {
+  let config = null
+  return {
+    name: 'service-page',
+    configResolved(resolved) {
+      config = resolveServicePageConfig(resolved.env)
+      if (!config.enabled) return
+      if (resolved.env.VITE_SERVICE_API && !normalizeServiceApi(resolved.env.VITE_SERVICE_API)) {
+        resolved.logger.warn('[service-page] VITE_SERVICE_API must be an https URL without a query or credentials; the page shows its fallback prices.')
+      }
+      if (resolved.env.VITE_SOLV_QUOTE_ASSISTANT_KEY && !config.quoteAssistant) {
+        resolved.logger.warn('[service-page] VITE_SOLV_QUOTE_ASSISTANT_KEY needs a valid VITE_SOLV_ENDPOINT; the quote assistant is off.')
+      }
+    },
+    transformIndexHtml(html) {
+      return applyServicePageToHtml(html, config)
     },
   }
 }
@@ -150,6 +178,7 @@ export default defineConfig({
     learnSearchIndexDevServer(),
     versionedThemeInit(),
     siteAssistant(),
+    servicePage(),
     // Module-level sizes per chunk for scripts/bundle-graph.test.js and `npm run analyze`.
     visualizer({ template: 'raw-data', filename: 'dist/.vite/bundle-stats.json', gzipSize: false }),
   ],

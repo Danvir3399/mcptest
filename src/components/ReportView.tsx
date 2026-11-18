@@ -36,6 +36,7 @@ import {
 } from '../utils/reportPresentation';
 import { getStoredOAuthTrace, type OAuthTraceV1 } from '../utils/oauthTrace';
 import { createObservedServerFacts } from '../utils/releaseReadiness';
+import { SERVICE_PAGE_ENABLED } from '../servicePage/buildFlag';
 import { trackEvent, trackOAuthFlow } from '../utils/analytics';
 import { getReportGeneratedParams } from '../utils/reportAnalytics';
 import { getCatalogServerByEndpoint } from '../utils/catalogUtils';
@@ -829,6 +830,7 @@ const ReportView: React.FC = () => {
           </div>
           <div className="report-section-body">
             <ReleaseReadinessReport
+              showServiceLink={SERVICE_PAGE_ENABLED}
               report={report}
               oauthTrace={oauthTrace}
               expandedItems={expandedItems}

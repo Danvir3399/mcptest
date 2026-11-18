@@ -1,6 +1,7 @@
 import './launcher.css';
 import { trackEvent } from '../utils/analytics';
-import { widgetScriptUrl, type SiteAssistantConfig } from './config.mts';
+import type { SiteAssistantConfig } from './config.mts';
+import { createWidgetElement, loadWidgetScript, openWidgetPanel } from './widgetScript';
 import type { SiteAssistantLauncher } from './siteAssistant';
 
 /*
@@ -18,8 +19,6 @@ import type { SiteAssistantLauncher } from './siteAssistant';
  */
 
 const OPENED_KEY = 'mcptest.siteAssistant.opened';
-const ELEMENT_NAME = 'solv-chat';
-const LOAD_TIMEOUT_MS = 15_000;
 const LABEL = 'Ask the mcptest assistant';
 const LOADING_LABEL = 'Loading the mcptest assistant';
 const FAILED_LABEL = 'The mcptest assistant could not load. Try again';
@@ -60,29 +59,6 @@ const chatIcon = (): SVGSVGElement => {
   return svg;
 };
 
-/** Loads widget.js once; resolves when `<solv-chat>` is defined. */
-const loadWidgetScript = (config: SiteAssistantConfig): Promise<void> => {
-  if (customElements.get(ELEMENT_NAME)) return Promise.resolve();
-  return new Promise<void>((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = widgetScriptUrl(config);
-    script.async = true;
-    script.dataset.siteAssistant = '';
-    const fail = (reason: string) => {
-      window.clearTimeout(timer);
-      script.remove();
-      reject(new Error(reason));
-    };
-    const timer = window.setTimeout(() => fail('timed out'), LOAD_TIMEOUT_MS);
-    script.addEventListener('error', () => fail('the widget script failed to load'), { once: true });
-    customElements.whenDefined(ELEMENT_NAME).then(() => {
-      window.clearTimeout(timer);
-      resolve();
-    }, () => {});
-    document.head.append(script);
-  });
-};
-
 export const mountSiteAssistantLauncher = (config: SiteAssistantConfig): SiteAssistantLauncher => {
   const button = document.createElement('button');
   button.type = 'button';
@@ -101,11 +77,7 @@ export const mountSiteAssistantLauncher = (config: SiteAssistantConfig): SiteAss
   let loading: Promise<boolean> | null = null;
 
   const attachWidget = () => {
-    if (!widget) {
-      widget = document.createElement(ELEMENT_NAME);
-      widget.setAttribute('assistant', config.assistantKey);
-      widget.setAttribute('endpoint', config.endpoint);
-    }
+    if (!widget) widget = createWidgetElement(config);
     if (active && !widget.isConnected) document.body.append(widget);
   };
 
@@ -157,9 +129,7 @@ export const mountSiteAssistantLauncher = (config: SiteAssistantConfig): SiteAss
     void load('launcher').then(loaded => {
       opening = false;
       if (!loaded || !widget?.isConnected) return;
-      // The widget has no public open method; its own launcher toggles the panel
-      // and moves focus into it, which is what pressing this button means.
-      widget.shadowRoot?.querySelector<HTMLButtonElement>('.solv-launcher')?.click();
+      openWidgetPanel(widget);
     });
   });
 

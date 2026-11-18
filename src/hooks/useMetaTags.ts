@@ -14,11 +14,11 @@ import {
   getCatalogServerSeo,
   SITE_URL,
 } from '../utils/catalogSeo';
-import { OAUTH_CHECKER_METADATA, BREAKING_CHANGES_METADATA, CATALOG_METADATA, DISCOVERY_METADATA, HOME_METADATA } from '../utils/pageMetadata';
+import { MCP_TEST_CLIENT_METADATA, MCP_TEST_SERVERS_METADATA, OAUTH_CHECKER_METADATA, BREAKING_CHANGES_METADATA, CATALOG_METADATA, DISCOVERY_METADATA, HOME_METADATA, REPORT_METADATA, SUBMIT_METADATA } from '../utils/pageMetadata';
 import { BREAKING_CHANGES_TOOL_PATH } from '../utils/breakingChangesRoute';
 import { OG_IMAGE_HEIGHT, OG_IMAGE_WIDTH, getOgImagePath } from '../utils/ogImage';
 import { parseResultShareUrl } from '../utils/urlUtils';
-import { OAUTH_CHECKER_PATH, DISCOVERY_CHECKER_PATH, isKnownAppPath } from '../utils/appRoutes';
+import { OAUTH_CHECKER_PATH, DISCOVERY_CHECKER_PATH, DASHBOARDS_PATH, MCP_TEST_SERVERS_PATH, MCP_TEST_CLIENT_PATH, isKnownAppPath } from '../utils/appRoutes';
 import {
   LEARN_INDEX_METADATA,
   getContentPage,
@@ -29,6 +29,28 @@ import { getLandingFaqStructuredData } from '../content/landingCopy';
 import { getKeywordLandingFaqStructuredData, getKeywordLandingPage } from '../content/keywordLandingPages';
 
 const DEFAULT_IMAGE = `${SITE_URL}/logo.png`;
+
+/**
+ * App-only pages (no prerendered file of their own): each gets a title that
+ * names it, so the tab and the history match the sidebar's active entry.
+ */
+const getAppPageMetadata = (pathname: string): { title: string; description: string; robots?: string } | undefined => {
+  if (pathname === '/report' || pathname.startsWith('/report/')) {
+    return REPORT_METADATA;
+  }
+  if (pathname === '/submit') {
+    return SUBMIT_METADATA;
+  }
+  if (pathname === DASHBOARDS_PATH || pathname.startsWith(`${DASHBOARDS_PATH}/`)) {
+    // Dashboards hold the visitor's own saved calls; there is nothing to index.
+    return {
+      title: 'Dashboards | mcptest.io',
+      description: 'Saved MCP tool calls you can re-run and health-check together.',
+      robots: 'noindex, follow',
+    };
+  }
+  return undefined;
+};
 
 /** The build-time Open Graph card for a prerendered page path. */
 const ogImage = (pagePath: string) => `${SITE_URL}${getOgImagePath(pagePath)}`;
@@ -183,7 +205,7 @@ export const useMetaTags = () => {
       applyMetadata({
         title: `${LEARN_INDEX_METADATA.title} | mcptest.io`,
         description: LEARN_INDEX_METADATA.description,
-        canonicalUrl: `${SITE_URL}/learn`,
+        canonicalUrl: `${SITE_URL}${location.pathname.startsWith('/guides') ? '/guides' : '/learn'}`,
         imageUrl: ogImage('/learn'),
       });
     } else if (location.pathname.startsWith('/learn/')) {
@@ -220,6 +242,10 @@ export const useMetaTags = () => {
       });
     } else if (location.pathname === OAUTH_CHECKER_PATH) {
       applyMetadata({ ...OAUTH_CHECKER_METADATA, canonicalUrl: `${SITE_URL}${OAUTH_CHECKER_PATH}`, imageUrl: ogImage(OAUTH_CHECKER_PATH) });
+    } else if (location.pathname === MCP_TEST_SERVERS_PATH) {
+      applyMetadata({ ...MCP_TEST_SERVERS_METADATA, canonicalUrl: `${SITE_URL}${MCP_TEST_SERVERS_PATH}`, imageUrl: ogImage(MCP_TEST_SERVERS_PATH) });
+    } else if (location.pathname === MCP_TEST_CLIENT_PATH) {
+      applyMetadata({ ...MCP_TEST_CLIENT_METADATA, canonicalUrl: `${SITE_URL}${MCP_TEST_CLIENT_PATH}`, imageUrl: ogImage(MCP_TEST_CLIENT_PATH) });
     } else if (keywordLandingPage) {
       applyMetadata({
         title: keywordLandingPage.title,
@@ -233,6 +259,11 @@ export const useMetaTags = () => {
         ...DISCOVERY_METADATA,
         canonicalUrl: `${SITE_URL}${DISCOVERY_CHECKER_PATH}`,
         imageUrl: ogImage(DISCOVERY_CHECKER_PATH),
+      });
+    } else if (isKnownAppPath(location.pathname) && getAppPageMetadata(location.pathname)) {
+      applyMetadata({
+        ...getAppPageMetadata(location.pathname)!,
+        canonicalUrl: `${SITE_URL}${location.pathname}`,
       });
     } else if (!isKnownAppPath(location.pathname)) {
       applyMetadata({

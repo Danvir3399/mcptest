@@ -30,14 +30,16 @@ describe('sitemap entries', () => {
 
   it('lists each page once', () => {
     expect(byPath.size).toBe(entries.length);
-    // Home, the three keyword landing pages, catalog, learn, CI, the tools, articles, docs, servers.
-    expect(entries).toHaveLength(7 + 3 + articles.length + 2 + servers.length);
+    // Home, the three keyword landing pages, catalog, learn, guides, CI, the tools, the test servers and test client pages, articles, docs, servers.
+    expect(entries).toHaveLength(10 + 3 + articles.length + 2 + servers.length);
     for (const pathname of ['/mcp-test-server', '/mcp-inspector-online', '/mcp-playground']) {
       expect(byPath.get(pathname)).toEqual({ pathname });
     }
     expect(byPath.get('/ci')).toEqual({ pathname: '/ci' });
     expect(byPath.has('/tools/breaking-changes')).toBe(true);
     expect(byPath.get('/tools/oauth-check')).toEqual({ pathname: '/tools/oauth-check' });
+    expect(byPath.get('/mcp-test-servers')).toEqual({ pathname: '/mcp-test-servers' });
+    expect(byPath.get('/mcp-test-client')).toEqual({ pathname: '/mcp-test-client' });
   });
 
   it('lists the discovery checker without a content date', () => {
@@ -52,6 +54,7 @@ describe('sitemap entries', () => {
     expect(byPath.get('/catalog').lastModified).toBe('2026-10-20');
     const newestGuide = articles.map(article => article.lastReviewed).sort().at(-1);
     expect(byPath.get('/learn').lastModified).toBe(newestGuide);
+    expect(byPath.get('/guides')).toEqual({ pathname: '/guides', lastModified: newestGuide });
     expect(byPath.get('/').lastModified).toBe([newestGuide, '2026-10-20'].sort().at(-1));
     expect(byPath.get('/docs/contact').lastModified).toBeUndefined();
   });

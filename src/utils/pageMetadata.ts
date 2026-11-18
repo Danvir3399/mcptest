@@ -10,6 +10,8 @@ export const HOME_METADATA: PageMetadata = pageMetadata.home;
 export const CATALOG_METADATA: PageMetadata = pageMetadata.catalog;
 export const BREAKING_CHANGES_METADATA: PageMetadata = pageMetadata.tools['breaking-changes'];
 export const DISCOVERY_METADATA: PageMetadata = pageMetadata.discovery;
+export const REPORT_METADATA: PageMetadata = pageMetadata.report;
+export const SUBMIT_METADATA: PageMetadata = pageMetadata.submit;
 
 /** Metadata for React-only documentation pages; article metadata lives in frontmatter. */
 export const DOCS_METADATA: Readonly<Record<string, PageMetadata>> = pageMetadata.docs;
@@ -29,3 +31,5 @@ export const getDocsMetadata = (pathname: string): PageMetadata | undefined =>
   /^\/docs\/[^/]+\/?$/.test(pathname) ? getContentPageMetadata(pathname) : undefined;
 
 export const OAUTH_CHECKER_METADATA: PageMetadata = pageMetadata.tools['oauth-check'];
+export const MCP_TEST_SERVERS_METADATA: PageMetadata = pageMetadata.mcpTestServers;
+export const MCP_TEST_CLIENT_METADATA: PageMetadata = pageMetadata.mcpTestClient;

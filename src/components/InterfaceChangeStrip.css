@@ -4,7 +4,23 @@
   padding: var(--space-2) var(--space-3);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  background-color: var(--card-bg);
+  /* Opaque info tint: nothing behind the strip shows through. */
+  background-color: color-mix(in srgb, var(--info-color) 6%, var(--card-bg));
+}
+
+/*
+ * In the connected playground the strip is a full-bleed band between the
+ * session header and the workbench, so no page wash frames it.
+ */
+.tab-content-panel > .interface-change-strip {
+  flex: 0 0 auto;
+  width: calc(100% + 2 * var(--main-pad));
+  max-width: none;
+  margin: 0 calc(-1 * var(--main-pad));
+  padding-inline: var(--space-4);
+  border-width: 0 0 1px;
+  border-radius: 0;
+  border-color: color-mix(in srgb, var(--info-color) 22%, var(--border-color));
 }
 
 .interface-change-summary {

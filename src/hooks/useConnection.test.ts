@@ -464,6 +464,8 @@ describe('connection URL finalization', () => {
       undefined,
       false,
       undefined,
+      expect.any(Function),
+      undefined,
       expect.any(Function)
     );
     expect(view.connection.connectionStatus).toBe('Connected');
@@ -585,6 +587,8 @@ describe('connection URL finalization', () => {
       'quota-safe-token',
       undefined,
       false,
+      undefined,
+      expect.any(Function),
       undefined,
       expect.any(Function)
     );
@@ -923,6 +927,8 @@ describe('connection URL finalization', () => {
       undefined,
       false,
       'stateful',
+      expect.any(Function),
+      undefined,
       expect.any(Function)
     );
     expect(getStoredOAuthTrace(endpoint, sessionStorage)?.events).toEqual(expect.arrayContaining([
@@ -1515,6 +1521,7 @@ describe('connection URL finalization', () => {
       'stateful',
       expect.any(Function),
       'streamable-http',
+      expect.any(Function),
     ]);
     expect(view.connection.connectionStatus).toBe('Connected');
     view.unmount();

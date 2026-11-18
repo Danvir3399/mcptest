@@ -6,6 +6,7 @@ import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import { getCatalogServers } from '../utils/catalogUtils';
 import type { CatalogServer } from '../types/catalog';
 import { LandingHero, getRecentServerLabel, selectLandingQuickPicks } from './LandingHero';
+import { LANDING_FIXTURE } from '../data/publicFixtures';
 
 beforeAll(() => {
   (
@@ -143,14 +144,84 @@ describe('landing hero', () => {
     expect(onConnect.mock.calls).toEqual([[], []]);
   });
 
-  it('does not connect an empty URL', () => {
+  it('keeps Connect enabled and explains an empty URL inline instead of connecting', () => {
     const { container, onConnect } = renderLanding();
+    const input = container.querySelector<HTMLInputElement>('#serverUrl')!;
 
-    expect(container.querySelector<HTMLButtonElement>('#connectBtn')?.disabled).toBe(true);
-    act(() => container.querySelector('#serverUrl')?.dispatchEvent(
-      new KeyboardEvent('keydown', { key: 'Enter', bubbles: true })
-    ));
+    expect(container.querySelector<HTMLButtonElement>('#connectBtn')?.disabled).toBe(false);
+    expect(input.getAttribute('aria-describedby')).toBeNull();
+    expect(container.querySelector('label[for="serverUrl"]')?.textContent).toBe('MCP endpoint URL');
+    expect(container.querySelector('#serverUrl-help')).toBeNull();
+
+    act(() => input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true })));
     expect(onConnect).not.toHaveBeenCalled();
+    expect(container.querySelector('#serverUrl-error')?.textContent).toContain('Enter the URL of an MCP server');
+    expect(input.getAttribute('aria-invalid')).toBe('true');
+    expect(input.getAttribute('aria-describedby')).toBe('serverUrl-error');
+  });
+
+  it.each([
+    ['javascript:alert(1)', 'Use an http:// or https:// URL'],
+    ['ftp://files.example.com/mcp', 'Use an http:// or https:// URL'],
+    ['https://exa mple.com/mcp', 'cannot contain spaces'],
+    ['https://user:secret@example.com/mcp', 'Remove the user name and password'],
+  ])('rejects the malformed URL %s with a specific message', (serverUrl, message) => {
+    const { container, onConnect } = renderLanding({ serverUrl });
+
+    act(() => container.querySelector('#connectBtn')?.dispatchEvent(new MouseEvent('click', { bubbles: true })));
+
+    expect(onConnect).not.toHaveBeenCalled();
+    expect(container.querySelector('[role="alert"]#serverUrl-error')?.textContent).toContain(message);
+  });
+
+  it.each([
+    'example.com/mcp', 'localhost:3000/mcp', 'http://127.0.0.1:4180/2026/mcp', 'https://mcp.example.com/mcp?region=eu',
+    // Single-label hosts an internal network resolves are valid HTTP endpoints.
+    'https://intranet/mcp', 'http://mcp-server:8080/mcp', 'intranet/mcp', 'intranet:8080/mcp',
+  ])(
+    'accepts %s',
+    (serverUrl) => {
+      const { container, onConnect } = renderLanding({ serverUrl });
+      act(() => container.querySelector('#connectBtn')?.dispatchEvent(new MouseEvent('click', { bubbles: true })));
+      expect(onConnect).toHaveBeenCalledOnce();
+      expect(container.querySelector('#serverUrl-error')).toBeNull();
+    }
+  );
+
+  it('clears the error as soon as the URL is edited', () => {
+    const { container, onServerUrlChange } = renderLanding({ serverUrl: 'not a url' });
+    const input = container.querySelector<HTMLInputElement>('#serverUrl')!;
+    act(() => container.querySelector('#connectBtn')?.dispatchEvent(new MouseEvent('click', { bubbles: true })));
+    expect(container.querySelector('#serverUrl-error')).not.toBeNull();
+
+    act(() => {
+      const setValue = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!;
+      setValue.call(input, 'https://example.com/mcp');
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    expect(onServerUrlChange).toHaveBeenCalledWith('https://example.com/mcp');
+    expect(container.querySelector('#serverUrl-error')).toBeNull();
+    expect(input.hasAttribute('aria-invalid')).toBe(false);
+  });
+
+  it('offers one starter per server without a duplicate sample action', () => {
+    const { container } = renderLanding();
+    expect(container.querySelector('#landingSampleBtn')).toBeNull();
+    const ids = Array.from(container.querySelectorAll('.landing-quick-pick'), node => node.getAttribute('data-server-id'));
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it('shows a static example result marked as an example', () => {
+    const { container } = renderLanding();
+    const preview = container.querySelector('figure.landing-preview');
+    expect(preview?.getAttribute('aria-labelledby')).toBe('landing-preview-caption');
+    expect(preview?.querySelector('figcaption')?.textContent).toContain('Example result');
+    expect(Array.from(preview!.querySelectorAll('.badge'), (pill) => pill.textContent)).toEqual([
+      'MCP 2026-07-28 · stateless', 'Auth: none required', 'CORS: browser allowed',
+    ]);
+    expect(preview?.querySelectorAll('.landing-preview-tool')).toHaveLength(3);
+    expect(preview?.querySelectorAll('.landing-preview-json')).toHaveLength(2);
+    expect(preview?.querySelector('img')).toBeNull();
   });
 
   it('connects a quick pick through the same connect callback with its catalog endpoint', () => {
@@ -165,6 +236,30 @@ describe('landing hero', () => {
       endpoint: { url: firstPick.browserUrl },
       protocolEra: firstPick.protocolEra,
     });
+  });
+});
+
+describe('landing hero echo fixture preset', () => {
+  it('offers the public echo fixture first and connects it as a stateless Streamable HTTP endpoint', () => {
+    const { container, onConnect } = renderLanding();
+    const picks = Array.from(container.querySelectorAll<HTMLButtonElement>('.landing-quick-pick'));
+    expect(picks[0].dataset.serverId).toBe(LANDING_FIXTURE.id);
+    expect(picks[0].title).toBe('https://mcptest.io/fixtures/echo/mcp');
+    expect(picks.slice(1).map(pick => pick.dataset.serverId))
+      .toEqual(selectLandingQuickPicks(getCatalogServers()).map(server => server.id));
+
+    act(() => picks[0].dispatchEvent(new MouseEvent('click', { bubbles: true })));
+
+    expect(onConnect).toHaveBeenCalledOnce();
+    expect(onConnect.mock.calls[0][0]).toMatchObject({
+      endpoint: { url: 'https://mcptest.io/fixtures/echo/mcp', transport: 'streamable-http' },
+      protocolEra: 'stateless',
+    });
+  });
+
+  it('links to the public test servers page', () => {
+    const { container } = renderLanding();
+    expect(container.querySelector('.landing-test-servers a')?.getAttribute('href')).toBe('/mcp-test-servers');
   });
 });
 
@@ -207,7 +302,8 @@ describe('landing hero for returning users', () => {
   it('keeps the quick picks when there is no recent-connect handler and caps recent chips at six', () => {
     const noHandler = renderLanding({ recentServers });
     expect(noHandler.container.querySelector('.landing-recent-connect')).toBeNull();
-    expect(noHandler.container.querySelectorAll('[data-server-id]')).toHaveLength(3);
+    // mcptest's echo fixture, then the three catalog picks.
+    expect(noHandler.container.querySelectorAll('.landing-quick-pick[data-server-id]')).toHaveLength(4);
     act(() => root?.unmount());
 
     const many = Array.from({ length: 9 }, (_, index) => `https://server-${index}.example/mcp`);
@@ -228,8 +324,8 @@ describe('landing hero for returning users', () => {
 
     act(() => toggle.dispatchEvent(new MouseEvent('click', { bubbles: true })));
 
-    expect(toggle.getAttribute('aria-expanded')).toBe('true');
-    expect(toggle.getAttribute('aria-controls')).toBe('landing-advanced-panel');
+    expect(container.querySelector('.landing-advanced-toggle')?.getAttribute('aria-expanded')).toBe('true');
+    expect(container.querySelector('.landing-advanced-toggle')?.getAttribute('aria-controls')).toBe('landing-advanced-panel');
     expect(container.querySelector('#landing-advanced-panel [data-testid="advanced"]')).not.toBeNull();
     expect(container.querySelector('.landing-connect')).toBeNull();
     expect(container.querySelector('#landing-title')).not.toBeNull();

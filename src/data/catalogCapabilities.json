@@ -1,7 +1,7 @@
 {
   "agentweb": {
     "version": 1,
-    "observedAt": "2026-11-02T16:00:15.615Z",
+    "observedAt": "2026-11-16T15:52:58.323Z",
     "provenance": {
       "testedEndpoint": "https://api.agentweb.live/mcp",
       "route": "direct"
@@ -20,7 +20,7 @@
           "input": [
             {
               "name": "limit",
-              "type": "number",
+              "type": "integer",
               "description": "Max favorites (default: 20, max: 100)",
               "required": false
             }
@@ -33,13 +33,13 @@
           "input": [
             {
               "name": "limit",
-              "type": "number",
+              "type": "integer",
               "description": "Max entries (default: 50, max: 500)",
               "required": false
             },
             {
               "name": "offset",
-              "type": "number",
+              "type": "integer",
               "description": "Skip N entries (default: 0)",
               "required": false
             }
@@ -80,7 +80,7 @@
           "input": [
             {
               "name": "limit",
-              "type": "number",
+              "type": "integer",
               "description": "Number of top contributors (default: 10, max: 50)",
               "required": false
             }
@@ -108,12 +108,12 @@
         },
         {
           "name": "contribute_business",
-          "description": "Contribute a new business to AgentWeb, OR enrich an existing one with missing data (phone, email, website, hours, address). Deduplicates automatically: same name within 100m, or a matching phone, merges into the existing record. Use whenever you find structured business data AgentWeb doesn't have yet.",
+          "description": "Add a business AgentWeb does not have, or fill the empty fields of one it has (phone, email, website, hours, category). Send the name with at least one of phone, website, email, lat and lng, or address.city. A stored business is matched by the same name within 100 m, or the same name with the same phone or website. Stored values are never replaced: the answer lists what was filled. To flag a wrong stored value, use report_business.",
           "input": [
             {
               "name": "address",
               "type": "object",
-              "description": "Address fields: { street, city, postcode, country, full }",
+              "description": "Address fields: { street, city, postal_code, country }",
               "required": false
             },
             {
@@ -241,7 +241,7 @@
           "input": [
             {
               "name": "adults",
-              "type": "number",
+              "type": "integer",
               "description": "Passengers (default: 1)",
               "required": false
             },
@@ -259,7 +259,7 @@
             },
             {
               "name": "limit",
-              "type": "number",
+              "type": "integer",
               "description": "Max results (default: 10)",
               "required": false
             },
@@ -303,7 +303,7 @@
           "input": [
             {
               "name": "adults",
-              "type": "number",
+              "type": "integer",
               "description": "Adult passengers (default: 1)",
               "required": false
             },
@@ -327,7 +327,7 @@
             },
             {
               "name": "limit",
-              "type": "number",
+              "type": "integer",
               "description": "Max results (default: 10)",
               "required": false
             },
@@ -363,7 +363,7 @@
           "input": [
             {
               "name": "limit",
-              "type": "number",
+              "type": "integer",
               "description": "Maximum number of results (default: 15)",
               "required": false
             },
@@ -421,8 +421,14 @@
         },
         {
           "name": "research_status",
-          "description": "Get the status, evidence and usage receipt of an accepted research request.",
+          "description": "Get the pages read so far for a web_research request that was still running, by its request_id.",
           "input": [
+            {
+              "name": "format",
+              "type": "string",
+              "description": "text (default) is short and readable. json adds evidence ids, hashes and usage.",
+              "required": false
+            },
             {
               "name": "request_id",
               "type": "string",
@@ -455,7 +461,7 @@
             },
             {
               "name": "limit",
-              "type": "number",
+              "type": "integer",
               "description": "Max results (default: 15)",
               "required": false
             },
@@ -510,7 +516,7 @@
             },
             {
               "name": "limit",
-              "type": "number",
+              "type": "integer",
               "description": "Maximum number of results (default: 10, max: 100)",
               "required": false
             },
@@ -537,11 +543,11 @@
         },
         {
           "name": "search_cars",
-          "description": "Search real-time car rental availability and prices on booking.com via AgentWeb. Returns vehicle, supplier (Avis, Hertz, Sixt…), price, transmission, doors, mileage, pickup location, booking links. Works with any airport IATA code. ~1s.",
+          "description": "Search real-time car rental availability and prices on booking.com via AgentWeb. Returns vehicle, supplier (Avis, Hertz, Sixt…), price, transmission, doors, mileage, pickup location, booking links. Takes an airport IATA code or a city name. ~1s.",
           "input": [
             {
               "name": "driver_age",
-              "type": "number",
+              "type": "integer",
               "description": "Driver age (default: 30)",
               "required": false
             },
@@ -565,14 +571,14 @@
             },
             {
               "name": "limit",
-              "type": "number",
+              "type": "integer",
               "description": "Max results (default: 15)",
               "required": false
             },
             {
               "name": "location",
               "type": "string",
-              "description": "Pickup: airport IATA code or city name",
+              "description": "Pickup: airport IATA code (e.g. FCO) or city name (e.g. Rome)",
               "required": true
             },
             {
@@ -608,8 +614,8 @@
           "input": [
             {
               "name": "adults",
-              "type": "number",
-              "description": "Adult passengers (default: 2)",
+              "type": "integer",
+              "description": "Adult passengers (default: 1)",
               "required": false
             },
             {
@@ -632,7 +638,7 @@
             },
             {
               "name": "limit",
-              "type": "number",
+              "type": "integer",
               "description": "Max results (default: 10)",
               "required": false
             },
@@ -663,7 +669,7 @@
           "input": [
             {
               "name": "adults",
-              "type": "number",
+              "type": "integer",
               "description": "Adult guests (default: 2)",
               "required": false
             },
@@ -687,7 +693,7 @@
             },
             {
               "name": "limit",
-              "type": "number",
+              "type": "integer",
               "description": "Max results (default: 10)",
               "required": false
             },
@@ -708,17 +714,17 @@
         },
         {
           "name": "suggest",
-          "description": "Autocomplete / type-ahead for business names, cities, or categories. Use to disambiguate user input before searching. Returns up to 15 suggestions by relevance. Fast (<20ms).",
+          "description": "Complete the start of a business name, city or category. Use it to find the exact spelling before searching. Business names come in alphabetical order, cities largest first, categories by number of businesses.",
           "input": [
             {
               "name": "country",
               "type": "string",
-              "description": "Optional ISO country code to narrow suggestions",
+              "description": "Optional two-letter country code, such as NO, to narrow suggestions",
               "required": false
             },
             {
               "name": "limit",
-              "type": "number",
+              "type": "integer",
               "description": "Max suggestions (default: 10, max: 15)",
               "required": false
             },
@@ -739,7 +745,7 @@
         },
         {
           "name": "time_convert",
-          "description": "Convert a local date/time between IANA zones, supported cities or countries. Rejects nonexistent clock-change times. Repeated local times require fold=0/1 or an explicit UTC offset. HH:MM uses today's date in the source zone.",
+          "description": "Convert a date and time between two places. Each place is a country, city, IANA timezone, abbreviation (EST) or offset (UTC+1). A clock time alone means today in the source place. A time that is skipped or repeated at a clock change is explained in the error.",
           "input": [
             {
               "name": "fold",
@@ -750,19 +756,19 @@
             {
               "name": "from",
               "type": "string",
-              "description": "Source IANA timezone, supported city or country.",
+              "description": "Source place, e.g. Europe/Copenhagen, Copenhagen, Denmark, CET.",
               "required": true
             },
             {
               "name": "time",
               "type": "string",
-              "description": "ISO datetime, YYYY-MM-DD HH:MM, HH:MM or now (default).",
+              "description": "now (default), a clock time such as 15:00, 9:30 or 3pm, or a dated time such as 2026-11-20 15:00.",
               "required": false
             },
             {
               "name": "to",
               "type": "string",
-              "description": "Destination IANA timezone, supported city or country.",
+              "description": "Destination place, e.g. America/New_York, Tokyo, Japan, EST.",
               "required": true
             }
           ],
@@ -770,18 +776,18 @@
         },
         {
           "name": "time_now",
-          "description": "Get the current date and time in a country (e.g. Denmark), supported city, or IANA timezone. Returns UTC offset, DST, Unix timestamp and timezone-data version. Fresh every call. Countries with multiple zones return choices; select one and retry. Use this for 'What time is it in Denmark right now?'.",
+          "description": "Get the current date and time for a place: a country (Denmark), city (Tokyo), IANA timezone (Europe/Copenhagen), abbreviation (EST) or offset (UTC+1). Returns local time, weekday, UTC offset and DST. Fresh every call. A place with several clocks returns candidates: pick one and call again. Use this for 'What time is it in Denmark right now?'.",
           "input": [
             {
               "name": "location",
               "type": "string",
-              "description": "Country name/code or supported city, e.g. Denmark, DK, Tokyo. Use either location or timezone.",
+              "description": "Country name or code, city, abbreviation or offset, e.g. Denmark, DK, Tokyo, EST, UTC+1.",
               "required": false
             },
             {
               "name": "timezone",
               "type": "string",
-              "description": "IANA timezone, e.g. Europe/Copenhagen. Defaults to UTC if neither field is supplied.",
+              "description": "IANA timezone, e.g. Europe/Copenhagen. Used first when both fields are given. UTC when neither is given.",
               "required": false
             }
           ],
@@ -820,15 +826,18 @@
         },
         {
           "name": "watch_create",
-          "description": "Create an expiring, resource-limited watch for URL text changes, text appearance or an unambiguous structured product price. Baselines are silent by default. An optional webhook receives signed changes; without it, poll watch_events.",
+          "description": "Watch a web page and report when it changes. Give url and kind. kind=content_changed: the page text changed. kind=text_appeared: one of terms shows up (works with url, or with query to watch search results). kind=price_below: the product price falls under price (needs price and currency). kind=price_dropped: the price falls below the last one seen (needs currency, no price). The first check is silent. Read changes with watch_events, or give webhook_url to receive them.",
           "input": [
             {
               "name": "currency",
+              "type": "string",
+              "description": "Three-letter currency code such as EUR. Required for price_below and price_dropped.",
               "required": false
             },
             {
               "name": "expires_in_seconds",
               "type": "integer",
+              "description": "The watch stops after this many seconds.",
               "required": false
             },
             {
@@ -840,52 +849,67 @@
             {
               "name": "interval_seconds",
               "type": "integer",
+              "description": "Seconds between checks.",
               "required": false
             },
             {
               "name": "kind",
               "type": "string",
+              "description": "What counts as a change.",
               "required": true
             },
             {
               "name": "max_checks",
               "type": "integer",
+              "description": "The watch stops after this many checks.",
               "required": false
             },
             {
               "name": "max_pages",
               "type": "integer",
+              "description": "Pages read per check of a query watch.",
               "required": false
             },
             {
               "name": "max_units",
               "type": "integer",
+              "description": "Usage budget for the whole watch.",
               "required": false
             },
             {
               "name": "notify_initial",
               "type": "boolean",
+              "description": "Also report the first observation.",
               "required": false
             },
             {
               "name": "price",
+              "type": "number",
+              "description": "Price limit. Required for kind=price_below, not allowed otherwise.",
               "required": false
             },
             {
               "name": "query",
+              "type": "string",
+              "description": "Web search to watch instead of a page. Only with kind=text_appeared.",
               "required": false
             },
             {
               "name": "terms",
               "type": "array",
+              "description": "1 to 5 words or phrases to wait for. Required for kind=text_appeared, not allowed otherwise.",
               "required": false
             },
             {
               "name": "url",
+              "type": "string",
+              "description": "Public http or https page to watch. Give url or query, not both.",
               "required": false
             },
             {
               "name": "webhook_url",
+              "type": "string",
+              "description": "Optional https address that receives signed change events.",
               "required": false
             }
           ],
@@ -926,7 +950,7 @@
             },
             {
               "name": "days",
-              "type": "number",
+              "type": "integer",
               "description": "Forecast days (1-14, default: 3)",
               "required": false
             },
@@ -941,12 +965,24 @@
         },
         {
           "name": "web_fetch",
-          "description": "Page fetch. Fetches a public URL and returns its cleaned text content (title + body) ready to read.",
+          "description": "Read one public web page. Returns the title and the page text from the top as plain text, and says how long the whole page is. A URL that ends in #section is read from that section. For a long page, call again with the start value the answer gives.",
           "input": [
             {
+              "name": "format",
+              "type": "string",
+              "description": "text (default) is short and readable. json adds evidence ids, hashes and usage.",
+              "required": false
+            },
+            {
               "name": "max_chars",
-              "type": "number",
-              "description": "Truncate content (default 8000)",
+              "type": "integer",
+              "description": "Characters to return (default 8000)",
+              "required": false
+            },
+            {
+              "name": "start",
+              "type": "integer",
+              "description": "Character position to continue from (default 0, the top of the page)",
               "required": false
             },
             {
@@ -960,12 +996,18 @@
         },
         {
           "name": "web_research",
-          "description": "Web search PLUS the cleaned text of the top pages in one call (pages are fetched in parallel). Prefer this over web_search + web_fetch whenever you need to read the results, not just list them.",
+          "description": "Search the web and read the top pages in one call. Returns each page as plain text: title, URL and the passages that match the query. Use it when you need what the pages say, not only a list of links.",
           "input": [
             {
               "name": "entity",
               "type": "string",
               "description": "Explicit entity for official_website candidate identification; ownership is not verified.",
+              "required": false
+            },
+            {
+              "name": "format",
+              "type": "string",
+              "description": "text (default) is short and readable. json adds evidence ids, hashes and usage.",
               "required": false
             },
             {
@@ -1012,8 +1054,14 @@
         },
         {
           "name": "web_search",
-          "description": "General web search. mode=index searches AgentWeb's own indexed pages with a short time budget; mode=hybrid also queries external sources (the default). Returns the top web results (title, URL, snippet) for a query: general web pages, not just businesses. Use for research, finding pages, and current info. Pair with web_fetch to read a result.",
+          "description": "General web search. mode=index searches AgentWeb's own indexed pages with a short time budget; mode=hybrid also queries external sources (the default). Returns the top web results (title, URL, snippet) for a query as a short numbered list: general web pages, not just businesses. Use for research, finding pages, and current info. Pair with web_fetch to read a result.",
           "input": [
+            {
+              "name": "format",
+              "type": "string",
+              "description": "text (default) is short and readable. json is the full API response.",
+              "required": false
+            },
             {
               "name": "mode",
               "type": "string",
@@ -1030,6 +1078,12 @@
               "type": "string",
               "description": "Search query",
               "required": true
+            },
+            {
+              "name": "snippet_chars",
+              "type": "integer",
+              "description": "Length of each snippet in mode=index (default 240). A longer snippet often answers the question without a fetch",
+              "required": false
             }
           ],
           "outputSchema": false
@@ -1063,7 +1117,7 @@
   },
   "alfie-everyday": {
     "version": 1,
-    "observedAt": "2026-11-02T16:00:14.932Z",
+    "observedAt": "2026-11-16T15:52:55.156Z",
     "provenance": {
       "testedEndpoint": "https://everyday.alfie.family/mcp",
       "route": "direct"
@@ -1285,7 +1339,7 @@
   },
   "astro-docs": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:19.913Z",
+    "observedAt": "2026-11-16T15:51:48.642Z",
     "provenance": {
       "testedEndpoint": "https://mcp.docs.astro.build/mcp",
       "route": "direct"
@@ -1340,7 +1394,7 @@
   },
   "aws": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:35.057Z",
+    "observedAt": "2026-11-16T15:52:06.683Z",
     "provenance": {
       "testedEndpoint": "https://aws-mcp.us-east-1.api.aws/mcp",
       "route": "direct"
@@ -1459,7 +1513,7 @@
         },
         {
           "name": "aws___run_script",
-          "description": "Execute Python code in sandboxed environment with AWS API access via `call_boto3`. No network except `call_boto3`. ```python async def call_boto3( *, service_name: str, operation_name: str, region_name: str | None = None, params: dict | None = None, ) -> dict: ... ``` ``operation_name`` MUST be the PascalCase AWS API operation name (e.g. ``ListBuckets``, ``GetTable``, ``StartQueryExecution``). Do not use the snake_case boto3 method name (``list_buckets``, ``get_table``); exact matches are corrected only as a runtime fallback. Response includes `api_calls` list—verify APIs ran before trusting `",
+          "description": "Execute Python code in sandboxed environment with AWS API access via `call_boto3`. No network except `call_boto3`. ```python async def call_boto3( *, service_name: str, operation_name: str, region_name: str | None = None, params: dict | None = None, ) -> dict: ... # the AWS response itself ``` ``operation_name`` MUST be the PascalCase AWS API operation name (e.g. ``ListBuckets``, ``GetTable``). Do not use the snake_case boto3 method name (``list_buckets``, ``get_table``); exact matches are corrected only as a runtime fallback. Response includes `api_calls` list—verify APIs ran before trusting",
           "input": [
             {
               "name": "code",
@@ -1524,7 +1578,7 @@
   },
   "aws-knowledge": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:19.729Z",
+    "observedAt": "2026-11-16T15:51:48.349Z",
     "provenance": {
       "testedEndpoint": "https://knowledge-mcp.global.api.aws/",
       "route": "direct"
@@ -1665,7 +1719,7 @@
   },
   "blockvectra-docs": {
     "version": 1,
-    "observedAt": "2026-11-07T07:44:05.397Z",
+    "observedAt": "2026-11-16T15:53:03.263Z",
     "provenance": {
       "testedEndpoint": "https://docs.blockvectra.com/mcp/docs",
       "route": "direct"
@@ -1751,7 +1805,7 @@
   },
   "browser-use": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:54.942Z",
+    "observedAt": "2026-11-16T15:52:31.783Z",
     "provenance": {
       "testedEndpoint": "https://api.browser-use.com/v3/mcp",
       "route": "direct"
@@ -1953,7 +2007,7 @@
   },
   "cadprops": {
     "version": 1,
-    "observedAt": "2026-11-02T16:00:15.465Z",
+    "observedAt": "2026-11-16T15:53:01.107Z",
     "provenance": {
       "testedEndpoint": "https://www.cadprops.com/api/v1/mcp",
       "route": "direct"
@@ -2087,7 +2141,7 @@
   },
   "cloudflare-agents-docs": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:40.655Z",
+    "observedAt": "2026-11-16T15:52:14.641Z",
     "provenance": {
       "testedEndpoint": "https://agents.cloudflare.com/mcp",
       "route": "direct"
@@ -2148,7 +2202,7 @@
   },
   "cloudflare-docs": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:18.700Z",
+    "observedAt": "2026-11-16T15:51:47.700Z",
     "provenance": {
       "testedEndpoint": "https://docs.mcp.cloudflare.com/mcp",
       "route": "direct"
@@ -2212,7 +2266,7 @@
   },
   "coingecko": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:14.896Z",
+    "observedAt": "2026-11-16T15:51:43.813Z",
     "provenance": {
       "testedEndpoint": "https://mcp.api.coingecko.com/mcp",
       "route": "direct"
@@ -2298,7 +2352,7 @@
   },
   "context7": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:14.121Z",
+    "observedAt": "2026-11-16T15:51:42.651Z",
     "provenance": {
       "testedEndpoint": "https://mcp.context7.com/mcp",
       "route": "direct"
@@ -2384,7 +2438,7 @@
   },
   "cookierisk": {
     "version": 1,
-    "observedAt": "2026-11-09T12:45:35.847Z",
+    "observedAt": "2026-11-16T15:53:05.962Z",
     "provenance": {
       "testedEndpoint": "https://cookierisk.eu/mcp",
       "route": "direct"
@@ -2399,12 +2453,12 @@
       "items": [
         {
           "name": "get_quickscan_result",
-          "description": "Use the scanId returned by start_quickscan to retrieve progress or sanitized findings, including the visible banner provider and controls, CookieRisk score, pre-consent tracking status, tag or service classifications, browser-recorded initiator hosts and consent signals when available. Page settings and scan-wide network signals are separate. A request in a tracking category alone is not confirmation. Observe pollAfterSeconds before polling and retryAfter on an error. Unknown, incomplete and failed scans do not establish absence of tracking. Accept and reject behavior is outside the scan scope",
+          "description": "Retrieves scan progress or sanitized findings for a CookieRisk scan ID. Findings can include the visible banner provider and controls, CookieRisk score, pre-consent tracking status, tag or service classifications, browser-recorded initiator hosts, and consent signals. Page settings and scan-wide network signals are separate. A request in a tracking category alone is not confirmation. Unknown, incomplete, and failed scans do not establish absence of tracking. Accept and reject behavior is outside the scan scope.",
           "input": [
             {
               "name": "scanId",
               "type": "string",
-              "description": "The scanId returned by start_quickscan.",
+              "description": "The identifier of a CookieRisk quickscan.",
               "required": true
             }
           ],
@@ -2412,7 +2466,7 @@
         },
         {
           "name": "start_quickscan",
-          "description": "Use this when a user asks to check a public website homepage for cookies and tracking observed before interaction. Creates a scan and visits the website. Only submit the homepage URL; do not use for private pages, legal verdicts, accept/reject testing, monitoring, or bulk scans. If reused is true, tell the user right away when the evidence was recorded (evidenceCapturedAt, if known) and when the domain cooldown ends (domainCooldownEndsAt). A new scan still depends on capacity. Poll get_quickscan_result using the returned scanId and wait pollAfterSeconds between reads.",
+          "description": "Starts a scan of a public homepage for cookies and tracking observed before consent interaction, or reuses recent evidence. Returns a scan ID and, for reused scans, the evidence timestamp when known and the domain cooldown end. The scan scope excludes private pages, legal verdicts, accept/reject testing, monitoring, and bulk scans. API documentation: [REDACTED URI]",
           "input": [
             {
               "name": "url",
@@ -2452,7 +2506,7 @@
   },
   "courier": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:51.337Z",
+    "observedAt": "2026-11-16T15:52:27.346Z",
     "provenance": {
       "testedEndpoint": "https://mcp.courier.com/",
       "route": "direct"
@@ -3838,9 +3892,93 @@
       "items": []
     }
   },
+  "datacircle": {
+    "version": 1,
+    "observedAt": "2026-11-16T15:53:08.951Z",
+    "provenance": {
+      "testedEndpoint": "https://api.datacircle.dev/mcp",
+      "route": "direct"
+    },
+    "authentication": "unauthenticated",
+    "tools": {
+      "status": "partial",
+      "observedCount": 2,
+      "retainedCount": 2,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": [
+        {
+          "name": "list_apis",
+          "description": "Lists the APIs on Datacircle's sheet and the number of plans and providers for each. Pass an API's name to search_plans. list_apis takes no arguments. The answer holds every API on the sheet, in the sheet's order, with no paging. Each API comes with a link to the API's sheet. Some APIs also link a best page. A best page ranks the API's providers on our benchmark. Call list_apis first when you don't know an API's name. The tool is free and read-only, and needs no key.",
+          "outputSchema": true
+        },
+        {
+          "name": "search_plans",
+          "description": "Searches Datacircle's sheet of API plans and gives the ones that match, best first. Call list_apis first to get the APIs' names. Pass an API's name as api. Leave api out to search every API. Use query to find a provider or a plan by name. Sort by price to get the cheapest first. Each plan shows the price, score, rate limits, speed and returned fields, and links the plan's page on datacircle.dev. Pass api to get links to the API's sheet and to a ranking of the API's providers on our benchmark. Use offset to get the next page of plans. If nothing matches, you get total 0 and an empty list. A wro",
+          "input": [
+            {
+              "name": "api",
+              "type": "string",
+              "description": "The API, its name as list_apis gives it. Every API when left out.",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "How many plans to give, 1 to 50. 10 when left out.",
+              "required": false
+            },
+            {
+              "name": "offset",
+              "type": "integer",
+              "description": "How many found plans to skip first. 0 when left out.",
+              "required": false
+            },
+            {
+              "name": "query",
+              "type": "string",
+              "description": "Words that must all appear in the provider's name and the plan's name read together, ignoring case and accents: \"scrappa free\" finds Scrappa's Free plans.",
+              "required": false
+            },
+            {
+              "name": "sort",
+              "type": "string",
+              "description": "score, the default: best first, as on the sheet at datacircle.dev, each API's plans together, unscored plans last. provider: A to Z. price: $ per 1,000, lowest first.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        }
+      ]
+    },
+    "resources": {
+      "status": "unsupported",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    },
+    "resourceTemplates": {
+      "status": "unsupported",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    },
+    "prompts": {
+      "status": "unsupported",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    }
+  },
   "deepwiki": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:14.557Z",
+    "observedAt": "2026-11-16T15:51:42.186Z",
     "provenance": {
       "testedEndpoint": "https://mcp.deepwiki.com/mcp",
       "route": "direct"
@@ -3924,9 +4062,644 @@
       "items": []
     }
   },
+  "eorscope": {
+    "version": 1,
+    "observedAt": "2026-11-16T15:53:07.038Z",
+    "provenance": {
+      "testedEndpoint": "https://mcp.eorscope.com/mcp",
+      "route": "direct"
+    },
+    "authentication": "unauthenticated",
+    "tools": {
+      "status": "partial",
+      "observedCount": 15,
+      "retainedCount": 15,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": [
+        {
+          "name": "compare_countries",
+          "description": "Use this when the user wants the statutory employer cost of the same gross salary in 2 to 10 countries (e.g. \"employer cost of 70k in Poland, Portugal and Spain\", \"combien coûte un salaire de 60 000 en Irlande et aux Pays-Bas\"). Before any Employer of Record fee; rows come back in the order requested, not ranked. Do not use when each country has its own salary (use compare_offers). Data snapshot 2026-11-06. Cost comparison, not legal or tax advice.",
+          "input": [
+            {
+              "name": "countries",
+              "type": "array",
+              "required": true
+            },
+            {
+              "name": "payments_per_year",
+              "type": "number",
+              "description": "With salary_period \"month\" only: the total number of monthly salaries the contract pays in a year, statutory ones included (e.g. 14). Omit to use the statutory number of the country.",
+              "required": false
+            },
+            {
+              "name": "salary_period",
+              "type": "string",
+              "description": "Whether the salary is a year (default) or a month. Pass a monthly salary as the user gives it, with \"month\": the statutory number of monthly payments of the country (13th, 14th month) is applied, see salary_basis in the answer.",
+              "required": false
+            },
+            {
+              "name": "salary_usd",
+              "type": "number",
+              "description": "Gross salary in USD, a year unless salary_period is \"month\", applied to every country",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "compare_offers",
+          "description": "Use this when the user has job offers or candidates in 2 to 6 countries, each with its own gross salary (in USD or the local currency), and wants the total employer cost of each (e.g. \"candidate A in Poland at 240,000 PLN, candidate B in Portugal at 45k: what does each cost the company?\"). A monthly offer is passed with salary_period \"month\", which applies each country's statutory 13th or 14th month (e.g. \"un candidat à 3 000 par mois à Madrid et un autre à 60 000 par an à Dublin\"). Returns salary plus statutory employer charges, before any Employer of Record fee, the difference and ratio of e",
+          "input": [
+            {
+              "name": "offers",
+              "type": "array",
+              "description": "One offer per country, 2 to 6 countries, each with its own salary",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "compare_structures",
+          "description": "Use this when the user is deciding between hiring through an Employer of Record, setting up their own entity, or engaging contractors in a country and wants the cost of each over 1 to 5 years (e.g. \"from how many employees should we open an entity in Poland instead of using an EOR?\"). Uses the fees and entity costs the user enters plus the statutory employer charges, and gives the headcount at which entity costs and EOR fees cross. Costs only: it does not say whether a contractor arrangement is lawful. Data snapshot 2026-11-06. Cost comparison, not legal or tax advice.",
+          "input": [
+            {
+              "name": "assumptions",
+              "type": "object",
+              "description": "Override an adjustable assumption the country declares, e.g. {\"basic_share_of_gross\": 0.6}. See `assumptions` in an employer_cost answer.",
+              "required": false
+            },
+            {
+              "name": "contractor_fee_usd_month",
+              "type": "number",
+              "description": "A contractor platform fee, if the user has one, in USD per employee per month, as the user gives it",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            },
+            {
+              "name": "entity_annual_usd",
+              "type": "number",
+              "description": "Yearly entity running cost in USD (payroll, accounting, filings), from the user",
+              "required": false
+            },
+            {
+              "name": "entity_setup_usd",
+              "type": "number",
+              "description": "One-off entity set-up cost in USD, from the user",
+              "required": false
+            },
+            {
+              "name": "eor_fee_usd_month",
+              "type": "number",
+              "description": "The EOR fee the user has been quoted, in USD per employee per month, as the user gives it",
+              "required": true
+            },
+            {
+              "name": "headcount",
+              "type": "integer",
+              "description": "Number of employees",
+              "required": false
+            },
+            {
+              "name": "payments_per_year",
+              "type": "number",
+              "description": "With salary_period \"month\" only: the total number of monthly salaries the contract pays in a year, statutory ones included (e.g. 14). Omit to use the statutory number of the country.",
+              "required": false
+            },
+            {
+              "name": "salary",
+              "type": "number",
+              "description": "Gross salary, a year unless salary_period is \"month\". Omit to use the country's example salary.",
+              "required": false
+            },
+            {
+              "name": "salary_currency",
+              "type": "string",
+              "description": "Currency of `salary`: USD, or the local currency of the country",
+              "required": false
+            },
+            {
+              "name": "salary_period",
+              "type": "string",
+              "description": "Whether the salary is a year (default) or a month. Pass a monthly salary as the user gives it, with \"month\": the statutory number of monthly payments of the country (13th, 14th month) is applied, see salary_basis in the answer.",
+              "required": false
+            },
+            {
+              "name": "years",
+              "type": "integer",
+              "description": "Horizon in years",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "contractor_rate_equivalent",
+          "description": "Use this when the user asks what day or hour rate a contractor would need to cost the same as an employee in a country, or wants to set a contractor rate against the full cost of employment (e.g. \"what daily rate equals an 80k employee in Germany?\"). The employee's annual cost (gross salary plus statutory employer charges, plus an Employer of Record fee if the user gives one) is divided by working days, by default 260 weekdays minus the country's statutory paid leave and public holidays, both adjustable. Costs only: it does not say whether a contractor arrangement is lawful or how to classify",
+          "input": [
+            {
+              "name": "assumptions",
+              "type": "object",
+              "description": "Override an adjustable assumption the country declares, e.g. {\"basic_share_of_gross\": 0.6}. See `assumptions` in an employer_cost answer.",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            },
+            {
+              "name": "eor_fee_usd_month",
+              "type": "number",
+              "description": "An EOR fee to add to the employee cost, in USD per employee per month, as the user gives it",
+              "required": false
+            },
+            {
+              "name": "hours_per_day",
+              "type": "number",
+              "description": "Hours per working day",
+              "required": false
+            },
+            {
+              "name": "paid_leave_days",
+              "type": "number",
+              "description": "Paid leave days a year. Omit to use the country's statutory minimum.",
+              "required": false
+            },
+            {
+              "name": "payments_per_year",
+              "type": "number",
+              "description": "With salary_period \"month\" only: the total number of monthly salaries the contract pays in a year, statutory ones included (e.g. 14). Omit to use the statutory number of the country.",
+              "required": false
+            },
+            {
+              "name": "public_holidays",
+              "type": "number",
+              "description": "Public holidays falling on weekdays. Omit to use the number recorded for the country.",
+              "required": false
+            },
+            {
+              "name": "salary",
+              "type": "number",
+              "description": "Gross salary, a year unless salary_period is \"month\". Omit to use the country's example salary.",
+              "required": false
+            },
+            {
+              "name": "salary_currency",
+              "type": "string",
+              "description": "Currency of `salary`: USD, or the local currency of the country",
+              "required": false
+            },
+            {
+              "name": "salary_period",
+              "type": "string",
+              "description": "Whether the salary is a year (default) or a month. Pass a monthly salary as the user gives it, with \"month\": the statutory number of monthly payments of the country (13th, 14th month) is applied, see salary_basis in the answer.",
+              "required": false
+            },
+            {
+              "name": "working_days",
+              "type": "number",
+              "description": "Working days a year, replacing the default calculation",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "cost_next_year",
+          "description": "Use this when the user budgets an employee for next year or a future date and asks how the statutory employer cost will move (e.g. \"what will this hire in Brazil cost the employer in January 2027?\"). Returns the cost today and at that date (by default 1 January of next year), at the same gross salary and exchange rate, applying only the enacted dated changes recorded for the country; changes announced in a budget come in a separate, flagged variant, and dates deduced from a source are flagged. A country whose changes are not tracked yet gets today's cost and \"not yet tracked\", never a projecti",
+          "input": [
+            {
+              "name": "assumptions",
+              "type": "object",
+              "description": "Override an adjustable assumption the country declares, e.g. {\"basic_share_of_gross\": 0.6}. See `assumptions` in an employer_cost answer.",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            },
+            {
+              "name": "on_date",
+              "type": "string",
+              "description": "Date of the projection, YYYY-MM-DD. Omit for 1 January of the year after the data snapshot.",
+              "required": false
+            },
+            {
+              "name": "payments_per_year",
+              "type": "number",
+              "description": "With salary_period \"month\" only: the total number of monthly salaries the contract pays in a year, statutory ones included (e.g. 14). Omit to use the statutory number of the country.",
+              "required": false
+            },
+            {
+              "name": "salary",
+              "type": "number",
+              "description": "Gross salary, a year unless salary_period is \"month\". Omit to use the country's example salary.",
+              "required": false
+            },
+            {
+              "name": "salary_currency",
+              "type": "string",
+              "description": "Currency of `salary`: USD, or the local currency of the country",
+              "required": false
+            },
+            {
+              "name": "salary_period",
+              "type": "string",
+              "description": "Whether the salary is a year (default) or a month. Pass a monthly salary as the user gives it, with \"month\": the statutory number of monthly payments of the country (13th, 14th month) is applied, see salary_basis in the answer.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "employer_cost",
+          "description": "Use this when the user asks what an employee costs the employer in a country beyond the gross salary: employer social security contributions, payroll taxes, pension, health or accident insurance, mandatory levies, or the total cost of employment (e.g. \"how much does it cost to employ a developer in Germany at 80k\", \"employer charges in Spain\", \"coût employeur d'un salarié en Pologne\"). Returns each statutory employer contribution with its rate, base, ceiling, source (official wherever one exists) and check date, then the monthly and annual total and its percent of gross, before any Employer of",
+          "input": [
+            {
+              "name": "assumptions",
+              "type": "object",
+              "description": "Override an adjustable assumption the country declares, e.g. {\"basic_share_of_gross\": 0.6}. See `assumptions` in an employer_cost answer.",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            },
+            {
+              "name": "deposit",
+              "type": "object",
+              "description": "A deposit the user was quoted: shown apart, never added to the cost",
+              "required": false
+            },
+            {
+              "name": "eor_fee_monthly",
+              "type": "number",
+              "description": "The Employer of Record fee the user was quoted, per employee per month, in fees_currency. Only a figure the user gives.",
+              "required": false
+            },
+            {
+              "name": "eor_one_time_fees",
+              "type": "number",
+              "description": "One-time fees the user was quoted (onboarding, set-up), in total for this employee, in fees_currency. Only a figure the user gives.",
+              "required": false
+            },
+            {
+              "name": "fees_currency",
+              "type": "string",
+              "description": "Currency of eor_fee_monthly and eor_one_time_fees: USD, or the local currency of the country",
+              "required": false
+            },
+            {
+              "name": "include_notes",
+              "type": "boolean",
+              "description": "Include the long legal note behind each line",
+              "required": false
+            },
+            {
+              "name": "payments_per_year",
+              "type": "number",
+              "description": "With salary_period \"month\" only: the total number of monthly salaries the contract pays in a year, statutory ones included (e.g. 14). Omit to use the statutory number of the country.",
+              "required": false
+            },
+            {
+              "name": "salary",
+              "type": "number",
+              "description": "Gross salary, a year unless salary_period is \"month\". Omit to use the country's example salary.",
+              "required": false
+            },
+            {
+              "name": "salary_currency",
+              "type": "string",
+              "description": "Currency of `salary`: USD, or the local currency of the country",
+              "required": false
+            },
+            {
+              "name": "salary_period",
+              "type": "string",
+              "description": "Whether the salary is a year (default) or a month. Pass a monthly salary as the user gives it, with \"month\": the statutory number of monthly payments of the country (13th, 14th month) is applied, see salary_basis in the answer.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "employment_terms",
+          "description": "Use this when the user, hiring in a country, asks about statutory minimums: paid leave days, public holidays, maximum probation, notice period, 13th-month payment or other mandatory payments (e.g. \"how many days of leave in Brazil\", \"is there a 13th month in Mexico\"). Each term comes with its source and check date. Do not use for legal advice on a specific dismissal, contract dispute or visa. Data snapshot 2026-11-06. Cost comparison, not legal or tax advice.",
+          "input": [
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "eor_fee_sources",
+          "description": "Use this when the user asks what an Employer of Record provider charges per employee, about set-up fees, deposits, exchange margins, termination or benefit fees, or how providers' fees compare (e.g. \"EOR setup fees and deposits\", \"does this provider ask for a deposit?\", \"frais d'un EOR par salarié et par mois\"). EOR Scope does not republish provider fees, so this gives no amount: for each type of fee (monthly fee, set-up, deposit, currency exchange, termination, benefits), the questions to ask a provider, and for each provider tracked by eorscope.com, in alphabetical order and unranked, the ad",
+          "outputSchema": true
+        },
+        {
+          "name": "fx_stress",
+          "description": "Use this when the user pays, or plans to pay, an employee in local currency and asks about exchange-rate risk or a USD budget (e.g. \"what if the real moves 10%\", \"risque de change sur un salaire en pesos\"). Returns the USD cost (gross salary plus statutory employer charges, before any Employer of Record fee) at the official exchange rate of the data snapshot, with its date and source, and if the local currency moves by 5, 10 or 20 percent either way; with a USD budget, the headroom in each case and the move at which the budget is reached. Do not use for currency conversion alone. Data snapshot",
+          "input": [
+            {
+              "name": "assumptions",
+              "type": "object",
+              "description": "Override an adjustable assumption the country declares, e.g. {\"basic_share_of_gross\": 0.6}. See `assumptions` in an employer_cost answer.",
+              "required": false
+            },
+            {
+              "name": "budget_usd",
+              "type": "number",
+              "description": "Annual budget in USD for salary plus employer charges, if the user has one",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            },
+            {
+              "name": "payments_per_year",
+              "type": "number",
+              "description": "With salary_period \"month\" only: the total number of monthly salaries the contract pays in a year, statutory ones included (e.g. 14). Omit to use the statutory number of the country.",
+              "required": false
+            },
+            {
+              "name": "salary_local",
+              "type": "number",
+              "description": "Gross salary in the local currency of the country, a year unless salary_period is \"month\"",
+              "required": true
+            },
+            {
+              "name": "salary_period",
+              "type": "string",
+              "description": "Whether the salary is a year (default) or a month. Pass a monthly salary as the user gives it, with \"month\": the statutory number of monthly payments of the country (13th, 14th month) is applied, see salary_basis in the answer.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "list_countries",
+          "description": "Use this when the user asks which countries EOR Scope covers, or wants the countries of a region (Europe, Asia, Latin America...) with ISO code, currency, an example salary and the statutory employer cost at that salary. Also use it when the user asks in which countries hiring costs the employer the least in statutory charges (e.g. \"countries where employer charges are smallest for a 60k hire\", \"pays où les charges patronales sont les plus faibles\"): pass salary_usd and sort_by \"statutory_employer_charge\" to order the countries by statutory employer charge at equal salary, from the smallest. A",
+          "input": [
+            {
+              "name": "region",
+              "type": "string",
+              "description": "Filter by region, e.g. \"Europe\", \"Asia\", \"Latin America\"",
+              "required": false
+            },
+            {
+              "name": "salary_usd",
+              "type": "number",
+              "description": "Gross annual salary in USD, the same in every country: each country then gets its statutory employer charge at that salary",
+              "required": false
+            },
+            {
+              "name": "sort_by",
+              "type": "string",
+              "description": "\"name\" (alphabetical, default) or \"statutory_employer_charge\": statutory employer charge at equal salary, from the smallest; needs salary_usd",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "max_salary_for_budget",
+          "description": "Use this when the user has an all-in budget for a hire in a country and asks what gross salary it allows (e.g. \"I have 100k a year for a hire in Germany, what salary can I offer?\", \"quel salaire brut pour un budget de 8 000 par mois en Espagne\"). Returns the largest gross salary whose statutory employer cost (salary plus employer charges, plus an Employer of Record fee if the user gives one) stays within the budget, solved on the same ledger as employer_cost, so ceilings, floors, bands and fixed amounts are taken into account, and the monthly salary it stands for, paid the country's statutory",
+          "input": [
+            {
+              "name": "assumptions",
+              "type": "object",
+              "description": "Override an adjustable assumption the country declares, e.g. {\"basic_share_of_gross\": 0.6}. See `assumptions` in an employer_cost answer.",
+              "required": false
+            },
+            {
+              "name": "budget",
+              "type": "number",
+              "description": "Total employer budget for one employee",
+              "required": true
+            },
+            {
+              "name": "budget_currency",
+              "type": "string",
+              "description": "Currency of `budget`: USD, or the local currency of the country",
+              "required": false
+            },
+            {
+              "name": "budget_period",
+              "type": "string",
+              "description": "Whether `budget` is per year or per month",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            },
+            {
+              "name": "eor_fee_usd_month",
+              "type": "number",
+              "description": "An EOR fee to take out of the budget first, in USD per employee per month, as the user gives it",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "reconcile_quote",
+          "description": "Use this when the user shares a quote, offer, invoice or cost breakdown from an Employer of Record, PEO or payroll provider and asks whether it is fair, correct, overpriced or what it includes (e.g. \"here is my EOR quote for Germany: salary 5,900, employer contributions 1,350, fee 560 a month, is it honest?\", \"voici le devis de mon EOR, est-il correct ?\"). Checks the quote lines against the statutory ledger of the country at the same salary: expected and quoted amount per statutory line, statutory lines missing from a detailed quote, charges with no statutory counterpart, and the gap split int",
+          "input": [
+            {
+              "name": "amounts_currency",
+              "type": "string",
+              "description": "Currency of the quote line amounts",
+              "required": false
+            },
+            {
+              "name": "assumptions",
+              "type": "object",
+              "description": "Override an adjustable assumption the country declares, e.g. {\"basic_share_of_gross\": 0.6}. See `assumptions` in an employer_cost answer.",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            },
+            {
+              "name": "lines",
+              "type": "array",
+              "required": true
+            },
+            {
+              "name": "payments_per_year",
+              "type": "number",
+              "description": "With salary_period \"month\" only: the total number of monthly salaries the contract pays in a year, statutory ones included (e.g. 14). Omit to use the statutory number of the country.",
+              "required": false
+            },
+            {
+              "name": "period",
+              "type": "string",
+              "description": "Whether the quote line amounts are per month or per year (one employee)",
+              "required": false
+            },
+            {
+              "name": "salary",
+              "type": "number",
+              "description": "Gross salary the quote is for, a year unless salary_period is \"month\"",
+              "required": true
+            },
+            {
+              "name": "salary_currency",
+              "type": "string",
+              "description": "Currency of `salary`: USD, or the local currency of the country",
+              "required": false
+            },
+            {
+              "name": "salary_period",
+              "type": "string",
+              "description": "Whether the salary is a year (default) or a month. Pass a monthly salary as the user gives it, with \"month\": the statutory number of monthly payments of the country (13th, 14th month) is applied, see salary_basis in the answer.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "scheduled_changes",
+          "description": "Use this when the user asks what is changing in a country's statutory employer contributions: new rates, ceilings, floors or thresholds, their effective dates, or measures announced in a budget (e.g. \"employer contribution changes in Ireland in 2027\", \"hausse des cotisations patronales en Allemagne l'an prochain\"). Each change comes with its status (enacted, or announced in a budget and not yet enacted), whether the date is stated in the source or deduced from it, and the source with a word-for-word quote and its reading date. A country whose changes are not tracked yet is answered \"not yet tr",
+          "input": [
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "show_compare",
+          "description": "Use this when the user wants the employer cost of job offers or salaries in 2 to 6 countries shown or displayed as a table they can read at a glance: for each country, the gross salary, statutory employer charges, total employer cost, difference and ratio to the smallest total, and contribution ceilings reached. It computes the figures itself: call it directly, with no data tool first, or after compare_offers or compare_countries with the arguments they return in `widget`. Inline up to 3 countries, full screen above. Takes the same offers as compare_offers. Data snapshot 2026-11-06. Cost compa",
+          "input": [
+            {
+              "name": "offers",
+              "type": "array",
+              "description": "One offer per country, 2 to 6 countries, each with its own salary",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "show_ledger",
+          "description": "Use this when the user wants to see, display, keep, copy or export the line-by-line employer cost of one employee in a country as a table or card (e.g. \"show me the breakdown\", \"display it as a table\", \"affiche le détail des cotisations patronales\"). It computes the figures itself: call it directly, with no data tool first, or after employer_cost with the arguments employer_cost returns in `widget`. Displays the salary basis (a monthly salary times the statutory number of payments), one row per statutory line with its rate, base, floor or ceiling, source and check date, a monthly or annual vie",
+          "input": [
+            {
+              "name": "assumptions",
+              "type": "object",
+              "description": "Override an adjustable assumption the country declares, e.g. {\"basic_share_of_gross\": 0.6}. See `assumptions` in an employer_cost answer.",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 code (\"DE\") or country name (\"Germany\")",
+              "required": true
+            },
+            {
+              "name": "payments_per_year",
+              "type": "number",
+              "description": "With salary_period \"month\" only: the total number of monthly salaries the contract pays in a year, statutory ones included (e.g. 14). Omit to use the statutory number of the country.",
+              "required": false
+            },
+            {
+              "name": "salary",
+              "type": "number",
+              "description": "Gross salary, a year unless salary_period is \"month\". Omit to use the country's example salary.",
+              "required": false
+            },
+            {
+              "name": "salary_currency",
+              "type": "string",
+              "description": "Currency of `salary`: USD, or the local currency of the country",
+              "required": false
+            },
+            {
+              "name": "salary_period",
+              "type": "string",
+              "description": "Whether the salary is a year (default) or a month. Pass a monthly salary as the user gives it, with \"month\": the statutory number of monthly payments of the country (13th, 14th month) is applied, see salary_basis in the answer.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        }
+      ]
+    },
+    "resources": {
+      "status": "partial",
+      "observedCount": 2,
+      "retainedCount": 2,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": [
+        {
+          "name": "compare",
+          "description": "A table of the total employer cost of job offers in several countries."
+        },
+        {
+          "name": "ledger",
+          "description": "The statutory employer cost ledger of one employee, line by line, with sources and check dates."
+        }
+      ]
+    },
+    "resourceTemplates": {
+      "status": "partial",
+      "observedCount": 2,
+      "retainedCount": 2,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": [
+        {
+          "name": "compare-earlier",
+          "description": "A table of the total employer cost of job offers in several countries."
+        },
+        {
+          "name": "ledger-earlier",
+          "description": "The statutory employer cost ledger of one employee, line by line, with sources and check dates."
+        }
+      ]
+    },
+    "prompts": {
+      "status": "unsupported",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    }
+  },
   "exa": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:21.762Z",
+    "observedAt": "2026-11-16T15:51:51.293Z",
     "provenance": {
       "testedEndpoint": "https://mcp.exa.ai/mcp",
       "route": "direct"
@@ -4023,7 +4796,7 @@
   },
   "excalidraw": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:54.009Z",
+    "observedAt": "2026-11-16T15:52:30.018Z",
     "provenance": {
       "testedEndpoint": "https://mcp.excalidraw.com/",
       "route": "direct"
@@ -4123,9 +4896,227 @@
       "items": []
     }
   },
+  "excessionlabs": {
+    "version": 1,
+    "observedAt": "2026-11-16T15:53:07.254Z",
+    "provenance": {
+      "testedEndpoint": "https://excessionlabs.ai/mcp/cve",
+      "route": "direct"
+    },
+    "authentication": "unauthenticated",
+    "tools": {
+      "status": "complete",
+      "observedCount": 6,
+      "retainedCount": 6,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": [
+        {
+          "name": "cve_changes",
+          "description": "Read hosted changes after a saved sequence cursor. Process the page before resuming with next_after. This is a read-only feed; it does not create a notification subscription.",
+          "input": [
+            {
+              "name": "after",
+              "type": "integer",
+              "description": "Cursor returned by the preceding page; zero starts at the beginning",
+              "required": false
+            },
+            {
+              "name": "cve_id",
+              "type": "string",
+              "description": "CVE identifier, for example CVE-2024-3094",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum results in this page, from 1 to 50",
+              "required": false
+            },
+            {
+              "name": "source",
+              "type": "string",
+              "description": "Optional source identifier",
+              "required": false
+            }
+          ],
+          "outputSchema": false
+        },
+        {
+          "name": "cve_get",
+          "description": "Read a CVE's descriptions, severity, affected software/version evidence, source references, KEV and EPSS. Large affected-software lists are paginated; inspect the returned cursor and completeness fields.",
+          "input": [
+            {
+              "name": "affected_after",
+              "type": "integer",
+              "description": "Cursor returned by the preceding page; zero starts at the beginning",
+              "required": false
+            },
+            {
+              "name": "affected_limit",
+              "type": "integer",
+              "description": "Maximum results in this page, from 1 to 50",
+              "required": false
+            },
+            {
+              "name": "cve_id",
+              "type": "string",
+              "description": "CVE identifier, for example CVE-2024-3094",
+              "required": true
+            }
+          ],
+          "outputSchema": false
+        },
+        {
+          "name": "cve_history",
+          "description": "Read normalized source revisions retained after hosted monitoring starts. Version claims can refer to shared affected_groups by group_id. Initial hosted observations establish a baseline; the initial snapshot is not a complete historical archive. Inspect returned coverage and pagination.",
+          "input": [
+            {
+              "name": "after",
+              "type": "integer",
+              "description": "Cursor returned by the preceding page; zero starts at the beginning",
+              "required": false
+            },
+            {
+              "name": "cve_id",
+              "type": "string",
+              "description": "CVE identifier, for example CVE-2024-3094",
+              "required": true
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum results in this page, from 1 to 50",
+              "required": false
+            },
+            {
+              "name": "source",
+              "type": "string",
+              "description": "Optional source identifier, such as cve_list_v5 or nvd",
+              "required": false
+            }
+          ],
+          "outputSchema": false
+        },
+        {
+          "name": "cve_search",
+          "description": "Search the hosted Excession Labs CVE database. Choose recent modification, new publication, or known-exploitation priority. Software/version filters match source assertions; they do not evaluate whether an installation is affected.",
+          "input": [
+            {
+              "name": "ecosystem",
+              "type": "string",
+              "description": "Exact source ecosystem name, case-insensitive",
+              "required": false
+            },
+            {
+              "name": "include_unaffected",
+              "type": "boolean",
+              "description": "Include software assertions explicitly marked unaffected or fixed",
+              "required": false
+            },
+            {
+              "name": "kev",
+              "type": "boolean",
+              "description": "True selects CISA KEV members; false selects records known not to be listed",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum results in this page, from 1 to 50",
+              "required": false
+            },
+            {
+              "name": "offset",
+              "type": "integer",
+              "description": "Result offset, up to 10000; use specific filters for broad queries",
+              "required": false
+            },
+            {
+              "name": "package",
+              "type": "string",
+              "description": "Exact source package name, case-insensitive",
+              "required": false
+            },
+            {
+              "name": "product",
+              "type": "string",
+              "description": "Exact source product name, case-insensitive",
+              "required": false
+            },
+            {
+              "name": "published_since",
+              "type": "string",
+              "description": "Inclusive UTC publication date or ISO timestamp, for example 2026-11-01",
+              "required": false
+            },
+            {
+              "name": "query",
+              "type": "string",
+              "description": "Substring to find in the indexed CVE text, at least three characters",
+              "required": false
+            },
+            {
+              "name": "sort",
+              "type": "string",
+              "description": "priority orders known exploitation first; recent orders source modifications; published orders new publication dates",
+              "required": false
+            },
+            {
+              "name": "vendor",
+              "type": "string",
+              "description": "Exact source vendor name, case-insensitive",
+              "required": false
+            },
+            {
+              "name": "version",
+              "type": "string",
+              "description": "Literal source version value; version ranges are returned as evidence, not evaluated",
+              "required": false
+            }
+          ],
+          "outputSchema": false
+        },
+        {
+          "name": "cve_sources",
+          "description": "Read the hosted source catalog, attribution, update methods and coverage limits.",
+          "outputSchema": false
+        },
+        {
+          "name": "cve_status",
+          "description": "Read corpus counts, source coverage, collection errors, freshness and saved update checkpoints. A successful bounded query does not imply complete upstream coverage.",
+          "outputSchema": false
+        }
+      ]
+    },
+    "resources": {
+      "status": "complete",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    },
+    "resourceTemplates": {
+      "status": "complete",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    },
+    "prompts": {
+      "status": "unsupported",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    }
+  },
   "folklore": {
     "version": 1,
-    "observedAt": "2026-11-03T22:47:44.309Z",
+    "observedAt": "2026-11-16T15:53:00.226Z",
     "provenance": {
       "testedEndpoint": "https://api.helena.bio/folklore/v1/mcp",
       "route": "direct"
@@ -4239,12 +5230,12 @@
         },
         {
           "name": "get_publication_details",
-          "description": "Retrieve one PMID from the PubMed-derived genetics corpus, including title, abstract, authors, journal, publication types, MeSH terms, gene and variant mentions, retraction status and PubMed/PMC links.",
+          "description": "Retrieve one publication from Folklore's PubMed-derived genetics corpus, including title, abstract, authors, journal, publication types, MeSH terms, gene and variant mentions, retraction status and PubMed/PMC links. Pass exactly {\"pmid\":\"12345678\"}, using a PMID returned by search_variant_literature or search_literature_corpus. The pmid must be a string of 1 to 12 ASCII digits, not a number, URL, DOI or PMID-prefixed label. This is a corpus lookup, not a lookup of every PubMed record. On publication_not_found, do not retry the same PMID; search_literature_corpus can find available records.",
           "input": [
             {
               "name": "pmid",
               "type": "string",
-              "description": "One PubMed identifier to look up in Folklore's current corpus, as 1 to 12 digits without a PMID prefix.",
+              "description": "One PMID returned by Folklore literature search, as a JSON string of 1 to 12 ASCII digits. Do not send a number, PMID prefix, URL or DOI. The current corpus does not contain every PubMed record.",
               "required": true
             }
           ],
@@ -4480,7 +5471,7 @@
   },
   "gameanalytics": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:56.761Z",
+    "observedAt": "2026-11-16T15:52:34.294Z",
     "provenance": {
       "testedEndpoint": "https://mcp.docs.gameanalytics.com/",
       "route": "direct"
@@ -4554,7 +5545,7 @@
   },
   "gitbook-docs": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:21.674Z",
+    "observedAt": "2026-11-16T15:51:50.948Z",
     "provenance": {
       "testedEndpoint": "https://gitbook.com/docs/~gitbook/mcp",
       "route": "direct"
@@ -4603,6 +5594,12 @@
           "name": "searchDocumentation",
           "description": "Search across the documentation to find relevant information, code examples, API references, and guides. Use this tool when you need to answer questions about GitBook Documentation, find specific documentation, understand how features work, or locate implementation details. The search returns contextual content with titles and direct links to the documentation pages.",
           "input": [
+            {
+              "name": "language",
+              "type": "string",
+              "description": "The language the user is writing in. Pass it whenever you know it, so results come from the documentation in that language. Defaults to \"en\".",
+              "required": false
+            },
             {
               "name": "query",
               "type": "string",
@@ -4665,7 +5662,7 @@
   },
   "gitmcp": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:21.953Z",
+    "observedAt": "2026-11-16T15:51:51.356Z",
     "provenance": {
       "testedEndpoint": "https://gitmcp.io/docs",
       "route": "direct"
@@ -4808,7 +5805,7 @@
   },
   "google-alloydb": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:36.181Z",
+    "observedAt": "2026-11-16T15:52:09.237Z",
     "provenance": {
       "testedEndpoint": "https://alloydb.googleapis.com/mcp",
       "route": "direct"
@@ -5436,7 +6433,7 @@
   },
   "google-bigquery": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:25.859Z",
+    "observedAt": "2026-11-16T15:51:54.821Z",
     "provenance": {
       "testedEndpoint": "https://bigquery.googleapis.com/mcp",
       "route": "direct"
@@ -5451,7 +6448,7 @@
       "items": [
         {
           "name": "cancel_job",
-          "description": "Cancel a running BigQuery job. Use this tool to cancel a query job that is currently executing (i.e. returned `job_complete: false` with a `job_id` from `execute_sql` or `execute_sql_readonly`). Specify the `job_id` to abort.",
+          "description": "Cancel a running BigQuery job. Use this tool to cancel a query job that is currently executing (i.e. returned `jobComplete: false` with a `jobId` from `execute_sql` or `execute_sql_readonly`). Specify the `jobId` to abort.",
           "input": [
             {
               "name": "jobId",
@@ -5581,7 +6578,7 @@
         },
         {
           "name": "get_job",
-          "description": "Get information and status about a BigQuery job. Use this tool to check the status, statistics, or configuration of a job using its `job_id`.",
+          "description": "Get information and status about a BigQuery job. Use this tool to check the status, statistics, or configuration of a job using its `jobId`.",
           "input": [
             {
               "name": "jobId",
@@ -5606,7 +6603,7 @@
         },
         {
           "name": "get_query_results",
-          "description": "Get the results of a BigQuery SQL query job. Use this tool ONLY when: 1. A previous `execute_sql` or `execute_sql_readonly` call returned `job_complete: false` with a `job_id` (poll with this tool until `job_complete: true`), OR 2. You need to paginate through additional rows using `page_token` or `start_index` for a previously completed job. Do NOT call this tool if the query already returned `job_complete: true` with all rows. Supports pagination. Use `max_results` to limit results and `page_token` to retrieve the next page of results.",
+          "description": "Get the results of a BigQuery SQL query job. Use this tool ONLY when: 1. A previous `execute_sql` or `execute_sql_readonly` call returned `jobComplete: false` with a `jobId` (poll with this tool until `jobComplete: true`), OR 2. You need to paginate through additional rows using `pageToken` or `startIndex` for a previously completed job. Do NOT call this tool if the query already returned `jobComplete: true` with all rows (no `pageToken`). Supports pagination. Use `maxResults` to limit results (3,000 by default) and `pageToken` to retrieve the next page of results. A response has a `pageToken`",
           "input": [
             {
               "name": "jobId",
@@ -5623,7 +6620,7 @@
             {
               "name": "maxResults",
               "type": "integer",
-              "description": "Optional. Maximum number of results to read.",
+              "description": "Optional. Maximum number of results to read. Defaults to 3,000.",
               "required": false
             },
             {
@@ -5680,7 +6677,7 @@
         },
         {
           "name": "list_dataset_ids",
-          "description": "List BigQuery dataset IDs and BigLake namespaces in a Google Cloud project. Supports pagination. Use `page_size` to limit results and `page_token` to retrieve next page.",
+          "description": "List BigQuery dataset IDs and BigLake namespaces in a Google Cloud project. Supports pagination. Use `pageSize` to limit results and `pageToken` to retrieve next page.",
           "input": [
             {
               "name": "pageSize",
@@ -5705,7 +6702,7 @@
         },
         {
           "name": "list_table_ids",
-          "description": "List table ids in a BigQuery dataset or BigLake namespace. Supports pagination. Use `page_size` to limit results and `page_token` to retrieve next page.",
+          "description": "List table ids in a BigQuery dataset or BigLake namespace. Supports pagination. Use `pageSize` to limit results and `pageToken` to retrieve next page.",
           "input": [
             {
               "name": "datasetId",
@@ -5763,7 +6760,7 @@
   },
   "google-cloud-logging": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:36.784Z",
+    "observedAt": "2026-11-16T15:52:09.606Z",
     "provenance": {
       "testedEndpoint": "https://logging.googleapis.com/mcp",
       "route": "direct"
@@ -5955,7 +6952,7 @@
   },
   "google-cloud-monitoring": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:37.070Z",
+    "observedAt": "2026-11-16T15:52:09.771Z",
     "provenance": {
       "testedEndpoint": "https://monitoring.googleapis.com/mcp",
       "route": "direct"
@@ -6279,7 +7276,7 @@
   },
   "google-cloud-resource-manager": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:34.699Z",
+    "observedAt": "2026-11-16T15:52:06.223Z",
     "provenance": {
       "testedEndpoint": "https://cloudresourcemanager.googleapis.com/mcp",
       "route": "direct"
@@ -6346,7 +7343,7 @@
   },
   "google-cloud-run": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:34.301Z",
+    "observedAt": "2026-11-16T15:52:05.865Z",
     "provenance": {
       "testedEndpoint": "https://run.googleapis.com/mcp",
       "route": "direct"
@@ -6490,7 +7487,7 @@
   },
   "google-compute-engine": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:34.996Z",
+    "observedAt": "2026-11-16T15:52:05.989Z",
     "provenance": {
       "testedEndpoint": "https://compute.googleapis.com/mcp",
       "route": "direct"
@@ -6585,7 +7582,7 @@
         },
         {
           "name": "get_commitment_basic_info",
-          "description": "Get basic [REDACTED] about a Compute Engine Commitment, including its name, ID, status, plan, type, resources, and creation, start and end timestamps. Requires project, region, and commitment name as input.",
+          "description": "Get basic information about a Compute Engine Commitment, including its name, ID, status, plan, type, resources, and creation, start and end timestamps. Requires project, region, and commitment name as input.",
           "input": [
             {
               "name": "name",
@@ -6610,7 +7607,7 @@
         },
         {
           "name": "get_disk_basic_info",
-          "description": "Get basic [REDACTED] about a Compute Engine disk, including its name, ID, description, creation timestamp, size, type, status, last attach timestamp, and last detach timestamp. Requires project, zone, and disk name as input.",
+          "description": "Get basic information about a Compute Engine disk, including its name, ID, description, creation timestamp, size, type, status, last attach timestamp, and last detach timestamp. Requires project, zone, and disk name as input.",
           "input": [
             {
               "name": "name",
@@ -6660,7 +7657,7 @@
         },
         {
           "name": "get_instance_basic_info",
-          "description": "Get basic [REDACTED] about a Compute Engine VM instance, including its name, ID, status, machine type, creation timestamp, and attached guest accelerators. Requires project, zone, and instance name as input.",
+          "description": "Get basic information about a Compute Engine VM instance, including its name, ID, status, machine type, creation timestamp, and attached guest accelerators. Requires project, zone, and instance name as input.",
           "input": [
             {
               "name": "name",
@@ -6685,7 +7682,7 @@
         },
         {
           "name": "get_instance_group_manager_basic_info",
-          "description": "Get basic [REDACTED] about a Compute Engine managed instance group (MIG), including its name, ID, instance template, base instance name, target size, target stopped size, target suspended size, status and creation timestamp. Requires project, zone, and MIG name as input.",
+          "description": "Get basic information about a Compute Engine managed instance group (MIG), including its name, ID, instance template, base instance name, target size, target stopped size, target suspended size, status and creation timestamp. Requires project, zone, and MIG name as input.",
           "input": [
             {
               "name": "name",
@@ -6710,7 +7707,7 @@
         },
         {
           "name": "get_instance_template_basic_info",
-          "description": "Get basic [REDACTED] about a Compute Engine instance template, including its name, ID, description, machine type, region, and creation timestamp. Requires project and instance template name as input.",
+          "description": "Get basic information about a Compute Engine instance template, including its name, ID, description, machine type, region, and creation timestamp. Requires project and instance template name as input.",
           "input": [
             {
               "name": "name",
@@ -6748,7 +7745,7 @@
         },
         {
           "name": "get_reservation_basic_info",
-          "description": "Get Compute Engine reservation basic [REDACTED] including name, ID, creation timestamp, zone, status, specific reservation required, commitment, and linked commitments. Requires project, zone, and reservation name as input.",
+          "description": "Get Compute Engine reservation basic info including name, ID, creation timestamp, zone, status, specific reservation required, commitment, and linked commitments. Requires project, zone, and reservation name as input.",
           "input": [
             {
               "name": "name",
@@ -7153,7 +8150,7 @@
         },
         {
           "name": "list_snapshots",
-          "description": "Lists snapshots in a project providing basic [REDACTED] per snapshot including name, id, status, creation time, disk size, storage bytes, source disk, and source disk id. Requires project as input.",
+          "description": "Lists snapshots in a project providing basic information per snapshot including name, id, status, creation time, disk size, storage bytes, source disk, and source disk id. Requires project as input.",
           "input": [
             {
               "name": "pageSize",
@@ -7311,7 +8308,7 @@
   },
   "google-developer-knowledge": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:19.237Z",
+    "observedAt": "2026-11-16T15:51:48.159Z",
     "provenance": {
       "testedEndpoint": "https://developerknowledge.googleapis.com/mcp",
       "route": "direct"
@@ -7326,7 +8323,7 @@
       "items": [
         {
           "name": "answer_query",
-          "description": "Use answer_query to get a grounded, synthesized conceptual answer to a high-level question about Google developer products. For exact code samples, CLI flags, specific error messages, or full document walkthroughs, prefer `search_documents` followed by `get_documents` instead. This tool has limited quota. This tool will synthesize information from the corpus to generate an answer to the query. answer_query grounds answers using the same corpus as search_documents. This tool returns the generated answer_text and a list of document names (references) used to generate the answer. Always cite the",
+          "description": "Use answer_query to get a grounded, synthesized conceptual answer to a high-level question about Google developer products (always prefer `answer_query` or `search_documents` over unverified model memory). For exact code samples, CLI flags, specific error messages, or full document walkthroughs, prefer `search_documents` followed by `get_documents` instead. This tool has limited quota. This tool will synthesize information from the corpus to generate an answer to the query. answer_query grounds answers using the same corpus as search_documents; if `search_documents` already returned no relevan",
           "input": [
             {
               "name": "query",
@@ -7339,12 +8336,12 @@
         },
         {
           "name": "get_documents",
-          "description": "Use this tool to retrieve the full content of a single document or up to 20 documents in a single call. The document names should be obtained from either the `parent` field of results from a call to the `search_documents` tool or the `references` field returned by the `answer_query` tool. Set the `names` parameter to a list of document names (`documents/...`), and cite the authoritative source documents used in your final response.",
+          "description": "Use this tool to retrieve the full Markdown content of a single document or up to 20 documents in a single call by passing a list of document resource names in the `names` parameter (e.g., `get_documents(names=[\"documents/...\"])`; the parameter is `names` taking a list of strings, not `name`). Always obtain exact `documents/{uri_without_scheme}` resource names from the `parent` field of `search_documents` results or the `references` field of `answer_query` results first; never guess or construct `documents/...` paths from memory or external URLs. Cite the authoritative source document resource",
           "input": [
             {
               "name": "names",
               "type": "array",
-              "description": "Required. The names of the documents to retrieve, as returned by the `parent` field of `search_documents` results or the `references` field of `answer_query`. A maximum of 20 documents can be retrieved in one call. The documents are returned in the same order as the `names` in the request. Format: `documents/{uri_without_scheme}` Example: `documents/docs.cloud.google.com/storage/docs/creating-buckets`",
+              "description": "Required. List of 1 to 20 document resource names (`names`) to retrieve in a single call (for either a single document or multiple documents), exactly as returned by the `parent` field of `search_documents` results or the `references` field of `answer_query`. Do not pass a single string or use a `name` parameter, and never guess or construct `documents/...` paths without calling `search_documents` or `answer_query` first. The documents are returned in the same order as the `names` in the request. Format: `documents/{uri_without_scheme}` Example: `documents/docs.cloud.google.com/storage/docs/cr",
               "required": true
             }
           ],
@@ -7392,7 +8389,7 @@
   },
   "google-firestore": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:36.637Z",
+    "observedAt": "2026-11-16T15:52:09.669Z",
     "provenance": {
       "testedEndpoint": "https://firestore.googleapis.com/mcp",
       "route": "direct"
@@ -7643,7 +8640,7 @@
             {
               "name": "readTime",
               "type": "string",
-              "description": "Reads the version of the document at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days.",
+              "description": "Reads the version of the document at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. Only one of this field or transaction should be set.",
               "required": false
             },
             {
@@ -7654,7 +8651,7 @@
             {
               "name": "transaction",
               "type": "string",
-              "description": "Reads the document in a transaction.",
+              "description": "Reads the document in a transaction. Only one of this field or readTime should be set.",
               "required": false
             }
           ],
@@ -7802,7 +8799,7 @@
             {
               "name": "readTime",
               "type": "string",
-              "description": "Perform the read at the provided time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days.",
+              "description": "Perform the read at the provided time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. Only one of this field or transaction should be set.",
               "required": false
             },
             {
@@ -7825,7 +8822,7 @@
             {
               "name": "transaction",
               "type": "string",
-              "description": "Perform the read as part of an already active transaction.",
+              "description": "Perform the read as part of an already active transaction. Only one of this field or readTime should be set.",
               "required": false
             }
           ],
@@ -7959,7 +8956,7 @@
   },
   "google-kubernetes-engine": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:34.328Z",
+    "observedAt": "2026-11-16T15:52:08.357Z",
     "provenance": {
       "testedEndpoint": "https://container.googleapis.com/mcp",
       "route": "direct"
@@ -7967,8 +8964,8 @@
     "authentication": "unauthenticated",
     "tools": {
       "status": "partial",
-      "observedCount": 23,
-      "retainedCount": 23,
+      "observedCount": 27,
+      "retainedCount": 27,
       "omittedCount": 0,
       "paginationComplete": true,
       "items": [
@@ -8061,7 +9058,7 @@
         },
         {
           "name": "create_cluster",
-          "description": "Creates a new GKE cluster in a given project and location. It's recommended to read the [GKE documentation]([REDACTED URI] to understand cluster configuration options. Cluster creation will default to Autopilot mode, as recommended by GKE best practices. If the user explicitly wants to create a Standard cluster, you need to set autopilot.enabled=false in the cluster configuration. This is similar to running `gcloud container clusters create-auto` or `gcloud container clusters create`.",
+          "description": "Creates a new GKE cluster in a given project and location. It's recommended to read the [GKE documentation]([REDACTED URI] to understand cluster configuration options. For regional locations, cluster creation will default to Autopilot mode, as recommended by GKE best practices. If the user explicitly wants to create a Standard cluster, you need to set autopilot.enabled=false in the cluster configuration. Clusters in zonal locations are always Standard clusters. If a Standard cluster configuration has neither nodePools nor i",
           "input": [
             {
               "name": "cluster",
@@ -8178,6 +9175,37 @@
           "outputSchema": true
         },
         {
+          "name": "diagnose_k8s_workload",
+          "description": "Collects a correlated incident snapshot for a Kubernetes workload (Deployment, StatefulSet, DaemonSet), verifying referenced ConfigMaps, Secrets, and PVCs, warning events, and automatically deduplicating container error logs.",
+          "input": [
+            {
+              "name": "kind",
+              "type": "string",
+              "description": "Required. The workload kind (e.g. Deployment, StatefulSet, DaemonSet, Job).",
+              "required": true
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "description": "Required. The name of the workload.",
+              "required": true
+            },
+            {
+              "name": "namespace",
+              "type": "string",
+              "description": "Optional. Optional namespace of the workload. Defaults to \"default\" if omitted.",
+              "required": false
+            },
+            {
+              "name": "parent",
+              "type": "string",
+              "description": "Required. The cluster that owns the workload. Format: projects/{project}/locations/{location}/clusters/{cluster}",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
           "name": "get_cluster",
           "description": "Gets the details of a specific GKE cluster.",
           "input": [
@@ -8197,6 +9225,19 @@
           "outputSchema": true
         },
         {
+          "name": "get_k8s_cluster_health",
+          "description": "Computes a high-level health scorecard across nodes, workloads, system pods, and control-plane components (GKE cluster state, admission webhooks, and API Priority and Fairness).",
+          "input": [
+            {
+              "name": "parent",
+              "type": "string",
+              "description": "Required. The cluster to inspect. Format: projects/{project}/locations/{location}/clusters/{cluster}",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
           "name": "get_k8s_cluster_info",
           "description": "Gets cluster endpoint information. This is similar to running `kubectl cluster-info`.",
           "input": [
@@ -8205,6 +9246,43 @@
               "type": "string",
               "description": "Required. The parent cluster. Format: projects/{project}/locations/{location}/clusters/{cluster}",
               "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_k8s_log_summary",
+          "description": "Fetches and deduplicates container logs using pattern fingerprinting to reduce token usage. Prefer this over get_k8s_logs when triaging crashes or noisy logs.",
+          "input": [
+            {
+              "name": "container",
+              "type": "string",
+              "description": "Optional. Optional container name. If omitted, uses the first container in the pod.",
+              "required": false
+            },
+            {
+              "name": "namespace",
+              "type": "string",
+              "description": "Optional. Optional namespace of the pod. Defaults to \"default\" if omitted.",
+              "required": false
+            },
+            {
+              "name": "parent",
+              "type": "string",
+              "description": "Required. The cluster that owns the pod. Format: projects/{project}/locations/{location}/clusters/{cluster}",
+              "required": true
+            },
+            {
+              "name": "pod",
+              "type": "string",
+              "description": "Required. The name of the pod.",
+              "required": true
+            },
+            {
+              "name": "tail",
+              "type": "string",
+              "description": "Optional. Optional number of tail lines to fetch before deduplication (default 500).",
+              "required": false
             }
           ],
           "outputSchema": true
@@ -8446,6 +9524,25 @@
           "outputSchema": true
         },
         {
+          "name": "list_k8s_cluster_issues",
+          "description": "Scans a cluster or namespace for abnormal pods (CrashLoopBackOff, OOMKilled, ImagePullBackOff), node pressure, stalled rollouts, quota exhaustion, PDB blocks, admission webhook risks, and API Priority and Fairness issues.",
+          "input": [
+            {
+              "name": "namespace",
+              "type": "string",
+              "description": "Optional. Optional namespace to scope the scan to. If empty, scans across namespaces.",
+              "required": false
+            },
+            {
+              "name": "parent",
+              "type": "string",
+              "description": "Required. The cluster to scan. Format: projects/{project}/locations/{location}/clusters/{cluster}",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
           "name": "list_k8s_events",
           "description": "Retrieves events from a Kubernetes cluster. This is similar to running `kubectl events`.",
           "input": [
@@ -8624,7 +9721,7 @@
   },
   "google-spanner": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:36.377Z",
+    "observedAt": "2026-11-16T15:52:08.628Z",
     "provenance": {
       "testedEndpoint": "https://spanner.googleapis.com/mcp",
       "route": "direct"
@@ -9096,9 +10193,661 @@
       "items": []
     }
   },
+  "govisit": {
+    "version": 1,
+    "observedAt": "2026-11-16T15:53:08.517Z",
+    "provenance": {
+      "testedEndpoint": "https://govisit.ai/mcp",
+      "route": "direct"
+    },
+    "authentication": "unauthenticated",
+    "tools": {
+      "status": "partial",
+      "observedCount": 22,
+      "retainedCount": 22,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": [
+        {
+          "name": "get_category_overview",
+          "description": "Identify the place category shown on a destination's category page. Read its label, category code, destination identity, and any published count or parent category.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_category_section",
+          "description": "Read the overview or places section of a destination category page. Choose places to inspect the inventory preview for that category. Lists contain up to 20 items.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            },
+            {
+              "name": "section",
+              "type": "string",
+              "description": "Published section of the selected page to read.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_collection_overview",
+          "description": "Identify a named destination collection and learn what it brings together. Read its title, description, slug, and any published count.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_collection_section",
+          "description": "Inspect part of a named collection. Select overview for the introduction, or places for the entries shown on the collection page. Lists contain up to 20 items.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            },
+            {
+              "name": "section",
+              "type": "string",
+              "description": "Published section of the selected page to read.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_destination_overview",
+          "description": "Return the published overview for this GoVisit destination. The result includes the long destination description, nullable SEO meta description, and any legacy overview fields, limited to the page's public overview fields and includes freshness metadata from the page snapshot.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_destination_section",
+          "description": "Read one part of a destination page, such as its overview, highlights, or updates. The experiences section returns every published experience card in the page language across all audiences. Other lists contain up to 20 items.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            },
+            {
+              "name": "section",
+              "type": "string",
+              "description": "Published section of the selected page to read.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_documentation_page",
+          "description": "Read the current page's published title, headings and structured content, or one section selected by its heading anchor. Returns the canonical URL and explicit truncation information. Reads only the current rendered page; does not fetch other articles.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            },
+            {
+              "name": "section",
+              "type": "string",
+              "description": "Optional heading anchor identifying one published section.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_page_faq",
+          "description": "Return at most 20 FAQs extracted from the current rendered page. An optional query filters the published question and answer text. Returns canonical references, count and truncation information. An empty list means no FAQ matched the requested filter in this bounded page projection; it does not establish that the subject has no answers.",
+          "input": [
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of results to return.",
+              "required": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            },
+            {
+              "name": "query",
+              "type": "string",
+              "description": "Optional text to match against published questions and answers.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_place_overview",
+          "description": "Return the published overview for this GoVisit place, including its published classifications with scheme, recipient, validity and available evidence, and its operating status: operatingStatus.code is operational, temporarily_closed or permanently_closed, and null when the status is unknown. Operating status says whether the place still operates, not whether it is open right now. The result excludes place spatial details, which are available from the Location section, and includes freshness metadata from the page snapshot. Owner, chain and operator are organization names, each null when unknow",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_place_section",
+          "description": "Return one published section for this GoVisit place, including Location spatial details. Arrays are limited to at most 20 items and text values are bounded; the result includes page freshness metadata. The overview section includes owner, chain and operator organization names, each null when unknown; operator identifies the company managing the facility, distinct from profile management.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            },
+            {
+              "name": "section",
+              "type": "string",
+              "description": "Published section of the selected page to read.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_place_visit_facts",
+          "description": "Read compact page-published visit facts for this GoVisit place, including operating status, location, contact details, opening hours, accessibility, experiences and freshness. Read operatingStatus before openingHours. A closed status takes precedence over regular hours. Owner, chain and operator are organization names, each null when unknown. The operator manages the facility.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "get_statistics",
+          "description": "Return exact governed catalog coverage counts and per-metric observation metadata from this cached public page. Scope is physical World on landing pages, or the parent Destination on Destination, category and collection pages. A measured zero is zero; missing or invalid metrics are unknown. Coverage is recalculated daily and may be slightly inaccurate within the day. Counts are not live availability, bounded search/list totals, or rounded homepage headlines.",
+          "input": [
+            {
+              "name": "category",
+              "type": "string",
+              "description": "Statistic family. Coverage is the only supported family today.",
+              "required": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "list_category_places",
+          "description": "Filter the venue cards shown for one category within a destination, such as Culture. Provide the category page path. Returns up to 20 cards from that inventory preview.",
+          "input": [
+            {
+              "name": "accessibility",
+              "type": "string",
+              "description": "Optional published accessibility label or code.",
+              "required": false
+            },
+            {
+              "name": "activityType",
+              "type": "string",
+              "description": "Optional published activity type.",
+              "required": false
+            },
+            {
+              "name": "administrativeArea",
+              "type": "string",
+              "description": "Optional published administrative area.",
+              "required": false
+            },
+            {
+              "name": "audience",
+              "type": "string",
+              "description": "Optional published audience label or code.",
+              "required": false
+            },
+            {
+              "name": "category",
+              "type": "string",
+              "description": "Optional published category code.",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of results to return.",
+              "required": false
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "description": "Optional published place name or partial name.",
+              "required": false
+            },
+            {
+              "name": "neighborhood",
+              "type": "string",
+              "description": "Optional published neighborhood.",
+              "required": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "list_collection_places",
+          "description": "Find entries in a named destination collection using its collection page path. Optional filters narrow the existing selection by published card details. Returns up to 20 matches.",
+          "input": [
+            {
+              "name": "accessibility",
+              "type": "string",
+              "description": "Optional published accessibility label or code.",
+              "required": false
+            },
+            {
+              "name": "activityType",
+              "type": "string",
+              "description": "Optional published activity type.",
+              "required": false
+            },
+            {
+              "name": "administrativeArea",
+              "type": "string",
+              "description": "Optional published administrative area.",
+              "required": false
+            },
+            {
+              "name": "audience",
+              "type": "string",
+              "description": "Optional published audience label or code.",
+              "required": false
+            },
+            {
+              "name": "category",
+              "type": "string",
+              "description": "Optional published category code.",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of results to return.",
+              "required": false
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "description": "Optional published place name or partial name.",
+              "required": false
+            },
+            {
+              "name": "neighborhood",
+              "type": "string",
+              "description": "Optional published neighborhood.",
+              "required": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "list_destination_activities",
+          "description": "Discover activities featured on the destination page, such as walking tours. Returns up to 20 cards from its activity section.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "list_destination_categories",
+          "description": "See how a destination groups its places. Returns up to 20 category labels and codes with available counts and parent categories from the destination page.",
+          "input": [
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "list_destination_highlights",
+          "description": "Return at most 20 compact published highlight place cards from this destination page. The result is a page-local subset, includes canonical links, and includes freshness metadata.",
+          "input": [
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of results to return.",
+              "required": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "list_destination_places",
+          "description": "Browse the place cards displayed on a destination's main page. Apply optional filters to that preview and get up to 20 matches. Coverage depends on which cards the page shows.",
+          "input": [
+            {
+              "name": "accessibility",
+              "type": "string",
+              "description": "Optional published accessibility label or code.",
+              "required": false
+            },
+            {
+              "name": "activityType",
+              "type": "string",
+              "description": "Optional published activity type.",
+              "required": false
+            },
+            {
+              "name": "administrativeArea",
+              "type": "string",
+              "description": "Optional published administrative area.",
+              "required": false
+            },
+            {
+              "name": "audience",
+              "type": "string",
+              "description": "Optional published audience label or code.",
+              "required": false
+            },
+            {
+              "name": "category",
+              "type": "string",
+              "description": "Optional published category code.",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of results to return.",
+              "required": false
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "description": "Optional published place name or partial name.",
+              "required": false
+            },
+            {
+              "name": "neighborhood",
+              "type": "string",
+              "description": "Optional published neighborhood.",
+              "required": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "list_related_places",
+          "description": "Find nearby suggestions shown on a single place profile. Use the path of the reference place and filter its nearby cards by published details. Returns up to 20 matches.",
+          "input": [
+            {
+              "name": "accessibility",
+              "type": "string",
+              "description": "Optional published accessibility label or code.",
+              "required": false
+            },
+            {
+              "name": "activityType",
+              "type": "string",
+              "description": "Optional published activity type.",
+              "required": false
+            },
+            {
+              "name": "administrativeArea",
+              "type": "string",
+              "description": "Optional published administrative area.",
+              "required": false
+            },
+            {
+              "name": "audience",
+              "type": "string",
+              "description": "Optional published audience label or code.",
+              "required": false
+            },
+            {
+              "name": "category",
+              "type": "string",
+              "description": "Optional published category code.",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of results to return.",
+              "required": false
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "description": "Optional published place name or partial name.",
+              "required": false
+            },
+            {
+              "name": "neighborhood",
+              "type": "string",
+              "description": "Optional published neighborhood.",
+              "required": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "search_destinations",
+          "description": "Search published destinations by name or traveler intent. mode defaults to auto: exact name matches avoid embedding; otherwise name and intent results are combined. Explicit name never embeds; intent always searches by meaning. Returns stable destination codes, public URLs, match method, scope and index release. Optional within and types filter canonical geography before ranking; they require a geography-enabled release. Whole-Division containment takes precedence over a default hierarchy parent for cross-border destinations; unknown scope is never assumed. Types are published classifications,",
+          "input": [
+            {
+              "name": "language",
+              "type": "string",
+              "description": "Requested response language; defaults to the page language.",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of results to return.",
+              "required": false
+            },
+            {
+              "name": "mode",
+              "type": "string",
+              "description": "Name lookup, intent retrieval, or name-first auto discovery.",
+              "required": false
+            },
+            {
+              "name": "query",
+              "type": "string",
+              "description": "Place or destination name, or the traveler's intent.",
+              "required": true
+            },
+            {
+              "name": "types",
+              "type": "array",
+              "description": "Match any of these published classifications; not a size/tier filter.",
+              "required": false
+            },
+            {
+              "name": "within",
+              "type": "string",
+              "description": "Canonical destination code to explore within; all is reserved for an explicit unrestricted place search, never a containing-destination filter.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "search_documentation",
+          "description": "Search the published documentation links currently rendered on this GoVisit page and return bounded canonical links and titles.",
+          "input": [
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of results to return.",
+              "required": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Canonical GoVisit page path supplying this tool's published context; no origin, query or fragment.",
+              "required": true
+            },
+            {
+              "name": "query",
+              "type": "string",
+              "description": "Optional documentation title or path text to match.",
+              "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "search_places",
+          "description": "For faster searches, pass a known country or destination code. Unscoped name lookups search all covered countries. Search published places by name or traveler intent. mode defaults to auto: exact names avoid embedding, otherwise combine name and intent candidates without duplicate IDs. Explicit name never embeds. A destination page supplies its scope; country, destination and near intersect and never widen. Scoped names and proximity require a geography-enabled index release; older releases report unavailable constraints. At most 200 candidate records are examined before returning up to 20 ite",
+          "input": [
+            {
+              "name": "country",
+              "type": "string",
+              "description": "Two-letter ISO country code. Supply it when the country is known to narrow the search. Intersects destination and proximity where the public geography projection is available.",
+              "required": false
+            },
+            {
+              "name": "destination",
+              "type": "string",
+              "description": "Stable destination code or all. Defaults to the current destination, otherwise all.",
+              "required": false
+            },
+            {
+              "name": "language",
+              "type": "string",
+              "description": "Requested response language; defaults to the page language.",
+              "required": false
+            },
+            {
+              "name": "limit",
+              "type": "integer",
+              "description": "Maximum number of places to return. Defaults to 10. Name mode allows up to 10. Other modes allow up to 20.",
+              "required": false
+            },
+            {
+              "name": "mode",
+              "type": "string",
+              "description": "Name lookup, intent retrieval, or name-first auto discovery.",
+              "required": false
+            },
+            {
+              "name": "near",
+              "type": "object",
+              "description": "Proximity filter with a radius in meters. Supply either a GoVisit place ID or explicit coordinates as the reference.",
+              "required": false
+            },
+            {
+              "name": "query",
+              "type": "string",
+              "description": "Place or destination name, or the traveler's intent.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        }
+      ]
+    },
+    "resources": {
+      "status": "unsupported",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    },
+    "resourceTemplates": {
+      "status": "unsupported",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    },
+    "prompts": {
+      "status": "unsupported",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    }
+  },
   "grep": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:23.464Z",
+    "observedAt": "2026-11-16T15:51:53.440Z",
     "provenance": {
       "testedEndpoint": "https://mcp.grep.app/",
       "route": "direct"
@@ -9189,7 +10938,7 @@
   },
   "greptile": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:42.576Z",
+    "observedAt": "2026-11-16T15:52:16.492Z",
     "provenance": {
       "testedEndpoint": "https://api.greptile.com/mcp",
       "route": "direct"
@@ -9939,7 +11688,7 @@
   },
   "jina": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:21.773Z",
+    "observedAt": "2026-11-16T15:51:51.745Z",
     "provenance": {
       "testedEndpoint": "https://mcp.jina.ai/v1",
       "route": "direct"
@@ -10300,7 +12049,7 @@
   },
   "kindwise": {
     "version": 1,
-    "observedAt": "2026-11-02T16:00:11.845Z",
+    "observedAt": "2026-11-16T15:52:52.497Z",
     "provenance": {
       "testedEndpoint": "https://agents.kindwise.com/mcp",
       "route": "direct"
@@ -10585,7 +12334,7 @@
   },
   "langchain-docs": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:40.218Z",
+    "observedAt": "2026-11-16T15:52:13.227Z",
     "provenance": {
       "testedEndpoint": "https://docs.langchain.com/mcp",
       "route": "direct"
@@ -10654,7 +12403,7 @@
       "items": [
         {
           "name": "langchain",
-          "description": "Use when building AI agents with tool calling, designing multi-step workflows, integrating LLMs with external systems, or deploying production agents. Agents are the core pattern: a model calling tools in a loop until a task completes, shaped by a configurable harness of prompt, tools, and middleware.",
+          "description": "Use when building agents, workflows, and AI applications. Reach for LangChain when you need to create agents with custom tools, integrate LLMs, build multi-step workflows, or deploy production agents. Use Deep Agents for complex multi-step work with planning and subagents, LangGraph for low-level orchestration and stateful workflows, or LangChain's create_agent for highly customizable agent harnesses.",
           "mimeType": "text/markdown"
         }
       ]
@@ -10678,7 +12427,7 @@
   },
   "lianxiaozhi": {
     "version": 1,
-    "observedAt": "2026-11-05T03:21:40.436Z",
+    "observedAt": "2026-11-16T15:53:03.381Z",
     "provenance": {
       "testedEndpoint": "https://lianxiaozhi.com/api/mcp",
       "route": "direct"
@@ -10883,7 +12632,7 @@
   },
   "livekit-docs": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:40.359Z",
+    "observedAt": "2026-11-16T15:52:13.732Z",
     "provenance": {
       "testedEndpoint": "https://docs.livekit.io/mcp",
       "route": "direct"
@@ -10903,7 +12652,7 @@
             {
               "name": "context",
               "type": "string",
-              "description": "Explain why you are calling this tool and how it fits the user's overall goal. Used only for analytics. Write 15-25 words in the third person, never first person. Never include credentials, tokens, or personal data. Example (18 words): \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
+              "description": "Describe the user's task that this call supports, not the mechanics of the call. Used only for analytics. Never include credentials, tokens, or personal data. Example: \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
               "required": true
             },
             {
@@ -10963,12 +12712,12 @@
         },
         {
           "name": "docs_search",
-          "description": "Search the docs for a given query. Paged results will be returned, showing page titles, hiearchical placement, and (sometimes) a snippet of the content. You must then use the get_page tool with any provided URL to get the full page content (except for auto-generated SDK reference pages like /reference/client-sdk-js, which must be fetched from the web directly by URL). Python API reference pages (/reference/python/*) are supported natively. The search index is not perfect, as it covers a large amount of content in many different programming languages. Search should usually be used as a compleme",
+          "description": "Search the docs for a given query. Paged results will be returned, showing page titles, hierarchical placement, and (sometimes) a snippet of the content. You must then use the get_pages tool to get the full page content. get_pages accepts the URLs that search returns. The exception is auto-generated SDK reference pages like /reference/client-sdk-js, which must be fetched from the web directly by URL. Python API reference pages (/reference/python/*) are supported natively. The search index is not perfect, as it covers a large amount of content in many different programming languages. Search sho",
           "input": [
             {
               "name": "context",
               "type": "string",
-              "description": "Explain why you are calling this tool and how it fits the user's overall goal. Used only for analytics. Write 15-25 words in the third person, never first person. Never include credentials, tokens, or personal data. Example (18 words): \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
+              "description": "Describe the user's task that this call supports, not the mechanics of the call. Used only for analytics. Never include credentials, tokens, or personal data. Example: \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
               "required": true
             },
             {
@@ -11021,7 +12770,7 @@
             {
               "name": "context",
               "type": "string",
-              "description": "Explain why you are calling this tool and how it fits the user's overall goal. Used only for analytics. Write 15-25 words in the third person, never first person. Never include credentials, tokens, or personal data. Example (18 words): \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
+              "description": "Describe the user's task that this call supports, not the mechanics of the call. Used only for analytics. Never include credentials, tokens, or personal data. Example: \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
               "required": true
             },
             {
@@ -11068,7 +12817,7 @@
             {
               "name": "context",
               "type": "string",
-              "description": "Explain why you are calling this tool and how it fits the user's overall goal. Used only for analytics. Write 15-25 words in the third person, never first person. Never include credentials, tokens, or personal data. Example (18 words): \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
+              "description": "Describe the user's task that this call supports, not the mechanics of the call. Used only for analytics. Never include credentials, tokens, or personal data. Example: \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
               "required": true
             },
             {
@@ -11103,7 +12852,7 @@
             {
               "name": "context",
               "type": "string",
-              "description": "Explain why you are calling this tool and how it fits the user's overall goal. Used only for analytics. Write 15-25 words in the third person, never first person. Never include credentials, tokens, or personal data. Example (18 words): \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
+              "description": "Describe the user's task that this call supports, not the mechanics of the call. Used only for analytics. Never include credentials, tokens, or personal data. Example: \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
               "required": true
             },
             {
@@ -11138,7 +12887,7 @@
             {
               "name": "context",
               "type": "string",
-              "description": "Explain why you are calling this tool and how it fits the user's overall goal. Used only for analytics. Write 15-25 words in the third person, never first person. Never include credentials, tokens, or personal data. Example (18 words): \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
+              "description": "Describe the user's task that this call supports, not the mechanics of the call. Used only for analytics. Never include credentials, tokens, or personal data. Example: \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
               "required": true
             },
             {
@@ -11167,7 +12916,7 @@
             {
               "name": "context",
               "type": "string",
-              "description": "Explain why you are calling this tool and how it fits the user's overall goal. Used only for analytics. Write 15-25 words in the third person, never first person. Never include credentials, tokens, or personal data. Example (18 words): \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
+              "description": "Describe the user's task that this call supports, not the mechanics of the call. Used only for analytics. Never include credentials, tokens, or personal data. Example: \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
               "required": true
             },
             {
@@ -11202,7 +12951,7 @@
             {
               "name": "context",
               "type": "string",
-              "description": "Explain why you are calling this tool and how it fits the user's overall goal. Used only for analytics. Write 15-25 words in the third person, never first person. Never include credentials, tokens, or personal data. Example (18 words): \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
+              "description": "Describe the user's task that this call supports, not the mechanics of the call. Used only for analytics. Never include credentials, tokens, or personal data. Example: \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
               "required": true
             },
             {
@@ -11237,7 +12986,7 @@
             {
               "name": "context",
               "type": "string",
-              "description": "Explain why you are calling this tool and how it fits the user's overall goal. Used only for analytics. Write 15-25 words in the third person, never first person. Never include credentials, tokens, or personal data. Example (18 words): \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
+              "description": "Describe the user's task that this call supports, not the mechanics of the call. Used only for analytics. Never include credentials, tokens, or personal data. Example: \"Adding a Python voice agent to an existing web app and checking which speech-to-text plugins support streaming transcription.\"",
               "required": true
             },
             {
@@ -11319,7 +13068,7 @@
   },
   "macalculatriceenligne": {
     "version": 1,
-    "observedAt": "2026-11-03T10:56:18.776Z",
+    "observedAt": "2026-11-16T15:53:02.061Z",
     "provenance": {
       "testedEndpoint": "https://macalculatriceenligne.com/api/mcp",
       "route": "direct"
@@ -12791,7 +14540,7 @@
   },
   "mailtester": {
     "version": 1,
-    "observedAt": "2026-11-02T16:00:00.429Z",
+    "observedAt": "2026-11-16T15:52:40.587Z",
     "provenance": {
       "testedEndpoint": "https://app.mailtester.com/mcp",
       "route": "direct"
@@ -12971,7 +14720,7 @@
   },
   "mdn": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:17.292Z",
+    "observedAt": "2026-11-16T15:51:45.666Z",
     "provenance": {
       "testedEndpoint": "https://mcp.mdn.mozilla.net/",
       "route": "direct"
@@ -13052,7 +14801,7 @@
   },
   "microsoft-learn": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:19.481Z",
+    "observedAt": "2026-11-16T15:51:49.183Z",
     "provenance": {
       "testedEndpoint": "https://learn.microsoft.com/api/mcp",
       "route": "direct"
@@ -13139,7 +14888,7 @@
   },
   "mubboo-flights": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:55.576Z",
+    "observedAt": "2026-11-16T15:52:32.653Z",
     "provenance": {
       "testedEndpoint": "https://mubboo.flights/api/mcp",
       "route": "direct"
@@ -13260,7 +15009,7 @@
   },
   "nuxt": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:20.635Z",
+    "observedAt": "2026-11-16T15:51:49.250Z",
     "provenance": {
       "testedEndpoint": "https://nuxt.com/mcp",
       "route": "direct"
@@ -13268,14 +15017,14 @@
     "authentication": "unauthenticated",
     "tools": {
       "status": "partial",
-      "observedCount": 12,
-      "retainedCount": 12,
+      "observedCount": 13,
+      "retainedCount": 13,
       "omittedCount": 0,
       "paginationComplete": true,
       "items": [
         {
           "name": "get-blog-post",
-          "description": "Retrieves the full content of a specific Nuxt blog post. WHEN TO USE: Use this tool when you know the EXACT path to a blog post. Common scenarios: - User asks for a specific post: \"Get the blog post about Nuxt 4\" → /blog/v4 - You found a relevant post from list_blog_posts and want the full content - The current page context is a /blog/... path WHEN NOT TO USE: If you don't know the exact path and need to search/discover, use list_blog_posts first. Never call this tool twice for the same path — one call returns the full post. EXAMPLES: \"/blog/v4\", \"/blog/nuxt3\", \"/blog/nuxt-on-the-edge\"",
+          "description": "Retrieves the full content of a specific Nuxt blog post. WHEN TO USE: Use this tool when you know the EXACT path to a blog post. Common scenarios: - User asks for a specific post: \"Get the blog post about Nuxt 4\" → /blog/v4 - You found a relevant post from list-blog-posts and want the full content - The current page context is a /blog/... path WHEN NOT TO USE: If you don't know the exact path and need to search/discover, use list-blog-posts first. Never call this tool twice for the same path — one call returns the full post. EXAMPLES: \"/blog/v4\", \"/blog/nuxt3\", \"/blog/nuxt-on-the-edge\"",
           "input": [
             {
               "name": "path",
@@ -13307,7 +15056,7 @@
         },
         {
           "name": "get-deploy-provider",
-          "description": "Retrieves detailed deployment instructions and setup guide for a specific hosting provider. WHEN TO USE: Use this tool when you know EXACTLY which provider the user wants. Common scenarios: - User asks for a specific provider: \"How do I deploy to Vercel?\" → /deploy/vercel - User mentions a known platform: \"Cloudflare deployment\" → /deploy/cloudflare - You found a relevant provider from list_deploy_providers and want full details WHEN NOT TO USE: If the user is asking about options or comparing providers, use list_deploy_providers first. EXAMPLES: \"/deploy/vercel\", \"/deploy/cloudflare\", \"/deplo",
+          "description": "Retrieves detailed deployment instructions and setup guide for a specific hosting provider. WHEN TO USE: Use this tool when you know EXACTLY which provider the user wants. Common scenarios: - User asks for a specific provider: \"How do I deploy to Vercel?\" → /deploy/vercel - User mentions a known platform: \"Cloudflare deployment\" → /deploy/cloudflare - You found a relevant provider from list-deploy-providers and want full details WHEN NOT TO USE: If the user is asking about options or comparing providers, use list-deploy-providers first. EXAMPLES: \"/deploy/vercel\", \"/deploy/cloudflare\", \"/deplo",
           "input": [
             {
               "name": "path",
@@ -13326,7 +15075,7 @@
         },
         {
           "name": "get-documentation-page",
-          "description": "Retrieves the full content and details of a specific Nuxt documentation page. WHEN TO USE: Use this tool when you know the EXACT path to a documentation page. Common use cases: - User asks for a specific page: \"Show me the introduction page\" → /docs/4.x/getting-started/introduction - User asks about a known topic with a dedicated page - You found a relevant path from list_documentation_pages and want the full content WHEN NOT TO USE: If you don't know the exact path and need to search/explore, use list_documentation_pages first. COMMON PAGES (Nuxt 4.x): Getting Started: - \"/docs/4.x/getting-st",
+          "description": "Retrieves the full content of a Nuxt docs page by its path. WHEN TO USE: When you know the EXACT path of a documentation page, for example one returned by search-documentation or list-documentation-pages, or one of the common pages below. WHEN NOT TO USE: For a question or topic, use search-documentation first: it searches page content and returns the matching sections. Don't guess paths. PATHS: Composables are /docs/4.x/api/composables/<kebab-name> (useFetch → use-fetch), utils /docs/4.x/api/utils/<kebab-name>, and the app/ directory /docs/4.x/directory-structure/app/<name>. COMMON PAGES (Nux",
           "input": [
             {
               "name": "path",
@@ -13345,7 +15094,7 @@
         },
         {
           "name": "get-getting-started-guide",
-          "description": "Retrieves the official \"Getting Started\" introduction page for a given Nuxt major version. WHEN TO USE: When the user wants a high-level overview / setup guide for Nuxt without specifying a precise documentation page. WHEN NOT TO USE: For a specific page outside the introduction, prefer get_documentation_page.",
+          "description": "Retrieves the official \"Getting Started\" introduction page for a given Nuxt major version. WHEN TO USE: When the user wants a high-level overview / setup guide for Nuxt without specifying a precise documentation page. WHEN NOT TO USE: For a specific page outside the introduction, prefer get-documentation-page.",
           "input": [
             {
               "name": "sections",
@@ -13364,12 +15113,12 @@
         },
         {
           "name": "get-module",
-          "description": "Retrieves complete details about a specific Nuxt module including README, compatibility, supported providers, and stats. WHEN TO USE: Use this tool when you know the EXACT module identifier. Common scenarios: - User asks for a specific module: \"Get details about @nuxt/ui\" - User mentions a known module: \"Show me nuxt-icon module\" - You found a relevant module from list_modules and want full details - You need to check Nuxt 4 compatibility for a specific module WHEN NOT TO USE: If you don't know the exact module identifier and need to search/discover modules, use list_modules first. PARAMETER:",
+          "description": "Retrieves complete details about a specific Nuxt module including README, compatibility, supported providers, and stats. WHEN TO USE: Use this tool when you know the EXACT module identifier. Common scenarios: - User asks for a specific module: \"Get details about @nuxt/ui\" - User mentions a known module: \"Show me nuxt-icon module\" - You found a relevant module from list-modules and want full details - You need to check Nuxt 4 compatibility for a specific module WHEN NOT TO USE: If you don't know the exact module identifier and need to search/discover modules, use list-modules first. PARAMETER:",
           "input": [
             {
               "name": "slug",
               "type": "string",
-              "description": "The unique module identifier, exactly as shown in list_modules (e.g., \"@nuxt/ui\", \"@nuxtjs/i18n\", \"nuxt-icon\")",
+              "description": "Module slug (\"ui\", \"i18n\", \"image\") or npm package name (\"@nuxt/ui\", \"@nuxtjs/i18n\")",
               "required": true
             }
           ],
@@ -13396,17 +15145,17 @@
         },
         {
           "name": "list-blog-posts",
-          "description": "Lists all Nuxt blog posts with metadata including titles, dates, categories, tags, and descriptions. WHEN TO USE: Use this tool when you need to DISCOVER or SEARCH for blog posts. Common scenarios: - \"What are the latest announcements?\" - browse recent posts - \"Has there been any post about X feature?\" - search by topic - \"Show me performance improvements\" - find relevant posts by topic - \"What's new in Nuxt?\" - explore recent updates WHEN NOT TO USE: If you already know the exact blog post path (e.g., \"/blog/v4\"), use get_blog_post directly. OUTPUT: Returns list of posts with title, descripti",
+          "description": "Lists all Nuxt blog posts with metadata including titles, dates, categories, tags, and descriptions. WHEN TO USE: Use this tool when you need to DISCOVER or SEARCH for blog posts. Common scenarios: - \"What are the latest announcements?\" - browse recent posts - \"Has there been any post about X feature?\" - search by topic - \"Show me performance improvements\" - find relevant posts by topic - \"What's new in Nuxt?\" - explore recent updates WHEN NOT TO USE: If you already know the exact blog post path (e.g., \"/blog/v4\"), use get-blog-post directly. OUTPUT: Returns list of posts with title, descripti",
           "outputSchema": false
         },
         {
           "name": "list-deploy-providers",
-          "description": "Lists all deployment providers and hosting platforms for Nuxt applications with their features and capabilities. WHEN TO USE: Use this tool when you need to DISCOVER or COMPARE deployment options. Common scenarios: - \"What deployment platforms are available?\" - browse all options - \"I need edge functions support\" - compare features across providers - \"Show me platforms with free tiers\" - search for specific features - \"What are my deployment options?\" - general exploration WHEN NOT TO USE: If you know the exact provider (e.g., \"Vercel\", \"Cloudflare\"), you can use get_deploy_provider directly w",
+          "description": "Lists all deployment providers and hosting platforms for Nuxt applications with their features and capabilities. WHEN TO USE: Use this tool when you need to DISCOVER or COMPARE deployment options. Common scenarios: - \"What deployment platforms are available?\" - browse all options - \"I need edge functions support\" - compare features across providers - \"Show me platforms with free tiers\" - search for specific features - \"What are my deployment options?\" - general exploration WHEN NOT TO USE: If you know the exact provider (e.g., \"Vercel\", \"Cloudflare\"), you can use get-deploy-provider directly w",
           "outputSchema": false
         },
         {
           "name": "list-documentation-pages",
-          "description": "Lists Nuxt documentation pages, optionally filtered by search term. WHEN TO USE: When you need to find documentation about a topic but don't know the exact page path. WHEN NOT TO USE: If you already know the page path, use get_documentation_page directly. TIPS: Always pass a search term to narrow results — avoids dumping the entire catalog.",
+          "description": "Lists Nuxt docs pages (title and path) for a version, optionally filtered by words in the title, path or description. WHEN TO USE: To browse the docs catalog, or to list the pages of a section or another version (3.x, 5.x). WHEN NOT TO USE: For a question or topic, use search-documentation, which searches page content. If you know the page path, use get-documentation-page. TIPS: Always pass a search term to narrow results; every word must match.",
           "input": [
             {
               "name": "search",
@@ -13492,6 +15241,25 @@
               "name": "search",
               "type": "string",
               "description": "Part of a GitHub username to search for",
+              "required": false
+            }
+          ],
+          "outputSchema": false
+        },
+        {
+          "name": "search-documentation",
+          "description": "Full-text search of the Nuxt v4 documentation, the deployment guides, the docs of the official modules nuxt.com hosts (/modules/<slug>/…) and the Nuxt blog, whose release posts explain recently added features. Returns the best-matching sections with their content, page path and anchor link, usually enough to answer without fetching the page. WHEN TO USE: First, for any Nuxt how-to question, error message, composable, utility or config option, especially APIs added recently that you may not know: data fetching (useFetch, useAsyncData, createUseFetch, enabled, addons), state (useState, clearNuxt",
+          "input": [
+            {
+              "name": "query",
+              "type": "string",
+              "description": "Keywords, API names, config keys or an error message excerpt",
+              "required": true
+            },
+            {
+              "name": "scope",
+              "type": "string",
+              "description": "Restrict to the docs (/docs/4.x), the deployment guides (/deploy), the hosted module docs (/modules) or the blog (/blog)",
               "required": false
             }
           ],
@@ -13586,7 +15354,7 @@
   },
   "openai-docs": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:40.003Z",
+    "observedAt": "2026-11-16T15:52:12.944Z",
     "provenance": {
       "testedEndpoint": "https://developers.openai.com/mcp",
       "route": "direct"
@@ -13711,7 +15479,7 @@
   },
   "openzeppelin-solidity": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:43.524Z",
+    "observedAt": "2026-11-16T15:52:17.962Z",
     "provenance": {
       "testedEndpoint": "https://mcp.openzeppelin.com/contracts/solidity/mcp",
       "route": "direct"
@@ -14654,7 +16422,7 @@
   },
   "prowler": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:47.012Z",
+    "observedAt": "2026-11-16T15:52:22.057Z",
     "provenance": {
       "testedEndpoint": "https://mcp.prowler.com/mcp",
       "route": "direct"
@@ -14662,9 +16430,9 @@
     "authentication": "unauthenticated",
     "tools": {
       "status": "partial",
-      "observedCount": 100,
-      "retainedCount": 21,
-      "omittedCount": 79,
+      "observedCount": 121,
+      "retainedCount": 22,
+      "omittedCount": 99,
       "paginationComplete": true,
       "items": [
         {
@@ -14797,6 +16565,25 @@
               "name": "scan_timezone",
               "description": "IANA timezone name, e.g. 'America/New_York'.",
               "required": false
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "prowler_cloud_check_realtime_feed_now",
+          "description": "Ask Prowler Realtime to read the feed now instead of waiting for the next minute. Results show up in the events.",
+          "input": [
+            {
+              "name": "context",
+              "type": "string",
+              "description": "Explain why you are calling this tool and how it fits into the user's overall goal. This parameter is used for analytics and user intent tracking. YOU MUST provide 15-25 words (count carefully). NEVER use first person ('I', 'we', 'you') - maintain third-person perspective. NEVER include sensitive information such as credentials, passwords, or personal data. Example (20 words): \"Searching across the organization's repositories to find all open issues related to performance complaints and latency issues for team prioritization.\"",
+              "required": true
+            },
+            {
+              "name": "provider_id",
+              "type": "string",
+              "description": "UUIDv4 of the AWS provider.",
+              "required": true
             }
           ],
           "outputSchema": true
@@ -15219,8 +17006,8 @@
           "outputSchema": true
         },
         {
-          "name": "prowler_cloud_get_scan_configuration",
-          "description": "Retrieve a scan configuration including its full configuration body. The 'configuration' body follows the JSON Schema returned by prowler_cloud_get_scan_configuration_schema (one section per provider type).",
+          "name": "prowler_cloud_get_realtime_cost",
+          "description": "Cost totals, daily series per service and the cost anomalies. Returns {\"enabled\": false} unless cost anomaly detection is on in the policy.",
           "input": [
             {
               "name": "context",
@@ -15229,9 +17016,9 @@
               "required": true
             },
             {
-              "name": "scan_configuration_id",
+              "name": "provider_id",
               "type": "string",
-              "description": "UUIDv4 of the scan configuration to retrieve. Use prowler_cloud_list_scan_configurations to find ids.",
+              "description": "UUIDv4 of the AWS provider.",
               "required": true
             }
           ],
@@ -15266,7 +17053,7 @@
   },
   "qrcodekit": {
     "version": 1,
-    "observedAt": "2026-11-02T16:00:02.633Z",
+    "observedAt": "2026-11-16T15:52:42.413Z",
     "provenance": {
       "testedEndpoint": "https://mcp.v2.qrcodekit.com/mcp",
       "route": "direct"
@@ -15694,7 +17481,7 @@
   },
   "realtycrawl": {
     "version": 1,
-    "observedAt": "2026-11-05T02:20:49.517Z",
+    "observedAt": "2026-11-16T15:53:02.528Z",
     "provenance": {
       "testedEndpoint": "https://realtycrawl.dev/mcp",
       "route": "direct"
@@ -15809,7 +17596,7 @@
   },
   "svelte": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:19.824Z",
+    "observedAt": "2026-11-16T15:51:49.043Z",
     "provenance": {
       "testedEndpoint": "https://mcp.svelte.dev/mcp",
       "route": "direct"
@@ -15897,9 +17684,9 @@
     },
     "resources": {
       "status": "partial",
-      "observedCount": 204,
+      "observedCount": 205,
       "retainedCount": 100,
-      "omittedCount": 104,
+      "omittedCount": 105,
       "paginationComplete": true,
       "items": [
         {
@@ -15951,6 +17738,11 @@
           "name": "ai/overview",
           "title": "Overview",
           "description": "ai tools setup, using ai assistants with svelte, agent-based development, ai code generation, llm integration with svelte projects"
+        },
+        {
+          "name": "ai/pi-plugin",
+          "title": "Pi",
+          "description": "use title and path to estimate use case"
         },
         {
           "name": "ai/prompts",
@@ -16396,11 +18188,6 @@
           "name": "kit/migrating-to-sveltekit-3",
           "title": "Migrating to SvelteKit v3",
           "description": "DO NOT READ IN GREENFIELD v3 PROJECTS, upgrading to sveltekit 3, migration from sveltekit 2, breaking changes, dependency updates, configuration changes, modernizing existing projects"
-        },
-        {
-          "name": "kit/observability",
-          "title": "Observability",
-          "description": "performance monitoring, debugging, observability, production troubleshooting, request tracing, load function analysis, form action debugging, api endpoint monitoring"
         }
       ]
     },
@@ -16441,7 +18228,7 @@
   },
   "tasarim": {
     "version": 1,
-    "observedAt": "2026-11-02T16:00:14.613Z",
+    "observedAt": "2026-11-16T15:52:57.291Z",
     "provenance": {
       "testedEndpoint": "https://tasarim.ai/api/mcp",
       "route": "direct"
@@ -16549,7 +18336,7 @@
   },
   "the-old-ways": {
     "version": 1,
-    "observedAt": "2026-11-02T16:00:11.104Z",
+    "observedAt": "2026-11-16T15:52:52.302Z",
     "provenance": {
       "testedEndpoint": "https://mcp.theoldways.co/mcp",
       "route": "direct"
@@ -16656,7 +18443,7 @@
   },
   "xposedornot": {
     "version": 1,
-    "observedAt": "2026-11-02T16:00:07.679Z",
+    "observedAt": "2026-11-16T15:52:46.216Z",
     "provenance": {
       "testedEndpoint": "https://api.xposedornot.com/mcp",
       "route": "direct"
@@ -16780,7 +18567,7 @@
   },
   "yahoo-finance": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:16.465Z",
+    "observedAt": "2026-11-16T15:51:44.298Z",
     "provenance": {
       "testedEndpoint": "https://gateway.mcpservers.org/yahoo-finance/mcp",
       "route": "direct"
@@ -16934,7 +18721,7 @@
   },
   "zuplo-docs": {
     "version": 1,
-    "observedAt": "2026-11-02T15:59:41.122Z",
+    "observedAt": "2026-11-16T15:52:14.340Z",
     "provenance": {
       "testedEndpoint": "https://dev.zuplo.com/mcp/docs",
       "route": "direct"
@@ -17018,7 +18805,7 @@
   },
   "zylalabs": {
     "version": 1,
-    "observedAt": "2026-11-02T16:00:08.945Z",
+    "observedAt": "2026-11-16T15:52:48.913Z",
     "provenance": {
       "testedEndpoint": "https://mcp.zylalabs.com/mcp",
       "route": "direct"

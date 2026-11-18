@@ -87,7 +87,7 @@ const CatalogView: React.FC<CatalogViewProps> = ({ onTestServer }) => {
       <div className="catalog-view">
         <section className="catalog-empty-state" aria-labelledby={`${idPrefix}-catalog-missing-title`}>
           <h1 id={`${idPrefix}-catalog-missing-title`} className="h3">Catalog category not found</h1>
-          <p>This category does not exist, or its servers have moved to another category.</p>
+          <p>No catalog category has this address. It may have been renamed, or its servers moved to another category.</p>
           <Link className="btn btn-outline-primary" to={CATALOG_PATH}>Browse every category</Link>
         </section>
       </div>
@@ -103,7 +103,7 @@ const CatalogView: React.FC<CatalogViewProps> = ({ onTestServer }) => {
           {categorySummary ? (
             <>
               <nav aria-label="Breadcrumb" className="catalog-category-breadcrumb">
-                <Link to={{ pathname: CATALOG_PATH, search: filterSearch }}>Server Catalog</Link>
+                <Link to={{ pathname: CATALOG_PATH, search: filterSearch }}>Server catalog</Link>
                 <span aria-hidden="true">/</span>
                 <span aria-current="page">{categorySummary.category}</span>
               </nav>
@@ -121,6 +121,9 @@ const CatalogView: React.FC<CatalogViewProps> = ({ onTestServer }) => {
               </p>
             </>
           )}
+          <Link to="/submit" className="btn btn-primary mt-3">
+            <i className="bi bi-plus-lg" aria-hidden="true" /> Submit server
+          </Link>
           <div className="catalog-results-bar" aria-live="polite">
             <p className="catalog-results-count">
               Showing <strong>{filteredServers.length}</strong> of {totalInScope}{' '}
@@ -260,10 +263,10 @@ const CatalogView: React.FC<CatalogViewProps> = ({ onTestServer }) => {
                 <i className="bi bi-search" />
               </div>
               <h3 id={`${idPrefix}-catalog-empty-title`}>
-                No servers found matching your criteria
+                No servers match your search and filters
               </h3>
               <p>
-                Try adjusting your search or filters, or clear them to browse the full catalog.
+                Change the search or filters, or clear them to see every server in scope.
               </p>
               <button
                 type="button"

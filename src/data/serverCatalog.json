@@ -1768,10 +1768,11 @@
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
-    "logoUrl": "/server-logos/aws-knowledge.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated AWS monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official AWS mark.",
+    "logoUrl": "/server-logos/aws-knowledge.png",
+    "logoSourceUrl": "https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official AWS site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://aws.amazon.com",
     "sourceUrl": "https://github.com/awslabs/mcp"
   },
@@ -1795,10 +1796,11 @@
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
-    "logoUrl": "/server-logos/microsoft-learn.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated ML monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Microsoft Learn mark.",
+    "logoUrl": "/server-logos/microsoft-learn.png",
+    "logoSourceUrl": "https://avatars.githubusercontent.com/u/6154722?s=256&v=4",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Microsoft GitHub organization avatar from the verified microsoft organization; trademark rights remain with the publisher.",
     "homepageUrl": "https://learn.microsoft.com",
     "sourceUrl": "https://github.com/MicrosoftDocs/mcp"
   },
@@ -1970,10 +1972,11 @@
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
-    "logoUrl": "/server-logos/twilio-docs.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated TW monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Twilio mark.",
+    "logoUrl": "/server-logos/twilio-docs.png",
+    "logoSourceUrl": "https://avatars.githubusercontent.com/u/109142?s=256&v=4",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Twilio GitHub organization avatar from the verified twilio organization; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.twilio.com"
   },
   {
@@ -2053,9 +2056,10 @@
       }
     ],
     "logoUrl": "/server-logos/ref.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated RE monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Ref mark.",
+    "logoSourceUrl": "https://mintcdn.com/ref/yXCejt0fegXNOWGL/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Ref site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://ref.tools"
   },
   {
@@ -2079,9 +2083,10 @@
     "requiresOAuth": false,
     "authType": "none",
     "logoUrl": "/server-logos/exa.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated EX monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Exa mark.",
+    "logoSourceUrl": "https://exa.ai/assets/Exa%20Brand%20Assets.zip",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Exa logomark (Exa Logomark Blue.svg) from the Exa brand assets kit; trademark rights remain with the publisher.",
     "homepageUrl": "https://exa.ai",
     "sourceUrl": "https://github.com/exa-labs/exa-mcp-server"
   },
@@ -2119,10 +2124,11 @@
         "secret": true
       }
     ],
-    "logoUrl": "/server-logos/jina.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated JI monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Jina AI mark.",
+    "logoUrl": "/server-logos/jina.png",
+    "logoSourceUrl": "https://jina.ai/icons/favicon-128x128.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Jina AI site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://jina.ai",
     "sourceUrl": "https://github.com/jina-ai/MCP"
   },
@@ -2166,9 +2172,10 @@
     },
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/tavily.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated TA monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Tavily mark.",
+    "logoSourceUrl": "https://www.tavily.com/icon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Tavily site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.tavily.com",
     "sourceUrl": "https://github.com/tavily-ai/tavily-mcp",
     "caveats": [
@@ -2235,9 +2242,10 @@
     ],
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/firecrawl.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated FC monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Firecrawl mark.",
+    "logoSourceUrl": "https://www.firecrawl.dev/brand/firecrawl-logo.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Firecrawl logo from the Firecrawl press and brand page; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.firecrawl.dev",
     "sourceUrl": "https://github.com/firecrawl/firecrawl-mcp-server"
   },
@@ -3056,10 +3064,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://www.instantdb.com/docs/using-llms"
     },
-    "logoUrl": "/server-logos/instantdb.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated IN monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official InstantDB mark.",
+    "logoUrl": "/server-logos/instantdb.png",
+    "logoSourceUrl": "https://www.instantdb.com/img/icon/favicon-196x196.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official InstantDB site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.instantdb.com"
   },
   {
@@ -3229,10 +3238,11 @@
       }
     ],
     "exactEndpointOnly": true,
-    "logoUrl": "/server-logos/plaid-dashboard.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated PL monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Plaid mark.",
+    "logoUrl": "/server-logos/plaid-dashboard.png",
+    "logoSourceUrl": "https://plaid.com/assets/img/favicons/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Plaid site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://plaid.com",
     "caveats": [
       "Works with Production data only; the team must be approved for Production access with at least one Plaid product."
@@ -3322,9 +3332,10 @@
       "evidenceUrl": "https://github.com/jsdelivr/globalping-mcp-server"
     },
     "logoUrl": "/server-logos/globalping.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated GP monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Globalping mark.",
+    "logoSourceUrl": "https://globalping.io/icons/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Globalping site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://globalping.io",
     "sourceUrl": "https://github.com/jsdelivr/globalping-mcp-server"
   },
@@ -3431,10 +3442,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://jam.dev/docs/debug-a-jam/mcp"
     },
-    "logoUrl": "/server-logos/jam.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated JA monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Jam mark.",
+    "logoUrl": "/server-logos/jam.png",
+    "logoSourceUrl": "https://avatars.githubusercontent.com/u/63420153?s=256&v=4",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Jam GitHub organization avatar from the verified jamdotdev organization; trademark rights remain with the publisher.",
     "homepageUrl": "https://jam.dev"
   },
   {
@@ -3475,10 +3487,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://workos.com/docs/mcp"
     },
-    "logoUrl": "/server-logos/workos.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated WO monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official WorkOS mark.",
+    "logoUrl": "/server-logos/workos.png",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/621f54116cab10f6e9215d8b/621f549024eb2947f6f2f7f7_Favicon%20256x256.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official WorkOS site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://workos.com"
   },
   {
@@ -3611,10 +3624,11 @@
         "description": "Use for Amplitude EU data residency projects"
       }
     ],
-    "logoUrl": "/server-logos/amplitude.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated AM monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Amplitude mark.",
+    "logoUrl": "/server-logos/amplitude.png",
+    "logoSourceUrl": "https://amplitude.com/nextjs-public/favicon/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Amplitude site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://amplitude.com"
   },
   {
@@ -3770,9 +3784,10 @@
     ],
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/pendo.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated PE monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Pendo mark.",
+    "logoSourceUrl": "https://www.pendo.io/icon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Pendo site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.pendo.io"
   },
   {
@@ -3814,9 +3829,10 @@
       "evidenceUrl": "https://docs.attio.com/mcp/overview"
     },
     "logoUrl": "/server-logos/attio.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated AT monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Attio mark.",
+    "logoSourceUrl": "https://attio.com/brand/v1/attio-logomark.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Attio logomark from the Attio brand page; trademark rights remain with the publisher.",
     "homepageUrl": "https://attio.com"
   },
   {
@@ -3842,26 +3858,30 @@
     "requiresOAuth": true,
     "authType": "oauth",
     "oauthRegistration": {
-      "mode": "unknown",
+      "mode": "automatic",
+      "responsibleParty": "automatic",
       "clientId": {
         "required": false
       },
       "clientSecret": {
         "required": false
       },
+      "browserPublicClientSupported": true,
       "callback": {
         "required": false,
         "redirectUrls": {}
       },
       "setupSteps": [],
       "settings": [],
-      "reviewedAt": "2026-10-20",
+      "availability": "ready",
+      "reviewedAt": "2026-11-17",
       "evidenceUrl": "https://help.close.com/docs/mcp-server"
     },
-    "logoUrl": "/server-logos/close.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated CL monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Close mark.",
+    "logoUrl": "/server-logos/close.png",
+    "logoSourceUrl": "https://www.close.com/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Close site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.close.com"
   },
   {
@@ -3963,9 +3983,10 @@
     ],
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/apify.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated AP monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Apify mark.",
+    "logoSourceUrl": "https://apify.com/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Apify site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://apify.com",
     "sourceUrl": "https://github.com/apify/apify-mcp-server",
     "caveats": [
@@ -4145,10 +4166,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://docs.granola.ai/help-center/sharing/integrations/mcp"
     },
-    "logoUrl": "/server-logos/granola.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated GA monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Granola mark.",
+    "logoUrl": "/server-logos/granola.png",
+    "logoSourceUrl": "https://www.granola.ai/favicon/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Granola site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.granola.ai"
   },
   {
@@ -4188,10 +4210,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://docs.fireflies.ai/getting-started/mcp-configuration"
     },
-    "logoUrl": "/server-logos/fireflies.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated FF monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Fireflies.ai mark.",
+    "logoUrl": "/server-logos/fireflies.png",
+    "logoSourceUrl": "https://fireflies.ai/icon.png?icon.3227koqampzl_.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Fireflies.ai site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://fireflies.ai"
   },
   {
@@ -4367,10 +4390,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://docs.mem0.ai/platform/mem0-mcp"
     },
-    "logoUrl": "/server-logos/mem0.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated M0 monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Mem0 mark.",
+    "logoUrl": "/server-logos/mem0.png",
+    "logoSourceUrl": "https://docs.mem0.ai/mintlify-assets/_mintlify/favicons/mem0/d_RkXckv7cNYdok2/_generated/favicon/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Mem0 site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://mem0.ai"
   },
   {
@@ -4520,10 +4544,11 @@
         "description": "Use for Honeycomb EU teams"
       }
     ],
-    "logoUrl": "/server-logos/honeycomb.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated HC monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Honeycomb mark.",
+    "logoUrl": "/server-logos/honeycomb.png",
+    "logoSourceUrl": "https://avatars.githubusercontent.com/u/15988027?v=4",
+    "logoSourceKind": "publisher-repository",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Honeycomb GitHub organization avatar from the verified honeycombio organization; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.honeycomb.io"
   },
   {
@@ -4610,10 +4635,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://support.pipedrive.com/en/article/mcp-claude"
     },
-    "logoUrl": "/server-logos/pipedrive.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated PD monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Pipedrive mark.",
+    "logoUrl": "/server-logos/pipedrive.png",
+    "logoSourceUrl": "https://cdn.dub-1.pipedriveassets.com/www-main-renderer/_next/static/media/favicon-196x196.98c71512.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Pipedrive site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.pipedrive.com"
   },
   {
@@ -4654,10 +4680,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server"
     },
-    "logoUrl": "/server-logos/klaviyo.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated KL monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Klaviyo mark.",
+    "logoUrl": "/server-logos/klaviyo.png",
+    "logoSourceUrl": "https://www.klaviyo.com/icons/icon-256x256.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Klaviyo site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.klaviyo.com"
   },
   {
@@ -4698,10 +4725,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://developer.monday.com/api-reference/docs/mondaycom-mcp"
     },
-    "logoUrl": "/server-logos/monday.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated MO monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official monday.com mark.",
+    "logoUrl": "/server-logos/monday.png",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/656da6fea306219773d04208/65af6bd6e742d497b5f23f69_645898132bbaac20f1963919_256x256.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official monday.com site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://monday.com"
   },
   {
@@ -4742,10 +4770,11 @@
       "evidenceUrl": "https://developers.wrike.com/wrike-mcp/"
     },
     "exactEndpointOnly": true,
-    "logoUrl": "/server-logos/wrike.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated WR monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Wrike mark.",
+    "logoUrl": "/server-logos/wrike.png",
+    "logoSourceUrl": "https://avatars.githubusercontent.com/u/7115323?s=256&v=4",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Wrike GitHub organization avatar; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.wrike.com"
   },
   {
@@ -4798,10 +4827,11 @@
       }
     ],
     "exactEndpointOnly": true,
-    "logoUrl": "/server-logos/smartsheet.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated SM monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Smartsheet mark.",
+    "logoUrl": "/server-logos/smartsheet.png",
+    "logoSourceUrl": "https://www.smartsheet.com/sites/default/files/favicons/android-chrome-512x512.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Smartsheet site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.smartsheet.com"
   },
   {
@@ -4997,10 +5027,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://agents.ramp.com/docs/mcp/overview"
     },
-    "logoUrl": "/server-logos/ramp.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated RA monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Ramp mark.",
+    "logoUrl": "/server-logos/ramp.png",
+    "logoSourceUrl": "https://ramp.com/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Ramp site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://ramp.com"
   },
   {
@@ -5025,20 +5056,23 @@
     "requiresOAuth": true,
     "authType": "oauth",
     "oauthRegistration": {
-      "mode": "unknown",
+      "mode": "automatic",
+      "responsibleParty": "automatic",
       "clientId": {
         "required": false
       },
       "clientSecret": {
         "required": false
       },
+      "browserPublicClientSupported": true,
       "callback": {
         "required": false,
         "redirectUrls": {}
       },
       "setupSteps": [],
       "settings": [],
-      "reviewedAt": "2026-10-20",
+      "availability": "ready",
+      "reviewedAt": "2026-11-17",
       "evidenceUrl": "https://docs.mercury.com/docs/connecting-mercury-mcp"
     },
     "logoUrl": "/server-logos/mercury.svg",
@@ -5199,10 +5233,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://stytch.com/docs/workspace-management/stytch-mcp"
     },
-    "logoUrl": "/server-logos/stytch.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated ST monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Stytch mark.",
+    "logoUrl": "/server-logos/stytch.png",
+    "logoSourceUrl": "https://stytch.com/docs/_mintlify/favicons/stytch-34ca0595/TbxvNOEyaquPeqvD/_generated/favicon/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Stytch site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://stytch.com"
   },
   {
@@ -5255,10 +5290,11 @@
         "description": "Use for the Europe (Frankfurt) Region"
       }
     ],
-    "logoUrl": "/server-logos/aws.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated AWS monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official AWS MCP Server mark.",
+    "logoUrl": "/server-logos/aws.png",
+    "logoSourceUrl": "https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official AWS site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://aws.amazon.com",
     "sourceUrl": "https://github.com/aws/mcp-proxy-for-aws",
     "caveats": [
@@ -5673,10 +5709,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://devcenter.heroku.com/articles/heroku-remote-mcp-server"
     },
-    "logoUrl": "/server-logos/heroku.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated HK monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Heroku mark.",
+    "logoUrl": "/server-logos/heroku.png",
+    "logoSourceUrl": "https://www.heroku.com/wp-content/uploads/2025/01/apple-touch-icon-180x180-1.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Heroku site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.heroku.com"
   },
   {
@@ -6338,10 +6375,11 @@
         "secret": true
       }
     ],
-    "logoUrl": "/server-logos/raygun.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated RG monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Raygun mark.",
+    "logoUrl": "/server-logos/raygun.png",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/5e2701b416b6d176f5007781/6321348741e051a778e42e8f_256x256.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Raygun site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://raygun.com",
     "sourceUrl": "https://github.com/MindscapeHQ/mcp-server-raygun"
   },
@@ -6396,9 +6434,10 @@
       }
     ],
     "logoUrl": "/server-logos/rootly.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated RO monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Rootly mark.",
+    "logoSourceUrl": "https://rootly.com/brand/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Rootly site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://rootly.com",
     "sourceUrl": "https://github.com/Rootly-AI-Labs/Rootly-MCP-server"
   },
@@ -6452,10 +6491,11 @@
         "secret": true
       }
     ],
-    "logoUrl": "/server-logos/incident-io.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated IN monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official incident.io mark.",
+    "logoUrl": "/server-logos/incident-io.png",
+    "logoSourceUrl": "https://incident.io/icons/icon-256x256.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official incident.io site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://incident.io",
     "caveats": [
       "Available on Team, Pro, and Enterprise plans after an admin enables it under Settings > MCP."
@@ -6608,10 +6648,11 @@
       }
     ],
     "exactEndpointOnly": true,
-    "logoUrl": "/server-logos/langfuse.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated LF monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Langfuse mark.",
+    "logoUrl": "/server-logos/langfuse.png",
+    "logoSourceUrl": "https://langfuse.com/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Langfuse site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://langfuse.com",
     "sourceUrl": "https://github.com/langfuse/langfuse"
   },
@@ -6839,9 +6880,10 @@
       }
     ],
     "logoUrl": "/server-logos/parallel-task.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated PA monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Parallel Task mark.",
+    "logoSourceUrl": "https://parallel.ai/icon.svg?icon.1d0de8d5.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Parallel site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://parallel.ai"
   },
   {
@@ -6902,9 +6944,10 @@
       }
     ],
     "logoUrl": "/server-logos/you-com.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated YOU monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official You.com mark.",
+    "logoSourceUrl": "https://you.com/icon.svg?icon.1r1kw8cf43bjt.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official You.com site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://you.com",
     "sourceUrl": "https://github.com/youdotcom-oss/mcp"
   },
@@ -7004,9 +7047,10 @@
       "evidenceUrl": "https://docs.brightdata.com/products/mcp-server/remote/oauth"
     },
     "logoUrl": "/server-logos/bright-data.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated BD monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Bright Data mark.",
+    "logoSourceUrl": "https://brightdata.com/www/lum/pub/favicons/favicon.svg?md5=1101-2d66a6c4&hver=2",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Bright Data site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://brightdata.com",
     "sourceUrl": "https://github.com/brightdata/brightdata-mcp"
   },
@@ -7159,9 +7203,10 @@
     "authType": "none",
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/zuplo-docs.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated ZU monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Zuplo Docs mark.",
+    "logoSourceUrl": "https://cdn.zuplo.com/www/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Zuplo site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://zuplo.com"
   },
   {
@@ -7331,10 +7376,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://developer.harness.io/docs/platform/harness-ai/connect-with-ai/harness-mcp-server/hosted-mcp"
     },
-    "logoUrl": "/server-logos/harness.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated HA monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Harness mark.",
+    "logoUrl": "/server-logos/harness.png",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/6222ca42ea87e1bd1aa1d10c/62245acc1b2f1040941f0d8f_webclip.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Harness site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.harness.io",
     "sourceUrl": "https://github.com/harness/mcp-server",
     "caveats": [
@@ -7379,10 +7425,11 @@
       "evidenceUrl": "https://launchdarkly.com/docs/home/getting-started/mcp-hosted"
     },
     "exactEndpointOnly": true,
-    "logoUrl": "/server-logos/launchdarkly.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated LD monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official LaunchDarkly mark.",
+    "logoUrl": "/server-logos/launchdarkly.png",
+    "logoSourceUrl": "https://launchdarkly.com/docs/mintlify-assets/_mintlify/favicons/launchdarkly/1ZzqxX2iveyFEKVQ/_generated/favicon/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official LaunchDarkly site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://launchdarkly.com",
     "sourceUrl": "https://github.com/launchdarkly/mcp-server",
     "caveats": [
@@ -7439,9 +7486,10 @@
       }
     ],
     "logoUrl": "/server-logos/statsig.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated SG monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Statsig mark.",
+    "logoSourceUrl": "https://statsig.com/images/favicons/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Statsig site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://statsig.com"
   },
   {
@@ -7650,9 +7698,10 @@
       "evidenceUrl": "https://github.com/onkernel/kernel-mcp-server"
     },
     "logoUrl": "/server-logos/kernel.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated KE monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Kernel mark.",
+    "logoSourceUrl": "https://www.kernel.sh/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Kernel site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.kernel.sh",
     "sourceUrl": "https://github.com/onkernel/kernel-mcp-server"
   },
@@ -7695,9 +7744,10 @@
     },
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/mux.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated MUX monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Mux mark.",
+    "logoSourceUrl": "https://www.mux.com/icon-pwu6ef.svg?icon.302p-5ql3kvw_.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Official Mux site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.mux.com"
   },
   {
@@ -9372,31 +9422,42 @@
     "id": "vapi",
     "name": "Vapi",
     "url": "https://mcp.vapi.ai/mcp",
-    "description": "Lists, creates, and updates Vapi voice assistants, phone numbers, and tools and places outbound calls. Requires a Vapi API key as a bearer token.",
+    "description": "Lists, creates, and updates Vapi voice assistants, phone numbers, and tools and places outbound calls. Sign in with your Vapi account over OAuth; the hosted server no longer accepts API keys.",
     "category": "Communication",
     "tags": [
       "official",
       "vapi",
       "voice-ai",
       "telephony",
-      "bearer-token"
+      "oauth"
     ],
     "listingSource": {
       "kind": "publisher",
       "url": "https://docs.vapi.ai/sdk/mcp-server"
     },
     "transport": "streamable-http",
-    "requiresOAuth": false,
-    "authType": "bearer-token",
-    "requiredHeaders": [
-      {
-        "name": "Authorization",
-        "description": "Vapi private API key: Bearer <VAPI_API_KEY>",
-        "valueTemplate": "Bearer <VAPI_API_KEY>",
-        "required": true,
-        "secret": true
-      }
-    ],
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "automatic",
+      "responsibleParty": "automatic",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "browserPublicClientSupported": true,
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "availability": "ready",
+      "reviewedAt": "2026-11-17",
+      "evidenceUrl": "https://docs.vapi.ai/sdk/mcp-server"
+    },
     "logoUrl": "/server-logos/vapi.svg",
     "logoSourceKind": "generated-fallback",
     "logoRetrievedAt": "2026-10-20",
@@ -10724,9 +10785,10 @@
     "authType": "oauth",
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/icons8.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-25",
-    "logoLicenseNote": "Locally generated monogram; not an official Icons8 mark.",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/icons8.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Icons8 mark from Simple Icons version 16.38.0; trademark rights remain with Icons8.",
     "homepageUrl": "https://icons8.com/mcp",
     "registryName": "com.icons8/icons8",
     "registryVersion": "1.0.0",
@@ -10752,9 +10814,10 @@
     "authType": "oauth",
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/ifttt.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-25",
-    "logoLicenseNote": "Locally generated monogram; not an official IFTTT mark.",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/ifttt.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "IFTTT mark from Simple Icons version 16.38.0; trademark rights remain with IFTTT.",
     "homepageUrl": "https://ifttt.com/mcp",
     "registryName": "com.ifttt/mcp",
     "registryVersion": "1.0.0",
@@ -11119,9 +11182,10 @@
     "authType": "oauth",
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/padlet.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-25",
-    "logoLicenseNote": "Locally generated monogram; not an official Padlet mark.",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/padlet.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Padlet mark from Simple Icons version 16.38.0; trademark rights remain with Padlet.",
     "homepageUrl": "https://padlet.help/l/en/article/pofbiabhv1-mcp",
     "registryName": "com.padlet/padlet",
     "registryVersion": "1.0.1",
@@ -11218,9 +11282,10 @@
     "authType": "oauth",
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/parsely.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-25",
-    "logoLicenseNote": "Locally generated monogram; not an official Parse.ly mark.",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/parsedotly.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Parse.ly mark from Simple Icons version 16.38.0; trademark rights remain with Parse.ly.",
     "homepageUrl": "https://dash.parsely.com",
     "registryName": "com.parsely.dash/mcp",
     "registryVersion": "1.0.0",
@@ -11463,9 +11528,10 @@
     "authType": "oauth",
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/ulule.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-25",
-    "logoLicenseNote": "Locally generated monogram; not an official Ulule mark.",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/ulule.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-17",
+    "logoLicenseNote": "Ulule mark from Simple Icons version 16.38.0; trademark rights remain with Ulule.",
     "homepageUrl": "https://developers.ulule.com/docs/mcp/",
     "registryName": "com.ulule/mcp-public",
     "registryVersion": "1.1.0",
@@ -13154,5 +13220,174 @@
     "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-12",
     "logoLicenseNote": "Official FairValid product icon supplied for identification in this catalog. Trademark rights remain with FairValid."
+  },
+  {
+    "id": "excessionlabs",
+    "name": "Excession Labs CVE intelligence",
+    "url": "https://excessionlabs.ai/mcp/cve",
+    "browserAccess": "proxy-required",
+    "description": "Six read-only CVE tools search source software/version evidence, show available KEV and dated EPSS, inspect collection health, and page hosted revisions and changes. No account or API key. Literal source versions are matched; installed versions are not evaluated against vulnerability ranges.",
+    "category": "Security",
+    "tags": [
+      "security",
+      "cve",
+      "community-submission",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://excessionlabs.ai/cve-intelligence/"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/excessionlabs.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-12",
+    "logoLicenseNote": "Locally generated EL monogram for a community submission; it is not an official Excession Labs CVE intelligence mark.",
+    "homepageUrl": "https://excessionlabs.ai/cve-intelligence/"
+  },
+  {
+    "id": "omniakey",
+    "name": "OmniaKey",
+    "url": "https://api.omniakey.com/mcp",
+    "browserAccess": "proxy-required",
+    "description": "Remote MCP server for the OmniaKey API gateway that lets agents run text, image, video and music generation models through OmniaKey's OpenAI-compatible API; generation calls are billed per use against the account. OAuth 2.1 with browser authorization and dynamic client registration.",
+    "category": "AI Infrastructure",
+    "tags": [
+      "ai-infrastructure",
+      "ai-gateway",
+      "generative-media",
+      "community-submission",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "community-submission",
+      "url": "https://omniakey.com/mcp"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-13",
+      "evidenceUrl": "https://omniakey.com/mcp"
+    },
+    "logoUrl": "/server-logos/omniakey.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-13",
+    "logoLicenseNote": "Locally generated OA monogram for a community submission; it is not an official OmniaKey mark.",
+    "homepageUrl": "https://omniakey.com/mcp"
+  },
+  {
+    "id": "eorscope",
+    "name": "EOR Scope",
+    "url": "https://mcp.eorscope.com/mcp",
+    "browserAccess": "proxy-required",
+    "description": "Statutory employer cost of an employee in 76 countries: employer social contributions, caps and mandatory payments, each with its official source and check date, before any EOR fee. 14 read-only tools, no authentication.",
+    "category": "Finance",
+    "tags": [
+      "finance",
+      "community-submission",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "community-submission",
+      "url": "https://eorscope.com/"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/eorscope.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-13",
+    "logoLicenseNote": "Locally generated ES monogram for a community submission; it is not an official EOR Scope mark.",
+    "homepageUrl": "https://eorscope.com/"
+  },
+  {
+    "id": "govisit",
+    "name": "GoVisit Tools",
+    "url": "https://govisit.ai/mcp",
+    "browserAccess": "proxy-required",
+    "description": "Search GoVisit destinations and places, then retrieve published place, destination, collection, category, and documentation content through 22 read-only tools. No authentication is required.",
+    "category": "Search",
+    "tags": [
+      "search",
+      "community-submission",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "community-submission",
+      "url": "https://govisit.ai/en/docs/developers/mcp/overview"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/govisit.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-14",
+    "logoLicenseNote": "Locally generated GT monogram for a community submission; it is not an official GoVisit Tools mark.",
+    "homepageUrl": "https://govisit.ai/en/docs/developers/mcp/overview"
+  },
+  {
+    "id": "leadli",
+    "name": "leadli.me",
+    "url": "https://api.leadli.me/api/v1/mcp",
+    "browserAccess": "proxy-required",
+    "description": "leadli.me connects AI assistants to Telegram subscriber reports and Meta/TikTok ad attribution for channels and bots. Connect over Streamable HTTP with an organization access key in Authorization: Bearer; available tools depend on the key's permissions and plan.",
+    "category": "Analytics",
+    "tags": [
+      "analytics",
+      "community-submission"
+    ],
+    "listingSource": {
+      "kind": "community-submission",
+      "url": "https://leadli.me/en/guides/mcp-server"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "bearer-token",
+    "logoUrl": "/server-logos/leadli.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-14",
+    "logoLicenseNote": "Locally generated LM monogram for a community submission; it is not an official leadli.me mark.",
+    "homepageUrl": "https://leadli.me/en/guides/mcp-server"
+  },
+  {
+    "id": "datacircle",
+    "name": "Datacircle",
+    "url": "https://api.datacircle.dev/mcp",
+    "browserAccess": "direct",
+    "description": "Lists go-to-market data APIs (enrichment, SERP, reviews, phone validation and more) and searches Datacircle's benchmarked plans by price, score, rate limits and returned fields. Two read-only tools; no authentication required.",
+    "category": "Search",
+    "tags": [
+      "search",
+      "community-submission",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://datacircle.dev/docs/mcp"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/datacircle.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-14",
+    "logoLicenseNote": "Locally generated DA monogram for a community submission; it is not an official Datacircle mark.",
+    "homepageUrl": "https://datacircle.dev/docs/mcp"
   }
 ]

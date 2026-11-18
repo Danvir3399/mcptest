@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import Tabs, { getTabDisplayLabel } from './Tabs';
+import Tabs, { getTabDisplayLabel, getTabLabel, toStoredTabs } from './Tabs';
 import type { ConnectionTab } from '../types';
 
 const tab = (overrides: Partial<ConnectionTab>): ConnectionTab => ({
@@ -22,6 +22,25 @@ describe('playground tab labels', () => {
     expect(getTabDisplayLabel('Server: https://mcp.deepwiki.com/')).toBe('mcp.deepwiki.com');
     expect(getTabDisplayLabel('mcp.api.coingecko.com/sse')).toBe('mcp.api.coingecko.com/sse');
     expect(getTabDisplayLabel('Server: localhost:3001/mcp')).toBe('Server: localhost:3001/mcp');
+  });
+
+  it('names a catalog endpoint session with the catalog display name', () => {
+    expect(getTabLabel({ title: 'Server: https://mcp.api.coingecko.com/sse', serverUrl: 'https://mcp.api.coingecko.com/sse' })).toBe('CoinGecko');
+    expect(getTabLabel({ title: 'mcp.api.coingecko.com', serverUrl: 'https://mcp.api.coingecko.com/sse' })).toBe('CoinGecko');
+    // Unknown endpoints and result tabs keep their own labels.
+    expect(getTabLabel({ title: 'Server: https://example.com/mcp', serverUrl: 'https://example.com/mcp' })).toBe('example.com/mcp');
+    expect(getTabLabel({ title: 'Result: get_price', serverUrl: 'https://mcp.api.coingecko.com/sse' })).toBe('Result: get_price');
+  });
+
+  it('persists the catalog name as the title so the pre-React shell paints the same label', () => {
+    const stored = toStoredTabs([
+      tab({ id: 'a', title: 'mcp.context7.com', serverUrl: 'https://mcp.context7.com/mcp' }),
+      tab({ id: 'b', title: 'Server: https://example.com/mcp', serverUrl: 'https://example.com/mcp' }),
+      tab({ id: 'c', title: 'Result: get_price', serverUrl: 'https://mcp.api.coingecko.com/sse' }),
+      tab({ id: 'd', title: 'New Connection', serverUrl: '' }),
+    ]);
+    expect(stored.map(({ title }) => title)).toEqual(['Context7', 'Server: https://example.com/mcp', 'Result: get_price', 'New Connection']);
+    expect(stored.map((item) => getTabLabel(item))).toEqual(['Context7', 'example.com/mcp', 'Result: get_price', 'New Connection']);
   });
 
   it('leaves plain titles alone', () => {
@@ -59,6 +78,57 @@ describe('playground tab labels', () => {
     expect(css).toMatch(/\.playground-tabs\.nav-tabs\s*\{[^}]*flex-wrap:\s*nowrap;[^}]*overflow-x:\s*auto;/);
     expect(css).toMatch(/\.playground-tab-strip--fade-end/);
     expect(css).toMatch(/\.playground-tab-label\s*\{[^}]*text-overflow:\s*ellipsis;/);
+  });
+
+  it('distinguishes duplicate hosts in visible indexes and accessible close labels', () => {
+    const container = document.createElement('div');
+    container.innerHTML = renderToStaticMarkup(
+      <Tabs tabs={['a', 'b', 'c'].map(id => tab({ id, title: 'mcp.grep.app' }))}
+        activeTabId="a" onSelectTab={vi.fn()} onCloseTab={vi.fn()} onNewTab={vi.fn()} />
+    );
+    expect([...container.querySelectorAll('[role="tab"]')].map(el => el.textContent)).toEqual([
+      'mcp.grep.app #1', 'mcp.grep.app #2', 'mcp.grep.app #3',
+    ]);
+    expect(container.querySelector('[aria-label="Close mcp.grep.app #2 tab"]')).not.toBeNull();
+  });
+
+  it('lists query context, switches directly, and closes other sessions in one action', () => {
+    const container = document.createElement('div');
+    const view = createRoot(container);
+    const onSelectTab = vi.fn();
+    const onCloseOtherTabs = vi.fn();
+    act(() => view.render(<Tabs tabs={Array.from({ length: 19 }, (_, i) => tab({
+      id: String(i), title: 'mcp.grep.app', toolParams: { query: `query ${i}` },
+    }))} activeTabId="18" onSelectTab={onSelectTab} onCloseTab={vi.fn()}
+      onCloseOtherTabs={onCloseOtherTabs} onNewTab={vi.fn()} />));
+    const picker = container.querySelector('details')!;
+    const buttons = picker.querySelectorAll<HTMLButtonElement>('li button');
+    expect(buttons).toHaveLength(19);
+    expect(buttons[1].textContent).toContain('query: query 1');
+    expect(buttons[18].getAttribute('aria-current')).toBe('true');
+    picker.open = true;
+    act(() => buttons[1].click());
+    expect(onSelectTab).toHaveBeenCalledWith('1');
+    expect(picker.open).toBe(false);
+    act(() => container.querySelector<HTMLButtonElement>('.session-picker-close')!.click());
+    expect(onCloseOtherTabs).toHaveBeenCalledOnce();
+    act(() => view.unmount());
+  });
+
+  it('names the new-tab control and explains it opens another server side by side', () => {
+    const onNewTab = vi.fn();
+    const container = document.createElement('div');
+    const view = createRoot(container);
+    act(() => view.render(
+      <Tabs tabs={[tab({ id: 'a', connectionStatus: 'Connected' })]} activeTabId="a" onSelectTab={vi.fn()} onCloseTab={vi.fn()} onNewTab={onNewTab} />
+    ));
+    const button = container.querySelector<HTMLButtonElement>('.playground-tab-new')!;
+    expect(button.getAttribute('aria-label')).toBe('New connection tab');
+    expect(button.title).toBe('Open another connection tab to test a second server side by side');
+    expect(button.textContent).toBe('+ New');
+    act(() => button.click());
+    expect(onNewTab).toHaveBeenCalledOnce();
+    act(() => view.unmount());
   });
 });
 
@@ -119,7 +189,7 @@ describe('playground tab strip overflow', () => {
     expect(container.querySelector('.playground-tab-strip--fade-start')).toBeNull();
     expect(scrollIntoView).toHaveBeenCalledWith({ block: 'nearest', inline: 'nearest' });
     expect(scrollIntoView.mock.instances[0]).toBe(
-      container.querySelector('[role="tab"][aria-selected="true"]')
+      container.querySelector('[role="tab"][aria-selected="true"]')?.closest('.nav-item')
     );
     container.remove();
   });

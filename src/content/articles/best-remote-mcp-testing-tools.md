@@ -2,7 +2,7 @@
 title: "MCP testing tools compared (2026)"
 navTitle: MCP testing tools roundup
 summary: "MCP testing tools grouped by job: browser testers, local inspectors and API clients, CI and contract testing, evals, load testing, and test servers. Each entry says what it tests, where it runs, how to install it, its license and its stated price."
-track: understand
+track: compare
 level: practitioner
 order: 41
 category: Tools
@@ -346,3 +346,5 @@ It cannot launch stdio servers, run a model, send arbitrary custom headers or lo
 ## Try it on a real server
 
 [Open DeepWiki in the mcptest.io playground](/server/mcp.deepwiki.com/mcp/mcp), a public catalog server that needs no sign-in. Call one of its tools, generate the report, and then open the same URL in another tool from this page to compare what each one shows.
+
+To compare how the tools handle failures, use the [public MCP test servers](/mcp-test-servers): fixed endpoints for protocol errors, tool errors, HTTP 500s, slow calls and bearer authentication.

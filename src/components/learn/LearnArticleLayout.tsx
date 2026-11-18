@@ -2,7 +2,7 @@ import GuideServers from './GuideServers';
 import InlineTestForm from './InlineTestForm';
 import { showInlineTest } from '../../utils/guideNextSteps';
 import { enhanceEngagement } from '../../utils/pageEngagement';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import type { LearnArticleSummary } from '../../content/learnRegistry';
 import {
@@ -14,6 +14,7 @@ import {
 import type { OutlineHeading } from '../../content/outline';
 import { consumeStaticPageEvent, trackEvent, trackGuideLinkClick } from '../../utils/analytics';
 import { formatReviewedDate } from './articleFormatting';
+import { getSiteRelativePath } from '../../content/siteUrl';
 import './ReadingLayout.css';
 
 interface LearnArticleLayoutProps {
@@ -31,18 +32,60 @@ interface LearnArticleLayoutProps {
  * guides and sources. LearnArticlePage supplies the body, either the
  * prerendered HTML or ArticleMarkdown (MarkdownLearnArticle).
  */
+/**
+ * The element the article scrolls in: .main-content in the fixed app shell,
+ * or null when the page scrolls the window (the reading shell).
+ */
+const getArticleScroller = (article: HTMLElement | null): HTMLElement | null => {
+  const content = article?.closest<HTMLElement>('.main-content');
+  if (!content) return null;
+  const overflow = window.getComputedStyle(content).overflowY;
+  return overflow === 'auto' || overflow === 'scroll' ? content : null;
+};
+
 const LearnArticleLayout: React.FC<LearnArticleLayoutProps> = ({ article, outline, prose, bodyReady = true }) => {
   const related = getRelatedLearnArticles(article);
   const { previous, next } = getLearnArticleNeighbors(article);
   const track = getTrack(article.track);
   const articleRef = useRef<HTMLElement>(null);
   const location = useLocation();
+  const [activeHeading, setActiveHeading] = useState(outline[0]?.id);
+
+  useEffect(() => {
+    if (!bodyReady) return;
+    const scroller = getArticleScroller(articleRef.current);
+    const headings = outline.map(({ id }) => document.getElementById(id)).filter((heading): heading is HTMLElement => Boolean(heading));
+    let frame = 0;
+    const update = () => {
+      const top = (scroller?.getBoundingClientRect().top ?? 0) + 48;
+      let current = headings[0]?.id;
+      for (const heading of headings) {
+        if (heading.getBoundingClientRect().top > top) break;
+        current = heading.id;
+      }
+      setActiveHeading(current);
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(update);
+    };
+    const scrollTarget = scroller ?? window;
+    update();
+    scrollTarget.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      scrollTarget.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [article.slug, outline, bodyReady]);
   useEffect(() => articleRef.current ? enhanceEngagement(articleRef.current) : undefined, [article.slug]);
 
   useEffect(() => {
     if (typeof window === 'undefined' || window.location.hash) return;
-    const scroller = articleRef.current?.closest<HTMLElement>('.main-content');
+    const scroller = getArticleScroller(articleRef.current);
     if (scroller) scroller.scrollTop = 0;
+    else window.scrollTo?.(0, 0);
   }, [article.slug]);
 
   // Client-side navigation to `#section` (guide search results) does not
@@ -108,7 +151,7 @@ const LearnArticleLayout: React.FC<LearnArticleLayoutProps> = ({ article, outlin
               <ol>
                 {outline.map(heading => (
                   <li key={heading.id} className={heading.level === 3 ? 'reading-outline-sub' : undefined}>
-                    <a href={`#${heading.id}`}>{heading.text}</a>
+                    <a href={`#${heading.id}`} aria-current={activeHeading === heading.id ? 'location' : undefined}>{heading.text}</a>
                   </li>
                 ))}
               </ol>
@@ -157,14 +200,21 @@ const LearnArticleLayout: React.FC<LearnArticleLayoutProps> = ({ article, outlin
           <section className="reading-sources" aria-labelledby="article-sources-heading">
             <h2 id="article-sources-heading">Sources</h2>
             <ul>
-              {article.sourceLinks.map(source => (
-                <li key={source.url}>
-                  <a href={source.url} target="_blank" rel="noopener noreferrer">
-                    {source.title}
-                    <span className="visually-hidden"> (opens in a new tab)</span>
-                  </a>
-                </li>
-              ))}
+              {article.sourceLinks.map(source => {
+                const sitePath = getSiteRelativePath(source.url);
+                return (
+                  <li key={source.url}>
+                    {sitePath ? (
+                      <Link to={sitePath}>{source.title}</Link>
+                    ) : (
+                      <a href={source.url} target="_blank" rel="noopener noreferrer">
+                        {source.title}
+                        <span className="visually-hidden"> (opens in a new tab)</span>
+                      </a>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </section>
 
@@ -181,7 +231,7 @@ const LearnArticleLayout: React.FC<LearnArticleLayoutProps> = ({ article, outlin
             <ol>
               {outline.map(heading => (
                 <li key={heading.id} className={heading.level === 3 ? 'reading-outline-sub' : undefined}>
-                  <a href={`#${heading.id}`}>{heading.text}</a>
+                  <a href={`#${heading.id}`} aria-current={activeHeading === heading.id ? 'location' : undefined}>{heading.text}</a>
                 </li>
               ))}
             </ol>

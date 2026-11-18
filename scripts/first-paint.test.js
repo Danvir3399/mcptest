@@ -117,7 +117,9 @@ describe.skipIf(!process.env.FIRST_PAINT)('returning visitor first paint', () =>
       recentServers: [{ url: 'https://mcp.context7.com/mcp' }],
       savedTabs: [
         { id: 'default-tab', title: 'New Connection', serverUrl: '', connectionStatus: 'Disconnected' },
-        { id: 'saved-server', title: 'mcp.context7.com', serverUrl: 'https://mcp.context7.com/mcp', connectionStatus: 'Connected', autoConnect: false },
+        // Stored as the app persists it: a catalog session's title is its
+        // catalog name (toStoredTabs), so theme-init and React agree.
+        { id: 'saved-server', title: 'Context7', serverUrl: 'https://mcp.context7.com/mcp', connectionStatus: 'Connected', autoConnect: false },
       ],
     });
     console.log(formatTimeline(result));
@@ -126,7 +128,7 @@ describe.skipIf(!process.env.FIRST_PAINT)('returning visitor first paint', () =>
     expect(painted.some(s => s.phase === 'react')).toBe(true);
     for (const sample of painted) expect(sample, `frame ${sample.t}ms`).toMatchObject({
       blank: false, header: true, sidebar: viewport.width > 768, landing: false, connectionPanel: true, workspaceRecent: true,
-      tabs: ['New Connection', 'mcp.context7.com'],
+      tabs: ['New Connection', 'Context7'],
     });
     expect(result.cls).toBeLessThan(0.05);
   }, 90000);

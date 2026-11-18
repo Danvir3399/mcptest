@@ -36,6 +36,7 @@ import { markdownLearnArticle } from './deferredMarkdownArticle';
 import MarkdownLearnArticle from './MarkdownLearnArticle';
 import LearnIndex from './LearnIndex';
 import LearnNotFound from './LearnNotFound';
+import { getSiteRelativePath } from '../../content/siteUrl';
 
 // A guide without a prerendered body renders through the Markdown chunk; load it as the app does before mounting.
 beforeAll(() => markdownLearnArticle.preload());
@@ -191,7 +192,7 @@ describe('content registry', () => {
   it('builds track navigation covering every article exactly once', () => {
     const slugs = TRACK_NAVIGATION.flatMap(track => track.items.map(item => item.slug));
     expect(slugs.sort()).toEqual(LEARN_ARTICLES.map(article => article.slug).sort());
-    expect(TRACK_NAVIGATION.map(track => track.id)).toEqual(['understand', 'use', 'build', 'reference']);
+    expect(TRACK_NAVIGATION.map(track => track.id)).toEqual(['understand', 'use', 'build', 'reference', 'compare']);
     for (const track of TRACK_NAVIGATION) {
       expect(track.items.map(item => item.order)).toEqual([...track.items.map(item => item.order)].sort((a, b) => a - b));
     }
@@ -215,12 +216,15 @@ describe('content registry', () => {
 
   it('derives the sidebar learn tracks from the content registry', () => {
     expect(LEARN_HUB_NAVIGATION.path).toBe('/learn');
-    expect(LEARN_TRACKS.map(track => track.label)).toEqual(['Understand', 'Use', 'Build', 'Reference']);
+    expect(LEARN_TRACKS.map(track => track.label)).toEqual(['Understand', 'Use', 'Build', 'Reference', 'Compare']);
     expect(LEARN_TRACKS.every(track => track.icon.startsWith('bi-'))).toBe(true);
     // The former "Resources" entries live inside their tracks.
     expect(getLearnTrackForPath('/docs/what-is-mcp')?.id).toBe('understand');
     expect(getLearnTrackForPath('/docs/troubleshooting/')?.id).toBe('reference');
     expect(getLearnTrackForPath('/catalog')).toBeUndefined();
+    for (const slug of ['mcptest-vs-mcp-inspector', 'best-remote-mcp-testing-tools', 'mcptest-vs-glama-inspector', 'mcp-inspector-alternatives']) {
+      expect(getLearnArticle(slug)?.track).toBe('compare');
+    }
   });
 });
 
@@ -231,15 +235,21 @@ describe('Learn index', () => {
     expect(container.querySelector('h1')?.textContent).toBe('Learn MCP');
     expect(container.querySelector('.learn-grid, .learn-card')).toBeNull();
     const trackHeadings = Array.from(container.querySelectorAll('.learn-track h2'), heading => heading.textContent);
-    expect(trackHeadings).toEqual(['Understand', 'Use', 'Build', 'Reference']);
-    expect(container.querySelectorAll('.learn-track-description')).toHaveLength(4);
+    expect(trackHeadings).toEqual(['Understand', 'Use', 'Build', 'Reference', 'Compare']);
+    for (const link of container.querySelectorAll<HTMLAnchorElement>('.learn-track-jumps a')) {
+      expect(container.querySelector(link.hash)?.querySelector('h2')?.textContent).toBe(link.textContent);
+    }
+    expect(container.querySelectorAll('.learn-track-description')).toHaveLength(5);
     expect(container.querySelectorAll('.learn-track-item')).toHaveLength(LEARN_ARTICLES.length);
     for (const article of LEARN_ARTICLES) {
-      const link = container.querySelector(`a[href="${article.path}"]`);
-      expect(link?.textContent).toBe(article.title);
-      expect(container.textContent).toContain(article.summary);
+      const link = container.querySelector<HTMLAnchorElement>(`.learn-track-item-link[href="${article.path}"]`);
+      expect(link?.querySelector('.learn-track-item-title')?.textContent).toBe(`${article.title} →`);
+      expect(getLearnArticleFromPath(link!.getAttribute('href')!)).toBe(article);
+      const item = link!.closest('.learn-track-item')!;
+      expect(item.querySelector('.learn-track-item-summary')?.textContent).toBe(article.summary);
+      expect(item.querySelector('.learn-track-item-meta')?.textContent).toContain(`${article.readingTimeMinutes} min read`);
     }
-    expect(container.textContent).toContain('11 min read');
+    expect(container.textContent).toContain(`${LEARN_ARTICLES[0].readingTimeMinutes} min read`);
     expect(container.textContent).toContain('Practitioner');
   });
 });
@@ -263,13 +273,25 @@ describe('Learn article page', () => {
     }
 
     const sourceLinks = container.querySelectorAll('.reading-sources a[target="_blank"]');
-    expect(sourceLinks).toHaveLength(article.sourceLinks.length);
+    expect(sourceLinks).toHaveLength(article.sourceLinks.filter(source => !getSiteRelativePath(source.url)).length);
     sourceLinks.forEach(link => {
       expect(link.getAttribute('rel')).toBe('noopener noreferrer');
       expect(link.textContent).toContain('opens in a new tab');
     });
     expect(container.querySelectorAll('.reading-related a')).toHaveLength(article.relatedSlugs.length);
     expect(container.querySelector('.learn-kicker')).toBeNull();
+  });
+
+  it('keeps on-site sources as same-tab links without the external marker', () => {
+    const article = getLearnArticle('mcptest-vs-glama-inspector')!;
+    const container = render(<LearnArticlePage article={article} />);
+    const links = Array.from(container.querySelectorAll<HTMLAnchorElement>('.reading-sources a'));
+    const onSite = links.filter(link => link.textContent?.startsWith('mcptest.io transport diagnostics reference'));
+    expect(onSite).toHaveLength(1);
+    expect(onSite[0].getAttribute('href')).toBe('/learn/mcp-transport-diagnostics-reference');
+    expect(onSite[0].hasAttribute('target')).toBe(false);
+    const glama = links.find(link => link.textContent?.startsWith('Glama: MCP Inspector'))!;
+    expect(glama.getAttribute('target')).toBe('_blank');
   });
 
   it('keeps the fragment ids published by the former React docs page', () => {

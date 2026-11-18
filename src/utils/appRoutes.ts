@@ -15,6 +15,15 @@ export const DISCOVERY_CHECKER_PATH = '/tools/discovery';
 /** Paths the app serves exactly (a trailing slash is not a variant). */
 export const OAUTH_CHECKER_PATH = '/tools/oauth-check';
 
+/** The dashboards page: what dashboards are, the create action and the list (src/components/DashboardsHome.tsx). */
+export const DASHBOARDS_PATH = '/space';
+
+/** The public MCP test servers page (src/components/McpTestServersView.tsx). */
+export const MCP_TEST_SERVERS_PATH = '/mcp-test-servers';
+
+/** The MCP client protocol checklist page (src/components/McpTestClientView.tsx). */
+export const MCP_TEST_CLIENT_PATH = '/mcp-test-client';
+
 /**
  * The keyword landing pages: the connect form with their own copy
  * (src/content/keywordLandingPages.ts, src/components/KeywordLandingView.tsx).
@@ -34,11 +43,15 @@ export const EXACT_APP_ROUTES: readonly string[] = [
   '/',
   '/catalog',
   '/learn',
+  '/guides',
   '/report',
   '/submit',
   '/tools/breaking-changes',
   DISCOVERY_CHECKER_PATH,
   OAUTH_CHECKER_PATH,
+  DASHBOARDS_PATH,
+  MCP_TEST_SERVERS_PATH,
+  MCP_TEST_CLIENT_PATH,
   ...KEYWORD_LANDING_PATHS,
   '/oauth/callback',
   '/install-integration',
@@ -55,11 +68,11 @@ export const APP_ROUTE_PREFIXES: readonly string[] = [
 /** Whether the app has a view for `pathname`; false means the NotFound page. */
 export const isKnownAppPath = (pathname: string): boolean => {
   if (EXACT_APP_ROUTES.includes(pathname)) return true;
-  if (pathname === '/learn/') return true;
+  if (pathname === '/learn/' || pathname === '/guides/') return true;
   // Content slugs: unknown ones get the app's own guide, server or category not-found view.
   if (/^\/servers\/[^/]+\/?$/.test(pathname)) return true;
   if (/^\/catalog\/[^/]+$/.test(pathname)) return true;
-  return [...APP_ROUTE_PREFIXES, '/learn/', '/docs/'].some(
+  return [...APP_ROUTE_PREFIXES, '/learn/', '/guides/', '/docs/'].some(
     prefix => pathname.startsWith(prefix) && pathname.length > prefix.length
   );
 };
@@ -91,3 +104,17 @@ export const NOT_FOUND_LINKS = [
 export const NOT_FOUND_TITLE = 'Page not found';
 export const NOT_FOUND_SUMMARY =
   'Nothing lives at this address. It may have moved, or the link that brought you here may be mistyped.';
+
+/**
+ * Reading pages (guides) scroll with the window, and on desktop their header
+ * scrolls away: the sidebar already pins the primary navigation, so a sticky
+ * bar would only cost reading height. The playground and the catalog keep
+ * the fixed 100vh shell; the catalog's long server list still has links
+ * below the fold that fall short of the 24px target size, which a
+ * window-scrolled page puts in front of the accessibility checks. The
+ * static shell uses this to match App.
+ */
+export const READING_SHELL_CLASS = 'app-shell--reading';
+
+export const isReadingShellPath = (pathname: string): boolean =>
+  /^\/(learn|guides|docs)(\/|$)/.test(pathname);

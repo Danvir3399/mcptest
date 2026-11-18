@@ -1,4 +1,3 @@
-import NextStepsStrip from './NextStepsStrip';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 // Bootstrap's dropdown behaviour; loaded with this chunk rather than on every page.
@@ -26,6 +25,11 @@ import CallHistoryPanel from './CallHistoryPanel';
 import { createTestPlanFromHistory } from '../utils/historyTestPlan';
 import type { DeterministicTestPlanV1 } from '../types/deterministicTests';
 import InterfaceChangeStrip from './InterfaceChangeStrip';
+import WorkbenchStatusBar from './WorkbenchStatusBar';
+import ConnectedSummary, { chooseNextAction, type ConnectedAuthMode } from './ConnectedSummary';
+import { connectionStages, listOutcome, listStageFromDiscovery } from '../utils/connectionStages';
+import { dismissHint } from '../utils/nextStepsProgress';
+import { useOnboardingProgress } from '../hooks/useOnboardingProgress';
 
 // Import Hooks
 import { useLogEntries } from '../hooks/useLogEntries';
@@ -185,6 +189,7 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
     connectionStartTime,
     connectionError,
     clearConnectionError,
+    connectionProgress,
     client,
     shareLinkNotice,
     recentServers,
@@ -288,6 +293,86 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
     originalHandleSelectTool(tool);
     setLastResult(null);
   };
+
+  // --- Guided first run: summary, stages and hints ---
+  const onboarding = useOnboardingProgress();
+  // Set by the first tool result without isError on this connection.
+  const [hasSuccessfulRun, setHasSuccessfulRun] = useState(false);
+  useEffect(() => {
+    if (connectionStatus !== 'Connected') setHasSuccessfulRun(false);
+  }, [connectionStatus]);
+  useEffect(() => {
+    if (lastResult?.type === 'tool_result' && lastResult.toolCall?.result.isError !== true) {
+      setHasSuccessfulRun(true);
+    }
+  }, [lastResult]);
+  const capabilityCounts = useMemo(() => {
+    const capabilities = connectionStatus === 'Connected' ? client?.getServerCapabilities?.() : undefined;
+    // Without the capability object, a non-empty list still proves the capability.
+    const offered = (key: 'tools' | 'resources' | 'prompts', count: number) => (
+      capabilities ? Boolean(capabilities[key]) || count > 0 : true
+    );
+    return {
+      tools: { count: tools.length, offered: offered('tools', tools.length) },
+      resources: {
+        count: resources.length + resourceTemplates.length,
+        offered: offered('resources', resources.length + resourceTemplates.length),
+      },
+      prompts: { count: prompts.length, offered: offered('prompts', prompts.length) },
+    };
+  }, [client, connectionStatus, tools.length, resources.length, resourceTemplates.length, prompts.length]);
+  const offeredCapabilities = useMemo(() => ({
+    tools: capabilityCounts.tools.offered,
+    resources: capabilityCounts.resources.offered,
+    prompts: capabilityCounts.prompts.offered,
+  }), [capabilityCounts]);
+  const listStage = listStageFromDiscovery(discovery, {
+    tools: capabilityCounts.tools.count,
+    resources: capabilityCounts.resources.count,
+    prompts: capabilityCounts.prompts.count,
+  }, offeredCapabilities);
+  const stages = connectionStages(connectionProgress, listStage);
+  const serverIdentity = connectionStatus === 'Connected' ? client?.getServerVersion?.() : undefined;
+  const authMode: ConnectedAuthMode = isOAuthConnection
+    ? 'oauth'
+    : requestHeaders
+      ? (tab.catalogAuthType === 'api-key' ? 'api-key' : 'bearer-token')
+      : 'none';
+  const nextAction = chooseNextAction({
+    hasSuccessfulRun,
+    toolCount: tools.length,
+    listing: listStage.status !== 'done',
+    toolsOutcome: listOutcome(discovery, 'tools', offeredCapabilities.tools),
+  });
+  const reportHref = `/report/${encodeURIComponent(tab.serverUrl || serverUrl)}`;
+  /**
+   * A first look at a server lands on a live form: once the lists settle with
+   * tools and nothing is selected, open the first tool, once per connection.
+   */
+  const autoSelectedConnection = useRef<string | null>(null);
+  useEffect(() => {
+    if (connectionStatus !== 'Connected') {
+      autoSelectedConnection.current = null;
+      return;
+    }
+    if (listStage.status !== 'done' || tools.length === 0) return;
+    const key = `${serverUrl}|${protocolVersion}|${transportType}`;
+    if (autoSelectedConnection.current === key) return;
+    autoSelectedConnection.current = key;
+    if (!selectedTool && !selectedResourceTemplate && !selectedPrompt) handleSelectTool(tools[0]);
+  }, [connectionStatus, listStage.status, tools, serverUrl, protocolVersion, transportType]);
+  const showShareHint = connectionStatus === 'Connected' && hasSuccessfulRun && onboarding.isActive('share-report');
+  /**
+   * "Call a tool": the capabilities panel expands Tools (it owns that state)
+   * and focuses the first tool once rendered, so the action lands on the choice.
+   */
+  const [openHistoryRequest, setOpenHistoryRequest] = useState(0);
+  const [revealToolsRequest, setRevealToolsRequest] = useState(0);
+  const focusFirstTool = useCallback(() => {
+    document.querySelector<HTMLElement>(`.tab-content-panel[data-tab-id="${tab.id}"] .workbench-capabilities`)
+      ?.scrollIntoView?.({ block: 'nearest' });
+    setRevealToolsRequest((count) => count + 1);
+  }, [tab.id]);
   const handleSelectResourceTemplate = (template: any) => {
     originalHandleSelectResourceTemplate(template);
     setLastResult(null);
@@ -322,6 +407,13 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
     // Called after render, once the wrapper below is defined.
     executeTool: () => handleExecuteToolWrapper(),
   });
+
+  // Keep the session picker tied to the current request in each mounted tab.
+  useEffect(() => {
+    onUpdateTab(tab.id, { selectedTool, selectedPrompt, selectedResourceTemplate,
+      toolParams, promptParams, resourceArgs });
+  }, [tab.id, onUpdateTab, selectedTool, selectedPrompt, selectedResourceTemplate,
+    toolParams, promptParams, resourceArgs]);
 
   // Initialize tab state and handle auto-connection
   const hasAutoConnected = useRef(false);
@@ -1018,7 +1110,6 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
   // Rendered on its own for tabs with a server, and inside the landing's
   // "Advanced options" disclosure for empty tabs.
   const connectionPanel = (
-    <>
     <ConnectionPanel
       serverUrl={serverUrl}
       setServerUrl={handleServerUrlChange}
@@ -1050,23 +1141,73 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
       setCredentialValue={setCatalogCredential}
       credentialInputId={`${tab.id}-catalog-credential`}
       autoFocusUrl={isFirstConnection && hasStartedFirstConnection}
+      connectionStages={stages}
+      connectedSummary={isConnected ? (actions => (
+        <ConnectedSummary
+          actions={actions}
+          resilienceAction={transportType === 'streamable-http' && (
+            <React.Suspense fallback={null}>
+              <SessionResiliencePanel key={`${serverUrl}-${isProxied}-${protocolVersion}`}
+                endpoint={normalizeConnectionTarget(serverUrl)} stateless={protocolEra === 'modern'}
+                protocolVersion={protocolVersion} headers={requestHeaders} oauthToken={isOAuthConnection ? accessToken : undefined}
+                proxyUrl={isProxied ? import.meta.env.VITE_PROXY_URL : undefined}
+                getFirebaseToken={async () => currentUser ? currentUser.getIdToken() : undefined} />
+            </React.Suspense>
+          )}
+          originalServerUrl={tab.serverUrl === serverUrl ? tab.originalServerUrl : undefined}
+          serverName={serverIdentity?.title || serverIdentity?.name}
+          serverVersion={serverIdentity?.version}
+          serverDescription={serverIdentity?.description || client?.getInstructions?.()}
+          serverUrl={serverUrl}
+          protocolVersion={protocolVersion}
+          transportType={transportType}
+          authMode={authMode}
+          isProxied={isProxied}
+          counts={capabilityCounts}
+          discovery={discovery}
+          listStage={listStage}
+          nextAction={nextAction}
+          reportHref={reportHref}
+          onCallTool={focusFirstTool}
+          onRetryLists={handleRefreshAllLists}
+          connectionKey={`${serverUrl}|${protocolVersion}|${transportType}`}
+        />
+      )) : undefined}
+      showConnectionShare={nextAction !== 'share-report'}
       defaultAdvancedOpen={openAdvancedOnArrival}
     />
-    {isConnected && transportType === 'streamable-http' && (
-      <React.Suspense fallback={null}>
-        <SessionResiliencePanel key={`${serverUrl}-${isProxied}-${protocolVersion}`}
-          endpoint={normalizeConnectionTarget(serverUrl)} stateless={protocolEra === 'modern'}
-          protocolVersion={protocolVersion} headers={requestHeaders} oauthToken={isOAuthConnection ? accessToken : undefined}
-          proxyUrl={isProxied ? import.meta.env.VITE_PROXY_URL : undefined}
-          getFirebaseToken={async () => currentUser ? currentUser.getIdToken() : undefined} />
-      </React.Suspense>
-    )}
-    </>
   );
+
+  const workbenchRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const workbench = workbenchRef.current;
+    if (!workbench || !isConnected || !isActive) return;
+    const updateHeight = () => {
+      const top = workbench.getBoundingClientRect().top + window.scrollY;
+      workbench.style.setProperty('--workbench-top', `${top}px`);
+    };
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    // Header content can wrap or expand independently of the viewport.
+    let ancestor = workbench.parentElement;
+    while (ancestor) {
+      observer.observe(ancestor);
+      for (const sibling of ancestor.children) {
+        if (!sibling.contains(workbench)) observer.observe(sibling);
+      }
+      ancestor = ancestor.parentElement;
+    }
+    window.addEventListener('resize', updateHeight);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', updateHeight);
+    };
+  }, [isConnected, isActive]);
 
   return (
     <div 
       className={`tab-content-panel ${isActive ? '' : 'd-none'}`}
+      data-tab-id={tab.id}
       style={{ 
         height: '100%',
         position: isActive ? 'static' : 'absolute',
@@ -1093,12 +1234,6 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
       ) : connectionPanel}
 
       {shareLinkNotice && <p role="status" className="small text-muted px-3">{shareLinkNotice}</p>}
-
-      {tab.originalServerUrl && tab.originalServerUrl !== serverUrl && tab.serverUrl === serverUrl && (
-        <p className="small text-muted px-3">
-          Entered URL: <code>{tab.originalServerUrl}</code>. Discovered endpoint: <code>{serverUrl}</code>.
-        </p>
-      )}
 
       {/* OAuth authorization prerequisite */}
       {needsOAuthConfig && oauthConfigServerUrl && (
@@ -1146,11 +1281,6 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
         />
       )}
 
-      {isConnected && <NextStepsStrip endpoint={tab.serverUrl} onCallTool={() => {
-        const pane = document.querySelector<HTMLElement>('.workbench-capabilities');
-        pane?.scrollIntoView({ block: 'nearest' });
-        pane?.querySelector<HTMLElement>('button')?.focus();
-      }} />}
       {!showLanding && isConnected && playgroundHistory.interfaceDiff && (
         <InterfaceChangeStrip
           diff={playgroundHistory.interfaceDiff}
@@ -1158,10 +1288,9 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
         />
       )}
       {!showLanding && (
-      <div className={`playground-layout flex-grow-1 ${isConnected ? 'playground-workbench' : 'playground-idle'}`}>
+      <div ref={workbenchRef} className={`playground-layout flex-grow-1 ${isConnected ? 'playground-workbench' : 'playground-idle'}`}>
         {!isConnected && (
           <div className="w-100 idle-onboarding-layout">
-            <AwaitingConnectionPanel />
             {isFirstConnection ? (
               <SuggestedServersPanel
                 onServerSelect={handleSuggestedServerSelect}
@@ -1171,7 +1300,7 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
             ) : (
               <div className="row g-3">
                 {recentServers.length > 0 && (
-                  <div className="col-md-6">
+                  <div className="col-12">
                     <RecentServersPanel
                       recentServers={recentServers}
                       setServerUrl={handleServerUrlChange}
@@ -1182,7 +1311,7 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
                     />
                   </div>
                 )}
-                <div className={recentServers.length > 0 ? 'col-md-6' : 'col-12'}>
+                <div className="col-12">
                   <SuggestedServersPanel
                     onServerSelect={handleSuggestedServerSelect}
                     isConnected={isConnected}
@@ -1191,6 +1320,7 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
                 </div>
               </div>
             )}
+            <AwaitingConnectionPanel showSteps={recentServers.length === 0 && !onboarding.completed.includes('tool')} />
           </div>
         )}
         {isConnected && (
@@ -1216,6 +1346,9 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
                 setShowDeterministicTests(true);
               }}
               shortcutEnabled={isActive}
+              discovery={discovery}
+              offered={offeredCapabilities}
+              revealToolsRequest={revealToolsRequest}
             />
             </section>
             <section className="workbench-pane workbench-request" aria-label="Request builder">
@@ -1240,6 +1373,9 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
                 setResourceArgs={setResourceArgs}
                 isExecuting={isExecuting}
                 executionStartTime={executionStartTime}
+                firstToolName={tools[0]?.name}
+                onOpenFirstTool={() => { if (tools[0]) handleSelectTool(tools[0]); }}
+                openHistoryRequest={openHistoryRequest}
                 callHistoryCount={playgroundHistory.calls.length}
                 renderCallHistory={(showRequest) => (
                   <CallHistoryPanel
@@ -1273,6 +1409,9 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
             </section>
             <section className="workbench-pane workbench-response" aria-label="Server response">
               <OutputPanel
+                callHistoryCount={playgroundHistory.calls.length}
+                onOpenHistory={() => setOpenHistoryRequest((count) => count + 1)}
+                onCallTool={focusFirstTool}
                 lastResult={lastResult}
                 responses={responses}
                 autoScroll={autoScroll}
@@ -1288,12 +1427,15 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
                 resourceArgs={resourceArgs}
                 onRunAgain={handleRunAgain}
                 useProxy={isProxied}
+                shareReportHref={showShareHint ? reportHref : undefined}
+                onDismissShareHint={() => dismissHint('share-report')}
               />
             </section>
           </>
         )}
       </div>
       )}
+      {!showLanding && isConnected && <WorkbenchStatusBar isProxied={isProxied} />}
       <DeterministicTestPanel
         open={showDeterministicTests}
         onClose={() => {

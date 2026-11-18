@@ -18,6 +18,13 @@
       "kind": "publisher",
       "url": "https://context7.com/docs/resources/all-clients"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.69868ffeeb8af2720ed809ab",
+        "url": "https://claude.com/marketplace/connectors/context7"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -232,6 +239,13 @@
       "kind": "publisher",
       "url": "https://linear.app/docs/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b0619018c80b507dbfc581",
+        "url": "https://claude.com/marketplace/connectors/linear"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -281,6 +295,18 @@
       "kind": "publisher",
       "url": "https://github.com/makenotion/notion-mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b0619053b61cf2e850aa90",
+        "url": "https://claude.com/marketplace/connectors/notion"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69c18c28f1188191bf5b8445c4ab0a2e",
+        "url": "https://chatgpt.com/plugins/notion"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -330,6 +356,13 @@
       "kind": "publisher",
       "url": "https://github.com/getsentry/sentry-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b0619151de5479549f83bb",
+        "url": "https://claude.com/marketplace/connectors/sentry"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -423,6 +456,13 @@
       "kind": "publisher",
       "url": "https://docs.paypal.ai/developer/tools/ai/mcp-quickstart"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b06191f791239b5a82c3f1",
+        "url": "https://claude.com/marketplace/connectors/paypal"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -468,6 +508,18 @@
       "kind": "publisher",
       "url": "https://docs.stripe.com/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b06192655dce8153ccffb5",
+        "url": "https://claude.com/marketplace/connectors/stripe"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_connector_690ab09fa43c8191bca40280e4563238",
+        "url": "https://chatgpt.com/plugins/stripe"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -516,6 +568,13 @@
       "kind": "publisher",
       "url": "https://docs.slack.dev/ai/slack-mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68db342b70cc9c2469339a42",
+        "url": "https://claude.com/marketplace/connectors/slack"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -631,6 +690,18 @@
       "kind": "publisher",
       "url": "https://developers.figma.com/docs/figma-mcp-server/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68d1f03e687403c54948ca34",
+        "url": "https://claude.com/marketplace/connectors/figma"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_connector_68df038e0ba48191908c8434991bbac2",
+        "url": "https://chatgpt.com/plugins/figma"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -690,6 +761,13 @@
       "kind": "publisher",
       "url": "https://supabase.com/docs/guides/ai-tools/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.697be3f24238888733024dc9",
+        "url": "https://claude.com/marketplace/connectors/supabase"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -736,6 +814,13 @@
       "kind": "publisher",
       "url": "https://neon.com/docs/ai/neon-mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.33e1b084-f45e-4fa3-951a-b08ad61101c9",
+        "url": "https://claude.com/marketplace/connectors/neon"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -782,6 +867,13 @@
       "kind": "publisher",
       "url": "https://developer.mozilla.org/en-US/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.731a302b-c364-488f-a727-2f35e91b9ab0",
+        "url": "https://claude.com/marketplace/connectors/mdn"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -837,6 +929,18 @@
       "kind": "mcp-registry",
       "url": "https://registry.modelcontextprotocol.io/v0.1/servers/com.vercel%2Fvercel-mcp/versions/0.0.3"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b061919322dd7b59a5f261",
+        "url": "https://claude.com/marketplace/connectors/vercel"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_connector_690a90ec05c881918afb6a55dc9bbaa1",
+        "url": "https://chatgpt.com/plugins/vercel"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -934,6 +1038,13 @@
       "kind": "publisher",
       "url": "https://developers.asana.com/docs/integrating-with-asanas-mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b0618e2590c507fab4a41b",
+        "url": "https://claude.com/marketplace/connectors/asana"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1037,6 +1148,13 @@
       "kind": "publisher",
       "url": "https://www.canva.dev/docs/mcp/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b0618e3f55cc591b6b22a2",
+        "url": "https://claude.com/marketplace/connectors/canva"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1140,6 +1258,13 @@
       "kind": "publisher",
       "url": "https://developers.miro.com/docs/miro-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.698236b16010d83b881046b8",
+        "url": "https://claude.com/marketplace/connectors/miro"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1192,6 +1317,13 @@
       "kind": "publisher",
       "url": "https://circleci.com/docs/guides/toolkit/circleci-mcp-overview/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.09103c21-59c7-480e-8fb4-69914bfa311e",
+        "url": "https://claude.com/marketplace/connectors/circleci"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1255,6 +1387,13 @@
       "kind": "publisher",
       "url": "https://support.pagerduty.com/main/docs/pagerduty-mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.fc41b5e5-97bc-4c80-af18-e3a9442b655b",
+        "url": "https://claude.com/marketplace/connectors/pagerduty"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1344,6 +1483,13 @@
       "kind": "publisher",
       "url": "https://support.airtable.com/v1/docs/using-the-airtable-mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.69a0e3a7f6380c0b9832407b",
+        "url": "https://claude.com/marketplace/connectors/airtable"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1402,6 +1548,13 @@
       "kind": "publisher",
       "url": "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6940962a2b4d93513db06cce",
+        "url": "https://claude.com/marketplace/connectors/clickup"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1449,6 +1602,13 @@
       "kind": "publisher",
       "url": "https://developers.intercom.com/docs/guides/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b061909c93b36df80e4155",
+        "url": "https://claude.com/marketplace/connectors/intercom"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1562,6 +1722,13 @@
       "kind": "publisher",
       "url": "https://developer.calendly.com/calendly-mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.d778b2f9-25f4-42a2-87ab-dbaa896deb1b",
+        "url": "https://claude.com/marketplace/connectors/calendly"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1616,6 +1783,13 @@
       "kind": "publisher",
       "url": "https://huggingface.co/docs/hub/en/agents-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b0618fec8c7c45df2f5896",
+        "url": "https://claude.com/marketplace/connectors/hugging-face"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1688,6 +1862,13 @@
       "kind": "publisher",
       "url": "https://www.upwork.com/ai/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.27973c01-c053-413b-997b-a08064f5b444",
+        "url": "https://claude.com/marketplace/connectors/upwork"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1794,6 +1975,13 @@
       "kind": "publisher",
       "url": "https://learn.microsoft.com/en-us/training/support/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6992355a2e60bdd8d0f1df31",
+        "url": "https://claude.com/marketplace/connectors/microsoft-learn"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -1970,6 +2158,13 @@
       "kind": "publisher",
       "url": "https://www.twilio.com/docs/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.0f28b719-ce6a-4597-83a6-ff5b2d5b17c5",
+        "url": "https://claude.com/marketplace/connectors/twilio"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -2080,6 +2275,13 @@
       "kind": "publisher",
       "url": "https://docs.exa.ai/reference/exa-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.91408932-1110-4350-97c7-2d6b3a6d9694",
+        "url": "https://claude.com/marketplace/connectors/exa"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -2151,6 +2353,13 @@
       "kind": "publisher",
       "url": "https://docs.tavily.com/documentation/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.d8a25d2a-e5ea-4860-b990-277244df5417",
+        "url": "https://claude.com/marketplace/connectors/tavily"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2202,6 +2411,13 @@
       "kind": "publisher",
       "url": "https://docs.firecrawl.dev/mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a314a73f8ac819195b0d55e36b9c609",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a314a73f8ac819195b0d55e36b9c609"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2295,6 +2511,13 @@
       "kind": "publisher",
       "url": "https://github.com/cloudflare/mcp-server-cloudflare"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b0618e97a6a7e363bef13c",
+        "url": "https://claude.com/marketplace/connectors/cloudflare"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2751,6 +2974,13 @@
       "kind": "publisher",
       "url": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b06190208a38617cb8e09a",
+        "url": "https://claude.com/marketplace/connectors/netlify"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2798,6 +3028,18 @@
       "kind": "publisher",
       "url": "https://render.com/docs/mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.045e9791-ed0d-4dfb-8271-a2f1ff62f9f0",
+        "url": "https://claude.com/marketplace/connectors/render"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a624c56bfe081918f7544f7d58f6faf",
+        "url": "https://chatgpt.com/plugins/render"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2855,6 +3097,13 @@
       "kind": "publisher",
       "url": "https://docs.railway.com/reference/mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.9ed5afff-a8dc-4f68-b97b-61dae12de3a5",
+        "url": "https://claude.com/marketplace/connectors/railway"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2945,6 +3194,13 @@
       "kind": "publisher",
       "url": "https://planetscale.com/docs/connect/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6997985cd6061d2f2107951c",
+        "url": "https://claude.com/marketplace/connectors/planetscale"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2998,6 +3254,13 @@
       "kind": "publisher",
       "url": "https://docs.cloud.google.com/bigquery/docs/use-bigquery-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.697d1244b1425c36270d3a04",
+        "url": "https://claude.com/marketplace/connectors/bigquery"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3090,6 +3353,13 @@
       "kind": "publisher",
       "url": "https://www.sanity.io/docs/compute-and-ai/mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.118aa78d-5b78-4e2b-9191-7a6af7cf822e",
+        "url": "https://claude.com/marketplace/connectors/sanity"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3136,6 +3406,13 @@
       "kind": "publisher",
       "url": "https://developer.squareup.com/docs/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b06191f62d9a2435f934c5",
+        "url": "https://claude.com/marketplace/connectors/square"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3226,6 +3503,13 @@
       "kind": "publisher",
       "url": "https://plaid.com/docs/resources/mcp/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b06191ac5c2148827a50a9",
+        "url": "https://claude.com/marketplace/connectors/plaid"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "bearer-token",
@@ -3423,6 +3707,13 @@
       "kind": "publisher",
       "url": "https://jam.dev/docs/debug-a-jam/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b0619097a6a7e363bef1e0",
+        "url": "https://claude.com/marketplace/connectors/jam"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3468,6 +3759,13 @@
       "kind": "publisher",
       "url": "https://workos.com/docs/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.d3b03e81-aeaa-42bf-9c52-5270d5273b2d",
+        "url": "https://claude.com/marketplace/connectors/workos"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3513,6 +3811,13 @@
       "kind": "publisher",
       "url": "https://docs.mapbox.com/api/guides/mcp-server/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.27f9ac6d-1992-455a-ae8b-f4b7bfac917b",
+        "url": "https://claude.com/marketplace/connectors/mapbox-mcp"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3598,6 +3903,13 @@
       "kind": "publisher",
       "url": "https://amplitude.com/docs/amplitude-ai/amplitude-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68f90d42bf55e5e237595f6c",
+        "url": "https://claude.com/marketplace/connectors/amplitude"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3649,6 +3961,13 @@
       "kind": "publisher",
       "url": "https://docs.mixpanel.com/docs/features/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.29d60a67-6f16-489b-8a1e-efdcece8d1f6",
+        "url": "https://claude.com/marketplace/connectors/mixpanel"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3706,6 +4025,18 @@
       "kind": "publisher",
       "url": "https://posthog.com/docs/model-context-protocol"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6997786e2d712c259600a935",
+        "url": "https://claude.com/marketplace/connectors/posthog"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_699caef2d680819188727b0ddbb349dd",
+        "url": "https://chatgpt.com/plugins/posthog"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3809,6 +4140,18 @@
       "kind": "publisher",
       "url": "https://docs.attio.com/mcp/overview"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.698e8667ace7341829354357",
+        "url": "https://claude.com/marketplace/connectors/attio"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6981f663d5cc8191ae0d5717a05ccc89",
+        "url": "https://chatgpt.com/plugins/attio"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3855,6 +4198,13 @@
       "kind": "publisher",
       "url": "https://help.close.com/docs/mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b0619194798e1410e38958",
+        "url": "https://claude.com/marketplace/connectors/close"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3903,6 +4253,13 @@
       "kind": "publisher",
       "url": "https://developers.make.com/mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.697d122ff62eea02a6423aa5",
+        "url": "https://claude.com/marketplace/connectors/make"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4012,6 +4369,13 @@
       "kind": "publisher",
       "url": "https://developer.box.com/guides/box-mcp/remote/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b0618e694f26361d572d5c",
+        "url": "https://claude.com/marketplace/connectors/box"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4057,6 +4421,18 @@
       "kind": "publisher",
       "url": "https://help.dropbox.com/integrations/connect-dropbox-mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.1e4280cc-037c-47f0-9873-56bea1871bdb",
+        "url": "https://claude.com/marketplace/connectors/dropbox"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69b31dc2110c8191b8b47dc98fe5a052",
+        "url": "https://chatgpt.com/plugins/dropbox"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4101,6 +4477,18 @@
       "kind": "publisher",
       "url": "https://developer.todoist.com/guides/#mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.d1bac76b-5673-4d98-b275-41451f3dd847",
+        "url": "https://claude.com/marketplace/connectors/todoist"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6943b73823548191a9f9216c6790c453",
+        "url": "https://chatgpt.com/plugins/todoist-to-do-list-and-calendar"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4147,6 +4535,13 @@
       "kind": "publisher",
       "url": "https://docs.granola.ai/help-center/sharing/integrations/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.697bf8feab23d9ff44da6227",
+        "url": "https://claude.com/marketplace/connectors/granola"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4191,6 +4586,13 @@
       "kind": "publisher",
       "url": "https://docs.fireflies.ai/getting-started/mcp-configuration"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b0618f738fc57555eed3fd",
+        "url": "https://claude.com/marketplace/connectors/fireflies"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4235,6 +4637,13 @@
       "kind": "publisher",
       "url": "https://resend.com/docs/mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.b770b020-8081-435f-8e05-4bee9c2a8772",
+        "url": "https://claude.com/marketplace/connectors/resend"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4281,6 +4690,18 @@
       "kind": "publisher",
       "url": "https://dev.wix.com/docs/sdk/articles/use-the-wix-mcp/about-the-wix-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.696ed48159b27e4335eaa8cf",
+        "url": "https://claude.com/marketplace/connectors/wix"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6947eaa4edd081919561e4ee3a2e5dcc",
+        "url": "https://chatgpt.com/plugins/wix"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4326,6 +4747,13 @@
       "kind": "publisher",
       "url": "https://cloudinary.com/documentation/cloudinary_llm_mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b0618f2f29acedd03dabad",
+        "url": "https://claude.com/marketplace/connectors/cloudinary"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4371,6 +4799,13 @@
       "kind": "publisher",
       "url": "https://docs.mem0.ai/platform/mem0-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.3119bc71-0dfd-48f8-a764-c2fca895325c",
+        "url": "https://claude.com/marketplace/connectors/mem0"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4416,6 +4851,13 @@
       "kind": "publisher",
       "url": "https://docs.datadoghq.com/mcp_server/setup/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.68268024-1a91-4316-a9e1-14ecb814cb18",
+        "url": "https://claude.com/marketplace/connectors/datadog"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4472,6 +4914,13 @@
       "kind": "publisher",
       "url": "https://grafana.com/docs/grafana-cloud/ai-tools/mcp-servers/cloud-mcp/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.3392c633-e335-4638-bda7-5b259808c3f7",
+        "url": "https://claude.com/marketplace/connectors/grafana-cloud"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4518,6 +4967,13 @@
       "kind": "publisher",
       "url": "https://docs.honeycomb.io/integrations/mcp/configuration-guide"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6923b648dad3246a3f347c6a",
+        "url": "https://claude.com/marketplace/connectors/honeycomb"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4570,6 +5026,18 @@
       "kind": "publisher",
       "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/integrate-with-the-remote-hubspot-mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b0618f27f9199dfc44dbea",
+        "url": "https://claude.com/marketplace/connectors/hubspot"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_697acb8e53d88191bf7a79e62012ae14",
+        "url": "https://chatgpt.com/plugins/hubspot"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4616,6 +5084,18 @@
       "kind": "publisher",
       "url": "https://support.pipedrive.com/en/article/mcp-claude"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.30f3f2c8-e6e4-4bf9-845f-46f5afeea73a",
+        "url": "https://claude.com/marketplace/connectors/pipedrive-mcp"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6ad0b95f0a5481919d299d60b62ece32",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6ad0b95f0a5481919d299d60b62ece32"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4661,6 +5141,13 @@
       "kind": "publisher",
       "url": "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.696ed2c1f10a34c9a99f6f3e",
+        "url": "https://claude.com/marketplace/connectors/klaviyo"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4706,6 +5193,13 @@
       "kind": "publisher",
       "url": "https://developer.monday.com/api-reference/docs/mondaycom-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b061902e8445f3acca5515",
+        "url": "https://claude.com/marketplace/connectors/monday"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4750,6 +5244,13 @@
       "kind": "publisher",
       "url": "https://developers.wrike.com/wrike-mcp/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.baa35676-3f79-4728-aec9-b37870c73deb",
+        "url": "https://claude.com/marketplace/connectors/wrike"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4853,6 +5354,13 @@
       "kind": "publisher",
       "url": "https://developers.egnyte.com/integration/cfs/api-docs/remote-mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68e06e6232b17a59b6917957",
+        "url": "https://claude.com/marketplace/connectors/egnyte"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4898,6 +5406,13 @@
       "kind": "publisher",
       "url": "https://www.mongodb.com/docs/mcp-server/get-started/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.c700435a-e86b-41f6-a377-ee226164a909",
+        "url": "https://claude.com/marketplace/connectors/mongodb-atlas"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5053,6 +5568,13 @@
       "kind": "publisher",
       "url": "https://docs.mercury.com/docs/connecting-mercury-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.696ed6148b9df497d38cba48",
+        "url": "https://claude.com/marketplace/connectors/mercury"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5169,6 +5691,13 @@
       "kind": "publisher",
       "url": "https://developers.webflow.com/mcp/reference/getting-started"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6972ba321265fa4bd56ab812",
+        "url": "https://claude.com/marketplace/connectors/webflow"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5214,6 +5743,13 @@
       "kind": "publisher",
       "url": "https://stytch.com/docs/workspace-management/stytch-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b06191bb8faebc4d1db630",
+        "url": "https://claude.com/marketplace/connectors/stytch"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5259,6 +5795,13 @@
       "kind": "publisher",
       "url": "https://docs.aws.amazon.com/agent-toolkit/latest/userguide/getting-started-aws-mcp-server.html"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.0a14ad3c-54c3-4adf-8a43-90539a225509",
+        "url": "https://claude.com/marketplace/connectors/aws-mcp"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5319,6 +5862,13 @@
       "kind": "publisher",
       "url": "https://docs.cloud.google.com/compute/docs/use-compute-engine-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.698b9da93905ec7f0b6bbdf3",
+        "url": "https://claude.com/marketplace/connectors/google-compute-engine"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5779,6 +6329,13 @@
       "kind": "publisher",
       "url": "https://docs.fly.io/sprites/integrations/remote-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.98670155-4f80-423f-949a-cde375c9668f",
+        "url": "https://claude.com/marketplace/connectors/sprites"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5966,6 +6523,13 @@
       "kind": "publisher",
       "url": "https://clickhouse.com/docs/cloud/features/ai-ml/remote-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.01adc2b5-5676-4dda-9e32-2cce63929d5c",
+        "url": "https://claude.com/marketplace/connectors/clickhouse"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6014,6 +6578,13 @@
       "kind": "publisher",
       "url": "https://motherduck.com/docs/sql-reference/mcp/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6972af023050067b876a01e6",
+        "url": "https://claude.com/marketplace/connectors/motherduck"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6165,6 +6736,13 @@
       "kind": "publisher",
       "url": "https://docs.newrelic.com/docs/agentic-ai/mcp/setup/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.7e01ca11-4bcf-4879-bc66-e523673d84bd",
+        "url": "https://claude.com/marketplace/connectors/newrelic"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6219,6 +6797,13 @@
       "kind": "publisher",
       "url": "https://betterstack.com/docs/getting-started/integrations/mcp/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.4d4d6e80-7399-4861-86a4-c31fc98a6da9",
+        "url": "https://claude.com/marketplace/connectors/betterstack"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6402,6 +6987,13 @@
       "kind": "publisher",
       "url": "https://docs.rootly.com/integrations/mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.df7a5ffa-5d49-4b4b-9a69-911f927fb65d",
+        "url": "https://claude.com/marketplace/connectors/rootly"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6460,6 +7052,13 @@
       "kind": "publisher",
       "url": "https://docs.incident.io/ai/remote-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.1f80285c-87b3-496f-91b3-07ea8fc86488",
+        "url": "https://claude.com/marketplace/connectors/incident-io"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6802,6 +7401,13 @@
       "kind": "publisher",
       "url": "https://docs.parallel.ai/search/search-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.fe70d12e-aad9-4b33-b5bf-47afede277a3",
+        "url": "https://claude.com/marketplace/connectors/parallel-search"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -7257,6 +7863,13 @@
       "kind": "publisher",
       "url": "https://docs.expo.dev/eas/ai/mcp/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.8717a405-6e93-47c1-929d-9da08129290d",
+        "url": "https://claude.com/marketplace/connectors/expo"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -7302,6 +7915,13 @@
       "kind": "publisher",
       "url": "https://docs.bitrise.io/en/bitrise-platform/ai/bitrise-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.fe049fc9-9284-48b0-ad3d-2d7184c7cb2f",
+        "url": "https://claude.com/marketplace/connectors/bitrise-mcp"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -7359,6 +7979,13 @@
       "kind": "publisher",
       "url": "https://developer.harness.io/docs/platform/harness-ai/connect-with-ai/harness-mcp-server/hosted-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.b98c06f8-3945-46ff-a81d-14233c0bc9a6",
+        "url": "https://claude.com/marketplace/connectors/harness"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -7845,6 +8472,13 @@
       "kind": "publisher",
       "url": "https://www.contentful.com/developers/docs/tools/mcp-server/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.caf98118-2da7-45bd-8ce8-ea7b49220782",
+        "url": "https://claude.com/marketplace/connectors/contentful-mcp"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8080,6 +8714,13 @@
       "kind": "publisher",
       "url": "https://docs.lovable.dev/integrations/lovable-mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.1d9dadfe-0a7d-4a47-af18-101ae0ae0efd",
+        "url": "https://claude.com/marketplace/connectors/lovable"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8129,6 +8770,13 @@
       "kind": "publisher",
       "url": "https://developer.vanta.com/docs/vanta-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.a06a16f0-182d-43c1-a20d-0f95aee6027e",
+        "url": "https://claude.com/marketplace/connectors/vanta"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8333,6 +8981,13 @@
       "kind": "publisher",
       "url": "https://clerk.com/docs/guides/ai/mcp/clerk-mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.69a4bf31da4c8d8464553eb2",
+        "url": "https://claude.com/marketplace/connectors/clerk"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8474,6 +9129,13 @@
       "kind": "publisher",
       "url": "https://razorpay.com/docs/mcp-server/remote/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.698fb0cafa6bc54dcf80fc56",
+        "url": "https://claude.com/marketplace/connectors/razorpay"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8519,6 +9181,13 @@
       "kind": "publisher",
       "url": "https://docs.mollie.com/docs/mollie-mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.7407d19d-d56f-4701-99d5-b33cdb08ab7f",
+        "url": "https://claude.com/marketplace/connectors/mollie"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8662,6 +9331,13 @@
       "kind": "publisher",
       "url": "https://mcp.alphavantage.co/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.0f1d77a7-9e03-438a-824d-d66c6dd0f0d5",
+        "url": "https://claude.com/marketplace/connectors/alpha-vantage"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8706,6 +9382,13 @@
       "kind": "publisher",
       "url": "https://docs.financialdatasets.ai/mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.c6bd5a29-89cc-4b2b-a5e4-3b58363c58c1",
+        "url": "https://claude.com/marketplace/connectors/financial-datasets"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8850,6 +9533,13 @@
       "kind": "publisher",
       "url": "https://developer.fullstory.com/mcp/authentication/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.c9be8097-5a98-4c0f-a652-d41b0ed141e5",
+        "url": "https://claude.com/marketplace/connectors/fullstory"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9013,6 +9703,13 @@
       "kind": "publisher",
       "url": "https://docs.ahrefs.com/mcp/docs/introduction.md"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.697d48316915f626b1f2ee35",
+        "url": "https://claude.com/marketplace/connectors/ahrefs"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9061,6 +9758,13 @@
       "kind": "publisher",
       "url": "https://docs.similarweb.com/api-v5/mcp/mcp-setup"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.697d4452a536ec1983791193",
+        "url": "https://claude.com/marketplace/connectors/similarweb"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9156,6 +9860,18 @@
       "kind": "publisher",
       "url": "https://docs.apollo.io/docs/apollo-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6998ddef19884627590fca6e",
+        "url": "https://claude.com/marketplace/connectors/apollo"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69bd664f2a908191a3a0a47eca8559d1",
+        "url": "https://chatgpt.com/plugins/apollo"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9212,6 +9928,13 @@
       "kind": "publisher",
       "url": "https://docs.zoominfo.com/docs/connect-to-zoominfo-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68d483baad18a21c45f63df0",
+        "url": "https://claude.com/marketplace/connectors/zoominfo"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9260,6 +9983,13 @@
       "kind": "publisher",
       "url": "https://help.gong.io/docs/enable-supported-ai-tools-for-gong"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.4a79683f-5879-4698-9a7e-c31b7b8a8573",
+        "url": "https://claude.com/marketplace/connectors/gong"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9304,6 +10034,13 @@
       "kind": "publisher",
       "url": "https://www.braze.com/docs/developer_guide/mcp_server/setup/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.697d3b12017260f6004eba1d",
+        "url": "https://claude.com/marketplace/connectors/braze"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9412,6 +10149,18 @@
       "kind": "publisher",
       "url": "https://www.commonroom.io/docs/using-common-room/mcp-server/"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.698fd0b1afe66818b41ff63d",
+        "url": "https://claude.com/marketplace/connectors/common-room"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6970230238d8819196e64c67af28ab38",
+        "url": "https://chatgpt.com/plugins/common-room"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9545,6 +10294,13 @@
       "kind": "publisher",
       "url": "https://docs.agentmail.to/integrations/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.a99a3b09-26fc-4251-a412-fa2593123267",
+        "url": "https://claude.com/marketplace/connectors/agentmail"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9889,6 +10645,13 @@
       "kind": "publisher",
       "url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.bb74915f-d284-4590-a208-ae06447b37af",
+        "url": "https://claude.com/marketplace/connectors/otter-ai"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10029,6 +10792,13 @@
       "kind": "publisher",
       "url": "https://productboard.com/integrations/mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.e443a8eb-41e1-479e-9552-e20b02269544",
+        "url": "https://claude.com/marketplace/connectors/productboard"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10121,6 +10891,13 @@
       "kind": "publisher",
       "url": "https://github.com/excalidraw/excalidraw-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.698b8cb658ef34fba882e07b",
+        "url": "https://claude.com/marketplace/connectors/excalidraw-app-demo"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -10150,6 +10927,13 @@
       "kind": "publisher",
       "url": "https://whimsical.com/learn/integrations/remote-mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.9b75f9c6-c443-4b88-96ff-f33234d4f135",
+        "url": "https://claude.com/marketplace/connectors/whimsical"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10194,6 +10978,13 @@
       "kind": "publisher",
       "url": "https://developers.gamma.app/mcp/gamma-mcp-server.md"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.696ecfe1bdbdca32f8c575d4",
+        "url": "https://claude.com/marketplace/connectors/gamma"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10284,6 +11075,13 @@
       "kind": "publisher",
       "url": "https://docs.zapier.com/mcp/get-started/authentication"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b06192a5ae955ed6b6e51d",
+        "url": "https://claude.com/marketplace/connectors/zapier"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10568,6 +11366,13 @@
       "kind": "mcp-registry",
       "url": "https://registry.modelcontextprotocol.io/v0.1/servers/com.beehiiv%2Fbeehiiv/versions/0.1.0"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.1f0aaecc-77d9-4b5f-aad3-935023c0b030",
+        "url": "https://claude.com/marketplace/connectors/beehiiv"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10839,6 +11644,13 @@
       "kind": "mcp-registry",
       "url": "https://registry.modelcontextprotocol.io/v0.1/servers/com.ifttt%2Fmcp/versions/1.0.0"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.a0ea0811-dabc-4b51-903a-d762fec4afcb",
+        "url": "https://claude.com/marketplace/connectors/ifttt"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10910,6 +11722,13 @@
       "kind": "mcp-registry",
       "url": "https://registry.modelcontextprotocol.io/v0.1/servers/com.kajabi%2Fkajabi/versions/1.0.0"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.b80d1410-c440-4d4a-9cc2-fdbe467e984b",
+        "url": "https://claude.com/marketplace/connectors/kajabi"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -11006,6 +11825,13 @@
       "kind": "mcp-registry",
       "url": "https://registry.modelcontextprotocol.io/v0.1/servers/com.mabl%2Fmcp/versions/1.0.3"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.2cb13b65-17e0-4196-88e7-cb0664d55912",
+        "url": "https://claude.com/marketplace/connectors/mabl"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -11207,6 +12033,13 @@
       "kind": "mcp-registry",
       "url": "https://registry.modelcontextprotocol.io/v0.1/servers/com.padlet%2Fpadlet/versions/1.0.1"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.618a4a60-3705-448f-b86f-b43e85fb37ba",
+        "url": "https://claude.com/marketplace/connectors/padlet-mcp"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -11237,6 +12070,13 @@
       "kind": "mcp-registry",
       "url": "https://registry.modelcontextprotocol.io/v0.1/servers/com.pandadoc.mcp%2Fmcp/versions/1.0.0"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.56998cd4-9a3a-4f40-8aa9-5019da8bf96e",
+        "url": "https://claude.com/marketplace/connectors/pandadoc"
+      }
+    ],
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",

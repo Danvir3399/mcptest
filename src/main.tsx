@@ -11,6 +11,7 @@ import { deferMountUntilInput } from './staticPage/deferredMount'
 import { enhanceStaticPage, getDeferredStaticPage, isHandledByStaticPage, snapshotStaticPageState } from './staticPage/staticPage'
 import { canonicalAliasPath } from './utils/appRoutes'
 import { startSiteAssistant } from './siteAssistant/siteAssistant'
+import { APP_ROUTE_OPTIONS } from './servicePage/buildFlag'
 
 /*
  * The entry stays small: React, the router and the app are one dynamic
@@ -23,7 +24,7 @@ const prepareApp = () => import('./bootstrapApp').then(module => module.prepareA
 // A served alias of a page (/catalog.html, /learn/index.html) takes the
 // page's canonical URL before anything reads the path, so the app renders the
 // page rather than NotFound.
-const canonicalPath = canonicalAliasPath(window.location.pathname)
+const canonicalPath = canonicalAliasPath(window.location.pathname, APP_ROUTE_OPTIONS)
 if (canonicalPath) {
   window.history.replaceState(window.history.state, '', `${canonicalPath}${window.location.search}${window.location.hash}`)
 }

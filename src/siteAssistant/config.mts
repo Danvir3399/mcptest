@@ -16,6 +16,9 @@
  * report permalinks (/r/*) are JSON served by the Worker, so neither changes.
  */
 
+/** The service page's path (src/servicePage/config.mts); spelled out so this module stays import-free. */
+const SERVICE_PAGE_PATH = '/mcp-server-development';
+
 export interface SiteAssistantConfig {
   /** The solv.chat Worker origin, e.g. `https://chat.example.com`. Never a path. */
   endpoint: string;
@@ -80,13 +83,18 @@ export const widgetScriptUrl = (config: SiteAssistantConfig): string => `${confi
 export const siteAssistantCspSources = (config: SiteAssistantConfig | null): Record<string, string[]> =>
   config ? { 'script-src': [config.endpoint], 'connect-src': [config.endpoint] } : {};
 
-/** `policy` with the assistant's sources added; unchanged when the assistant is off. */
-export const applySiteAssistantCsp = (policy: string, config: SiteAssistantConfig | null): string => {
-  const additions = siteAssistantCspSources(config);
-  if (Object.keys(additions).length === 0) return policy;
+/**
+ * `policy` with `additions` (directive name to sources) merged in, without
+ * duplicates; a directive the policy lacks starts from default-src's sources.
+ * Unchanged when there is nothing to add. The one CSP helper: the service
+ * page (src/servicePage/config.mts) extends the policy through it too.
+ */
+export const extendCsp = (policy: string, additions: Record<string, string[]>): string => {
+  if (Object.values(additions).every(sources => sources.length === 0)) return policy;
   const directives = policy.split(';').map(part => part.trim()).filter(Boolean);
   const defaultSources = directives.find(part => part.split(/\s+/)[0] === 'default-src')?.split(/\s+/).slice(1) ?? [];
   for (const [name, sources] of Object.entries(additions)) {
+    if (sources.length === 0) continue;
     const index = directives.findIndex(part => part.split(/\s+/)[0] === name);
     // A missing directive falls back to default-src, so start from its sources.
     const current = index === -1 ? [name, ...defaultSources] : directives[index].split(/\s+/);
@@ -97,7 +105,21 @@ export const applySiteAssistantCsp = (policy: string, config: SiteAssistantConfi
   return directives.join('; ');
 };
 
+/** `policy` with the assistant's sources added; unchanged when the assistant is off. */
+export const applySiteAssistantCsp = (policy: string, config: SiteAssistantConfig | null): string =>
+  extendCsp(policy, siteAssistantCspSources(config));
+
 const CSP_META = /(<meta http-equiv="Content-Security-Policy" content=")([^"]*)(" \/>)/;
+
+/**
+ * index.html with its policy passed through `transform` and `extraHead`
+ * added after the policy tag. Throws when the page has no policy tag.
+ */
+export const transformCspMeta = (html: string, transform: (policy: string) => string, extraHead = '', feature = 'the site assistant'): string => {
+  if (!CSP_META.test(html)) throw new Error(`index.html has no Content-Security-Policy meta tag to extend for ${feature}.`);
+  return html.replace(CSP_META, (_match, start: string, policy: string, end: string) =>
+    `${start}${transform(policy)}${end}${extraHead ? `\n    ${extraHead}` : ''}`);
+};
 
 /**
  * index.html for this build: the policy extended and the config meta tag
@@ -105,10 +127,8 @@ const CSP_META = /(<meta http-equiv="Content-Security-Policy" content=")([^"]*)(
  */
 export const applySiteAssistantToHtml = (html: string, config: SiteAssistantConfig | null): string => {
   if (!config) return html;
-  if (!CSP_META.test(html)) throw new Error('index.html has no Content-Security-Policy meta tag to extend for the site assistant.');
   const meta = `<meta name="${SITE_ASSISTANT_META_NAME}" data-endpoint="${config.endpoint}" data-assistant="${config.assistantKey}" />`;
-  return html.replace(CSP_META, (_match, start: string, policy: string, end: string) =>
-    `${start}${applySiteAssistantCsp(policy, config)}${end}\n    ${meta}`);
+  return transformCspMeta(html, policy => applySiteAssistantCsp(policy, config), meta);
 };
 
 /**
@@ -121,8 +141,10 @@ export const applySiteAssistantToHtml = (html: string, config: SiteAssistantConf
  * - `/report`, `/report/*`: reports with unpublished results.
  * - `/server/*`, `/call/*`: connection and result-share links naming an endpoint.
  * - `/r`, `/r/*`: published report permalinks served by the Worker.
+ * - `/mcp-server-development`: the service page shows its own quote
+ *   assistant instead (src/servicePage/).
  */
-const EXCLUDED_EXACT = new Set(['/oauth/callback', '/install-integration', '/space', '/report', '/r']);
+const EXCLUDED_EXACT = new Set(['/oauth/callback', '/install-integration', '/space', '/report', '/r', SERVICE_PAGE_PATH]);
 const EXCLUDED_PREFIXES = ['/oauth/callback/', '/install-integration/', '/space/', '/report/', '/server/', '/call/', '/r/'];
 
 export const isSiteAssistantPath = (pathname: string): boolean => {

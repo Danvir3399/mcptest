@@ -64,7 +64,7 @@ Every guide is also available as raw Markdown by appending `.md` to its URL, `/l
 
 ## Local development
 
-Requirements: Node.js 22 or newer and npm.
+Requirements: Node.js 22.22.2 or newer within 22.x, 24.15.0 or newer within 24.x, or 26 and later (matching `engines` in `package.json`), and npm.
 
 ```bash
 git clone https://github.com/integry/mcptest.git

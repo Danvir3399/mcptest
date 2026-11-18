@@ -214,7 +214,8 @@ describe('element locators', () => {
     const root = document.getElementById('root')!;
     const button = root.querySelector('.sidenav-action')!;
     const locator = locateElement(root, button)!;
-    expect(locator).toEqual({ scopeId: 'app-sidenav-desktop', selector: 'button[aria-label="Create new dashboard"]', index: 0 });
+    // locateElement escapes the label with CSS.escape, which jsdom 31+ provides (spaces become `\ `).
+    expect(locator).toEqual({ scopeId: 'app-sidenav-desktop', selector: `button[aria-label="${CSS.escape('Create new dashboard')}"]`, index: 0 });
 
     root.innerHTML = APP_HTML;
     expect(resolveElement(root, locator)).toBe(root.querySelector('#app-sidenav-desktop .sidenav-action'));

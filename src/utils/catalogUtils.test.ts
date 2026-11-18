@@ -303,6 +303,21 @@ describe('catalog sorting', () => {
     server('alpha-untested', 'none', { name: 'Alpha', browserAccess: 'unknown' }),
   ];
 
+  it('lists higher relevance first in catalog order and keeps seed order for ties', () => {
+    const scored = [
+      server('unscored', 'none'),
+      server('low', 'none', { relevance: 20 }),
+      server('high-first', 'none', { relevance: 90 }),
+      server('high-second', 'none', { relevance: 90 }),
+      server('zero', 'none', { relevance: 0 }),
+    ];
+
+    expect(sortCatalogServers(scored, 'catalog-order').map(({ id }) => id))
+      .toEqual(['high-first', 'high-second', 'low', 'unscored', 'zero']);
+    expect(sortCatalogServers(scored, 'name').map(({ id }) => id))
+      .toEqual(['high-first', 'high-second', 'low', 'unscored', 'zero']);
+  });
+
   it.each([
     ['catalog-order', ['zulu', 'beta', 'alpha-new', 'alpha-untested']],
     ['name', ['alpha-new', 'alpha-untested', 'beta', 'zulu']],

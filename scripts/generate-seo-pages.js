@@ -93,7 +93,7 @@ const { KEYWORD_LANDING_PAGES, getKeywordLandingFaqStructuredData } = require('.
 const { writeOgImages } = require('./og/ogImages.js');
 const { inlineCriticalCss, restoreStylesheetLinks } = require('./critical-css.js');
 const { downscalePng, readPngSize } = require('./raster-images.js');
-const { renderCatalogFallback, renderCategoryFallback, renderServerConnect, renderToolInventory } = require('./content/catalogPages.js');
+const { orderByRelevance, renderCatalogFallback, renderCategoryFallback, renderServerConnect, renderToolInventory } = require('./content/catalogPages.js');
 const { getServerUrl } = require('../src/utils/urlUtils.ts');
 const { getServerPageMetaDescription, getServerSetupStructuredData } = require('../src/utils/serverConnect.ts');
 const {
@@ -113,6 +113,10 @@ const { MCP_TEST_CLIENT_COPY, MCP_TEST_CLIENT_FAQ } = require('../src/content/mc
 const { CLIENT_CHECKLISTS } = require('../src/content/mcpTestClientChecklist.ts');
 
 const SITE_URL = 'https://mcptest.io';
+const CLIENT_DIRECTORY_LABELS = {
+  claude: 'Claude connector directory',
+  chatgpt: 'ChatGPT app directory',
+};
 const projectRoot = path.join(__dirname, '..');
 const distRoot = path.join(projectRoot, 'dist');
 const indexPath = path.join(distRoot, 'index.html');
@@ -415,9 +419,13 @@ function renderServerFallback(server) {
     ? `<a href="${escapeHtml(server.registryUrl)}">Official MCP Registry record</a>`
     : '';
   const listingLink = server.listingSource?.url && server.listingSource.url !== server.homepageUrl
+    && server.listingSource.kind !== 'client-directory'
     ? `<a href="${escapeHtml(server.listingSource.url)}">Official listing documentation</a>`
     : '';
-  const references = [homepageLink, sourceLink, listingLink, registryLink].filter(Boolean).join(' · ');
+  const directoryLinks = (server.directoryListings || []).map((listing) => (
+    `<a href="${escapeHtml(listing.url)}">${escapeHtml(CLIENT_DIRECTORY_LABELS[listing.directory] || 'Client directory')} listing</a>`
+  ));
+  const references = [homepageLink, sourceLink, listingLink, ...directoryLinks, registryLink].filter(Boolean).join(' · ');
   const requiredHeaders = (server.requiredHeaders || []).map((header) => (
     `      <div><dt>Required header</dt><dd><code class="technical-string technical-string-inline">${escapeHtml(header.name)}</code>${header.description ? ` — ${escapeHtml(header.description)}` : ''}</dd></div>`
   ));
@@ -1509,7 +1517,7 @@ function renderCatalogHtml(indexHtml, catalogMetadata, { servers = [], shell = {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
       numberOfItems: servers.length,
-      itemListElement: servers.map((server, index) => ({
+      itemListElement: orderByRelevance(servers).map((server, index) => ({
         '@type': 'ListItem', position: index + 1, name: server.name,
         url: canonicalUrlFor(serverPath(server.id)),
       })),

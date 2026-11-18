@@ -230,7 +230,8 @@ function exactPortCallback(value, pathname) {
   return { port };
 }
 
-const LISTING_SOURCE_KINDS = new Set(['publisher', 'mcp-registry', 'community', 'community-submission']);
+const LISTING_SOURCE_KINDS = new Set(['publisher', 'mcp-registry', 'client-directory', 'community', 'community-submission']);
+const CLIENT_DIRECTORIES = new Set(['claude', 'chatgpt']);
 const OAUTH_REGISTRATION_MODES = new Set([
   'automatic',
   'pre-registered-required',
@@ -466,6 +467,36 @@ function validateOAuthRegistration(seed, label) {
   }
 }
 
+function validateDirectoryListings(seed, label) {
+  const listings = seed.directoryListings;
+  if (listings === undefined) return [];
+
+  if (!Array.isArray(listings) || listings.length === 0) {
+    throw new Error(`${label}: directoryListings must be a non-empty array when present`);
+  }
+
+  const seen = new Set();
+  listings.forEach((listing) => {
+    if (!listing || typeof listing !== 'object' || Array.isArray(listing)
+        || !CLIENT_DIRECTORIES.has(listing.directory)) {
+      throw new Error(`${label}: directoryListings entries need a directory of claude or chatgpt`);
+    }
+    if (typeof listing.id !== 'string' || !listing.id || listing.id !== listing.id.trim()) {
+      throw new Error(`${label}: directoryListings entries need the directory's own id`);
+    }
+    if (!isHttpsUrl(listing.url)) {
+      throw new Error(`${label}: directoryListings entries need a valid HTTPS url`);
+    }
+    const key = `${listing.directory}\n${listing.id}`;
+    if (seen.has(key)) {
+      throw new Error(`${label}: directoryListings repeats ${listing.directory} entry ${listing.id}`);
+    }
+    seen.add(key);
+  });
+
+  return listings;
+}
+
 function validateCatalogSeed(seed, index = 0) {
   const label = seed && typeof seed.id === 'string' ? seed.id : `entry ${index + 1}`;
   const listingSource = seed && seed.listingSource;
@@ -475,7 +506,7 @@ function validateCatalogSeed(seed, index = 0) {
   }
 
   if (!LISTING_SOURCE_KINDS.has(listingSource.kind)) {
-    throw new Error(`${label}: listingSource.kind must be publisher, mcp-registry, community, or community-submission`);
+    throw new Error(`${label}: listingSource.kind must be publisher, mcp-registry, client-directory, community, or community-submission`);
   }
 
   if (listingSource.url !== undefined && !isHttpsUrl(listingSource.url)) {
@@ -490,6 +521,17 @@ function validateCatalogSeed(seed, index = 0) {
     if (listingSource.url !== seed.registryUrl) {
       throw new Error(`${label}: MCP Registry provenance must reuse registryUrl`);
     }
+  }
+
+  if (seed.relevance !== undefined
+      && !(Number.isInteger(seed.relevance) && seed.relevance >= 0 && seed.relevance <= 100)) {
+    throw new Error(`${label}: relevance must be an integer from 0 to 100`);
+  }
+
+  const directoryListings = validateDirectoryListings(seed, label);
+  if (listingSource.kind === 'client-directory'
+      && !directoryListings.some((listing) => listing.url === listingSource.url)) {
+    throw new Error(`${label}: client-directory provenance must reuse a directoryListings url`);
   }
 
   validateRequiredHeaders(seed, label);

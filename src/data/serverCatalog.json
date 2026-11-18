@@ -813,10 +813,11 @@
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
-    "logoUrl": "/server-logos/yahoo-finance.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-08-17",
-    "logoLicenseNote": "Locally generated YF monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Yahoo mark.",
+    "logoUrl": "/server-logos/yahoo-finance.png",
+    "logoSourceUrl": "https://s.yimg.com/cv/apiv2/default/finance/favicon-180x180.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Yahoo Finance site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://finance.yahoo.com"
   },
   {
@@ -8822,9 +8823,10 @@
       "evidenceUrl": "https://learn.hex.tech/docs/api-integrations/mcp-server"
     },
     "logoUrl": "/server-logos/hex.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated HEX monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Hex mark.",
+    "logoSourceUrl": "https://hex.tech/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Hex site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://hex.tech",
     "caveats": [
       "Beta, available on Hex Team and Enterprise plans."
@@ -9230,10 +9232,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://docs.zoominfo.com/docs/connect-to-zoominfo-mcp"
     },
-    "logoUrl": "/server-logos/zoominfo.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated ZI monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official ZoomInfo mark.",
+    "logoUrl": "/server-logos/zoominfo.png",
+    "logoSourceUrl": "https://cws-zoominfo-assets.zoominfo.com/Contentful/favicon/favicon-512x512-1.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official ZoomInfo site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.zoominfo.com",
     "sourceUrl": "https://github.com/Zoominfo/zoominfo-mcp-plugin",
     "caveats": [
@@ -9278,9 +9281,10 @@
       "evidenceUrl": "https://help.gong.io/docs/enable-supported-ai-tools-for-gong"
     },
     "logoUrl": "/server-logos/gong.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated GO monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Gong mark.",
+    "logoSourceUrl": "https://www.gong.io/marketing-assets/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Gong site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.gong.io"
   },
   {
@@ -9475,10 +9479,11 @@
       "reviewedAt": "2026-11-17",
       "evidenceUrl": "https://docs.vapi.ai/sdk/mcp-server"
     },
-    "logoUrl": "/server-logos/vapi.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated VAPI monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Vapi mark.",
+    "logoUrl": "/server-logos/vapi.png",
+    "logoSourceUrl": "https://vapi.ai/apple-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Vapi site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://vapi.ai",
     "sourceUrl": "https://github.com/VapiAI/mcp-server"
   },
@@ -9629,10 +9634,11 @@
       }
     ],
     "exactEndpointOnly": true,
-    "logoUrl": "/server-logos/infobip-sms.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated IB monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Infobip SMS mark.",
+    "logoUrl": "/server-logos/infobip-sms.png",
+    "logoSourceUrl": "https://cdn-web.infobip.com/uploads/2025/06/cropped-infobip-logo-favicon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Infobip site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.infobip.com",
     "sourceUrl": "https://github.com/infobip/mcp"
   },
@@ -9720,10 +9726,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-the-gorgias-mcp-6310546"
     },
-    "logoUrl": "/server-logos/gorgias.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated GO monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Gorgias mark.",
+    "logoUrl": "/server-logos/gorgias.png",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/5e4ff204e7b6f80e402d407a/655f0a311c75248c5ff9756b_Social%20Avatar.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Gorgias site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.gorgias.com",
     "caveats": [
       "Open beta; connect once per Gorgias brand."
@@ -9902,10 +9909,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server"
     },
-    "logoUrl": "/server-logos/otter.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated OT monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Otter.ai mark.",
+    "logoUrl": "/server-logos/otter.png",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/618e9316785b3582a5178502/618e943a80919a98b5e9bf69_apple-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Otter.ai site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://otter.ai"
   },
   {
@@ -10043,9 +10051,10 @@
     },
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/productboard.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated PB monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Productboard mark.",
+    "logoSourceUrl": "https://www.productboard.com/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Official Productboard site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.productboard.com",
     "caveats": [
       "An admin must enable the MCP server and choose the allowed roles in Productboard settings."

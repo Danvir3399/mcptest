@@ -25,6 +25,7 @@ import CallHistoryPanel from './CallHistoryPanel';
 import { createTestPlanFromHistory } from '../utils/historyTestPlan';
 import type { DeterministicTestPlanV1 } from '../types/deterministicTests';
 import InterfaceChangeStrip from './InterfaceChangeStrip';
+import WorkbenchStatusBar from './WorkbenchStatusBar';
 import ConnectedSummary, { chooseNextAction, type ConnectedAuthMode } from './ConnectedSummary';
 import { connectionStages, listOutcome, listStageFromDiscovery } from '../utils/connectionStages';
 import { dismissHint } from '../utils/nextStepsProgress';
@@ -330,11 +331,22 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
     toolsOutcome: listOutcome(discovery, 'tools', offeredCapabilities.tools),
   });
   const reportHref = `/report/${encodeURIComponent(tab.serverUrl || serverUrl)}`;
-  const guideToolPick = connectionStatus === 'Connected'
-    && listStage.status === 'done'
-    && tools.length > 0
-    && !selectedTool
-    && onboarding.isActive('pick-tool');
+  /**
+   * A first look at a server lands on a live form: once the lists settle with
+   * tools and nothing is selected, open the first tool, once per connection.
+   */
+  const autoSelectedConnection = useRef<string | null>(null);
+  useEffect(() => {
+    if (connectionStatus !== 'Connected') {
+      autoSelectedConnection.current = null;
+      return;
+    }
+    if (listStage.status !== 'done' || tools.length === 0) return;
+    const key = `${serverUrl}|${protocolVersion}|${transportType}`;
+    if (autoSelectedConnection.current === key) return;
+    autoSelectedConnection.current = key;
+    if (!selectedTool && !selectedResourceTemplate && !selectedPrompt) handleSelectTool(tools[0]);
+  }, [connectionStatus, listStage.status, tools, serverUrl, protocolVersion, transportType]);
   const showShareHint = connectionStatus === 'Connected' && hasSuccessfulRun && onboarding.isActive('share-report');
   /**
    * "Call a tool": the capabilities panel expands Tools (it owns that state)
@@ -1327,8 +1339,6 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
               shortcutEnabled={isActive}
               discovery={discovery}
               offered={offeredCapabilities}
-              guideToolPick={guideToolPick}
-              onDismissToolPickGuide={() => dismissHint('pick-tool')}
               revealToolsRequest={revealToolsRequest}
             />
             </section>
@@ -1416,6 +1426,7 @@ const TabContent: React.FC<TabContentProps> = ({ tab, isActive, onUpdateTab, spa
         )}
       </div>
       )}
+      {!showLanding && isConnected && <WorkbenchStatusBar isProxied={isProxied} />}
       <DeterministicTestPanel
         open={showDeterministicTests}
         onClose={() => {

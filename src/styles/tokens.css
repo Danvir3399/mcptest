@@ -85,14 +85,15 @@
 :root,
 :root[data-theme='light'] {
   /* Surfaces */
-  --body-bg: #eaf0f8;
+  --body-bg: #e8eef2;
   --card-bg: #ffffff;
   --card-bg-secondary: #f1f5f9;
   --card-header-bg: #f8fafc;
   --workspace-canvas: #f8fafc;
-  /* The page wash behind the shell: a cool blue corner fading to lavender.
-     Decorative only; every surface on it is opaque. */
-  --page-wash: radial-gradient(1100px 580px at 8% -5%, rgba(56, 189, 248, 0.2), transparent 65%), radial-gradient(1000px 620px at 94% 8%, rgba(168, 85, 247, 0.16), transparent 65%), radial-gradient(950px 540px at 52% 42%, rgba(244, 63, 94, 0.09), transparent 70%), radial-gradient(1100px 600px at 18% 92%, rgba(20, 184, 166, 0.14), transparent 68%), linear-gradient(135deg, #eff5fc 0%, #e7eef8 48%, #efebf9 100%);
+  /* The page wash behind the shell: a quiet, low-saturation teal-slate
+     light, so glass framing on it tints evenly instead of picking up loud
+     colour. Decorative only; content surfaces on it are opaque. */
+  --page-wash: radial-gradient(1100px 580px at 8% -5%, rgba(20, 184, 166, 0.09), transparent 65%), radial-gradient(1000px 620px at 94% 8%, rgba(100, 116, 139, 0.1), transparent 65%), radial-gradient(1100px 600px at 18% 92%, rgba(13, 148, 136, 0.06), transparent 68%), linear-gradient(135deg, #eff4f6 0%, #e8eef2 48%, #edf2f4 100%);
   --sidebar-bg: rgba(255, 255, 255, 0.3);
   --strip-bg: rgba(255, 255, 255, 0.25);
   /* Text */
@@ -166,14 +167,26 @@
   /* Page heads that identify a thing. */
   --hero-bg: #ffffff;
   --hero-border: #dde4ee;
-  /* Glass: the translucent panels, bands and bars that sit on the wash.
-     Text on them is measured against --card-bg-secondary, the lightest
-     the wash can show through. */
-  --glass-bg: rgba(255, 255, 255, 0.5);
-  --glass-strong: rgba(255, 255, 255, 0.72);
+  /* Glass, in three strengths (docs/design-language.md, "Glass").
+     Content (cards, prose, JSON, forms, connection bands) stays effectively
+     opaque so text never blurs into what is behind it; text on it is
+     measured against --card-bg-secondary. */
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --glass-strong: rgba(255, 255, 255, 0.97);
   --glass-border: rgba(255, 255, 255, 0.85);
   --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.9);
   --glass-filter: blur(24px) saturate(1.5);
+  /* Framing chrome (the sticky outline): translucent, over the quiet wash. */
+  --glass-frame-bg: rgba(255, 255, 255, 0.75);
+  --glass-frame-ring: rgba(255, 255, 255, 0.8);
+  /* Floating chrome (menus, popovers, dialogs) above the workspace. */
+  --glass-float-bg: rgba(255, 255, 255, 0.8);
+  --glass-float-border: rgba(255, 255, 255, 0.7);
+  --glass-float-filter: blur(12px) saturate(1.4);
+  /* A sticky header over scrolling content: nearly opaque, so prose behind
+     it barely ghosts through. */
+  --header-bg: rgba(255, 255, 255, 0.92);
+  --header-filter: blur(4px);
   --hairline: rgba(15, 23, 42, 0.07);
   /* The active-row rail and the selected tool. */
   --rail-color: #0d9488;
@@ -195,7 +208,8 @@
   --card-bg-secondary: #1c212d;
   --card-header-bg: #181c27;
   --workspace-canvas: var(--card-bg-secondary);
-  --page-wash: radial-gradient(1100px 580px at 8% -5%, rgba(56, 189, 248, 0.1), transparent 65%), radial-gradient(1000px 620px at 94% 8%, rgba(168, 85, 247, 0.1), transparent 65%), radial-gradient(950px 540px at 52% 42%, rgba(244, 63, 94, 0.05), transparent 70%), radial-gradient(1100px 600px at 18% 92%, rgba(20, 184, 166, 0.08), transparent 68%), linear-gradient(135deg, #0b1120 0%, #0c111c 48%, #110f1d 100%);
+  /* A faint teal glow behind the glass; dark mode carries the depth. */
+  --page-wash: radial-gradient(1000px 560px at 12% -8%, rgba(45, 212, 191, 0.11), transparent 65%), radial-gradient(900px 560px at 92% 6%, rgba(20, 184, 166, 0.06), transparent 65%), radial-gradient(1100px 600px at 30% 100%, rgba(15, 118, 110, 0.07), transparent 68%), linear-gradient(135deg, #0b1120 0%, #0c111c 48%, #0b131a 100%);
   --sidebar-bg: rgba(255, 255, 255, 0.025);
   --strip-bg: rgba(255, 255, 255, 0.02);
   /* Text */
@@ -266,6 +280,13 @@
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.04);
   --glass-filter: blur(24px) saturate(1.3);
+  --glass-frame-bg: rgba(15, 23, 42, 0.7);
+  --glass-frame-ring: rgba(255, 255, 255, 0.1);
+  --glass-float-bg: rgba(15, 23, 42, 0.7);
+  --glass-float-border: rgba(255, 255, 255, 0.1);
+  --glass-float-filter: blur(12px) saturate(1.3);
+  --header-bg: rgba(10, 13, 19, 0.82);
+  --header-filter: blur(8px);
   --hairline: rgba(255, 255, 255, 0.07);
   --rail-color: #3fc794;
   --danger-wash: linear-gradient(90deg, rgba(244, 63, 94, 0.12), rgba(244, 63, 94, 0.06) 50%, rgba(168, 85, 247, 0.08));

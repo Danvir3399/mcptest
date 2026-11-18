@@ -105,7 +105,15 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
   const headingId = useId();
   const [copyState, setCopyState] = useState('');
   const catalogServer = useMemo(() => getCatalogServerByEndpoint(serverUrl), [serverUrl]);
-  useEffect(() => { setCopyState(''); }, [serverUrl]);
+  const [descriptionOpen, setDescriptionOpen] = useState(false);
+  // Collapsed, the description shows its lead paragraph so it ends on a whole sentence.
+  const descriptionLead = serverDescription?.split(/\n\s*\n/)[0].trim() ?? '';
+  const descriptionHasMore = Boolean(serverDescription && descriptionLead !== serverDescription.trim());
+  useEffect(() => { setCopyState(''); setDescriptionOpen(false); }, [serverUrl]);
+  // A catalog match names the server as people know it; the reported
+  // serverInfo name stays beside it as a muted identifier when it differs.
+  const displayName = catalogServer?.name || serverName || hostOf(serverUrl);
+  const reportedName = catalogServer && serverName && serverName !== displayName ? serverName : undefined;
   const copyEndpoint = async () => {
     try {
       await navigator.clipboard.writeText(serverUrl);
@@ -142,7 +150,8 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
             <span className="connected-summary-server-icon" aria-hidden="true"><i className="bi bi-hdd-network" /></span>
           )}
           <h2 id={headingId} className="connected-summary-name" tabIndex={-1} ref={headingRef}>
-            {serverName || hostOf(serverUrl)}
+            {displayName}
+            {reportedName && <span className="connected-summary-reported-name" title="Name reported by the server">{reportedName}</span>}
             {serverVersion && <span className="connected-summary-version">v{serverVersion}</span>}
           </h2>
           <span className="badge bg-success connected-status">Connected</span>
@@ -183,7 +192,22 @@ const ConnectedSummary: React.FC<ConnectedSummaryProps> = ({
           )}
         </ul>
       </div>
-      {serverDescription && <p className="connected-summary-description" title={serverDescription}>{serverDescription}</p>}
+      {serverDescription && (
+        <button
+          type="button"
+          className={`connected-summary-description${descriptionOpen ? ' connected-summary-description--open' : ''}`}
+          aria-expanded={descriptionOpen}
+          title={descriptionOpen ? 'Collapse the server description' : serverDescription}
+          onClick={() => setDescriptionOpen((open) => !open)}
+        >
+          {descriptionOpen || !descriptionHasMore ? serverDescription : descriptionLead}
+          {descriptionHasMore && (
+            <span className="connected-summary-description-more" aria-hidden="true">
+              {descriptionOpen ? ' Show less' : ' More'}
+            </span>
+          )}
+        </button>
+      )}
       <div className="connected-summary-progress">
         {/* The fourth connection stage: the panel's stage list is gone once the
             session exists, so the list requests advance and complete here. */}

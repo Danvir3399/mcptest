@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import Tabs, { getTabDisplayLabel } from './Tabs';
+import Tabs, { getTabDisplayLabel, getTabLabel, toStoredTabs } from './Tabs';
 import type { ConnectionTab } from '../types';
 
 const tab = (overrides: Partial<ConnectionTab>): ConnectionTab => ({
@@ -22,6 +22,25 @@ describe('playground tab labels', () => {
     expect(getTabDisplayLabel('Server: https://mcp.deepwiki.com/')).toBe('mcp.deepwiki.com');
     expect(getTabDisplayLabel('mcp.api.coingecko.com/sse')).toBe('mcp.api.coingecko.com/sse');
     expect(getTabDisplayLabel('Server: localhost:3001/mcp')).toBe('Server: localhost:3001/mcp');
+  });
+
+  it('names a catalog endpoint session with the catalog display name', () => {
+    expect(getTabLabel({ title: 'Server: https://mcp.api.coingecko.com/sse', serverUrl: 'https://mcp.api.coingecko.com/sse' })).toBe('CoinGecko');
+    expect(getTabLabel({ title: 'mcp.api.coingecko.com', serverUrl: 'https://mcp.api.coingecko.com/sse' })).toBe('CoinGecko');
+    // Unknown endpoints and result tabs keep their own labels.
+    expect(getTabLabel({ title: 'Server: https://example.com/mcp', serverUrl: 'https://example.com/mcp' })).toBe('example.com/mcp');
+    expect(getTabLabel({ title: 'Result: get_price', serverUrl: 'https://mcp.api.coingecko.com/sse' })).toBe('Result: get_price');
+  });
+
+  it('persists the catalog name as the title so the pre-React shell paints the same label', () => {
+    const stored = toStoredTabs([
+      tab({ id: 'a', title: 'mcp.context7.com', serverUrl: 'https://mcp.context7.com/mcp' }),
+      tab({ id: 'b', title: 'Server: https://example.com/mcp', serverUrl: 'https://example.com/mcp' }),
+      tab({ id: 'c', title: 'Result: get_price', serverUrl: 'https://mcp.api.coingecko.com/sse' }),
+      tab({ id: 'd', title: 'New Connection', serverUrl: '' }),
+    ]);
+    expect(stored.map(({ title }) => title)).toEqual(['Context7', 'Server: https://example.com/mcp', 'Result: get_price', 'New Connection']);
+    expect(stored.map((item) => getTabLabel(item))).toEqual(['Context7', 'example.com/mcp', 'Result: get_price', 'New Connection']);
   });
 
   it('leaves plain titles alone', () => {

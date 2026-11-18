@@ -3,6 +3,7 @@ const { renderServerActions, renderServerNextSteps } = require('../src/utils/ser
 
 const { redactCapabilityAuthValues } = require('../src/utils/capabilityInventory.ts');
 const { FOOTER_COLUMNS } = require('../src/content/siteLinks.ts');
+const { getSiteRelativePath } = require('../src/content/siteUrl.ts');
 const fs = require('fs');
 const path = require('path');
 const { getPreferredCatalogEndpoint } = require('../src/utils/clientSetup.ts');
@@ -85,6 +86,8 @@ const {
   NOT_FOUND_LINKS,
   NOT_FOUND_SUMMARY,
   NOT_FOUND_TITLE,
+  READING_SHELL_CLASS,
+  isReadingShellPath,
 } = require('../src/utils/appRoutes.ts');
 const { KEYWORD_LANDING_PAGES, getKeywordLandingFaqStructuredData } = require('../src/content/keywordLandingPages.ts');
 const { writeOgImages } = require('./og/ogImages.js');
@@ -873,7 +876,12 @@ function renderLearnArticleFallback(article, articles) {
     ...related.map(item => `        <li><a href="${escapeHtml(item.path)}">${escapeHtml(item.title)}</a></li>`),
     '      </ul></section>',
     '      <section class="reading-sources"><h2>Sources</h2><ul>',
-    ...article.sourceLinks.map(source => `        <li><a href="${escapeHtml(source.url)}">${escapeHtml(source.title)}</a></li>`),
+    ...article.sourceLinks.map(source => {
+      const sitePath = getSiteRelativePath(source.url);
+      return sitePath
+        ? `        <li><a href="${escapeHtml(sitePath)}">${escapeHtml(source.title)}</a></li>`
+        : `        <li><a href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.title)}<span class="visually-hidden"> (opens in a new tab)</span></a></li>`;
+    }),
     '      </ul></section>',
     '    </footer>',
     '  </article>',
@@ -1184,7 +1192,7 @@ function renderAppShell({
     .map(([name, value]) => (value === true ? ` ${name}` : ` ${name}="${escapeHtml(value)}"`))
     .join('');
   return [
-    `<div class="app-shell container-fluid vh-100 d-flex flex-column p-0 seo-shell-fallback${pathname === '/' ? ' app-shell--home' : ''}"${attributeHtml}>`,
+    `<div class="app-shell container-fluid vh-100 d-flex flex-column p-0 seo-shell-fallback${pathname === '/' ? ' app-shell--home' : ''}${isReadingShellPath(pathname) ? ` ${READING_SHELL_CLASS}` : ''}"${attributeHtml}>`,
     '<style>',
     ":root[data-theme='dark'] .seo-shell-fallback .theme-toggle-icon.bi-moon-stars-fill,",
     ":root:not([data-theme='dark']) .seo-shell-fallback .theme-toggle-icon.bi-sun-fill { display: none; }",

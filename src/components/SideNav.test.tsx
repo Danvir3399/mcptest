@@ -27,7 +27,6 @@ const baseProps = (activeView: ActiveView, spaces = [{ id: 'dashboard-1', name: 
   handleReorderDashboards: vi.fn(),
   getSpaceHealthStatus: () => ({ loading: false, successCount: 0, totalCount: 0 }),
   getSpaceHealthColor: () => 'gray' as const,
-  performAllDashboardsHealthCheck: vi.fn().mockResolvedValue(undefined),
   onMoveCard: vi.fn(),
 });
 
@@ -72,7 +71,7 @@ describe('SideNav dashboard rows', () => {
     expect(getComputedStyle(list!).marginLeft).toBe('0px');
     expect(getComputedStyle(link!).width).toBe('100%');
     expect(getComputedStyle(name!).flex).toBe('1 1 0%');
-    expect(getComputedStyle(name!).minWidth).toBe('0');
+    expect(getComputedStyle(name!).minWidth).toBe('0px');
     expect(getComputedStyle(name!).textOverflow).toBe('ellipsis');
     expect(getComputedStyle(count!).flex).toBe('0 0 auto');
     expect(getComputedStyle(count!).whiteSpace).toBe('nowrap');
@@ -188,8 +187,12 @@ describe('SideNav information architecture', () => {
     const dashboardsBody = container.querySelector<HTMLElement>(`#${dashboardsToggle?.getAttribute('aria-controls')}`);
     expect(dashboardsBody?.hidden).toBe(false);
     expect(dashboardsBody?.textContent).toContain('Saved space');
-    expect(container.querySelector('.sidenav-dashboards [aria-label="Create new dashboard"]')).not.toBeNull();
-    expect(container.querySelector('.sidenav-dashboards [aria-label="Refresh health status of all dashboards"]')).not.toBeNull();
+    // Create sits beside the Saved work heading so the Dashboards label has the
+    // whole row; there is no refresh button in the sidebar at all.
+    expect(container.querySelector('.sidenav-dashboards [aria-label="Create new dashboard"]')).toBeNull();
+    expect(container.querySelector('.sidenav-group--saved .sidenav-section-header [aria-label="Create new dashboard"]')).not.toBeNull();
+    expect(container.querySelector('[aria-label="Refresh health status of all dashboards"]')).toBeNull();
+    expect(container.querySelector('.sidenav-dashboards .sidenav-group-header button')?.textContent?.trim()).toBe('Dashboards');
   });
 
   it.each([

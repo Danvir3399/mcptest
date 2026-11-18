@@ -2,6 +2,7 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 import { deflateSync } from 'zlib';
+import { JSDOM } from 'jsdom';
 import { afterEach, describe, expect, it } from 'vitest';
 import catalog from '../src/data/serverCatalog.json';
 import validator from './validate-catalog-assets.js';
@@ -208,4 +209,19 @@ describe('catalog logo asset validation', () => {
       'must use SVG or PNG'
     );
   });
+
+  it.each([
+    'apify', 'attio', 'bright-data', 'exa', 'firecrawl', 'globalping', 'kernel', 'mux',
+    'parallel-task', 'pendo', 'ref', 'statsig', 'tavily', 'you-com', 'zuplo-docs',
+  ])(
+    'gives the replaced %s logo a root viewBox so it scales to its display box',
+    id => {
+      const contents = fs.readFileSync(path.join('public', 'server-logos', `${id}.svg`), 'utf8');
+      const root = new JSDOM(contents, { contentType: 'image/svg+xml' }).window.document.documentElement;
+
+      expect(root.localName).toBe('svg');
+      expect(root.getAttribute('viewBox')).toMatch(/^\s*[\d.-]+(?:[\s,]+[\d.-]+){3}\s*$/);
+      expect(root.querySelector('svg')).toBeNull();
+    }
+  );
 });

@@ -14,6 +14,7 @@ import {
 import type { OutlineHeading } from '../../content/outline';
 import { consumeStaticPageEvent, trackEvent, trackGuideLinkClick } from '../../utils/analytics';
 import { formatReviewedDate } from './articleFormatting';
+import { getSiteRelativePath } from '../../content/siteUrl';
 import './ReadingLayout.css';
 
 interface LearnArticleLayoutProps {
@@ -31,6 +32,17 @@ interface LearnArticleLayoutProps {
  * guides and sources. LearnArticlePage supplies the body, either the
  * prerendered HTML or ArticleMarkdown (MarkdownLearnArticle).
  */
+/**
+ * The element the article scrolls in: .main-content in the fixed app shell,
+ * or null when the page scrolls the window (the reading shell).
+ */
+const getArticleScroller = (article: HTMLElement | null): HTMLElement | null => {
+  const content = article?.closest<HTMLElement>('.main-content');
+  if (!content) return null;
+  const overflow = window.getComputedStyle(content).overflowY;
+  return overflow === 'auto' || overflow === 'scroll' ? content : null;
+};
+
 const LearnArticleLayout: React.FC<LearnArticleLayoutProps> = ({ article, outline, prose, bodyReady = true }) => {
   const related = getRelatedLearnArticles(article);
   const { previous, next } = getLearnArticleNeighbors(article);
@@ -41,7 +53,7 @@ const LearnArticleLayout: React.FC<LearnArticleLayoutProps> = ({ article, outlin
 
   useEffect(() => {
     if (!bodyReady) return;
-    const scroller = articleRef.current?.closest<HTMLElement>('.main-content');
+    const scroller = getArticleScroller(articleRef.current);
     const headings = outline.map(({ id }) => document.getElementById(id)).filter((heading): heading is HTMLElement => Boolean(heading));
     let frame = 0;
     const update = () => {
@@ -71,8 +83,9 @@ const LearnArticleLayout: React.FC<LearnArticleLayoutProps> = ({ article, outlin
 
   useEffect(() => {
     if (typeof window === 'undefined' || window.location.hash) return;
-    const scroller = articleRef.current?.closest<HTMLElement>('.main-content');
+    const scroller = getArticleScroller(articleRef.current);
     if (scroller) scroller.scrollTop = 0;
+    else window.scrollTo?.(0, 0);
   }, [article.slug]);
 
   // Client-side navigation to `#section` (guide search results) does not
@@ -187,14 +200,21 @@ const LearnArticleLayout: React.FC<LearnArticleLayoutProps> = ({ article, outlin
           <section className="reading-sources" aria-labelledby="article-sources-heading">
             <h2 id="article-sources-heading">Sources</h2>
             <ul>
-              {article.sourceLinks.map(source => (
-                <li key={source.url}>
-                  <a href={source.url} target="_blank" rel="noopener noreferrer">
-                    {source.title}
-                    <span className="visually-hidden"> (opens in a new tab)</span>
-                  </a>
-                </li>
-              ))}
+              {article.sourceLinks.map(source => {
+                const sitePath = getSiteRelativePath(source.url);
+                return (
+                  <li key={source.url}>
+                    {sitePath ? (
+                      <Link to={sitePath}>{source.title}</Link>
+                    ) : (
+                      <a href={source.url} target="_blank" rel="noopener noreferrer">
+                        {source.title}
+                        <span className="visually-hidden"> (opens in a new tab)</span>
+                      </a>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </section>
 

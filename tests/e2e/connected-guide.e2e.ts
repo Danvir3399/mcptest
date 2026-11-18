@@ -66,13 +66,12 @@ for (const width of [1280, 390]) {
     await expect(capabilities).toContainText('1 prompt');
     await expect(summary(page).getByRole('status')).toHaveText(/Connected\. 2 tools, 1 resource, 1 prompt/);
 
-    // Guided first call: the hint, then "Call a tool" lands on the first tool.
-    await expect(page.locator('.onboarding-hint--tools')).toContainText('Pick a tool to call');
+    // First call: the first tool opens on its own, so no pane lands empty or repeats a hint.
+    const request = page.getByRole('region', { name: 'Request builder' });
+    await expect(request.locator('.request-empty-state')).toHaveCount(0);
+    await expect(page.locator('.onboarding-hint--tools')).toHaveCount(0);
     if (width === 1280) await testInfo.attach('connected-guided', { body: await page.screenshot(), contentType: 'image/png' });
     expect(await hasHorizontalScroll(page)).toBe(false);
-    await page.locator('.request-empty-state button').click();
-    await expect(page.locator('.onboarding-hint--tools')).toHaveCount(0);
-    const request = page.getByRole('region', { name: 'Request builder' });
     await expect(request).toContainText('Returns a structured weather forecast for a city.');
     await expect(request).toContainText('Fields marked * are required.');
     await page.getByLabel(/^city/).fill('Oslo');
@@ -211,11 +210,13 @@ test('the list stage advances in the summary as each list request finishes', asy
   await expect(summary(page).getByRole('status')).toHaveText(/Connected\. 2 tools, 1 resource, 1 prompt/);
 });
 
-test('the empty request action opens the first tool even when Tools is collapsed', async ({ page }) => {
+test('a connection opens its first tool so the request panel is never empty', async ({ page }) => {
   await connect(page, '2026');
-  await expect(page.getByRole('listbox', { name: 'Tools' })).toBeVisible();
-  await page.locator('.workbench-capabilities summary', { hasText: 'Tools' }).click();
-  await expect(page.getByRole('listbox', { name: 'Tools' })).toHaveCount(0);
-  await page.locator('.request-empty-state button').click();
   await expect(page.getByLabel(/^city/)).toBeVisible();
+  await expect(page.getByRole('option', { name: /get_forecast/ })).toHaveAttribute('aria-selected', 'true');
+  await expect(page.locator('.request-empty-state')).toHaveCount(0);
+  // The automatic choice happens once per connection: a later selection is kept, even after a list refresh.
+  await page.getByRole('option', { name: /always_fails/ }).click();
+  await page.getByRole('button', { name: /refresh/i }).first().click();
+  await expect(page.getByRole('option', { name: /always_fails/ })).toHaveAttribute('aria-selected', 'true');
 });

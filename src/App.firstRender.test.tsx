@@ -136,7 +136,8 @@ describe('App first render', () => {
     localStorage.setItem('mcpRecentServers', JSON.stringify([{ url: 'https://mcp.context7.com/mcp' }]));
     mount();
     const first = snapshot();
-    expect(first).toMatchObject({ landing: undefined, connectionPanel: true, tabs: ['New Connection', 'mcp.context7.com'] });
+    // A catalog endpoint's session is labelled with the catalog name.
+    expect(first).toMatchObject({ landing: undefined, connectionPanel: true, tabs: ['New Connection', 'Context7'] });
     await act(async () => {});
     expect(snapshot()).toEqual(first);
     act(() => authMocks.listener!(null));

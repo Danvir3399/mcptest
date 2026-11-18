@@ -211,8 +211,10 @@ describe('catalog logo asset validation', () => {
   });
 
   it.each([
-    'apify', 'attio', 'bright-data', 'exa', 'firecrawl', 'globalping', 'kernel', 'mux',
-    'parallel-task', 'pendo', 'ref', 'statsig', 'tavily', 'you-com', 'zuplo-docs',
+    'ahrefs', 'apify', 'attio', 'braze', 'bright-data', 'builder-cms', 'common-room', 'courier',
+    'customer-io', 'etherscan', 'exa', 'financial-datasets', 'firecrawl', 'fullstory',
+    'globalping', 'kernel', 'mux', 'parallel-search', 'parallel-task', 'pendo', 'port', 'ref',
+    'statsig', 'tavily', 'you-com', 'zuplo-docs',
   ])(
     'gives the replaced %s logo a root viewBox so it scales to its display box',
     id => {

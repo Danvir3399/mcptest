@@ -78,6 +78,10 @@ describe('playground tab labels', () => {
     expect(css).toMatch(/\.playground-tabs\.nav-tabs\s*\{[^}]*flex-wrap:\s*nowrap;[^}]*overflow-x:\s*auto;/);
     expect(css).toMatch(/\.playground-tab-strip--fade-end/);
     expect(css).toMatch(/\.playground-tab-label\s*\{[^}]*text-overflow:\s*ellipsis;/);
+    // The Sessions popover covers the connection summary, so it must be opaque.
+    const popover = css.match(/\.session-picker-popover\s*\{([^}]*)\}/)?.[1] ?? '';
+    expect(popover).toMatch(/background:\s*var\(--card-bg\);/);
+    expect(popover).not.toMatch(/var\(--glass-float-bg\)|backdrop-filter:/);
   });
 
   it('distinguishes duplicate hosts in visible indexes and accessible close labels', () => {

@@ -309,6 +309,8 @@ export const sortCatalogServers = (
   const indexedServers = servers.map((server, originalIndex) => ({ server, originalIndex }));
 
   if (order === 'catalog-order') {
+    // Array.prototype.sort is stable, so equal scores keep their seed order.
+    indexedServers.sort((a, b) => (b.server.relevance ?? 0) - (a.server.relevance ?? 0));
     return indexedServers.map(({ server }) => server);
   }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FOOTER_COLUMNS } from '../content/siteLinks';
-import { FOOTER_NAVIGATION, LEGAL_NAVIGATION } from '../content/navigationLinks';
+import { LEGAL_NAVIGATION, getFooterLinkColumns } from '../content/navigationLinks';
+import { APP_ROUTE_OPTIONS } from '../servicePage/buildFlag';
 import './SiteContentNavigation.css';
 
 const Footer: React.FC = () => (
@@ -12,7 +13,7 @@ const Footer: React.FC = () => (
           <ul>{column.links.map(([title, href]) => <li key={href}><a href={href}>{title}</a></li>)}</ul>
         </section>
       ))}
-      {[{ title: 'Tools', links: FOOTER_NAVIGATION.slice(3, 6) }, { title: 'Project', links: FOOTER_NAVIGATION.slice(6) }].map(column => (
+      {getFooterLinkColumns(APP_ROUTE_OPTIONS).map(column => (
         <section key={column.title}>
           <h2>{column.title}</h2>
           <ul>{column.links.map(link => <li key={link.href}><a href={link.href}>{link.label}</a></li>)}</ul>

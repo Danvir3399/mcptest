@@ -3717,6 +3717,12 @@ pre.bg-light code {
   font-size: 0.78rem;
 }
 
+/* The one link to the MCP server development page on a blocked report (flagged builds only). */
+.release-service-link {
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-sm);
+}
+
 .release-remediation {
   overflow-wrap: anywhere;
   color: var(--text-accent);

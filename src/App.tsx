@@ -31,6 +31,7 @@ import {
   OAuthCheckerView,
   McpTestServersView,
   McpTestClientView,
+  ServicePageView,
   ReportView,
   SubmitServerView,
   TabContent,
@@ -64,7 +65,9 @@ import { formatErrorForDisplay } from './utils/errorHandling';
 import { getCatalogServerById } from './utils/catalogUtils';
 import { getCatalogServerIdFromPath } from './utils/catalogSeo';
 import { getPreferredCatalogEndpoint } from './utils/clientSetup';
-import { OAUTH_CHECKER_PATH, DISCOVERY_CHECKER_PATH, DASHBOARDS_PATH, MCP_TEST_SERVERS_PATH, MCP_TEST_CLIENT_PATH, READING_SHELL_CLASS, isKnownAppPath } from './utils/appRoutes';
+import { OAUTH_CHECKER_PATH, DISCOVERY_CHECKER_PATH, DASHBOARDS_PATH, MCP_TEST_SERVERS_PATH, MCP_TEST_CLIENT_PATH, SERVICE_PAGE_PATH, READING_SHELL_CLASS, isKnownAppPath } from './utils/appRoutes';
+import { APP_ROUTE_OPTIONS } from './servicePage/buildFlag';
+import { SERVICE_PAGE_COPY } from './content/servicePageCopy';
 import { getKeywordLandingPage } from './content/keywordLandingPages';
 import type { LandingPageConnectRequest } from './components/KeywordLandingView';
 // The MCP SDK, OAuth flow and saved-card helpers load on demand; see utils/savedCardRuntime.
@@ -76,6 +79,7 @@ import type {
 import { consumeOAuthReconnectRequest } from './utils/oauthReconnect';
 import { isLandingEligible, isReturningWorkspace, needsTabStrip } from './utils/landingEligibility';
 import { createDefaultSpaces, createDefaultTabs, createFirstDashboard, withoutUntouchedDefaultDashboard } from './utils/defaultWorkspace';
+import { syncSiteAssistantRoute } from './siteAssistant/siteAssistant';
 
 type SavedCardRuntime = typeof import('./utils/savedCardRuntime');
 const loadSavedCardRuntime = (): Promise<SavedCardRuntime> => import('./utils/savedCardRuntime');
@@ -253,6 +257,11 @@ function App() {
     scrolledPathnameRef.current = location.pathname;
     if (!location.hash) window.scrollTo(0, 0);
   }, [location.pathname, location.hash]);
+
+  // The site assistant stays off on auth flows and pages with a visitor's own data.
+  useEffect(() => {
+    syncSiteAssistantRoute(location.pathname);
+  }, [location.pathname]);
   
   // Activate the data sync hook
   useDataSync({ spaces, tabs, setSpaces, setTabs });
@@ -265,7 +274,7 @@ function App() {
     const path = location.pathname;
     console.log('[ActiveView Calculation] Path:', path, 'Spaces count:', spaces.length);
 
-    if (!isKnownAppPath(path) && !path.startsWith('/evals')) {
+    if (!isKnownAppPath(path, APP_ROUTE_OPTIONS) && !path.startsWith('/evals')) {
       return { activeView: 'not-found' as const };
     }
     
@@ -292,6 +301,9 @@ function App() {
     if (path === MCP_TEST_SERVERS_PATH) return { activeView: 'mcp-test-servers' as const };
 
     if (path === MCP_TEST_CLIENT_PATH) return { activeView: 'mcp-test-client' as const };
+
+    // Only a known path in builds with VITE_SERVICE_PAGE_ENABLED=true (checked above).
+    if (path === SERVICE_PAGE_PATH) return { activeView: 'service-page' as const };
 
     if (path === DISCOVERY_CHECKER_PATH) {
       return { activeView: 'discovery' as const };
@@ -411,7 +423,7 @@ function App() {
       return;
     }
 
-    if (!isKnownAppPath(path) && !path.startsWith('/evals')) {
+    if (!isKnownAppPath(path, APP_ROUTE_OPTIONS) && !path.startsWith('/evals')) {
       logPageView(path, 'Page Not Found');
       return;
     }
@@ -460,6 +472,8 @@ function App() {
     if (path === MCP_TEST_SERVERS_PATH) { logPageView(path, 'Public MCP test servers'); return; }
 
     if (path === MCP_TEST_CLIENT_PATH) { logPageView(path, 'Test your MCP client'); return; }
+
+    if (path === SERVICE_PAGE_PATH) { logPageView(path, SERVICE_PAGE_COPY.pageViewTitle); return; }
 
     if (path === DISCOVERY_CHECKER_PATH) {
       logPageView(path, 'MCP discovery checker');
@@ -2053,6 +2067,10 @@ function App() {
             <div className="view-panel"><Suspense fallback={<ViewFallback label="Loading the client checklist" />}><McpTestClientView /></Suspense></div>
           )}
 
+          {activeView === 'service-page' && (
+            <div className="view-panel"><Suspense fallback={<ViewFallback label="Loading the page" />}><ServicePageView /></Suspense></div>
+          )}
+
           {/* MCP Discovery Checker */}
           {activeView === 'discovery' && (
             <div className="view-panel">
@@ -2147,7 +2165,7 @@ function App() {
           )}
 
           {((activeView === 'playground' && !connectedTab) ||
-            ['catalog', 'server-profile', 'docs', 'learn', 'keyword-landing', 'mcp-test-servers', 'mcp-test-client', 'oauth-check', 'discovery', 'breaking-changes'].includes(activeView)) && <Footer />}
+            ['catalog', 'server-profile', 'docs', 'learn', 'keyword-landing', 'mcp-test-servers', 'mcp-test-client', 'service-page', 'oauth-check', 'discovery', 'breaking-changes'].includes(activeView)) && <Footer />}
         </div>
       </main>
       <NotificationPopup message={notification.message} show={notification.show} />

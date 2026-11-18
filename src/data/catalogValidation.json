@@ -4293,5 +4293,19 @@
     "message": "Negotiated stateful MCP 2025-11-25 at https://api.datacircle.dev/mcp; detected transport streamable-http; authentication none",
     "validatedUrl": "https://api.datacircle.dev/mcp",
     "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "stalkchain-data",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-18T12:44:10.266Z",
+    "message": "Authentication challenge at https://data.stalkchain.com/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://data.stalkchain.com/mcp",
+    "authorizationServers": [
+      "https://data.stalkchain.com"
+    ]
   }
 ]

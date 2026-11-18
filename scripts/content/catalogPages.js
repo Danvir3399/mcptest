@@ -65,6 +65,7 @@ function renderRowLogo(server) {
 const LISTING_SOURCE_LABELS = {
   publisher: 'Publisher',
   'mcp-registry': 'MCP Registry',
+  'client-directory': 'Client directory',
   'community-submission': 'Community submission',
   community: 'Community',
 };
@@ -104,7 +105,13 @@ function renderListingSource(server) {
 }
 
 /** The unfiltered catalog's first frame. Controls become active when React mounts. */
-function renderCatalogFallback({ servers, summaries }) {
+/** Default catalog order, matching sortCatalogServers(..., 'catalog-order') in the app. */
+function orderByRelevance(servers) {
+  return [...servers].sort((a, b) => (b.relevance ?? 0) - (a.relevance ?? 0));
+}
+
+function renderCatalogFallback({ servers: seedServers, summaries }) {
+  const servers = orderByRelevance(seedServers);
   const select = (field, label, options) => `<div class="catalog-${field}-field"><label class="visually-hidden" for="catalog-${field}">${label}</label><select id="catalog-${field}" class="form-select" inert>${options.map(([value, text], index) => `<option value="${escapeHtml(value)}"${index === 0 ? ' selected' : ''}>${escapeHtml(text)}</option>`).join('')}</select></div>`;
   return [
     '<div class="catalog-view"><div class="catalog-command-bar"><div class="catalog-command-copy">',
@@ -228,7 +235,7 @@ function renderCategoryFooter(summary, categories, articles) {
  * category's server rows, the category rail, guides and neighbors.
  */
 function renderCategoryFallback({ summary, summaries, servers, articles }) {
-  const members = servers.filter(server => server.category === summary.category);
+  const members = orderByRelevance(servers).filter(server => server.category === summary.category);
   return [
     `<div class="catalog-view seo-catalog-category" data-category="${escapeHtml(summary.slug)}">`,
     renderListingSourceIconDefinition(),
@@ -426,6 +433,7 @@ function renderToolInventory(server) {
 }
 
 module.exports = {
+  orderByRelevance,
   renderCatalogFallback,
   renderCatalogRow,
   renderCategoryFallback,

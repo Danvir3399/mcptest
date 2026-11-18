@@ -5,6 +5,8 @@ import fs from 'node:fs'
 import { createRequire } from 'node:module'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { applySiteAssistantToHtml, readSiteAssistantEnv } from './src/siteAssistant/config.mts'
+import { applyServicePageToHtml, normalizeServiceApi, resolveServicePageConfig } from './src/servicePage/config.mts'
 
 // The Node content loader, shared with scripts/generate-seo-pages.js.
 const require = createRequire(import.meta.url)
@@ -25,6 +27,56 @@ const versionedThemeInit = () => ({
     return versionThemeInitTag(html, fs.readFileSync(path.join(rootDir, 'public', 'theme-init.js')))
   },
 })
+
+/**
+ * The solv.chat site assistant (src/siteAssistant/config.mts): with
+ * VITE_SOLV_ENDPOINT and VITE_SOLV_ASSISTANT_KEY set, index.html's policy
+ * allows that one origin and carries the config meta tag. Every prerendered
+ * page is built from this index.html. Unset, the HTML is unchanged.
+ */
+const siteAssistant = () => {
+  let config = null
+  return {
+    name: 'site-assistant',
+    configResolved(resolved) {
+      config = readSiteAssistantEnv(resolved.env)
+      const requested = resolved.env.VITE_SOLV_ENDPOINT || resolved.env.VITE_SOLV_ASSISTANT_KEY
+      if (requested && !config) {
+        resolved.logger.warn('[site-assistant] VITE_SOLV_ENDPOINT must be an https origin and VITE_SOLV_ASSISTANT_KEY a public key, and both must be set; the assistant is off.')
+      }
+    },
+    transformIndexHtml(html) {
+      return applySiteAssistantToHtml(html, config)
+    },
+  }
+}
+
+/**
+ * The MCP server development page (src/servicePage/config.mts): with
+ * VITE_SERVICE_PAGE_ENABLED=true, index.html's connect-src allows the
+ * VITE_SERVICE_API origin (the public offer request) and, with
+ * VITE_SOLV_QUOTE_ASSISTANT_KEY, the quote assistant's solv.chat origin.
+ * Through the same CSP helper as the site assistant; unset, nothing changes.
+ */
+const servicePage = () => {
+  let config = null
+  return {
+    name: 'service-page',
+    configResolved(resolved) {
+      config = resolveServicePageConfig(resolved.env)
+      if (!config.enabled) return
+      if (resolved.env.VITE_SERVICE_API && !normalizeServiceApi(resolved.env.VITE_SERVICE_API)) {
+        resolved.logger.warn('[service-page] VITE_SERVICE_API must be an https URL without a query or credentials; the page shows its fallback prices.')
+      }
+      if (resolved.env.VITE_SOLV_QUOTE_ASSISTANT_KEY && !config.quoteAssistant) {
+        resolved.logger.warn('[service-page] VITE_SOLV_QUOTE_ASSISTANT_KEY needs a valid VITE_SOLV_ENDPOINT; the quote assistant is off.')
+      }
+    },
+    transformIndexHtml(html) {
+      return applyServicePageToHtml(html, config)
+    },
+  }
+}
 
 const loadContent = () => {
   const { loadArticleIndex, loadArticles } = require('./scripts/content/loadArticles.js')
@@ -125,6 +177,8 @@ export default defineConfig({
     learnArticleIndex(),
     learnSearchIndexDevServer(),
     versionedThemeInit(),
+    siteAssistant(),
+    servicePage(),
     // Module-level sizes per chunk for scripts/bundle-graph.test.js and `npm run analyze`.
     visualizer({ template: 'raw-data', filename: 'dist/.vite/bundle-stats.json', gzipSize: false }),
   ],

@@ -212,11 +212,12 @@ describe('catalog logo asset validation', () => {
 
   it.each([
     'ahrefs', 'apify', 'attio', 'braze', 'bright-data', 'builder-cms', 'chembl', 'clinical-trials',
-    'common-room', 'courier', 'customer-io', 'etherscan', 'exa', 'financial-datasets', 'firecrawl',
-    'fullstory', 'g2x', 'gamma', 'globalping', 'gong', 'happyscribe', 'hex', 'kernel', 'mailtester',
-    'mux', 'openai-docs', 'parallel-search', 'parallel-task', 'pendo', 'port', 'productboard', 'ref',
-    'salesql', 'statsig', 'tallyfy', 'tapcart', 'tavily', 'teamhood', 'upcoach', 'whalesync',
-    'you-com', 'zarla', 'zuplo-docs',
+    'common-room', 'courier', 'customer-io', 'datocapital', 'etherscan', 'exa', 'ffmpeg-api',
+    'financial-datasets', 'firecrawl', 'fullstory', 'g2x', 'gamma', 'globalping', 'gong',
+    'happyscribe', 'hex', 'kernel', 'mailtester', 'mux', 'openai-docs', 'parallel-search',
+    'parallel-task', 'pendo', 'port', 'productboard', 'ref', 'salesql', 'statsig', 'tallyfy',
+    'tapcart', 'tavily', 'teamhood', 'upcoach', 'whalesync', 'xverum', 'you-com', 'zarla',
+    'zuplo-docs',
   ])(
     'gives the replaced %s logo a root viewBox so it scales to its display box',
     id => {

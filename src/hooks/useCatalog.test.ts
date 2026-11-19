@@ -177,7 +177,10 @@ describe('catalog query params', () => {
     expect(view.catalog.oauthFilter).toBe('no-auth');
     expect(view.catalog.sortOrder).toBe('name');
     expect(view.catalog.filteredServers.map(({ name }) => name)).toEqual([
+      'Aiwyn Tax',
+      'Blockscout',
       'CoinGecko',
+      'CoinGecko (MCP app)',
       'EOR Scope',
       'Gemini',
       'Yahoo Finance',

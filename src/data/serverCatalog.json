@@ -15741,6 +15741,1411 @@
     "homepageUrl": "https://www.wolfram.com"
   },
   {
+    "id": "malwarebytes",
+    "name": "Malwarebytes ScamGuard",
+    "url": "https://scamguard.malwarebytes.com/claude/mcp",
+    "description": "Checks the reputation of links, phone numbers and email addresses, looks up domain WHOIS records and reports suspicious indicators to Malwarebytes ScamGuard. No authentication.",
+    "category": "Security",
+    "tags": [
+      "official",
+      "malwarebytes",
+      "scams",
+      "phishing",
+      "reputation",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/malwarebytes"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.a31f2757-9039-41b6-96fa-a9c0b0945efb",
+        "url": "https://claude.com/marketplace/connectors/malwarebytes"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6943d1778c8c81918f4c9ddf4849ca41",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6943d1778c8c81918f4c9ddf4849ca41"
+      }
+    ],
+    "relevance": 66,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "The endpoint has a Claude-specific /claude/ path; no neutral path answers (scamguard.malwarebytes.com/mcp and /chatgpt/mcp return 404).",
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Malwarebytes's page (https://help.malwarebytes.com/hc/en-us/articles/47985341083675-Using-Malwarebytes-in-Claude) describes the connector but does not state the endpoint URL.",
+      "The ChatGPT directory entry does not publish its server URL, so that listing is matched by name."
+    ],
+    "logoUrl": "/server-logos/malwarebytes.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/malwarebytes.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Malwarebytes mark from Simple Icons version 16.38.0; trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.malwarebytes.com"
+  },
+  {
+    "id": "b12",
+    "name": "B12 Website Generator",
+    "url": "https://mcp.b12.io/mcp",
+    "description": "Generates a draft website with B12 from a business name and description and opens it in the B12 website generator. No authentication to connect.",
+    "category": "Design",
+    "tags": [
+      "official",
+      "b12",
+      "websites",
+      "site-builder",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/website-generator-by-b12"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.e25b319d-9c6a-4baa-90a3-0bb8eb5e25b0",
+        "url": "https://claude.com/marketplace/connectors/website-generator-by-b12"
+      }
+    ],
+    "relevance": 65,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry."
+    ],
+    "logoUrl": "/server-logos/b12.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated BW monogram; it is not an official B12 Website Generator mark.",
+    "homepageUrl": "https://www.b12.io"
+  },
+  {
+    "id": "viator",
+    "name": "Viator",
+    "url": "https://exp-app-mcp.prod.ep.viator.com/mcp",
+    "description": "Searches Viator tours, activities and attractions by free-text query and returns experience details with booking links. No authentication.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "viator",
+      "tours",
+      "travel",
+      "experiences",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.viator.com/partner-api/mcp/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.0db9a2ae-1b64-4673-9af6-059f29810a34",
+        "url": "https://claude.com/marketplace/connectors/viator"
+      }
+    ],
+    "relevance": 63,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/viator.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated VI monogram; it is not an official Viator mark.",
+    "homepageUrl": "https://www.viator.com"
+  },
+  {
+    "id": "coingecko-app",
+    "name": "CoinGecko (MCP app)",
+    "url": "https://mcp.coingecko.com/mcp",
+    "description": "CoinGecko MCP app with interactive views: coin prices and market data, historical charts, coin comparisons, trending coins, categories, top gainers and losers and crypto news. No authentication.",
+    "category": "Finance",
+    "tags": [
+      "official",
+      "coingecko",
+      "crypto",
+      "market-data",
+      "mcp-apps",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/coingecko"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.48e80b48-dc48-4e41-9c45-ef9c939eca59",
+        "url": "https://claude.com/marketplace/connectors/coingecko"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a4f02d735388191959c8328877e0bbd",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a4f02d735388191959c8328877e0bbd"
+      }
+    ],
+    "relevance": 61,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "A separate server from the CoinGecko API endpoint (mcp.api.coingecko.com, catalog id coingecko): this host serves 13 curated market-data tools with MCP-app views, while the API endpoint exposes code-execution tools over the full CoinGecko API.",
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry.",
+      "CoinGecko's docs cover only mcp.api.coingecko.com and mcp.pro-api.coingecko.com. The ChatGPT CoinGecko app publishes no server URL; it is matched to this entry by name and by its MCP-app chart views."
+    ],
+    "logoUrl": "/server-logos/coingecko-app.png",
+    "logoSourceUrl": "https://www.coingecko.com/en/branding",
+    "logoSourceKind": "official-brand",
+    "logoRetrievedAt": "2026-08-17",
+    "logoLicenseNote": "Used for product identification under CoinGecko brand guidance.",
+    "homepageUrl": "https://www.coingecko.com"
+  },
+  {
+    "id": "snomed-ct",
+    "name": "SNOMED CT Terminology",
+    "url": "https://snowstorm-mcp.snomedtools.org/mcp",
+    "description": "Queries SNOMED CT editions through SNOMED International's Snowstorm terminology server: concept search and lookup, code validation, subsumption, value set expansion and hierarchy navigation. No authentication.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "snomed",
+      "terminology",
+      "clinical",
+      "fhir",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/snomed-ct-terminology"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.b07954c3-84df-4843-b861-6229435ce9e3",
+        "url": "https://claude.com/marketplace/connectors/snomed-ct-terminology"
+      }
+    ],
+    "relevance": 60,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. SNOMED International's server README (https://github.com/IHTSDO/snowstorm-mcp-server) describes hosted deployment with a placeholder domain, not the snomedtools.org URL."
+    ],
+    "logoUrl": "/server-logos/snomed-ct.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated SC monogram; it is not an official SNOMED CT Terminology mark.",
+    "homepageUrl": "https://www.snomed.org",
+    "sourceUrl": "https://github.com/IHTSDO/snowstorm-mcp-server"
+  },
+  {
+    "id": "shutterstock",
+    "name": "Shutterstock",
+    "url": "https://www.shutterstock.com/cciq/mcp",
+    "description": "Searches Shutterstock stock images and returns matching assets with preview and licensing links. No authentication.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "shutterstock",
+      "stock-images",
+      "media",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/shutterstock"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.e7da5cf7-cfea-4ee4-a61b-8da6ae48594f",
+        "url": "https://claude.com/marketplace/connectors/shutterstock"
+      }
+    ],
+    "relevance": 60,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "exactEndpointOnly": true,
+    "caveats": [
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry."
+    ],
+    "logoUrl": "/server-logos/shutterstock.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated SH monogram; it is not an official Shutterstock mark.",
+    "homepageUrl": "https://www.shutterstock.com"
+  },
+  {
+    "id": "super-com",
+    "name": "Super.com Travel",
+    "url": "https://www.super.com/travel/mcp",
+    "description": "Searches Super.com hotel rates by city or hotel, finds the lowest available price and lists experiences in a city. Read-only; no authentication and no booking.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "super-com",
+      "hotels",
+      "travel",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/super-com"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.0454875f-bc80-40cd-b933-d1712714e292",
+        "url": "https://claude.com/marketplace/connectors/super-com"
+      }
+    ],
+    "relevance": 56,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "exactEndpointOnly": true,
+    "caveats": [
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry."
+    ],
+    "logoUrl": "/server-logos/super-com.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated SC monogram; it is not an official Super.com Travel mark.",
+    "homepageUrl": "https://www.super.com"
+  },
+  {
+    "id": "squarespace",
+    "name": "Squarespace Domains",
+    "url": "https://mcp.squarespace.com/mcp",
+    "description": "Checks domain name availability and pricing on Squarespace and suggests domain names from a description. No authentication.",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "squarespace",
+      "domains",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/squarespace"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.017e030e-9907-4695-8ff3-7916def95030",
+        "url": "https://claude.com/marketplace/connectors/squarespace"
+      }
+    ],
+    "relevance": 55,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry."
+    ],
+    "logoUrl": "/server-logos/squarespace.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/squarespace.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Squarespace mark from Simple Icons version 16.38.0; trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.squarespace.com"
+  },
+  {
+    "id": "tomorrow-io",
+    "name": "Tomorrow.io Weather",
+    "url": "https://api.tomorrow.io/v4/weather-intelligence/mcp",
+    "description": "Tomorrow.io MCP app that shows weather widgets: current conditions, forecasts, summaries, air quality, pollen and wildfire information for a location. No authentication.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "tomorrow-io",
+      "weather",
+      "air-quality",
+      "mcp-apps",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.tomorrow.io/reference/mcp-app"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.032fc35c-fdc2-42e0-a5c0-372d52ccb605",
+        "url": "https://claude.com/marketplace/connectors/tomorrow-io-weather-mcp-app"
+      }
+    ],
+    "relevance": 54,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "exactEndpointOnly": true,
+    "logoUrl": "/server-logos/tomorrow-io.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated TI monogram; it is not an official Tomorrow.io Weather mark.",
+    "homepageUrl": "https://www.tomorrow.io"
+  },
+  {
+    "id": "blockscout",
+    "name": "Blockscout",
+    "url": "https://mcp.blockscout.com/mcp",
+    "description": "Reads Blockscout explorer data across EVM chains: blocks, transactions, token transfers, balances, NFTs, ENS names, contract ABIs and source, and read-only contract calls. No authentication.",
+    "category": "Finance",
+    "tags": [
+      "official",
+      "blockscout",
+      "blockchain",
+      "evm",
+      "explorer",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.blockscout.com/devs/mcp-server"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.694098936c2e0fb459af6d39",
+        "url": "https://claude.com/marketplace/connectors/blockscout"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69a880b0d024819182db60f36cb48420",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69a880b0d024819182db60f36cb48420"
+      }
+    ],
+    "relevance": 52,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "The ChatGPT directory entry does not publish its server URL, so that listing is matched by name."
+    ],
+    "logoUrl": "/server-logos/blockscout.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated BL monogram; it is not an official Blockscout mark.",
+    "homepageUrl": "https://www.blockscout.com",
+    "sourceUrl": "https://github.com/blockscout/mcp-server"
+  },
+  {
+    "id": "snagajob",
+    "name": "Snagajob",
+    "url": "https://platform.jobget.com/jobs-mcp/mcp",
+    "description": "Searches Snagajob hourly and part-time job listings and returns job details. No authentication.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "snagajob",
+      "jobget",
+      "jobs",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/snagajob"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.1d101d68-4716-4dc3-9248-1fabfb726fd4",
+        "url": "https://claude.com/marketplace/connectors/snagajob"
+      }
+    ],
+    "relevance": 49,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Snagajob's page (https://www.snagajob.com/blog/post/find-your-next-job-faster-right-from-claude) describes the connector but does not state the endpoint URL."
+    ],
+    "logoUrl": "/server-logos/snagajob.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated SN monogram; it is not an official Snagajob mark.",
+    "homepageUrl": "https://www.snagajob.com"
+  },
+  {
+    "id": "descrybe",
+    "name": "Descrybe Legal Engine",
+    "url": "https://mcp.descrybe.com/mcp",
+    "description": "Researches U.S. primary law: case search by concept or text, statutes and regulations, citation lookup and citing cases, case summaries and passages, and quote verification. No authentication to connect.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "descrybe",
+      "legal",
+      "case-law",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/descrybe"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.9ce05d07-3fb2-474f-b427-d5a4496ab1ac",
+        "url": "https://claude.com/marketplace/connectors/descrybe"
+      }
+    ],
+    "relevance": 49,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Descrybe's page (https://descrybe.com/user-guide/claude-connector) describes the connector but does not state the endpoint URL."
+    ],
+    "logoUrl": "/server-logos/descrybe.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated DL monogram; it is not an official Descrybe Legal Engine mark.",
+    "homepageUrl": "https://descrybe.ai"
+  },
+  {
+    "id": "granted",
+    "name": "Granted",
+    "url": "https://grantedai.com/api/mcp/mcp",
+    "description": "Searches U.S. federal, state and private foundation grant opportunities and funders, with grant details and past winners. No authentication.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "granted",
+      "grants",
+      "funding",
+      "nonprofits",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://grantedai.com/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.59156499-2b9f-42b9-8438-8994d7ce5dad",
+        "url": "https://claude.com/marketplace/connectors/granted"
+      }
+    ],
+    "relevance": 48,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/granted.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated GR monogram; it is not an official Granted mark.",
+    "homepageUrl": "https://grantedai.com"
+  },
+  {
+    "id": "courtroom5",
+    "name": "Courtroom5",
+    "url": "https://mcp.courtroom5.com/v1",
+    "description": "Guides self-represented litigants: case intake assessment, court deadline calculation and next-step guidance. No authentication.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "courtroom5",
+      "legal",
+      "self-represented",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://courtroom5.com/claude/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.295eaac1-7469-4c28-8fda-dbd2a0f76219",
+        "url": "https://claude.com/marketplace/connectors/courtroom5"
+      }
+    ],
+    "relevance": 48,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "exactEndpointOnly": true,
+    "logoUrl": "/server-logos/courtroom5.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated CO monogram; it is not an official Courtroom5 mark.",
+    "homepageUrl": "https://courtroom5.com"
+  },
+  {
+    "id": "constant-contact",
+    "name": "Constant Contact",
+    "url": "https://mcp.apps.constantcontact.com/public_api/mcp",
+    "description": "Creates and edits Constant Contact email campaigns and social posts, manages contact lists and imports, and uploads library files. Tools list without credentials; account tools need a Constant Contact sign-in.",
+    "category": "Communication",
+    "tags": [
+      "official",
+      "constant-contact",
+      "email-marketing",
+      "contacts",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/constant-contact"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.97a3f1fc-8d87-453f-88f5-cc87626402c2",
+        "url": "https://claude.com/marketplace/connectors/constant-contact"
+      }
+    ],
+    "relevance": 46,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "exactEndpointOnly": true,
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Constant Contact's page (https://news.constantcontact.com/2026-09-10-Constant-Contact-Launches-in-Claude-to-Power-AI-Driven-Marketing) describes the connector but does not state the endpoint URL."
+    ],
+    "logoUrl": "/server-logos/constant-contact.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated CC monogram; it is not an official Constant Contact mark.",
+    "homepageUrl": "https://www.constantcontact.com"
+  },
+  {
+    "id": "brek",
+    "name": "Brek",
+    "url": "https://mcp.brek.com/mcp",
+    "description": "Searches Brek wholesale hotel inventory and returns accommodation details and room offers. No authentication.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "brek",
+      "hotels",
+      "travel",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.brek.com/developers/ai/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.5590ae2e-c452-4baf-afe8-697ec9f2ef70",
+        "url": "https://claude.com/marketplace/connectors/brek-hotel-wholesale-booking"
+      }
+    ],
+    "relevance": 45,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/brek.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated BR monogram; it is not an official Brek mark.",
+    "homepageUrl": "https://www.brek.com"
+  },
+  {
+    "id": "cash-app-ordering",
+    "name": "Order by Cash App",
+    "url": "https://connect.squareup.com/v2/mcp/cash-app",
+    "description": "Finds nearby restaurants that take Cash App pickup orders, reads their menus and creates a cart to check out in Cash App. No authentication to connect.",
+    "category": "Marketplace",
+    "tags": [
+      "official",
+      "cash-app",
+      "square",
+      "restaurants",
+      "ordering",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/cash-app"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.3a81d020-f026-4552-beb8-cc144f917fc4",
+        "url": "https://claude.com/marketplace/connectors/cash-app"
+      }
+    ],
+    "relevance": 43,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "exactEndpointOnly": true,
+    "caveats": [
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Square's page (https://squareup.com/us/en/press/claude-chatgpt-integrations) describes the connector but does not state the endpoint URL."
+    ],
+    "logoUrl": "/server-logos/cash-app-ordering.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/cashapp.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Cash App mark from Simple Icons version 16.38.0; trademark rights remain with the publisher.",
+    "homepageUrl": "https://cash.app"
+  },
+  {
+    "id": "athenahq",
+    "name": "AthenaHQ",
+    "url": "https://api.athenahq.ai/api/mcp",
+    "description": "Reads AthenaHQ AI search visibility data: tracked prompts, AI responses, citations, competitors and content. Tools list without credentials; reading workspace data needs an AthenaHQ sign-in.",
+    "category": "Analytics",
+    "tags": [
+      "official",
+      "athenahq",
+      "ai-search",
+      "seo",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/athenahq"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.0e9cc763-2cd0-4451-8ec8-97fde3e81e6a",
+        "url": "https://claude.com/marketplace/connectors/athenahq"
+      }
+    ],
+    "relevance": 43,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "exactEndpointOnly": true,
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. AthenaHQ's page (https://docs.athenahq.ai/guides/settings-api) describes the connector but does not state the endpoint URL."
+    ],
+    "logoUrl": "/server-logos/athenahq.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated AT monogram; it is not an official AthenaHQ mark.",
+    "homepageUrl": "https://www.athenahq.ai"
+  },
+  {
+    "id": "komoot",
+    "name": "komoot",
+    "url": "https://mcp.main.komoot.net/mcp",
+    "description": "Finds komoot hiking, cycling and running routes and highlights near a place, plans routes and loops and exports GPX. Saving routes needs a komoot account.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "komoot",
+      "outdoor",
+      "routes",
+      "hiking",
+      "cycling",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/pending-komoot"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.87c504cf-a0a7-460b-a2e4-de6123222a60",
+        "url": "https://claude.com/marketplace/connectors/pending-komoot"
+      }
+    ],
+    "relevance": 42,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry.",
+      "The Claude directory lists https://claude.main.komoot.net/mcp; the neutral host mcp.main.komoot.net (named in the server's OAuth metadata) answers with the same server and tools, so the catalog lists the neutral URL."
+    ],
+    "logoUrl": "/server-logos/komoot.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/komoot.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "komoot mark from Simple Icons version 16.38.0; trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.komoot.com"
+  },
+  {
+    "id": "product-hunt",
+    "name": "Product Hunt",
+    "url": "https://mcp.producthunt.com/mcp",
+    "description": "Searches Product Hunt products, launches, alternatives and leaderboards; launch, ads and account tools need a Product Hunt sign-in.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "product-hunt",
+      "products",
+      "launches",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.producthunt.com/mcp/install"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.ed8566ff-02cc-4328-835e-9012d5b32817",
+        "url": "https://claude.com/marketplace/connectors/product-hunt"
+      }
+    ],
+    "relevance": 42,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in."
+    ],
+    "logoUrl": "/server-logos/product-hunt.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/producthunt.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Product Hunt mark from Simple Icons version 16.38.0; trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.producthunt.com"
+  },
+  {
+    "id": "taskrabbit",
+    "name": "Taskrabbit",
+    "url": "https://mcp.taskrabbit.com/mcp",
+    "description": "Lists Taskrabbit services, checks availability for a task in a location and generates a booking link to finish in Taskrabbit. No authentication.",
+    "category": "Marketplace",
+    "tags": [
+      "official",
+      "taskrabbit",
+      "home-services",
+      "booking",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/taskrabbit"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.b2271ab7-9aff-4343-9144-3e9b87b7ca02",
+        "url": "https://claude.com/marketplace/connectors/taskrabbit"
+      }
+    ],
+    "relevance": 41,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Taskrabbit's page (https://www.taskrabbit.com/blog/whats-new-this-summer-built-for-you/) describes the connector but does not state the endpoint URL."
+    ],
+    "logoUrl": "/server-logos/taskrabbit.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated TA monogram; it is not an official Taskrabbit mark.",
+    "homepageUrl": "https://www.taskrabbit.com"
+  },
+  {
+    "id": "melon",
+    "name": "Melon",
+    "url": "https://mcp.melon.com/mcp/",
+    "description": "Reads Melon music charts, curated playlists, artists, genres and new releases and searches the Melon catalog; personal listening history and playlists need a Melon account.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "melon",
+      "music",
+      "charts",
+      "korea",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/melon"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68d482e9e1020e881a8a1a06",
+        "url": "https://claude.com/marketplace/connectors/melon"
+      }
+    ],
+    "relevance": 40,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "exactEndpointOnly": true,
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry."
+    ],
+    "logoUrl": "/server-logos/melon.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated ME monogram; it is not an official Melon mark.",
+    "homepageUrl": "https://www.melon.com"
+  },
+  {
+    "id": "pophive",
+    "name": "PopHIVE",
+    "url": "https://mcp.pophive.org/mcp",
+    "description": "Reads PopHIVE, the Yale School of Public Health's harmonized U.S. public-health surveillance data: emergency visits, wastewater, hospitalizations, lab positivity and vaccination, with trends, maps and comparisons. No authentication.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "pophive",
+      "public-health",
+      "surveillance",
+      "yale",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/pophive"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.cd7d9174-5546-440a-822d-1e9026e7334c",
+        "url": "https://claude.com/marketplace/connectors/pophive"
+      }
+    ],
+    "relevance": 37,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. PopHIVE's page (https://www.pophive.org/ai-access) describes the connector but does not state the endpoint URL."
+    ],
+    "logoUrl": "/server-logos/pophive.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated PO monogram; it is not an official PopHIVE mark.",
+    "homepageUrl": "https://www.pophive.org"
+  },
+  {
+    "id": "usafacts",
+    "name": "USAFacts Government Data",
+    "url": "https://data.mcp.usafacts.org/mcp",
+    "description": "Gateway to live U.S. federal, state and local government data sources curated by USAFacts: list sources, inspect their tools and call them. No authentication.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "usafacts",
+      "government-data",
+      "statistics",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://usafacts.org/mcp/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.aeb6f889-85b1-42f9-80b4-a7df9db4a1f6",
+        "url": "https://claude.com/marketplace/connectors/usafacts-connector"
+      }
+    ],
+    "relevance": 37,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/usafacts.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated UG monogram; it is not an official USAFacts Government Data mark.",
+    "homepageUrl": "https://usafacts.org"
+  },
+  {
+    "id": "mospi",
+    "name": "MoSPI",
+    "url": "https://mcp.mospi.gov.in/",
+    "description": "Fetches official Indian government statistics from MoSPI eSankhyiki datasets such as GDP, CPI, industrial production and labour force surveys: list datasets and indicators, read filter values and query data. No authentication.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "mospi",
+      "india",
+      "government-data",
+      "statistics",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/nso-india/esankhyiki-mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.49a84267-c5d5-4c7b-8070-ab6b0875d886",
+        "url": "https://claude.com/marketplace/connectors/mospi"
+      }
+    ],
+    "relevance": 36,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "exactEndpointOnly": true,
+    "logoUrl": "/server-logos/mospi.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated MO monogram; it is not an official MoSPI mark.",
+    "homepageUrl": "https://www.mospi.gov.in",
+    "sourceUrl": "https://github.com/nso-india/esankhyiki-mcp"
+  },
+  {
+    "id": "parallel",
+    "name": "Parallel",
+    "url": "https://mcp.parallel.ai/mcp",
+    "description": "Parallel's unified MCP server: web search, page fetch, typed web answers, image search and specialized data verticals such as PubMed and clinical trials. No authentication for the default tools; an OAuth sign-in (?login) uses a Parallel account.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "parallel",
+      "web-search",
+      "research",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.parallel.ai/integrations/mcp/quickstart"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69fb9378663481919a68e8a2109644e5",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69fb9378663481919a68e8a2109644e5"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "Replaces the standalone Search MCP (catalog id parallel-search) and Task MCP for new installs; the older servers keep running.",
+      "The ChatGPT app uses the undocumented https://mcp.parallel.ai/mcp/chatgpt variant, which adds a web_research tool; the catalog lists the documented neutral endpoint."
+    ],
+    "logoUrl": "/server-logos/parallel.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated PA monogram; it is not an official Parallel mark.",
+    "homepageUrl": "https://parallel.ai"
+  },
+  {
+    "id": "soundbreak",
+    "name": "SoundBreak",
+    "url": "https://mcp.soundbreak.ai/mcp",
+    "description": "Browses SoundBreak's licensed AI artists and their top tracks and generates songs with them. Artist browsing needs no login; song generation and saved songs need a SoundBreak account.",
+    "category": "Design",
+    "tags": [
+      "official",
+      "soundbreak",
+      "music",
+      "song-generation",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a68b707c6cc819181fdb2bc0b1fb045"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a68b707c6cc819181fdb2bc0b1fb045",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a68b707c6cc819181fdb2bc0b1fb045"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
+      "The publisher does not document this endpoint; the listing source is the ChatGPT directory entry."
+    ],
+    "logoUrl": "/server-logos/soundbreak.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated SO monogram; it is not an official SoundBreak mark.",
+    "homepageUrl": "https://soundbreak.ai"
+  },
+  {
+    "id": "scrimba-explain",
+    "name": "Scrimba Explain",
+    "url": "https://scrimba.com/explain/mcp",
+    "description": "Creates narrated Scrimba explainer videos and playlists with shareable links from content the assistant streams in. No authentication.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "scrimba",
+      "video",
+      "explainers",
+      "education",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.scrimba.com/explain/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69c50381a40081919232f5027201beef",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69c50381a40081919232f5027201beef"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "exactEndpointOnly": true,
+    "caveats": [
+      "The ChatGPT app (\"Explain Video Generator\") uses https://scrimba.com/explain/chatgpt/mcp, a variant with an image-attachment tool instead of playlists; the catalog lists the documented neutral endpoint."
+    ],
+    "logoUrl": "/server-logos/scrimba-explain.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/scrimba.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Scrimba mark from Simple Icons version 16.38.0; trademark rights remain with the publisher.",
+    "homepageUrl": "https://scrimba.com/explain"
+  },
+  {
+    "id": "shop",
+    "name": "Shop",
+    "url": "https://mcp.shop.com/",
+    "description": "Searches products and offers across Shopify stores, finds store locations and answers questions about a shop's published policies; carts, checkout, spend requests and order tracking need a Shop account sign-in. Tools list without credentials.",
+    "category": "Marketplace",
+    "tags": [
+      "official",
+      "shop",
+      "shopify",
+      "shopping",
+      "products",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/shop"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.b3749cf7-45bb-41ea-8696-54057992408e",
+        "url": "https://claude.com/marketplace/connectors/shop"
+      }
+    ],
+    "relevance": 55,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "exactEndpointOnly": true,
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry.",
+      "Shopify's Shop MCP docs (https://shopify.dev/docs/apps/build/shop-mcp) cover a different endpoint, https://shop.app/mcp, which serves a single search tool; this richer server on mcp.shop.com is listed only in the Claude directory.",
+      "Speaks only MCP protocol version 2026-07-28; clients that offer an older version get an \"Unsupported protocol version\" error."
+    ],
+    "logoUrl": "/server-logos/shop.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated SH monogram; it is not an official Shop mark.",
+    "homepageUrl": "https://shop.app"
+  },
+  {
+    "id": "apollo-graphos",
+    "name": "Apollo GraphOS",
+    "url": "https://mcp.apollographql.com/",
+    "description": "Searches and reads Apollo documentation and the Apollo Connectors spec without authentication; graph tools for schemas, checks, contracts, persisted queries, metrics and API keys need a GraphOS sign-in or an API key in the x-api-key header.",
+    "category": "Developer Tools",
+    "tags": [
+      "official",
+      "apollo",
+      "graphql",
+      "graphos",
+      "documentation",
+      "no-auth",
+      "oauth",
+      "api-key"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.apollographql.com/docs/graphos/platform/graphos-mcp-server/install"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.699ceca6b33ed7c53622e8ac",
+        "url": "https://claude.com/marketplace/connectors/graphos-tools"
+      }
+    ],
+    "relevance": 35,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth",
+      "api-key"
+    ],
+    "exactEndpointOnly": true,
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in."
+    ],
+    "logoUrl": "/server-logos/apollo-graphos.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/apollographql.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Apollo GraphQL mark from Simple Icons version 16.38.0; trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.apollographql.com"
+  },
+  {
+    "id": "civitatis",
+    "name": "Civitatis",
+    "url": "https://civitatis-claude-app.civitatis.com/mcp",
+    "description": "Searches Civitatis tours and activities, returns activity details and availability, suggests itineraries and adds activities to a Civitatis cart. No authentication.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "civitatis",
+      "tours",
+      "travel",
+      "experiences",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/civitatis"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.392985fc-eb02-4d60-889c-aa4c660a7390",
+        "url": "https://claude.com/marketplace/connectors/civitatis"
+      }
+    ],
+    "relevance": 34,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "The endpoint is on a Claude-specific host (civitatis-claude-app.civitatis.com); no neutral Civitatis MCP host resolves.",
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Civitatis's page (https://www.civitatis.com/blog/en/chatgpt-civitatis/) describes the connector but does not state the endpoint URL."
+    ],
+    "logoUrl": "/server-logos/civitatis.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated CI monogram; it is not an official Civitatis mark.",
+    "homepageUrl": "https://www.civitatis.com"
+  },
+  {
+    "id": "all-accor",
+    "name": "ALL Accor",
+    "url": "https://mcp.dams.aws.accor.com/green/v1/mcp/apps",
+    "description": "Searches Accor hotels by name or destination and returns best rates and room offers with booking links on ALL Accor. No authentication.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "accor",
+      "hotels",
+      "travel",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/all-accor"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.f6d1695c-f2b8-4641-829f-435ac17cfd02",
+        "url": "https://claude.com/marketplace/connectors/all-accor"
+      }
+    ],
+    "relevance": 34,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "exactEndpointOnly": true,
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
+      "The server identifies itself as accor-offer-server-anthropic, so this endpoint may be specific to Claude.",
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Accor's page (https://developer.accor.com/blog/all-accor-mcp-connector) describes the connector but does not state the endpoint URL."
+    ],
+    "logoUrl": "/server-logos/all-accor.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated AA monogram; it is not an official ALL Accor mark.",
+    "homepageUrl": "https://all.accor.com"
+  },
+  {
+    "id": "autonomad",
+    "name": "AUTONOMAD",
+    "url": "https://mcp.autonomad.ai/mcp",
+    "description": "Searches flights, hotels, tours, events and restaurants and creates an AUTONOMAD booking link for the whole trip; trip updates, changes and cancellations need an AUTONOMAD sign-in.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "autonomad",
+      "travel",
+      "flights",
+      "hotels",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.autonomad.ai/connect"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.ffeeb143-21f3-48e8-a89c-cfc83fbf9a25",
+        "url": "https://claude.com/marketplace/connectors/autonomad"
+      }
+    ],
+    "relevance": 34,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in."
+    ],
+    "logoUrl": "/server-logos/autonomad.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated AU monogram; it is not an official AUTONOMAD mark.",
+    "homepageUrl": "https://www.autonomad.ai"
+  },
+  {
+    "id": "aiwyn-tax",
+    "name": "Aiwyn Tax",
+    "url": "https://mcp.columnapi.com/mcp",
+    "description": "Calculates U.S. income tax for a simple return, lists supported tax years and jurisdictions and generates a tax return PDF. Run by Aiwyn (formerly Column Tax); no authentication.",
+    "category": "Finance",
+    "tags": [
+      "official",
+      "aiwyn",
+      "column-tax",
+      "tax",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/aiwyn-tax"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.550d0dd8-46bf-4d76-a938-866afa15841d",
+        "url": "https://claude.com/marketplace/connectors/aiwyn-tax"
+      }
+    ],
+    "relevance": 31,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Aiwyn's page (https://www.aiwyn.ai/resources/articles/aiwyn-claude-helping-firms-navigate-the-ai-future-of-tax/) describes the connector but does not state the endpoint URL."
+    ],
+    "logoUrl": "/server-logos/aiwyn-tax.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated AT monogram; it is not an official Aiwyn Tax mark.",
+    "homepageUrl": "https://aiwyn.ai"
+  },
+  {
+    "id": "datacamp",
+    "name": "DataCamp",
+    "url": "https://mcp.datacamp.com/v1/mcp",
+    "description": "Reads DataCamp courses, tracks, projects, tutorials, cheat sheets and other learning content; group and learner management tools need a DataCamp sign-in.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "datacamp",
+      "courses",
+      "learning",
+      "data-science",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://mcp-docs.datacamp.com/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.81f540d1-b4f0-4a44-8f5b-cebe8da1e6b5",
+        "url": "https://claude.com/marketplace/connectors/datacamp"
+      }
+    ],
+    "relevance": 31,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in."
+    ],
+    "logoUrl": "/server-logos/datacamp.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/datacamp.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "DataCamp mark from Simple Icons version 16.38.0; trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.datacamp.com"
+  },
+  {
     "id": "i-gaming",
     "name": "iGaming Tools",
     "url": "https://mcp.i-gaming.tools/mcp",

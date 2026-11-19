@@ -210,6 +210,21 @@ describe('catalog authentication metadata', () => {
     expect(JSON.stringify(catalog)).not.toMatch(/"logoUrl":"https?:/);
   });
 
+  it('attributes endpoints that only a client directory documents to that directory', () => {
+    // A caveat that says the publisher's page omits the endpoint (or shows only a placeholder)
+    // means the URL is directory-derived, so the structured provenance must say so too.
+    const directoryDerived = /publisher does not document this endpoint|does not state the endpoint URL|URL comes from the (Claude|ChatGPT) directory|placeholder domain/i;
+    const flagged = catalogSeeds.filter(({ caveats }) => (caveats ?? []).some(caveat => directoryDerived.test(caveat)));
+    expect(flagged.map(({ id }) => id)).toEqual(expect.arrayContaining([
+      'malwarebytes', 'snomed-ct', 'snagajob', 'descrybe', 'constant-contact', 'cash-app-ordering',
+      'athenahq', 'taskrabbit', 'pophive', 'civitatis', 'all-accor', 'aiwyn-tax',
+    ]));
+    for (const { id, listingSource, directoryListings } of flagged) {
+      expect(listingSource.kind, id).toBe('client-directory');
+      expect((directoryListings ?? []).map(({ url }) => url), id).toContain(listingSource.url);
+    }
+  });
+
   it('resolves exact Upwork catalog transport and OAuth evidence without a provider rule', () => {
     expect(getCatalogEndpointDiagnosticEvidence('https://mcp.upwork.com/mcp')).toEqual({
       preferredTransport: 'streamable-http',

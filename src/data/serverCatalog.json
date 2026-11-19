@@ -15740,8 +15740,8 @@
       "no-auth"
     ],
     "listingSource": {
-      "kind": "publisher",
-      "url": "https://help.malwarebytes.com/hc/en-us/articles/47985341083675-Using-Malwarebytes-in-Claude"
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/malwarebytes"
     },
     "directoryListings": [
       {
@@ -15761,7 +15761,7 @@
     "authType": "none",
     "caveats": [
       "The endpoint has a Claude-specific /claude/ path; no neutral path answers (scamguard.malwarebytes.com/mcp and /chatgpt/mcp return 404).",
-      "Malwarebytes's page describes the connector but does not state the endpoint URL; the URL comes from the Claude directory entry.",
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Malwarebytes's page (https://help.malwarebytes.com/hc/en-us/articles/47985341083675-Using-Malwarebytes-in-Claude) describes the connector but does not state the endpoint URL.",
       "The ChatGPT directory entry does not publish its server URL, so that listing is matched by name."
     ],
     "logoUrl": "/server-logos/malwarebytes.svg",
@@ -15904,8 +15904,8 @@
       "no-auth"
     ],
     "listingSource": {
-      "kind": "publisher",
-      "url": "https://github.com/IHTSDO/snowstorm-mcp-server"
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/snomed-ct-terminology"
     },
     "directoryListings": [
       {
@@ -15919,7 +15919,7 @@
     "requiresOAuth": false,
     "authType": "none",
     "caveats": [
-      "SNOMED International's server README describes hosted deployment with a placeholder domain; the snomedtools.org URL comes from the Claude directory entry."
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. SNOMED International's server README (https://github.com/IHTSDO/snowstorm-mcp-server) describes hosted deployment with a placeholder domain, not the snomedtools.org URL."
     ],
     "logoUrl": "/server-logos/snomed-ct.svg",
     "logoSourceKind": "generated-fallback",
@@ -16140,8 +16140,8 @@
       "no-auth"
     ],
     "listingSource": {
-      "kind": "publisher",
-      "url": "https://www.snagajob.com/blog/post/find-your-next-job-faster-right-from-claude"
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/snagajob"
     },
     "directoryListings": [
       {
@@ -16155,7 +16155,7 @@
     "requiresOAuth": false,
     "authType": "none",
     "caveats": [
-      "Snagajob's page describes the connector but does not state the endpoint URL; the URL comes from the Claude directory entry."
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Snagajob's page (https://www.snagajob.com/blog/post/find-your-next-job-faster-right-from-claude) describes the connector but does not state the endpoint URL."
     ],
     "logoUrl": "/server-logos/snagajob.svg",
     "logoSourceKind": "generated-fallback",
@@ -16178,8 +16178,8 @@
       "oauth"
     ],
     "listingSource": {
-      "kind": "publisher",
-      "url": "https://descrybe.com/user-guide/claude-connector"
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/descrybe"
     },
     "directoryListings": [
       {
@@ -16197,7 +16197,7 @@
     ],
     "caveats": [
       "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
-      "Descrybe's page describes the connector but does not state the endpoint URL; the URL comes from the Claude directory entry."
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Descrybe's page (https://descrybe.com/user-guide/claude-connector) describes the connector but does not state the endpoint URL."
     ],
     "logoUrl": "/server-logos/descrybe.svg",
     "logoSourceKind": "generated-fallback",
@@ -16290,8 +16290,8 @@
       "oauth"
     ],
     "listingSource": {
-      "kind": "publisher",
-      "url": "https://news.constantcontact.com/2026-09-10-Constant-Contact-Launches-in-Claude-to-Power-AI-Driven-Marketing"
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/constant-contact"
     },
     "directoryListings": [
       {
@@ -16310,7 +16310,7 @@
     "exactEndpointOnly": true,
     "caveats": [
       "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
-      "Constant Contact's page describes the connector but does not state the endpoint URL; the URL comes from the Claude directory entry."
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Constant Contact's page (https://news.constantcontact.com/2026-09-10-Constant-Contact-Launches-in-Claude-to-Power-AI-Driven-Marketing) describes the connector but does not state the endpoint URL."
     ],
     "logoUrl": "/server-logos/constant-contact.svg",
     "logoSourceKind": "generated-fallback",
@@ -16367,8 +16367,8 @@
       "no-auth"
     ],
     "listingSource": {
-      "kind": "publisher",
-      "url": "https://squareup.com/us/en/press/claude-chatgpt-integrations"
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/cash-app"
     },
     "directoryListings": [
       {
@@ -16383,7 +16383,7 @@
     "authType": "none",
     "exactEndpointOnly": true,
     "caveats": [
-      "Square's page describes the connector but does not state the endpoint URL; the URL comes from the Claude directory entry."
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Square's page (https://squareup.com/us/en/press/claude-chatgpt-integrations) describes the connector but does not state the endpoint URL."
     ],
     "logoUrl": "/server-logos/cash-app-ordering.svg",
     "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/cashapp.svg",
@@ -16407,8 +16407,8 @@
       "oauth"
     ],
     "listingSource": {
-      "kind": "publisher",
-      "url": "https://docs.athenahq.ai/guides/settings-api"
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/athenahq"
     },
     "directoryListings": [
       {
@@ -16427,7 +16427,7 @@
     "exactEndpointOnly": true,
     "caveats": [
       "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
-      "AthenaHQ's page describes the connector but does not state the endpoint URL; the URL comes from the Claude directory entry."
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. AthenaHQ's page (https://docs.athenahq.ai/guides/settings-api) describes the connector but does not state the endpoint URL."
     ],
     "logoUrl": "/server-logos/athenahq.svg",
     "logoSourceKind": "generated-fallback",
@@ -16537,8 +16537,8 @@
       "no-auth"
     ],
     "listingSource": {
-      "kind": "publisher",
-      "url": "https://www.taskrabbit.com/blog/whats-new-this-summer-built-for-you/"
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/taskrabbit"
     },
     "directoryListings": [
       {
@@ -16552,7 +16552,7 @@
     "requiresOAuth": false,
     "authType": "none",
     "caveats": [
-      "Taskrabbit's page describes the connector but does not state the endpoint URL; the URL comes from the Claude directory entry."
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Taskrabbit's page (https://www.taskrabbit.com/blog/whats-new-this-summer-built-for-you/) describes the connector but does not state the endpoint URL."
     ],
     "logoUrl": "/server-logos/taskrabbit.svg",
     "logoSourceKind": "generated-fallback",
@@ -16619,8 +16619,8 @@
       "no-auth"
     ],
     "listingSource": {
-      "kind": "publisher",
-      "url": "https://www.pophive.org/ai-access"
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/pophive"
     },
     "directoryListings": [
       {
@@ -16634,7 +16634,7 @@
     "requiresOAuth": false,
     "authType": "none",
     "caveats": [
-      "PopHIVE's page describes the connector but does not state the endpoint URL; the URL comes from the Claude directory entry."
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. PopHIVE's page (https://www.pophive.org/ai-access) describes the connector but does not state the endpoint URL."
     ],
     "logoUrl": "/server-logos/pophive.svg",
     "logoSourceKind": "generated-fallback",
@@ -16940,8 +16940,8 @@
       "no-auth"
     ],
     "listingSource": {
-      "kind": "publisher",
-      "url": "https://www.civitatis.com/blog/en/chatgpt-civitatis/"
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/civitatis"
     },
     "directoryListings": [
       {
@@ -16956,7 +16956,7 @@
     "authType": "none",
     "caveats": [
       "The endpoint is on a Claude-specific host (civitatis-claude-app.civitatis.com); no neutral Civitatis MCP host resolves.",
-      "Civitatis's page describes the connector but does not state the endpoint URL; the URL comes from the Claude directory entry."
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Civitatis's page (https://www.civitatis.com/blog/en/chatgpt-civitatis/) describes the connector but does not state the endpoint URL."
     ],
     "logoUrl": "/server-logos/civitatis.svg",
     "logoSourceKind": "generated-fallback",
@@ -16979,8 +16979,8 @@
       "oauth"
     ],
     "listingSource": {
-      "kind": "publisher",
-      "url": "https://developer.accor.com/blog/all-accor-mcp-connector"
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/all-accor"
     },
     "directoryListings": [
       {
@@ -17000,7 +17000,7 @@
     "caveats": [
       "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
       "The server identifies itself as accor-offer-server-anthropic, so this endpoint may be specific to Claude.",
-      "Accor's page describes the connector but does not state the endpoint URL; the URL comes from the Claude directory entry."
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Accor's page (https://developer.accor.com/blog/all-accor-mcp-connector) describes the connector but does not state the endpoint URL."
     ],
     "logoUrl": "/server-logos/all-accor.svg",
     "logoSourceKind": "generated-fallback",
@@ -17064,8 +17064,8 @@
       "no-auth"
     ],
     "listingSource": {
-      "kind": "publisher",
-      "url": "https://www.aiwyn.ai/resources/articles/aiwyn-claude-helping-firms-navigate-the-ai-future-of-tax/"
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/aiwyn-tax"
     },
     "directoryListings": [
       {
@@ -17079,7 +17079,7 @@
     "requiresOAuth": false,
     "authType": "none",
     "caveats": [
-      "Aiwyn's page describes the connector but does not state the endpoint URL; the URL comes from the Claude directory entry."
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. Aiwyn's page (https://www.aiwyn.ai/resources/articles/aiwyn-claude-helping-firms-navigate-the-ai-future-of-tax/) describes the connector but does not state the endpoint URL."
     ],
     "logoUrl": "/server-logos/aiwyn-tax.svg",
     "logoSourceKind": "generated-fallback",

@@ -16137,10 +16137,11 @@
     "requiresOAuth": false,
     "authType": "none",
     "exactEndpointOnly": true,
-    "logoUrl": "/server-logos/tomorrow-io.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/tomorrow-io.png",
+    "logoSourceUrl": "https://www.tomorrow.io/wp-content/uploads/2023/01/cropped-tm-favicon-new-1-2-192x192.png",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Locally generated TI monogram; it is not an official Tomorrow.io Weather mark.",
+    "logoLicenseNote": "Official Tomorrow.io site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.tomorrow.io"
   },
   {
@@ -16180,10 +16181,11 @@
     "caveats": [
       "The ChatGPT directory entry does not publish its server URL, so that listing is matched by name."
     ],
-    "logoUrl": "/server-logos/blockscout.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/blockscout.png",
+    "logoSourceUrl": "https://www.blockscout.com/favicon/android-chrome-192x192.png",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Locally generated BL monogram; it is not an official Blockscout mark.",
+    "logoLicenseNote": "Official Blockscout site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.blockscout.com",
     "sourceUrl": "https://github.com/blockscout/mcp-server"
   },
@@ -16330,10 +16332,11 @@
     "requiresOAuth": false,
     "authType": "none",
     "exactEndpointOnly": true,
-    "logoUrl": "/server-logos/courtroom5.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/courtroom5.png",
+    "logoSourceUrl": "https://bnycdn.courtroom5.com/wp-content/uploads/2023/01/cropped-Courtroom5-avatar-192x192.png",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Locally generated CO monogram; it is not an official Courtroom5 mark.",
+    "logoLicenseNote": "Official Courtroom5 site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://courtroom5.com"
   },
   {
@@ -16457,7 +16460,7 @@
     "id": "athenahq",
     "name": "AthenaHQ",
     "url": "https://api.athenahq.ai/api/mcp",
-    "description": "Reads AthenaHQ AI search visibility data: tracked prompts, AI responses, citations, competitors and content. Tools list without credentials; reading workspace data needs an AthenaHQ sign-in.",
+    "description": "Reads and manages AthenaHQ AI search visibility: tracked prompts, AI responses, citations, competitor and share-of-voice metrics, plus content drafting and publishing, site health audits and outreach. Tools list without credentials; workspace data needs an AthenaHQ sign-in.",
     "category": "Analytics",
     "tags": [
       "official",
@@ -16491,9 +16494,10 @@
       "The publisher does not document this endpoint; the listing source is the Claude directory entry. AthenaHQ's page (https://docs.athenahq.ai/guides/settings-api) describes the connector but does not state the endpoint URL."
     ],
     "logoUrl": "/server-logos/athenahq.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoSourceUrl": "https://athenahq.ai/favicon.svg",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Locally generated AT monogram; it is not an official AthenaHQ mark.",
+    "logoLicenseNote": "Official AthenaHQ site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.athenahq.ai"
   },
   {
@@ -16732,9 +16736,10 @@
     "requiresOAuth": false,
     "authType": "none",
     "logoUrl": "/server-logos/usafacts.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoSourceUrl": "https://usafacts.org/safari-pinned-tab.svg",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Locally generated UG monogram; it is not an official USAFacts Government Data mark.",
+    "logoLicenseNote": "Official USAFacts site mask icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://usafacts.org"
   },
   {
@@ -16807,9 +16812,10 @@
       "The ChatGPT app uses the undocumented https://mcp.parallel.ai/mcp/chatgpt variant, which adds a web_research tool; the catalog lists the documented neutral endpoint."
     ],
     "logoUrl": "/server-logos/parallel.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoSourceUrl": "https://parallel.ai/icon.svg?icon.1d0de8d5.svg",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Locally generated PA monogram; it is not an official Parallel mark.",
+    "logoLicenseNote": "Official Parallel site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://parallel.ai"
   },
   {
@@ -16934,10 +16940,11 @@
       "Shopify's Shop MCP docs (https://shopify.dev/docs/apps/build/shop-mcp) cover a different endpoint, https://shop.app/mcp, which serves a single search tool; this richer server on mcp.shop.com is listed only in the Claude directory.",
       "Speaks only MCP protocol version 2026-07-28; clients that offer an older version get an \"Unsupported protocol version\" error."
     ],
-    "logoUrl": "/server-logos/shop.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/shop.png",
+    "logoSourceUrl": "https://shop.app/icon-128.png",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Locally generated SH monogram; it is not an official Shop mark.",
+    "logoLicenseNote": "Official Shop site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://shop.app"
   },
   {
@@ -17019,10 +17026,11 @@
       "The endpoint is on a Claude-specific host (civitatis-claude-app.civitatis.com); no neutral Civitatis MCP host resolves.",
       "The publisher does not document this endpoint; the listing source is the Claude directory entry. Civitatis's page (https://www.civitatis.com/blog/en/chatgpt-civitatis/) describes the connector but does not state the endpoint URL."
     ],
-    "logoUrl": "/server-logos/civitatis.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/civitatis.png",
+    "logoSourceUrl": "https://www.civitatis.com/favicon.png",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Locally generated CI monogram; it is not an official Civitatis mark.",
+    "logoLicenseNote": "Official Civitatis site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.civitatis.com"
   },
   {
@@ -17366,10 +17374,11 @@
       "The publisher does not document this endpoint; the listing source is the Claude directory entry.",
       "A separate server from Ramp's account MCP server (https://mcp.ramp.com/mcp, catalog id ramp), which needs a Ramp sign-in."
     ],
-    "logoUrl": "/server-logos/ramp-data.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/ramp-data.png",
+    "logoSourceUrl": "https://ramp.com/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Locally generated RD monogram; it is not an official Ramp mark.",
+    "logoLicenseNote": "Official Ramp site icon (same asset as the Ramp entry); trademark rights remain with the publisher.",
     "homepageUrl": "https://ramp.com"
   },
   {
@@ -17450,9 +17459,10 @@
       "The endpoint is on a Claude-specific host (mcp-claude.configure.dev). mcp.configure.dev/mcp is a different, larger Configure server (nine tools, including connect and project sharing), and mcp-chatgpt.configure.dev/mcp is the ChatGPT variant with differently named tools, so neither is the same server."
     ],
     "logoUrl": "/server-logos/configure-memory.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoSourceUrl": "https://configure.dev/favicon.svg",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Locally generated CM monogram; it is not an official Configure mark.",
+    "logoLicenseNote": "Official Configure site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://configure.dev"
   },
   {
@@ -17875,7 +17885,7 @@
     "id": "infinitewatch",
     "name": "InfiniteWatch",
     "url": "https://mcp.infinitewatch.ai/mcp",
-    "description": "Asks InfiniteWatch questions about customer interactions across voice, chat and web sessions: insights, examples, trends, channel comparisons, issue diagnosis and summaries of single interactions. Tool calls need a InfiniteWatch sign-in (OAuth).",
+    "description": "Asks InfiniteWatch questions about customer interactions across voice, chat and web sessions: insights, examples, trends, channel comparisons, issue diagnosis and summaries of single interactions. Tool calls need an InfiniteWatch sign-in (OAuth).",
     "category": "Analytics",
     "tags": [
       "official",
@@ -18031,10 +18041,11 @@
     "caveats": [
       "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in."
     ],
-    "logoUrl": "/server-logos/airfield-directory.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/airfield-directory.png",
+    "logoSourceUrl": "https://cdn.airfield.directory/assets/favicons/favicon-512-28526a74.png",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Locally generated AD monogram; it is not an official Airfield Directory mark.",
+    "logoLicenseNote": "Official Airfield Directory site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://airfield.directory"
   },
   {
@@ -18277,10 +18288,11 @@
     "caveats": [
       "tools/list and tool calls answer without credentials; the server also publishes OAuth protected-resource metadata, and GleanMark documents an optional OAuth sign-in or API key for account features."
     ],
-    "logoUrl": "/server-logos/gleanmark.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/gleanmark.png",
+    "logoSourceUrl": "https://gleanmark.com/apple-touch-icon.png?v=2",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Locally generated GM monogram; it is not an official GleanMark mark.",
+    "logoLicenseNote": "Official GleanMark site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://gleanmark.com"
   },
   {

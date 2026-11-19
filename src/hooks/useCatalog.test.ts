@@ -179,10 +179,14 @@ describe('catalog query params', () => {
     expect(view.catalog.filteredServers.map(({ name }) => name)).toEqual([
       'Aiwyn Tax',
       'Blockscout',
+      'Clarity AI SFDR 2.0',
       'CoinGecko',
       'CoinGecko (MCP app)',
       'EOR Scope',
       'Gemini',
+      'Ramp Data',
+      'Ratehub Mortgage',
+      'TaxAct',
       'Yahoo Finance',
     ]);
     expect(view.location.pathname).toBe('/catalog/finance');

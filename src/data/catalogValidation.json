@@ -5161,6 +5161,406 @@
     ]
   },
   {
+    "serverId": "mermaid-chart",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-19T12:19:29.762Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://chatgpt.mermaid.ai/anthropic/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://chatgpt.mermaid.ai/anthropic/mcp",
+    "protocolVersion": "2026-07-28"
+  },
+  {
+    "serverId": "tripadvisor",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:26:01.180Z",
+    "message": "Negotiated stateful MCP 2025-06-18 at https://production.ai-mcp-extensibility-prd.tamg.cloud/ogMvjY4De1G7CiHanMOAgddl/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://production.ai-mcp-extensibility-prd.tamg.cloud/ogMvjY4De1G7CiHanMOAgddl/mcp",
+    "protocolVersion": "2025-06-18"
+  },
+  {
+    "serverId": "accuweather",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:19:34.096Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.accuweather.com/v0/mcp/claude?tracker=zpka_3910761e56034838a2ae05115b4d6c6e_bea35363; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://mcp.accuweather.com/v0/mcp/claude?tracker=zpka_3910761e56034838a2ae05115b4d6c6e_bea35363",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "ramp-data",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-19T12:19:36.373Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://mcp.ramp.com/ramp-data/anthropic/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://mcp.ramp.com/ramp-data/anthropic/mcp",
+    "protocolVersion": "2026-07-28",
+    "authorizationServers": [
+      "https://mcp.ramp.com"
+    ]
+  },
+  {
+    "serverId": "slicktrip",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:19:41.796Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.slicktrip.com/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://mcp.slicktrip.com/mcp",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://mcp.slicktrip.com"
+    ]
+  },
+  {
+    "serverId": "configure-memory",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:19:45.636Z",
+    "message": "Negotiated stateful MCP 2025-06-18 at https://mcp-claude.configure.dev/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://mcp-claude.configure.dev/mcp",
+    "protocolVersion": "2025-06-18",
+    "authorizationServers": [
+      "https://mcp-claude.configure.dev"
+    ]
+  },
+  {
+    "serverId": "clarity-ai-sfdr",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:19:47.235Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://clarity-sfdr20-mcp.pro.clarity.ai/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://clarity-sfdr20-mcp.pro.clarity.ai/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "taxact",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:19:49.555Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.taxact.com/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://mcp.taxact.com/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "vuetify",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:19:51.108Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.vuetifyjs.com/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://mcp.vuetifyjs.com/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "kindora",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:19:55.652Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.kindora.co/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://mcp.kindora.co/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "mastercard-developers",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:19:59.682Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://developer.mcp.mastercard.com/; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://developer.mcp.mastercard.com/",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "contract-factory",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:20:01.441Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://www.contract-factory.com/mcp.php; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://www.contract-factory.com/mcp.php",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "lacuna-research",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-19T12:20:02.861Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://lacuna.tiptreesystems.com/api/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://lacuna.tiptreesystems.com/api/mcp",
+    "protocolVersion": "2026-07-28"
+  },
+  {
+    "serverId": "fourthwall",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:20:06.894Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.fourthwall.com/app; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://mcp.fourthwall.com/app",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://mcp.fourthwall.com/"
+    ]
+  },
+  {
+    "serverId": "docfarm",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:20:08.486Z",
+    "message": "Negotiated stateful MCP 2025-06-18 at https://mcp.doc.farm/; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://mcp.doc.farm/",
+    "protocolVersion": "2025-06-18",
+    "authorizationServers": [
+      "https://mcp.doc.farm"
+    ]
+  },
+  {
+    "serverId": "onchaindiligence",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:20:11.211Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.onchaindiligence.com/public/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://mcp.onchaindiligence.com/public/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "pga-play-golf",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:20:14.331Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.pga.com/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://mcp.pga.com/mcp",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://auth0.pga.com/"
+    ]
+  },
+  {
+    "serverId": "infinitewatch",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:20:15.754Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.infinitewatch.ai/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://mcp.infinitewatch.ai/mcp",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://mcp.infinitewatch.ai/oauth",
+      "https://mcp-platform.infinitewatch.ai/pap/infinitewatch-platform"
+    ]
+  },
+  {
+    "serverId": "insight-timer",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:20:18.610Z",
+    "message": "Negotiated stateful MCP 2025-06-18 at https://claude-connector-api.insighttimer-api.net/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://claude-connector-api.insighttimer-api.net/mcp",
+    "protocolVersion": "2025-06-18"
+  },
+  {
+    "serverId": "vistaprint",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-19T12:20:21.279Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://claude.mcp-pod.es.vpsvc.com/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://claude.mcp-pod.es.vpsvc.com/mcp",
+    "protocolVersion": "2026-07-28",
+    "authorizationServers": [
+      "https://claude.mcp-pod.es.vpsvc.com"
+    ]
+  },
+  {
+    "serverId": "airfield-directory",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-19T12:20:22.638Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://airfield.directory/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://airfield.directory/mcp",
+    "protocolVersion": "2026-07-28",
+    "authorizationServers": [
+      "https://airfield.directory"
+    ]
+  },
+  {
+    "serverId": "infobip-docs",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:20:23.673Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.infobip.com/search; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://mcp.infobip.com/search",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "military-veteran-family-assistant",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:20:25.947Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://milfam.mcp.claude.com/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://milfam.mcp.claude.com/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "tseha",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-19T12:20:28.430Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://tseha.io/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://tseha.io/mcp",
+    "protocolVersion": "2026-07-28",
+    "authorizationServers": [
+      "https://tseha.io"
+    ]
+  },
+  {
+    "serverId": "clutch",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:20:31.085Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://bot.clutch.co/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://bot.clutch.co/mcp",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://account.clutch.co/"
+    ]
+  },
+  {
+    "serverId": "lightbringer",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-19T12:20:32.598Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://mcp.lightbringer.com/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://mcp.lightbringer.com/mcp",
+    "protocolVersion": "2026-07-28",
+    "authorizationServers": [
+      "https://app.lightbringer.com"
+    ]
+  },
+  {
+    "serverId": "gleanmark",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-19T12:20:34.869Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://gleanmark.com/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://gleanmark.com/mcp",
+    "protocolVersion": "2026-07-28",
+    "authorizationServers": [
+      "https://gleanmark.com/"
+    ]
+  },
+  {
+    "serverId": "ratehub-mortgage",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:20:38.172Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://api.ratehub.ca/claude-app/mortgages/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://api.ratehub.ca/claude-app/mortgages/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "paybooc",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:20:45.554Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://open.paybooc.co.kr/pybc/api/mcp/shopping/claude; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://open.paybooc.co.kr/pybc/api/mcp/shopping/claude",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "bitdefender",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T12:20:49.245Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://60697-bitdefender.adobeio-static.net/api/v1/web/llm-apps/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://60697-bitdefender.adobeio-static.net/api/v1/web/llm-apps/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
     "serverId": "i-gaming",
     "status": "online",
     "transport": "streamable-http",

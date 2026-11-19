@@ -4700,5 +4700,17 @@
     "message": "Negotiated stateful MCP 2025-03-26 at https://agenttools.wolfram.com/mcp; detected transport streamable-http; authentication none",
     "validatedUrl": "https://agenttools.wolfram.com/mcp",
     "protocolVersion": "2025-03-26"
+  },
+  {
+    "serverId": "i-gaming",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-19T10:37:49.853Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.i-gaming.tools/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://mcp.i-gaming.tools/mcp",
+    "protocolVersion": "2025-11-25"
   }
 ]

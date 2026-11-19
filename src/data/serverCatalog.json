@@ -12187,10 +12187,10 @@
     "requiresOAuth": false,
     "authType": "none",
     "exactEndpointOnly": true,
-    "logoUrl": "/server-logos/mailtester.png",
-    "logoSourceUrl": "https://app.mailtester.com/apple-touch-icon.png",
+    "logoUrl": "/server-logos/mailtester.svg",
+    "logoSourceUrl": "https://mailtester.com/icon.svg?icon.3fskdxj7gfd0g.svg",
     "logoSourceKind": "official-site",
-    "logoRetrievedAt": "2026-11-18",
+    "logoRetrievedAt": "2026-11-19",
     "logoLicenseNote": "Official MailTester site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://app.mailtester.com/agent-gateway",
     "registryName": "com.mailtester/email-verification",
@@ -14635,9 +14635,10 @@
     "requiresOAuth": false,
     "authType": "none",
     "logoUrl": "/server-logos/clinical-trials.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-18",
-    "logoLicenseNote": "Locally generated CT monogram; it is not an official Clinical Trials mark.",
+    "logoSourceUrl": "https://clinicaltrials.gov/assets/favicons/favicon.svg?v=2",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Official ClinicalTrials.gov site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://clinicaltrials.gov",
     "sourceUrl": "https://github.com/anthropics/healthcare"
   },
@@ -14705,9 +14706,10 @@
     "requiresOAuth": false,
     "authType": "none",
     "logoUrl": "/server-logos/chembl.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-18",
-    "logoLicenseNote": "Locally generated CH monogram; it is not an official ChEMBL mark.",
+    "logoSourceUrl": "https://www.ebi.ac.uk/chembl/_nuxt/img/logo_color.a4732fe.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Official ChEMBL site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.ebi.ac.uk/chembl/",
     "sourceUrl": "https://github.com/anthropics/knowledge-work-plugins/blob/main/bio-research/.mcp.json"
   },
@@ -14777,10 +14779,11 @@
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
-    "logoUrl": "/server-logos/npi-registry.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-18",
-    "logoLicenseNote": "Locally generated NR monogram; it is not an official NPI Registry mark.",
+    "logoUrl": "/server-logos/npi-registry.png",
+    "logoSourceUrl": "https://design.cms.gov/icons/icon-512x512.png?v=90c79d265d380cf1bd725916c380e297",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Official CMS site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://npiregistry.cms.hhs.gov",
     "sourceUrl": "https://github.com/anthropics/healthcare"
   },
@@ -14882,10 +14885,11 @@
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
-    "logoUrl": "/server-logos/cms-coverage.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-18",
-    "logoLicenseNote": "Locally generated CC monogram; it is not an official CMS Coverage mark.",
+    "logoUrl": "/server-logos/cms-coverage.png",
+    "logoSourceUrl": "https://design.cms.gov/icons/icon-512x512.png?v=90c79d265d380cf1bd725916c380e297",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Official CMS site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.cms.gov/medicare-coverage-database/",
     "sourceUrl": "https://github.com/anthropics/healthcare"
   },
@@ -15096,10 +15100,11 @@
       "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
       "Gemini documents only a self-hosted MCP server; this hosted endpoint's listing source is the Claude directory entry."
     ],
-    "logoUrl": "/server-logos/gemini-exchange.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-18",
-    "logoLicenseNote": "Locally generated GE monogram; it is not an official Gemini mark.",
+    "logoUrl": "/server-logos/gemini-exchange.png",
+    "logoSourceUrl": "https://www.gemini.com/apple-touch-icon.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Official Gemini site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.gemini.com"
   },
   {
@@ -15130,10 +15135,11 @@
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
-    "logoUrl": "/server-logos/open-targets.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-18",
-    "logoLicenseNote": "Locally generated OT monogram; it is not an official Open Targets mark.",
+    "logoUrl": "/server-logos/open-targets.png",
+    "logoSourceUrl": "https://avatars.githubusercontent.com/u/8728108?s=256&v=4",
+    "logoSourceKind": "publisher-repository",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Open Targets GitHub organization avatar from the verified opentargets organization; trademark rights remain with the publisher.",
     "homepageUrl": "https://platform.opentargets.org",
     "sourceUrl": "https://github.com/opentargets/open-targets-platform-mcp"
   },
@@ -15395,10 +15401,11 @@
       "Only the Claude-specific host is listed; no neutral endpoint was found (mcp.goodnotes.com does not resolve and chatgpt-mcp-api.ml.goodnotes.com is client-specific too).",
       "Goodnotes documents the connector only through client directories; the listing source is the Claude directory entry."
     ],
-    "logoUrl": "/server-logos/goodnotes.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-18",
-    "logoLicenseNote": "Locally generated GO monogram; it is not an official Goodnotes mark.",
+    "logoUrl": "/server-logos/goodnotes.png",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/6978a92a56d24460cdf7442e/69ddf4810777de072d94b23f_68dff59f6dde021933bb00b3_Goodnotes-icon-256.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Official Goodnotes site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.goodnotes.com"
   },
   {
@@ -15439,10 +15446,11 @@
     "caveats": [
       "SlidesGPT's docs and the Claude directory name only https://claude.slidesgpt.com/mcp. The neutral https://mcp.slidesgpt.com/mcp is listed here because it answered with the same server and tools on 2026-11-19, but SlidesGPT does not document it."
     ],
-    "logoUrl": "/server-logos/slidesgpt.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-18",
-    "logoLicenseNote": "Locally generated SL monogram; it is not an official SlidesGPT mark.",
+    "logoUrl": "/server-logos/slidesgpt.png",
+    "logoSourceUrl": "https://slidesgpt.com/web-app-manifest-512x512.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Official SlidesGPT site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://slidesgpt.com"
   },
   {
@@ -15473,10 +15481,11 @@
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
-    "logoUrl": "/server-logos/dice.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-18",
-    "logoLicenseNote": "Locally generated DI monogram; it is not an official Dice mark.",
+    "logoUrl": "/server-logos/dice.png",
+    "logoSourceUrl": "https://www.dice.com/webfiles/1770241131432/favicon/dice/favicon-194x194.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Official Dice site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.dice.com"
   },
   {
@@ -15591,10 +15600,11 @@
     "caveats": [
       "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in."
     ],
-    "logoUrl": "/server-logos/articulate.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-18",
-    "logoLicenseNote": "Locally generated AR monogram; it is not an official Articulate mark.",
+    "logoUrl": "/server-logos/articulate.png",
+    "logoSourceUrl": "https://id.articulate.com/favicons/apple-icon-180x180.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Official Articulate site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.articulate.com"
   },
   {
@@ -15668,10 +15678,11 @@
     "caveats": [
       "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in."
     ],
-    "logoUrl": "/server-logos/deel.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-18",
-    "logoLicenseNote": "Locally generated DE monogram; it is not an official Deel mark.",
+    "logoUrl": "/server-logos/deel.png",
+    "logoSourceUrl": "https://app.deel.com/static/icons/android-chrome-512x512.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Official Deel site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.deel.com"
   },
   {

@@ -211,11 +211,11 @@ describe('catalog logo asset validation', () => {
   });
 
   it.each([
-    'ahrefs', 'apify', 'attio', 'braze', 'bright-data', 'builder-cms', 'common-room', 'courier',
-    'customer-io', 'etherscan', 'exa', 'financial-datasets', 'firecrawl', 'fullstory', 'gamma',
-    'globalping', 'gong', 'hex', 'kernel', 'mux', 'openai-docs', 'parallel-search',
-    'parallel-task', 'pendo', 'port', 'productboard', 'ref', 'salesql', 'statsig', 'tapcart',
-    'tavily', 'teamhood', 'upcoach', 'you-com', 'zuplo-docs',
+    'ahrefs', 'apify', 'attio', 'braze', 'bright-data', 'builder-cms', 'chembl', 'clinical-trials',
+    'common-room', 'courier', 'customer-io', 'etherscan', 'exa', 'financial-datasets', 'firecrawl',
+    'fullstory', 'gamma', 'globalping', 'gong', 'hex', 'kernel', 'mailtester', 'mux', 'openai-docs',
+    'parallel-search', 'parallel-task', 'pendo', 'port', 'productboard', 'ref', 'salesql', 'statsig',
+    'tapcart', 'tavily', 'teamhood', 'upcoach', 'you-com', 'zuplo-docs',
   ])(
     'gives the replaced %s logo a root viewBox so it scales to its display box',
     id => {

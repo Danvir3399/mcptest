@@ -17915,11 +17915,10 @@
     "caveats": [
       "Only the tool list is public: tools/list answers without credentials, but tool calls return 401 until the user signs in to InfiniteWatch with OAuth (the server publishes OAuth protected-resource metadata)."
     ],
-    "logoUrl": "/server-logos/infinitewatch.png",
-    "logoSourceUrl": "https://infinitewatch.ai/apple-icon.png",
-    "logoSourceKind": "official-site",
+    "logoUrl": "/server-logos/infinitewatch.svg",
+    "logoSourceKind": "generated-fallback",
     "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Official InfiniteWatch site icon; trademark rights remain with the publisher.",
+    "logoLicenseNote": "Locally generated IW monogram; it is not an official InfiniteWatch mark.",
     "homepageUrl": "https://infinitewatch.ai"
   },
   {

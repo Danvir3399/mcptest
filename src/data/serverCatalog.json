@@ -18398,5 +18398,30 @@
     "logoRetrievedAt": "2026-11-19",
     "logoLicenseNote": "Bitdefender mark from Simple Icons version 16.38.0; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.bitdefender.com"
+  },
+  {
+    "id": "i-gaming",
+    "name": "iGaming Tools",
+    "url": "https://mcp.i-gaming.tools/mcp",
+    "browserAccess": "proxy-required",
+    "description": "Read-only data on the online gambling industry: slot game specs captured from official demos (RTP variants, paytables, symbols), game providers, regulators and their news, industry jobs, search demand by country. 17 tools, no auth.",
+    "category": "Reference",
+    "tags": [
+      "reference",
+      "community-submission",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "community-submission",
+      "url": "https://i-gaming.tools/"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/i-gaming.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated IT monogram for a community submission; it is not an official iGaming Tools mark.",
+    "homepageUrl": "https://i-gaming.tools/"
   }
 ]

@@ -5,8 +5,9 @@ import { getContentPage, getLearnArticleFromPath, loadLearnArticleBody } from '.
 import { parseResultShareUrl, parseServerUrl } from '../utils/urlUtils';
 import { getPrerenderedArticle } from '../content/prerenderedArticle';
 import { markdownLearnArticle } from '../components/learn/deferredMarkdownArticle';
-import { OAUTH_CHECKER_PATH, DISCOVERY_CHECKER_PATH, MCP_TEST_SERVERS_PATH, MCP_TEST_CLIENT_PATH, isKeywordLandingPath, isKnownAppPath } from '../utils/appRoutes';
+import { OAUTH_CHECKER_PATH, DISCOVERY_CHECKER_PATH, MCP_TEST_SERVERS_PATH, MCP_TEST_CLIENT_PATH, SERVICE_PAGE_PATH, isKeywordLandingPath, isKnownAppPath } from '../utils/appRoutes';
 import { BREAKING_CHANGES_TOOL_PATH } from '../utils/breakingChangesRoute';
+import { APP_ROUTE_OPTIONS } from '../servicePage/buildFlag';
 
 /*
  * Route-level code splitting. Each view below is its own chunk (plus the
@@ -25,6 +26,7 @@ const oauthChecker = createDeferredComponent(() => import('../components/OAuthCh
 const discovery = createDeferredComponent(() => import('../components/DiscoveryCheckerView'));
 const testServers = createDeferredComponent(() => import('../components/McpTestServersView'));
 const testClient = createDeferredComponent(() => import('../components/McpTestClientView'));
+const servicePage = createDeferredComponent(() => import('../components/ServicePageView'));
 const keywordLanding = createDeferredComponent(() => import('../components/KeywordLandingView'));
 const article = createDeferredComponent(() => import('../components/learn/LearnArticlePage'));
 const oauthCallback = createDeferredComponent(() => import('../components/OAuthCallback'));
@@ -47,6 +49,7 @@ export const OAuthCheckerView = oauthChecker.Component;
 export const DiscoveryCheckerView = discovery.Component;
 export const McpTestServersView = testServers.Component;
 export const McpTestClientView = testClient.Component;
+export const ServicePageView = servicePage.Component;
 export const KeywordLandingView = keywordLanding.Component;
 export const LearnArticlePage = article.Component;
 export const OAuthCallback = oauthCallback.Component;
@@ -72,6 +75,7 @@ export type RouteView =
   | 'oauth-check'
   | 'mcp-test-servers'
   | 'mcp-test-client'
+  | 'service-page'
   | 'article'
   | 'oauth-callback'
   | 'catalog'
@@ -83,7 +87,8 @@ export type RouteView =
 /** The view a path renders first, mirroring App's activeView derivation. */
 export const getRouteView = (pathname: string, search = ''): RouteView => {
   if (pathname === '/oauth/callback') return 'oauth-callback';
-  if (!isKnownAppPath(pathname)) return 'not-found';
+  if (!isKnownAppPath(pathname, APP_ROUTE_OPTIONS)) return 'not-found';
+  if (pathname === SERVICE_PAGE_PATH) return 'service-page';
   if (pathname === '/submit') return 'submit';
   if (pathname === BREAKING_CHANGES_TOOL_PATH) return 'breaking-changes';
   if (pathname === OAUTH_CHECKER_PATH) return 'oauth-check';
@@ -135,6 +140,9 @@ export const preloadViewsForPath = (pathname: string, search = ''): Promise<void
       break;
     case 'mcp-test-client':
       loads.push(testClient.preload(), highlighter());
+      break;
+    case 'service-page':
+      loads.push(servicePage.preload());
       break;
     case 'discovery':
       loads.push(discovery.preload());

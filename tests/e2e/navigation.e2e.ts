@@ -42,8 +42,8 @@ test.describe('sidebar navigation', () => {
 
   test('docks a slim sidebar and switches to the drawer below 1180px', async ({ page }) => {
     await page.goto('/tools/discovery');
-    // The static shell has its own .desktop-sidebar, which the mount replaces;
-    // measuring it mid-swap returns a null box.
+    // Measure the mounted sidebar: a handle resolved inside the static shell
+    // detaches when the app replaces it, and its bounding box comes back null.
     await expect(page.locator('.seo-shell-fallback')).toHaveCount(0);
     for (const width of [1920, 1440, 1280, 1180]) {
       await page.setViewportSize({ width, height: 900 });

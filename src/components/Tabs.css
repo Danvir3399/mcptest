@@ -211,11 +211,11 @@
   z-index: 1050;
   width: min(26rem, calc(100vw - 4rem));
   padding: .5rem;
-  /* Floating chrome: real glass above the workspace (docs/design-language.md). */
-  background: var(--glass-float-bg);
-  -webkit-backdrop-filter: var(--glass-float-filter);
-  backdrop-filter: var(--glass-float-filter);
-  border: 1px solid var(--glass-float-border);
+  /* Opaque, not glass: the popover drops straight over the connection
+     summary, and its text showing through read as a rendering glitch
+     (docs/design-language.md). */
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-float);
 }

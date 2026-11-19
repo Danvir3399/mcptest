@@ -156,5 +156,6 @@ describe('prerendered server tool inventory', () => {
       ).toBe(true);
       expect(() => structuredData(html), server.id).not.toThrow();
     }
-  });
+    // Renders every catalog page, so its cost grows with each import batch.
+  }, 30_000);
 });

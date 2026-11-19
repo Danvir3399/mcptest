@@ -249,6 +249,29 @@ function formatDisplayTimestamp(value) {
   return `${date} at ${time}`;
 }
 
+let mergedCatalogCache = null;
+
+/**
+ * The seed catalog merged with validation results, read from disk. Server
+ * pages each need it for their next-steps links, so it is parsed and merged
+ * once (re-read only when either file changes) instead of once per page.
+ */
+function loadMergedCatalogFromDisk() {
+  const stamp = [catalogPath, validationPath]
+    .map(file => { const { mtimeMs, size } = fs.statSync(file); return `${mtimeMs}:${size}`; })
+    .join('|');
+  if (mergedCatalogCache?.stamp !== stamp) {
+    mergedCatalogCache = {
+      stamp,
+      servers: mergeCatalogServers(
+        JSON.parse(fs.readFileSync(catalogPath, 'utf8')),
+        JSON.parse(fs.readFileSync(validationPath, 'utf8'))
+      ),
+    };
+  }
+  return mergedCatalogCache.servers;
+}
+
 function validationStatusLabel(server) {
   if (server.status === 'online') return 'Online when last tested';
   if (server.status === 'offline') return 'Offline when last tested';
@@ -485,7 +508,7 @@ function renderServerFallback(server) {
     '  </div></section>',
     renderAuthorizationSetup(server),
     renderServerConnect(server),
-    renderServerNextSteps(server, mergeCatalogServers(JSON.parse(fs.readFileSync(catalogPath, 'utf8')), JSON.parse(fs.readFileSync(validationPath, 'utf8')))),
+    renderServerNextSteps(server, loadMergedCatalogFromDisk()),
     '  <section class="card server-profile-section"><div class="card-body">',
     '    <section class="badge-embed" aria-labelledby="server-badge-embed-title">',
     '      <div class="badge-embed-heading">',

@@ -4603,9 +4603,9 @@
     "authType": "none",
     "requiresOAuth": false,
     "protocolEra": "stateful",
-    "checkedAt": "2026-11-18T23:01:18.432Z",
-    "message": "Negotiated stateful MCP 2025-11-25 at https://claude.slidesgpt.com/mcp; detected transport streamable-http; authentication none",
-    "validatedUrl": "https://claude.slidesgpt.com/mcp",
+    "checkedAt": "2026-11-19T02:04:40.091Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.slidesgpt.com/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://mcp.slidesgpt.com/mcp",
     "protocolVersion": "2025-11-25"
   },
   {

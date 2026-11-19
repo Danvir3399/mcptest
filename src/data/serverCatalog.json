@@ -15393,7 +15393,7 @@
   {
     "id": "slidesgpt",
     "name": "SlidesGPT",
-    "url": "https://claude.slidesgpt.com/mcp",
+    "url": "https://mcp.slidesgpt.com/mcp",
     "description": "Creates presentation decks with a PowerPoint download and re-themes them. Anonymous and stateless; no authentication.",
     "category": "Productivity",
     "tags": [
@@ -15418,8 +15418,15 @@
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
+    "alternativeEndpoints": [
+      {
+        "url": "https://claude.slidesgpt.com/mcp",
+        "authType": "none",
+        "description": "Claude-specific host that SlidesGPT documents and the Claude directory listing uses; serves the same server and tools"
+      }
+    ],
     "caveats": [
-      "SlidesGPT documents only the Claude-specific host. https://mcp.slidesgpt.com/mcp answered with the same server and tools on 2026-11-18 but is not documented, so the client URL is kept."
+      "SlidesGPT's docs and the Claude directory name only https://claude.slidesgpt.com/mcp. The neutral https://mcp.slidesgpt.com/mcp is listed here because it answered with the same server and tools on 2026-11-19, but SlidesGPT does not document it."
     ],
     "logoUrl": "/server-logos/slidesgpt.svg",
     "logoSourceKind": "generated-fallback",

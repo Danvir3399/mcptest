@@ -178,6 +178,7 @@ describe('catalog query params', () => {
     expect(view.catalog.sortOrder).toBe('name');
     expect(view.catalog.filteredServers.map(({ name }) => name)).toEqual([
       'Aiwyn Tax',
+      'ARAG Spain Insurance Products',
       'Blockscout',
       'Clarity AI SFDR 2.0',
       'CoinGecko',

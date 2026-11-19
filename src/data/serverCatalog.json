@@ -18430,5 +18430,1339 @@
     "logoRetrievedAt": "2026-11-19",
     "logoLicenseNote": "Official iGaming Tools website icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://i-gaming.tools/"
+  },
+  {
+    "id": "lastminute",
+    "name": "lastminute.com",
+    "url": "https://mcp.lastminute.com/mcp",
+    "description": "lastminute.com's travel server searches flights, hotels and flight-plus-hotel packages, suggests alternative or changed flights, resolves destination ids and builds a lastminute.com booking link. No authentication.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "lastminute",
+      "flights",
+      "hotels",
+      "travel",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://technology.lastminute.com/mcp/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.69701d564d958d3d1d1dc8b4",
+        "url": "https://claude.com/marketplace/connectors/lastminute-com"
+      }
+    ],
+    "relevance": 89,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "Bookings are completed on lastminute.com through the generated booking link; the server does not take payment."
+    ],
+    "logoUrl": "/server-logos/lastminute.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated LC monogram; it is not an official lastminute.com mark.",
+    "homepageUrl": "https://www.lastminute.com"
+  },
+  {
+    "id": "arca",
+    "name": "Arca FDA, Trials & PubMed",
+    "url": "https://app.arca.inc/api/public/mcp",
+    "description": "Arca's free, read-only life-sciences server searches PubMed literature, clinical trials and public FDA records (labels, Drugs@FDA approvals, complete response letters, Orange and Purple Book, NDC, shortages, adverse events, recalls, 510(k) and PMA decisions) and fetches source records. No authentication.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "arca",
+      "fda",
+      "clinical-trials",
+      "pubmed",
+      "life-sciences",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://arca.inc/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.a62ad7cc-e06f-4250-b033-c7d8405f0cfd",
+        "url": "https://claude.com/marketplace/connectors/arca-life-sciences"
+      }
+    ],
+    "relevance": 3,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/arca.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated AF monogram; it is not an official Arca mark.",
+    "homepageUrl": "https://arca.inc"
+  },
+  {
+    "id": "citellm",
+    "name": "CiteLLM",
+    "url": "https://mcp.citellm.com/mcp",
+    "description": "CiteLLM reads PDFs the user uploads and checks AI answers and extracted values against the exact highlighted passage, marking each claim as supported, calculated, contradicted or not in the document; it also exports reviewed PDFs, reports and spreadsheets. Tool calls need a CiteLLM sign-in (OAuth).",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "citellm",
+      "pdf",
+      "citations",
+      "document-review",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://citellm.com/llms.txt"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.d660e595-2e58-4c68-971a-17761189351b",
+        "url": "https://claude.com/marketplace/connectors/citellm"
+      }
+    ],
+    "relevance": 4,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "Only the tool list is public: tools/list answers without credentials, but tool calls return 401 until the user signs in to CiteLLM with OAuth (the server publishes OAuth protected-resource metadata).",
+      "The free tier covers 1,000 pages and 50 uploads a month."
+    ],
+    "logoUrl": "/server-logos/citellm.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated CI monogram; it is not an official CiteLLM mark.",
+    "homepageUrl": "https://citellm.com"
+  },
+  {
+    "id": "countersignatory",
+    "name": "Countersignatory",
+    "url": "https://countersignatory.com/mcp",
+    "description": "Countersignatory quotes and places orders for verified human judgment, from quick quality checks and multi-worker consensus to notarial acts, and returns a spot price index and order status. Quotes, the index and orders need no authentication.",
+    "category": "Marketplace",
+    "tags": [
+      "official",
+      "countersignatory",
+      "human-review",
+      "verification",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://countersignatory.com/llms.txt"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.951a6258-cca0-41ec-b0fe-8b0d3edb1aa4",
+        "url": "https://claude.com/marketplace/connectors/countersignatory"
+      }
+    ],
+    "relevance": 3,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "Placing an order commits to a paid human task; the spot index is indicative and seeded from market comparables."
+    ],
+    "logoUrl": "/server-logos/countersignatory.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated CO monogram; it is not an official Countersignatory mark.",
+    "homepageUrl": "https://countersignatory.com"
+  },
+  {
+    "id": "ambiguous",
+    "name": "Ambiguous",
+    "url": "https://app.ambiguous.ai/mcp",
+    "description": "Ambiguous is a work suite whose single server covers a whole workspace: mail, calendar, documents, spreadsheets, slides, tasks, CRM, drive, chat, wiki and admin. Tool calls need an Ambiguous sign-in (OAuth).",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "ambiguous",
+      "workspace",
+      "email",
+      "calendar",
+      "documents",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.ambiguous.ai/agents/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.b5707cc9-04ba-42ab-81bf-e8a43c9e98c8",
+        "url": "https://claude.com/marketplace/connectors/ambiguous"
+      }
+    ],
+    "relevance": 2,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "alternativeEndpoints": [
+      {
+        "url": "https://app.ambiguous.ai/mcp/anthropic",
+        "authType": "oauth",
+        "description": "Path listed in the Claude directory; the same server with a smaller tool set"
+      }
+    ],
+    "caveats": [
+      "Only the tool list is public: tools/list answers without credentials, but tool calls return 401 until the user signs in to Ambiguous with OAuth (the server publishes OAuth protected-resource metadata).",
+      "The Claude directory lists the client-specific /mcp/anthropic path. Ambiguous documents /mcp, which answers as the same server (ambiguous-workspace) with a larger tool set (1,020 tools against 914), so the catalog uses /mcp."
+    ],
+    "logoUrl": "/server-logos/ambiguous.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated AM monogram; it is not an official Ambiguous mark.",
+    "homepageUrl": "https://ambiguous.ai"
+  },
+  {
+    "id": "nos",
+    "name": "NOS",
+    "url": "https://mcp-app.nos.nl/mcp",
+    "description": "NOS, the Dutch public broadcaster, offers an experimental server that searches NOS news articles and returns the latest articles for a period, as cards that link to NOS.nl. Results are in Dutch. No authentication.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "nos",
+      "news",
+      "netherlands",
+      "mcp-apps",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://mcp-app.nos.nl/docs"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.658ce0e2-8a72-48bc-be79-1b1013c115f4",
+        "url": "https://claude.com/marketplace/connectors/nos"
+      }
+    ],
+    "relevance": 1,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "NOS describes the app as experimental."
+    ],
+    "logoUrl": "/server-logos/nos.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated NO monogram; it is not an official NOS mark.",
+    "homepageUrl": "https://nos.nl"
+  },
+  {
+    "id": "arag-spain",
+    "name": "ARAG Spain Insurance Products",
+    "url": "https://arag.mcp-platform.infinitewatch.ai/mcp",
+    "description": "Product information, an indicative annual price and contact details for ARAG Alquiler, ARAG Spain's landlord rental insurance, in Spanish, Catalan or English. No authentication.",
+    "category": "Finance",
+    "tags": [
+      "official",
+      "arag",
+      "insurance",
+      "spain",
+      "mcp-apps",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://arag.mcp-platform.infinitewatch.ai/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.7c276dcb-3d13-4de0-a8a5-8b402f011663",
+        "url": "https://claude.com/marketplace/connectors/arag-spain-insurance"
+      }
+    ],
+    "relevance": 0,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "The server is published and operated by InfiniteWatch on its platform host for ARAG SE, Sucursal en España, which provides the product. Only ARAG Alquiler is covered, and prices are indicative."
+    ],
+    "logoUrl": "/server-logos/arag-spain.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated AS monogram; it is not an official ARAG mark.",
+    "homepageUrl": "https://www.arag.es"
+  },
+  {
+    "id": "google-drive",
+    "name": "Google Drive",
+    "url": "https://drivemcp.googleapis.com/mcp/v1",
+    "description": "Google's Drive server searches and lists recent files, reads file metadata, permissions and content, downloads files, and creates or copies files in the user's Google Drive. Tool calls need Google OAuth.",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "google",
+      "google-drive",
+      "files",
+      "documents",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://developers.google.com/workspace/drive/api/reference/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.699d18f8c21222a208e0364c",
+        "url": "https://claude.com/marketplace/connectors/google-drive"
+      }
+    ],
+    "relevance": 100,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "Only the tool list is public: tools/list answers without credentials, but tool calls return 401 until the user signs in with Google OAuth (the server advertises accounts.google.com as its authorization server).",
+      "Google lists these servers in its Workspace Developer Preview Program. The OAuth client is pre-registered in the user's own Google Cloud project with the MCP service enabled; the server does not advertise Dynamic Client Registration."
+    ],
+    "logoUrl": "/server-logos/google-drive.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/googledrive.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Google Drive mark from Simple Icons version 16.38.0; trademark rights remain with Google.",
+    "homepageUrl": "https://workspace.google.com/products/drive/"
+  },
+  {
+    "id": "gmail",
+    "name": "Gmail",
+    "url": "https://gmailmcp.googleapis.com/mcp/v1",
+    "description": "Google's Gmail server searches threads, reads threads and messages, creates and lists drafts, and manages labels, trash and spam in the user's mailbox. It has no send tool. Tool calls need Google OAuth.",
+    "category": "Communication",
+    "tags": [
+      "official",
+      "google",
+      "gmail",
+      "email",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://developers.google.com/workspace/gmail/api/reference/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.699d1b01a8dde6c87764de50",
+        "url": "https://claude.com/marketplace/connectors/gmail"
+      }
+    ],
+    "relevance": 100,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "Only the tool list is public: tools/list answers without credentials, but tool calls return 401 until the user signs in with Google OAuth (the server advertises accounts.google.com as its authorization server).",
+      "Google lists these servers in its Workspace Developer Preview Program. The OAuth client is pre-registered in the user's own Google Cloud project with the MCP service enabled; the server does not advertise Dynamic Client Registration."
+    ],
+    "logoUrl": "/server-logos/gmail.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/gmail.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Gmail mark from Simple Icons version 16.38.0; trademark rights remain with Google.",
+    "homepageUrl": "https://workspace.google.com/products/gmail/"
+  },
+  {
+    "id": "google-calendar",
+    "name": "Google Calendar",
+    "url": "https://calendarmcp.googleapis.com/mcp/v1",
+    "description": "Google's Calendar server lists calendars, lists, searches and reads events, creates, updates and deletes events, responds to invitations and suggests meeting times. Tool calls need Google OAuth.",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "google",
+      "google-calendar",
+      "calendar",
+      "scheduling",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.699d1b27b1ce36063aa16dae",
+        "url": "https://claude.com/marketplace/connectors/google-calendar"
+      }
+    ],
+    "relevance": 100,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "Only the tool list is public: tools/list answers without credentials, but tool calls return 401 until the user signs in with Google OAuth (the server advertises accounts.google.com as its authorization server).",
+      "Google lists these servers in its Workspace Developer Preview Program. The OAuth client is pre-registered in the user's own Google Cloud project with the MCP service enabled; the server does not advertise Dynamic Client Registration."
+    ],
+    "logoUrl": "/server-logos/google-calendar.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/googlecalendar.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Google Calendar mark from Simple Icons version 16.38.0; trademark rights remain with Google.",
+    "homepageUrl": "https://workspace.google.com/products/calendar/"
+  },
+  {
+    "id": "microsoft-365",
+    "name": "Microsoft 365",
+    "url": "https://microsoft365.mcp.claude.com/mcp",
+    "description": "Anthropic's hosted Microsoft 365 connector searches SharePoint and OneDrive, reads Outlook mail and calendar and Teams chats and meetings through Microsoft Graph, with optional write scopes for sending mail, editing events and files and posting chat messages. Needs a Microsoft Entra sign-in.",
+    "category": "Productivity",
+    "tags": [
+      "anthropic",
+      "microsoft",
+      "microsoft-365",
+      "outlook",
+      "sharepoint",
+      "teams",
+      "bearer-token"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://claude.com/docs/third-party/claude-desktop/connectors-m365"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68f01fa3bbeda1c626ba2558",
+        "url": "https://claude.com/marketplace/connectors/microsoft-365"
+      }
+    ],
+    "relevance": 99,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "bearer-token",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "Anthropic hosts and operates this connector on a claude.com host; it is not a Microsoft-run server. No neutral host is known.",
+      "Validation sees a bare bearer challenge: the resource_metadata URL in WWW-Authenticate returns 404. The origin's authorization-server metadata points to Microsoft Entra (login.microsoftonline.com), and work or school tenants need a Global Admin to grant consent."
+    ],
+    "logoUrl": "/server-logos/microsoft-365.png",
+    "logoSourceUrl": "https://avatars.githubusercontent.com/u/6154722?s=256&v=4",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Official Microsoft GitHub organization avatar from the verified microsoft organization; trademark rights remain with the publisher.",
+    "homepageUrl": "https://claude.com/docs/connectors/microsoft/365"
+  },
+  {
+    "id": "atlassian-v2",
+    "name": "Atlassian Rovo MCP v2",
+    "url": "https://mcp.atlassian.com/v2/mcp",
+    "description": "Version 2 of Atlassian's Rovo MCP server, with more tools and products than v1 for Jira, Confluence, Compass and other Atlassian Cloud apps. By default it exposes discover and execute tools; ?tools=all returns a flat tool list. Needs an Atlassian OAuth sign-in.",
+    "category": "Project Management",
+    "tags": [
+      "official",
+      "atlassian",
+      "jira",
+      "confluence",
+      "compass",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://support.atlassian.com/atlassian-ai-gateway/docs/how-to-upgrade-from-atlassian-rovo-mcp-v1-to-atlassian-rovo-mcp-v2/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b0618e45c5e2b19680853d",
+        "url": "https://claude.com/marketplace/connectors/atlassian"
+      }
+    ],
+    "relevance": 99,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-19",
+      "evidenceUrl": "https://support.atlassian.com/atlassian-ai-gateway/docs/how-to-upgrade-from-atlassian-rovo-mcp-v1-to-atlassian-rovo-mcp-v2/"
+    },
+    "caveats": [
+      "v2 is a separate OAuth resource from the v1 endpoint (the atlassian entry), so v1 credentials do not carry over and users sign in again. Atlassian moves v1 connections to v2 tools on 2027-03-01."
+    ],
+    "logoUrl": "/server-logos/atlassian-v2.svg",
+    "logoSourceUrl": "https://wac-cdn.atlassian.com/misc-assets/adg4-nav/AtlassianHeaderLogo.svg",
+    "logoSourceKind": "official-brand",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Official Atlassian brand asset; trademark rights remain with Atlassian.",
+    "homepageUrl": "https://www.atlassian.com/platform/remote-mcp-server"
+  },
+  {
+    "id": "zoom",
+    "name": "Zoom",
+    "url": "https://mcp.zoom.us/mcp/zoom/streamable",
+    "description": "Zoom's MCP server searches meetings and content across Zoom, and reads recordings, meeting assets, Zoom Docs and Hub content for the signed-in user. Needs a Zoom OAuth sign-in.",
+    "category": "Communication",
+    "tags": [
+      "official",
+      "zoom",
+      "meetings",
+      "recordings",
+      "video",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/zoom/zoom-plugin-claude/blob/main/CONNECTORS.md"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.1ed68a66-c371-4d26-82dc-28e6c260ece8",
+        "url": "https://claude.com/marketplace/connectors/zoom-for-claude"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69373a13116c819189d046aea1278836",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69373a13116c819189d046aea1278836"
+      }
+    ],
+    "relevance": 98,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-19",
+      "evidenceUrl": "https://github.com/zoom/zoom-plugin-claude/blob/main/CONNECTORS.md"
+    },
+    "caveats": [
+      "Zoom's developer documentation also lists per-product servers under zoom.us/mcp/ (for example /mcp/meeting/streamable); this entry is the cross-product server from Zoom's Claude plugin."
+    ],
+    "logoUrl": "/server-logos/zoom.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/zoom.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Zoom mark from Simple Icons version 16.38.0; trademark rights remain with Zoom.",
+    "homepageUrl": "https://zoom.us"
+  },
+  {
+    "id": "spotify",
+    "name": "Spotify",
+    "url": "https://mcp-gateway-external-pilot.spotify.net/mcp",
+    "description": "Spotify's connector recommends music and podcasts from the user's listening history, previews and plays tracks, saves to the library, switches Spotify Connect devices and, for Premium users, creates playlists. Needs a Spotify OAuth sign-in.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "spotify",
+      "music",
+      "podcasts",
+      "playlists",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/spotify"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.86925244-b3bb-415b-b7e8-6e3cd1392247",
+        "url": "https://claude.com/marketplace/connectors/spotify"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_68de829bf7648191acd70a907364c67c",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_68de829bf7648191acd70a907364c67c"
+      }
+    ],
+    "relevance": 98,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-19",
+      "evidenceUrl": "https://claude.com/marketplace/connectors/spotify"
+    },
+    "caveats": [
+      "The publisher does not document this endpoint; the listing source is the Claude directory entry. The host name says pilot, so the URL may change.",
+      "Spotify's authorization server (accounts.spotify.com) advertises no registration endpoint, so the OAuth client must be pre-registered."
+    ],
+    "logoUrl": "/server-logos/spotify.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/spotify.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Spotify mark from Simple Icons version 16.38.0; trademark rights remain with Spotify.",
+    "homepageUrl": "https://www.spotify.com"
+  },
+  {
+    "id": "docusign",
+    "name": "Docusign",
+    "url": "https://mcp.docusign.com/mcp",
+    "description": "Docusign's production MCP server works with agreements in live Docusign accounts: envelopes and their status, templates and signatures. Needs a Docusign OAuth sign-in.",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "docusign",
+      "agreements",
+      "envelopes",
+      "signatures",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.docusign.com/blog/docusign-mcp-server-general-availability"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6998e6028069b0f301d6f237",
+        "url": "https://claude.com/marketplace/connectors/docusign"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69fcc3b7582c81918df4ffae40cb7204",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69fcc3b7582c81918df4ffae40cb7204"
+      }
+    ],
+    "relevance": 96,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-19",
+      "evidenceUrl": "https://www.docusign.com/blog/docusign-mcp-server-general-availability"
+    },
+    "caveats": [
+      "This endpoint connects to production accounts; the docusign-developer entry (mcp-d.docusign.com) is for developer sandbox accounts. Docusign documents OAuth through an Integration Key with a secret and registered redirect URIs."
+    ],
+    "logoUrl": "/server-logos/docusign.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/12.4.0/icons/docusign.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Docusign mark from Simple Icons version 12.4.0; trademark rights remain with Docusign.",
+    "homepageUrl": "https://www.docusign.com"
+  },
+  {
+    "id": "trello",
+    "name": "Trello",
+    "url": "https://mcp.trello.com/v1",
+    "description": "Trello's MCP server reads and updates boards, lists, cards and checklists and searches Trello, within the user's existing permissions and the workspaces chosen at sign-in. Needs a Trello OAuth sign-in.",
+    "category": "Project Management",
+    "tags": [
+      "official",
+      "trello",
+      "atlassian",
+      "boards",
+      "cards",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://support.atlassian.com/trello/docs/connect-trello-to-ai-assistants-with-trello-mcp/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.7bc869f4-0f64-4dd6-9c19-bee47499508c",
+        "url": "https://claude.com/marketplace/connectors/trello"
+      }
+    ],
+    "relevance": 94,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-19",
+      "evidenceUrl": "https://support.atlassian.com/trello/docs/connect-trello-to-ai-assistants-with-trello-mcp/"
+    },
+    "caveats": [
+      "Enterprise admins can turn MCP access off in Atlassian Administration."
+    ],
+    "logoUrl": "/server-logos/trello.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/trello.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Trello mark from Simple Icons version 16.38.0; trademark rights remain with Atlassian.",
+    "homepageUrl": "https://trello.com",
+    "sourceUrl": "https://github.com/atlassian/trello-mcp-server"
+  },
+  {
+    "id": "affinity",
+    "name": "Affinity",
+    "url": "https://mcp.affinity.co/mcp",
+    "description": "Affinity's MCP server gives read and write access to the user's Affinity relationship-intelligence CRM with the user's own permissions, and stores no CRM data. Needs an Affinity OAuth sign-in or an API key.",
+    "category": "CRM",
+    "tags": [
+      "official",
+      "affinity",
+      "crm",
+      "relationships",
+      "dealflow",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://developer.affinity.co/pages/mcp/claude"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.5c0aab87-9f11-478f-b7ed-03774fa6169c",
+        "url": "https://claude.com/marketplace/connectors/affinity"
+      }
+    ],
+    "relevance": 81,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-19",
+      "evidenceUrl": "https://developer.affinity.co/pages/mcp/claude"
+    },
+    "alternativeAuthTypes": [
+      "bearer-token"
+    ],
+    "caveats": [
+      "Needs an Affinity Scale, Advanced or Enterprise plan, and an Affinity admin can turn the server off. An Affinity API key also works as a bearer token."
+    ],
+    "logoUrl": "/server-logos/affinity.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated AF monogram; it is not an official Affinity mark.",
+    "homepageUrl": "https://www.affinity.co"
+  },
+  {
+    "id": "floot",
+    "name": "Floot",
+    "url": "https://mcp.floot.com/mcp",
+    "description": "Floot builds, previews, deploys and hosts full-stack web and mobile apps with a database, sign-in, storage, email, payments and scheduled jobs, and can read and change any project in the account. Needs a Floot OAuth sign-in.",
+    "category": "Developer Tools",
+    "tags": [
+      "official",
+      "floot",
+      "app-builder",
+      "hosting",
+      "deployment",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/floothq/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.9efb767c-73f8-44c4-a1b3-ad7715e2b258",
+        "url": "https://claude.com/marketplace/connectors/floot-mcp-updated"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a500d350f8c819194e30335a7b134af",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a500d350f8c819194e30335a7b134af"
+      }
+    ],
+    "relevance": 74,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-19",
+      "evidenceUrl": "https://github.com/floothq/mcp"
+    },
+    "caveats": [
+      "Each tool call counts as a Floot build action (the free tier allows 100 a day)."
+    ],
+    "logoUrl": "/server-logos/floot.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated FL monogram; it is not an official Floot mark.",
+    "homepageUrl": "https://floot.com",
+    "sourceUrl": "https://github.com/floothq/mcp"
+  },
+  {
+    "id": "letsbot",
+    "name": "LetsBot",
+    "url": "https://letsbot.net/mcp",
+    "description": "LetsBot sends WhatsApp Business messages and approved templates, reads and searches conversations, lists chats awaiting a reply, and manages contacts, campaigns, deals and reports for one LetsBot workspace. Needs a LetsBot OAuth sign-in or a workspace API key.",
+    "category": "Communication",
+    "tags": [
+      "official",
+      "letsbot",
+      "whatsapp",
+      "messaging",
+      "crm",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://letsbot.net/llms.txt"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.3455d00e-518f-425f-9e0d-6a9eac2f54ef",
+        "url": "https://claude.com/marketplace/connectors/letsbot"
+      }
+    ],
+    "relevance": 61,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-19",
+      "evidenceUrl": "https://letsbot.net/llms.txt"
+    },
+    "alternativeAuthTypes": [
+      "bearer-token"
+    ],
+    "caveats": [
+      "Needs LetsBot's paid API + MCP add-on or a bundle that includes it. A workspace API key also works as a bearer token."
+    ],
+    "logoUrl": "/server-logos/letsbot.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated LE monogram; it is not an official LetsBot mark.",
+    "homepageUrl": "https://letsbot.net"
+  },
+  {
+    "id": "coinmarketcap",
+    "name": "CoinMarketCap",
+    "url": "https://mcp.coinmarketcap.com/mcp",
+    "description": "CoinMarketCap's read-only market-analysis server returns cryptocurrency prices and trends, sentiment, narratives, on-chain data and technical indicators. It cannot trade. Needs a CoinMarketCap API key or an OAuth sign-in.",
+    "category": "Finance",
+    "tags": [
+      "official",
+      "coinmarketcap",
+      "crypto",
+      "market-data",
+      "api-key",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://coinmarketcap.com/api/documentation/ai-agent-hub/mcp.md"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.bd037f04-e12e-4ca0-879d-21576f188fa7",
+        "url": "https://claude.com/marketplace/connectors/coinmarketcap"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a172fe86f5481919f73cbc3bc3ad5bb",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a172fe86f5481919f73cbc3bc3ad5bb"
+      }
+    ],
+    "relevance": 57,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-19",
+      "evidenceUrl": "https://coinmarketcap.com/api/documentation/ai-agent-hub/mcp.md"
+    },
+    "alternativeAuthTypes": [
+      "api-key"
+    ],
+    "requiredHeaders": [
+      {
+        "name": "X-CMC-MCP-API-KEY",
+        "description": "Optional CoinMarketCap API key alternative to OAuth",
+        "valueTemplate": "<CMC_API_KEY>",
+        "required": false,
+        "secret": true
+      }
+    ],
+    "caveats": [
+      "CoinMarketCap documents the X-CMC-MCP-API-KEY header and calls OAuth support client-dependent. Validation saw OAuth protected-resource metadata. The free Basic key allows 30 calls a minute and 10,000 credits a month."
+    ],
+    "logoUrl": "/server-logos/coinmarketcap.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/coinmarketcap.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "CoinMarketCap mark from Simple Icons version 16.38.0; trademark rights remain with CoinMarketCap.",
+    "homepageUrl": "https://coinmarketcap.com"
+  },
+  {
+    "id": "autosheet",
+    "name": "Autosheet",
+    "url": "https://mcp.autosheet.com/mcp",
+    "description": "Autosheet runs an AI agent on Google Sheets that writes formulas, formats, cleans and enriches rows and builds charts. Needs an Autosheet sign-in with Google (OAuth).",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "autosheet",
+      "google-sheets",
+      "spreadsheets",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://autosheet.com/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.4b8d4ae0-c655-47ca-ae59-296a2416763b",
+        "url": "https://claude.com/marketplace/connectors/autosheet"
+      }
+    ],
+    "relevance": 57,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-19",
+      "evidenceUrl": "https://autosheet.com/mcp"
+    },
+    "logoUrl": "/server-logos/autosheet.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated AU monogram; it is not an official Autosheet mark.",
+    "homepageUrl": "https://autosheet.com",
+    "sourceUrl": "https://github.com/run-autosheet/autosheet-mcp"
+  },
+  {
+    "id": "campfire",
+    "name": "Campfire",
+    "url": "https://api.meetcampfire.com/mcp",
+    "description": "Campfire's ERP server reads the chart of accounts, general-ledger transactions, entities, vendors, departments, budgets, revenue contracts, AP and AR aging, and the income statement, balance sheet and cash flow for one organization. Needs a Campfire sign-in.",
+    "category": "Finance",
+    "tags": [
+      "official",
+      "campfire",
+      "accounting",
+      "erp",
+      "general-ledger",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.campfire.ai/guides/ai-integration"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.699e3e998e07be73dfaf6eed",
+        "url": "https://claude.com/marketplace/connectors/campfire"
+      }
+    ],
+    "relevance": 51,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-19",
+      "evidenceUrl": "https://docs.campfire.ai/guides/ai-integration"
+    },
+    "alternativeAuthTypes": [
+      "bearer-token"
+    ],
+    "caveats": [
+      "Campfire's documentation also describes connecting with a Campfire API token, which gives full access to the organization's data."
+    ],
+    "logoUrl": "/server-logos/campfire.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated CA monogram; it is not an official Campfire mark.",
+    "homepageUrl": "https://campfire.ai"
+  },
+  {
+    "id": "tineo",
+    "name": "Tineo",
+    "url": "https://api.tineo.ai/mcp",
+    "description": "Tineo is a trip planner: it lists and edits trips, segments, cruises, checklists and travelers, looks up flight status, searches places and Airbnb stays and builds booking links. Needs a Tineo OAuth sign-in.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "tineo",
+      "travel",
+      "trip-planning",
+      "itineraries",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://tineo.ai/llms.txt"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.47af3906-6905-49b7-bde9-363c6b6fa3b8",
+        "url": "https://claude.com/marketplace/connectors/tineo"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-19",
+      "evidenceUrl": "https://tineo.ai/llms.txt"
+    },
+    "caveats": [
+      "The Claude directory lists the client-specific /mcp/claude path. Tineo documents /mcp, which answers as the same server (Tineo Travel) with the same tools, so the catalog uses /mcp."
+    ],
+    "logoUrl": "/server-logos/tineo.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated TI monogram; it is not an official Tineo mark.",
+    "homepageUrl": "https://tineo.ai"
+  },
+  {
+    "id": "jentic",
+    "name": "Jentic",
+    "url": "https://api.jentic.com/mcp",
+    "description": "Jentic lets an agent search, inspect and call more than 10,000 APIs from one server, with credentials kept in Jentic's vault. Needs a Jentic OAuth sign-in or an agent key.",
+    "category": "Automation",
+    "tags": [
+      "official",
+      "jentic",
+      "api-discovery",
+      "integrations",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.jentic.com/guides/mcp/remote-mcp/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.a133f422-ff03-478f-a208-ddc460db8826",
+        "url": "https://claude.com/marketplace/connectors/jentic"
+      }
+    ],
+    "relevance": 27,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-19",
+      "evidenceUrl": "https://docs.jentic.com/guides/mcp/remote-mcp/"
+    },
+    "alternativeAuthTypes": [
+      "bearer-token"
+    ],
+    "caveats": [
+      "Jentic documents an agent key (ak_…) as a bearer-token alternative to OAuth."
+    ],
+    "logoUrl": "/server-logos/jentic.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated JE monogram; it is not an official Jentic mark.",
+    "homepageUrl": "https://jentic.com"
+  },
+  {
+    "id": "duvo",
+    "name": "Duvo",
+    "url": "https://api.duvo.ai/v2/mcp",
+    "description": "Duvo exposes its public API as tools: create and run Duvo agents (configured AI workers), follow runs and manage connections. Needs a Duvo OAuth sign-in or an API key.",
+    "category": "Automation",
+    "tags": [
+      "official",
+      "duvo",
+      "ai-agents",
+      "automation",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.duvo.ai/mcp/duvo-mcp-server"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.c18411ac-92ca-44ca-92d6-e58ef0a58259",
+        "url": "https://claude.com/marketplace/connectors/duvo-mcp"
+      }
+    ],
+    "relevance": 16,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-19",
+      "evidenceUrl": "https://docs.duvo.ai/mcp/duvo-mcp-server"
+    },
+    "alternativeAuthTypes": [
+      "api-key"
+    ],
+    "caveats": [
+      "Duvo also documents an API key as an alternative to OAuth. The older /v1/mcp endpoint is legacy."
+    ],
+    "logoUrl": "/server-logos/duvo.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated DU monogram; it is not an official Duvo mark.",
+    "homepageUrl": "https://duvo.ai"
+  },
+  {
+    "id": "flaim",
+    "name": "Flaim Fantasy",
+    "url": "https://api.flaim.app/mcp",
+    "description": "Flaim reads the user's ESPN, Yahoo and Sleeper fantasy sports leagues and analyzes them. It never changes lineups, rosters or trades. Needs a Flaim OAuth sign-in.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "flaim",
+      "fantasy-sports",
+      "espn",
+      "yahoo",
+      "sleeper",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/jdguggs10/flaim-fantasy"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69a8f78087e081919e52cacacf00ff36",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69a8f78087e081919e52cacacf00ff36"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-19",
+      "evidenceUrl": "https://github.com/jdguggs10/flaim-fantasy"
+    },
+    "caveats": [
+      "Leagues must be connected at flaim.app first. Flaim Fantasy LLC runs the server; flaim.app links this GitHub repository."
+    ],
+    "logoUrl": "/server-logos/flaim.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-19",
+    "logoLicenseNote": "Locally generated FF monogram; it is not an official Flaim Fantasy mark.",
+    "homepageUrl": "https://flaim.app",
+    "sourceUrl": "https://github.com/jdguggs10/flaim-fantasy"
   }
 ]

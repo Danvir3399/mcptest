@@ -25,6 +25,7 @@
         "url": "https://claude.com/marketplace/connectors/context7"
       }
     ],
+    "relevance": 94,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -54,6 +55,7 @@
       "kind": "publisher",
       "url": "https://docs.devin.ai/work-with-devin/deepwiki-mcp"
     },
+    "relevance": 90,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -83,6 +85,7 @@
       "kind": "publisher",
       "url": "https://docs.coingecko.com/docs/ai-agents-llm-apps"
     },
+    "relevance": 65,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -110,6 +113,7 @@
       "kind": "publisher",
       "url": "https://github.com/semgrep/mcp"
     },
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -156,6 +160,7 @@
       "kind": "publisher",
       "url": "https://github.com/github/github-mcp-server"
     },
+    "relevance": 95,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -246,6 +251,7 @@
         "url": "https://claude.com/marketplace/connectors/linear"
       }
     ],
+    "relevance": 99,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -307,6 +313,7 @@
         "url": "https://chatgpt.com/plugins/notion"
       }
     ],
+    "relevance": 100,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -363,6 +370,7 @@
         "url": "https://claude.com/marketplace/connectors/sentry"
       }
     ],
+    "relevance": 96,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -408,6 +416,7 @@
       "kind": "publisher",
       "url": "https://support.atlassian.com/atlassian-ai-gateway/docs/set-up-ides/"
     },
+    "relevance": 85,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -463,6 +472,7 @@
         "url": "https://claude.com/marketplace/connectors/paypal"
       }
     ],
+    "relevance": 87,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -520,6 +530,7 @@
         "url": "https://chatgpt.com/plugins/stripe"
       }
     ],
+    "relevance": 96,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -575,6 +586,7 @@
         "url": "https://claude.com/marketplace/connectors/slack"
       }
     ],
+    "relevance": 99,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -645,6 +657,7 @@
       "kind": "publisher",
       "url": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/"
     },
+    "relevance": 90,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -702,6 +715,7 @@
         "url": "https://chatgpt.com/plugins/figma"
       }
     ],
+    "relevance": 99,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -768,6 +782,7 @@
         "url": "https://claude.com/marketplace/connectors/supabase"
       }
     ],
+    "relevance": 98,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -821,6 +836,7 @@
         "url": "https://claude.com/marketplace/connectors/neon"
       }
     ],
+    "relevance": 77,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -874,6 +890,7 @@
         "url": "https://claude.com/marketplace/connectors/mdn"
       }
     ],
+    "relevance": 36,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -941,6 +958,7 @@
         "url": "https://chatgpt.com/plugins/vercel"
       }
     ],
+    "relevance": 98,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1045,6 +1063,7 @@
         "url": "https://claude.com/marketplace/connectors/asana"
       }
     ],
+    "relevance": 99,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1155,6 +1174,7 @@
         "url": "https://claude.com/marketplace/connectors/canva"
       }
     ],
+    "relevance": 100,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1208,6 +1228,7 @@
       "kind": "publisher",
       "url": "https://docs.gitlab.com/user/model_context_protocol/mcp_server/"
     },
+    "relevance": 85,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1265,6 +1286,7 @@
         "url": "https://claude.com/marketplace/connectors/miro"
       }
     ],
+    "relevance": 98,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1324,6 +1346,7 @@
         "url": "https://claude.com/marketplace/connectors/circleci"
       }
     ],
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1394,6 +1417,7 @@
         "url": "https://claude.com/marketplace/connectors/pagerduty"
       }
     ],
+    "relevance": 84,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1490,6 +1514,7 @@
         "url": "https://claude.com/marketplace/connectors/airtable"
       }
     ],
+    "relevance": 97,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1555,6 +1580,7 @@
         "url": "https://claude.com/marketplace/connectors/clickup"
       }
     ],
+    "relevance": 97,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1609,6 +1635,7 @@
         "url": "https://claude.com/marketplace/connectors/intercom"
       }
     ],
+    "relevance": 99,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1672,6 +1699,7 @@
       "kind": "publisher",
       "url": "https://www.docusign.com/blog/developers/claude-docusign-mcp-connector-guide"
     },
+    "relevance": 70,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1729,6 +1757,7 @@
         "url": "https://claude.com/marketplace/connectors/calendly"
       }
     ],
+    "relevance": 91,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1790,6 +1819,7 @@
         "url": "https://claude.com/marketplace/connectors/hugging-face"
       }
     ],
+    "relevance": 93,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1869,6 +1899,7 @@
         "url": "https://claude.com/marketplace/connectors/upwork"
       }
     ],
+    "relevance": 82,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -1919,6 +1950,7 @@
       "kind": "publisher",
       "url": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/"
     },
+    "relevance": 85,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -1947,6 +1979,7 @@
       "kind": "publisher",
       "url": "https://awslabs.github.io/mcp/servers/aws-knowledge-mcp-server"
     },
+    "relevance": 85,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -1982,6 +2015,7 @@
         "url": "https://claude.com/marketplace/connectors/microsoft-learn"
       }
     ],
+    "relevance": 97,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -2011,6 +2045,7 @@
       "kind": "publisher",
       "url": "https://developers.google.com/knowledge/mcp"
     },
+    "relevance": 85,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "api-key",
@@ -2050,6 +2085,7 @@
       "kind": "publisher",
       "url": "https://docs.astro.build/en/guides/build-with-ai/"
     },
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -2077,6 +2113,7 @@
       "kind": "publisher",
       "url": "https://svelte.dev/docs/mcp/remote-setup"
     },
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -2105,6 +2142,7 @@
       "kind": "publisher",
       "url": "https://nuxt.com/docs/4.x/guide/ai/mcp"
     },
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -2131,6 +2169,7 @@
       "kind": "publisher",
       "url": "https://gitbook.com/docs/publishing-documentation/mcp-servers-for-published-docs"
     },
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -2165,6 +2204,7 @@
         "url": "https://claude.com/marketplace/connectors/twilio"
       }
     ],
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -2191,6 +2231,7 @@
       "kind": "publisher",
       "url": "https://gitmcp.io/"
     },
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -2219,6 +2260,7 @@
       "kind": "publisher",
       "url": "https://docs.ref.tools/install"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2282,6 +2324,7 @@
         "url": "https://claude.com/marketplace/connectors/exa"
       }
     ],
+    "relevance": 92,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -2312,6 +2355,7 @@
       "kind": "publisher",
       "url": "https://github.com/jina-ai/MCP"
     },
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -2360,6 +2404,7 @@
         "url": "https://claude.com/marketplace/connectors/tavily"
       }
     ],
+    "relevance": 82,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2418,6 +2463,7 @@
         "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a314a73f8ac819195b0d55e36b9c609"
       }
     ],
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2483,6 +2529,7 @@
       "kind": "publisher",
       "url": "https://vercel.com/blog/grep-a-million-github-repositories-via-mcp"
     },
+    "relevance": 65,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -2518,6 +2565,7 @@
         "url": "https://claude.com/marketplace/connectors/cloudflare"
       }
     ],
+    "relevance": 96,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2564,6 +2612,7 @@
       "kind": "publisher",
       "url": "https://github.com/cloudflare/mcp-server-cloudflare"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2610,6 +2659,7 @@
       "kind": "publisher",
       "url": "https://github.com/cloudflare/mcp-server-cloudflare"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2656,6 +2706,7 @@
       "kind": "publisher",
       "url": "https://github.com/cloudflare/mcp-server-cloudflare"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2702,6 +2753,7 @@
       "kind": "publisher",
       "url": "https://github.com/cloudflare/mcp-server-cloudflare"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2747,6 +2799,7 @@
       "kind": "publisher",
       "url": "https://github.com/cloudflare/mcp-server-cloudflare"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2793,6 +2846,7 @@
       "kind": "publisher",
       "url": "https://github.com/cloudflare/mcp-server-cloudflare"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2839,6 +2893,7 @@
       "kind": "publisher",
       "url": "https://github.com/cloudflare/mcp-server-cloudflare"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2884,6 +2939,7 @@
       "kind": "publisher",
       "url": "https://github.com/cloudflare/mcp-server-cloudflare"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2929,6 +2985,7 @@
       "kind": "publisher",
       "url": "https://github.com/cloudflare/mcp-server-cloudflare"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -2960,7 +3017,7 @@
   {
     "id": "netlify",
     "name": "Netlify",
-    "url": "https://netlify-mcp.netlify.app/mcp",
+    "url": "https://mcp.netlify.com/mcp",
     "description": "Creates, deploys, and manages Netlify projects, including environment variables, forms, extensions, and team settings. Requires Netlify OAuth.",
     "category": "Cloud",
     "tags": [
@@ -2981,6 +3038,7 @@
         "url": "https://claude.com/marketplace/connectors/netlify"
       }
     ],
+    "relevance": 93,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3001,6 +3059,13 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/"
     },
+    "alternativeEndpoints": [
+      {
+        "url": "https://netlify-mcp.netlify.app/mcp",
+        "authType": "oauth",
+        "description": "Previous Netlify MCP URL; existing connections keep working, Netlify recommends mcp.netlify.com for new ones"
+      }
+    ],
     "logoUrl": "/server-logos/netlify.svg",
     "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.35.0/icons/netlify.svg",
     "logoSourceKind": "simple-icons",
@@ -3040,6 +3105,7 @@
         "url": "https://chatgpt.com/plugins/render"
       }
     ],
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3104,6 +3170,7 @@
         "url": "https://claude.com/marketplace/connectors/railway"
       }
     ],
+    "relevance": 85,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3149,6 +3216,7 @@
       "kind": "publisher",
       "url": "https://www.prisma.io/docs/postgres/integrations/mcp-server"
     },
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3201,6 +3269,7 @@
         "url": "https://claude.com/marketplace/connectors/planetscale"
       }
     ],
+    "relevance": 51,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3261,6 +3330,7 @@
         "url": "https://claude.com/marketplace/connectors/bigquery"
       }
     ],
+    "relevance": 95,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3308,6 +3378,7 @@
       "kind": "publisher",
       "url": "https://www.instantdb.com/docs/using-llms"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3360,6 +3431,7 @@
         "url": "https://claude.com/marketplace/connectors/sanity"
       }
     ],
+    "relevance": 81,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3413,6 +3485,7 @@
         "url": "https://claude.com/marketplace/connectors/square"
       }
     ],
+    "relevance": 78,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3459,6 +3532,7 @@
       "kind": "publisher",
       "url": "https://developer.sumup.com/tools/llms/mcp-server"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3510,6 +3584,7 @@
         "url": "https://claude.com/marketplace/connectors/plaid"
       }
     ],
+    "relevance": 56,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "bearer-token",
@@ -3551,6 +3626,7 @@
       "kind": "publisher",
       "url": "https://axiom.co/docs/console/intelligence/mcp-server"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3596,6 +3672,7 @@
       "kind": "publisher",
       "url": "https://github.com/jsdelivr/globalping-mcp-server"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3643,6 +3720,7 @@
       "kind": "publisher",
       "url": "https://buildkite.com/docs/apis/mcp-server/remote/configuring-ai-tools"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3714,6 +3792,7 @@
         "url": "https://claude.com/marketplace/connectors/jam"
       }
     ],
+    "relevance": 70,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3766,6 +3845,7 @@
         "url": "https://claude.com/marketplace/connectors/workos"
       }
     ],
+    "relevance": 57,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3818,6 +3898,7 @@
         "url": "https://claude.com/marketplace/connectors/mapbox-mcp"
       }
     ],
+    "relevance": 42,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3864,6 +3945,7 @@
       "kind": "publisher",
       "url": "https://developers.google.com/maps/ai/grounding-lite"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "api-key",
@@ -3910,6 +3992,7 @@
         "url": "https://claude.com/marketplace/connectors/amplitude"
       }
     ],
+    "relevance": 92,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -3968,6 +4051,7 @@
         "url": "https://claude.com/marketplace/connectors/mixpanel"
       }
     ],
+    "relevance": 90,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4037,6 +4121,7 @@
         "url": "https://chatgpt.com/plugins/posthog"
       }
     ],
+    "relevance": 93,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4082,6 +4167,7 @@
       "kind": "publisher",
       "url": "https://support.pendo.io/hc/en-us/articles/41102236924955"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4152,6 +4238,7 @@
         "url": "https://chatgpt.com/plugins/attio"
       }
     ],
+    "relevance": 86,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4205,6 +4292,7 @@
         "url": "https://claude.com/marketplace/connectors/close"
       }
     ],
+    "relevance": 68,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4260,6 +4348,7 @@
         "url": "https://claude.com/marketplace/connectors/make"
       }
     ],
+    "relevance": 93,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4307,6 +4396,7 @@
       "kind": "publisher",
       "url": "https://docs.apify.com/platform/integrations/mcp"
     },
+    "relevance": 65,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4376,6 +4466,7 @@
         "url": "https://claude.com/marketplace/connectors/box"
       }
     ],
+    "relevance": 99,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4433,6 +4524,7 @@
         "url": "https://chatgpt.com/plugins/dropbox"
       }
     ],
+    "relevance": 95,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4489,6 +4581,7 @@
         "url": "https://chatgpt.com/plugins/todoist-to-do-list-and-calendar"
       }
     ],
+    "relevance": 95,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4542,6 +4635,7 @@
         "url": "https://claude.com/marketplace/connectors/granola"
       }
     ],
+    "relevance": 98,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4593,6 +4687,7 @@
         "url": "https://claude.com/marketplace/connectors/fireflies"
       }
     ],
+    "relevance": 93,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4644,6 +4739,7 @@
         "url": "https://claude.com/marketplace/connectors/resend"
       }
     ],
+    "relevance": 87,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4702,6 +4798,7 @@
         "url": "https://chatgpt.com/plugins/wix"
       }
     ],
+    "relevance": 91,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4754,6 +4851,7 @@
         "url": "https://claude.com/marketplace/connectors/cloudinary"
       }
     ],
+    "relevance": 72,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4806,6 +4904,7 @@
         "url": "https://claude.com/marketplace/connectors/mem0"
       }
     ],
+    "relevance": 52,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4858,6 +4957,7 @@
         "url": "https://claude.com/marketplace/connectors/datadog"
       }
     ],
+    "relevance": 96,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4921,6 +5021,7 @@
         "url": "https://claude.com/marketplace/connectors/grafana-cloud"
       }
     ],
+    "relevance": 75,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -4974,6 +5075,7 @@
         "url": "https://claude.com/marketplace/connectors/honeycomb"
       }
     ],
+    "relevance": 65,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5038,6 +5140,7 @@
         "url": "https://chatgpt.com/plugins/hubspot"
       }
     ],
+    "relevance": 99,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5096,6 +5199,7 @@
         "url": "https://chatgpt.com/plugins/plugin_asdk_app_6ad0b95f0a5481919d299d60b62ece32"
       }
     ],
+    "relevance": 88,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5148,6 +5252,7 @@
         "url": "https://claude.com/marketplace/connectors/klaviyo"
       }
     ],
+    "relevance": 91,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5200,6 +5305,7 @@
         "url": "https://claude.com/marketplace/connectors/monday"
       }
     ],
+    "relevance": 99,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5251,6 +5357,7 @@
         "url": "https://claude.com/marketplace/connectors/wrike"
       }
     ],
+    "relevance": 84,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5296,6 +5403,7 @@
       "kind": "publisher",
       "url": "https://developers.smartsheet.com/ai-mcp/smartsheet/install-the-smartsheet-mcp-server"
     },
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5361,6 +5469,7 @@
         "url": "https://claude.com/marketplace/connectors/egnyte"
       }
     ],
+    "relevance": 79,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5413,6 +5522,7 @@
         "url": "https://claude.com/marketplace/connectors/mongodb-atlas"
       }
     ],
+    "relevance": 71,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5471,6 +5581,7 @@
       "kind": "publisher",
       "url": "https://developer.paddle.com/sdks/ai/paddle-mcp/"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5523,6 +5634,7 @@
       "kind": "publisher",
       "url": "https://agents.ramp.com/docs/mcp/overview"
     },
+    "relevance": 70,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5575,6 +5687,7 @@
         "url": "https://claude.com/marketplace/connectors/mercury"
       }
     ],
+    "relevance": 73,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5622,6 +5735,14 @@
       "kind": "publisher",
       "url": "https://learning.postman.com/docs/developer/postman-api/postman-mcp-server/postman-mcp-remote-server"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.b9049585-f39b-45e8-8626-6ca78d9d7d22",
+        "url": "https://claude.com/marketplace/connectors/postman"
+      }
+    ],
+    "relevance": 94,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5698,6 +5819,7 @@
         "url": "https://claude.com/marketplace/connectors/webflow"
       }
     ],
+    "relevance": 94,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5750,6 +5872,7 @@
         "url": "https://claude.com/marketplace/connectors/stytch"
       }
     ],
+    "relevance": 34,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5802,6 +5925,7 @@
         "url": "https://claude.com/marketplace/connectors/aws-mcp"
       }
     ],
+    "relevance": 86,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5869,6 +5993,7 @@
         "url": "https://claude.com/marketplace/connectors/google-compute-engine"
       }
     ],
+    "relevance": 81,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5916,6 +6041,7 @@
       "kind": "publisher",
       "url": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/use-gke-mcp"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -5972,6 +6098,7 @@
       "kind": "publisher",
       "url": "https://docs.cloud.google.com/run/docs/use-cloud-run-mcp"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6019,6 +6146,7 @@
       "kind": "publisher",
       "url": "https://docs.cloud.google.com/resource-manager/docs/use-resourcemanager-mcp"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6067,6 +6195,7 @@
       "kind": "publisher",
       "url": "https://docs.digitalocean.com/reference/mcp/configure-mcp/"
     },
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6125,6 +6254,7 @@
       "kind": "publisher",
       "url": "https://docs.digitalocean.com/reference/mcp/configure-mcp/"
     },
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6183,6 +6313,7 @@
       "kind": "publisher",
       "url": "https://docs.digitalocean.com/reference/mcp/configure-mcp/"
     },
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6240,6 +6371,7 @@
       "kind": "publisher",
       "url": "https://devcenter.heroku.com/articles/heroku-remote-mcp-server"
     },
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6284,6 +6416,7 @@
       "kind": "publisher",
       "url": "https://www.pulumi.com/docs/ai/mcp-server/"
     },
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6336,6 +6469,7 @@
         "url": "https://claude.com/marketplace/connectors/sprites"
       }
     ],
+    "relevance": 21,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6381,6 +6515,7 @@
       "kind": "publisher",
       "url": "https://docs.cloud.google.com/alloydb/docs/ai/use-alloydb-mcp"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6428,6 +6563,7 @@
       "kind": "publisher",
       "url": "https://docs.cloud.google.com/firestore/native/docs/use-firestore-mcp"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6475,6 +6611,7 @@
       "kind": "publisher",
       "url": "https://docs.cloud.google.com/spanner/docs/use-spanner-mcp"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6530,6 +6667,7 @@
         "url": "https://claude.com/marketplace/connectors/clickhouse"
       }
     ],
+    "relevance": 73,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6585,6 +6723,7 @@
         "url": "https://claude.com/marketplace/connectors/motherduck"
       }
     ],
+    "relevance": 62,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6640,6 +6779,7 @@
       "kind": "publisher",
       "url": "https://docs.cloud.google.com/logging/docs/use-logging-mcp"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6688,6 +6828,7 @@
       "kind": "publisher",
       "url": "https://docs.cloud.google.com/monitoring/docs/use-monitoring-mcp"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6743,6 +6884,7 @@
         "url": "https://claude.com/marketplace/connectors/newrelic"
       }
     ],
+    "relevance": 62,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6804,6 +6946,7 @@
         "url": "https://claude.com/marketplace/connectors/betterstack"
       }
     ],
+    "relevance": 54,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6863,6 +7006,7 @@
       "kind": "publisher",
       "url": "https://pydantic.dev/docs/logfire/guides/mcp-server/"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6929,6 +7073,7 @@
       "kind": "publisher",
       "url": "https://raygun.com/documentation/product-guides/raygun-mcp-server/"
     },
+    "relevance": 40,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -6994,6 +7139,7 @@
         "url": "https://claude.com/marketplace/connectors/rootly"
       }
     ],
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -7059,6 +7205,7 @@
         "url": "https://claude.com/marketplace/connectors/incident-io"
       }
     ],
+    "relevance": 87,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -7119,6 +7266,7 @@
       "kind": "publisher",
       "url": "https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -7165,6 +7313,7 @@
       "kind": "publisher",
       "url": "https://www.braintrust.dev/docs/reference/mcp"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -7228,6 +7377,7 @@
       "kind": "publisher",
       "url": "https://langfuse.com/docs/api-and-data-platform/features/mcp-server"
     },
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "api-key",
@@ -7273,6 +7423,7 @@
       "kind": "publisher",
       "url": "https://docs.coreweave.com/platform/mcp-server"
     },
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "bearer-token",
@@ -7310,6 +7461,7 @@
       "kind": "publisher",
       "url": "https://mcp.replicate.com/"
     },
+    "relevance": 60,
     "transport": "legacy-sse",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -7355,6 +7507,7 @@
       "kind": "publisher",
       "url": "https://fal.ai/docs/documentation/setting-up/mcp"
     },
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -7408,6 +7561,7 @@
         "url": "https://claude.com/marketplace/connectors/parallel-search"
       }
     ],
+    "relevance": 73,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -7456,6 +7610,7 @@
       "kind": "publisher",
       "url": "https://docs.parallel.ai/integrations/mcp/task-mcp"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -7513,6 +7668,7 @@
       "kind": "publisher",
       "url": "https://you.com/docs/developer-resources/mcp-server"
     },
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -7578,6 +7734,7 @@
       "kind": "publisher",
       "url": "https://docs.valyu.ai/integrations/mcp-server"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -7635,6 +7792,7 @@
       "kind": "publisher",
       "url": "https://docs.brightdata.com/products/mcp-server/remote/oauth"
     },
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -7681,6 +7839,7 @@
       "kind": "publisher",
       "url": "https://www.algolia.com/doc/guides/model-context-protocol/productivity-mcp"
     },
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -7727,6 +7886,7 @@
       "kind": "publisher",
       "url": "https://developers.openai.com/learn/docs-mcp"
     },
+    "relevance": 85,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -7753,6 +7913,7 @@
       "kind": "publisher",
       "url": "https://docs.langchain.com/use-these-docs"
     },
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -7780,6 +7941,7 @@
       "kind": "publisher",
       "url": "https://docs.livekit.io/intro/mcp-server"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -7807,6 +7969,7 @@
       "kind": "publisher",
       "url": "https://zuplo.com/docs/build-with-ai"
     },
+    "relevance": 40,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -7835,6 +7998,7 @@
       "kind": "publisher",
       "url": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -7870,6 +8034,7 @@
         "url": "https://claude.com/marketplace/connectors/expo"
       }
     ],
+    "relevance": 69,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -7922,6 +8087,7 @@
         "url": "https://claude.com/marketplace/connectors/bitrise-mcp"
       }
     ],
+    "relevance": 39,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -7986,6 +8152,7 @@
         "url": "https://claude.com/marketplace/connectors/harness"
       }
     ],
+    "relevance": 41,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8034,6 +8201,7 @@
       "kind": "publisher",
       "url": "https://launchdarkly.com/docs/home/getting-started/mcp-hosted"
     },
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8083,6 +8251,7 @@
       "kind": "publisher",
       "url": "https://docs.statsig.com/integrations/mcp/manual-setup"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8139,6 +8308,7 @@
       "kind": "publisher",
       "url": "https://docs.port.io/agent-management/port-mcp-server/installation/"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8192,6 +8362,7 @@
       "kind": "publisher",
       "url": "https://developer.konghq.com/konnect-platform/konnect-mcp/"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8262,6 +8433,7 @@
       "kind": "publisher",
       "url": "https://www.greptile.com/docs/mcp-v2/setup"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8308,6 +8480,7 @@
       "kind": "publisher",
       "url": "https://github.com/onkernel/kernel-mcp-server"
     },
+    "relevance": 40,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8353,6 +8526,7 @@
       "kind": "publisher",
       "url": "https://www.mux.com/docs/integrations/mcp-server"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8398,6 +8572,7 @@
       "kind": "publisher",
       "url": "https://mcp.openzeppelin.com/"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -8427,6 +8602,7 @@
       "kind": "publisher",
       "url": "https://www.alchemy.com/docs/alchemy-mcp-server"
     },
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8479,6 +8655,7 @@
         "url": "https://claude.com/marketplace/connectors/contentful-mcp"
       }
     ],
+    "relevance": 73,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8534,6 +8711,7 @@
       "kind": "publisher",
       "url": "https://www.storyblok.com/docs/tooling/mcp-server"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8578,6 +8756,7 @@
       "kind": "publisher",
       "url": "https://prismic.io/docs/mcp"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8625,6 +8804,7 @@
       "kind": "publisher",
       "url": "https://hygraph.com/docs/hygraph-ai/mcp-server-setup"
     },
+    "relevance": 40,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8669,6 +8849,7 @@
       "kind": "publisher",
       "url": "https://www.builder.io/c/docs/mcp-builder-server"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8721,6 +8902,7 @@
         "url": "https://claude.com/marketplace/connectors/lovable"
       }
     ],
+    "relevance": 96,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8777,6 +8959,7 @@
         "url": "https://claude.com/marketplace/connectors/vanta"
       }
     ],
+    "relevance": 84,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8834,6 +9017,7 @@
       "kind": "publisher",
       "url": "https://docs.sonarsource.com/sonarqube-mcp-server/setup/sonarqube-cloud-hosted"
     },
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "bearer-token",
@@ -8886,6 +9070,7 @@
       "kind": "publisher",
       "url": "https://github.com/GitGuardian/ggmcp"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -8939,6 +9124,7 @@
       "kind": "publisher",
       "url": "https://docs.prowler.com/getting-started/basic-usage/prowler-mcp"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -8988,6 +9174,7 @@
         "url": "https://claude.com/marketplace/connectors/clerk"
       }
     ],
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9032,6 +9219,7 @@
       "kind": "publisher",
       "url": "https://docs.descope.com/mcp/mcp-server"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9084,6 +9272,7 @@
       "kind": "publisher",
       "url": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/"
     },
+    "relevance": 80,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9136,6 +9325,7 @@
         "url": "https://claude.com/marketplace/connectors/razorpay"
       }
     ],
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9188,6 +9378,7 @@
         "url": "https://claude.com/marketplace/connectors/mollie"
       }
     ],
+    "relevance": 23,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9231,6 +9422,7 @@
       "kind": "publisher",
       "url": "https://polar.sh/docs/integrate/mcp"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9283,6 +9475,7 @@
       "kind": "publisher",
       "url": "https://developer.xero.com/documentation/guides/remote-mcp/overview"
     },
+    "relevance": 70,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9338,6 +9531,7 @@
         "url": "https://claude.com/marketplace/connectors/alpha-vantage"
       }
     ],
+    "relevance": 89,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9389,6 +9583,7 @@
         "url": "https://claude.com/marketplace/connectors/financial-datasets"
       }
     ],
+    "relevance": 70,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9441,6 +9636,14 @@
       "kind": "publisher",
       "url": "https://docs.etherscan.io/build-with-ai/mcp"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.62130cf5-e5a6-40db-82e7-437c49718e26",
+        "url": "https://claude.com/marketplace/connectors/etherscan"
+      }
+    ],
+    "relevance": 54,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "bearer-token",
@@ -9485,6 +9688,7 @@
       "kind": "publisher",
       "url": "https://learn.hex.tech/docs/api-integrations/mcp-server"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9540,6 +9744,7 @@
         "url": "https://claude.com/marketplace/connectors/fullstory"
       }
     ],
+    "relevance": 76,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9601,6 +9806,7 @@
       "kind": "publisher",
       "url": "https://docs.logrocket.com/docs/mcp"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9656,6 +9862,7 @@
       "kind": "publisher",
       "url": "https://developer.semrush.com/api/basics/semrush-mcp/"
     },
+    "relevance": 70,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9710,6 +9917,7 @@
         "url": "https://claude.com/marketplace/connectors/ahrefs"
       }
     ],
+    "relevance": 94,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9765,6 +9973,7 @@
         "url": "https://claude.com/marketplace/connectors/similarweb"
       }
     ],
+    "relevance": 88,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9813,6 +10022,7 @@
       "kind": "publisher",
       "url": "https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/sobject-all.html"
     },
+    "relevance": 85,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9872,6 +10082,7 @@
         "url": "https://chatgpt.com/plugins/apollo"
       }
     ],
+    "relevance": 96,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9935,6 +10146,7 @@
         "url": "https://claude.com/marketplace/connectors/zoominfo"
       }
     ],
+    "relevance": 94,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -9990,6 +10202,7 @@
         "url": "https://claude.com/marketplace/connectors/gong"
       }
     ],
+    "relevance": 89,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10041,6 +10254,7 @@
         "url": "https://claude.com/marketplace/connectors/braze"
       }
     ],
+    "relevance": 77,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10095,6 +10309,7 @@
       "kind": "publisher",
       "url": "https://docs.customer.io/ai/mcp/get-started/"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10161,6 +10376,7 @@
         "url": "https://chatgpt.com/plugins/common-room"
       }
     ],
+    "relevance": 65,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10205,6 +10421,7 @@
       "kind": "publisher",
       "url": "https://docs.vapi.ai/sdk/mcp-server"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10253,6 +10470,7 @@
       "kind": "publisher",
       "url": "https://www.courier.com/docs/tools/mcp"
     },
+    "relevance": 40,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "api-key",
@@ -10301,6 +10519,7 @@
         "url": "https://claude.com/marketplace/connectors/agentmail"
       }
     ],
+    "relevance": 67,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10357,6 +10576,7 @@
       "kind": "publisher",
       "url": "https://github.com/infobip/mcp"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10415,6 +10635,7 @@
       "kind": "publisher",
       "url": "https://dev.frontapp.com/docs/mcp-server"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10462,6 +10683,7 @@
       "kind": "publisher",
       "url": "https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-the-gorgias-mcp-6310546"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10509,6 +10731,7 @@
       "kind": "publisher",
       "url": "https://www.plain.com/docs/agents/mcp-server"
     },
+    "relevance": 40,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10552,6 +10775,7 @@
       "kind": "publisher",
       "url": "https://help.coda.io/hc/en-us/articles/44722661982989-Connect-to-the-Coda-MCP"
     },
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10600,6 +10824,7 @@
       "kind": "publisher",
       "url": "https://cal.com/docs/mcp-server"
     },
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10652,6 +10877,7 @@
         "url": "https://claude.com/marketplace/connectors/otter-ai"
       }
     ],
+    "relevance": 86,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10696,6 +10922,7 @@
       "kind": "publisher",
       "url": "https://www.shortcut.com/help/integrations/mcp-server"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10740,6 +10967,7 @@
       "kind": "publisher",
       "url": "https://developers.plane.so/dev-tools/mcp-server"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10799,6 +11027,7 @@
         "url": "https://claude.com/marketplace/connectors/productboard"
       }
     ],
+    "relevance": 66,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10847,6 +11076,7 @@
       "kind": "publisher",
       "url": "https://github.com/basecamp/claude-plugins"
     },
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10898,6 +11128,7 @@
         "url": "https://claude.com/marketplace/connectors/excalidraw-app-demo"
       }
     ],
+    "relevance": 93,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -10934,6 +11165,7 @@
         "url": "https://claude.com/marketplace/connectors/whimsical"
       }
     ],
+    "relevance": 82,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -10985,6 +11217,7 @@
         "url": "https://claude.com/marketplace/connectors/gamma"
       }
     ],
+    "relevance": 97,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -11031,6 +11264,7 @@
       "kind": "publisher",
       "url": "https://docs.spline.design/generate/spline-mcp-server"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -11082,6 +11316,7 @@
         "url": "https://claude.com/marketplace/connectors/zapier"
       }
     ],
+    "relevance": 97,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -11142,6 +11377,7 @@
       "kind": "publisher",
       "url": "https://docs.airbyte.com/ai-agents/interfaces/mcp/"
     },
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -11186,6 +11422,7 @@
       "kind": "publisher",
       "url": "https://docs.browser-use.com/cloud/guides/mcp-server"
     },
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "bearer-token",
@@ -11373,6 +11610,7 @@
         "url": "https://claude.com/marketplace/connectors/beehiiv"
       }
     ],
+    "relevance": 63,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -11653,6 +11891,7 @@
         "url": "https://claude.com/marketplace/connectors/ifttt"
       }
     ],
+    "relevance": 69,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -11731,6 +11970,7 @@
         "url": "https://claude.com/marketplace/connectors/kajabi"
       }
     ],
+    "relevance": 47,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -11836,6 +12076,7 @@
         "url": "https://claude.com/marketplace/connectors/mabl"
       }
     ],
+    "relevance": 26,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -12046,6 +12287,7 @@
         "url": "https://claude.com/marketplace/connectors/padlet-mcp"
       }
     ],
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -12083,6 +12325,7 @@
         "url": "https://claude.com/marketplace/connectors/pandadoc"
       }
     ],
+    "relevance": 81,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -14315,5 +14558,1149 @@
     "logoRetrievedAt": "2026-11-18",
     "logoLicenseNote": "StalkChain site mark; trademark rights remain with the publisher.",
     "homepageUrl": "https://stalkchain.com/mcp"
+  },
+  {
+    "id": "pubmed",
+    "name": "PubMed",
+    "url": "https://pubmed.mcp.claude.com/mcp",
+    "description": "Searches PubMed and PubMed Central: article search, metadata, related articles, citation lookup, ID conversion, full text and copyright status. Run by Anthropic; no authentication.",
+    "category": "Reference",
+    "tags": [
+      "anthropic",
+      "pubmed",
+      "biomedical",
+      "literature",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://academy.claude.com/tutorials/using-the-pubmed-connector-in-claude"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68f2ce7b383797a1fe09b7de",
+        "url": "https://claude.com/marketplace/connectors/pubmed"
+      }
+    ],
+    "relevance": 97,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/pubmed.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/pubmed.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "PubMed mark from Simple Icons version 16.38.0; trademark rights remain with the U.S. National Library of Medicine.",
+    "homepageUrl": "https://pubmed.ncbi.nlm.nih.gov",
+    "sourceUrl": "https://github.com/anthropics/healthcare"
+  },
+  {
+    "id": "clinical-trials",
+    "name": "Clinical Trials",
+    "url": "https://hcls.mcp.claude.com/clinical_trials/mcp",
+    "description": "Searches ClinicalTrials.gov by condition, sponsor, investigator and eligibility, returns trial details and analyzes endpoints. Run by Anthropic; no authentication.",
+    "category": "Reference",
+    "tags": [
+      "anthropic",
+      "clinicaltrials-gov",
+      "clinical-trials",
+      "life-sciences",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/anthropics/healthcare"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6960070531161e420e9fea06",
+        "url": "https://claude.com/marketplace/connectors/clinical-trials"
+      }
+    ],
+    "relevance": 94,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/clinical-trials.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated CT monogram; it is not an official Clinical Trials mark.",
+    "homepageUrl": "https://clinicaltrials.gov",
+    "sourceUrl": "https://github.com/anthropics/healthcare"
+  },
+  {
+    "id": "biorxiv",
+    "name": "bioRxiv",
+    "url": "https://hcls.mcp.claude.com/biorxiv/mcp",
+    "description": "Searches bioRxiv and medRxiv preprints, links published versions, searches by funder and returns category, content and usage statistics. Run by Anthropic; no authentication.",
+    "category": "Reference",
+    "tags": [
+      "anthropic",
+      "biorxiv",
+      "medrxiv",
+      "preprints",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/anthropics/knowledge-work-plugins/blob/main/bio-research/.mcp.json"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.695f3fdd7d2b57880ac5da94",
+        "url": "https://claude.com/marketplace/connectors/biorxiv"
+      }
+    ],
+    "relevance": 93,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/biorxiv.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated BI monogram; it is not an official bioRxiv mark.",
+    "homepageUrl": "https://www.biorxiv.org",
+    "sourceUrl": "https://github.com/anthropics/knowledge-work-plugins/blob/main/bio-research/.mcp.json"
+  },
+  {
+    "id": "chembl",
+    "name": "ChEMBL",
+    "url": "https://hcls.mcp.claude.com/chembl/mcp",
+    "description": "Queries the ChEMBL database: compound, target and drug search, bioactivity, mechanism of action and ADMET data. Run by Anthropic; no authentication.",
+    "category": "Reference",
+    "tags": [
+      "anthropic",
+      "chembl",
+      "chemistry",
+      "drug-discovery",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/anthropics/knowledge-work-plugins/blob/main/bio-research/.mcp.json"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.695f3ff6c601a69ce6b1fbaa",
+        "url": "https://claude.com/marketplace/connectors/chembl"
+      }
+    ],
+    "relevance": 92,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/chembl.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated CH monogram; it is not an official ChEMBL mark.",
+    "homepageUrl": "https://www.ebi.ac.uk/chembl/",
+    "sourceUrl": "https://github.com/anthropics/knowledge-work-plugins/blob/main/bio-research/.mcp.json"
+  },
+  {
+    "id": "anthropic-economic-index",
+    "name": "Anthropic Economic Index",
+    "url": "https://econ-index.mcp.claude.com/mcp",
+    "description": "Returns Anthropic Economic Index data on how Claude is used by country, subregion, occupation and work task, with region comparisons. Run by Anthropic; no authentication.",
+    "category": "Analytics",
+    "tags": [
+      "anthropic",
+      "economic-index",
+      "usage-data",
+      "labor-market",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/economic-index"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.5e90e841-ba8a-433e-9303-cd41820de915",
+        "url": "https://claude.com/marketplace/connectors/economic-index"
+      }
+    ],
+    "relevance": 90,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "Anthropic does not publish the endpoint URL outside its connector directory; the listing source is the Claude directory entry."
+    ],
+    "logoUrl": "/server-logos/anthropic-economic-index.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/anthropic.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Anthropic mark from Simple Icons version 16.38.0; trademark rights remain with Anthropic.",
+    "homepageUrl": "https://www.anthropic.com/news/anthropic-economic-index-connector"
+  },
+  {
+    "id": "npi-registry",
+    "name": "NPI Registry",
+    "url": "https://hcls.mcp.claude.com/npi_registry/mcp",
+    "description": "Searches, looks up and validates US National Provider Identifier (NPI) records from the NPPES registry. Run by Anthropic; no authentication.",
+    "category": "Reference",
+    "tags": [
+      "anthropic",
+      "npi",
+      "healthcare-providers",
+      "nppes",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/anthropics/healthcare"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.695f3faa735d2d3118527aeb",
+        "url": "https://claude.com/marketplace/connectors/npi-registry"
+      }
+    ],
+    "relevance": 89,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/npi-registry.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated NR monogram; it is not an official NPI Registry mark.",
+    "homepageUrl": "https://npiregistry.cms.hhs.gov",
+    "sourceUrl": "https://github.com/anthropics/healthcare"
+  },
+  {
+    "id": "claude-academy",
+    "name": "Claude Academy",
+    "url": "https://academy.claude.com/mcp",
+    "description": "Searches, lists and reads Claude Academy courses, tutorials and use cases with three read-only tools. Run by Anthropic; no authentication.",
+    "category": "Documentation",
+    "tags": [
+      "anthropic",
+      "claude",
+      "courses",
+      "tutorials",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://academy.claude.com/help/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.3a7c3660-f7a6-4274-8ecd-8b6337a77cd1",
+        "url": "https://claude.com/marketplace/connectors/claude-academy"
+      }
+    ],
+    "relevance": 89,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/claude-academy.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/claude.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Claude mark from Simple Icons version 16.38.0; trademark rights remain with Anthropic.",
+    "homepageUrl": "https://academy.claude.com"
+  },
+  {
+    "id": "icd-10-codes",
+    "name": "ICD-10 Codes",
+    "url": "https://hcls.mcp.claude.com/icd10_codes/mcp",
+    "description": "Looks up, searches and validates ICD-10-CM and ICD-10-PCS codes and browses them by hierarchy, category and body system. Run by Anthropic; no authentication.",
+    "category": "Reference",
+    "tags": [
+      "anthropic",
+      "icd-10",
+      "medical-coding",
+      "healthcare",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/anthropics/healthcare"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.695f3f9c9aa60c1c8e427920",
+        "url": "https://claude.com/marketplace/connectors/icd-10-codes"
+      }
+    ],
+    "relevance": 85,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/icd-10-codes.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated I1 monogram; it is not an official ICD-10 Codes mark.",
+    "homepageUrl": "https://www.cms.gov/medicare/coding-billing/icd-10-codes",
+    "sourceUrl": "https://github.com/anthropics/healthcare"
+  },
+  {
+    "id": "cms-coverage",
+    "name": "CMS Coverage",
+    "url": "https://hcls.mcp.claude.com/cms_coverage/mcp",
+    "description": "Searches Medicare national and local coverage determinations in the CMS Coverage Database, with coverage documents, contractors, the what's-new report and the self-administered drug exclusion list. Run by Anthropic; no authentication.",
+    "category": "Reference",
+    "tags": [
+      "anthropic",
+      "cms",
+      "medicare",
+      "coverage",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/anthropics/healthcare"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.695f3f8981835ca5c74583e4",
+        "url": "https://claude.com/marketplace/connectors/cms-coverage"
+      }
+    ],
+    "relevance": 79,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/cms-coverage.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated CC monogram; it is not an official CMS Coverage mark.",
+    "homepageUrl": "https://www.cms.gov/medicare-coverage-database/",
+    "sourceUrl": "https://github.com/anthropics/healthcare"
+  },
+  {
+    "id": "shopify",
+    "name": "Shopify",
+    "url": "https://setup.shopify.com/mcp",
+    "description": "Creates a Shopify store and manages products, collections, orders, customers, inventory, discounts and analytics. Tools list without credentials; store tools require Shopify OAuth.",
+    "category": "Marketplace",
+    "tags": [
+      "official",
+      "shopify",
+      "ecommerce",
+      "store-management",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/shopify"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.80917cb7-3071-4fca-b053-a4262d356c60",
+        "url": "https://claude.com/marketplace/connectors/shopify"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69e65c430b3081919aa4d962ab5d1698",
+        "url": "https://chatgpt.com/plugins/shopify"
+      }
+    ],
+    "relevance": 98,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
+      "Shopify's own docs do not state this endpoint; the listing source is the Claude directory entry."
+    ],
+    "logoUrl": "/server-logos/shopify.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/shopify.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Shopify mark from Simple Icons version 16.38.0; trademark rights remain with Shopify.",
+    "homepageUrl": "https://www.shopify.com"
+  },
+  {
+    "id": "kiwi-com",
+    "name": "Kiwi.com",
+    "url": "https://mcp.kiwi.com",
+    "description": "Searches flight itineraries with flexible dates, nearby airports and virtual interlining and returns Kiwi.com booking links. No authentication.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "kiwi",
+      "flights",
+      "travel",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.kiwi.com/ag/pages/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6923b267f7fe20cf45558092",
+        "url": "https://claude.com/marketplace/connectors/kiwi-com"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6943b1ccb3ec81918f2e8ed24986f6b0",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6943b1ccb3ec81918f2e8ed24986f6b0"
+      }
+    ],
+    "relevance": 91,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "exactEndpointOnly": true,
+    "logoUrl": "/server-logos/kiwi-com.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated KC monogram; it is not an official Kiwi.com mark.",
+    "homepageUrl": "https://www.kiwi.com"
+  },
+  {
+    "id": "coursera",
+    "name": "Coursera",
+    "url": "https://api.coursera.com/mcp",
+    "description": "Searches Coursera courses, videos and hands-on projects and returns course material; enterprise analytics tools need a Coursera sign-in. Tools list without credentials.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "coursera",
+      "courses",
+      "learning",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/coursera"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.03c911b8-9789-4cb1-949b-236f9d06b2da",
+        "url": "https://claude.com/marketplace/connectors/coursera"
+      }
+    ],
+    "relevance": 85,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
+      "Coursera's docs do not state this endpoint; the listing source is the Claude directory entry."
+    ],
+    "logoUrl": "/server-logos/coursera.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/coursera.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Coursera mark from Simple Icons version 16.38.0; trademark rights remain with Coursera.",
+    "homepageUrl": "https://www.coursera.org"
+  },
+  {
+    "id": "trivago",
+    "name": "trivago",
+    "url": "https://mcp.trivago.com/mcp",
+    "description": "Searches hotels by destination or radius with prices compared across booking sites, plus destination price trends. No authentication.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "trivago",
+      "hotels",
+      "travel",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://mcp.trivago.com/docs"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68fac29a7cf665291038c761",
+        "url": "https://claude.com/marketplace/connectors/trivago"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69b16f24bc488191aace1d08c6ddfd4d",
+        "url": "https://chatgpt.com/plugins/trivago"
+      }
+    ],
+    "relevance": 84,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/trivago.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/trivago.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "trivago mark from Simple Icons version 16.38.0; trademark rights remain with trivago.",
+    "homepageUrl": "https://www.trivago.com"
+  },
+  {
+    "id": "gemini-exchange",
+    "name": "Gemini",
+    "url": "https://api.gemini.com/mcp",
+    "description": "Market data from the Gemini cryptocurrency exchange (symbols, tickers, order books, candles, trades, prediction markets) plus read-only account tools that need a Gemini sign-in. Not related to Google Gemini.",
+    "category": "Finance",
+    "tags": [
+      "official",
+      "gemini",
+      "crypto",
+      "market-data",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/gemini-mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.88e8f327-f2f0-442b-a60c-9a7c2147d1f1",
+        "url": "https://claude.com/marketplace/connectors/gemini-mcp"
+      }
+    ],
+    "relevance": 84,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in.",
+      "Gemini documents only a self-hosted MCP server; this hosted endpoint's listing source is the Claude directory entry."
+    ],
+    "logoUrl": "/server-logos/gemini-exchange.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated GE monogram; it is not an official Gemini mark.",
+    "homepageUrl": "https://www.gemini.com"
+  },
+  {
+    "id": "open-targets",
+    "name": "Open Targets",
+    "url": "https://mcp.platform.opentargets.org/mcp",
+    "description": "Runs GraphQL queries against the Open Targets Platform for targets, diseases, drugs and evidence, with schema and entity-search helpers. No authentication.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "open-targets",
+      "drug-discovery",
+      "graphql",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/opentargets/open-targets-platform-mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.695f4006847d5183e0666281",
+        "url": "https://claude.com/marketplace/connectors/open-targets"
+      }
+    ],
+    "relevance": 83,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/open-targets.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated OT monogram; it is not an official Open Targets mark.",
+    "homepageUrl": "https://platform.opentargets.org",
+    "sourceUrl": "https://github.com/opentargets/open-targets-platform-mcp"
+  },
+  {
+    "id": "autodesk-product-help",
+    "name": "Autodesk Product Help",
+    "url": "https://developer.api.autodesk.com/knowledge/public/v1/mcp",
+    "description": "Searches Autodesk help documentation for more than 110 products. Public, read-only and unauthenticated.",
+    "category": "Documentation",
+    "tags": [
+      "official",
+      "autodesk",
+      "product-help",
+      "documentation",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://help.autodesk.com/cloudhelp/ENU/ADSKMCP-ProductHelpMcp/files/ADSKMCP_ProductHelpMcp_ide_integration_html.html"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.1f5a311c-ea2d-4b9c-b78b-197e8f2974b9",
+        "url": "https://claude.com/marketplace/connectors/autodesk-product-help"
+      }
+    ],
+    "relevance": 82,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/autodesk-product-help.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/autodesk.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Autodesk mark from Simple Icons version 16.38.0; trademark rights remain with Autodesk.",
+    "homepageUrl": "https://www.autodesk.com"
+  },
+  {
+    "id": "godaddy",
+    "name": "GoDaddy",
+    "url": "https://mcp.godaddy.com",
+    "description": "Checks domain availability with pricing and suggests domain names without an account; the server also lists account tools for domains, carts, mailboxes and stores that need a GoDaddy sign-in.",
+    "category": "Cloud",
+    "tags": [
+      "official",
+      "godaddy",
+      "domains",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://developer.godaddy.com/docs/api-users/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6923b7727a971921abd74fdd",
+        "url": "https://claude.com/marketplace/connectors/godaddy"
+      }
+    ],
+    "relevance": 80,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "exactEndpointOnly": true,
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in."
+    ],
+    "logoUrl": "/server-logos/godaddy.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/godaddy.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "GoDaddy mark from Simple Icons version 16.38.0; trademark rights remain with GoDaddy.",
+    "homepageUrl": "https://www.godaddy.com"
+  },
+  {
+    "id": "aws-marketplace",
+    "name": "AWS Marketplace",
+    "url": "https://marketplace-mcp.us-east-1.api.aws/mcp",
+    "description": "Searches, compares and researches AWS Marketplace products and returns solution details and report guidelines. No authentication.",
+    "category": "Marketplace",
+    "tags": [
+      "official",
+      "aws",
+      "marketplace",
+      "software-procurement",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.aws.amazon.com/marketplace/latest/developerguide/marketplace-mcp-server.html"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6927a824fcda338deec450f9",
+        "url": "https://claude.com/marketplace/connectors/aws-marketplace"
+      }
+    ],
+    "relevance": 76,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/aws-marketplace.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated AM monogram; it is not an official AWS Marketplace mark.",
+    "homepageUrl": "https://aws.amazon.com/marketplace"
+  },
+  {
+    "id": "mcp-pdf-viewer",
+    "name": "PDF Viewer (MCP Apps example)",
+    "url": "https://example-server.modelcontextprotocol.io/pdf/mcp",
+    "description": "Example MCP App from the Model Context Protocol project that lists, reads, displays and saves PDFs from allowed sources such as arxiv.org in a PDF.js viewer. No authentication.",
+    "category": "Productivity",
+    "tags": [
+      "mcp-apps",
+      "example",
+      "pdf",
+      "viewer",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/pdf-viewer"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.a6f1af7d-e85f-4775-bbfb-da7a8eb990db",
+        "url": "https://claude.com/marketplace/connectors/pdf-viewer"
+      }
+    ],
+    "relevance": 85,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "Demo server hosted by the MCP project; its README documents only the local stdio build, so the listing source is the Claude directory entry."
+    ],
+    "logoUrl": "/server-logos/mcp-pdf-viewer.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated PV monogram; it is not an official PDF Viewer (MCP Apps example) mark.",
+    "homepageUrl": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/pdf-server",
+    "sourceUrl": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/pdf-server"
+  },
+  {
+    "id": "mcp-threejs-viewer",
+    "name": "Three.js 3D Viewer (MCP Apps example)",
+    "url": "https://example-server.modelcontextprotocol.io/threejs/mcp",
+    "description": "Example MCP App from the Model Context Protocol project that renders interactive Three.js scenes and models. No authentication.",
+    "category": "Design",
+    "tags": [
+      "mcp-apps",
+      "example",
+      "threejs",
+      "3d",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/threejs-3d-viewer"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.471ca2be-244d-4d9a-955a-3cdbcf76a12b",
+        "url": "https://claude.com/marketplace/connectors/threejs-3d-viewer"
+      }
+    ],
+    "relevance": 83,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "Demo server hosted by the MCP project; its README documents only the local stdio build, so the listing source is the Claude directory entry."
+    ],
+    "logoUrl": "/server-logos/mcp-threejs-viewer.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/threedotjs.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Three.js mark from Simple Icons version 16.38.0; trademark rights remain with the three.js authors.",
+    "homepageUrl": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/threejs-server",
+    "sourceUrl": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/threejs-server"
+  },
+  {
+    "id": "mcp-sheet-music",
+    "name": "Play Sheet Music (MCP Apps example)",
+    "url": "https://example-server.modelcontextprotocol.io/sheet-music/mcp",
+    "description": "Example MCP App from the Model Context Protocol project that renders and plays generated sheet music in an interactive view. No authentication.",
+    "category": "Design",
+    "tags": [
+      "mcp-apps",
+      "example",
+      "sheet-music",
+      "audio",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/play-sheet-music"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.96a2cde3-0340-43e9-b293-055f293b346d",
+        "url": "https://claude.com/marketplace/connectors/play-sheet-music"
+      }
+    ],
+    "relevance": 68,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "Demo server hosted by the MCP project; its README documents only the local stdio build, so the listing source is the Claude directory entry."
+    ],
+    "logoUrl": "/server-logos/mcp-sheet-music.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated PS monogram; it is not an official Play Sheet Music (MCP Apps example) mark.",
+    "homepageUrl": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/sheet-music-server",
+    "sourceUrl": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/sheet-music-server"
+  },
+  {
+    "id": "goodnotes",
+    "name": "Goodnotes",
+    "url": "https://claude-mcp-api.ml.goodnotes.com/mcp",
+    "description": "Creates text documents, Mermaid diagrams and SVG drawings to open in Goodnotes. No authentication to connect.",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "goodnotes",
+      "notes",
+      "diagrams",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/goodnotes"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.e261228f-7eed-410a-b7b7-f4474dc592ba",
+        "url": "https://claude.com/marketplace/connectors/goodnotes"
+      }
+    ],
+    "relevance": 85,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "Only the Claude-specific host is listed; no neutral endpoint was found (mcp.goodnotes.com does not resolve and chatgpt-mcp-api.ml.goodnotes.com is client-specific too).",
+      "Goodnotes documents the connector only through client directories; the listing source is the Claude directory entry."
+    ],
+    "logoUrl": "/server-logos/goodnotes.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated GO monogram; it is not an official Goodnotes mark.",
+    "homepageUrl": "https://www.goodnotes.com"
+  },
+  {
+    "id": "slidesgpt",
+    "name": "SlidesGPT",
+    "url": "https://mcp.slidesgpt.com/mcp",
+    "description": "Creates presentation decks with a PowerPoint download and re-themes them. Anonymous and stateless; no authentication.",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "slidesgpt",
+      "presentations",
+      "powerpoint",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://slidesgpt.com/mcp-docs/claude"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.59eafa91-020f-435e-b8a4-1bfcd7a957d8",
+        "url": "https://claude.com/marketplace/connectors/slidesgpt"
+      }
+    ],
+    "relevance": 83,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeEndpoints": [
+      {
+        "url": "https://claude.slidesgpt.com/mcp",
+        "authType": "none",
+        "description": "Claude-specific host that SlidesGPT documents and the Claude directory listing uses; serves the same server and tools"
+      }
+    ],
+    "caveats": [
+      "SlidesGPT's docs and the Claude directory name only https://claude.slidesgpt.com/mcp. The neutral https://mcp.slidesgpt.com/mcp is listed here because it answered with the same server and tools on 2026-11-19, but SlidesGPT does not document it."
+    ],
+    "logoUrl": "/server-logos/slidesgpt.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated SL monogram; it is not an official SlidesGPT mark.",
+    "homepageUrl": "https://slidesgpt.com"
+  },
+  {
+    "id": "dice",
+    "name": "Dice",
+    "url": "https://mcp.dice.com/mcp",
+    "description": "Searches active tech job listings on Dice with filters and returns job and company details. No authentication.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "dice",
+      "jobs",
+      "tech-careers",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.dice.com/about/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.696eda171bd8501919f1d149",
+        "url": "https://claude.com/marketplace/connectors/dice"
+      }
+    ],
+    "relevance": 82,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/dice.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated DI monogram; it is not an official Dice mark.",
+    "homepageUrl": "https://www.dice.com"
+  },
+  {
+    "id": "tldraw",
+    "name": "tldraw",
+    "url": "https://tldraw-mcp-app.tldraw.workers.dev/mcp",
+    "description": "MCP App that opens a tldraw canvas in the chat and lets the model create, edit and delete shapes and save checkpoints. No authentication.",
+    "category": "Design",
+    "tags": [
+      "official",
+      "tldraw",
+      "whiteboard",
+      "mcp-apps",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/tldraw/tldraw/blob/main/apps/mcp-app/README.md"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.02795770-2c02-42fe-888f-26769ca324a0",
+        "url": "https://claude.com/marketplace/connectors/tldraw"
+      }
+    ],
+    "relevance": 82,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "The publisher-documented endpoint is on tldraw's workers.dev subdomain. mcp.tldraw.com is a separate OAuth-protected server."
+    ],
+    "logoUrl": "/server-logos/tldraw.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/tldraw.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "tldraw mark from Simple Icons version 16.38.0; trademark rights remain with tldraw.",
+    "homepageUrl": "https://tldraw.dev",
+    "sourceUrl": "https://github.com/tldraw/tldraw/tree/main/apps/mcp-app"
+  },
+  {
+    "id": "alltrails",
+    "name": "AllTrails",
+    "url": "https://www.alltrails.com/mcp",
+    "description": "Finds trails near a location, within map bounds or by name, and returns trail details and weather overviews. No authentication.",
+    "category": "Search",
+    "tags": [
+      "official",
+      "alltrails",
+      "hiking",
+      "trails",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/alltrails"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.2aab1516-4acf-49b3-a85f-ff16c5d8fbb0",
+        "url": "https://claude.com/marketplace/connectors/alltrails"
+      }
+    ],
+    "relevance": 79,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "AllTrails' help center describes the connector but not its endpoint; the listing source is the Claude directory entry."
+    ],
+    "logoUrl": "/server-logos/alltrails.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/alltrails.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "AllTrails mark from Simple Icons version 16.38.0; trademark rights remain with AllTrails.",
+    "homepageUrl": "https://www.alltrails.com"
+  },
+  {
+    "id": "articulate",
+    "name": "Articulate",
+    "url": "https://mcp.articulate.com/mcp",
+    "description": "Turns a conversation into a draft Rise 360 course outline and lists courses for the signed-in Articulate 360 account. Tools list without credentials; course tools need Articulate OAuth.",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "articulate",
+      "rise-360",
+      "e-learning",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.articulatesupport.com/article/Rise-360-Turning-Ideas-Into-Training-With-Articulate-MCP"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.93ea6e24-abcf-48de-a227-7a97e4392192",
+        "url": "https://claude.com/marketplace/connectors/articulate"
+      }
+    ],
+    "relevance": 74,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in."
+    ],
+    "logoUrl": "/server-logos/articulate.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated AR monogram; it is not an official Articulate mark.",
+    "homepageUrl": "https://www.articulate.com"
+  },
+  {
+    "id": "fiverr",
+    "name": "Fiverr",
+    "url": "https://mcp.fiverr.com/mcp",
+    "description": "Searches the Fiverr marketplace for freelancers and returns seller profiles, gigs and review summaries. No account needed.",
+    "category": "Marketplace",
+    "tags": [
+      "official",
+      "fiverr",
+      "freelancers",
+      "marketplace",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.fiverr.com/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.bab2230b-9dd2-4781-a247-a333cb2c1066",
+        "url": "https://claude.com/marketplace/connectors/fiverr-mcp"
+      }
+    ],
+    "relevance": 74,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/fiverr.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/fiverr.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Fiverr mark from Simple Icons version 16.38.0; trademark rights remain with Fiverr.",
+    "homepageUrl": "https://www.fiverr.com"
+  },
+  {
+    "id": "deel",
+    "name": "Deel",
+    "url": "https://api.letsdeel.com/mcp",
+    "description": "Deel hiring insights without an account (employment cost, salary and take-home pay calculators, country comparisons) plus account tools that need Deel OAuth or a personal access token.",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "deel",
+      "hr",
+      "payroll",
+      "no-auth",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://developer.deel.com/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.e4bed2f4-9f30-4e0f-a157-32fd49838b0c",
+        "url": "https://claude.com/marketplace/connectors/deel"
+      }
+    ],
+    "relevance": 69,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth",
+      "bearer-token"
+    ],
+    "caveats": [
+      "tools/list answers without credentials; the server also publishes OAuth protected-resource metadata, so tools that read or change account data need an OAuth sign-in."
+    ],
+    "logoUrl": "/server-logos/deel.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Locally generated DE monogram; it is not an official Deel mark.",
+    "homepageUrl": "https://www.deel.com"
+  },
+  {
+    "id": "wolfram",
+    "name": "Wolfram",
+    "url": "https://agenttools.wolfram.com/mcp",
+    "description": "Wolfram Cloud MCP: Wolfram|Alpha answers, Wolfram Language evaluation and Wolfram documentation context. No authentication for the hosted endpoint.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "wolfram",
+      "wolfram-alpha",
+      "computation",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://wolfram.com/artificial-intelligence/mcp/cloud/wolfram-mcp-cloud/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.de1d1dc7-ec10-459d-b511-797982834b43",
+        "url": "https://claude.com/marketplace/connectors/wolfram"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69fe0bf66c8481919c513d799406436e",
+        "url": "https://chatgpt.com/plugins/wolfram"
+      }
+    ],
+    "relevance": 69,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/wolfram.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/wolfram.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-18",
+    "logoLicenseNote": "Wolfram mark from Simple Icons version 16.38.0; trademark rights remain with Wolfram Research.",
+    "homepageUrl": "https://www.wolfram.com"
   }
 ]

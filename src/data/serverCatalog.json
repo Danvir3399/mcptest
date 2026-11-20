@@ -11231,9 +11231,10 @@
       "evidenceUrl": "https://whimsical.com/learn/integrations/remote-mcp"
     },
     "logoUrl": "/server-logos/whimsical.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated WH monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Whimsical mark.",
+    "logoSourceUrl": "https://whimsical.com/learn/_astro/logo--mark-only.C0JwrMbX.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official Whimsical mark-only logo from the whimsical.com help site; trademark rights remain with the publisher.",
     "homepageUrl": "https://whimsical.com",
     "sourceUrl": "https://github.com/WhimsicalCode/mcp-server-guide"
   },
@@ -11330,10 +11331,11 @@
       "reviewedAt": "2026-10-20",
       "evidenceUrl": "https://docs.spline.design/generate/spline-mcp-server"
     },
-    "logoUrl": "/server-logos/spline.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-20",
-    "logoLicenseNote": "Locally generated SP monogram because no reusable publisher asset with clear third-party usage terms was identified; it is not an official Spline mark.",
+    "logoUrl": "/server-logos/spline.png",
+    "logoSourceUrl": "https://spline.design/images/spline_logo.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official Spline logo from spline.design; trademark rights remain with the publisher.",
     "homepageUrl": "https://spline.design"
   },
   {
@@ -12381,9 +12383,10 @@
     "authType": "oauth",
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/pandadoc.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-25",
-    "logoLicenseNote": "Locally generated monogram; not an official PandaDoc mark.",
+    "logoSourceUrl": "https://images.ctfassets.net/a4zep9yar86b/40ER2yWSZVj0aJKF43pbEu/dc5dba746eae140de7b5fffb83ecbc03/press-brand-assets-logo.svg",
+    "logoSourceKind": "official-brand",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official PandaDoc logo from the brand-assets section of the PandaDoc press page; trademark rights remain with the publisher.",
     "homepageUrl": "https://developers.pandadoc.com/docs/getting-started-with-mcp",
     "registryName": "com.pandadoc.mcp/mcp",
     "registryVersion": "1.0.0",
@@ -14004,9 +14007,10 @@
     "requiresOAuth": false,
     "authType": "none",
     "logoUrl": "/server-logos/cadprops.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-01",
-    "logoLicenseNote": "Locally generated CA monogram for a community submission; it is not an official CADProps mark.",
+    "logoSourceUrl": "https://www.cadprops.com/assets/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official CADProps site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.cadprops.com/connector/"
   },
   {
@@ -14157,9 +14161,10 @@
     "requiresOAuth": true,
     "authType": "oauth",
     "logoUrl": "/server-logos/pattorelay.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-04",
-    "logoLicenseNote": "Locally generated PA monogram for a community submission; it is not an official Patto mark.",
+    "logoSourceUrl": "https://pattorelay.com/assets/images/favicon.svg?v=7c54889b243b",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official Patto site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://pattorelay.com"
   },
   {
@@ -14322,9 +14327,10 @@
     "requiresOAuth": false,
     "authType": "none",
     "logoUrl": "/server-logos/cookierisk.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-09",
-    "logoLicenseNote": "Locally generated CQ monogram for a community submission; it is not an official CookieRisk Quickscan mark.",
+    "logoSourceUrl": "https://cookierisk.eu/apple-touch-icon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official CookieRisk site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://cookierisk.eu/developers/mcp"
   },
   {
@@ -14360,9 +14366,10 @@
       }
     ],
     "logoUrl": "/server-logos/agentseo.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-09",
-    "logoLicenseNote": "Locally generated AG monogram for a community submission; it is not an official AgentSEO mark.",
+    "logoSourceUrl": "https://www.agentseo.dev/icon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official AgentSEO site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.agentseo.dev/seo-mcp-server",
     "caveats": [
       "AgentSEO documents initialize and tools/list as public discovery methods that work without credentials; tool calls require an AgentSEO API key. The submitter reports the key is also accepted as a Bearer token."
@@ -14502,9 +14509,10 @@
     "requiresOAuth": false,
     "authType": "none",
     "logoUrl": "/server-logos/eorscope.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-13",
-    "logoLicenseNote": "Locally generated ES monogram for a community submission; it is not an official EOR Scope mark.",
+    "logoSourceUrl": "https://eorscope.com/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official EOR Scope site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://eorscope.com/"
   },
   {
@@ -14527,9 +14535,10 @@
     "requiresOAuth": false,
     "authType": "none",
     "logoUrl": "/server-logos/govisit.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-14",
-    "logoLicenseNote": "Locally generated GT monogram for a community submission; it is not an official GoVisit Tools mark.",
+    "logoSourceUrl": "https://govisit.ai/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official GoVisit site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://govisit.ai/en/docs/developers/mcp/overview"
   },
   {
@@ -14551,9 +14560,10 @@
     "requiresOAuth": false,
     "authType": "bearer-token",
     "logoUrl": "/server-logos/leadli.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-14",
-    "logoLicenseNote": "Locally generated LM monogram for a community submission; it is not an official leadli.me mark.",
+    "logoSourceUrl": "https://leadli.me/icon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official Leadli site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://leadli.me/en/guides/mcp-server"
   },
   {
@@ -15899,9 +15909,10 @@
     "requiresOAuth": false,
     "authType": "none",
     "logoUrl": "/server-logos/viator.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Locally generated VI monogram; it is not an official Viator mark.",
+    "logoSourceUrl": "https://cache.vtrcdn.com/orion/images/logos/logo-viator.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official Viator wordmark from the viator.com asset CDN; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.viator.com"
   },
   {
@@ -16377,9 +16388,10 @@
       "The publisher does not document this endpoint; the listing source is the Claude directory entry. Constant Contact's page (https://news.constantcontact.com/2026-09-10-Constant-Contact-Launches-in-Claude-to-Power-AI-Driven-Marketing) describes the connector but does not state the endpoint URL."
     ],
     "logoUrl": "/server-logos/constant-contact.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Locally generated CC monogram; it is not an official Constant Contact mark.",
+    "logoSourceUrl": "https://images.ctfassets.net/t21gix3kzulv/7eW248HWovSM60JVlyAyt5/86af3e9de73adeb005607517d6e8a63e/ctct_2022_icon_100x100_touch_icon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official Constant Contact site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.constantcontact.com"
   },
   {
@@ -17955,10 +17967,11 @@
       "The endpoint is on a Claude-specific host (claude-connector-api.insighttimer-api.net); no neutral Insight Timer MCP host resolves.",
       "The publisher does not document this endpoint; the listing source is the Claude directory entry. Insight Timer's help article (https://help.insighttimer.com/support/solutions/articles/67000753502-insight-timer-connector-for-claude) describes the connector but does not state the endpoint URL."
     ],
-    "logoUrl": "/server-logos/insight-timer.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Locally generated IT monogram; it is not an official Insight Timer mark.",
+    "logoUrl": "/server-logos/insight-timer.png",
+    "logoSourceUrl": "https://insighttimer.com/static/media/appIcon.6beeb1fa466b76991931.png",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official Insight Timer app icon from insighttimer.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://insighttimer.com"
   },
   {
@@ -18000,9 +18013,10 @@
       "The publisher does not document this endpoint; the listing source is the Claude directory entry. VistaPrint's AI connector guide (https://www.vistaprint.com/ai-connector-guide) does not state the endpoint URL and still says the connector is not yet in Claude's directory."
     ],
     "logoUrl": "/server-logos/vistaprint.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-19",
-    "logoLicenseNote": "Locally generated VP monogram; it is not an official VistaPrint mark.",
+    "logoSourceUrl": "https://cms.cloudinary.vpsvc.com/image/upload/vistaPrint%20Logos/VistaPrint_V_Color.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official VistaPrint stacked colour logo served on vistaprint.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.vistaprint.com"
   },
   {

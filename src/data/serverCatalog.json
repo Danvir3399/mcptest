@@ -11654,9 +11654,10 @@
     "authType": "oauth",
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/basedash.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-25",
-    "logoLicenseNote": "Locally generated monogram; not an official Basedash mark.",
+    "logoSourceUrl": "https://www.basedash.com/safari-pinned-tab.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official Basedash pinned-tab mark from basedash.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.basedash.com/features/mcp-server",
     "registryName": "com.basedash/mcp",
     "registryVersion": "1.0.0",
@@ -20001,10 +20002,11 @@
     "caveats": [
       "vidIQ says connecting is free on every plan, including Free, but tool calls use plan credits."
     ],
-    "logoUrl": "/server-logos/vidiq.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/vidiq.png",
+    "logoSourceUrl": "https://vidiq.com/favicons/android-icon-192x192.png",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated VI monogram; it is not an official vidIQ mark.",
+    "logoLicenseNote": "Official vidIQ site icon from vidiq.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://vidiq.com"
   },
   {
@@ -20371,9 +20373,10 @@
       "Rate limits and entitlements follow the user's Consensus account tier."
     ],
     "logoUrl": "/server-logos/consensus.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoSourceUrl": "https://consensus.app/favicon.svg",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated CO monogram; it is not an official Consensus mark.",
+    "logoLicenseNote": "Official Consensus SVG site icon from consensus.app; trademark rights remain with the publisher.",
     "homepageUrl": "https://consensus.app"
   },
   {
@@ -20430,10 +20433,11 @@
       "Needs a Supermetrics subscription; a 14-day trial account is created on first sign-in. Each ad or analytics platform must be connected as a data source in Supermetrics.",
       "A Supermetrics API key also works as a bearer token for server-to-server use; user and team tools need the OAuth sign-in."
     ],
-    "logoUrl": "/server-logos/supermetrics.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/supermetrics.png",
+    "logoSourceUrl": "https://supermetrics.com/favicon.png?v=1",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated SU monogram; it is not an official Supermetrics mark.",
+    "logoLicenseNote": "Official Supermetrics site icon from supermetrics.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://supermetrics.com"
   },
   {
@@ -20550,10 +20554,11 @@
       "The English version of Plaud's MCP page does not show the URL; the Traditional Chinese version does.",
       "The hosted server runs in the US."
     ],
-    "logoUrl": "/server-logos/plaud.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/plaud.png",
+    "logoSourceUrl": "https://www.plaud.ai/cdn/shop/files/plaud-fa.png?v=1765790183",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated PL monogram; it is not an official Plaud mark.",
+    "logoLicenseNote": "Official Plaud site icon from plaud.ai; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.plaud.ai"
   },
   {
@@ -20606,10 +20611,11 @@
     "caveats": [
       "Tool runs spend the connected workspace's Clay credits, and admins can cap per-user credit use."
     ],
-    "logoUrl": "/server-logos/clay.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/clay.png",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/61477f2c24a826836f969afe/6a3a92ab3c92c9caa6245619_dot-com_favicon_2026_512.png",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated CL monogram; it is not an official Clay mark.",
+    "logoLicenseNote": "Official Clay apple-touch icon from clay.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.clay.com"
   },
   {
@@ -20668,10 +20674,11 @@
       "Needs a Superhuman Mail Business plan or higher, with Ask AI turned on. On Enterprise or managed accounts an admin may need to enable MCP access.",
       "The ChatGPT listing gives no server URL; it is matched by publisher and product."
     ],
-    "logoUrl": "/server-logos/superhuman-mail.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/superhuman-mail.png",
+    "logoSourceUrl": "https://superhumanstatic.com/super-funnel/main/public/images/v4/favicons/superhuman-apple-touch-icon.png",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated SM monogram; it is not an official Superhuman mark.",
+    "logoLicenseNote": "Official Superhuman apple-touch icon from superhuman.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://superhuman.com/products/mail"
   },
   {
@@ -20895,9 +20902,10 @@
       "evidenceUrl": "https://developers.fathom.ai/mcp-docs"
     },
     "logoUrl": "/server-logos/fathom.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/6899da9beccbdbe92be49b5d/68e7961ff28d093095bdf392_logotype-new.svg",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated FA monogram; it is not an official Fathom mark.",
+    "logoLicenseNote": "Official Fathom mark from fathom.ai; trademark rights remain with the publisher.",
     "homepageUrl": "https://fathom.ai"
   },
   {
@@ -21026,9 +21034,10 @@
       "Imports use media minutes and Underlord edits can use AI credits. The connection is tied to the Descript Drive chosen at sign-in."
     ],
     "logoUrl": "/server-logos/descript.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoSourceUrl": "https://static-cdn.descript.com/web/icons/favicon.svg",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated DE monogram; it is not an official Descript mark.",
+    "logoLicenseNote": "Official Descript SVG site icon from descript.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.descript.com"
   },
   {
@@ -21088,10 +21097,11 @@
       "The 401 response carries no WWW-Authenticate header; the protected-resource metadata is at the path-suffixed well-known URL.",
       "The ChatGPT app, which Jotform's MCP App docs link, uses the ChatGPT-specific path /chatgpt-v6-app; the catalog uses the documented /mcp-app."
     ],
-    "logoUrl": "/server-logos/jotform.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/jotform.png",
+    "logoSourceUrl": "https://cdn.jotfor.ms/assets/img/favicons/apple-touch-icon-180x180.png",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated JF monogram; it is not an official Jotform mark.",
+    "logoLicenseNote": "Official Jotform apple-touch icon from jotform.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.jotform.com"
   },
   {
@@ -21443,9 +21453,10 @@
       "Enrichments use Lusha credits. A Lusha API key in the x-api-key header also works."
     ],
     "logoUrl": "/server-logos/lusha.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoSourceUrl": "https://www.lusha.com/wp-content/uploads/2020/06/logo.svg",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated LU monogram; it is not an official Lusha mark.",
+    "logoLicenseNote": "Official Lusha logo (mark and wordmark) from lusha.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.lusha.com"
   },
   {
@@ -21556,9 +21567,10 @@
       "Only available on Elicit Pro, Scale and Enterprise plans."
     ],
     "logoUrl": "/server-logos/elicit.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoSourceUrl": "https://elicit.com/favicon.svg",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated EL monogram; it is not an official Elicit mark.",
+    "logoLicenseNote": "Official Elicit SVG site icon from elicit.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://elicit.com"
   },
   {

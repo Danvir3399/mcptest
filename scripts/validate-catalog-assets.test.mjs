@@ -211,11 +211,12 @@ describe('catalog logo asset validation', () => {
   });
 
   it.each([
-    'agentseo', 'ahrefs', 'apify', 'athenahq', 'attio', 'braze', 'bright-data', 'builder-cms',
-    'cadprops', 'chembl', 'clinical-trials', 'common-room', 'configure-memory', 'constant-contact',
-    'cookierisk', 'courier', 'customer-io', 'datocapital', 'eorscope', 'etherscan', 'exa',
-    'ffmpeg-api', 'financial-datasets', 'firecrawl', 'fullstory', 'g2x', 'gamma', 'globalping',
-    'gong', 'govisit', 'happyscribe', 'hex', 'kernel', 'leadli', 'mailtester', 'mux', 'openai-docs',
+    'agentseo', 'ahrefs', 'apify', 'athenahq', 'attio', 'basedash', 'braze', 'bright-data',
+    'builder-cms', 'cadprops', 'chembl', 'clinical-trials', 'common-room', 'configure-memory',
+    'consensus', 'constant-contact', 'cookierisk', 'courier', 'customer-io', 'datocapital',
+    'descript', 'elicit', 'eorscope', 'etherscan', 'exa', 'fathom', 'ffmpeg-api',
+    'financial-datasets', 'firecrawl', 'fullstory', 'g2x', 'gamma', 'globalping', 'gong', 'govisit',
+    'happyscribe', 'hex', 'kernel', 'leadli', 'lusha', 'mailtester', 'mux', 'openai-docs',
     'pandadoc', 'parallel', 'parallel-search', 'parallel-task', 'pattorelay', 'pendo', 'port',
     'productboard', 'ref', 'salesql', 'statsig', 'tallyfy', 'tapcart', 'tavily', 'teamhood',
     'upcoach', 'usafacts', 'viator', 'vistaprint', 'whalesync', 'whimsical', 'xverum', 'you-com',

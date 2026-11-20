@@ -211,16 +211,17 @@ describe('catalog logo asset validation', () => {
   });
 
   it.each([
-    'agentseo', 'ahrefs', 'apify', 'athenahq', 'attio', 'basedash', 'braze', 'bright-data',
-    'builder-cms', 'cadprops', 'chembl', 'clinical-trials', 'common-room', 'configure-memory',
-    'consensus', 'constant-contact', 'cookierisk', 'courier', 'customer-io', 'datocapital',
-    'descript', 'elicit', 'eorscope', 'etherscan', 'exa', 'fathom', 'ffmpeg-api',
-    'financial-datasets', 'firecrawl', 'fullstory', 'g2x', 'gamma', 'globalping', 'gong', 'govisit',
-    'happyscribe', 'hex', 'kernel', 'leadli', 'lusha', 'mailtester', 'mux', 'openai-docs',
-    'pandadoc', 'parallel', 'parallel-search', 'parallel-task', 'pattorelay', 'pendo', 'port',
-    'productboard', 'ref', 'salesql', 'statsig', 'tallyfy', 'tapcart', 'tavily', 'teamhood',
-    'upcoach', 'usafacts', 'viator', 'vistaprint', 'whalesync', 'whimsical', 'xverum', 'you-com',
-    'zarla', 'zuplo-docs',
+    'agentseo', 'agentweb', 'ahrefs', 'apify', 'athenahq', 'attio', 'basedash', 'blockvectra-docs',
+    'braze', 'bright-data', 'builder-cms', 'cadprops', 'chembl', 'clinical-trials', 'common-room',
+    'configure-memory', 'consensus', 'constant-contact', 'cookierisk', 'courier', 'customer-io',
+    'datocapital', 'descript', 'elicit', 'eorscope', 'etherscan', 'exa', 'fathom', 'ffmpeg-api',
+    'financial-datasets', 'firecrawl', 'fullstory', 'futureinfra', 'g2x', 'gamma', 'globalping',
+    'gong', 'govisit', 'grigora', 'happyscribe', 'hex', 'kernel', 'leadli', 'lusha', 'mailtester',
+    'mux', 'omniakey', 'openai-docs', 'pandadoc', 'parallel', 'parallel-search', 'parallel-task',
+    'pattorelay', 'pendo', 'port', 'portoperatingsystem', 'productboard', 'realtycrawl', 'ref',
+    'salesql', 'statsig', 'tallyfy', 'tapcart', 'tasarim', 'tavily', 'teamhood', 'upcoach',
+    'usafacts', 'viator', 'vistaprint', 'whalesync', 'whimsical', 'xverum', 'you-com', 'zarla',
+    'zuplo-docs',
   ])(
     'gives the replaced %s logo a root viewBox so it scales to its display box',
     id => {

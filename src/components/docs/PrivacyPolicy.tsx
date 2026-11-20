@@ -21,6 +21,27 @@ const PrivacyPolicy: React.FC = () => {
           <p>
             Because data is stored locally, clearing your browser's cache or local storage will permanently delete your saved connections and history.
           </p>
+          <p>
+            The one exception is the site assistant, described below: questions you type into it are sent to the chat service.
+          </p>
+        </div>
+      </div>
+
+      <div className="card my-4" id="site-assistant">
+        <div className="card-body">
+          <h5 className="card-title">Site Assistant</h5>
+          <p>
+            Most pages show an <strong>Ask</strong> button that opens a chat assistant. It answers questions from this site's pages and is provided by the solv.chat service. Until you press the button, nothing is loaded from solv.chat, nothing is sent to it and nothing is stored in your browser.
+          </p>
+          <p>Once you open the assistant:</p>
+          <ul>
+            <li>The questions you type and the answers you get are stored by the chat service, so that we can see what visitors ask and improve the site's content. The address of the page you asked from is sent with each question.</li>
+            <li>A random identifier is kept in your browser's local storage to keep one conversation together. The open conversation is also kept in session storage, which your browser clears when you close the tab.</li>
+            <li>Your messages are processed by the model providers the service uses: Anthropic for answers and OpenAI for search embeddings.</li>
+          </ul>
+          <div className="alert alert-warning">
+            <strong>Do not type personal or confidential information into the assistant</strong>, such as names, email addresses, credentials, tokens or private server URLs.
+          </div>
         </div>
       </div>
 

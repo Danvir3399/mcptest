@@ -4,6 +4,8 @@
  * here: the page reads them at runtime from the service's public offer
  * (docs/service-offer-contract.md) and falls back to PRICE_FALLBACK. Both
  * states carry ESTIMATE_NOTE: a quote is an estimate until we confirm it.
+ * Prices exclude tax; the payment provider adds sales tax or VAT at checkout
+ * where it applies, so both states also carry taxNote().
  */
 
 export const SERVICE_PAGE_COPY = {
@@ -45,12 +47,19 @@ export const HOW_IT_WORKS: readonly string[] = [
   'Get an estimate of the scope, price and delivery time and, if you want hosting, of the maintenance.',
   'Confirm your email address.',
   'We review the scope and confirm the quote or adjust it.',
-  'You pay once you have the confirmed quote. Work starts after the payment.',
+  'You pay once you have the confirmed quote (+ tax if applicable). Work starts after the payment.',
 ];
 
 export const INDEPENDENCE_STATEMENT = 'Validation results, catalog status and badges are produced the same way for every server and are not affected by buying this service. A server we build is tested by the same checks, listed under the same rules and gets the same badge as any other server.';
 
 export const PRICE_FALLBACK = 'Prices depend on your API and the options you choose. Describe your API to the assistant to get an estimate of the price and delivery time.';
+/**
+ * The short note directly under the prices, with or without the public offer:
+ * prices exclude tax, which the payment provider adds at checkout where it
+ * applies. The currency is only known once the offer has loaded.
+ */
+export const taxNote = (currency: string | null): string =>
+  currency ? `Prices are in ${currency}, + tax if applicable.` : 'Prices exclude tax, + tax if applicable.';
 /** Shown next to the prices and the quote action, with or without the public offer. */
 export const ESTIMATE_NOTE = 'Prices shown and quotes from the assistant are initial estimates. The final price and delivery time may change once the requirements are clarified, and we confirm both with you before any work starts.';
 export const ORDERS_CLOSED = 'We are not taking orders right now. The prices above show the usual offer.';

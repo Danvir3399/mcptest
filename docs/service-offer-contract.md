@@ -56,11 +56,16 @@ every visit.
 | `offers` | array, required | Rendered in order. Offers may be added or removed; the page renders whatever is listed. |
 | `offers[].id` | string, required | Stable id (also used for quote pages). |
 | `offers[].name` | string, required | Shown as is. |
-| `offers[].fromPrice` | integer ≥ 0, required | The starting price in minor units, shown as "from $499". An estimate; the operator confirms the final price. |
+| `offers[].fromPrice` | integer ≥ 0, required | The starting price in minor units, shown as "from $499". Excludes tax. An estimate; the operator confirms the final price. |
 | `offers[].deliveryDays` | integer > 0, optional | Shown as "delivery in about N days"; omitted when missing. |
 | `maintenance` | object or `null`, required | `null` when hosting and maintenance is not offered. |
-| `maintenance.monthlyPrice` | integer ≥ 0 | Monthly price in minor units. |
+| `maintenance.monthlyPrice` | integer ≥ 0 | Monthly price in minor units. Excludes tax. |
 | `updatedAt` | ISO 8601 string, optional | When the offer last changed. Not shown. |
+
+`fromPrice` and `monthlyPrice` exclude tax: the payment provider adds sales
+tax or VAT at checkout where it applies. The page says so in one short note
+under the prices ("Prices are in USD, + tax if applicable."), and in its
+neutral copy too ("Prices exclude tax, + tax if applicable.").
 
 Prices are formatted with `Intl.NumberFormat` in the currency's own number of
 minor digits (USD 49900 is `$499`, 49950 is `$499.50`, JPY 5000 is `¥5,000`).

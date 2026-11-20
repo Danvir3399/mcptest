@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import ServicePageView from './ServicePageView';
 import ReleaseReadinessReport from './ReleaseReadinessReport';
-import { ESTIMATE_NOTE, HOW_IT_WORKS, INDEPENDENCE_STATEMENT, ORDERS_CLOSED, PRICE_FALLBACK, REPORT_HELP_LINK } from '../content/servicePageCopy';
+import { ESTIMATE_NOTE, HOW_IT_WORKS, INDEPENDENCE_STATEMENT, ORDERS_CLOSED, PRICE_FALLBACK, REPORT_HELP_LINK, taxNote } from '../content/servicePageCopy';
 import { SERVICE_PAGE_OFF, type ServicePageConfig } from '../servicePage/config.mts';
 import { parseServiceOffer, type ServiceOffer } from '../servicePage/offer';
 import type { QuoteAssistant } from '../servicePage/quoteAssistant';
@@ -50,6 +50,8 @@ const mount = async (props: React.ComponentProps<typeof ServicePageView>): Promi
 
 const prices = (page: HTMLElement) => page.querySelector<HTMLElement>('.service-offer')!;
 const estimateNote = (page: HTMLElement) => prices(page).querySelector('[data-note="estimate"]')?.textContent;
+const taxNoteText = (page: HTMLElement) => prices(page).querySelector('[data-note="tax"]')?.textContent;
+const NEUTRAL_TAX_NOTE = 'Prices exclude tax, + tax if applicable.';
 
 describe('ServicePageView', () => {
   it('covers the offer, the scope, the options, how it works and the independence statement', () => {
@@ -70,11 +72,14 @@ describe('ServicePageView', () => {
     expect(steps[1]).toMatch(/estimate of the scope, price and delivery time.*maintenance/);
     expect(steps[2]).toMatch(/Confirm your email/);
     expect(steps[3]).toMatch(/We review the scope and confirm the quote or adjust it/);
-    expect(steps[4]).toMatch(/^You pay once you have the confirmed quote/);
+    expect(steps[4]).toBe('You pay once you have the confirmed quote (+ tax if applicable). Work starts after the payment.');
+    // Tax is mentioned once in the steps, in the paying step.
+    expect(steps.filter(step => /tax/i.test(step))).toEqual([steps[4]]);
     expect(steps.slice(0, 4).join(' ')).not.toMatch(/\bpay/i);
     expect(text).toContain(INDEPENDENCE_STATEMENT);
     // The prerendered HTML has no prices, only the neutral copy and the action.
     expect(prices(page).textContent).toContain(PRICE_FALLBACK);
+    expect(taxNoteText(page)).toBe(NEUTRAL_TAX_NOTE);
     expect(estimateNote(page)).toBe(ESTIMATE_NOTE);
     expect(prices(page).textContent).not.toMatch(/\$\d/);
     expect(text).not.toMatch(/fixed price/i);
@@ -86,6 +91,7 @@ describe('ServicePageView', () => {
     expect(loadOffer).not.toHaveBeenCalled();
     expect(prices(page).dataset.offerState).toBe('unavailable');
     expect(prices(page).textContent).toContain(PRICE_FALLBACK);
+    expect(taxNoteText(page)).toBe(NEUTRAL_TAX_NOTE);
     expect(estimateNote(page)).toBe(ESTIMATE_NOTE);
     const quote = prices(page).querySelector('a.btn-primary')!;
     expect(quote.textContent).toBe('Get a quote');
@@ -104,9 +110,14 @@ describe('ServicePageView', () => {
       'Hosting and maintenance: $39 per month.',
     ]);
     expect(prices(page).textContent).not.toContain(PRICE_FALLBACK);
-    // The note sits between the prices and the quote action.
+    // One tax note directly under the prices, then the estimate note, then the quote action.
+    const tax = prices(page).querySelector('[data-note="tax"]')!;
+    expect(tax.textContent).toBe('Prices are in USD, + tax if applicable.');
+    expect(prices(page).querySelectorAll('[data-note="tax"]')).toHaveLength(1);
+    expect(prices(page).querySelector('[data-offer="maintenance"]')!.nextElementSibling).toBe(tax);
     const note = prices(page).querySelector('[data-note="estimate"]')!;
     expect(note.textContent).toBe(ESTIMATE_NOTE);
+    expect(tax.nextElementSibling).toBe(note);
     const quote = prices(page).querySelector('.btn-primary')!;
     expect(quote.textContent).toBe('Get a quote');
     expect(prices(page).querySelector('.service-offer-list')!.compareDocumentPosition(note) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
@@ -118,6 +129,12 @@ describe('ServicePageView', () => {
     const page = await mount({ config: WITH_API, loadOffer: async () => offer });
     expect(Array.from(prices(page).querySelectorAll('[data-offer]'), row => row.getAttribute('data-offer'))).toEqual(['audit-fix']);
     expect(prices(page).textContent).not.toContain('Hosting and maintenance');
+    expect(prices(page).querySelector('.service-offer-list')!.nextElementSibling?.textContent).toBe('Prices are in USD, + tax if applicable.');
+  });
+
+  it('names the offer currency in the tax note', () => {
+    expect(taxNote('EUR')).toBe('Prices are in EUR, + tax if applicable.');
+    expect(taxNote(null)).toBe(NEUTRAL_TAX_NOTE);
   });
 
   it.each([
@@ -127,6 +144,7 @@ describe('ServicePageView', () => {
     const page = await mount({ config: WITH_API, loadOffer });
     expect(prices(page).dataset.offerState).toBe('unavailable');
     expect(prices(page).textContent).toContain(PRICE_FALLBACK);
+    expect(taxNoteText(page)).toBe(NEUTRAL_TAX_NOTE);
     expect(estimateNote(page)).toBe(ESTIMATE_NOTE);
     expect(prices(page).querySelector('.btn-primary')?.textContent).toBe('Get a quote');
   });
@@ -135,6 +153,7 @@ describe('ServicePageView', () => {
     const page = await mount({ config: WITH_ASSISTANT, loadOffer: async () => ({ ...OFFER, ordersOpen: false }) });
     expect(prices(page).textContent).toContain('from $499');
     expect(prices(page).querySelector('.service-orders-closed')?.textContent).toBe(ORDERS_CLOSED);
+    expect(taxNoteText(page)).toBe(taxNote('USD'));
     expect(estimateNote(page)).toBe(ESTIMATE_NOTE);
     expect(prices(page).querySelector('.btn-primary')).toBeNull();
   });

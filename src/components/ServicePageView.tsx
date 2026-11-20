@@ -15,6 +15,7 @@ import {
   SERVICE_OPTIONS,
   SERVICE_PAGE_COPY as copy,
   WHAT_YOU_GET,
+  taxNote,
 } from '../content/servicePageCopy';
 import { SERVICE_PAGE } from '../servicePage/buildFlag';
 import type { ServicePageConfig } from '../servicePage/config.mts';
@@ -168,6 +169,7 @@ export default function ServicePageView({
                 {offer && <OfferSummary offer={offer} />}
               </>
             )}
+            <p className="service-offer-note" data-note="tax">{taxNote(offer?.currency ?? null)}</p>
             <p className="service-offer-note" data-note="estimate">{ESTIMATE_NOTE}</p>
             {ordersClosed
               ? <p className="service-orders-closed" role="status">{ORDERS_CLOSED}</p>

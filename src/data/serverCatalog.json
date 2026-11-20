@@ -13770,9 +13770,10 @@
     "requiresOAuth": true,
     "authType": "oauth",
     "logoUrl": "/server-logos/portoperatingsystem.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-27",
-    "logoLicenseNote": "Locally generated PO monogram for a community submission; it is not an official Port OS Smart Home mark.",
+    "logoSourceUrl": "https://portoperatingsystem.com/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official Port OS mark from the portoperatingsystem.com favicon; trademark rights remain with the publisher.",
     "homepageUrl": "https://portoperatingsystem.com/"
   },
   {
@@ -13922,9 +13923,10 @@
       "evidenceUrl": "https://futureinfra.ai/docs/mcp/"
     },
     "logoUrl": "/server-logos/futureinfra.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-28",
-    "logoLicenseNote": "Locally generated FI monogram for a community submission; it is not an official FutureInfra mark.",
+    "logoSourceUrl": "https://futureinfra.ai/assets/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official FutureInfra terminal-prompt mark from the futureinfra.ai favicon; trademark rights remain with the publisher.",
     "homepageUrl": "https://futureinfra.ai/docs/mcp/",
     "caveats": [
       "Resources are billed against prepaid account credits.",
@@ -13951,9 +13953,10 @@
     "requiresOAuth": false,
     "authType": "none",
     "logoUrl": "/server-logos/tasarim.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-30",
-    "logoLicenseNote": "Locally generated TA monogram for a community submission; it is not an official tasarim.ai AI Catalog mark.",
+    "logoSourceUrl": "https://tasarim.ai/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official tasarim.ai \"t.\" icon from the tasarim.ai favicon; trademark rights remain with the publisher.",
     "homepageUrl": "https://tasarim.ai/en/mcp"
   },
   {
@@ -13986,7 +13989,7 @@
     "name": "Grigora MCP",
     "url": "https://mcp.grigora.co/mcp",
     "browserAccess": "proxy-required",
-    "description": "Grigora MCP connects AI clients to website management, CMS content, commerce, SEO, and publishing. It uses OAuth and is in beta for Pro and Enterprise users with Developer Mode enabled.",
+    "description": "Grigora MCP connects AI clients to a Grigora site's blog and CMS posts, commerce products and store settings, SEO, redirects, custom code, analytics and publishing. It uses OAuth; commerce tools are available only on plans with commerce access.",
     "category": "Productivity",
     "tags": [
       "productivity",
@@ -14001,9 +14004,10 @@
     "requiresOAuth": true,
     "authType": "oauth",
     "logoUrl": "/server-logos/grigora.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-30",
-    "logoLicenseNote": "Locally generated GM monogram for a community submission; it is not an official Grigora MCP mark.",
+    "logoSourceUrl": "https://www.grigora.co/fav-icon/safari-pinned-tab.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official Grigora mark from the grigora.co pinned-tab icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.grigora.co/mcp/"
   },
   {
@@ -14026,9 +14030,10 @@
     "requiresOAuth": false,
     "authType": "none",
     "logoUrl": "/server-logos/agentweb.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-28",
-    "logoLicenseNote": "Locally generated AG monogram for a community submission; it is not an official AgentWeb mark.",
+    "logoSourceUrl": "https://agentweb.live/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official AgentWeb globe icon from the agentweb.live favicon; trademark rights remain with the publisher.",
     "homepageUrl": "https://agentweb.live/install.md"
   },
   {
@@ -14243,9 +14248,10 @@
       }
     ],
     "logoUrl": "/server-logos/realtycrawl.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-04",
-    "logoLicenseNote": "Generated R monogram for directory identification; not the official RealtyCrawl mark.",
+    "logoSourceUrl": "https://realtycrawl.dev/icon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official RealtyCrawl house icon from the realtycrawl.dev site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://realtycrawl.dev",
     "sourceUrl": "https://github.com/realtycrawl/realtycrawl-mcp",
     "caveats": [
@@ -14342,9 +14348,10 @@
     "exactEndpointOnly": true,
     "browserAccess": "direct",
     "logoUrl": "/server-logos/blockvectra-docs.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-07",
-    "logoLicenseNote": "Locally generated BV monogram; it is not an official BlockVectra mark.",
+    "logoSourceUrl": "https://docs.blockvectra.com/icon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official BlockVectra \"B\" icon from the docs.blockvectra.com site icon; trademark rights remain with the publisher.",
     "homepageUrl": "https://docs.blockvectra.com/en/guides/mcp-server/",
     "sourceUrl": "https://github.com/blockvectra/mcp",
     "caveats": [
@@ -14528,9 +14535,10 @@
       "evidenceUrl": "https://omniakey.com/mcp"
     },
     "logoUrl": "/server-logos/omniakey.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-11-13",
-    "logoLicenseNote": "Locally generated OA monogram for a community submission; it is not an official OmniaKey mark.",
+    "logoSourceUrl": "https://omniakey.com/favicon.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official OmniaKey icon from the omniakey.com favicon; trademark rights remain with the publisher.",
     "homepageUrl": "https://omniakey.com/mcp"
   },
   {

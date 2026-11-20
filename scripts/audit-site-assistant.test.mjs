@@ -62,7 +62,10 @@ describe('cspSourcesAllow', () => {
     [['https://app.solv.chat/v1/check/frame'], true],
     [["'self'"], false],
     [["'none'"], false],
-    [['https://app.solv.chat', "'none'"], false],
+    [['https://app.solv.chat', "'none'"], true],
+    [["'none'", 'https:'], true],
+    [["'NONE'"], false],
+    [["'none'", 'https://challenges.cloudflare.com'], false],
     [['http://app.solv.chat'], true],
     [['https://challenges.cloudflare.com'], false],
     [['https://solv.chat'], false],
@@ -79,6 +82,11 @@ describe('cspSourcesAllow', () => {
 describe('auditSiteAssistantPage on fixtures', () => {
   it('passes the built layout', () => {
     expect(auditSiteAssistantPage('index.html', BUILT, CONFIG)).toEqual([]);
+  });
+
+  it('passes a frame-src that lists the chat origin beside \'none\' (browsers ignore \'none\' there)', () => {
+    const html = BUILT.replace('frame-src https:', "frame-src https://app.solv.chat 'none'");
+    expect(auditSiteAssistantPage('index.html', html, CONFIG)).toEqual([]);
   });
 
   const meta = BUILT.match(/<meta name="mcptest-site-assistant"[^>]*>/)[0];

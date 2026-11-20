@@ -47,12 +47,13 @@ export function cspDirective(policy, name) {
  * Whether a CSP source list allows a resource at `url` (an https URL), per the
  * CSP source-matching rules for the forms a policy here can use: `*`, a
  * scheme (`https:`), and a host source with an optional `*.` subdomain
- * wildcard, scheme, port and path. 'self' never matches: the chat service is
- * another origin.
+ * wildcard, scheme, port and path. Quoted keywords never match: 'self'
+ * because the chat service is another origin, and 'none' because it only
+ * blocks on its own (browsers ignore it beside other sources, so an empty or
+ * 'none'-only list allows nothing).
  */
 export function cspSourcesAllow(sources, url) {
   const target = new URL(url);
-  if (sources.includes("'none'")) return false;
   return sources.some(source => {
     if (source === '*') return target.protocol === 'https:' || target.protocol === 'http:';
     if (/^[a-z][a-z0-9+.-]*:$/i.test(source)) return source.toLowerCase() === target.protocol || (source.toLowerCase() === 'http:' && target.protocol === 'https:');

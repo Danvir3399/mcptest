@@ -25323,7 +25323,7 @@
   },
   {
     "id": "kling-ai-plugin",
-    "name": "Kling AI Plugin (Global/China)",
+    "name": "Kling AI (Global/China) Plugin",
     "url": "https://kling.ai/mcp/plugin",
     "description": "Official remote MCP plugin for Kling AI image and video generation, including reference-guided workflows, reusable Elements, motion controls and task status. OAuth is required; generation consumes credits in the matching regional Kling account.",
     "category": "Design",

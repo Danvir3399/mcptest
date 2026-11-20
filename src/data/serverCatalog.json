@@ -10847,6 +10847,13 @@
       "kind": "publisher",
       "url": "https://help.coda.io/hc/en-us/articles/44722661982989-Connect-to-the-Coda-MCP"
     },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.efca073e-2bd7-48bd-a133-ffd0e87e5d9f",
+        "url": "https://claude.com/marketplace/connectors/superhuman-docs"
+      }
+    ],
     "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": true,
@@ -10869,6 +10876,13 @@
       "evidenceUrl": "https://help.coda.io/hc/en-us/articles/44722661982989-Connect-to-the-Coda-MCP"
     },
     "exactEndpointOnly": true,
+    "alternativeEndpoints": [
+      {
+        "url": "https://docs.superhuman.com/apis/mcp",
+        "authType": "oauth",
+        "description": "Superhuman Docs MCP address (Coda is now Superhuman Docs). Listed in the Claude directory as \"Superhuman Docs\"; its protected-resource metadata names the same \"Superhuman Docs MCP Server\" with the same mcp:all scope, signed in through id.superhuman.com."
+      }
+    ],
     "logoUrl": "/server-logos/coda.svg",
     "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.35.0/icons/coda.svg",
     "logoSourceKind": "simple-icons",
@@ -10876,7 +10890,8 @@
     "logoLicenseNote": "Coda mark from Simple Icons version 16.35.0; trademark rights remain with Coda.",
     "homepageUrl": "https://coda.io",
     "caveats": [
-      "Coda labels the MCP server beta."
+      "Coda labels the MCP server beta.",
+      "Coda is now Superhuman Docs. Superhuman documents https://docs.superhuman.com/apis/mcp for new connections and says this coda.io address keeps working for existing connections but will be deprecated."
     ]
   },
   {
@@ -11654,9 +11669,10 @@
     "authType": "oauth",
     "exactEndpointOnly": true,
     "logoUrl": "/server-logos/basedash.svg",
-    "logoSourceKind": "generated-fallback",
-    "logoRetrievedAt": "2026-10-25",
-    "logoLicenseNote": "Locally generated monogram; not an official Basedash mark.",
+    "logoSourceUrl": "https://www.basedash.com/safari-pinned-tab.svg",
+    "logoSourceKind": "official-site",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Official Basedash pinned-tab mark from basedash.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.basedash.com/features/mcp-server",
     "registryName": "com.basedash/mcp",
     "registryVersion": "1.0.0",
@@ -20001,10 +20017,11 @@
     "caveats": [
       "vidIQ says connecting is free on every plan, including Free, but tool calls use plan credits."
     ],
-    "logoUrl": "/server-logos/vidiq.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/vidiq.png",
+    "logoSourceUrl": "https://vidiq.com/favicons/android-icon-192x192.png",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated VI monogram; it is not an official vidIQ mark.",
+    "logoLicenseNote": "Official vidIQ site icon from vidiq.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://vidiq.com"
   },
   {
@@ -20160,6 +20177,11 @@
         "directory": "chatgpt",
         "id": "plugin_asdk_app_694a52cfaa3c819192bea84eaa254968",
         "url": "https://chatgpt.com/plugins/plugin_asdk_app_694a52cfaa3c819192bea84eaa254968"
+      },
+      {
+        "directory": "claude",
+        "id": "connector.a1cabea8-3240-4a5c-b9d9-12ee002de35e",
+        "url": "https://claude.com/marketplace/connectors/windsor-ai-for-social-media"
       }
     ],
     "relevance": 96,
@@ -20184,6 +20206,13 @@
       "evidenceUrl": "https://github.com/windsor-ai/windsor_mcp"
     },
     "exactEndpointOnly": true,
+    "alternativeEndpoints": [
+      {
+        "url": "https://mcp.windsor.ai/social_media/",
+        "authType": "oauth",
+        "description": "Windsor.ai's organic-social scoped endpoint (Instagram, Facebook Pages, TikTok Organic, YouTube, LinkedIn Pages, Google Business Profile). Same tools as the root server with only these connectors in scope. It is listed in the Claude directory as \"Windsor.ai for Social Media\" at https://mcp.windsor.ai/social_media."
+      }
+    ],
     "caveats": [
       "Data sources must first be connected in the user's Windsor.ai account. Actions that start or raise ad spend need an explicit confirmation.",
       "The server answers at the origin root, so the URL must not be rewritten to /mcp (which returns 404). Windsor.ai also runs per-connector servers such as /facebook and /social_media; those are separate listings."
@@ -20371,9 +20400,10 @@
       "Rate limits and entitlements follow the user's Consensus account tier."
     ],
     "logoUrl": "/server-logos/consensus.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoSourceUrl": "https://consensus.app/favicon.svg",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated CO monogram; it is not an official Consensus mark.",
+    "logoLicenseNote": "Official Consensus SVG site icon from consensus.app; trademark rights remain with the publisher.",
     "homepageUrl": "https://consensus.app"
   },
   {
@@ -20430,10 +20460,11 @@
       "Needs a Supermetrics subscription; a 14-day trial account is created on first sign-in. Each ad or analytics platform must be connected as a data source in Supermetrics.",
       "A Supermetrics API key also works as a bearer token for server-to-server use; user and team tools need the OAuth sign-in."
     ],
-    "logoUrl": "/server-logos/supermetrics.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/supermetrics.png",
+    "logoSourceUrl": "https://supermetrics.com/favicon.png?v=1",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated SU monogram; it is not an official Supermetrics mark.",
+    "logoLicenseNote": "Official Supermetrics site icon from supermetrics.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://supermetrics.com"
   },
   {
@@ -20550,10 +20581,11 @@
       "The English version of Plaud's MCP page does not show the URL; the Traditional Chinese version does.",
       "The hosted server runs in the US."
     ],
-    "logoUrl": "/server-logos/plaud.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/plaud.png",
+    "logoSourceUrl": "https://www.plaud.ai/cdn/shop/files/plaud-fa.png?v=1765790183",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated PL monogram; it is not an official Plaud mark.",
+    "logoLicenseNote": "Official Plaud site icon from plaud.ai; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.plaud.ai"
   },
   {
@@ -20606,10 +20638,11 @@
     "caveats": [
       "Tool runs spend the connected workspace's Clay credits, and admins can cap per-user credit use."
     ],
-    "logoUrl": "/server-logos/clay.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/clay.png",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/61477f2c24a826836f969afe/6a3a92ab3c92c9caa6245619_dot-com_favicon_2026_512.png",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated CL monogram; it is not an official Clay mark.",
+    "logoLicenseNote": "Official Clay apple-touch icon from clay.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.clay.com"
   },
   {
@@ -20668,10 +20701,11 @@
       "Needs a Superhuman Mail Business plan or higher, with Ask AI turned on. On Enterprise or managed accounts an admin may need to enable MCP access.",
       "The ChatGPT listing gives no server URL; it is matched by publisher and product."
     ],
-    "logoUrl": "/server-logos/superhuman-mail.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/superhuman-mail.png",
+    "logoSourceUrl": "https://superhumanstatic.com/super-funnel/main/public/images/v4/favicons/superhuman-apple-touch-icon.png",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated SM monogram; it is not an official Superhuman mark.",
+    "logoLicenseNote": "Official Superhuman apple-touch icon from superhuman.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://superhuman.com/products/mail"
   },
   {
@@ -20895,9 +20929,10 @@
       "evidenceUrl": "https://developers.fathom.ai/mcp-docs"
     },
     "logoUrl": "/server-logos/fathom.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoSourceUrl": "https://cdn.prod.website-files.com/6899da9beccbdbe92be49b5d/68e7961ff28d093095bdf392_logotype-new.svg",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated FA monogram; it is not an official Fathom mark.",
+    "logoLicenseNote": "Official Fathom mark from fathom.ai; trademark rights remain with the publisher.",
     "homepageUrl": "https://fathom.ai"
   },
   {
@@ -21026,9 +21061,10 @@
       "Imports use media minutes and Underlord edits can use AI credits. The connection is tied to the Descript Drive chosen at sign-in."
     ],
     "logoUrl": "/server-logos/descript.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoSourceUrl": "https://static-cdn.descript.com/web/icons/favicon.svg",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated DE monogram; it is not an official Descript mark.",
+    "logoLicenseNote": "Official Descript SVG site icon from descript.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.descript.com"
   },
   {
@@ -21088,10 +21124,11 @@
       "The 401 response carries no WWW-Authenticate header; the protected-resource metadata is at the path-suffixed well-known URL.",
       "The ChatGPT app, which Jotform's MCP App docs link, uses the ChatGPT-specific path /chatgpt-v6-app; the catalog uses the documented /mcp-app."
     ],
-    "logoUrl": "/server-logos/jotform.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoUrl": "/server-logos/jotform.png",
+    "logoSourceUrl": "https://cdn.jotfor.ms/assets/img/favicons/apple-touch-icon-180x180.png",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated JF monogram; it is not an official Jotform mark.",
+    "logoLicenseNote": "Official Jotform apple-touch icon from jotform.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.jotform.com"
   },
   {
@@ -21443,9 +21480,10 @@
       "Enrichments use Lusha credits. A Lusha API key in the x-api-key header also works."
     ],
     "logoUrl": "/server-logos/lusha.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoSourceUrl": "https://www.lusha.com/wp-content/uploads/2020/06/logo.svg",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated LU monogram; it is not an official Lusha mark.",
+    "logoLicenseNote": "Official Lusha logo (mark and wordmark) from lusha.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://www.lusha.com"
   },
   {
@@ -21556,9 +21594,10 @@
       "Only available on Elicit Pro, Scale and Enterprise plans."
     ],
     "logoUrl": "/server-logos/elicit.svg",
-    "logoSourceKind": "generated-fallback",
+    "logoSourceUrl": "https://elicit.com/favicon.svg",
+    "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-20",
-    "logoLicenseNote": "Locally generated EL monogram; it is not an official Elicit mark.",
+    "logoLicenseNote": "Official Elicit SVG site icon from elicit.com; trademark rights remain with the publisher.",
     "homepageUrl": "https://elicit.com"
   },
   {
@@ -23454,6 +23493,1833 @@
     "logoRetrievedAt": "2026-11-20",
     "logoLicenseNote": "Locally generated BF monogram; it is not an official Bajaj Finance mark.",
     "homepageUrl": "https://www.bajajfinserv.in/"
+  },
+  {
+    "id": "learning-commons-knowledge-graph",
+    "name": "Learning Commons Knowledge Graph",
+    "url": "https://kg.mcp.learningcommons.org/mcp",
+    "description": "Learning Commons' Knowledge Graph MCP server finds K-12 academic standards for all U.S. states by code or text, breaks them into learning components, and traces standards progressions. Some datasets also return curriculum lessons, materials and misconceptions. Needs a Learning Commons Platform API key sent in the x-api-key header.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "learning-commons",
+      "education",
+      "k-12",
+      "academic-standards",
+      "api-key"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.learningcommons.org/knowledge-graph/using-knowledge-graph/mcp-server"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68d1f14431c6258a78bdad70",
+        "url": "https://claude.com/marketplace/connectors/learning-commons-knowledge-graph"
+      }
+    ],
+    "relevance": 84,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "api-key",
+    "requiredHeaders": [
+      {
+        "name": "x-api-key",
+        "description": "Learning Commons Platform API key (Authorization: Bearer <key> is also accepted)",
+        "valueTemplate": "<LEARNING_COMMONS_API_KEY>",
+        "required": true,
+        "secret": true
+      }
+    ],
+    "caveats": [
+      "The Claude directory lists this connector as \"Sign-in: Not required\", but anonymous requests are rejected: initialize returns HTTP 401 \"No API key found in request\" (WWW-Authenticate: Key, Kong gateway), and no OAuth protected-resource metadata is published. Learning Commons' docs say to send an API key generated in Learning Commons Platform.",
+      "Learning Commons labels the MCP server early access and says breaking changes may occur. Some tools are gated or mixed-access depending on the account's dataset access."
+    ],
+    "logoUrl": "/server-logos/learning-commons-knowledge-graph.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated LC monogram; it is not an official Learning Commons Knowledge Graph mark.",
+    "homepageUrl": "https://learningcommons.org"
+  },
+  {
+    "id": "amazon-selling-partner",
+    "name": "Amazon Selling Partner",
+    "url": "https://sellingpartner-ai.amazon.com/mcp",
+    "description": "Amazon's Selling Partner MCP server connects a Seller Central account so an assistant can answer questions about sales, inventory and listing performance and run Selling Partner tools, with every write action reviewed and approved by the user. Needs an Amazon Seller Central OAuth sign-in.",
+    "category": "Marketplace",
+    "tags": [
+      "official",
+      "amazon",
+      "ecommerce",
+      "seller-central",
+      "marketplace-sellers",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/amazon-selling-partner"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.921c3435-ce00-4c0b-8809-4647b3cb108f",
+        "url": "https://claude.com/marketplace/connectors/amazon-selling-partner"
+      }
+    ],
+    "relevance": 84,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://claude.com/marketplace/connectors/amazon-selling-partner"
+    },
+    "caveats": [
+      "The Claude directory listing says the connector is in beta.",
+      "Sign-in goes through Seller Central (https://sellercentral.amazon.com/apps/agents/authorize). The authorization server offers client ID metadata documents but no dynamic client registration endpoint."
+    ],
+    "logoUrl": "/server-logos/amazon-selling-partner.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated AS monogram; it is not an official Amazon Selling Partner mark.",
+    "homepageUrl": "https://sellercentral.amazon.com"
+  },
+  {
+    "id": "adisinsight",
+    "name": "AdisInsight",
+    "url": "https://adisinsight-mcp.springer.com/mcp",
+    "description": "Springer Nature's AdisInsight MCP server searches pharmaceutical drug development profiles, clinical trials, development phase changes, drug safety reports and company pipelines, and can generate charts of pipeline and trial landscapes. Needs a Springer Nature (AdisInsight) OAuth sign-in.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "adisinsight",
+      "pharma",
+      "clinical-trials",
+      "drug-pipeline",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://adisinsight-mcp.springer.com/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.f73a5ee3-2b26-451d-8cb3-93bc451ac0fd",
+        "url": "https://claude.com/marketplace/connectors/adisinsight"
+      }
+    ],
+    "relevance": 84,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://adisinsight.springer.com/mcp-info"
+    },
+    "caveats": [
+      "Needs an AdisInsight subscription. Sign-in goes through the Springer Nature login, using IP authentication for enterprise subscriptions or a username and password for named-user subscriptions."
+    ],
+    "logoUrl": "/server-logos/adisinsight.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated AI monogram; it is not an official AdisInsight mark.",
+    "homepageUrl": "https://adisinsight.springer.com"
+  },
+  {
+    "id": "bigdata",
+    "name": "Bigdata.com",
+    "url": "https://mcp.bigdata.com/",
+    "description": "RavenPack's Bigdata.com MCP server searches licensed financial news, SEC and international filings, earnings call transcripts, broker research and your uploaded documents with citations. It also returns company, ETF, country, market, sentiment and portfolio tearsheets and the earnings and economic calendars. Needs a Bigdata.com OAuth sign-in.",
+    "category": "Finance",
+    "tags": [
+      "official",
+      "bigdata",
+      "financial-research",
+      "market-data",
+      "sec-filings",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.bigdata.com/mcp-reference/introduction"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6983d5592effb6d9ebf28300",
+        "url": "https://claude.com/marketplace/connectors/bigdata"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69491eceef3c8191beb70788b7840429",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69491eceef3c8191beb70788b7840429"
+      }
+    ],
+    "relevance": 84,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://docs.bigdata.com/mcp-reference/api-integrations/mcp-api-integration"
+    },
+    "exactEndpointOnly": true,
+    "alternativeEndpoints": [
+      {
+        "url": "https://mcp.bigdata.com/deepresearch/",
+        "authType": "oauth",
+        "description": "Bigdata.com's deep-research endpoint, documented with search and fetch tools that follow OpenAI's deep research conventions. The ChatGPT plugin uses it (as https://mcp.bigdata.com/deepresearch), and the docs show it used with an x-api-key header from the OpenAI API."
+      }
+    ],
+    "caveats": [
+      "The OAuth authorization server (https://clerk.bigdata.com) has no dynamic client registration. Bigdata.com documents API-key access (x-api-key header, key from platform.bigdata.com) for custom MCP clients.",
+      "The ChatGPT plugin uses https://mcp.bigdata.com/deepresearch, which Bigdata.com documents as a separate search/fetch deep-research endpoint. The catalog uses the root URL, which the Claude connector and Bigdata.com's custom-client docs use.",
+      "The server answers at the origin root, so the URL must not be rewritten to /mcp."
+    ],
+    "logoUrl": "/server-logos/bigdata.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated BD monogram; it is not an official Bigdata.com mark.",
+    "homepageUrl": "https://bigdata.com"
+  },
+  {
+    "id": "opusclip-ai-producer",
+    "name": "AI Producer by OpusClip",
+    "url": "https://producer.opus.pro/api/mcp",
+    "description": "OpusClip's AI Producer MCP server edits your own talking-head footage into finished videos from chat. It cuts filler and pauses, adds captions, reframing, B-roll, motion graphics, music and voice enhancement, and exports or shares the project. Needs an OpusClip OAuth sign-in.",
+    "category": "Design",
+    "tags": [
+      "official",
+      "opusclip",
+      "video-editing",
+      "captions",
+      "motion-graphics",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://producer.opus.pro/docs/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.3944f79f-c1a8-40ef-9f8e-d24f6d0f3f08",
+        "url": "https://claude.com/marketplace/connectors/ai-producer-by-opusclip"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6aab97bee30881919b757db1f5d91f99",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6aab97bee30881919b757db1f5d91f99"
+      }
+    ],
+    "relevance": 84,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://producer.opus.pro/docs/mcp"
+    },
+    "exactEndpointOnly": true,
+    "caveats": [
+      "AI Producer is a separate product from OpusClip's clipping MCP server (https://mcp.opus.pro/mcp). It edits the user's own footage, not long videos into shorts.",
+      "Needs an OpusClip account, and editing spends account credits. OpusClip notes that the site root and https://producer.opus.pro/mcp are web pages, not MCP endpoints."
+    ],
+    "logoUrl": "/server-logos/opusclip-ai-producer.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated AP monogram; it is not an official AI Producer by OpusClip mark.",
+    "homepageUrl": "https://producer.opus.pro"
+  },
+  {
+    "id": "lattice",
+    "name": "Lattice",
+    "url": "https://api.latticehq.com/mcp",
+    "description": "Lattice's MCP server reads and drafts performance-management work within the user's Lattice permissions: reviews and review cycles, updates, feedback, goals, growth competencies, 1:1s and the org chart. It can save and submit reviews and updates. Needs a Lattice OAuth sign-in.",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "lattice",
+      "performance-management",
+      "hr",
+      "goals",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://help.lattice.com/hc/en-us/articles/41581931712151-Set-up-a-Custom-Lattice-MCP-Server"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.9830ad9d-3a53-469b-a45c-aef16b059aa5",
+        "url": "https://claude.com/marketplace/connectors/lattice"
+      }
+    ],
+    "relevance": 83,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://help.lattice.com/hc/en-us/articles/41581931712151-Set-up-a-Custom-Lattice-MCP-Server"
+    },
+    "caveats": [
+      "Lattice does not support dynamic client registration. For clients other than its directory connectors, a Lattice admin must create an MCP server under Admin > Platform > MCP Server, enter the client's redirect URL, and share the client ID (and secret if needed).",
+      "At most companies only IT administrators can enable MCP servers. The AI tool can only reach data the user can already see in Lattice."
+    ],
+    "logoUrl": "/server-logos/lattice.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated LA monogram; it is not an official Lattice mark.",
+    "homepageUrl": "https://lattice.com"
+  },
+  {
+    "id": "cortellis-regulatory-intelligence",
+    "name": "Cortellis Regulatory Intelligence",
+    "url": "https://api.clarivate.com/lifesciences/mcp-regulatory/mcp",
+    "description": "Clarivate's Cortellis Regulatory Intelligence MCP server answers natural-language questions about global drug and device regulations with referenced answers from Cortellis' curated regulatory content, through a single regulatory-intelligence agent tool. Needs a Clarivate OAuth sign-in.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "clarivate",
+      "regulatory-intelligence",
+      "life-sciences",
+      "pharma",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/cortellis-regulatory"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.01fef5a3-baea-4490-8a31-39b119d1d238",
+        "url": "https://claude.com/marketplace/connectors/cortellis-regulatory"
+      }
+    ],
+    "relevance": 83,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://claude.com/marketplace/connectors/cortellis-regulatory"
+    },
+    "caveats": [
+      "Needs a Cortellis Regulatory Intelligence subscription. Clarivate's announcement says the MCP is available to customers of both Clarivate CRI and Claude.",
+      "The server's only OAuth scope is named \"claudeai\", so it may be set up mainly for Claude. Other clients were not tested."
+    ],
+    "logoUrl": "/server-logos/cortellis-regulatory-intelligence.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/clarivate.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Clarivate mark from Simple Icons version 16.38.0; trademark rights remain with Clarivate.",
+    "homepageUrl": "https://clarivate.com/life-sciences-healthcare/research-development/regulatory-intelligence/"
+  },
+  {
+    "id": "daloopa",
+    "name": "Daloopa",
+    "url": "https://mcp.daloopa.com/server/mcp",
+    "description": "Daloopa's MCP server looks up companies and their financial series, then returns fundamentals from filings and presentations with a hyperlink to each source datapoint. It also searches and reads 10-K/10-Q/8-K filings and transcripts, returns daily stock prices, and serves Daloopa investing skill templates. Needs a Daloopa OAuth sign-in.",
+    "category": "Finance",
+    "tags": [
+      "official",
+      "daloopa",
+      "financial-data",
+      "fundamentals",
+      "sec-filings",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.daloopa.com/docs/daloopa-mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68b0618f2b7c3d073645ee15",
+        "url": "https://claude.com/marketplace/connectors/daloopa"
+      }
+    ],
+    "relevance": 83,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://docs.daloopa.com/docs/daloopa-mcp"
+    },
+    "caveats": [
+      "Needs a Daloopa account with MCP access; Daloopa says to contact them for access. On claude.ai an organization admin may need to set up the connector first.",
+      "Daloopa also runs a separate documentation MCP server at https://docs.daloopa.com/mcp for its API docs, not financial data."
+    ],
+    "logoUrl": "/server-logos/daloopa.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated DA monogram; it is not an official Daloopa mark.",
+    "homepageUrl": "https://daloopa.com"
+  },
+  {
+    "id": "resy",
+    "name": "Resy",
+    "url": "https://apigw.americanexpress.com/dining/v1/mcp",
+    "description": "Resy's MCP server checks live reservation availability at Resy restaurants for a given date and party size, then links out to the Resy app or website to finish the booking. Needs a Resy OAuth sign-in.",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "resy",
+      "restaurants",
+      "reservations",
+      "dining",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/resy"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.75a4ea23-ea67-4ac4-b380-fb107d8ca620",
+        "url": "https://claude.com/marketplace/connectors/resy"
+      }
+    ],
+    "relevance": 83,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://claude.com/marketplace/connectors/resy"
+    },
+    "caveats": [
+      "The server is run by American Express on its API gateway. Its authorization server has no dynamic client registration endpoint and only accepts client_secret_jwt token authentication, so only pre-registered clients such as Claude are likely to complete sign-in.",
+      "Bookings are not made in the chat. The server returns time slots and a link to complete the reservation in Resy."
+    ],
+    "logoUrl": "/server-logos/resy.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated RE monogram; it is not an official Resy mark.",
+    "homepageUrl": "https://resy.com"
+  },
+  {
+    "id": "framer",
+    "name": "Framer",
+    "url": "https://mcp.framer.com/mcp",
+    "description": "Framer's MCP server works directly in your Framer website projects: it creates pages, edits layouts, updates content, manages CMS collections and publishes sites, using the permissions of the signed-in account. Needs a Framer OAuth sign-in.",
+    "category": "Design",
+    "tags": [
+      "official",
+      "framer",
+      "website-builder",
+      "web-design",
+      "cms",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.framer.com/help/articles/getting-started-with-framer-mcp/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.4ce5179f-1765-47b4-9156-3d5c4def8b62",
+        "url": "https://claude.com/marketplace/connectors/framer"
+      }
+    ],
+    "relevance": 82,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://www.framer.com/help/articles/getting-started-with-framer-mcp/"
+    },
+    "caveats": [
+      "The agent is pointed at a specific Framer project, usually by pasting the project link into the chat."
+    ],
+    "logoUrl": "/server-logos/framer.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/framer.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Framer mark from Simple Icons version 16.38.0; trademark rights remain with Framer.",
+    "homepageUrl": "https://www.framer.com"
+  },
+  {
+    "id": "lseg",
+    "name": "LSEG",
+    "url": "https://api.analytics.lseg.com/lfa/mcp",
+    "description": "LSEG's MCP server gives access to LSEG financial data and analytics, including FX spot and forward pricing, interest-rate curves, bond pricing, fixed-income and securitized analytics, macroeconomic data, company fundamentals, estimates and Reuters News. Needs an LSEG OAuth sign-in.",
+    "category": "Finance",
+    "tags": [
+      "official",
+      "lseg",
+      "market-data",
+      "financial-analytics",
+      "fixed-income",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/london-stock-exchange-group"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68fbd8be213a6c102338dd97",
+        "url": "https://claude.com/marketplace/connectors/london-stock-exchange-group"
+      }
+    ],
+    "relevance": 82,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://claude.com/marketplace/connectors/london-stock-exchange-group"
+    },
+    "caveats": [
+      "Access must be arranged with LSEG. The sign-in uses an LSEG (Refinitiv CIAM) account with entitlement to the MCP server.",
+      "The Claude directory connector uses https://api.analytics.lseg.com/lfa/mcp/server-cl. That route's protected-resource metadata names https://api.analytics.lseg.com/lfa/mcp as the resource, with the same authorization server."
+    ],
+    "logoUrl": "/server-logos/lseg.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated LS monogram; it is not an official LSEG mark.",
+    "homepageUrl": "https://www.lseg.com/en/solutions/ai-finance-solutions/lseg-mcp"
+  },
+  {
+    "id": "profound",
+    "name": "Profound",
+    "url": "https://mcp.tryprofound.com/mcp",
+    "description": "Profound's MCP server pulls AI-search visibility, citation, sentiment, shopping and AI-bot traffic reports, and manages prompts, Workflows, Knowledge Bases, Profound Docs and Projects in your Profound account. Needs a Profound OAuth sign-in.",
+    "category": "Analytics",
+    "tags": [
+      "official",
+      "profound",
+      "ai-search-visibility",
+      "seo",
+      "brand-monitoring",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.tryprofound.com/mcp/overview.md"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.4738c35b-a9cc-4378-8bb2-ad09a1a23b5b",
+        "url": "https://claude.com/marketplace/connectors/profound"
+      }
+    ],
+    "relevance": 82,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://docs.tryprofound.com/mcp/overview.md"
+    },
+    "caveats": [
+      "Profound's docs list MCP as available on the Enterprise plan.",
+      "Tools run as the signed-in user and return only data that user can access."
+    ],
+    "logoUrl": "/server-logos/profound.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated PR monogram; it is not an official Profound mark.",
+    "homepageUrl": "https://www.tryprofound.com"
+  },
+  {
+    "id": "synapse",
+    "name": "Synapse.org",
+    "url": "https://mcp.synapse.org/mcp",
+    "description": "Sage Bionetworks' Synapse MCP server searches Synapse for biomedical datasets and fetches entity metadata, annotations, project and folder contents, and provenance. Needs a Synapse OAuth sign-in.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "synapse",
+      "biomedical-data",
+      "research-data",
+      "life-sciences",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://python-docs.synapse.org/guides/synapse_mcp/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.68f2cd8765beadf8905381b3",
+        "url": "https://claude.com/marketplace/connectors/synapse-org"
+      }
+    ],
+    "relevance": 81,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://python-docs.synapse.org/guides/synapse_mcp/"
+    },
+    "caveats": [
+      "Sage Bionetworks warns that using the server with consumer AI services that store conversation data may breach the Synapse Terms of Service ban on data redistribution.",
+      "Results follow the signed-in user's Synapse permissions; controlled-access data still needs Synapse governance approval."
+    ],
+    "logoUrl": "/server-logos/synapse.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated SY monogram; it is not an official Synapse.org mark.",
+    "homepageUrl": "https://www.synapse.org"
+  },
+  {
+    "id": "legal-data-hunter",
+    "name": "Legal Data Hunter",
+    "url": "https://legaldatahunter.com/mcp",
+    "description": "Legal Data Hunter's MCP server searches an open corpus of tens of millions of laws, court decisions and other legal documents from 180+ jurisdictions, resolves citations such as ECLI and CELEX, and retrieves full texts. Needs a Legal Data Hunter OAuth sign-in.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "legal-data-hunter",
+      "legal-research",
+      "case-law",
+      "legislation",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://legaldatahunter.com/llms.txt"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.a38cc6ae-c7fb-4136-b50e-cf49a4ded4b3",
+        "url": "https://claude.com/marketplace/connectors/legal-data-hunter"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a09fca2104c8191b160df27196228dd",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a09fca2104c8191b160df27196228dd"
+      }
+    ],
+    "relevance": 81,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://legaldatahunter.com/llms.txt"
+    },
+    "caveats": [
+      "The free tier allows 20 searches a day; paid plans raise the limit."
+    ],
+    "logoUrl": "/server-logos/legal-data-hunter.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated LD monogram; it is not an official Legal Data Hunter mark.",
+    "homepageUrl": "https://legaldatahunter.com"
+  },
+  {
+    "id": "bird",
+    "name": "Bird",
+    "url": "https://mcp.bird.com",
+    "description": "Bird's MCP server sends email, SMS and WhatsApp messages, places calls, verifies users, sets up messaging channels and inspects your Bird workspace through the Bird API. Needs a Bird OAuth sign-in.",
+    "category": "Communication",
+    "tags": [
+      "official",
+      "bird",
+      "messaging",
+      "sms",
+      "email",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://bird.com/docs/ai/mcp-server.md"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.d5656e8b-eb8b-4d79-ad06-9c8556f9f7f8",
+        "url": "https://claude.com/marketplace/connectors/bird"
+      }
+    ],
+    "relevance": 81,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://bird.com/docs/ai/mcp-server.md"
+    },
+    "exactEndpointOnly": true,
+    "alternativeEndpoints": [
+      {
+        "url": "https://mcp.bird.com/dynamic",
+        "authType": "oauth",
+        "description": "Bird's dynamic-discovery endpoint with the same Bird OAuth sign-in. It exposes only search and execute tools, for clients that cap the number of tools a server may expose."
+      }
+    ],
+    "caveats": [
+      "The hosted server leaves out the signup tools and local file-upload tools that the stdio bird CLI server has."
+    ],
+    "logoUrl": "/server-logos/bird.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated BI monogram; it is not an official Bird mark.",
+    "homepageUrl": "https://bird.com"
+  },
+  {
+    "id": "adobe-journey-optimizer",
+    "name": "Adobe Journey Optimizer",
+    "url": "https://ajo-mcp.adobe.io/mcp",
+    "description": "Adobe Journey Optimizer's MCP server gives read-only access to campaigns, journeys, offers, channel configurations and sandbox information, so you can summarize journey logic and find stopped campaigns or configuration problems. Needs an Adobe OAuth sign-in.",
+    "category": "Analytics",
+    "tags": [
+      "official",
+      "adobe-journey-optimizer",
+      "marketing-automation",
+      "customer-journeys",
+      "campaigns",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://experienceleague.adobe.com/en/docs/journey-optimizer/using/content-management/combine/ajo-mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.4eb1485d-c3c6-4282-a72c-5bfc084cad27",
+        "url": "https://claude.com/marketplace/connectors/adobe-journey-optimizer"
+      }
+    ],
+    "relevance": 81,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://experienceleague.adobe.com/en/docs/journey-optimizer/using/content-management/combine/ajo-mcp"
+    },
+    "caveats": [
+      "The server is in beta and read-only; write operations are not supported in this release.",
+      "It needs an active Adobe Journey Optimizer license and permission to view campaigns, journeys and offers.",
+      "Adobe lists Claude (web and desktop) and Cursor as the supported clients."
+    ],
+    "logoUrl": "/server-logos/adobe-journey-optimizer.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated AJ monogram; it is not an official Adobe Journey Optimizer mark.",
+    "homepageUrl": "https://business.adobe.com/products/journey-optimizer/adobe-journey-optimizer.html"
+  },
+  {
+    "id": "brex",
+    "name": "Brex",
+    "url": "https://api.brex.com/mcp",
+    "description": "Brex's MCP server works with your Brex account: expenses, receipts and memos, users, cards, budgets, banking transactions, bills, travel and accounting records, limited to each user's Brex capabilities. Needs a Brex OAuth sign-in.",
+    "category": "Finance",
+    "tags": [
+      "official",
+      "brex",
+      "expense-management",
+      "corporate-cards",
+      "spend-management",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://developer.brex.com/docs/mcp.md"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.9fc52c5f-5a64-4f59-a6f8-4aa9571b8179",
+        "url": "https://claude.com/marketplace/connectors/brex"
+      }
+    ],
+    "relevance": 81,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://developer.brex.com/docs/mcp.md"
+    },
+    "caveats": [
+      "The server is in beta. An account or card admin must accept the Developer API agreement in Settings > Developer and turn on 'Brex in AI assistants' under Settings > Beta features.",
+      "Account and card admins can also connect with a Brex API token as a Bearer header instead of OAuth."
+    ],
+    "logoUrl": "/server-logos/brex.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/brex.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Brex mark from Simple Icons version 16.38.0; trademark rights remain with Brex.",
+    "homepageUrl": "https://www.brex.com"
+  },
+  {
+    "id": "omni-analytics",
+    "name": "Omni Analytics",
+    "url": "https://callbacks.omniapp.co/callback/mcp",
+    "description": "Omni's MCP server answers natural-language data questions through your Omni semantic model: it picks a model and topic and runs queries, using your Omni permissions and access controls. Needs an Omni OAuth sign-in.",
+    "category": "Analytics",
+    "tags": [
+      "official",
+      "omni-analytics",
+      "business-intelligence",
+      "semantic-layer",
+      "data-querying",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.omni.co/ai/mcp/authentication.md"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.8e7324aa-2671-46bf-9447-5bba8ccf8c2f",
+        "url": "https://claude.com/marketplace/connectors/omni-analytics"
+      }
+    ],
+    "relevance": 81,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://docs.omni.co/ai/mcp/authentication.md"
+    },
+    "exactEndpointOnly": true,
+    "caveats": [
+      "An Omni Organization Admin must have the MCP server setting turned on (AI Hub > MCP; on by default). The querying tools also need AI and the Omni Agent enabled.",
+      "The sign-in connects to the Omni organization you last logged into in the browser. Members of several organizations should log in to the one they want before connecting."
+    ],
+    "logoUrl": "/server-logos/omni-analytics.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated OM monogram; it is not an official Omni Analytics mark.",
+    "homepageUrl": "https://omni.co"
+  },
+  {
+    "id": "g2",
+    "name": "G2",
+    "url": "https://mcp.g2.com/mcp",
+    "description": "G2's MCP server answers questions about G2 buyer intent signals, competitor comparisons, product reviews and review analytics, the product catalog, badges and G2 reports for your products. Needs a G2 OAuth sign-in.",
+    "category": "Analytics",
+    "tags": [
+      "official",
+      "g2",
+      "buyer-intent",
+      "reviews",
+      "competitive-intelligence",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://documentation.g2.com/docs/g2-mcp-server"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.df731661-86d2-48e9-ac51-bdeceb265948",
+        "url": "https://claude.com/marketplace/connectors/g2"
+      }
+    ],
+    "relevance": 80,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://documentation.g2.com/docs/g2-mcp-server"
+    },
+    "caveats": [
+      "G2's authorization server does not support Dynamic Client Registration. For a direct connection, G2 says to register an OAuth app in the G2 Developer Portal (my.g2.com/developers) and use its client ID and secret.",
+      "Access depends on your G2 subscription and entitlements. Market Intelligence data needs an Enterprise package.",
+      "The server shares the G2 API rate limit of 100 requests per second. If you go over it, access is blocked for 60 seconds."
+    ],
+    "logoUrl": "/server-logos/g2.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/g2.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "G2 mark from Simple Icons version 16.38.0; trademark rights remain with G2.",
+    "homepageUrl": "https://www.g2.com"
+  },
+  {
+    "id": "navan",
+    "name": "Navan",
+    "url": "https://mcp.navan.com/mcp",
+    "description": "Navan's MCP server queries your company's Navan travel and expense data: spend analysis by department, vendor or category, bookings, travel and expense policies, approval flows and card details, all within the signed-in user's permissions. Needs a Navan OAuth sign-in.",
+    "category": "Finance",
+    "tags": [
+      "official",
+      "navan",
+      "travel",
+      "expense-management",
+      "spend-analysis",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://developer.navan.com/mcp/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.9077028d-a283-4012-9304-ef3c556ba683",
+        "url": "https://claude.com/marketplace/connectors/navan"
+      }
+    ],
+    "relevance": 80,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://developer.navan.com/mcp/"
+    },
+    "caveats": [
+      "For companies that use SSO, an admin must turn on MCP under Integrations in Navan admin before users can connect.",
+      "Navan says requests the user isn't authorized for return empty results annotated 403_BY_POLICY."
+    ],
+    "logoUrl": "/server-logos/navan.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated NA monogram; it is not an official Navan mark.",
+    "homepageUrl": "https://navan.com"
+  },
+  {
+    "id": "dovetail",
+    "name": "Dovetail",
+    "url": "https://dovetail.com/api/mcp",
+    "description": "Dovetail's MCP server searches and reads your Dovetail workspace (projects, notes, insights, highlights, docs, contacts and channels) so an assistant can ground answers in customer research and feedback. Needs a Dovetail OAuth sign-in.",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "dovetail",
+      "customer-research",
+      "user-feedback",
+      "insights",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://developers.dovetail.com/docs/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.4e29c4e5-45c5-452f-a197-128dd32be513",
+        "url": "https://claude.com/marketplace/connectors/dovetail"
+      }
+    ],
+    "relevance": 80,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://developers.dovetail.com/docs/mcp"
+    },
+    "caveats": [
+      "The hosted endpoint does not support Dynamic Client Registration or Client ID Metadata Documents. Clients without a built-in Dovetail integration need a Dovetail API token in the Authorization header. Enterprise customers can also ask Dovetail for a dedicated OAuth client ID and secret."
+    ],
+    "logoUrl": "/server-logos/dovetail.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/dovetail.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Dovetail mark from Simple Icons version 16.38.0; trademark rights remain with Dovetail.",
+    "homepageUrl": "https://dovetail.com"
+  },
+  {
+    "id": "imanage-work",
+    "name": "iManage Work",
+    "url": "https://cloudimanage.com/mcp/work",
+    "description": "iManage's Work MCP server fetches workspaces, folders, documents and document profiles from iManage Work in the cloud, using the user's existing iManage permissions, with every AI access recorded in the document history. Needs an iManage Work OAuth sign-in.",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "imanage",
+      "document-management",
+      "legal",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.imanage.com/ai/mcpserver-user-help/en-US/Adding_MCP_connectors_for_ChatGPT.html"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.bfc6b32d-8cdb-451d-8132-d8a16bfe9f9c",
+        "url": "https://claude.com/marketplace/connectors/imanage"
+      }
+    ],
+    "relevance": 80,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://docs.imanage.com/ai/mcpserver-user-help/en-US/Adding_MCP_connectors_for_Claude.html"
+    },
+    "alternativeEndpoints": [
+      {
+        "url": "https://cloudimanage.com/mcp/search",
+        "authType": "oauth",
+        "description": "iManage MCP Search connector. It is a separate server on the same host."
+      },
+      {
+        "url": "https://cloudimanage.com/mcp/insightplus",
+        "authType": "oauth",
+        "description": "iManage Insight+ MCP connector. It is a separate server on the same host."
+      },
+      {
+        "url": "https://cloudimanage.com/mcp/tracker",
+        "authType": "oauth",
+        "description": "iManage Tracker MCP connector. It is a separate server on the same host."
+      }
+    ],
+    "caveats": [
+      "Works only for iManage Work at cloudimanage.com. iManage says the MCP Server is not available for iManage Work at imanage.work.",
+      "An administrator must add the iManage MCP Control Center Extension and iManage MCP Service applications in iManage Control Center before users can connect.",
+      "Companies with a custom cloudimanage.com subdomain use https://<subdomain>.cloudimanage.com/mcp/work instead.",
+      "iManage currently allows read permissions only."
+    ],
+    "logoUrl": "/server-logos/imanage-work.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated IM monogram; it is not an official iManage Work mark.",
+    "homepageUrl": "https://imanage.com"
+  },
+  {
+    "id": "speko",
+    "name": "Speko",
+    "url": "https://mcp.speko.ai/mcp",
+    "description": "Speko's MCP server builds, tests and runs AI phone agents. It places and reviews calls, transcribes audio, turns text into speech, and manages phone numbers, knowledge bases, evals and deployments in your Speko organization. Needs a Speko OAuth sign-in.",
+    "category": "Communication",
+    "tags": [
+      "official",
+      "speko",
+      "voice-agents",
+      "phone-calls",
+      "speech-to-text",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.speko.ai/quickstart/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.e70653f5-76ec-4712-b8d7-8454ebf955c1",
+        "url": "https://claude.com/marketplace/connectors/speko"
+      }
+    ],
+    "relevance": 79,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://docs.speko.ai/quickstart/mcp"
+    },
+    "alternativeEndpoints": [
+      {
+        "url": "https://anthropic.speko.ai/mcp",
+        "authType": "oauth",
+        "description": "Narrower 35-tool surface that Speko publishes for the Anthropic MCP Directory: reads, audio transcription and outbound calling, with no agent configuration, deployment or delete tools."
+      }
+    ],
+    "caveats": [
+      "Speko ties tool surfaces to hostnames. mcp.speko.ai is the full 101-tool surface. Speko's docs say directory listings use narrower hosts such as anthropic.speko.ai and chatgpt.speko.ai.",
+      "Placing calls needs the phone-number KYB declaration to be completed."
+    ],
+    "logoUrl": "/server-logos/speko.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated SP monogram; it is not an official Speko mark.",
+    "homepageUrl": "https://speko.com"
+  },
+  {
+    "id": "tinyfish",
+    "name": "TinyFish",
+    "url": "https://agent.tinyfish.ai/mcp",
+    "description": "TinyFish's MCP server runs multi-step browser automations on real websites from a natural-language goal: navigating, filling forms, logging in with saved profiles or vault credentials. It also searches the web, fetches clean page content and runs cited deep-research reports. Needs a TinyFish OAuth sign-in.",
+    "category": "Automation",
+    "tags": [
+      "official",
+      "tinyfish",
+      "browser-automation",
+      "web-scraping",
+      "web-search",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.tinyfish.ai/mcp-integration"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.e2dfb699-dcb9-4124-b190-9bb1f400adb4",
+        "url": "https://claude.com/marketplace/connectors/tinyfish"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_695325bae7348191b58ae9349a963d22",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_695325bae7348191b58ae9349a963d22"
+      }
+    ],
+    "relevance": 79,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://docs.tinyfish.ai/mcp-integration"
+    },
+    "alternativeEndpoints": [
+      {
+        "url": "https://agent.tinyfish.ai/mcp/claude",
+        "authType": "oauth",
+        "description": "Endpoint used by TinyFish's Claude directory connector."
+      },
+      {
+        "url": "https://agent.tinyfish.ai/mcp/chatgpt",
+        "authType": "oauth",
+        "description": "Endpoint TinyFish documents for ChatGPT (plugin and custom connector)."
+      }
+    ],
+    "caveats": [
+      "The Claude and ChatGPT directory connectors use the client-specific /mcp/claude and /mcp/chatgpt paths. The catalog uses the documented general URL https://agent.tinyfish.ai/mcp, which has the same authorization server. Only the resource value differs."
+    ],
+    "logoUrl": "/server-logos/tinyfish.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated TF monogram; it is not an official TinyFish mark.",
+    "homepageUrl": "https://www.tinyfish.ai"
+  },
+  {
+    "id": "meltwater",
+    "name": "Meltwater",
+    "url": "https://api.meltwater.com/v2/mcp",
+    "description": "Meltwater's MCP server exposes your Meltwater saved searches, tags and other configured assets as tools, so an assistant can search and analyse news and social media coverage. The tools you get depend on your Meltwater package. Needs a Meltwater OAuth sign-in.",
+    "category": "Analytics",
+    "tags": [
+      "official",
+      "meltwater",
+      "media-monitoring",
+      "social-listening",
+      "news",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://developer.meltwater.com/guides/meltwater-mcp/overview"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.5b4799b6-3c67-40b9-90e0-539888c1c13a",
+        "url": "https://claude.com/marketplace/connectors/meltwater"
+      }
+    ],
+    "relevance": 79,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://developer.meltwater.com/guides/meltwater-mcp/overview"
+    },
+    "caveats": [
+      "Needs a Meltwater MCP package in your Meltwater subscription. The tools available depend on the products in your package.",
+      "Meltwater also accepts a Meltwater API token in an apikey header instead of OAuth."
+    ],
+    "logoUrl": "/server-logos/meltwater.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated ME monogram; it is not an official Meltwater mark.",
+    "homepageUrl": "https://www.meltwater.com"
+  },
+  {
+    "id": "fellow",
+    "name": "Fellow",
+    "url": "https://fellow.app/mcp",
+    "description": "Fellow's MCP server answers questions about your meetings from Fellow: AI meeting notes, transcripts, action items, calendar events and channels. Write scopes cover agendas and action items, and access is limited to data the user can already see in Fellow. Needs a Fellow OAuth sign-in.",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "fellow",
+      "meetings",
+      "meeting-notes",
+      "transcripts",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://developers.fellow.ai/reference/mcp-server"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6917a3fbd95a5f390d31ec62",
+        "url": "https://claude.com/marketplace/connectors/fellow-ai"
+      }
+    ],
+    "relevance": 79,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://developers.fellow.ai/reference/mcp-server"
+    },
+    "caveats": [
+      "A workspace admin must first turn on Workspace Settings > Security > Allow users to create MCP connections."
+    ],
+    "logoUrl": "/server-logos/fellow.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated FE monogram; it is not an official Fellow mark.",
+    "homepageUrl": "https://fellow.ai"
+  },
+  {
+    "id": "alphaxiv",
+    "name": "alphaXiv",
+    "url": "https://api.alphaxiv.org/mcp/v1",
+    "description": "alphaXiv's MCP server searches and reads arXiv papers with full-text access. It answers questions about a paper's PDF, explores paper codebases, finds the researchers behind the work and manages your alphaXiv library. Needs an alphaXiv OAuth sign-in.",
+    "category": "Reference",
+    "tags": [
+      "official",
+      "alphaxiv",
+      "arxiv",
+      "research-papers",
+      "academic-search",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.alphaxiv.org/docs/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.fa0fb2e1-c3ba-4486-b576-0881432c5a4e",
+        "url": "https://claude.com/marketplace/connectors/alphaxiv"
+      }
+    ],
+    "relevance": 79,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://www.alphaxiv.org/docs/mcp"
+    },
+    "caveats": [
+      "alphaXiv supports native MCP clients only. It locks CORS to first-party origins, so browser-hosted clients need a local bridge such as mcp-remote.",
+      "Non-interactive use can send an alphaXiv API key as a Bearer token instead of OAuth."
+    ],
+    "logoUrl": "/server-logos/alphaxiv.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/alphaxiv.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "alphaXiv mark from Simple Icons version 16.38.0; trademark rights remain with alphaXiv.",
+    "homepageUrl": "https://www.alphaxiv.org"
+  },
+  {
+    "id": "greenhouse",
+    "name": "Greenhouse",
+    "url": "https://mcp.greenhouse.io/mcp",
+    "description": "Greenhouse's MCP server searches, analyses and updates Greenhouse Recruiting data (candidates, applications, jobs, interviews, scorecards, offers and more), limited by the user's Greenhouse permissions and the scopes the organization enables. Needs a Greenhouse OAuth sign-in.",
+    "category": "Productivity",
+    "tags": [
+      "official",
+      "greenhouse",
+      "recruiting",
+      "applicant-tracking",
+      "hiring",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://support.greenhouse.io/hc/en-us/articles/52096319906971-Set-up-Greenhouse-MCP-with-supported-AI-tools"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.7da178a3-8f92-41a0-a823-89a89125e562",
+        "url": "https://claude.com/marketplace/connectors/greenhouse"
+      }
+    ],
+    "relevance": 78,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://support.greenhouse.io/hc/en-us/articles/52096319906971-Set-up-Greenhouse-MCP-with-supported-AI-tools"
+    },
+    "alternativeEndpoints": [
+      {
+        "url": "https://mcp.us.greenhouse.io/mcp",
+        "authType": "oauth",
+        "description": "Hostname Greenhouse documents for Claude Code and ChatGPT. It serves the same authorization server and scope."
+      }
+    ],
+    "caveats": [
+      "Greenhouse MCP is in open beta and is available on Core, Plus and Pro tiers.",
+      "A Site Admin must add each AI tool as a client, with its redirect URL, in Dev Center > MCP Access before anyone can connect. Custom clients need their redirect URL entered by hand.",
+      "Without admin configuration, connections get a default set of read-only scopes."
+    ],
+    "logoUrl": "/server-logos/greenhouse.svg",
+    "logoSourceUrl": "https://github.com/simple-icons/simple-icons/blob/16.38.0/icons/greenhouse.svg",
+    "logoSourceKind": "simple-icons",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Greenhouse mark from Simple Icons version 16.38.0; trademark rights remain with Greenhouse.",
+    "homepageUrl": "https://www.greenhouse.com"
+  },
+  {
+    "id": "crossbeam",
+    "name": "Crossbeam",
+    "url": "https://mcp.crossbeam.com/mcp",
+    "description": "Crossbeam's MCP server answers read-only questions about your partner ecosystem: account overlaps, partner suggestions, partner-influenced pipeline and revenue, and your most active partners. Needs a Crossbeam OAuth sign-in.",
+    "category": "CRM",
+    "tags": [
+      "official",
+      "crossbeam",
+      "partner-ecosystem",
+      "account-mapping",
+      "sales",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://help.crossbeam.com/en/articles/12601327-crossbeam-mcp-server"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6913ef6718da72f94e47da54",
+        "url": "https://claude.com/marketplace/connectors/crossbeam"
+      }
+    ],
+    "relevance": 78,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://help.crossbeam.com/en/articles/12601327-crossbeam-mcp-server"
+    },
+    "alternativeEndpoints": [
+      {
+        "url": "https://mcp.crossbeam.com/",
+        "authType": "oauth",
+        "description": "Origin-root URL used by Crossbeam's Claude directory connector. It serves the same authorization server."
+      }
+    ],
+    "caveats": [
+      "Needs a Full Access or Sales seat, and admins can limit MCP access by role.",
+      "Tool calls draw on the organization's shared yearly Crossbeam credit balance."
+    ],
+    "logoUrl": "/server-logos/crossbeam.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated CB monogram; it is not an official Crossbeam mark.",
+    "homepageUrl": "https://www.crossbeam.com"
+  },
+  {
+    "id": "era-context",
+    "name": "Era Context",
+    "url": "https://context.era.app/mcp",
+    "description": "Era's Context MCP server gives an assistant structured access to your Era personal-finance data (accounts, memory and rules) and lets it take the actions you approve. Needs an Era OAuth sign-in.",
+    "category": "Finance",
+    "tags": [
+      "official",
+      "era",
+      "personal-finance",
+      "budgeting",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://era.app/help/mcp-server-era-context/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.bfe1a594-962f-45db-9113-f5e9b6d1f070",
+        "url": "https://claude.com/marketplace/connectors/era-context"
+      }
+    ],
+    "relevance": 78,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://era.app/help/mcp-server-era-context/"
+    },
+    "alternativeEndpoints": [
+      {
+        "url": "https://context.era.app/",
+        "authType": "oauth",
+        "description": "Server base URL used by Era's Claude directory connector. Era says it reaches the same server."
+      }
+    ],
+    "caveats": [
+      "What the assistant can see and do depends on your Era account, plan and granted scopes."
+    ],
+    "logoUrl": "/server-logos/era-context.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated ER monogram; it is not an official Era Context mark.",
+    "homepageUrl": "https://era.app"
+  },
+  {
+    "id": "cb-insights",
+    "name": "CB Insights",
+    "url": "https://mcp.cbinsights.com/",
+    "description": "CB Insights' MCP server looks up and searches CB Insights data on private companies and investors: funding and M&A deals, acquisitions, analyst ratings, competitors, markets and watchlists (55 tools). Needs a CB Insights OAuth sign-in.",
+    "category": "Finance",
+    "tags": [
+      "official",
+      "cb-insights",
+      "market-intelligence",
+      "private-companies",
+      "venture-capital",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://mcp.cbinsights.com/docs-portal.md"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.e7952077-b4e6-49f7-8670-ca53f8d50c40",
+        "url": "https://claude.com/marketplace/connectors/cb-insights"
+      }
+    ],
+    "relevance": 78,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://mcp.cbinsights.com/docs-portal.md"
+    },
+    "exactEndpointOnly": true,
+    "caveats": [
+      "The endpoint is the origin root. https://mcp.cbinsights.com/mcp returns 404.",
+      "Scripts can instead use the OAuth client_credentials grant with CB Insights API client credentials."
+    ],
+    "logoUrl": "/server-logos/cb-insights.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Locally generated CI monogram; it is not an official CB Insights mark.",
+    "homepageUrl": "https://www.cbinsights.com"
   },
   {
     "id": "kling-ai-plugin",

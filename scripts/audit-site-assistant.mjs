@@ -12,6 +12,11 @@
  *   - have exactly one policy, whose script-src and connect-src list the
  *     endpoint, and whose script-src allows no inline or eval'd script and no
  *     wildcard or scheme-wide host;
+ *   - let the widget frame the chat service's visitor check: from solv.chat
+ *     0.1.8 the widget runs Cloudflare Turnstile in a frame served by the
+ *     endpoint (`<endpoint>/v1/check/frame`, issue #699), so frame-src (or the
+ *     child-src or default-src it falls back to) must allow that origin. The
+ *     layout's `frame-src https:` does; the build adds nothing for it;
  *   - not load the widget itself: no `<solv-chat>` element and no widget.js
  *     script in the static HTML. The launcher adds both, once, when a visitor
  *     opens the assistant, so nothing reaches solv.chat before that.
@@ -27,12 +32,47 @@ const CSP_TAG = /<meta http-equiv="Content-Security-Policy" content="([^"]*)"/g;
 /** Script sources the assistant must never bring with it. */
 const UNSAFE_SCRIPT_SOURCES = new Set(["'unsafe-inline'", "'unsafe-eval'", "'wasm-unsafe-eval'", '*', 'https:', 'http:']);
 
+/** The page the widget frames to run the visitor check (solv.chat docs/architecture.md, "Visitor check"). */
+export const CHECK_FRAME_PATH = '/v1/check/frame';
+
 const attribute = (tag, name) => tag.match(new RegExp(`\\s${name}="([^"]*)"`))?.[1];
 
 /** The sources of one directive in a policy string, or null when it is absent. */
 export function cspDirective(policy, name) {
   const part = policy.split(';').map(value => value.trim()).find(value => value.split(/\s+/)[0] === name);
   return part ? part.split(/\s+/).slice(1) : null;
+}
+
+/**
+ * Whether a CSP source list allows a resource at `url` (an https URL), per the
+ * CSP source-matching rules for the forms a policy here can use: `*`, a
+ * scheme (`https:`), and a host source with an optional `*.` subdomain
+ * wildcard, scheme, port and path. Quoted keywords never match: 'self'
+ * because the chat service is another origin, and 'none' because it only
+ * blocks on its own (browsers ignore it beside other sources, so an empty or
+ * 'none'-only list allows nothing).
+ */
+export function cspSourcesAllow(sources, url) {
+  const target = new URL(url);
+  return sources.some(source => {
+    if (source === '*') return target.protocol === 'https:' || target.protocol === 'http:';
+    if (/^[a-z][a-z0-9+.-]*:$/i.test(source)) return source.toLowerCase() === target.protocol || (source.toLowerCase() === 'http:' && target.protocol === 'https:');
+    if (source.startsWith("'")) return false;
+    const match = source.match(/^(?:([a-z][a-z0-9+.-]*):\/\/)?(\*\.)?([^:/]+)(?::(\d+|\*))?(\/.*)?$/i);
+    if (!match) return false;
+    const [, scheme, wildcard, host, port, sourcePath] = match;
+    if (scheme && scheme.toLowerCase() !== 'https' && !(scheme.toLowerCase() === 'http' && target.protocol === 'https:')) return false;
+    if (!scheme && target.protocol !== 'https:') return false;
+    const hostname = target.hostname.toLowerCase();
+    const sourceHost = host.toLowerCase();
+    if (wildcard ? !hostname.endsWith(`.${sourceHost}`) : hostname !== sourceHost) return false;
+    if (port && port !== '*' && Number(port) !== Number(target.port || 443)) return false;
+    if (!port && target.port && target.port !== '443') return false;
+    if (sourcePath && sourcePath !== '/') {
+      return sourcePath.endsWith('/') ? target.pathname.startsWith(sourcePath) : target.pathname === sourcePath;
+    }
+    return true;
+  });
 }
 
 /** Problems with one page's HTML (empty when it is clean). */
@@ -58,6 +98,9 @@ export function auditSiteAssistantPage(file, html, config) {
     const connectSrc = cspDirective(policy, 'connect-src') ?? cspDirective(policy, 'default-src') ?? [];
     if (!scriptSrc.includes(config.endpoint)) problems.push(`${file}: script-src does not allow ${config.endpoint}`);
     if (!connectSrc.includes(config.endpoint)) problems.push(`${file}: connect-src does not allow ${config.endpoint}`);
+    const checkFrame = `${config.endpoint}${CHECK_FRAME_PATH}`;
+    const frameSrc = cspDirective(policy, 'frame-src') ?? cspDirective(policy, 'child-src') ?? cspDirective(policy, 'default-src') ?? ['*'];
+    if (!cspSourcesAllow(frameSrc, checkFrame)) problems.push(`${file}: frame-src does not allow the visitor check frame ${checkFrame}`);
     for (const source of scriptSrc) {
       if (UNSAFE_SCRIPT_SOURCES.has(source) || source.includes('*')) problems.push(`${file}: script-src allows ${source}`);
     }

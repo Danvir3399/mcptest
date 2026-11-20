@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { loadEnv } from 'vite';
 import { afterAll, describe, expect, it } from 'vitest';
 import { applySiteAssistantToHtml, readSiteAssistantEnv } from '../src/siteAssistant/config.mts';
-import { auditSiteAssistant, auditSiteAssistantPage, cspDirective } from './audit-site-assistant.mjs';
+import { auditSiteAssistant, auditSiteAssistantPage, CHECK_FRAME_PATH, cspDirective, cspSourcesAllow } from './audit-site-assistant.mjs';
 
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const temporaryDirectories = [];
@@ -40,11 +40,53 @@ describe('the production site assistant config', () => {
     expect(cspDirective(after, 'script-src')).not.toContain("'unsafe-inline'");
     expect(cspDirective(after, 'script-src')).not.toContain("'unsafe-eval'");
   });
+
+  // solv.chat 0.1.8 runs its visitor check (Cloudflare Turnstile) in a frame from the endpoint (issue #699).
+  it('allows the visitor check frame through the layout\'s existing frame-src, unchanged', () => {
+    expect(cspDirective(policyOf(BUILT), 'frame-src')).toEqual(['https:']);
+    expect(cspDirective(policyOf(BUILT), 'frame-src')).toEqual(cspDirective(policyOf(INDEX_HTML), 'frame-src'));
+    expect(cspSourcesAllow(cspDirective(policyOf(BUILT), 'frame-src'), `${CONFIG.endpoint}${CHECK_FRAME_PATH}`)).toBe(true);
+  });
+});
+
+describe('cspSourcesAllow', () => {
+  const FRAME = 'https://app.solv.chat/v1/check/frame';
+  it.each([
+    [['https:'], true],
+    [['*'], true],
+    [['https://app.solv.chat'], true],
+    [['app.solv.chat'], true],
+    [['https://*.solv.chat'], true],
+    [['https://app.solv.chat:443'], true],
+    [['https://app.solv.chat/v1/check/'], true],
+    [['https://app.solv.chat/v1/check/frame'], true],
+    [["'self'"], false],
+    [["'none'"], false],
+    [['https://app.solv.chat', "'none'"], true],
+    [["'none'", 'https:'], true],
+    [["'NONE'"], false],
+    [["'none'", 'https://challenges.cloudflare.com'], false],
+    [['http://app.solv.chat'], true],
+    [['https://challenges.cloudflare.com'], false],
+    [['https://solv.chat'], false],
+    [['https://*.app.solv.chat'], false],
+    [['https://app.solv.chat:8443'], false],
+    [['https://app.solv.chat/widget/'], false],
+    [['data:', 'blob:'], false],
+    [[], false],
+  ])('%j allows the check frame: %s', (sources, allowed) => {
+    expect(cspSourcesAllow(sources, FRAME)).toBe(allowed);
+  });
 });
 
 describe('auditSiteAssistantPage on fixtures', () => {
   it('passes the built layout', () => {
     expect(auditSiteAssistantPage('index.html', BUILT, CONFIG)).toEqual([]);
+  });
+
+  it('passes a frame-src that lists the chat origin beside \'none\' (browsers ignore \'none\' there)', () => {
+    const html = BUILT.replace('frame-src https:', "frame-src https://app.solv.chat 'none'");
+    expect(auditSiteAssistantPage('index.html', html, CONFIG)).toEqual([]);
   });
 
   const meta = BUILT.match(/<meta name="mcptest-site-assistant"[^>]*>/)[0];
@@ -55,6 +97,12 @@ describe('auditSiteAssistantPage on fixtures', () => {
     ['a policy that no longer allows the widget script', BUILT.replace(/(script-src [^;]*) https:\/\/app\.solv\.chat/, '$1'), 'index.html: script-src does not allow https://app.solv.chat'],
     ['a policy that no longer allows the chat requests', BUILT.replace(/(connect-src [^;]*) https:\/\/app\.solv\.chat/, '$1'), 'index.html: connect-src does not allow https://app.solv.chat'],
     ['a page without the assistant (the build before #675)', INDEX_HTML, 'index.html: script-src does not allow https://app.solv.chat'],
+    ['a policy whose frame-src no longer allows the check frame', BUILT.replace('frame-src https:', 'frame-src https://challenges.cloudflare.com'),
+      'index.html: frame-src does not allow the visitor check frame https://app.solv.chat/v1/check/frame'],
+    ['a policy that drops frame-src, leaving default-src \'self\'', BUILT.replace('; frame-src https:', ''),
+      'index.html: frame-src does not allow the visitor check frame https://app.solv.chat/v1/check/frame'],
+    ['a policy whose frame-src is \'none\'', BUILT.replace('frame-src https:', "frame-src 'none'"),
+      'index.html: frame-src does not allow the visitor check frame https://app.solv.chat/v1/check/frame'],
     ['unsafe-eval for scripts', BUILT.replace('script-src ', "script-src 'unsafe-eval' "), "index.html: script-src allows 'unsafe-eval'"],
     ['a wildcard script host', BUILT.replace('script-src ', 'script-src https://*.solv.chat '), 'index.html: script-src allows https://*.solv.chat'],
     ['the snippet pasted into the page as well', BUILT.replace('</body>', '<script src="https://app.solv.chat/widget.js" defer></script>\n<solv-chat assistant="pk_yk0rwe2xop2ocmaj5bky"></solv-chat></body>'),

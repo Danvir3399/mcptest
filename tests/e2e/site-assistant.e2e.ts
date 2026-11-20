@@ -11,11 +11,17 @@ import { expect, test } from './fixtures';
  * it through the same build helper vite.config.mjs applies to index.html
  * with a test endpoint: the policy allows that origin and the page carries
  * the config meta tag, exactly as in a configured build. widget.js is a stub
- * that defines <solv-chat> the way the real widget does.
+ * that defines <solv-chat> the way the real widget does: from solv.chat 0.1.8
+ * that includes the visitor check (issue #699), a frame from the endpoint's
+ * /v1/check/frame created on the first keystroke in the message field (not
+ * when the panel opens and focuses it), so the page's own policy must let it
+ * load.
  */
 
 const ENDPOINT = 'https://solv.example.test';
 const CONFIG = readSiteAssistantEnv({ VITE_SOLV_ENDPOINT: ENDPOINT, VITE_SOLV_ASSISTANT_KEY: 'pk_e2e_test' })!;
+
+const CHECK_FRAME = `${ENDPOINT}/v1/check/frame`;
 
 const STUB_WIDGET = `
 customElements.define('solv-chat', class extends HTMLElement {
@@ -28,7 +34,17 @@ customElements.define('solv-chat', class extends HTMLElement {
     panel.hidden = true;
     const input = document.createElement('textarea');
     input.setAttribute('aria-label', 'Your question');
-    panel.append(input);
+    const checkArea = document.createElement('div');
+    checkArea.className = 'solv-check';
+    const startCheck = () => {
+      if (checkArea.firstChild) return;
+      const frame = document.createElement('iframe');
+      frame.title = 'Security check';
+      frame.src = this.getAttribute('endpoint') + '/v1/check/frame';
+      checkArea.append(frame);
+    };
+    input.addEventListener('keydown', startCheck);
+    panel.append(checkArea, input);
     const launcher = document.createElement('button');
     launcher.className = 'solv-launcher';
     launcher.setAttribute('aria-label', 'Open chat');
@@ -105,8 +121,11 @@ test.describe('with VITE_SOLV_* set', () => {
     await rewriteDocuments(page, html => applySiteAssistantToHtml(withoutBuildAssistant(html), CONFIG));
     await page.route(`${ENDPOINT}/**`, async route => {
       widgetRequests.push(route.request().url());
-      if (new URL(route.request().url()).pathname === '/widget.js') {
+      const { pathname } = new URL(route.request().url());
+      if (pathname === '/widget.js') {
         await route.fulfill({ status: 200, contentType: 'text/javascript', body: STUB_WIDGET });
+      } else if (pathname === '/v1/check/frame') {
+        await route.fulfill({ status: 200, contentType: 'text/html', body: '<!doctype html><title>Check</title><p id="check">Checking</p>' });
       } else {
         await route.fulfill({ status: 404, contentType: 'application/json', body: '{}' });
       }
@@ -136,6 +155,39 @@ test.describe('with VITE_SOLV_* set', () => {
     await expect(page.getByRole('textbox', { name: 'Your question' })).toBeFocused();
     await expect(launcher).toBeHidden();
     expect(widgetRequests).toEqual([`${ENDPOINT}/widget.js`]);
+    expect(policyViolations).toEqual([]);
+  });
+
+  test('the visitor check frame is created only on the first keystroke, from the chat service\'s origin', async ({ page }) => {
+    await page.goto('/learn');
+    await settle(page);
+    const otherFrames = () => page.frames().filter(frame => frame !== page.mainFrame()).map(frame => frame.url());
+    const framesBefore = otherFrames();
+    expect(framesBefore.filter(url => url.startsWith(ENDPOINT))).toEqual([]);
+
+    await page.getByRole('button', { name: 'Ask the mcptest assistant' }).click();
+    const input = page.getByRole('textbox', { name: 'Your question' });
+    // Opening the panel focuses the field by itself; that starts no check.
+    await expect(input).toBeFocused();
+    await page.waitForTimeout(300);
+    await expect(page.locator('solv-chat iframe')).toHaveCount(0);
+    expect(otherFrames()).toEqual(framesBefore);
+    expect(widgetRequests).toEqual([`${ENDPOINT}/widget.js`]);
+
+    await input.press('H');
+    const frame = page.locator('solv-chat iframe');
+    await expect(frame).toHaveCount(1);
+    expect(new URL(await frame.getAttribute('src') ?? '', page.url()).origin).toBe(ENDPOINT);
+    // The page's policy let it load: the frame shows the chat service's page, from that origin.
+    await expect(page.frameLocator('solv-chat iframe').locator('#check')).toHaveText('Checking');
+    const checkFrames = page.frames().filter(f => f.url().startsWith(ENDPOINT));
+    expect(checkFrames.map(f => f.url())).toEqual([CHECK_FRAME]);
+    expect(await checkFrames[0].evaluate(() => window.location.origin)).toBe(ENDPOINT);
+    expect(widgetRequests).toEqual([`${ENDPOINT}/widget.js`, CHECK_FRAME]);
+
+    // More typing reuses the one frame.
+    await input.press('i');
+    await expect(frame).toHaveCount(1);
     expect(policyViolations).toEqual([]);
   });
 

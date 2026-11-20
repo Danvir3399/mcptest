@@ -39,6 +39,15 @@ const PrivacyPolicy: React.FC = () => {
             <li>A random identifier is kept in your browser's local storage to keep one conversation together. The open conversation is also kept in session storage, which your browser clears when you close the tab.</li>
             <li>Your messages are processed by the model providers the service uses: Anthropic for answers and OpenAI for search embeddings.</li>
           </ul>
+          <p>
+            When you start typing a question, or pick a suggested one, the chat service runs Cloudflare Turnstile to tell people from bots. Opening the assistant does not start it. The check runs in a frame served by the chat service, not by mcptest.io, and usually needs nothing from you.
+          </p>
+          <ul>
+            <li>Turnstile receives your IP address, TLS fingerprint and browser user agent, and the address of the chat service's check page it runs on. It does not see what you type.</li>
+            <li>Once the check passes, the chat service keeps a hash of the check's one-time token for five minutes, so that it cannot be used twice, and your browser keeps the pass it issues in session storage for up to an hour.</li>
+            <li>To limit how many questions come from one visitor or one network, the chat service keeps daily message counts, and an hourly count of checks per network, for about a day. They are tied to a keyed hash of your IP address and of the random identifier above, never the address or identifier itself, and are not stored with your conversation.</li>
+            <li>If the check cannot be completed, your question is not sent and the assistant does not answer.</li>
+          </ul>
           <div className="alert alert-warning">
             <strong>Do not type personal or confidential information into the assistant</strong>, such as names, email addresses, credentials, tokens or private server URLs.
           </div>

@@ -5928,5 +5928,422 @@
     "authorizationServers": [
       "https://api.flaim.app"
     ]
+  },
+  {
+    "serverId": "indeed",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:20:35.455Z",
+    "message": "Authentication challenge at https://mcp.indeed.com/claude/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.indeed.com/claude/mcp",
+    "authorizationServers": [
+      "https://secure.indeed.com"
+    ]
+  },
+  {
+    "serverId": "wispr-flow",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:20:38.399Z",
+    "message": "Authentication challenge at https://api.wisprflow.ai/connect/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://api.wisprflow.ai/connect/mcp",
+    "authorizationServers": [
+      "https://mcp-auth.wisprflow.com"
+    ]
+  },
+  {
+    "serverId": "vidiq",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:20:40.403Z",
+    "message": "Authentication challenge at https://mcp.vidiq.com/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.vidiq.com/mcp",
+    "authorizationServers": [
+      "https://mcp.vidiq.com/mcp"
+    ]
+  },
+  {
+    "serverId": "elevenlabs",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:20:42.176Z",
+    "message": "Authentication challenge at https://api.elevenlabs.io/v1/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://api.elevenlabs.io/v1/mcp",
+    "authorizationServers": [
+      "https://api.us.elevenlabs.io"
+    ]
+  },
+  {
+    "serverId": "lucid",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:20:44.853Z",
+    "message": "Authentication challenge at https://mcp.lucid.app/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.lucid.app/mcp",
+    "authorizationServers": [
+      "https://mcp.lucid.app"
+    ]
+  },
+  {
+    "serverId": "windsor-ai",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:20:45.880Z",
+    "message": "Authentication challenge at https://mcp.windsor.ai/ returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.windsor.ai/",
+    "authorizationServers": [
+      "https://mcp.windsor.ai/"
+    ]
+  },
+  {
+    "serverId": "metricool",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:20:47.198Z",
+    "message": "Authentication challenge at https://ai.metricool.com/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://ai.metricool.com/mcp",
+    "authorizationServers": [
+      "https://ai.metricool.com"
+    ]
+  },
+  {
+    "serverId": "hyperframes",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:20:48.636Z",
+    "message": "Authentication challenge at https://mcp.heygen.com/mcp/hyperframes returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.heygen.com/mcp/hyperframes",
+    "authorizationServers": [
+      "https://api2.heygen.com"
+    ]
+  },
+  {
+    "serverId": "consensus",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:20:50.240Z",
+    "message": "Authentication challenge at https://mcp.consensus.app/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.consensus.app/mcp",
+    "authorizationServers": [
+      "https://consensus.app"
+    ]
+  },
+  {
+    "serverId": "semrush-claude",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:20:51.882Z",
+    "message": "Authentication challenge at https://mcp.semrush.com/claude/v1/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.semrush.com/claude/v1/mcp",
+    "authorizationServers": [
+      "https://oauth.semrush.com"
+    ]
+  },
+  {
+    "serverId": "supermetrics",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:20:53.196Z",
+    "message": "Authentication challenge at https://mcp.supermetrics.com/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.supermetrics.com/mcp",
+    "authorizationServers": [
+      "https://api.supermetrics.com"
+    ]
+  },
+  {
+    "serverId": "wordpress-com",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:20:55.560Z",
+    "message": "Authentication challenge at https://public-api.wordpress.com/wpcom/v2/mcp/v1 returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://public-api.wordpress.com/wpcom/v2/mcp/v1",
+    "authorizationServers": [
+      "https://public-api.wordpress.com"
+    ]
+  },
+  {
+    "serverId": "plaud",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:20:58.063Z",
+    "message": "Authentication challenge at https://mcp.plaud.ai/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.plaud.ai/mcp",
+    "authorizationServers": [
+      "https://mcp.plaud.ai/"
+    ]
+  },
+  {
+    "serverId": "clay",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:00.134Z",
+    "message": "Authentication challenge at https://api.clay.com/v3/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://api.clay.com/v3/mcp",
+    "authorizationServers": [
+      "https://api.clay.com"
+    ]
+  },
+  {
+    "serverId": "superhuman-mail",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:02.134Z",
+    "message": "Authentication challenge at https://mcp.mail.superhuman.com/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.mail.superhuman.com/mcp",
+    "authorizationServers": [
+      "https://mcp.auth.mail.superhuman.com"
+    ]
+  },
+  {
+    "serverId": "pitchbook-premium",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:03.831Z",
+    "message": "Authentication challenge at https://premium.mcp.pitchbook.com/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://premium.mcp.pitchbook.com/mcp",
+    "authorizationServers": [
+      "https://mcp.pitchbook.com"
+    ]
+  },
+  {
+    "serverId": "mobbin",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:05.695Z",
+    "message": "Authentication challenge at https://api.mobbin.com/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://api.mobbin.com/mcp",
+    "authorizationServers": [
+      "https://ujasntkfphywizsdaapi.supabase.co/auth/v1"
+    ]
+  },
+  {
+    "serverId": "sp-global-kensho",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:08.275Z",
+    "message": "Authentication challenge at https://kfinance.kensho.com/integrations/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://kfinance.kensho.com/integrations/mcp",
+    "authorizationServers": [
+      "https://kfinance.kensho.com/integrations"
+    ]
+  },
+  {
+    "serverId": "fathom",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:10.020Z",
+    "message": "Authentication challenge at https://api.fathom.ai/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://api.fathom.ai/mcp",
+    "authorizationServers": [
+      "https://api.fathom.ai"
+    ]
+  },
+  {
+    "serverId": "interactive-brokers",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:11.788Z",
+    "message": "Authentication challenge at https://api.ibkr.com/v1/api/mcp-public returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://api.ibkr.com/v1/api/mcp-public",
+    "authorizationServers": [
+      "https://api.ibkr.com"
+    ]
+  },
+  {
+    "serverId": "descript",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:13.344Z",
+    "message": "Authentication challenge at https://api.descript.com/v2/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://api.descript.com/v2/mcp",
+    "authorizationServers": [
+      "https://auth.descript.com"
+    ]
+  },
+  {
+    "serverId": "jotform",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:16.453Z",
+    "message": "Authentication challenge at https://mcp.jotform.com/mcp-app returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.jotform.com/mcp-app",
+    "authorizationServers": [
+      "https://oauth2.jotform.com"
+    ]
+  },
+  {
+    "serverId": "adobe-cx-coworker",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:18.066Z",
+    "message": "Authentication challenge at https://mcp.coworker.experience.adobe.io/ returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.coworker.experience.adobe.io/",
+    "authorizationServers": [
+      "https://mcp.coworker.experience.adobe.io"
+    ]
+  },
+  {
+    "serverId": "wiley-scholar-gateway",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:19.077Z",
+    "message": "Authentication challenge at https://connector.scholargateway.ai/v2/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://connector.scholargateway.ai/v2/mcp",
+    "authorizationServers": [
+      "https://connector.scholargateway.ai"
+    ]
+  },
+  {
+    "serverId": "vibe-prospecting",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:21.077Z",
+    "message": "Authentication challenge at https://vibeprospecting.explorium.ai/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://vibeprospecting.explorium.ai/mcp"
+  },
+  {
+    "serverId": "factset",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:22.686Z",
+    "message": "Authentication challenge at https://mcp.factset.com/content/v1 returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.factset.com/content/v1",
+    "authorizationServers": [
+      "https://auth.factset.com"
+    ]
+  },
+  {
+    "serverId": "tiktok-for-business",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:24.361Z",
+    "message": "Authentication challenge at https://business-api.tiktok.com/open_mcp/tt-ads-mcp-layer returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://business-api.tiktok.com/open_mcp/tt-ads-mcp-layer",
+    "authorizationServers": [
+      "https://business-api.tiktok.com/open_mcp/tt-ads-mcp-layer/oauth"
+    ]
+  },
+  {
+    "serverId": "lusha",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:25.919Z",
+    "message": "Authentication challenge at https://mcp.lusha.com/ returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.lusha.com/",
+    "authorizationServers": [
+      "https://auth.lusha.com"
+    ]
+  },
+  {
+    "serverId": "adobe-experience-manager",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:27.260Z",
+    "message": "Authentication challenge at https://mcp.adobeaemcloud.com/adobe/mcp/aem returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.adobeaemcloud.com/adobe/mcp/aem",
+    "authorizationServers": [
+      "https://oauth.adobeaemcloud.com"
+    ]
+  },
+  {
+    "serverId": "elicit",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T00:21:28.946Z",
+    "message": "Authentication challenge at https://elicit.com/api/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://elicit.com/api/mcp",
+    "authorizationServers": [
+      "https://elicit.com/api/auth"
+    ]
   }
 ]

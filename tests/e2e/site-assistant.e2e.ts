@@ -4,11 +4,14 @@ import { expect, test } from './fixtures';
 
 /**
  * The solv.chat site assistant (issue #637). The suite runs against one build
- * (dist/, built without VITE_SOLV_* set), so "set" is simulated by serving
- * every page through the same build helper vite.config.mjs applies to
- * index.html: the policy then allows the configured origin and the page
- * carries the config meta tag, exactly as in a configured build. widget.js is
- * a stub that defines <solv-chat> the way the real widget does.
+ * (dist/), which may or may not be configured: .env.production sets
+ * VITE_SOLV_*, so a production build carries the real config. Every HTML page
+ * is therefore first served as an unconfigured build writes it (the config
+ * meta tag removed and the policy without that origin), and "set" then runs
+ * it through the same build helper vite.config.mjs applies to index.html
+ * with a test endpoint: the policy allows that origin and the page carries
+ * the config meta tag, exactly as in a configured build. widget.js is a stub
+ * that defines <solv-chat> the way the real widget does.
  */
 
 const ENDPOINT = 'https://solv.example.test';
@@ -43,12 +46,37 @@ const settle = (page: Page) => page.evaluate(() => new Promise<void>(resolve => 
   else window.addEventListener('load', idle, { once: true });
 }));
 
+const CONFIG_META = new RegExp(`\\s*<meta name="${SITE_ASSISTANT_META_NAME}" data-endpoint="([^"]*)"[^>]*\\/>`);
+const CSP_CONTENT = /(<meta http-equiv="Content-Security-Policy" content=")([^"]*)(")/;
+
+/** `html` as a build without VITE_SOLV_* writes it: no config meta tag, and the policy without its origin. */
+const withoutBuildAssistant = (html: string): string => {
+  const endpoint = CONFIG_META.exec(html)?.[1];
+  if (!endpoint) return html;
+  return html.replace(CONFIG_META, '').replace(CSP_CONTENT, (_match, start: string, policy: string, end: string) => {
+    const directives = policy.split(';').map(part => {
+      const [name, ...sources] = part.trim().split(/\s+/);
+      return name === 'script-src' || name === 'connect-src' ? [name, ...sources.filter(source => source !== endpoint)].join(' ') : part.trim();
+    });
+    return `${start}${directives.filter(Boolean).join('; ')}${end}`;
+  });
+};
+
+/** Serve every HTML page of the app as `transform` rewrites it. */
+const rewriteDocuments = (page: Page, transform: (html: string) => string) =>
+  page.route(/^http:\/\/127\.0\.0\.1:\d+\//, async route => {
+    if (route.request().resourceType() !== 'document') return route.fallback();
+    const response = await route.fetch();
+    await route.fulfill({ response, body: transform(await response.text()) });
+  });
+
 const policyOf = (page: Page) => page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute('content');
 
 test.describe('with VITE_SOLV_* unset', () => {
   test('the site renders with no assistant, no widget request and the policy unchanged', async ({ page }) => {
     const widgetRequests: string[] = [];
     page.on('request', request => { if (/widget\.js|solv/.test(request.url())) widgetRequests.push(request.url()); });
+    await rewriteDocuments(page, withoutBuildAssistant);
 
     for (const path of ['/', '/learn', '/catalog']) {
       await page.goto(path);
@@ -73,13 +101,8 @@ test.describe('with VITE_SOLV_* set', () => {
     page.on('console', message => {
       if (/Content Security Policy/i.test(message.text())) policyViolations.push(message.text());
     });
-    // Every HTML page as a configured build writes it.
-    await page.route(/^http:\/\/127\.0\.0\.1:\d+\//, async route => {
-      if (route.request().resourceType() !== 'document') return route.fallback();
-      const response = await route.fetch();
-      const html = await response.text();
-      await route.fulfill({ response, body: applySiteAssistantToHtml(html, CONFIG) });
-    });
+    // Every HTML page as a build configured with the test endpoint writes it.
+    await rewriteDocuments(page, html => applySiteAssistantToHtml(withoutBuildAssistant(html), CONFIG));
     await page.route(`${ENDPOINT}/**`, async route => {
       widgetRequests.push(route.request().url());
       if (new URL(route.request().url()).pathname === '/widget.js') {
@@ -118,7 +141,7 @@ test.describe('with VITE_SOLV_* set', () => {
 
   test('the static HTML of a prerendered page carries no widget markup', async ({ page }) => {
     const response = await page.request.get('/learn');
-    const html = applySiteAssistantToHtml(await response.text(), CONFIG);
+    const html = applySiteAssistantToHtml(withoutBuildAssistant(await response.text()), CONFIG);
     const body = html.slice(html.indexOf('<body'));
     expect(body).not.toContain('solv-chat');
     expect(body).not.toContain('site-assistant-launcher');

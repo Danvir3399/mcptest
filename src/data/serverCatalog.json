@@ -25320,5 +25320,66 @@
     "logoRetrievedAt": "2026-11-20",
     "logoLicenseNote": "Locally generated CI monogram; it is not an official CB Insights mark.",
     "homepageUrl": "https://www.cbinsights.com"
+  },
+  {
+    "id": "kling-ai-plugin",
+    "name": "Kling AI (Global/China) Plugin",
+    "url": "https://kling.ai/mcp/plugin",
+    "description": "Official remote MCP plugin for Kling AI image and video generation, including reference-guided workflows, reusable Elements, motion controls and task status. OAuth is required; generation consumes credits in the matching regional Kling account.",
+    "category": "Design",
+    "tags": [
+      "kling",
+      "kling-ai",
+      "image-generation",
+      "video-generation",
+      "plugin",
+      "oauth",
+      "streamable-http",
+      "global",
+      "china",
+      "motion-control"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://kling.ai/app/mcp/guide"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false,
+        "redirectUrls": {}
+      },
+      "setupSteps": [],
+      "settings": [],
+      "reviewedAt": "2026-11-20",
+      "evidenceUrl": "https://kling.ai/app/mcp/guide"
+    },
+    "alternativeEndpoints": [
+      {
+        "url": "https://klingai.com/mcp/plugin",
+        "authType": "oauth",
+        "description": "Use for China-region accounts; Global and China accounts, credits and task IDs are separate."
+      }
+    ],
+    "exactEndpointOnly": true,
+    "caveats": [
+      "Use the Global endpoint for Global accounts and the China endpoint for China-region accounts. Accounts, credits and task IDs do not transfer between regions.",
+      "Generation consumes Kling credits; available models and tools depend on the account and region."
+    ],
+    "logoUrl": "/server-logos/kling-ai-plugin.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-20",
+    "logoLicenseNote": "Generated K monogram for directory identification; not an official Kling mark. Kling trademarks remain with Kling AI.",
+    "homepageUrl": "https://kling.ai/app/mcp/guide",
+    "sourceUrl": "https://github.com/klingai-tech/cursor-plugin"
   }
 ]

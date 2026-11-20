@@ -7209,5 +7209,19 @@
     "authorizationServers": [
       "https://mcp.cbinsights.com/"
     ]
+  },
+  {
+    "serverId": "kling-ai-plugin",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-20T12:21:11.513Z",
+    "message": "Authentication challenge at https://kling.ai/mcp/plugin returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://kling.ai/mcp/plugin",
+    "authorizationServers": [
+      "https://kling.ai/auth"
+    ]
   }
 ]

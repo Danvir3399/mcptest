@@ -25728,8 +25728,8 @@
   {
     "id": "seismic",
     "name": "Seismic",
-    "url": "https://mcp.seismic.com/claude",
-    "description": "Search approved Seismic sales content and generate LiveSend links through the curated Claude connector. Requires OAuth for access.",
+    "url": "https://mcp.seismic.com/v1",
+    "description": "Search Seismic sales content and generate LiveSend links with OAuth. The global endpoint exposes the tools enabled for your MCP app and tenant.",
     "category": "CRM",
     "tags": [
       "sales-enablement",
@@ -25753,29 +25753,31 @@
     "requiresOAuth": true,
     "authType": "oauth",
     "oauthRegistration": {
-      "mode": "unknown",
+      "mode": "pre-registered-required",
       "clientId": {
-        "required": false
+        "required": true
       },
       "clientSecret": {
         "required": false
       },
       "callback": {
-        "required": false
+        "required": true
       },
       "reviewedAt": "2026-11-21",
-      "evidenceUrl": "https://developer.seismic.com/seismicsoftware/docs/seismic-mcp-server"
+      "evidenceUrl": "https://developer.seismic.com/seismicsoftware/docs/creating-and-installing-an-mcp-app-in-seismic#step-3a-choose-pkce-and-client-secret-settings"
     },
     "alternativeEndpoints": [
       {
-        "url": "https://mcp.seismic.com/v1",
+        "url": "https://mcp.seismic.com/claude",
         "authType": "oauth",
-        "description": "Global endpoint for a custom Seismic MCP app. It can provide access to more tools depending on the app and tenant permissions."
+        "description": "Published Claude connector for Generative Search and LiveSend link generation."
       }
     ],
     "exactEndpointOnly": true,
     "caveats": [
-      "The /claude endpoint is the curated Claude connector. Tool availability depends on tenant permissions."
+      "The /v1 endpoint prompts for a tenant name during OAuth. Register an MCP app in Seismic with your client’s redirect URI and enter the app’s client ID in your client.",
+      "In an MCP-enabled tenant, a tenant administrator must enable the app under System Settings → My Apps and approve the tools it can use.",
+      "The unauthenticated OAuth challenge confirms /v1 is reachable. Authenticated tool discovery still needs verification."
     ],
     "logoUrl": "/server-logos/seismic.svg",
     "logoSourceKind": "generated-fallback",

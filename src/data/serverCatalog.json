@@ -25764,7 +25764,7 @@
         "required": true
       },
       "reviewedAt": "2026-11-21",
-      "evidenceUrl": "https://developer.seismic.com/seismicsoftware/docs/creating-and-installing-an-mcp-app-in-seismic"
+      "evidenceUrl": "https://developer.seismic.com/seismicsoftware/docs/creating-and-installing-an-mcp-app-in-seismic#step-3a-choose-pkce-and-client-secret-settings"
     },
     "alternativeEndpoints": [
       {

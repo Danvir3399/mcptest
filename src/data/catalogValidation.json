@@ -7646,5 +7646,405 @@
     "authorizationServers": [
       "https://www.athletedata.health"
     ]
+  },
+  {
+    "serverId": "ubersuggest",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-21T06:21:15.903Z",
+    "message": "Authentication challenge at https://ubersuggest-mcp.neilpatelapi.com/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://ubersuggest-mcp.neilpatelapi.com/mcp",
+    "authorizationServers": [
+      "https://ubersuggest-mcp.neilpatelapi.com/"
+    ]
+  },
+  {
+    "serverId": "jotform-sign",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-21T06:21:15.389Z",
+    "message": "Authentication challenge at https://mcp.jotform.com/mcp-sign-v1 returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.jotform.com/mcp-sign-v1",
+    "authorizationServers": [
+      "https://oauth2.jotform.com"
+    ]
+  },
+  {
+    "serverId": "ai-roleplay-chat-simulator",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-21T06:21:15.993Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://conversation.widgets.widget.olutely.com/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://conversation.widgets.widget.olutely.com/mcp",
+    "protocolVersion": "2026-07-28"
+  },
+  {
+    "serverId": "all-your-horoscopes",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-21T06:21:16.147Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://horoscopes.widgets.widget.olutely.com/v3/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://horoscopes.widgets.widget.olutely.com/v3/mcp",
+    "protocolVersion": "2026-07-28"
+  },
+  {
+    "serverId": "creative-claw",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-21T06:21:15.827Z",
+    "message": "Authentication challenge at https://app.creativeclaw.co/mcp/chatgpt returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://app.creativeclaw.co/mcp/chatgpt",
+    "authorizationServers": [
+      "https://clerk.creativeclaw.co"
+    ]
+  },
+  {
+    "serverId": "drawdash",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-21T06:21:16.146Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://draw-guess.widgets.widget.olutely.com/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://draw-guess.widgets.widget.olutely.com/mcp",
+    "protocolVersion": "2026-07-28"
+  },
+  {
+    "serverId": "evelyn-tarot",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-21T06:21:16.493Z",
+    "message": "Negotiated stateful MCP 2025-06-18 at https://tarott.ai/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://tarott.ai/mcp",
+    "protocolVersion": "2025-06-18"
+  },
+  {
+    "serverId": "football-games-results-scores",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-21T06:21:16.256Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://football.widgets.widget.olutely.com/v2/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://football.widgets.widget.olutely.com/v2/mcp",
+    "protocolVersion": "2026-07-28"
+  },
+  {
+    "serverId": "invideo",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-21T06:21:19.506Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://app-mcp.invideo.io/mcp/chatgpt-app; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://app-mcp.invideo.io/mcp/chatgpt-app",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://pro-api-auth.invideo.io"
+    ]
+  },
+  {
+    "serverId": "jobicy",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-21T06:21:17.391Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://jobicy.com/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://jobicy.com/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "kernelcad",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-21T06:21:16.262Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.kernelcad.com/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://mcp.kernelcad.com/mcp",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://mcp.kernelcad.com"
+    ]
+  },
+  {
+    "serverId": "oracle-hdi-overview",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-21T06:21:18.834Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://api.intelligence.us-ashburn-1.health.oraclecloud.com/v1/public-health/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://api.intelligence.us-ashburn-1.health.oraclecloud.com/v1/public-health/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "quran-ai",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-21T06:21:16.650Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://mcp.quran.ai/; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://mcp.quran.ai/",
+    "protocolVersion": "2026-07-28",
+    "authorizationServers": [
+      "https://mcp.quran.ai/"
+    ]
+  },
+  {
+    "serverId": "smart-chess",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-21T06:21:17.465Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://chess.widgets.widget.olutely.com/v4/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://chess.widgets.widget.olutely.com/v4/mcp",
+    "protocolVersion": "2026-07-28"
+  },
+  {
+    "serverId": "the-astro-scope-destiny-matrix",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-21T06:21:17.816Z",
+    "message": "Negotiated stateful MCP 2024-11-05 at https://theastroscope.com/api/mcp-matrix-v3; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://theastroscope.com/api/mcp-matrix-v3",
+    "protocolVersion": "2024-11-05"
+  },
+  {
+    "serverId": "the-astro-scope-horoscope",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-21T06:21:17.799Z",
+    "message": "Negotiated stateful MCP 2024-11-05 at https://theastroscope.com/api/mcp-v3; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://theastroscope.com/api/mcp-v3",
+    "protocolVersion": "2024-11-05"
+  },
+  {
+    "serverId": "the-astro-scope-tarot-reading",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-21T06:21:17.872Z",
+    "message": "Negotiated stateful MCP 2024-11-05 at https://theastroscope.com/api/mcp-tarot-v3; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://theastroscope.com/api/mcp-tarot-v3",
+    "protocolVersion": "2024-11-05"
+  },
+  {
+    "serverId": "traderspy",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-21T06:21:16.835Z",
+    "message": "Authentication challenge at https://mcp.traderspy.app/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.traderspy.app/mcp",
+    "authorizationServers": [
+      "https://api.traderspy.app"
+    ]
+  },
+  {
+    "serverId": "travel-vibes",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-21T06:21:18.797Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://gpt.travelvibes.ai/mcp/v5/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://gpt.travelvibes.ai/mcp/v5/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "unusual-whales",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "bearer-token",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-21T06:21:18.397Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.unusualwhales.com/; detected transport streamable-http; authentication bearer-token",
+    "validatedUrl": "https://mcp.unusualwhales.com/",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://phx.unusualwhales.com/auth"
+    ]
+  },
+  {
+    "serverId": "vectorize",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-21T06:21:17.785Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://vectorize-logo.com/api/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://vectorize-logo.com/api/mcp",
+    "protocolVersion": "2026-07-28"
+  },
+  {
+    "serverId": "videomagic",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-21T06:21:19.166Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://videomagic-chatgpt-mcp-prod-yb5lljjcna-uc.a.run.app/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://videomagic-chatgpt-mcp-prod-yb5lljjcna-uc.a.run.app/mcp",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://videomagic-chatgpt-mcp-prod-yb5lljjcna-uc.a.run.app/"
+    ]
+  },
+  {
+    "serverId": "strand-ai",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-21T06:21:19.937Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://mcp.strandai.com/mcp; detected transport streamable-http; authentication oauth",
+    "validatedUrl": "https://mcp.strandai.com/mcp",
+    "protocolVersion": "2026-07-28",
+    "authorizationServers": [
+      "https://auth.strandai.com/"
+    ]
+  },
+  {
+    "serverId": "evernote",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-21T06:21:19.201Z",
+    "message": "Authentication challenge at https://mcp.evernote.com/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.evernote.com/mcp",
+    "authorizationServers": [
+      "https://accounts.evernote.com"
+    ]
+  },
+  {
+    "serverId": "helium-10",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-21T06:21:18.724Z",
+    "message": "Authentication challenge at https://mcp.helium10.com/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.helium10.com/mcp",
+    "authorizationServers": [
+      "https://h10api.pacvue.com/authhub/api/scenarios/mcp"
+    ]
+  },
+  {
+    "serverId": "adspirer-social-ads",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-21T06:21:18.325Z",
+    "message": "Authentication challenge at https://mcp.adspirer.com/social-ads returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.adspirer.com/social-ads",
+    "authorizationServers": [
+      "https://mcp.adspirer.com/social-ads"
+    ]
+  },
+  {
+    "serverId": "frontify",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-21T06:21:18.341Z",
+    "message": "Authentication challenge at https://mcp.frontify-integrations.com/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.frontify-integrations.com/mcp",
+    "authorizationServers": [
+      "https://mcp.frontify-integrations.com"
+    ]
+  },
+  {
+    "serverId": "workable",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-21T06:21:19.107Z",
+    "message": "Authentication challenge at https://mcp.workable.com/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.workable.com/mcp",
+    "authorizationServers": [
+      "https://mcp.workable.com"
+    ]
+  },
+  {
+    "serverId": "runway-team",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-21T06:21:19.097Z",
+    "message": "Authentication challenge at https://mcp.runway.team/ returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.runway.team/",
+    "authorizationServers": [
+      "https://obtainable-solitude-72.authkit.app"
+    ]
+  },
+  {
+    "serverId": "twelve-data",
+    "status": "online",
+    "transport": "unknown",
+    "authType": "oauth",
+    "requiresOAuth": true,
+    "protocolEra": "unknown",
+    "checkedAt": "2026-11-21T06:21:19.488Z",
+    "message": "Authentication challenge at https://mcp.twelvedata.com/mcp returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.twelvedata.com/mcp",
+    "authorizationServers": [
+      "https://auth.twelvedata.com"
+    ]
   }
 ]

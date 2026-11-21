@@ -12016,6 +12016,7 @@
       "kind": "mcp-registry",
       "url": "https://registry.modelcontextprotocol.io/v0.1/servers/com.jitsu%2Fmcp/versions/1.0.0"
     },
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -13117,6 +13118,7 @@
       "kind": "mcp-registry",
       "url": "https://registry.modelcontextprotocol.io/v0.1/servers/com.xposedornot%2Fxposedornot/versions/2.0.0"
     },
+    "relevance": 45,
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
@@ -20190,6 +20192,11 @@
         "directory": "claude",
         "id": "connector.a1cabea8-3240-4a5c-b9d9-12ee002de35e",
         "url": "https://claude.com/marketplace/connectors/windsor-ai-for-social-media"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a4252575f388191b53f59b232cd07be",
+        "url": "https://chatgpt.com/plugins/windsor-ai-facebook-ads"
       }
     ],
     "relevance": 96,
@@ -20219,11 +20226,16 @@
         "url": "https://mcp.windsor.ai/social_media/",
         "authType": "oauth",
         "description": "Windsor.ai's organic-social scoped endpoint (Instagram, Facebook Pages, TikTok Organic, YouTube, LinkedIn Pages, Google Business Profile). Same tools as the root server with only these connectors in scope. It is listed in the Claude directory as \"Windsor.ai for Social Media\" at https://mcp.windsor.ai/social_media."
+      },
+      {
+        "url": "https://mcp.windsor.ai/facebook",
+        "authType": "oauth",
+        "description": "Facebook Ads endpoint associated with the Windsor.ai Facebook Ads listing in ChatGPT."
       }
     ],
     "caveats": [
       "Data sources must first be connected in the user's Windsor.ai account. Actions that start or raise ad spend need an explicit confirmation.",
-      "The server answers at the origin root, so the URL must not be rewritten to /mcp (which returns 404). Windsor.ai also runs per-connector servers such as /facebook and /social_media; those are separate listings."
+      "Use the origin root for the main Windsor.ai server. The Facebook Ads and social media variants use their own paths."
     ],
     "logoUrl": "/server-logos/windsor-ai.svg",
     "logoSourceKind": "generated-fallback",
@@ -25389,5 +25401,1459 @@
     "logoLicenseNote": "Generated K monogram for directory identification; not an official Kling mark. Kling trademarks remain with Kling AI.",
     "homepageUrl": "https://kling.ai/app/mcp/guide",
     "sourceUrl": "https://github.com/klingai-tech/cursor-plugin"
+  },
+  {
+    "id": "adspirer-ads-performance-marketing-agent",
+    "name": "Adspirer Ads & Performance Marketing Agent",
+    "url": "https://mcp.adspirer.com/mcp",
+    "description": "Create and manage ad campaigns, research keywords, and report on performance across connected advertising accounts. Requires OAuth for access.",
+    "category": "Analytics",
+    "tags": [
+      "ads",
+      "campaign-management",
+      "reporting",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.adspirer.com/blog/setup-ai-marketing-agent-codex"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.cd33c38a-66e7-41a4-8777-bec24d4bba3a",
+        "url": "https://claude.com/marketplace/connectors/adspirer-ads-performance-marketing-agent"
+      }
+    ],
+    "relevance": 78,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://www.adspirer.com/blog/setup-ai-marketing-agent-codex"
+    },
+    "logoUrl": "/server-logos/adspirer-ads-performance-marketing-agent.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated AA monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.adspirer.com/"
+  },
+  {
+    "id": "hostinger-connector",
+    "name": "Hostinger Connector",
+    "url": "https://mcp.hostinger.com/",
+    "description": "Manage Hostinger websites, domains, DNS records, virtual servers, and email services. Requires OAuth for access.",
+    "category": "Cloud",
+    "tags": [
+      "hosting",
+      "wordpress",
+      "dns",
+      "vps",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.hostinger.com/hostinger-connector"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.d7ae695c-a7df-4444-88be-680c8b2b09c6",
+        "url": "https://claude.com/marketplace/connectors/hostinger-connector"
+      }
+    ],
+    "relevance": 78,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://docs.hostinger.com/hostinger-connector"
+    },
+    "exactEndpointOnly": true,
+    "caveats": [
+      "Use the origin root for the Hostinger Connector."
+    ],
+    "logoUrl": "/server-logos/hostinger-connector.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated HC monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.hostinger.com/"
+  },
+  {
+    "id": "seismic",
+    "name": "Seismic",
+    "url": "https://mcp.seismic.com/claude",
+    "description": "Search approved Seismic sales content and generate LiveSend links through the curated Claude connector. Requires OAuth for access.",
+    "category": "CRM",
+    "tags": [
+      "sales-enablement",
+      "content-search",
+      "livesend",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://developer.seismic.com/seismicsoftware/docs/seismic-mcp-server"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.9feecd5e-241d-4ea1-8caa-289839a3ac04",
+        "url": "https://claude.com/marketplace/connectors/seismic"
+      }
+    ],
+    "relevance": 78,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://developer.seismic.com/seismicsoftware/docs/seismic-mcp-server"
+    },
+    "alternativeEndpoints": [
+      {
+        "url": "https://mcp.seismic.com/v1",
+        "authType": "oauth",
+        "description": "Global endpoint for a custom Seismic MCP app. It can provide access to more tools depending on the app and tenant permissions."
+      }
+    ],
+    "exactEndpointOnly": true,
+    "caveats": [
+      "The /claude endpoint is the curated Claude connector. Tool availability depends on tenant permissions."
+    ],
+    "logoUrl": "/server-logos/seismic.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated SE monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.seismic.com/"
+  },
+  {
+    "id": "bitly",
+    "name": "Bitly",
+    "url": "https://api-ssl.bitly.com/v4/mcp",
+    "description": "Create and manage Bitly short links and QR codes, and read engagement metrics. Requires OAuth for access.",
+    "category": "Analytics",
+    "tags": [
+      "short-links",
+      "qr-codes",
+      "link-analytics",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://dev.bitly.com/bitly-mcp/overview/quickstart/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6945ad55164f563ba03c63b2",
+        "url": "https://claude.com/marketplace/connectors/bitly"
+      }
+    ],
+    "relevance": 77,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://dev.bitly.com/bitly-mcp/overview/quickstart/"
+    },
+    "exactEndpointOnly": true,
+    "logoUrl": "/server-logos/bitly.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated BL monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://bitly.com/"
+  },
+  {
+    "id": "metaview",
+    "name": "Metaview",
+    "url": "https://mcp.metaview.ai/mcp",
+    "description": "Search recruiting conversations and analyze interview and candidate data in Metaview. Requires OAuth for access.",
+    "category": "Productivity",
+    "tags": [
+      "recruiting",
+      "interviews",
+      "conversation-search",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://mcp-skills.metaview.ai/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.7bc97e97-91fb-4da8-8a81-3602c9d4150b",
+        "url": "https://claude.com/marketplace/connectors/metaview"
+      }
+    ],
+    "relevance": 77,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://mcp-skills.metaview.ai/"
+    },
+    "logoUrl": "/server-logos/metaview.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated MV monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.metaview.ai/"
+  },
+  {
+    "id": "guru",
+    "name": "Guru",
+    "url": "https://mcp.api.getguru.com/mcp",
+    "description": "Search company knowledge in Guru, generate answers from sources, and draft or update knowledge cards. Requires OAuth for access.",
+    "category": "Productivity",
+    "tags": [
+      "knowledge-base",
+      "enterprise-search",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://help.getguru.com/docs/connecting-gurus-mcp-server"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6973ff8b3aebcad161cfb7c2",
+        "url": "https://claude.com/marketplace/connectors/guru"
+      }
+    ],
+    "relevance": 77,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://help.getguru.com/docs/connecting-gurus-mcp-server"
+    },
+    "logoUrl": "/server-logos/guru.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated GU monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.getguru.com/"
+  },
+  {
+    "id": "gusto",
+    "name": "Gusto",
+    "url": "https://mcp.api.gusto.com/",
+    "description": "Query Gusto payroll, employee, and time-tracking information. Requires OAuth for access.",
+    "category": "Finance",
+    "tags": [
+      "payroll",
+      "hr",
+      "time-tracking",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.gusto.com/app-integrations/docs/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.69a36c7461a65713e8d532c1",
+        "url": "https://claude.com/marketplace/connectors/gusto"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6941e1d349208191b984b93cb344be5b",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6941e1d349208191b984b93cb344be5b"
+      }
+    ],
+    "relevance": 77,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://docs.gusto.com/app-integrations/docs/mcp"
+    },
+    "exactEndpointOnly": true,
+    "caveats": [
+      "Use the neutral origin root for general MCP clients. The Claude directory lists a separate /anthropic path."
+    ],
+    "logoUrl": "/server-logos/gusto.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated GU monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://gusto.com/"
+  },
+  {
+    "id": "riverside",
+    "name": "Riverside",
+    "url": "https://mcp.riverside.com/mcp",
+    "description": "Search Riverside recordings and transcripts and edit clips, captions, and other media in a Riverside workspace. Requires OAuth for access.",
+    "category": "Design",
+    "tags": [
+      "podcasts",
+      "recordings",
+      "video-editing",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/riversidefm/riverside-mcp-public/blob/main/skills/setup/SKILL.md"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.3366d1e9-5d1d-49b1-a758-677949a84fd9",
+        "url": "https://claude.com/marketplace/connectors/riverside"
+      }
+    ],
+    "relevance": 77,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://github.com/riversidefm/riverside-mcp-public/blob/main/skills/setup/SKILL.md"
+    },
+    "logoUrl": "/server-logos/riverside.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated RV monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://riverside.com/"
+  },
+  {
+    "id": "mailerlite",
+    "name": "MailerLite",
+    "url": "https://mcp.mailerlite.com/mcp",
+    "description": "Manage MailerLite subscribers and email campaigns, and read campaign performance data. Requires OAuth for access.",
+    "category": "Communication",
+    "tags": [
+      "email-marketing",
+      "campaigns",
+      "subscribers",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://developers.mailerlite.com/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.5807a545-cd93-4e71-bb21-f3727bf34df1",
+        "url": "https://claude.com/marketplace/connectors/mailerlite"
+      }
+    ],
+    "relevance": 77,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://developers.mailerlite.com/mcp"
+    },
+    "logoUrl": "/server-logos/mailerlite.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated ML monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.mailerlite.com/"
+  },
+  {
+    "id": "typefully",
+    "name": "Typefully",
+    "url": "https://mcp.typefully.com/mcp",
+    "description": "Draft, schedule, and publish posts to social accounts connected to a Typefully workspace. Requires OAuth for access.",
+    "category": "Communication",
+    "tags": [
+      "social-media",
+      "publishing",
+      "scheduling",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://typefully.com/docs/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.1a19af93-b446-43b9-be0a-a38980597974",
+        "url": "https://claude.com/marketplace/connectors/typefully"
+      }
+    ],
+    "relevance": 77,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://typefully.com/docs/mcp"
+    },
+    "logoUrl": "/server-logos/typefully.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated TY monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://typefully.com/"
+  },
+  {
+    "id": "peec-ai",
+    "name": "Peec AI",
+    "url": "https://api.peec.ai/mcp",
+    "description": "Query Peec AI data about brand visibility, sentiment, and competitors across AI search engines. Requires OAuth for access.",
+    "category": "Analytics",
+    "tags": [
+      "ai-search",
+      "brand-monitoring",
+      "visibility",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.peec.ai/mcp/introduction"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.ed56abc7-38aa-4ac9-a1a5-fbbb03a95855",
+        "url": "https://claude.com/marketplace/connectors/peec-ai"
+      }
+    ],
+    "relevance": 77,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://docs.peec.ai/mcp/introduction"
+    },
+    "logoUrl": "/server-logos/peec-ai.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated PA monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://peec.ai/"
+  },
+  {
+    "id": "tactiq",
+    "name": "Tactiq",
+    "url": "https://mcp.tactiq.io/",
+    "description": "Search and retrieve Tactiq meeting transcripts and summaries from Google Meet, Zoom, and Microsoft Teams. Requires OAuth for access.",
+    "category": "Communication",
+    "tags": [
+      "meetings",
+      "transcripts",
+      "meeting-notes",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://help.tactiq.io/en/articles/14883619-tactiq-mcp-server"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.048d1a8e-abd1-4e3a-b8fc-77d7afb419b1",
+        "url": "https://claude.com/marketplace/connectors/tactiq"
+      }
+    ],
+    "relevance": 76,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://help.tactiq.io/en/articles/14883619-tactiq-mcp-server"
+    },
+    "exactEndpointOnly": true,
+    "caveats": [
+      "Use the origin root for the Tactiq connector."
+    ],
+    "logoUrl": "/server-logos/tactiq.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated TA monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://tactiq.io/"
+  },
+  {
+    "id": "tldv",
+    "name": "tl;dv",
+    "url": "https://mcp.tldv.io/mcp",
+    "description": "Search meetings recorded by tl;dv and retrieve transcripts, notes, and meeting metadata. Requires OAuth for access.",
+    "category": "Communication",
+    "tags": [
+      "meetings",
+      "transcripts",
+      "meeting-notes",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://tldv.io/blog/how-to-connect-meeting-notes-to-claude-with-mcp/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.fe54565b-5acb-45b3-b27e-4f7d9752a257",
+        "url": "https://claude.com/marketplace/connectors/tldv"
+      }
+    ],
+    "relevance": 76,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://tldv.io/blog/how-to-connect-meeting-notes-to-claude-with-mcp/"
+    },
+    "logoUrl": "/server-logos/tldv.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated TD monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://tldv.io/"
+  },
+  {
+    "id": "euler",
+    "name": "EULER",
+    "url": "https://mcp.eulerapp.com/mcp",
+    "description": "Query EULER partner program data about deals, onboarding, and commissions, and register partner deals. Requires OAuth for access.",
+    "category": "CRM",
+    "tags": [
+      "partner-management",
+      "deals",
+      "commissions",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://mcp.eulerapp.com/public/docs"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.5070225d-6c89-4bcc-92f9-e28184b0648d",
+        "url": "https://claude.com/marketplace/connectors/euler"
+      }
+    ],
+    "relevance": 76,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://mcp.eulerapp.com/public/docs"
+    },
+    "logoUrl": "/server-logos/euler.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated EU monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.eulerapp.com/"
+  },
+  {
+    "id": "salesloft",
+    "name": "Salesloft",
+    "url": "https://mcp.salesloft.com/sse",
+    "description": "Query Salesloft accounts, deals, pipeline activity, and recorded sales conversations. Requires OAuth for access.",
+    "category": "CRM",
+    "tags": [
+      "sales-engagement",
+      "pipeline",
+      "conversations",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/salesloft"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.b88a0129-d984-4c48-87a1-acf028e9f035",
+        "url": "https://claude.com/marketplace/connectors/salesloft"
+      }
+    ],
+    "relevance": 76,
+    "transport": "legacy-sse",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://claude.com/marketplace/connectors/salesloft"
+    },
+    "exactEndpointOnly": true,
+    "caveats": [
+      "Use the /sse URL from the Claude directory. The /mcp URL advertised different OAuth protected-resource metadata."
+    ],
+    "logoUrl": "/server-logos/salesloft.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated SL monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://help.salesloft.com/s/article/Salesloft-MCP-Server"
+  },
+  {
+    "id": "medidata",
+    "name": "Medidata",
+    "url": "https://mcp.imedidata.com/mcp",
+    "description": "Search Medidata product documentation and query predictive site rankings for clinical trial planning. Requires OAuth for access.",
+    "category": "Analytics",
+    "tags": [
+      "clinical-trials",
+      "documentation",
+      "site-ranking",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/medidata"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "wf.6961d1557b68d0a72de37789",
+        "url": "https://claude.com/marketplace/connectors/medidata"
+      }
+    ],
+    "relevance": 76,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://claude.com/marketplace/connectors/medidata"
+    },
+    "logoUrl": "/server-logos/medidata.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated MD monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://learn.medidata.com/en-US/bundle/mcp-server-documentation/page/medidata_mcp_server_documentation.html"
+  },
+  {
+    "id": "instacart",
+    "name": "Instacart",
+    "url": "https://fig-mcp.instacart.com/mcp",
+    "description": "Search products at nearby grocery stores and build an Instacart cart. Requires OAuth for access.",
+    "category": "Marketplace",
+    "tags": [
+      "groceries",
+      "product-search",
+      "shopping-cart",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/instacart"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.afd79b39-e774-4934-be5b-098784579838",
+        "url": "https://claude.com/marketplace/connectors/instacart"
+      }
+    ],
+    "relevance": 76,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://claude.com/marketplace/connectors/instacart"
+    },
+    "logoUrl": "/server-logos/instacart.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated IC monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.instacart.com/"
+  },
+  {
+    "id": "moda",
+    "name": "Moda",
+    "url": "https://agents.moda.app/mcp",
+    "description": "Create editable presentations and marketing graphics in Moda. Requires OAuth for access.",
+    "category": "Design",
+    "tags": [
+      "presentations",
+      "marketing-assets",
+      "graphics",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.moda.app/agents/mcp-connector"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.ea86601d-514b-42e4-aefc-32c6c51baf7e",
+        "url": "https://claude.com/marketplace/connectors/moda"
+      }
+    ],
+    "relevance": 76,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://docs.moda.app/agents/mcp-connector"
+    },
+    "logoUrl": "/server-logos/moda.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated MO monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.moda.app/"
+  },
+  {
+    "id": "synthesize-bio",
+    "name": "Synthesize Bio",
+    "url": "https://app.synthesize.bio/api/mcp",
+    "description": "Generate and analyze simulated human gene expression datasets in the Synthesize Bio platform. Requires OAuth for access.",
+    "category": "Analytics",
+    "tags": [
+      "gene-expression",
+      "transcriptomics",
+      "research",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://app.synthesize.bio/mcp/docs"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.ef243b27-ec39-440b-8bb2-c407871c3bc6",
+        "url": "https://claude.com/marketplace/connectors/synthesize-bio"
+      }
+    ],
+    "relevance": 75,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://app.synthesize.bio/mcp/docs"
+    },
+    "exactEndpointOnly": true,
+    "logoUrl": "/server-logos/synthesize-bio.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated SB monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.synthesize.bio/"
+  },
+  {
+    "id": "freee",
+    "name": "freee",
+    "url": "https://mcp.freee.co.jp/mcp",
+    "description": "Read and update data in connected freee products, including accounting, HR, invoicing, and project management. Requires OAuth for access.",
+    "category": "Finance",
+    "tags": [
+      "accounting",
+      "invoicing",
+      "hr",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/freee/freee-mcp/blob/main/skills/freee-api-skill/SETUP.md"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.edc0b710-daf6-4600-aecd-fc2c00f6b338",
+        "url": "https://claude.com/marketplace/connectors/freee"
+      }
+    ],
+    "relevance": 75,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://github.com/freee/freee-mcp/blob/main/skills/freee-api-skill/SETUP.md"
+    },
+    "logoUrl": "/server-logos/freee.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated FR monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.freee.co.jp/"
+  },
+  {
+    "id": "zip",
+    "name": "Zip",
+    "url": "https://mcp.zip.com/mcp",
+    "description": "Look up purchase requests, approvals, vendors, purchase orders, and invoices in Zip. Requires OAuth for access.",
+    "category": "Finance",
+    "tags": [
+      "procurement",
+      "purchase-orders",
+      "approvals",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/zip"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.7b60a13f-935b-41a0-b891-cf184529f081",
+        "url": "https://claude.com/marketplace/connectors/zip"
+      }
+    ],
+    "relevance": 75,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://claude.com/marketplace/connectors/zip"
+    },
+    "logoUrl": "/server-logos/zip.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated ZI monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://ziphq.com/"
+  },
+  {
+    "id": "teamtailor",
+    "name": "Teamtailor",
+    "url": "https://mcp.teamtailor.com/mcp",
+    "description": "Query Teamtailor jobs, candidates, and recruitment pipelines, and update application records. Requires OAuth for access.",
+    "category": "Productivity",
+    "tags": [
+      "recruiting",
+      "applicant-tracking",
+      "hiring",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://support.teamtailor.com/en/articles/15842409-connect-an-ai-assistant-to-teamtailor-using-mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.5e72079c-eae5-494c-87a4-d5af7361b7d7",
+        "url": "https://claude.com/marketplace/connectors/teamtailor"
+      }
+    ],
+    "relevance": 75,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://support.teamtailor.com/en/articles/15842409-connect-an-ai-assistant-to-teamtailor-using-mcp"
+    },
+    "caveats": [
+      "The server completed an anonymous Streamable HTTP handshake, then returned an OAuth challenge for capability requests."
+    ],
+    "logoUrl": "/server-logos/teamtailor.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated TT monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.teamtailor.com/"
+  },
+  {
+    "id": "openseo",
+    "name": "OpenSEO",
+    "url": "https://app.openseo.so/mcp",
+    "description": "Research keywords, track search rankings, check backlinks, and audit websites with OpenSEO. Requires OAuth for access.",
+    "category": "Analytics",
+    "tags": [
+      "seo",
+      "keywords",
+      "backlinks",
+      "site-audits",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.openseo.so/docs/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.3d15fac7-4fc6-4aaf-9b4e-9abfa46f7b31",
+        "url": "https://claude.com/marketplace/connectors/openseo"
+      }
+    ],
+    "relevance": 75,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://www.openseo.so/docs/mcp"
+    },
+    "logoUrl": "/server-logos/openseo.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated OS monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.openseo.so/"
+  },
+  {
+    "id": "deepl",
+    "name": "DeepL",
+    "url": "https://mcp.deepl.com/v1/mcp",
+    "description": "Translate text and documents, revise writing, and apply DeepL glossaries and style rules. Requires OAuth for access.",
+    "category": "Productivity",
+    "tags": [
+      "translation",
+      "writing",
+      "localization",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://developers.deepl.com/docs/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.6281926c-b9be-42d6-80eb-1d38c8c766ae",
+        "url": "https://claude.com/marketplace/connectors/deepl"
+      }
+    ],
+    "relevance": 75,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://developers.deepl.com/docs/mcp"
+    },
+    "exactEndpointOnly": true,
+    "logoUrl": "/server-logos/deepl.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated DL monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.deepl.com/"
+  },
+  {
+    "id": "motion-so",
+    "name": "Motion",
+    "url": "https://mcp.motion.so/mcp",
+    "description": "Connect an AI client to Motion's video and motion design workspace. Requires OAuth for access.",
+    "category": "Design",
+    "tags": [
+      "motion-design",
+      "video",
+      "animation",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://motion.so/templates"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.fc444ece-ad9b-4854-a244-4dcb9abfde6f",
+        "url": "https://claude.com/marketplace/connectors/motion-so"
+      }
+    ],
+    "relevance": 74,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://motion.so/templates"
+    },
+    "caveats": [
+      "This is the client-neutral endpoint. Tool parity with the Claude-specific /mcp/anthropic endpoint is unverified."
+    ],
+    "logoUrl": "/server-logos/motion-so.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated MO monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://motion.so/"
+  },
+  {
+    "id": "craft",
+    "name": "Craft",
+    "url": "https://mcp.craft.do/my/mcp",
+    "description": "Create and organize Craft documents, notes, and tasks. Requires OAuth for access.",
+    "category": "Productivity",
+    "tags": [
+      "documents",
+      "notes",
+      "tasks",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.craft.do/imagine/guide/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.ebf5e222-450b-4658-b566-ddb82c4c8382",
+        "url": "https://claude.com/marketplace/connectors/craft"
+      }
+    ],
+    "relevance": 74,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://www.craft.do/imagine/guide/mcp"
+    },
+    "exactEndpointOnly": true,
+    "logoUrl": "/server-logos/craft.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated CR monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.craft.do/"
+  },
+  {
+    "id": "nimble",
+    "name": "Nimble",
+    "url": "https://mcp.nimbleway.com/mcp",
+    "description": "Search the web and extract structured data from public pages with Nimble. Requires OAuth for access.",
+    "category": "Search",
+    "tags": [
+      "web-search",
+      "data-extraction",
+      "web-data",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.nimbleway.com/integrations/mcp-server/mcp-server"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.41105597-badd-4563-aba3-88fe45348857",
+        "url": "https://claude.com/marketplace/connectors/nimble"
+      }
+    ],
+    "relevance": 74,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://docs.nimbleway.com/integrations/mcp-server/mcp-server"
+    },
+    "logoUrl": "/server-logos/nimble.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated NI monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.nimbleway.com/"
+  },
+  {
+    "id": "brighthire",
+    "name": "BrightHire",
+    "url": "https://app.brighthire.ai/mcp/v1",
+    "description": "Retrieve BrightHire interview schedules, notes, summaries, guides, and candidate scorecards. Requires OAuth for access.",
+    "category": "Productivity",
+    "tags": [
+      "recruiting",
+      "interviews",
+      "hiring",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://help.brighthire.ai/en/articles/14808753-brighthire-mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.024923b0-b122-4eb0-bb25-c3887bdaa9b9",
+        "url": "https://claude.com/marketplace/connectors/brighthire"
+      }
+    ],
+    "relevance": 74,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://help.brighthire.ai/en/articles/14808753-brighthire-mcp"
+    },
+    "exactEndpointOnly": true,
+    "logoUrl": "/server-logos/brighthire.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated BH monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://brighthire.ai/"
+  },
+  {
+    "id": "adobe-cja",
+    "name": "Adobe Customer Journey Analytics",
+    "url": "https://cja-mcp.adobe.io/mcp",
+    "description": "Query cross-channel journey metrics and dimensions and manage segments in Adobe Customer Journey Analytics. Requires OAuth for access.",
+    "category": "Analytics",
+    "tags": [
+      "adobe",
+      "customer-journey",
+      "metrics",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://developer.adobe.com/analytics-mcp/docs/cja/"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.a1b63edd-c598-4b04-b7b0-22dd02c328a3",
+        "url": "https://claude.com/marketplace/connectors/adobe-cja"
+      }
+    ],
+    "relevance": 74,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://developer.adobe.com/analytics-mcp/docs/cja/"
+    },
+    "logoUrl": "/server-logos/adobe-cja.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated AJ monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://developer.adobe.com/analytics-mcp/docs/cja/"
+  },
+  {
+    "id": "athletedata",
+    "name": "athletedata",
+    "url": "https://mcp.athletedata.health/mcp",
+    "description": "Analyze workouts and wellness data from connected services and schedule structured training sessions. Requires OAuth for access.",
+    "category": "Analytics",
+    "tags": [
+      "fitness",
+      "workouts",
+      "wearables",
+      "oauth"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.athletedata.health/mcp/docs"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.994de25b-b747-446b-b318-d8edc82119d0",
+        "url": "https://claude.com/marketplace/connectors/athletedata"
+      }
+    ],
+    "relevance": 74,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://www.athletedata.health/mcp/docs"
+    },
+    "logoUrl": "/server-logos/athletedata.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated AD monogram. Trademark rights remain with the publisher.",
+    "homepageUrl": "https://www.athletedata.health/"
   }
 ]

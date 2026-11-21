@@ -17443,8 +17443,8 @@
     "alternativeEndpoints": [
       {
         "url": "https://chatgpt.mermaid.ai/openai/v2/mcp",
-        "authType": "none",
-        "description": "ChatGPT-specific MCP Apps endpoint."
+        "authType": "oauth",
+        "description": "ChatGPT-specific MCP Apps endpoint that allows anonymous initialization and tool discovery. All seven listed tools declare OAuth for invocation."
       }
     ]
   },

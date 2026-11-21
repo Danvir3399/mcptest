@@ -25753,18 +25753,18 @@
     "requiresOAuth": true,
     "authType": "oauth",
     "oauthRegistration": {
-      "mode": "unknown",
+      "mode": "pre-registered-required",
       "clientId": {
-        "required": false
+        "required": true
       },
       "clientSecret": {
         "required": false
       },
       "callback": {
-        "required": false
+        "required": true
       },
       "reviewedAt": "2026-11-21",
-      "evidenceUrl": "https://developer.seismic.com/seismicsoftware/docs/seismic-mcp-server"
+      "evidenceUrl": "https://developer.seismic.com/seismicsoftware/docs/creating-and-installing-an-mcp-app-in-seismic"
     },
     "alternativeEndpoints": [
       {
@@ -25775,7 +25775,9 @@
     ],
     "exactEndpointOnly": true,
     "caveats": [
-      "The global endpoint prompts for a tenant name during OAuth and requires a custom MCP app registered with Seismic. A tenant administrator controls which tools the app can use."
+      "The /v1 endpoint prompts for a tenant name during OAuth. Register an MCP app in Seismic with your client’s redirect URI and enter the app’s client ID in your client.",
+      "In an MCP-enabled tenant, a tenant administrator must enable the app under System Settings → My Apps and approve the tools it can use.",
+      "The unauthenticated OAuth challenge confirms /v1 is reachable. Authenticated tool discovery still needs verification."
     ],
     "logoUrl": "/server-logos/seismic.svg",
     "logoSourceKind": "generated-fallback",

@@ -249,6 +249,11 @@
         "directory": "claude",
         "id": "wf.68b0619018c80b507dbfc581",
         "url": "https://claude.com/marketplace/connectors/linear"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69a089a326dc8191b32a3f2553f5be2c"
       }
     ],
     "relevance": 99,
@@ -844,6 +849,11 @@
         "directory": "claude",
         "id": "connector.33e1b084-f45e-4fa3-951a-b08ad61101c9",
         "url": "https://claude.com/marketplace/connectors/neon"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69e0086d87088191a3edc052fa50c29f",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69e0086d87088191a3edc052fa50c29f"
       }
     ],
     "relevance": 77,
@@ -1299,6 +1309,11 @@
         "directory": "claude",
         "id": "wf.698236b16010d83b881046b8",
         "url": "https://claude.com/marketplace/connectors/miro"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a392799cb58819185f82dc01ac13dad",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a392799cb58819185f82dc01ac13dad"
       }
     ],
     "relevance": 98,
@@ -1832,6 +1847,11 @@
         "directory": "claude",
         "id": "wf.68b0618fec8c7c45df2f5896",
         "url": "https://claude.com/marketplace/connectors/hugging-face"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6ac752d4c640819191c206f9cb0dafad",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6ac752d4c640819191c206f9cb0dafad"
       }
     ],
     "relevance": 93,
@@ -1912,6 +1932,11 @@
         "directory": "claude",
         "id": "connector.27973c01-c053-413b-997b-a08064f5b444",
         "url": "https://claude.com/marketplace/connectors/upwork"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a75165ed2d8819182548553aa4cb6d5",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a75165ed2d8819182548553aa4cb6d5"
       }
     ],
     "relevance": 82,
@@ -2422,6 +2447,11 @@
         "directory": "claude",
         "id": "connector.d8a25d2a-e5ea-4860-b990-277244df5417",
         "url": "https://claude.com/marketplace/connectors/tavily"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69f271663a288191ac98f46bed7cb032",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69f271663a288191ac98f46bed7cb032"
       }
     ],
     "relevance": 82,
@@ -3056,6 +3086,11 @@
         "directory": "claude",
         "id": "wf.68b06190208a38617cb8e09a",
         "url": "https://claude.com/marketplace/connectors/netlify"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_691f1f8f72408191afdbbdf8242bdf86",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_691f1f8f72408191afdbbdf8242bdf86"
       }
     ],
     "relevance": 93,
@@ -3815,6 +3850,11 @@
         "directory": "claude",
         "id": "wf.68b0619097a6a7e363bef1e0",
         "url": "https://claude.com/marketplace/connectors/jam"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_connector_6923e677f37c8191845e4e0b658dd718",
+        "url": "https://chatgpt.com/plugins/plugin_connector_6923e677f37c8191845e4e0b658dd718"
       }
     ],
     "relevance": 70,
@@ -4489,6 +4529,11 @@
         "directory": "claude",
         "id": "wf.68b0618e694f26361d572d5c",
         "url": "https://claude.com/marketplace/connectors/box"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_695bfc98071c8191bac7bc479aa27de7",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_695bfc98071c8191bac7bc479aa27de7"
       }
     ],
     "relevance": 99,
@@ -5275,6 +5320,11 @@
         "directory": "claude",
         "id": "wf.696ed2c1f10a34c9a99f6f3e",
         "url": "https://claude.com/marketplace/connectors/klaviyo"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_694421e60cc88191a1e5bb4aa79950e4",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_694421e60cc88191a1e5bb4aa79950e4"
       }
     ],
     "relevance": 91,
@@ -5328,6 +5378,11 @@
         "directory": "claude",
         "id": "wf.68b061902e8445f3acca5515",
         "url": "https://claude.com/marketplace/connectors/monday"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6af0ad8c21a88191ba6c3c8d07a164d0",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6af0ad8c21a88191ba6c3c8d07a164d0"
       }
     ],
     "relevance": 99,
@@ -5380,6 +5435,11 @@
         "directory": "claude",
         "id": "connector.baa35676-3f79-4728-aec9-b37870c73deb",
         "url": "https://claude.com/marketplace/connectors/wrike"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69df5cd50c68819189d47543ff2279e1",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69df5cd50c68819189d47543ff2279e1"
       }
     ],
     "relevance": 84,
@@ -5492,6 +5552,11 @@
         "directory": "claude",
         "id": "wf.68e06e6232b17a59b6917957",
         "url": "https://claude.com/marketplace/connectors/egnyte"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_connector_691f749cd9088191befeb1d543c37d98",
+        "url": "https://chatgpt.com/plugins/plugin_connector_691f749cd9088191befeb1d543c37d98"
       }
     ],
     "relevance": 79,
@@ -5724,6 +5789,11 @@
         "directory": "claude",
         "id": "wf.696ed6148b9df497d38cba48",
         "url": "https://claude.com/marketplace/connectors/mercury"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a17ae803744819187a3079d37479dae",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a17ae803744819187a3079d37479dae"
       }
     ],
     "relevance": 73,
@@ -5779,6 +5849,11 @@
         "directory": "claude",
         "id": "connector.b9049585-f39b-45e8-8626-6ca78d9d7d22",
         "url": "https://claude.com/marketplace/connectors/postman"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a6b12e06c5c8191ac5d5252fa5f92c8",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a6b12e06c5c8191ac5d5252fa5f92c8"
       }
     ],
     "relevance": 94,
@@ -9735,6 +9810,13 @@
       "kind": "publisher",
       "url": "https://learn.hex.tech/docs/api-integrations/mcp-server"
     },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_connector_690a9430a270819196671dcb4c95898e",
+        "url": "https://chatgpt.com/plugins/plugin_connector_690a9430a270819196671dcb4c95898e"
+      }
+    ],
     "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
@@ -11303,6 +11385,11 @@
         "directory": "claude",
         "id": "wf.696ecfe1bdbdca32f8c575d4",
         "url": "https://claude.com/marketplace/connectors/gamma"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_698a098735908191989f5788d7ee317e",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_698a098735908191989f5788d7ee317e"
       }
     ],
     "relevance": 97,
@@ -11699,6 +11786,11 @@
         "directory": "claude",
         "id": "connector.1f0aaecc-77d9-4b5f-aad3-935023c0b030",
         "url": "https://claude.com/marketplace/connectors/beehiiv"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a999c9511808191affcabcf3962c9d1",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a999c9511808191affcabcf3962c9d1"
       }
     ],
     "relevance": 63,
@@ -11878,6 +11970,14 @@
       "kind": "mcp-registry",
       "url": "https://registry.modelcontextprotocol.io/v0.1/servers/com.happyscribe%2Fhappyscribe/versions/1.0.0"
     },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_694a8009f86481918b118a4a86bebc8c",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_694a8009f86481918b118a4a86bebc8c"
+      }
+    ],
+    "relevance": 50,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -11949,6 +12049,7 @@
       "kind": "mcp-registry",
       "url": "https://registry.modelcontextprotocol.io/v0.1/servers/com.icons8%2Ficons8/versions/1.0.0"
     },
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -12348,6 +12449,7 @@
       "kind": "mcp-registry",
       "url": "https://registry.modelcontextprotocol.io/v0.1/servers/com.octoparse%2Foctoparse-mcp/versions/1.0.0"
     },
+    "relevance": 60,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -12420,6 +12522,11 @@
         "directory": "claude",
         "id": "connector.56998cd4-9a3a-4f40-8aa9-5019da8bf96e",
         "url": "https://claude.com/marketplace/connectors/pandadoc"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a96ec86423c8191a13c7369bba45295",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a96ec86423c8191a13c7369bba45295"
       }
     ],
     "relevance": 81,
@@ -12583,6 +12690,7 @@
       "kind": "mcp-registry",
       "url": "https://registry.modelcontextprotocol.io/v0.1/servers/com.scandit%2Fmcp/versions/1.0.1"
     },
+    "relevance": 55,
     "transport": "streamable-http",
     "requiresOAuth": true,
     "authType": "oauth",
@@ -16591,6 +16699,11 @@
         "directory": "claude",
         "id": "connector.87c504cf-a0a7-460b-a2e4-de6123222a60",
         "url": "https://claude.com/marketplace/connectors/pending-komoot"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6943d405cbac8191bc7aa723c333335e",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6943d405cbac8191bc7aa723c333335e"
       }
     ],
     "relevance": 42,
@@ -16610,7 +16723,14 @@
     "logoSourceKind": "simple-icons",
     "logoRetrievedAt": "2026-11-19",
     "logoLicenseNote": "komoot mark from Simple Icons version 16.38.0; trademark rights remain with the publisher.",
-    "homepageUrl": "https://www.komoot.com"
+    "homepageUrl": "https://www.komoot.com",
+    "alternativeEndpoints": [
+      {
+        "url": "https://gpt.main.komoot.net/mcp",
+        "authType": "none",
+        "description": "ChatGPT-specific komoot endpoint."
+      }
+    ]
   },
   {
     "id": "product-hunt",
@@ -16990,6 +17110,11 @@
         "directory": "claude",
         "id": "connector.b3749cf7-45bb-41ea-8696-54057992408e",
         "url": "https://claude.com/marketplace/connectors/shop"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6982cfb482bc81918416ec35e7cc90e5",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6982cfb482bc81918416ec35e7cc90e5"
       }
     ],
     "relevance": 55,
@@ -17011,7 +17136,14 @@
     "logoSourceKind": "official-site",
     "logoRetrievedAt": "2026-11-19",
     "logoLicenseNote": "Official Shop site icon; trademark rights remain with the publisher.",
-    "homepageUrl": "https://shop.app"
+    "homepageUrl": "https://shop.app",
+    "alternativeEndpoints": [
+      {
+        "url": "https://shop.app/mcp",
+        "authType": "none",
+        "description": "ChatGPT-specific Shop endpoint."
+      }
+    ]
   },
   {
     "id": "apollo-graphos",
@@ -17287,6 +17419,11 @@
         "directory": "claude",
         "id": "wf.68fac2e97b145ee55178b501",
         "url": "https://claude.com/marketplace/connectors/mermaid-chart"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_696609ce0304819185fafa6a660e0f1e",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_696609ce0304819185fafa6a660e0f1e"
       }
     ],
     "relevance": 91,
@@ -17302,7 +17439,14 @@
     "logoSourceKind": "simple-icons",
     "logoRetrievedAt": "2026-11-19",
     "logoLicenseNote": "Mermaid mark from Simple Icons version 16.38.0; trademark rights remain with the publisher.",
-    "homepageUrl": "https://www.mermaidchart.com"
+    "homepageUrl": "https://www.mermaidchart.com",
+    "alternativeEndpoints": [
+      {
+        "url": "https://chatgpt.mermaid.ai/openai/v2/mcp",
+        "authType": "none",
+        "description": "ChatGPT-specific MCP Apps endpoint."
+      }
+    ]
   },
   {
     "id": "tripadvisor",
@@ -20123,6 +20267,11 @@
         "directory": "claude",
         "id": "connector.0cce5c8c-7590-41d0-abbe-aa5c64961ac0",
         "url": "https://claude.com/marketplace/connectors/lucid"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69c597eebdd4819194fd9c4d03acedb6",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69c597eebdd4819194fd9c4d03acedb6"
       }
     ],
     "relevance": 97,
@@ -20450,6 +20599,11 @@
         "directory": "claude",
         "id": "wf.698ce7f1e920af058401757c",
         "url": "https://claude.com/marketplace/connectors/supermetrics"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69a1247fceb88191a0fde719fd50920d",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69a1247fceb88191a0fde719fd50920d"
       }
     ],
     "relevance": 95,
@@ -20809,6 +20963,11 @@
         "directory": "claude",
         "id": "connector.705ad993-53e3-4be6-b32c-cc9cff5225f6",
         "url": "https://claude.com/marketplace/connectors/mobbin"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69fdb9081018819193707354f21b366e",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69fdb9081018819193707354f21b366e"
       }
     ],
     "relevance": 92,
@@ -20925,6 +21084,11 @@
         "directory": "claude",
         "id": "connector.954b8c86-38d8-431b-bdaf-85b14336989c",
         "url": "https://claude.com/marketplace/connectors/fathom"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69d88b99c5c481918e8da9225737e1e9",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69d88b99c5c481918e8da9225737e1e9"
       }
     ],
     "relevance": 92,
@@ -21751,6 +21915,11 @@
         "directory": "claude",
         "id": "connector.4c1fcb68-c482-46c5-a677-659eaf2f2c85",
         "url": "https://claude.com/marketplace/connectors/xero"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a7ee05cee1881918dbfaba26fb555e1",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a7ee05cee1881918dbfaba26fb555e1"
       }
     ],
     "relevance": 92,
@@ -23425,6 +23594,11 @@
         "directory": "claude",
         "id": "connector.116c7fb0-0206-4ef7-bdc5-118f45586d50",
         "url": "https://claude.com/marketplace/connectors/revolut-x-67e1d4"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a7c4825e7b88191a0d789b42d68af17",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a7c4825e7b88191a0d789b42d68af17"
       }
     ],
     "relevance": 34,
@@ -25423,6 +25597,11 @@
         "directory": "claude",
         "id": "connector.cd33c38a-66e7-41a4-8777-bec24d4bba3a",
         "url": "https://claude.com/marketplace/connectors/adspirer-ads-performance-marketing-agent"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69461dc91ee48191ae4a14eb9bde1c21",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69461dc91ee48191ae4a14eb9bde1c21"
       }
     ],
     "relevance": 78,
@@ -25674,6 +25853,11 @@
         "directory": "claude",
         "id": "wf.6973ff8b3aebcad161cfb7c2",
         "url": "https://claude.com/marketplace/connectors/guru"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6aebb48ad41c8191a260dd178eca686a",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6aebb48ad41c8191a260dd178eca686a"
       }
     ],
     "relevance": 77,
@@ -25777,6 +25961,11 @@
         "directory": "claude",
         "id": "connector.3366d1e9-5d1d-49b1-a758-677949a84fd9",
         "url": "https://claude.com/marketplace/connectors/riverside"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a7c90343f80819194c6cc6dac6e1fae",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a7c90343f80819194c6cc6dac6e1fae"
       }
     ],
     "relevance": 77,
@@ -25965,6 +26154,11 @@
         "directory": "claude",
         "id": "connector.048d1a8e-abd1-4e3a-b8fc-77d7afb419b1",
         "url": "https://claude.com/marketplace/connectors/tactiq"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6ac6c781b9b08191826e5b6c74335a44",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6ac6c781b9b08191826e5b6c74335a44"
       }
     ],
     "relevance": 76,
@@ -26444,6 +26638,11 @@
         "directory": "claude",
         "id": "connector.5e72079c-eae5-494c-87a4-d5af7361b7d7",
         "url": "https://claude.com/marketplace/connectors/teamtailor"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a211a11248081918af1b295078b7a19",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a211a11248081918af1b295078b7a19"
       }
     ],
     "relevance": 75,
@@ -26495,6 +26694,11 @@
         "directory": "claude",
         "id": "connector.3d15fac7-4fc6-4aaf-9b4e-9abfa46f7b31",
         "url": "https://claude.com/marketplace/connectors/openseo"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6abddd2c7e4c819191f1398c4bd8e9b3",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6abddd2c7e4c819191f1398c4bd8e9b3"
       }
     ],
     "relevance": 75,
@@ -26542,6 +26746,11 @@
         "directory": "claude",
         "id": "connector.6281926c-b9be-42d6-80eb-1d38c8c766ae",
         "url": "https://claude.com/marketplace/connectors/deepl"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a4df46ad864819185a140122a0f835d",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a4df46ad864819185a140122a0f835d"
       }
     ],
     "relevance": 75,
@@ -26855,5 +27064,1164 @@
     "logoRetrievedAt": "2026-11-21",
     "logoLicenseNote": "Unofficial, locally generated AD monogram. Trademark rights remain with the publisher.",
     "homepageUrl": "https://www.athletedata.health/"
+  },
+  {
+    "id": "ubersuggest",
+    "name": "Ubersuggest",
+    "url": "https://ubersuggest-mcp.neilpatelapi.com/mcp",
+    "description": "Research keywords, backlinks, and domain performance with Ubersuggest. Requires OAuth.",
+    "category": "Analytics",
+    "tags": [
+      "seo",
+      "keyword-research"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://ubersuggest-mcp.neilpatelapi.com/docs"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69457f8444848191918f7c00fea68076",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69457f8444848191918f7c00fea68076"
+      },
+      {
+        "directory": "claude",
+        "id": "connector.412cc075-00c9-44cb-9b59-58438a57819b",
+        "url": "https://claude.com/marketplace/connectors/ubersuggest-by-neil-patel"
+      }
+    ],
+    "relevance": 72,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://ubersuggest-mcp.neilpatelapi.com/docs"
+    },
+    "alternativeEndpoints": [
+      {
+        "url": "https://ubsmcp.neilpatelapi.com/mcp/gpt",
+        "authType": "none",
+        "description": "ChatGPT variant. Initialized and listed tools without credentials."
+      }
+    ],
+    "caveats": [
+      "The ChatGPT alternative listed 62 tools during the import probe. The /mcp path on the same host listed one. The primary endpoint requires OAuth."
+    ],
+    "logoUrl": "/server-logos/ubersuggest.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated UB monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "jotform-sign",
+    "name": "Jotform Sign",
+    "url": "https://mcp.jotform.com/mcp-sign-v1",
+    "description": "Work with Jotform Sign documents and electronic signatures. Requires OAuth.",
+    "category": "Productivity",
+    "tags": [
+      "documents",
+      "e-signatures"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://www.jotform.com/developers/mcp/"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a3d24829b348191a5008f051aff66a4",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a3d24829b348191a5008f051aff66a4"
+      },
+      {
+        "directory": "claude",
+        "id": "connector.c8e5e99b-788d-4e64-bf4d-ef65b4cb92d5",
+        "url": "https://claude.com/marketplace/connectors/jotform-sign"
+      }
+    ],
+    "relevance": 54,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://www.jotform.com/developers/mcp/"
+    },
+    "alternativeEndpoints": [
+      {
+        "url": "https://mcp.jotform.com/chatgpt-sign-v6_3",
+        "authType": "none",
+        "description": "ChatGPT variant. Initialized without credentials."
+      }
+    ],
+    "exactEndpointOnly": true,
+    "logoUrl": "/server-logos/jotform-sign.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated JS monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "ai-roleplay-chat-simulator",
+    "name": "AI Roleplay Chat Simulator",
+    "url": "https://conversation.widgets.widget.olutely.com/mcp",
+    "description": "Practice conversations in simulated roleplay scenarios. Initializes without credentials.",
+    "category": "Productivity",
+    "tags": [
+      "roleplay",
+      "conversation"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://chatgpt.com/plugins/plugin_asdk_app_69b184a609e881919dea5be720cd7933"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69b184a609e881919dea5be720cd7933",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69b184a609e881919dea5be720cd7933"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/ai-roleplay-chat-simulator.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated AR monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "all-your-horoscopes",
+    "name": "All your Horoscopes",
+    "url": "https://horoscopes.widgets.widget.olutely.com/v3/mcp",
+    "description": "Look up horoscopes by zodiac sign. Initializes without credentials.",
+    "category": "Reference",
+    "tags": [
+      "astrology",
+      "horoscopes"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://chatgpt.com/plugins/plugin_asdk_app_6985e37c6b5881919f369288a930e9c7"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6985e37c6b5881919f369288a930e9c7",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6985e37c6b5881919f369288a930e9c7"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/all-your-horoscopes.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated AY monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "creative-claw",
+    "name": "Creative Claw",
+    "url": "https://app.creativeclaw.co/mcp/chatgpt",
+    "description": "Generate images and work with Creative Claw settings through its ChatGPT endpoint. The server advertises OAuth.",
+    "category": "Design",
+    "tags": [
+      "creative-tools",
+      "design"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a2528e2c49c8191a8015ba5475f177e"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a2528e2c49c8191a8015ba5475f177e",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a2528e2c49c8191a8015ba5475f177e"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://chatgpt.com/plugins/plugin_asdk_app_6a2528e2c49c8191a8015ba5475f177e"
+    },
+    "exactEndpointOnly": true,
+    "caveats": [
+      "The listed URL uses the ChatGPT-specific /mcp/chatgpt path. The neutral /mcp returned HTTP 401, so tool equivalence is unverified.",
+      "The validator received an OAuth challenge on server/discover. An initialize probe using MCP 2025-11-25 listed tools without credentials. Tool execution was untested."
+    ],
+    "logoUrl": "/server-logos/creative-claw.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated CC monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "drawdash",
+    "name": "drawDash – Sketch Challenge!",
+    "url": "https://draw-guess.widgets.widget.olutely.com/mcp",
+    "description": "Play a sketching and guessing game. Initializes without credentials.",
+    "category": "Reference",
+    "tags": [
+      "games",
+      "drawing"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://chatgpt.com/plugins/plugin_asdk_app_69fb0ed2dbc4819182d9d1f0acb2a256"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69fb0ed2dbc4819182d9d1f0acb2a256",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69fb0ed2dbc4819182d9d1f0acb2a256"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/drawdash.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated DS monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "evelyn-tarot",
+    "name": "Evelyn Tarot",
+    "url": "https://tarott.ai/mcp",
+    "description": "Get tarot readings from Evelyn Tarot. Initializes without credentials.",
+    "category": "Reference",
+    "tags": [
+      "tarot"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a74401e1c848191874fa2c6df91546f"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a74401e1c848191874fa2c6df91546f",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a74401e1c848191874fa2c6df91546f"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/evelyn-tarot.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated ET monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "football-games-results-scores",
+    "name": "Football – Games+results+scores",
+    "url": "https://football.widgets.widget.olutely.com/v2/mcp",
+    "description": "Look up football fixtures, match results, and scores. Initializes without credentials.",
+    "category": "Reference",
+    "tags": [
+      "sports",
+      "football",
+      "scores"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://chatgpt.com/plugins/plugin_asdk_app_69a8532b7a3c81918652609af9d6ee11"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69a8532b7a3c81918652609af9d6ee11",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69a8532b7a3c81918652609af9d6ee11"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/football-games-results-scores.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated FG monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "invideo",
+    "name": "invideo",
+    "url": "https://app-mcp.invideo.io/mcp/chatgpt-app",
+    "description": "Create videos with invideo's ChatGPT integration. Initializes without credentials.",
+    "category": "Design",
+    "tags": [
+      "video",
+      "video-generation"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://chatgpt.com/plugins/plugin_asdk_app_6943c531f50c8191b40bcd2ca978c780"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6943c531f50c8191b40bcd2ca978c780",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6943c531f50c8191b40bcd2ca978c780"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "exactEndpointOnly": true,
+    "caveats": [
+      "The listed URL uses the ChatGPT-specific /mcp/chatgpt-app path. The neutral /mcp returned HTTP 401, so tool equivalence is unverified."
+    ],
+    "logoUrl": "/server-logos/invideo.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated IN monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "jobicy",
+    "name": "Jobicy",
+    "url": "https://jobicy.com/mcp",
+    "description": "Search remote job listings from Jobicy. Initializes without credentials.",
+    "category": "Search",
+    "tags": [
+      "jobs",
+      "remote-work"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/Jobicy/remote-jobs-mcp-server"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a2f6c66e6348191abac0a9c9716cb89",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a2f6c66e6348191abac0a9c9716cb89"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/jobicy.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated JO monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "kernelcad",
+    "name": "kernelCAD",
+    "url": "https://mcp.kernelcad.com/mcp",
+    "description": "Create and edit CAD models through kernelCAD. Initializes without credentials.",
+    "category": "Design",
+    "tags": [
+      "cad",
+      "3d-modeling"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://kernelcad.com/mcp/"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a2fcd20e8008191b0c688ca1bc7abb5",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a2fcd20e8008191b0c688ca1bc7abb5"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/kernelcad.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated KE monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "oracle-hdi-overview",
+    "name": "Oracle HDI Overview",
+    "url": "https://api.intelligence.us-ashburn-1.health.oraclecloud.com/v1/public-health/mcp",
+    "description": "Explain the Oracle HDI Overview app and provide a way to contact Oracle. Initializes without credentials.",
+    "category": "Reference",
+    "tags": [
+      "oracle",
+      "health-data-intelligence"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://chatgpt.com/plugins/plugin_asdk_app_6af4f69a3d1881918a3b80779b927ced"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6af4f69a3d1881918a3b80779b927ced",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6af4f69a3d1881918a3b80779b927ced"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/oracle-hdi-overview.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated OH monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "quran-ai",
+    "name": "quran.ai",
+    "url": "https://mcp.quran.ai",
+    "description": "Search and retrieve Quran verses and related reference material. Initializes without credentials.",
+    "category": "Reference",
+    "tags": [
+      "quran",
+      "verse-search"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/quran/mcp.quran.ai"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69aca72176f4819197186bc55da38fe0",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69aca72176f4819197186bc55da38fe0"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "exactEndpointOnly": true,
+    "logoUrl": "/server-logos/quran-ai.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated QA monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "smart-chess",
+    "name": "Smart Chess",
+    "url": "https://chess.widgets.widget.olutely.com/v4/mcp",
+    "description": "Play chess through the Smart Chess connector. Initializes without credentials.",
+    "category": "Reference",
+    "tags": [
+      "games",
+      "chess"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://chatgpt.com/plugins/plugin_asdk_app_69c28d6aedac81919502a88c2179e20c"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69c28d6aedac81919502a88c2179e20c",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69c28d6aedac81919502a88c2179e20c"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/smart-chess.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated SC monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "the-astro-scope-destiny-matrix",
+    "name": "The Astro Scope Destiny Matrix",
+    "url": "https://theastroscope.com/api/mcp-matrix-v3",
+    "description": "Generate a Destiny Matrix numerology reading. Initializes without credentials.",
+    "category": "Reference",
+    "tags": [
+      "astrology",
+      "numerology"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a60f5382c848191bc438d738d5d4026"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a60f5382c848191bc438d738d5d4026",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a60f5382c848191bc438d738d5d4026"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "exactEndpointOnly": true,
+    "logoUrl": "/server-logos/the-astro-scope-destiny-matrix.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated TA monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "the-astro-scope-horoscope",
+    "name": "The Astro Scope Horoscope",
+    "url": "https://theastroscope.com/api/mcp-v3",
+    "description": "Look up horoscopes from The Astro Scope. Initializes without credentials.",
+    "category": "Reference",
+    "tags": [
+      "astrology",
+      "horoscopes"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://chatgpt.com/plugins/plugin_asdk_app_69f8e6b3abf08191931ed329fda8a980"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69f8e6b3abf08191931ed329fda8a980",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69f8e6b3abf08191931ed329fda8a980"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "exactEndpointOnly": true,
+    "logoUrl": "/server-logos/the-astro-scope-horoscope.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated TA monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "the-astro-scope-tarot-reading",
+    "name": "The Astro Scope Tarot Reading",
+    "url": "https://theastroscope.com/api/mcp-tarot-v3",
+    "description": "Get a tarot reading from The Astro Scope. Initializes without credentials.",
+    "category": "Reference",
+    "tags": [
+      "tarot"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://chatgpt.com/plugins/plugin_asdk_app_69ce71df7f3481919c8ccbe6b831d40a"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69ce71df7f3481919c8ccbe6b831d40a",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69ce71df7f3481919c8ccbe6b831d40a"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "exactEndpointOnly": true,
+    "logoUrl": "/server-logos/the-astro-scope-tarot-reading.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated TA monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "traderspy",
+    "name": "TraderSpy",
+    "url": "https://mcp.traderspy.app/mcp",
+    "description": "Look up trading signals and trader performance in TraderSpy. The server advertises OAuth.",
+    "category": "Finance",
+    "tags": [
+      "trading",
+      "trading-journal"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://traderspy.app/help-support"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a8175e3469081918210ab85e581d827",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a8175e3469081918210ab85e581d827"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://traderspy.app/help-support"
+    },
+    "caveats": [
+      "The validator received an OAuth challenge on server/discover. An initialize probe using MCP 2025-11-25 listed tools without credentials. Tool execution was untested."
+    ],
+    "logoUrl": "/server-logos/traderspy.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated TR monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "travel-vibes",
+    "name": "Travel Vibes: Trip Itineraries",
+    "url": "https://gpt.travelvibes.ai/mcp/v5/mcp",
+    "description": "Create and browse trip itineraries with Travel Vibes. Initializes without credentials.",
+    "category": "Productivity",
+    "tags": [
+      "travel",
+      "itineraries"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://chatgpt.com/plugins/plugin_asdk_app_699f4c39cd908191bf68865e0aa1aa4a"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_699f4c39cd908191bf68865e0aa1aa4a",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_699f4c39cd908191bf68865e0aa1aa4a"
+      },
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a2899a821dc8191ae811fc34c0417df",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a2899a821dc8191ae811fc34c0417df"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "alternativeEndpoints": [
+      {
+        "url": "https://gpt.travelvibes.ai/mcp/v5/trip/mcp",
+        "authType": "none",
+        "description": "Trip-specific ChatGPT path. Both paths listed the same four tools without credentials."
+      }
+    ],
+    "caveats": [
+      "Two ChatGPT listings share one server. Both endpoint paths exposed the same four tools."
+    ],
+    "logoUrl": "/server-logos/travel-vibes.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated TV monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "unusual-whales",
+    "name": "Unusual Whales",
+    "url": "https://mcp.unusualwhales.com/",
+    "description": "Query options flow and other market data from Unusual Whales with an API key or supported client sign-in.",
+    "category": "Finance",
+    "tags": [
+      "market-data",
+      "options"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://unusualwhales.com/public-api/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6978ec2d58fc8191b41100b978036969",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6978ec2d58fc8191b41100b978036969"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "bearer-token",
+    "exactEndpointOnly": true,
+    "caveats": [
+      "The endpoint can list tools without credentials. The publisher documents a bearer API key for market-data access and account sign-in in supported client directories."
+    ],
+    "logoUrl": "/server-logos/unusual-whales.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated UW monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "vectorize",
+    "name": "Vectorize",
+    "url": "https://vectorize-logo.com/api/mcp",
+    "description": "Convert raster logos and images into vector graphics. Initializes without credentials.",
+    "category": "Design",
+    "tags": [
+      "vector-graphics",
+      "logos"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://vectorize.stemonte.io/mcp/"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6aa5c87fee8c8191be7798ec35595249",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6aa5c87fee8c8191be7798ec35595249"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/vectorize.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated VE monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "videomagic",
+    "name": "Videomagic",
+    "url": "https://videomagic-chatgpt-mcp-prod-yb5lljjcna-uc.a.run.app/mcp",
+    "description": "Generate videos with Videomagic using its production ChatGPT endpoint. Initializes without credentials.",
+    "category": "Design",
+    "tags": [
+      "video",
+      "video-generation"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://chatgpt.com/plugins/plugin_asdk_app_69f3198aec808191876254ae5bd50cf1"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69f3198aec808191876254ae5bd50cf1",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69f3198aec808191876254ae5bd50cf1"
+      }
+    ],
+    "relevance": 50,
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "caveats": [
+      "The publisher lists this production Cloud Run URL for the ChatGPT integration."
+    ],
+    "logoUrl": "/server-logos/videomagic.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated VI monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "strand-ai",
+    "name": "Strand AI",
+    "url": "https://mcp.strandai.com/mcp",
+    "description": "Access Strand AI’s digital pathology workspace. Requires sign-in to a Strand AI organization.",
+    "category": "Security",
+    "tags": [
+      "security",
+      "threat-intelligence"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.strandai.com/mcp/claude"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.f01388b3-2372-4a2c-85ab-6510e9380f4f",
+        "url": "https://claude.com/marketplace/connectors/strand-ai"
+      }
+    ],
+    "relevance": 21,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://docs.strandai.com/mcp/claude"
+    },
+    "caveats": [
+      "An earlier probe initialized and then received an authentication challenge on tools/list. Revalidation listed tools without credentials, while resources and prompts returned HTTP 401. Anonymous tool execution remains unverified."
+    ],
+    "logoUrl": "/server-logos/strand-ai.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated SA monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "evernote",
+    "name": "Evernote",
+    "url": "https://mcp.evernote.com/mcp",
+    "description": "Search and work with notes and notebooks in Evernote. Requires OAuth.",
+    "category": "Productivity",
+    "tags": [
+      "notes",
+      "notebooks"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://dev.evernote.com/mcp"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a8dbf5be200819197fd2380c07033d2",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a8dbf5be200819197fd2380c07033d2"
+      },
+      {
+        "directory": "claude",
+        "id": "connector.5c2ae4c2-535f-4a19-a45f-a23493f28b4e",
+        "url": "https://claude.com/marketplace/connectors/evernote"
+      }
+    ],
+    "relevance": 74,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://dev.evernote.com/mcp"
+    },
+    "logoUrl": "/server-logos/evernote.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated EV monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "helium-10",
+    "name": "Helium 10",
+    "url": "https://mcp.helium10.com/mcp",
+    "description": "Research marketplace products and keywords with Helium 10. Requires OAuth.",
+    "category": "Analytics",
+    "tags": [
+      "ecommerce",
+      "keyword-research"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/helium10/Helium10-MCP"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_69b9f38bfa248191877ad584f5608b92",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_69b9f38bfa248191877ad584f5608b92"
+      },
+      {
+        "directory": "claude",
+        "id": "connector.e336ede2-5687-4590-a60b-12c3ab56fc63",
+        "url": "https://claude.com/marketplace/connectors/helium-10"
+      }
+    ],
+    "relevance": 73,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://github.com/helium10/Helium10-MCP"
+    },
+    "logoUrl": "/server-logos/helium-10.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated H1 monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "adspirer-social-ads",
+    "name": "Adspirer Social Ads",
+    "url": "https://mcp.adspirer.com/social-ads",
+    "description": "Work with social advertising campaigns through Adspirer's dedicated Social Ads endpoint. Requires OAuth.",
+    "category": "Analytics",
+    "tags": [
+      "advertising",
+      "social-media"
+    ],
+    "listingSource": {
+      "kind": "client-directory",
+      "url": "https://claude.com/marketplace/connectors/adspirer-social-ads"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.100b4dba-8d88-4bac-89b3-ba80262f51c0",
+        "url": "https://claude.com/marketplace/connectors/adspirer-social-ads"
+      }
+    ],
+    "relevance": 73,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://claude.com/marketplace/connectors/adspirer-social-ads"
+    },
+    "exactEndpointOnly": true,
+    "logoUrl": "/server-logos/adspirer-social-ads.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated AS monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "frontify",
+    "name": "Frontify",
+    "url": "https://mcp.frontify-integrations.com/mcp",
+    "description": "Find brand assets and guidelines in Frontify. Requires OAuth.",
+    "category": "Design",
+    "tags": [
+      "brand-assets",
+      "brand-guidelines"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://help.frontify.com/en/articles/14787214-frontify-mcp-beta"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.a1c213e1-70d1-4bed-8505-878f4792dd5f",
+        "url": "https://claude.com/marketplace/connectors/frontify"
+      }
+    ],
+    "relevance": 73,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://help.frontify.com/en/articles/14787214-frontify-mcp-beta"
+    },
+    "logoUrl": "/server-logos/frontify.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated FR monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "workable",
+    "name": "Workable",
+    "url": "https://mcp.workable.com/mcp",
+    "description": "Access jobs and candidate information from Workable. Requires OAuth.",
+    "category": "Productivity",
+    "tags": [
+      "recruiting",
+      "hiring"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://workable.readme.io/reference/workable-mcp-server"
+    },
+    "directoryListings": [
+      {
+        "directory": "chatgpt",
+        "id": "plugin_asdk_app_6a2158d8212c8191a6183eb83b8f9b46",
+        "url": "https://chatgpt.com/plugins/plugin_asdk_app_6a2158d8212c8191a6183eb83b8f9b46"
+      },
+      {
+        "directory": "claude",
+        "id": "connector.b788f00c-4417-40b2-9e3c-b0e916eb962f",
+        "url": "https://claude.com/marketplace/connectors/workable"
+      }
+    ],
+    "relevance": 73,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://workable.readme.io/reference/workable-mcp-server"
+    },
+    "logoUrl": "/server-logos/workable.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated WO monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "runway-team",
+    "name": "Runway (runway.team)",
+    "url": "https://mcp.runway.team/",
+    "description": "Access mobile app release information from runway.team. Requires OAuth.",
+    "category": "Developer Tools",
+    "tags": [
+      "mobile",
+      "releases"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://docs.runway.team/api/runway-mcp-server"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.d884a8ac-514d-4551-9d63-ccacf958c008",
+        "url": "https://claude.com/marketplace/connectors/runway-team"
+      }
+    ],
+    "relevance": 73,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "alternativeAuthTypes": [
+      "bearer-token"
+    ],
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://docs.runway.team/api/runway-mcp-server"
+    },
+    "exactEndpointOnly": true,
+    "caveats": [
+      "Runway documents both OAuth and an API key sent as a bearer token. This is the runway.team mobile release platform, distinct from runwayml.com."
+    ],
+    "logoUrl": "/server-logos/runway-team.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated RR monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "twelve-data",
+    "name": "Twelve Data",
+    "url": "https://mcp.twelvedata.com/mcp",
+    "description": "Query financial market prices, time series, and related data from Twelve Data. Requires OAuth.",
+    "category": "Finance",
+    "tags": [
+      "market-data",
+      "prices"
+    ],
+    "listingSource": {
+      "kind": "publisher",
+      "url": "https://github.com/twelvedata/mcp/blob/main/README.md"
+    },
+    "directoryListings": [
+      {
+        "directory": "claude",
+        "id": "connector.9d86a6fc-7979-4b69-b827-02769041d57c",
+        "url": "https://claude.com/marketplace/connectors/twelvedata"
+      }
+    ],
+    "relevance": 73,
+    "transport": "streamable-http",
+    "requiresOAuth": true,
+    "authType": "oauth",
+    "oauthRegistration": {
+      "mode": "unknown",
+      "clientId": {
+        "required": false
+      },
+      "clientSecret": {
+        "required": false
+      },
+      "callback": {
+        "required": false
+      },
+      "reviewedAt": "2026-11-21",
+      "evidenceUrl": "https://github.com/twelvedata/mcp/blob/main/README.md"
+    },
+    "logoUrl": "/server-logos/twelve-data.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Unofficial, locally generated TD monogram. Trademark rights remain with the publisher."
   }
 ]

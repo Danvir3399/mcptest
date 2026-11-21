@@ -67,21 +67,24 @@ const embeddedImageSvg = dataUri => (
 describe('catalog logo asset validation', () => {
   it('accepts all production assets and provenance records', () => {
     expect(validateCatalogAssets(catalog)).toEqual([]);
-  });
+    // Parses every catalog SVG, so runtime grows with each import batch.
+  }, 30_000);
 
   it('rejects dead Simple Icons provenance URLs with v-prefixed version tags', () => {
-    const canva = catalog.find(seed => seed.id === 'canva');
-    const errors = validateCatalogAssets(catalog.map(seed => (
-      seed.id === 'canva'
-        ? {
-            ...seed,
-            logoSourceUrl: 'https://github.com/simple-icons/simple-icons/blob/v15.16.0/icons/canva.svg',
-          }
-        : seed
-    )));
+    const publicRoot = temporaryDirectory();
+    const logoDirectory = path.join(publicRoot, 'server-logos');
+    fs.mkdirSync(logoDirectory);
+    fs.writeFileSync(path.join(logoDirectory, 'canva.svg'), '<svg viewBox="0 0 1 1" />');
 
-    expect(canva).toBeDefined();
-    expect(errors).toContain('canva: Simple Icons version tags must not have a leading v');
+    const errors = validateCatalogAssets([{
+      id: 'canva',
+      logoUrl: '/server-logos/canva.svg',
+      logoSourceKind: 'simple-icons',
+      logoSourceUrl: 'https://github.com/simple-icons/simple-icons/blob/v15.16.0/icons/canva.svg',
+      logoRetrievedAt: '2026-08-18',
+    }], { publicRoot });
+
+    expect(errors).toEqual(['canva: Simple Icons version tags must not have a leading v']);
   });
 
   it('rejects unsafe SVG behaviors and external resources', () => {

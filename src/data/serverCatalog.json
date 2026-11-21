@@ -17141,7 +17141,7 @@
       {
         "url": "https://shop.app/mcp",
         "authType": "none",
-        "description": "ChatGPT-specific Shop endpoint."
+        "description": "Shopify’s product-search MCP endpoint, also documented for Claude Web. Anonymous initialization and discovery listed one product-search tool. The endpoint advertises OAuth. Authentication requirements for invoking the tool remain unverified."
       }
     ]
   },
@@ -27871,10 +27871,10 @@
     "name": "Strand AI",
     "url": "https://mcp.strandai.com/mcp",
     "description": "Access Strand AI’s digital pathology workspace. Requires sign-in to a Strand AI organization.",
-    "category": "Security",
+    "category": "Analytics",
     "tags": [
-      "security",
-      "threat-intelligence"
+      "digital-pathology",
+      "spatial-proteomics"
     ],
     "listingSource": {
       "kind": "publisher",

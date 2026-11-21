@@ -27384,7 +27384,7 @@
     "id": "invideo",
     "name": "invideo",
     "url": "https://app-mcp.invideo.io/mcp/chatgpt-app",
-    "description": "Create videos with invideo's ChatGPT integration. Initializes without credentials.",
+    "description": "Discover video creation and editing tools in invideo's ChatGPT integration without credentials. Sign in with an invideo account to work on projects.",
     "category": "Design",
     "tags": [
       "video",
@@ -27405,8 +27405,12 @@
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
     "exactEndpointOnly": true,
     "caveats": [
+      "The ChatGPT endpoint accepts anonymous initialization and tool listing and advertises OAuth. Invideo's ChatGPT setup guide (https://invideo.io/agents/chatgpt/) requires account sign-in for project workflows.",
       "The listed URL uses the ChatGPT-specific /mcp/chatgpt-app path. The neutral /mcp returned HTTP 401, so tool equivalence is unverified."
     ],
     "logoUrl": "/server-logos/invideo.svg",
@@ -27448,7 +27452,7 @@
     "id": "kernelcad",
     "name": "kernelCAD",
     "url": "https://mcp.kernelcad.com/mcp",
-    "description": "Create and edit CAD models through kernelCAD. Initializes without credentials.",
+    "description": "Create and edit CAD models with kernelCAD's hosted MCP server. Anonymous discovery is available, and the hosted tool set depends on authentication and the selected profile.",
     "category": "Design",
     "tags": [
       "cad",
@@ -27456,7 +27460,7 @@
     ],
     "listingSource": {
       "kind": "publisher",
-      "url": "https://kernelcad.com/mcp/"
+      "url": "https://kernelcad.com/docs/features/hosted-mcp"
     },
     "directoryListings": [
       {
@@ -27469,6 +27473,12 @@
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
+    "caveats": [
+      "The endpoint accepts anonymous initialization and tool listing. Sign in with OAuth for account features such as saved projects, then list tools again to see what the selected hosted profile exposes."
+    ],
     "logoUrl": "/server-logos/kernelcad.svg",
     "logoSourceKind": "generated-fallback",
     "logoRetrievedAt": "2026-11-21",
@@ -27508,7 +27518,7 @@
     "id": "quran-ai",
     "name": "quran.ai",
     "url": "https://mcp.quran.ai",
-    "description": "Search and retrieve Quran verses and related reference material. Initializes without credentials.",
+    "description": "Discover Quran search, reference, and Interactive Study tools without signing in. Interactive Study account lookup and linking tools declare OAuth.",
     "category": "Reference",
     "tags": [
       "quran",
@@ -27529,7 +27539,13 @@
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
     "exactEndpointOnly": true,
+    "caveats": [
+      "Anonymous tool listing includes both Quran reference tools and Interactive Study account tools. The account lookup and linking tools advertise OAuth in their tool definitions."
+    ],
     "logoUrl": "/server-logos/quran-ai.svg",
     "logoSourceKind": "generated-fallback",
     "logoRetrievedAt": "2026-11-21",
@@ -27817,7 +27833,7 @@
     "id": "videomagic",
     "name": "Videomagic",
     "url": "https://videomagic-chatgpt-mcp-prod-yb5lljjcna-uc.a.run.app/mcp",
-    "description": "Generate videos with Videomagic using its production ChatGPT endpoint. Initializes without credentials.",
+    "description": "Discover Videomagic's video creation and customization tools without signing in. All listed tools declare OAuth for invocation.",
     "category": "Design",
     "tags": [
       "video",
@@ -27838,7 +27854,11 @@
     "transport": "streamable-http",
     "requiresOAuth": false,
     "authType": "none",
+    "alternativeAuthTypes": [
+      "oauth"
+    ],
     "caveats": [
+      "The ChatGPT endpoint accepts anonymous initialization and tool listing. All six discovered tools, including video creation, option listing, and status checks, advertise OAuth in their tool definitions.",
       "The publisher lists this production Cloud Run URL for the ChatGPT integration."
     ],
     "logoUrl": "/server-logos/videomagic.svg",

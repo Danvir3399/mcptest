@@ -7259,9 +7259,9 @@
     "authType": "oauth",
     "requiresOAuth": true,
     "protocolEra": "unknown",
-    "checkedAt": "2026-11-21T00:14:24.922Z",
-    "message": "Authentication challenge at https://mcp.seismic.com/claude returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
-    "validatedUrl": "https://mcp.seismic.com/claude",
+    "checkedAt": "2026-11-21T19:42:29.438Z",
+    "message": "Authentication challenge at https://mcp.seismic.com/v1 returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
+    "validatedUrl": "https://mcp.seismic.com/v1",
     "authorizationServers": [
       "https://auth.seismic.com/"
     ]

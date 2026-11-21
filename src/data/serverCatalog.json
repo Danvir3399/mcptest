@@ -25728,8 +25728,8 @@
   {
     "id": "seismic",
     "name": "Seismic",
-    "url": "https://mcp.seismic.com/claude",
-    "description": "Search approved Seismic sales content and generate LiveSend links through the curated Claude connector. Requires OAuth for access.",
+    "url": "https://mcp.seismic.com/v1",
+    "description": "Search Seismic sales content and generate LiveSend links with OAuth. The global endpoint exposes the tools enabled for your MCP app and tenant.",
     "category": "CRM",
     "tags": [
       "sales-enablement",
@@ -25768,14 +25768,14 @@
     },
     "alternativeEndpoints": [
       {
-        "url": "https://mcp.seismic.com/v1",
+        "url": "https://mcp.seismic.com/claude",
         "authType": "oauth",
-        "description": "Global endpoint for a custom Seismic MCP app. It can provide access to more tools depending on the app and tenant permissions."
+        "description": "Published Claude connector for Generative Search and LiveSend link generation."
       }
     ],
     "exactEndpointOnly": true,
     "caveats": [
-      "The /claude endpoint is the curated Claude connector. Tool availability depends on tenant permissions."
+      "The global endpoint prompts for a tenant name during OAuth and requires a custom MCP app registered with Seismic. A tenant administrator controls which tools the app can use."
     ],
     "logoUrl": "/server-logos/seismic.svg",
     "logoSourceKind": "generated-fallback",

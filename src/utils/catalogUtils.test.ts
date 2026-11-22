@@ -252,9 +252,17 @@ describe('catalog authentication metadata', () => {
       'legitfit', 'leadboxer', 'qencode',
     ];
     const publisherSources = new Map([
+      ['basedash', 'https://www.basedash.com/features/mcp-server'],
+      ['elfsight', 'https://github.com/elfsight/ai-chatbot-mcp'],
       ['gameanalytics', 'https://docs.gameanalytics.com/ai-tools/documentation-mcp/'],
+      ['legitfit', 'https://support.legitfit.com/business/how-do-i-connect-legitfit-to-claude'],
+      ['pandavideo', 'https://docs.pandavideo.com/reference/mcp'],
+      ['parsely', 'https://docs.parse.ly/mcp-server/'],
+      ['tallyfy', 'https://tallyfy.com/products/pro/integrations/mcp-server/openai-chatgpt/'],
       ['unstoppabledomains', 'https://docs.unstoppabledomains.com/user-api/mcp-server'],
       ['uptimerobot', 'https://help.uptimerobot.com/en/articles/12928342-uptimerobot-mcp-integration-guide'],
+      ['vestd', 'https://www.vestd.com/help/connect-vestd-to-chatgpt-or-claude'],
+      ['zeroheight', 'https://help.zeroheight.com/hc/en-us/articles/48004395674011-zeroheight-MCP-overview'],
     ]);
     const catalog = getCatalogServers();
     expect(addedIds.length).toBeGreaterThanOrEqual(60);

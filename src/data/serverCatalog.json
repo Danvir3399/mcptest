@@ -29241,5 +29241,30 @@
     "logoSourceKind": "generated-fallback",
     "logoRetrievedAt": "2026-11-21",
     "logoLicenseNote": "Unofficial, locally generated WN monogram. Trademark rights remain with the publisher."
+  },
+  {
+    "id": "robodebut",
+    "name": "RoboDebut",
+    "url": "https://robodebut.com/api/mcp",
+    "browserAccess": "proxy-required",
+    "description": "Exposes submit_project to send a website or startup to the RoboDebut directory for manual review (homepage badge required) and get_submission_status to read status with a private receipt. Anonymous, no account or API key; RoboDebut's founder also builds LinkBunny.",
+    "category": "Developer Tools",
+    "tags": [
+      "developer-tools",
+      "community-submission",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "community-submission",
+      "url": "https://robodebut.com/submit-with-a-coding-agent"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/robodebut.svg",
+    "logoSourceKind": "generated-fallback",
+    "logoRetrievedAt": "2026-11-22",
+    "logoLicenseNote": "Locally generated RO monogram for a community submission; it is not an official RoboDebut mark.",
+    "homepageUrl": "https://robodebut.com/submit-with-a-coding-agent"
   }
 ]

@@ -1,6 +1,7 @@
-import type { Page } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
+import { APP_PORT } from '../../playwright.config';
 import { applySiteAssistantToHtml, readSiteAssistantEnv, SITE_ASSISTANT_META_NAME } from '../../src/siteAssistant/config.mts';
-import { expect, test } from './fixtures';
+import { expect, hasHorizontalScroll, mockUrl, test } from './fixtures';
 
 /**
  * The solv.chat site assistant (issue #637). The suite runs against one build
@@ -11,8 +12,8 @@ import { expect, test } from './fixtures';
  * it through the same build helper vite.config.mjs applies to index.html
  * with a test endpoint: the policy allows that origin and the page carries
  * the config meta tag, exactly as in a configured build. widget.js is a stub
- * that defines <solv-chat> the way the real widget does: from solv.chat 0.1.8
- * that includes the visitor check (issue #699), a frame from the endpoint's
+ * that models the 0.1.10 host hints and docked layout. It also includes
+ * the visitor check (issue #699), a frame from the endpoint's
  * /v1/check/frame created on the first keystroke in the message field (not
  * when the panel opens and focuses it), so the page's own policy must let it
  * load.
@@ -22,6 +23,8 @@ const ENDPOINT = 'https://solv.example.test';
 const CONFIG = readSiteAssistantEnv({ VITE_SOLV_ENDPOINT: ENDPOINT, VITE_SOLV_ASSISTANT_KEY: 'pk_e2e_test' })!;
 
 const CHECK_FRAME = `${ENDPOINT}/v1/check/frame`;
+const LAUNCHER_LABEL = 'Ask MCP Test AI';
+const PANEL_WIDTH = 460;
 
 const STUB_WIDGET = `
 customElements.define('solv-chat', class extends HTMLElement {
@@ -32,7 +35,10 @@ customElements.define('solv-chat', class extends HTMLElement {
     panel.setAttribute('role', 'dialog');
     panel.setAttribute('aria-label', 'Stub chat');
     panel.hidden = true;
+    const close = document.createElement('button');
+    close.textContent = 'Close chat';
     const input = document.createElement('textarea');
+    input.className = 'solv-input';
     input.setAttribute('aria-label', 'Your question');
     const checkArea = document.createElement('div');
     checkArea.className = 'solv-check';
@@ -44,12 +50,41 @@ customElements.define('solv-chat', class extends HTMLElement {
       checkArea.append(frame);
     };
     input.addEventListener('keydown', startCheck);
-    panel.append(checkArea, input);
+    panel.append(close, checkArea, input);
     const launcher = document.createElement('button');
     launcher.className = 'solv-launcher';
-    launcher.setAttribute('aria-label', 'Open chat');
-    launcher.textContent = 'Chat';
-    launcher.addEventListener('click', () => { panel.hidden = !panel.hidden; if (!panel.hidden) input.focus(); });
+    launcher.textContent = this.getAttribute('launcher-label') || 'Chat';
+    launcher.setAttribute('aria-expanded', 'false');
+    launcher.addEventListener('click', () => {
+      const side = this.getAttribute('opens-as') === 'side' && matchMedia('(min-width: 900px)').matches;
+      if (side) {
+        const width = '${PANEL_WIDTH}px';
+        const position = this.getAttribute('launcher-position') === 'left' ? 'left' : 'right';
+        this.setAttribute('data-layout', 'side');
+        document.documentElement.style.setProperty('margin-' + position, width);
+        document.documentElement.style.maxWidth = 'calc(100% - ' + width + ')';
+        document.documentElement.style.setProperty('--solv-chat-panel-width', width);
+        Object.assign(panel.style, {
+          position: 'fixed', top: '0', bottom: '0', [position]: '0', width,
+          backgroundColor: 'white', zIndex: '2147483647',
+        });
+        launcher.hidden = true;
+      }
+      panel.hidden = false;
+      launcher.setAttribute('aria-expanded', 'true');
+      input.focus();
+    });
+    close.addEventListener('click', () => {
+      this.removeAttribute('data-layout');
+      document.documentElement.style.removeProperty('margin-left');
+      document.documentElement.style.removeProperty('margin-right');
+      document.documentElement.style.removeProperty('max-width');
+      document.documentElement.style.removeProperty('--solv-chat-panel-width');
+      panel.hidden = true;
+      launcher.hidden = false;
+      launcher.setAttribute('aria-expanded', 'false');
+      launcher.focus();
+    });
     root.append(panel, launcher);
   }
 });
@@ -80,13 +115,22 @@ const withoutBuildAssistant = (html: string): string => {
 
 /** Serve every HTML page of the app as `transform` rewrites it. */
 const rewriteDocuments = (page: Page, transform: (html: string) => string) =>
-  page.route(/^http:\/\/127\.0\.0\.1:\d+\//, async route => {
+  page.route(`http://127.0.0.1:${APP_PORT}/**`, async route => {
     if (route.request().resourceType() !== 'document') return route.fallback();
     const response = await route.fetch();
     await route.fulfill({ response, body: transform(await response.text()) });
   });
 
 const policyOf = (page: Page) => page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute('content');
+const lazyLauncher = (page: Page) => page.locator('.site-assistant-launcher');
+
+const expectBeforeDock = async (locator: Locator, edge: number) => {
+  await expect(locator).toBeVisible();
+  await expect.poll(async () => {
+    const box = await locator.boundingBox();
+    return box !== null && box.x >= -1 && box.x + box.width <= edge + 1;
+  }, { message: `${locator} fits inside the page beside the assistant` }).toBe(true);
+};
 
 test.describe('with VITE_SOLV_* unset', () => {
   test('the site renders with no assistant, no widget request and the policy unchanged', async ({ page }) => {
@@ -137,23 +181,37 @@ test.describe('with VITE_SOLV_* set', () => {
     expect(await policyOf(page)).toMatch(new RegExp(`script-src [^;]*${ENDPOINT.replace(/\./g, '\\.')}`));
     await settle(page);
 
-    const launcher = page.getByRole('button', { name: 'Ask the mcptest assistant' });
+    const launcher = lazyLauncher(page);
     await expect(launcher).toBeVisible();
+    await expect(launcher).toHaveAccessibleName(LAUNCHER_LABEL);
+    const label = await launcher.textContent();
+    expect(label).toBe(LAUNCHER_LABEL);
     await expect(launcher).toHaveCSS('position', 'fixed');
+    await launcher.hover();
+    await launcher.focus();
+    expect(await page.evaluate(() => [localStorage, sessionStorage].flatMap(storage => (
+      Object.keys(storage).filter(key => /siteAssistant|solv/i.test(key))
+    )))).toEqual([]);
     expect(widgetRequests).toEqual([]);
     await expect(page.locator('solv-chat')).toHaveCount(0);
 
-    // Keyboard reachable: focus it and press Enter.
-    await launcher.focus();
     await expect(launcher).toBeFocused();
     await page.keyboard.press('Enter');
 
     const widget = page.locator('solv-chat');
     await expect(widget).toHaveAttribute('assistant', 'pk_e2e_test');
     await expect(widget).toHaveAttribute('endpoint', ENDPOINT);
+    await expect(widget).toHaveAttribute('launcher-label', LAUNCHER_LABEL);
+    await expect(widget).toHaveAttribute('launcher-shortcut', 'none');
+    await expect(widget).toHaveAttribute('launcher-position', 'right');
+    await expect(widget).toHaveAttribute('launcher-accent-color', '#0d6efd');
+    await expect(widget).toHaveAttribute('opens-as', 'side');
+    await expect(widget).toHaveAttribute('data-layout', 'side');
     await expect(page.getByRole('dialog', { name: 'Stub chat' })).toBeVisible();
     await expect(page.getByRole('textbox', { name: 'Your question' })).toBeFocused();
     await expect(launcher).toBeHidden();
+    await page.getByRole('button', { name: 'Close chat' }).click();
+    await expect(widget.getByRole('button', { name: LAUNCHER_LABEL })).toHaveText(label!);
     expect(widgetRequests).toEqual([`${ENDPOINT}/widget.js`]);
     expect(policyViolations).toEqual([]);
   });
@@ -165,7 +223,7 @@ test.describe('with VITE_SOLV_* set', () => {
     const framesBefore = otherFrames();
     expect(framesBefore.filter(url => url.startsWith(ENDPOINT))).toEqual([]);
 
-    await page.getByRole('button', { name: 'Ask the mcptest assistant' }).click();
+    await lazyLauncher(page).click();
     const input = page.getByRole('textbox', { name: 'Your question' });
     // Opening the panel focuses the field by itself; that starts no check.
     await expect(input).toBeFocused();
@@ -191,6 +249,72 @@ test.describe('with VITE_SOLV_* set', () => {
     expect(policyViolations).toEqual([]);
   });
 
+  for (const width of [1280, 1440, 1920]) {
+    test(`the docked assistant leaves the playground usable at ${width}px`, async ({ page, baseURL }) => {
+      // Chromium treats the intercepted document as a synthetic response.
+      // Allow that page to reach the loopback MCP fixture.
+      await page.context().grantPermissions(['local-network-access'], { origin: baseURL });
+      await page.setViewportSize({ width, height: 1000 });
+      await page.goto('/');
+      await expect(lazyLauncher(page)).toBeVisible();
+
+      const header = page.locator('.app-header');
+      const sidebar = page.locator('.desktop-sidebar');
+      await expect(sidebar).toBeVisible();
+      const closedHeader = await header.boundingBox();
+      await lazyLauncher(page).click();
+      const panel = page.getByRole('dialog', { name: 'Stub chat' });
+      const edge = width - PANEL_WIDTH;
+      await expect.poll(async () => (await panel.boundingBox())?.x).toBe(edge);
+
+      await expect(page.locator('[data-deferred-mount]')).toHaveCount(0);
+      await expectBeforeDock(page.getByRole('button', { name: 'Connect', exact: true }), edge);
+      expect(await hasHorizontalScroll(page)).toBe(false);
+      expect(await page.locator('.main-content').evaluate(el => el.scrollWidth - el.clientWidth)).toBeLessThanOrEqual(1);
+
+      await page.getByLabel('MCP endpoint URL').fill(mockUrl('2026'));
+      await page.getByRole('button', { name: 'Connect', exact: true }).click();
+      await expect(page.getByRole('heading', { name: 'MCP connection ready' })).toBeVisible();
+
+      await expectBeforeDock(header, edge);
+      await expectBeforeDock(page.getByRole('button', { name: 'Toggle color theme' }), edge);
+      if (edge < 1180) {
+        await expect(sidebar).toBeHidden();
+        await page.getByRole('button', { name: 'Toggle navigation menu' }).click();
+        await expectBeforeDock(page.getByRole('dialog', { name: 'Navigation' }), edge);
+        await expectBeforeDock(page.locator('.mobile-sidebar-overlay'), edge);
+        await page.keyboard.press('Escape');
+      } else {
+        await expectBeforeDock(sidebar, edge);
+      }
+      for (const pane of ['capabilities', 'request', 'response']) {
+        await expectBeforeDock(page.locator(`.workbench-${pane}`), edge);
+      }
+      expect(await hasHorizontalScroll(page)).toBe(false);
+      expect(await page.locator('.main-content').evaluate(el => el.scrollWidth - el.clientWidth)).toBeLessThanOrEqual(1);
+
+      await page.getByRole('button', { name: 'Test tools' }).click();
+      const testDialog = page.getByRole('dialog', { name: 'Deterministic tool tests' });
+      await expectBeforeDock(testDialog, edge);
+      await testDialog.getByRole('button', { name: 'Close deterministic tests' }).click();
+
+      const lists = page.getByRole('navigation', { name: 'Playground tool lists' });
+      await lists.getByRole('option', { name: /get_forecast/ }).click();
+      await page.getByLabel(/^city/).fill('Oslo');
+      await page.getByRole('button', { name: 'Run tool', exact: true }).click();
+      await page.getByRole('button', { name: 'Expand result in fullscreen' }).click();
+      const fullscreen = page.locator('.modal:visible');
+      await expectBeforeDock(fullscreen.locator('.modal-content'), edge);
+      await fullscreen.locator('.btn-close').click();
+
+      if (edge < 1180) await page.getByRole('button', { name: 'Toggle navigation menu' }).click();
+      await page.getByRole('button', { name: 'Close chat' }).click();
+      await expect(sidebar).toBeVisible();
+      await expect(page.locator('body')).not.toHaveClass(/menu-open/);
+      await expect.poll(() => header.boundingBox()).toEqual(closedHeader);
+    });
+  }
+
   test('the static HTML of a prerendered page carries no widget markup', async ({ page }) => {
     const response = await page.request.get('/learn');
     const html = applySiteAssistantToHtml(withoutBuildAssistant(await response.text()), CONFIG);
@@ -213,7 +337,7 @@ test.describe('with VITE_SOLV_* set', () => {
     // Client-side, in the mounted app: from /submit to the report page, the launcher goes away.
     await page.goto('/submit');
     await settle(page);
-    const launcher = page.getByRole('button', { name: 'Ask the mcptest assistant' });
+    const launcher = lazyLauncher(page);
     await expect(launcher).toBeVisible();
     await page.evaluate(() => {
       window.history.pushState(null, '', '/report');
@@ -227,7 +351,7 @@ test.describe('with VITE_SOLV_* set', () => {
     await page.addInitScript(() => localStorage.setItem('theme', 'dark'));
     await page.goto('/learn');
     await settle(page);
-    const launcher = page.getByRole('button', { name: 'Ask the mcptest assistant' });
+    const launcher = lazyLauncher(page);
     await expect(launcher).toBeVisible();
     const colors = await launcher.evaluate(element => {
       const style = getComputedStyle(element);

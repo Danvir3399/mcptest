@@ -19,10 +19,9 @@ import type { SiteAssistantLauncher } from './siteAssistant';
  */
 
 const OPENED_KEY = 'mcptest.siteAssistant.opened';
-const LABEL = 'Ask the mcptest assistant';
+const LABEL = 'Ask MCP Test AI';
 const LOADING_LABEL = 'Loading the mcptest assistant';
 const FAILED_LABEL = 'The mcptest assistant could not load. Try again';
-const TEXT = 'Ask';
 const FAILED_TEXT = 'Retry';
 
 export type WidgetLoadTrigger = 'launcher' | 'restore';
@@ -69,7 +68,7 @@ export const mountSiteAssistantLauncher = (config: SiteAssistantConfig): SiteAss
   button.title = LABEL;
   const text = document.createElement('span');
   text.className = 'site-assistant-launcher-text';
-  text.textContent = TEXT;
+  text.textContent = LABEL;
   button.append(chatIcon(), text);
   button.hidden = true;
   document.body.append(button);
@@ -79,7 +78,15 @@ export const mountSiteAssistantLauncher = (config: SiteAssistantConfig): SiteAss
   let loading: Promise<boolean> | null = null;
 
   const attachWidget = () => {
-    if (!widget) widget = createWidgetElement(config);
+    if (!widget) {
+      widget = createWidgetElement(config);
+      // First-paint hints match the site's published Widget settings.
+      widget.setAttribute('launcher-label', LABEL);
+      widget.setAttribute('launcher-shortcut', 'none');
+      widget.setAttribute('launcher-accent-color', '#0d6efd');
+      widget.setAttribute('launcher-position', 'right');
+      widget.setAttribute('opens-as', 'side');
+    }
     if (active && !widget.isConnected) document.body.append(widget);
   };
 
@@ -101,7 +108,7 @@ export const mountSiteAssistantLauncher = (config: SiteAssistantConfig): SiteAss
       button.removeAttribute('aria-busy');
       button.setAttribute('aria-label', LABEL);
       button.title = LABEL;
-      text.textContent = TEXT;
+      text.textContent = LABEL;
       delete button.dataset.state;
       attachWidget();
       render();

@@ -76,9 +76,15 @@ export const useMobileDrawer = (enabled: boolean, navRef: RefObject<HTMLElement 
 
     const observer = new MutationObserver(onOpenChange);
     observer.observe(body, { attributes: true, attributeFilter: ['class'] });
+    // Closing the dock can restore the desktop sidebar while the drawer is open.
+    const resize = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(() => {
+      if (wasOpen && getComputedStyle(drawer).display === 'none') closeMobileDrawer();
+    });
+    resize?.observe(drawer);
     document.addEventListener('keydown', onKeyDown);
     return () => {
       observer.disconnect();
+      resize?.disconnect();
       document.removeEventListener('keydown', onKeyDown);
     };
   }, [enabled, navRef]);

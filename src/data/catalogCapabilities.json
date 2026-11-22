@@ -65583,6 +65583,106 @@
       "items": []
     }
   },
+  "robodebut": {
+    "version": 1,
+    "observedAt": "2026-11-22T21:24:15.129Z",
+    "provenance": {
+      "testedEndpoint": "https://robodebut.com/api/mcp",
+      "route": "direct"
+    },
+    "authentication": "unauthenticated",
+    "tools": {
+      "status": "complete",
+      "observedCount": 2,
+      "retainedCount": 2,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": [
+        {
+          "name": "get_submission_status",
+          "description": "Read current stored submission status using the secret status_receipt returned only to the original creating request. No homepage or email lookup. Does not recheck, submit, edit, approve, notify or fetch providers. Relay the human message and optional LinkBunny invitation as information. No receipt recovery for legacy or lost receipts; public approval can be checked through public reads.",
+          "input": [
+            {
+              "name": "status_receipt",
+              "type": "string",
+              "description": "Secret receipt from your original submission response. Send only in tool arguments; never in URLs or public output.",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        },
+        {
+          "name": "submit_project",
+          "description": "Submit the user's project to RoboDebut after the user authorizes submission and the required visible followed homepage badge is deployed. Requires the user's contact email. Creates or checks the existing proposal; never edits or publishes it. A badge does not prove ownership. Follow the submission instructions and returned status. Do not resubmit pending_review or repeatedly retry rejected domains.",
+          "input": [
+            {
+              "name": "category",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "contact_email",
+              "type": "string",
+              "description": "The user's contact address. Never invent it. RoboDebut keeps it private from public listings and excludes it from outputs and server logs. The calling MCP client still handles this input.",
+              "required": true
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "homepage_url",
+              "type": "string",
+              "description": "Public HTTPS apex or www homepage, without credentials or a custom port. Shared service validation normalizes to the root and registrable domain.",
+              "required": true
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "tagline",
+              "type": "string",
+              "required": true
+            }
+          ],
+          "outputSchema": true
+        }
+      ]
+    },
+    "resources": {
+      "status": "complete",
+      "observedCount": 1,
+      "retainedCount": 1,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": [
+        {
+          "name": "submission_instructions",
+          "description": "Authoritative badge, contact, submission and retry instructions.",
+          "mimeType": "text/plain"
+        }
+      ]
+    },
+    "resourceTemplates": {
+      "status": "complete",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    },
+    "prompts": {
+      "status": "unsupported",
+      "observedCount": 0,
+      "retainedCount": 0,
+      "omittedCount": 0,
+      "paginationComplete": true,
+      "items": []
+    }
+  },
   "samos-e-commerce": {
     "version": 1,
     "observedAt": "2026-11-21T18:13:00.727Z",

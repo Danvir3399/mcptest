@@ -252,6 +252,7 @@ describe('catalog authentication metadata', () => {
       'legitfit', 'leadboxer', 'qencode',
     ];
     const publisherSources = new Map([
+      ['gameanalytics', 'https://docs.gameanalytics.com/ai-tools/documentation-mcp/'],
       ['unstoppabledomains', 'https://docs.unstoppabledomains.com/user-api/mcp-server'],
       ['uptimerobot', 'https://help.uptimerobot.com/en/articles/12928342-uptimerobot-mcp-integration-guide'],
     ]);

@@ -7259,7 +7259,7 @@
     "authType": "oauth",
     "requiresOAuth": true,
     "protocolEra": "unknown",
-    "checkedAt": "2026-11-21T19:42:29.438Z",
+    "checkedAt": "2026-11-23T00:17:23.327Z",
     "message": "Authentication challenge at https://mcp.seismic.com/v1 returned HTTP 401; endpoint was reachable but did not complete an MCP probe; authentication oauth",
     "validatedUrl": "https://mcp.seismic.com/v1",
     "authorizationServers": [
@@ -9149,6 +9149,417 @@
     "checkedAt": "2026-11-22T21:24:15.839Z",
     "message": "Negotiated stateless MCP 2026-07-28 at https://robodebut.com/api/mcp; detected transport streamable-http; authentication none",
     "validatedUrl": "https://robodebut.com/api/mcp",
+    "protocolVersion": "2026-07-28"
+  },
+  {
+    "serverId": "aiapply",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-23T00:13:44.296Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://aiapply.co/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://aiapply.co/mcp",
+    "protocolVersion": "2026-07-28",
+    "authorizationServers": [
+      "https://aiapply.co"
+    ]
+  },
+  {
+    "serverId": "printfriendly",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:47.053Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://www.printfriendly.com/api/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://www.printfriendly.com/api/mcp",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://www.printfriendly.com"
+    ]
+  },
+  {
+    "serverId": "chatprd",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-23T00:13:45.191Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://app.chatprd.ai/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://app.chatprd.ai/mcp",
+    "protocolVersion": "2026-07-28",
+    "authorizationServers": [
+      "https://clerk.chatprd.ai"
+    ]
+  },
+  {
+    "serverId": "anew",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-23T00:13:43.875Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://anew.page/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://anew.page/mcp",
+    "protocolVersion": "2026-07-28"
+  },
+  {
+    "serverId": "attachpage",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:43.911Z",
+    "message": "Negotiated stateful MCP 2025-06-18 at https://attachpage.com/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://attachpage.com/mcp",
+    "protocolVersion": "2025-06-18",
+    "authorizationServers": [
+      "https://attachpage.com"
+    ]
+  },
+  {
+    "serverId": "clip-recipe",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:45.139Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://www.cliprecipe.com/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://www.cliprecipe.com/mcp",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://www.cliprecipe.com"
+    ]
+  },
+  {
+    "serverId": "craft-quantities",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-23T00:13:44.342Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://api.craftquantities.com/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://api.craftquantities.com/mcp",
+    "protocolVersion": "2026-07-28"
+  },
+  {
+    "serverId": "evenda",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:44.714Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://evenda.io/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://evenda.io/mcp",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://evenda.io"
+    ]
+  },
+  {
+    "serverId": "fielddraft",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:45.389Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://fielddraftapp.com/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://fielddraftapp.com/mcp",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://clerk.fielddraftapp.com"
+    ]
+  },
+  {
+    "serverId": "findable",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-23T00:13:44.848Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://thefindable.co/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://thefindable.co/mcp",
+    "protocolVersion": "2026-07-28"
+  },
+  {
+    "serverId": "flowboxx",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:44.517Z",
+    "message": "Negotiated stateful MCP 2025-06-18 at https://agent.flowboxx.de/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://agent.flowboxx.de/mcp",
+    "protocolVersion": "2025-06-18"
+  },
+  {
+    "serverId": "getagents",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:45.025Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://getagents.io/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://getagents.io/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "graffiticode",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:46.115Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.graffiticode.org/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://mcp.graffiticode.org/mcp",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://mcp.graffiticode.org"
+    ]
+  },
+  {
+    "serverId": "hellogem",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:45.040Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://api.hellogem.ai/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://api.hellogem.ai/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "hireseeker",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:45.329Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://hireseeker.ru/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://hireseeker.ru/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "isgenai",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:45.741Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://isgenai.com/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://isgenai.com/mcp",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://isgenai.com"
+    ]
+  },
+  {
+    "serverId": "japanlaw",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-23T00:13:46.613Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://japanlaw.org/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://japanlaw.org/mcp",
+    "protocolVersion": "2026-07-28",
+    "authorizationServers": [
+      "https://japanlaw.org"
+    ]
+  },
+  {
+    "serverId": "multilocale",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-23T00:13:47.650Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://mcp.multilocale.com/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://mcp.multilocale.com/mcp",
+    "protocolVersion": "2026-07-28",
+    "authorizationServers": [
+      "https://api.authrice.com"
+    ]
+  },
+  {
+    "serverId": "namewheel",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:45.782Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.namewheel.org/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://mcp.namewheel.org/mcp",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://mcp.namewheel.org"
+    ]
+  },
+  {
+    "serverId": "orkestra",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:45.755Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.orkestra-app.com/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://mcp.orkestra-app.com/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "otto-roles",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-23T00:13:45.503Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://ottoroles.com/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://ottoroles.com/mcp",
+    "protocolVersion": "2026-07-28",
+    "authorizationServers": [
+      "https://ottoroles.com"
+    ]
+  },
+  {
+    "serverId": "piloxa",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:47.280Z",
+    "message": "Negotiated stateful MCP 2025-06-18 at https://piloxa.com/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://piloxa.com/mcp",
+    "protocolVersion": "2025-06-18"
+  },
+  {
+    "serverId": "soxoa",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:49.111Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://soxoa.com/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://soxoa.com/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "sparkquote-nec-calculators",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:47.063Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://sparkquote.ai/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://sparkquote.ai/mcp",
+    "protocolVersion": "2025-11-25"
+  },
+  {
+    "serverId": "stashiro",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:52.059Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://www.stashiro.com/api/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://www.stashiro.com/api/mcp",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://www.stashiro.com/api/auth"
+    ]
+  },
+  {
+    "serverId": "stuon",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:48.261Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.stuon.space/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://mcp.stuon.space/mcp",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://mcp.stuon.space"
+    ]
+  },
+  {
+    "serverId": "techjobs-vn",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-23T00:13:48.182Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://techjobs.vn/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://techjobs.vn/mcp",
+    "protocolVersion": "2026-07-28",
+    "authorizationServers": [
+      "https://clerk.techjobs.vn"
+    ]
+  },
+  {
+    "serverId": "tourpro",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateful",
+    "checkedAt": "2026-11-23T00:13:47.555Z",
+    "message": "Negotiated stateful MCP 2025-11-25 at https://mcp.tourpro.app/mcp; detected transport streamable-http; authentication none; WARNING: OAuth authorization servers advertised; an anonymous MCP handshake does not establish anonymous tool access",
+    "validatedUrl": "https://mcp.tourpro.app/mcp",
+    "protocolVersion": "2025-11-25",
+    "authorizationServers": [
+      "https://auth.tourpro.app/"
+    ]
+  },
+  {
+    "serverId": "uniwire",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-23T00:13:47.364Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://mcp.uniwire.sh/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://mcp.uniwire.sh/mcp",
+    "protocolVersion": "2026-07-28"
+  },
+  {
+    "serverId": "zero-slop",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-23T00:13:47.530Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://mcp.zero-slop.ai/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://mcp.zero-slop.ai/mcp",
     "protocolVersion": "2026-07-28"
   }
 ]

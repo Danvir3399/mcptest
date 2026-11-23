@@ -19,7 +19,13 @@ import { APP_ROUTE_OPTIONS } from './servicePage/buildFlag'
  * content pages (guides, the Learn index, server profiles) are complete
  * without React, so they mount on the first input instead (issue #405).
  */
-const prepareApp = () => import('./bootstrapApp').then(module => module.prepareApp())
+const prepareApp = () => {
+  // Start the catalog's full stylesheet alongside the app chunks on mount.
+  for (const link of document.querySelectorAll('link[data-deferred-stylesheet][media="not all"]')) {
+    link.removeAttribute('media')
+  }
+  return import('./bootstrapApp').then(module => module.prepareApp())
+}
 
 // A served alias of a page (/catalog.html, /learn/index.html) takes the
 // page's canonical URL before anything reads the path, so the app renders the

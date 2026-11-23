@@ -1493,9 +1493,16 @@ function finalizeHtmlPages() {
   for (const file of listHtmlFiles(distRoot)) {
     const html = fs.readFileSync(file, 'utf8');
     if (!html.includes('<div id="root"')) continue;
+    const isCatalog = file === path.join(distRoot, 'catalog.html');
     const next = inlineCriticalCss(addAppPreloads(html, appPreloads), readStylesheet, {
-      extraClasses: RUNTIME_STATE_CLASSES,
-      extraAttributes: RUNTIME_STATE_ATTRIBUTES,
+      // The idle assistant launcher can render before the catalog mounts.
+      extraClasses: isCatalog
+        ? [...RUNTIME_STATE_CLASSES, 'site-assistant-launcher', 'site-assistant-launcher-icon']
+        : RUNTIME_STATE_CLASSES,
+      extraAttributes: isCatalog ? [...RUNTIME_STATE_ATTRIBUTES, 'hidden', 'data-state'] : RUNTIME_STATE_ATTRIBUTES,
+      // The inline rules cover the catalog fallback. Applying the full CSS
+      // before mount makes the browser restyle hundreds of static rows.
+      deferStylesheetUntilMount: isCatalog,
     });
     if (next !== html) fs.writeFileSync(file, next, 'utf8');
     pages += 1;

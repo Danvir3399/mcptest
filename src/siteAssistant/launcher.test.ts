@@ -48,8 +48,8 @@ describe('site assistant launcher', () => {
     const button = launcherButton()!;
     expect(button.hidden).toBe(true);
     expect(button.type).toBe('button');
-    expect(button.getAttribute('aria-label')).toBe('Ask the mcptest assistant');
-    expect(button.textContent).toBe('Ask');
+    expect(button.getAttribute('aria-label')).toBe('Ask MCP Test AI');
+    expect(button.textContent).toBe('Ask MCP Test AI');
     launcher.setActive(true);
     expect(button.hidden).toBe(false);
     launcher.setActive(false);

@@ -170,14 +170,10 @@ describe('catalog authentication metadata', () => {
     expect(new Set(catalog.map(({ id }) => id)).size).toBe(catalogSeeds.length);
     expect(new Set(catalog.map(({ id }) => id)))
       .toEqual(new Set(catalogSeeds.map(({ id }) => id)));
-
-    const validationIds = new Set(catalogValidation.map(({ serverId }) => serverId));
-    // The submission runner stopped on Seismic's OAuth metadata before probing Hookr.
-    const expectedValidationIds = catalogSeeds.map(({ id }) => id)
-      .filter((id) => id !== 'hookr' || validationIds.has(id));
-    expect(catalogValidation).toHaveLength(validationIds.size);
-    expect(validationIds).toEqual(new Set(expectedValidationIds));
-
+    expect(catalogValidation).toHaveLength(catalogSeeds.length);
+    expect(new Set(catalogValidation.map(({ serverId }) => serverId)).size).toBe(catalogSeeds.length);
+    expect(new Set(catalogValidation.map(({ serverId }) => serverId)))
+      .toEqual(new Set(catalog.map(({ id }) => id)));
     expect(catalog.find(({ id }) => id === 'asana')).toBeDefined();
     expect(catalog.find(({ id }) => id === 'canva')).toBeDefined();
     expect(catalog.find(({ id }) => id === 'gitlab')).toBeDefined();
@@ -212,6 +208,27 @@ describe('catalog authentication metadata', () => {
     expect(catalog.every(({ listingSource }) => Boolean(listingSource?.kind))).toBe(true);
     expect(catalog.every(({ logoUrl }) => logoUrl.startsWith('/server-logos/'))).toBe(true);
     expect(JSON.stringify(catalog)).not.toMatch(/"logoUrl":"https?:/);
+  });
+
+  it('shows Hookr as online at its submitted endpoint with anonymous discovery and a partial tool inventory', () => {
+    const endpoint = 'https://hookr.fun/api/mcp';
+    const entry = getCatalogServerById('hookr');
+
+    expect(entry).toMatchObject({
+      url: endpoint,
+      validatedUrl: endpoint,
+      status: 'online',
+      declaredAuthType: 'none',
+      authType: 'none',
+      transport: 'streamable-http',
+      protocolEra: 'stateless',
+    });
+    expect(entry?.capabilityInventory).toMatchObject({
+      provenance: { testedEndpoint: endpoint, route: 'direct' },
+      authentication: 'unauthenticated',
+      tools: { status: 'partial' },
+    });
+    expect(entry?.capabilityInventory?.tools.omittedCount).toBeGreaterThan(0);
   });
 
   it('attributes endpoints that only a client directory documents to that directory', () => {
@@ -256,9 +273,27 @@ describe('catalog authentication metadata', () => {
       'legitfit', 'leadboxer', 'qencode',
     ];
     const publisherSources = new Map([
+      ['basedash', 'https://www.basedash.com/features/mcp-server'],
+      ['dart', 'https://help.dartai.com/en/articles/10733406-dart-mcp'],
+      ['elfsight', 'https://github.com/elfsight/ai-chatbot-mcp'],
       ['gameanalytics', 'https://docs.gameanalytics.com/ai-tools/documentation-mcp/'],
+      ['leadboxer', 'https://developers.leadboxer.com/docs/mcp'],
+      ['legitfit', 'https://support.legitfit.com/business/how-do-i-connect-legitfit-to-claude'],
+      ['maileroo', 'https://maileroo.com/help/connect-maileroo-to-ai'],
+      ['pandavideo', 'https://docs.pandavideo.com/reference/mcp'],
+      ['parsely', 'https://docs.parse.ly/mcp-server/'],
+      ['tallyfy', 'https://tallyfy.com/products/pro/integrations/mcp-server/openai-chatgpt/'],
       ['unstoppabledomains', 'https://docs.unstoppabledomains.com/user-api/mcp-server'],
       ['uptimerobot', 'https://help.uptimerobot.com/en/articles/12928342-uptimerobot-mcp-integration-guide'],
+      ['valossa', 'https://mcp-assistant.valossa.com/documentation'],
+      ['versium', 'https://reach-help.versium.com/docs/mcp-overview'],
+      ['vestd', 'https://www.vestd.com/help/connect-vestd-to-chatgpt-or-claude'],
+      ['youth4work', 'https://mcp.youth4work.com/'],
+      ['zabihah', 'https://www.zabihah.com/developers/docs/mcp'],
+      ['zarla', 'https://www.zarla.com/features/mcp-website-builder'],
+      ['zeroheight', 'https://help.zeroheight.com/hc/en-us/articles/48004395674011-zeroheight-MCP-overview'],
+      ['zip-codes', 'https://www.zip-codes.com/search.asp'],
+      ['zylalabs', 'https://mcp.zylalabs.com/'],
     ]);
     const catalog = getCatalogServers();
     expect(addedIds.length).toBeGreaterThanOrEqual(60);

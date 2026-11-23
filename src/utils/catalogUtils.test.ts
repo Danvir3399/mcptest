@@ -210,6 +210,27 @@ describe('catalog authentication metadata', () => {
     expect(JSON.stringify(catalog)).not.toMatch(/"logoUrl":"https?:/);
   });
 
+  it('shows Hookr as online at its submitted endpoint with anonymous discovery and a partial tool inventory', () => {
+    const endpoint = 'https://hookr.fun/api/mcp';
+    const entry = getCatalogServerById('hookr');
+
+    expect(entry).toMatchObject({
+      url: endpoint,
+      validatedUrl: endpoint,
+      status: 'online',
+      declaredAuthType: 'none',
+      authType: 'none',
+      transport: 'streamable-http',
+      protocolEra: 'stateless',
+    });
+    expect(entry?.capabilityInventory).toMatchObject({
+      provenance: { testedEndpoint: endpoint, route: 'direct' },
+      authentication: 'unauthenticated',
+      tools: { status: 'partial' },
+    });
+    expect(entry?.capabilityInventory?.tools.omittedCount).toBeGreaterThan(0);
+  });
+
   it('attributes endpoints that only a client directory documents to that directory', () => {
     // A caveat that says the publisher's page omits the endpoint (or shows only a placeholder)
     // means the URL is directory-derived, so the structured provenance must say so too.

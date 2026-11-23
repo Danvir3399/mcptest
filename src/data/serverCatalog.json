@@ -30070,6 +30070,32 @@
     "logoLicenseNote": "Unofficial, locally generated WN monogram. Trademark rights remain with the publisher."
   },
   {
+    "id": "hookr",
+    "name": "Hookr",
+    "url": "https://hookr.fun/api/mcp",
+    "browserAccess": "proxy-required",
+    "description": "Read Uniswap v4 pools, inspect hooks, get quotes and revenue-token data, and build unsigned calls for swaps, liquidity and claims. Public Streamable HTTP endpoint with no API key; the user’s wallet signs and submits transactions.",
+    "category": "Finance",
+    "tags": [
+      "finance",
+      "community-submission",
+      "no-auth"
+    ],
+    "listingSource": {
+      "kind": "community-submission",
+      "url": "https://hookr.fun/docs/mcp"
+    },
+    "transport": "streamable-http",
+    "requiresOAuth": false,
+    "authType": "none",
+    "logoUrl": "/server-logos/hookr.svg",
+    "logoSourceUrl": "https://hookr.fun/brand/hookr-mark.svg",
+    "logoSourceKind": "official-brand",
+    "logoRetrievedAt": "2026-11-21",
+    "logoLicenseNote": "Hookr mark from the publisher's brand asset page on hookr.fun, as stated by the submitter; trademark rights remain with the publisher.",
+    "homepageUrl": "https://hookr.fun/docs/mcp"
+  },
+  {
     "id": "triple-whale",
     "name": "Triple Whale",
     "url": "https://mcp.triplewhale.com/v1/mcp",

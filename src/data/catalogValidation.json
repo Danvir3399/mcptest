@@ -8428,6 +8428,18 @@
     ]
   },
   {
+    "serverId": "hookr",
+    "status": "online",
+    "transport": "streamable-http",
+    "authType": "none",
+    "requiresOAuth": false,
+    "protocolEra": "stateless",
+    "checkedAt": "2026-11-23T08:06:50.680Z",
+    "message": "Negotiated stateless MCP 2026-07-28 at https://hookr.fun/api/mcp; detected transport streamable-http; authentication none",
+    "validatedUrl": "https://hookr.fun/api/mcp",
+    "protocolVersion": "2026-07-28"
+  },
+  {
     "serverId": "triple-whale",
     "status": "online",
     "transport": "unknown",
